@@ -1,3 +1,4 @@
+
 import React from "react";
 const HomeT = () => {
   return (
@@ -15,4 +16,3 @@ const HomeT = () => {
   );
 };
 
-export default HomeT;
