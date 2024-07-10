@@ -1,4 +1,62 @@
+.inner-main-container h2 {
+  height: 100%;
+  margin-bottom: 7%;
+}
+.main-header {
+  width: 100vw;
+  height: 200px;
+  position: relative;
+  left: 0;
+  background: linear-gradient(rgb(0, 0, 0), rgb(55, 193, 205));
+  padding-top: 5%;
+}
+.header {
+  margin-bottom: 20%;
+  display: flex;
+  justify-content: space-around;
+}
 
-input[type="text"]{
-    border: 2px solid red;
+.header-title {
+  color: white;
+  margin-top: -10%;
+  margin-bottom: 1%;
+  font-size: 26px;
+  text-align: center;
+}
+.header-subtitle {
+  color: white;
+  text-align: center;
+  font-size: 10px;
+  letter-spacing: 8px;
+}
+.filter-switch {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  border: 1px solid gray;
+  border-radius: 19px;
+  padding: 2% 10%;
+  font-weight: 700;
+  font-size: 14px;
+}
+.filter-switch p {
+  color: gray;
+}
+.profile-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid gray;
+}
+.department {
+  border: 2px solid gray;
+  padding: 4% 4%;
+  margin-bottom: 5%;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 9px;
+}
+.content-container {
+  padding: 5%;
 }
