@@ -1,0 +1,95 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    color: #2d2d2d;
+}
+
+
+.main-login-container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ececec;
+  }
+  .inner-main-login {
+    width: 30%;
+    padding:8% 3%;
+
+    border-radius: 19px;
+    background-color: #e2e2e2;
+    box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.232) ;
+  }
+  .main-heading{
+    text-align: center;
+    margin-bottom: 1%;
+    font-size: 28px;
+  }
+  .main-sub-heading{
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 20%;
+  }
+  .remember-forget-parent{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5%;
+  }
+input[type="password"],[type="email"]{
+    border: none;
+    border-bottom: 0.5px solid black;
+    width: 100%;
+    padding: 2% 1%;
+    margin-bottom: 5%;
+    outline: none;
+    background-color: transparent;
+  }
+  .submit-parant{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5%;
+  }
+  input[type="submit"]{
+    padding: 1.5% 7%;
+    background-color: rgb(75, 151, 213);
+    border-radius: 16px;
+    outline: none;
+    border: none;
+    color: white;
+  }
+  .signup-link{
+    text-align: center;
+    color: black;
+    }
+span{
+    font-weight: 700;
+
+}
+@media only screen and (max-width: 835px) {
+    .inner-main-login {
+        width:65%;
+        padding:18% 8%;
+        border-radius: 19px;
+      }
+}
+@media only screen and (max-width: 450px) {
+    .inner-main-login {
+        width: 85%;
+        padding:30% 7%;
+        border-radius: 24px;
+      }
+      input[type="password"],[type="email"]{
+        margin-bottom: 10%;
+      }
+      .remember-forget-parent{
+        margin-bottom: 10%;
+      }
+      input[type="submit"]{
+        padding: 4% 20%;
+      }
+  }

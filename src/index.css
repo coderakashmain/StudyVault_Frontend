@@ -2,12 +2,15 @@
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  color: #2d2d2d;
 }
 
 body,html{
   width: 100%;
   height: 100%;
 }
-:root{
+/* :root{
   
-}
+} */
