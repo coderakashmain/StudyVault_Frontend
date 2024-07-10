@@ -30,9 +30,7 @@
 .signup-form input::placeholder{
     color: rgb(159, 159, 159);
 }
-.signup-form label{
-    font-size: 1.13vw;
-    
+.signup-form label{    
     letter-spacing: 0.1px;
 }
 .signup-form h2{
@@ -43,7 +41,6 @@
     padding: 4vw 0px 0.5vw 0px;
     display: flex;
     justify-content: space-between;
-    font-size:1.5vw;
     gap: 3vw;
 }
 #rollno{
@@ -60,3 +57,4 @@
     cursor: pointer;
     margin-top: 1.1vw;
 }
+
