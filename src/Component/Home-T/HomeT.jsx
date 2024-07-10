@@ -1,4 +1,5 @@
 
+
 import React from "react";
 import "./Home.css";
 
@@ -17,5 +18,4 @@ const HomeT = () => {
     </>
   );
 };
-
 export default HomeT;
