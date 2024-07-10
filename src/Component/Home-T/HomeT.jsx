@@ -1,5 +1,4 @@
 import React from "react";
-import Login from "./Login/Login";
 const HomeT = () => {
   return (
     <>
@@ -11,7 +10,7 @@ const HomeT = () => {
           </div>
         </div>
       </div> */}
-      <Login/>
+      
     </>
   );
 };
