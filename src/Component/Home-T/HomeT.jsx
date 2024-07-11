@@ -1,6 +1,5 @@
 import React from "react";
 import "./Home.css";
-
 const HomeT = () => {
   return (
     <>
@@ -17,36 +16,38 @@ const HomeT = () => {
             <p className="header-subtitle">PADHLE BHAI PADHLE</p>
           </div>
           <div className="content-container">
-          <h2>All departmet :</h2>
-            <div className="department">
-              <p>Master of computer science</p>
-            </div>
-            <div className="department">
-              <p>Master of computer science</p>
-            </div>
-            <div className="department">
-              <p>Master of computer science</p>
-            </div>
-            <div className="department">
-              <p>Master of computer science</p>
-            </div>
-            <div className="department">
-              <p>Master of computer science</p>
-            </div>
-            <div className="department">
-              <p>Master of computer science</p>
-            </div>
-            <div className="department">
-              <p>Master of computer science</p>
-            </div>
-            <div className="department">
-              <p>Master of computer science</p>
-            </div>
-            <div className="department">
-              <p>Master of computer science</p>
-            </div>
-            <div className="department">
-              <p>Master of computer science</p>
+            <h2>All departmet :</h2>
+            <div className="department-list">
+              <div className="department">
+                <p>Master of computer science</p>
+              </div>
+              <div className="department">
+                <p>Master of computer science</p>
+              </div>
+              <div className="department">
+                <p>Master of computer science</p>
+              </div>
+              <div className="department">
+                <p>Master of computer science</p>
+              </div>
+              <div className="department">
+                <p>Master of computer science</p>
+              </div>
+              <div className="department">
+                <p>Master of computer science</p>
+              </div>
+              <div className="department">
+                <p>Master of computer science</p>
+              </div>
+              <div className="department">
+                <p>Master of computer science</p>
+              </div>
+              <div className="department">
+                <p>Master of computer science</p>
+              </div>
+              <div className="department">
+                <p>Master of computer science</p>
+              </div>
             </div>
           </div>
         </div>

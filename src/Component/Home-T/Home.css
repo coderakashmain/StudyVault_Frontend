@@ -4,7 +4,7 @@
 }
 .main-header {
   width: 100vw;
-  height: 200px;
+  height:30vw ;
   position: relative;
   left: 0;
   background: linear-gradient(rgb(0, 0, 0), rgb(55, 193, 205));
@@ -35,7 +35,7 @@
   width: 80%;
   border: 1px solid gray;
   border-radius: 19px;
-  padding: 2% 10%;
+  padding: 1% 5%;
   font-weight: 700;
   font-size: 14px;
 }
@@ -48,15 +48,51 @@
   border-radius: 50%;
   border: 2px solid gray;
 }
+.department-list{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
 .department {
   border: 2px solid gray;
-  padding: 4% 4%;
+  padding: 2% ;
   margin-bottom: 5%;
   cursor: pointer;
   font-size: 14px;
   font-weight: 700;
   border-radius: 9px;
+  width: 30%;
 }
 .content-container {
   padding: 5%;
+}
+
+@media only screen and (max-width: 835px){
+  .department p{
+    font-size: 10px;
+  }
+  .main-header {
+    width: 100vw;
+    height:52vw ;
+    position: relative;
+    left: 0;
+    background: linear-gradient(rgb(0, 0, 0), rgb(55, 193, 205));
+    padding-top: 5%;
+  }
+}
+
+@media only screen and (max-width: 435px){
+  .department-list{
+    display:block;
+  }
+  .department {
+    border: 2px solid gray;
+    padding: 4% 4%;
+    margin-bottom: 5%;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 9px;
+    width: 100%;
+  }
 }
