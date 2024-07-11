@@ -19,34 +19,82 @@ const HomeT = () => {
             <h2>All departmet :</h2>
             <div className="department-list">
               <div className="department">
-                <p>Master of computer science</p>
+                <p>Master of computer Application</p>
+              </div>
+              <div className="department">
+                <p>Master of business administration</p>
               </div>
               <div className="department">
                 <p>Master of computer science</p>
               </div>
               <div className="department">
-                <p>Master of computer science</p>
+                <p>Department of computer science </p>
+              </div>
+              <div className="department">
+                <p>Department of commorce</p>
+              </div>
+              <div className="department">
+                <p>Department of zology </p>
+              </div>
+              <div className="department">
+                <p>Department of Mathmatics</p>
+              </div>
+              <div className="department">
+                <p>Department of Odia</p>
+              </div>
+              <div className="department">
+                <p>Department of English</p>
+              </div>
+              <div className="department">
+                <p>Department of Histroy</p>
               </div>
               <div className="department">
                 <p>Master of computer science</p>
               </div>
               <div className="department">
-                <p>Master of computer science</p>
+                <p>Department of computer science </p>
+              </div>
+              <div className="department">
+                <p>Department of commorce</p>
+              </div>
+              <div className="department">
+                <p>Department of zology </p>
+              </div>
+              <div className="department">
+                <p>Department of Mathmatics</p>
+              </div>
+              <div className="department">
+                <p>Department of Odia</p>
+              </div>
+              <div className="department">
+                <p>Department of English</p>
+              </div>
+              <div className="department">
+                <p>Department of Histroy</p>
               </div>
               <div className="department">
                 <p>Master of computer science</p>
               </div>
               <div className="department">
-                <p>Master of computer science</p>
+                <p>Department of computer science </p>
               </div>
               <div className="department">
-                <p>Master of computer science</p>
+                <p>Department of commorce</p>
               </div>
               <div className="department">
-                <p>Master of computer science</p>
+                <p>Department of zology </p>
               </div>
               <div className="department">
-                <p>Master of computer science</p>
+                <p>Department of Mathmatics</p>
+              </div>
+              <div className="department">
+                <p>Department of Odia</p>
+              </div>
+              <div className="department">
+                <p>Department of English</p>
+              </div>
+              <div className="department">
+                <p>Department of Histroy</p>
               </div>
             </div>
           </div>
