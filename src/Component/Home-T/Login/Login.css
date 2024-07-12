@@ -40,7 +40,7 @@
     align-items: center;
     margin-bottom: 5%;
   }
-input[type="password"],[type="email"]{
+.inner-main-login input[type="password"],[type="email"]{
     border: none;
     border-bottom: 0.5px solid black;
     width: 100%;
