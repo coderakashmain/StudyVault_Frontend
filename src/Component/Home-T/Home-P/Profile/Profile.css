@@ -226,12 +226,20 @@
     font-size: 1.3rem;
 }
 .latest-updates-files{
-    margin-top:1rem;
+    margin-top:2rem;
+}
+.latest-updates-files-text{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;    
+}
+.latest-updates-files-text i{
+    font-size: 1.4rem;
 }
 .latest-updates-files h3{
-    text-align: end;
     font-size: 1.1rem;
-    padding: 1rem 0;
+    
 }
 
 .files-items{
@@ -248,9 +256,7 @@
   .files-items p{
     padding: 0.8rem 0;
 }
-.query-box{
-    padding: 5rem 1.4rem;
-}
+
 /* Universer variable */
 .profilecontain{
     padding: 0 3rem;
