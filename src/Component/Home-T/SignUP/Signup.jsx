@@ -18,8 +18,8 @@ const Signup = () => {
 
             </div>
           </div>
-              <label htmlFor="rollno">Enter your College RollNo :-</label>
-              <input type="text" id="rollno" name="rollno" placeholder="Enter your RollNo "/>
+            <label htmlFor="rollno">Enter your College RollNo :-</label>
+            <input type="text" id="rollno" name="rollno" placeholder="Enter your RollNo "/>
 
            <label htmlFor="gmail">Enter your gmail :-</label>
             <input type="text" name="gmail" id="gmail" placeholder="yourname@gmail.com"/>

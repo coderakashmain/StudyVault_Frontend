@@ -36,6 +36,7 @@ const HomeT = () => {
   return (
     <>
       <div className="main-container">
+          
         <div className="inner-main-container">
           <div className="main-header">
             <div className="header">
@@ -193,7 +194,7 @@ const HomeT = () => {
                 <div className="play-store-box">
                   <input
                     type="image"
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3GWLDQjj59yT7L6oaACJ_OgepF3K5lwi1YA&s"
+                    src="https://e7.pngegg.com/pngimages/530/733/png-clipart-goggle-playstore-icon-google-play-computer-icons-android-play-button-angle-rectangle.pn"
                     alt=""
                   />
                   <div>
