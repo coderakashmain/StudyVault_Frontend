@@ -25,9 +25,9 @@ const Signup = () => {
             <input type="text" name="gmail" id="gmail" placeholder="yourname@gmail.com"/>
 
             <label htmlFor="password">Create a password :-</label>
-            <input type="password" id="password" name="password"placeholder="Create a password"/>
+            <input type="current-password" id="password" name="password"placeholder="Create a password"/>
             <label htmlFor="passwordcheck">Confirm password :-</label>
-            <input type="password" id="passwordcheck" name="password" placeholder="Re-enter your password"/>
+            <input type="new-password" id="passwordcheck" name="passwordcheck" placeholder="Re-enter your password"/>
             <button className="btn">Signup</button>
 
         </form>

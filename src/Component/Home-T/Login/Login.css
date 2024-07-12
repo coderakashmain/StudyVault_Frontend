@@ -21,7 +21,7 @@
 
     border-radius: 19px;
     background-color: #e2e2e2;
-    box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.232) ;
+    box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.19),inset 9px 9px 50px rgba(255, 255, 255, 0.832),inset -9px -9px 50px rgba(111, 111, 111, 0.163);
   }
   .main-heading{
     text-align: center;
@@ -40,7 +40,7 @@
     align-items: center;
     margin-bottom: 5%;
   }
-input[type="password"],[type="email"]{
+.inner-main-login input[type="password"],[type="email"]{
     border: none;
     border-bottom: 0.5px solid black;
     width: 100%;

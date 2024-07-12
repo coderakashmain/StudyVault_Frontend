@@ -1,5 +1,10 @@
+
 import React from "react";
 import "./Home.css";
+
+
+
+
 const HomeT = () => {
   const departments = [
     "Computer Science",
@@ -35,6 +40,7 @@ const HomeT = () => {
   ];
   return (
     <>
+
       <div className="main-container">
           
         <div className="inner-main-container">
@@ -236,8 +242,8 @@ const HomeT = () => {
           </footer>
         </div>
       </div>
+
     </>
   );
 };
-
 export default HomeT;
