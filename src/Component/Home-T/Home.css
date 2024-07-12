@@ -15,7 +15,15 @@
   display: flex;
   justify-content: space-around;
 }
-
+.department-logo{
+  height: 180px;
+  width: 180px;
+  background:linear-gradient(rgb(0, 0, 0), rgb(7, 240, 244)) ;
+  border-radius: 50%;
+  position:absolute;
+  right: 10%;
+  margin-top: -5%;
+}
 .header-title {
   color: white;
   margin-top: -10%;
@@ -35,18 +43,25 @@
   width: 80%;
   border: 1px solid gray;
   border-radius: 19px;
-  padding: 1% 5%;
+  padding: 0% 5%;
   font-weight: 700;
   font-size: 14px;
 }
-.filter-switch p {
-  color: gray;
+.filter-switch input[type="text"]{
+width: 100%;
+height: 100%;
+background-color: transparent;
+outline: none;
+border: none;
+color: white;
 }
+
 .profile-icon {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  border: 2px solid gray;
+
+  background: linear-gradient(rgb(160, 160, 160), #57b5db);
 }
 .department-list{
   display: flex;
@@ -67,6 +82,115 @@
   padding: 5%;
 }
 
+footer{
+  background-color: rgb(13, 13, 14);
+color: rgb(200, 195, 195);
+width: 100%;
+padding:6%;
+}
+footer a{
+  color: rgb(200, 195, 195);
+  font-size: 12px;
+}
+.second-footer-section h3{
+  color: rgb(41, 165, 207);
+}
+
+.first-footer-section{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 2% 0%;
+}
+.first-footer-section form{
+  display: flex;
+  width: 30%;
+}
+.first-footer-section input[type="text"]{
+  border: 2px solid  rgb(41, 165, 207) ;
+  background-color: rgb(46, 44, 44);
+  padding: 3% 7%;
+  margin-right: 5%;
+  
+}
+.first-footer-section input[type="submit"]{
+  background-color:  rgb(41, 165, 207) ;
+  color: black;
+  padding: 3% 7%;
+  border: none;
+}
+.second-footer-section{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 3% 0%;
+}
+
+.third-footer-section{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 5% 0%;
+}
+.third-footer-section p{
+  font-size: 12px;
+}
+.footer-comany-logo{
+  width: 40px;
+  height: 40px;
+  background-color: rgb(49, 161, 192);
+  border-radius: 50%;
+}
+.apple-store-box,.play-store-box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1% 5%;
+  border: 1px solid gray;
+  background-color: rgb(11, 11, 11) ;
+  border-radius: 9px;
+}
+.apple-store-box input[type="image"],.play-store-box input[type="image"]{
+  width: 20px;
+  height: 20px;
+}
+.sosial-media-link{
+  display: flex; 
+  gap: 3%;
+}
+.social-media-icon{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: white;
+}
+.forth-footer-section{
+  display: flex;
+
+  align-items: center;
+  padding: 5% 0%;
+  font-size: 12px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.forth-footer-section div{
+  display: flex;
+  gap: 10%;
+
+  width: 50%;
+}
+.forth-footer-section ul{
+
+  display: flex;
+  width: 40%;
+}
+.forth-footer-section ul li{
+  margin-right: 20%;
+}
 @media only screen and (max-width: 835px){
   .department p{
     font-size: 10px;
@@ -78,6 +202,23 @@
     left: 0;
     background: linear-gradient(rgb(0, 0, 0), rgb(55, 193, 205));
     padding-top: 5%;
+  }
+  .department-logo{
+    height: 110px;
+    width: 110px;
+    margin-top: -8%;
+  }
+  .first-footer-section{
+   padding:10% 0%;
+  }
+  .first-footer-section input[type="text"],input[type="submit"]{
+    margin-top: 10%;
+  }
+  .second-footer-section ul{
+    margin: 5% 4%;
+  }
+  .apple-store-box,.play-store-box,.sosial-media-link,.third-footer-section p,.footer-comany-logo{
+    margin-top: 10%;
   }
 }
 
@@ -94,5 +235,26 @@
     font-weight: 700;
     border-radius: 9px;
     width: 100%;
+  }
+  .department-logo{
+    height: 80px;
+    width: 80px;
+    margin-top: -8%;
+  }
+  .forth-footer-section ul{
+    width: 100%;
+  }
+  .forth-footer-section ul li{
+    margin-right: 30%;
+    margin-bottom: 5%;
+  }
+  .forth-footer-section div{
+    width: 100%;
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+  }
+  .forth-footer-section div p{
+    margin-bottom: 5%;
   }
 }
