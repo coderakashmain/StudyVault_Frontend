@@ -115,6 +115,9 @@
     cursor: pointer;
     font-size: 1rem;
 }
+.pdfupload i{
+    padding-left: 0.9rem;
+}
 .recent-work{
     height: 20vw;
     margin: 4rem 0 7rem 0;
@@ -239,6 +242,15 @@
     padding: 0.5rem 1.4rem;
     background-color: #fff;
 }
+.files-items::-webkit-scrollbar {
+    display: none; /* Hides the scrollbar in WebKit browsers */
+  }
+  .files-items p{
+    padding: 0.8rem 0;
+}
+.query-box{
+    padding: 5rem 1.4rem;
+}
 /* Universer variable */
 .profilecontain{
     padding: 0 3rem;
@@ -283,7 +295,7 @@
 }
 @media (max-width:547px) {
     html{
-        font-size: 75%;
+        font-size: 65%;
     }
 }
 @media (max-width:437px) {
