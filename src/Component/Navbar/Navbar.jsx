@@ -84,7 +84,7 @@ const Navbar = () => {
   }, []);
   return (
     <>
-      <div className={`navbar ${nav ? "nav-blur" : ""}`}>
+      <div className={`navbar ${nav ? "nav-blur" : ""}`}> 
         <div className="navber-box">
           <div className="hambargar">
             <i className="fa-solid fa-bars"></i>
