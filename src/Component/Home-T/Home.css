@@ -10,10 +10,14 @@
   background: linear-gradient(rgb(0, 0, 0), rgb(55, 193, 205));
   padding-top: 5%;
 }
+
+
 .header {
   margin-bottom: 20%;
   display: flex;
+  position: relative;
   justify-content: space-around;
+  z-index: 2;
 }
 .department-logo{
   height: 180px;
@@ -23,6 +27,7 @@
   position:absolute;
   right: 10%;
   margin-top: -5%;
+
 }
 .header-title {
   color: white;
@@ -30,6 +35,9 @@
   margin-bottom: 1%;
   font-size: 26px;
   text-align: center;
+  position: relative;
+  z-index: 2;
+
 }
 .header-subtitle {
   color: white;
@@ -41,11 +49,12 @@
   display: flex;
   align-items: center;
   width: 80%;
-  border: 1px solid gray;
+  border: 1px solid rgb(178, 168, 168);
   border-radius: 19px;
   padding: 0% 5%;
   font-weight: 700;
   font-size: 14px;
+
 }
 .filter-switch input[type="text"]{
 width: 100%;
@@ -53,20 +62,16 @@ height: 100%;
 background-color: transparent;
 outline: none;
 border: none;
-color: white;
+color: rgb(199, 190, 190);
 }
 
-.profile-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-
-  background: linear-gradient(rgb(160, 160, 160), #57b5db);
-}
 .department-list{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  position: relative;
+  z-index: 3;
+
 }
 .department {
   border: 2px solid gray;
@@ -113,14 +118,18 @@ footer a{
   border: 2px solid  rgb(41, 165, 207) ;
   background-color: rgb(46, 44, 44);
   padding: 3% 7%;
+  color: white;
   margin-right: 5%;
-  
+  outline: none;
+  border-radius: 4px;
 }
 .first-footer-section input[type="submit"]{
   background-color:  rgb(41, 165, 207) ;
   color: black;
   padding: 3% 7%;
   border: none;
+  border-radius: 4px;
+  font-weight: 600;
 }
 .second-footer-section{
   display: flex;
@@ -217,9 +226,6 @@ footer a{
   .first-footer-section input[type="text"],input[type="submit"]{
     margin-top: 10%;
   }
-  .second-footer-section ul{
-    margin: 5% 4%;
-  }
   .apple-store-box,.play-store-box,.sosial-media-link,.third-footer-section p,.footer-comany-logo{
     margin-top: 10%;
 
@@ -229,6 +235,9 @@ footer a{
 @media only screen and (max-width: 435px){
   .department-list{
     display:block;
+  }
+  .profile-icon{
+    width: 40px;
   }
   .department {
     border: 2px solid gray;

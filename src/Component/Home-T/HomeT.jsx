@@ -35,6 +35,7 @@ const HomeT = () => {
   ];
   return (
     <>
+
       <div className="main-container">
         <div className="inner-main-container">
           <div className="main-header">
@@ -44,10 +45,9 @@ const HomeT = () => {
                   type="text"
                   name=""
                   id=""
-                  placeholder="serarc here your department"
+                  placeholder="search here your department"
                 />
               </div>
-              <div className="profile-icon"></div>
             </div>
             <h3 className="header-title">Proud to be a MPC ' ian</h3>
             <p className="header-subtitle">PADHLE BHAI PADHLE</p>
