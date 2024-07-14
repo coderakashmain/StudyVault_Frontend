@@ -6,6 +6,7 @@
     justify-content: center;
     padding-top: 1.2rem;
     
+    
 }
 .profile-outer-box{
     height: 100%;
@@ -308,11 +309,21 @@
     html{
         font-size: 65%;
     }
+    .upperstyle{
+        height: 48%;
+        width: 132%;
+    
+    }
 }
 @media (max-width:360px) {
     html{
         font-size: 54%;
     }
+    .upperstyle{
+        height: 48%;
+        width: 134%;
+    }
+
 }
 @media (max-width:332px) {
     html{
@@ -322,6 +333,12 @@
 @media (max-width:281px) {
     html{
         font-size: 3.6vw;
+    }
+    .upperstyle{
+        height: 50%;
+        width: 166%;
+        left: -70%;
+    
     }
 }
 @media (max-width:188px) {

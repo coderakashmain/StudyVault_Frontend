@@ -1,0 +1,43 @@
+#scrollbtn{
+    height: 4rem;
+    width: 4rem;
+    position: fixed;
+    bottom: 13%;
+    right: 5%;
+    z-index: 200;
+    background-color: rgb(55, 193, 205);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s linear;
+    animation: move 01s alternate infinite ease-in-out;
+
+}
+#scrollbtn i{
+    font-size: 1.6rem;
+}
+.hide-btn{
+    opacity: 0;
+    display: none;
+}
+@keyframes move {
+    from{
+        transform: translateY(0);
+    }
+    to{
+        transform: translateY(-30%);
+    }
+}
+
+@media (max-width : 764px) {
+    #scrollbtn {
+        height: 7rem;
+         width: 7rem;
+    }
+    #scrollbtn i{
+        font-size: 2rem;
+    }
+  }
+
