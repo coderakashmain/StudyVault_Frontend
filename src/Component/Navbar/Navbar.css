@@ -1,0 +1,137 @@
+.navbar{
+    height: 70px;
+    width: 100%;
+    position: sticky;
+    top: 0px;
+    left: 0px;
+    z-index:50;
+    padding: 0px 4rem;
+    font-size: 1.5rem;
+    background-color: #000;
+    backdrop-filter: blur(80px);
+    transition: all 0.15s linear;    
+}
+.navber-box{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hambargar i{
+    cursor: pointer;
+    filter: invert(100%);
+}
+.nav-list ul{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5rem;
+}
+.navbar a{
+    font-size: 1.1rem;
+    color:#e3e3e3;
+}
+.navbar a:hover{
+    color: rgb(184, 184, 184);
+}
+
+
+
+.nav-blur{
+   background: linear-gradient(20deg, #241856, lightseagreen);
+    backdrop-filter: blur(90px);
+}
+
+
+
+.slidebar{
+    min-height: 100vh;
+    /* width: 450px; */
+    width: 40vw;
+    position: fixed;
+    left: -100%;
+    top: 0%;
+    background-color: rgba(255, 255, 255, 0.412);
+    z-index:100;
+    padding: 1.9rem 4rem;
+    backdrop-filter: blur(80px);
+    overflow: hidden;
+  
+  }
+  .cross-icon{
+    text-align: end;
+  }
+  .cross-icon i{
+    background-color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .slidebar-box{
+    margin-top: 1.8rem;
+  }
+  .cross-icon i{
+    font-size: 2rem;
+    filter: invert(5%);
+  
+  }
+  .slidebar h4{
+    padding: 1.2rem 0;
+  }
+  .slidebar h4 i{
+    transform: translate(-50%,-25%);
+    filter: invert(0%);
+  
+  }
+  .slidebar h4 a{
+    font-size: 2.6rem;
+  
+  }
+  .copywrite{
+    margin: 30px 0;
+      
+  }
+  .copywrite p{
+   font-size: 1.15rem;
+   letter-spacing: 0.03rem;
+   font-weight: 300;
+  }
+  .copywrite p:last-child{
+  color: rgb(56, 186, 242);
+  }
+  
+  .slidebar-foot-item{
+    position: absolute;
+    bottom: 1%;
+    right: 5%;
+    width: 100%;
+  
+  }
+  .slidebar-foot-item p{
+    text-align: end;
+    font-size: 0.8rem;
+    font-weight: 600;
+  
+  }
+  @media (min-width : 765px) {
+    .hambargar{
+      display: none;
+    }
+  }
+  @media (max-width : 764px) {
+    .hambargar{
+      display: block;
+    }
+    .nav-list{
+      display: none;
+    }
+  }
+  @media (max-width : 454px) {
+    .slidebar{
+        width: 55vw;
+      }
+     .cross-icon{
+        margin-top: 4rem;
+     }
+  }

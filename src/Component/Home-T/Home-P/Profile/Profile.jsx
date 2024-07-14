@@ -112,7 +112,11 @@ const Profile = () => {
               <div className="latest-updates">
                 <h2>Latest Updates</h2>
                 <div className="latest-updates-files">
+                  <div className="latest-updates-files-text">
+                  <i class="fa-solid fa-square-pen"></i>
                   <h3>Now available</h3>
+                  </div>
+                 
                   <div className="files-items">
                     <p>
                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -176,13 +180,6 @@ const Profile = () => {
                     </p>
                   </div>
                 </div>
-            <div className="query-box">
-              <img src="" alt="" />
-              <h2>
-                If You have any Query or arise any problemn then You can be contact with us .
-              </h2>
-                <p>We always present to solve your Queris.</p>
-            </div>
           </div>
         </div>
       </div>

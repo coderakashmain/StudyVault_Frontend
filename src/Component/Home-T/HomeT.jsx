@@ -1,6 +1,9 @@
 
 import React from "react";
-import "./Home.css";
+import "./HomeT.css";
+
+import 'remixicon/fonts/remixicon.css'
+import Scrollbtn from "./Scrollbtn/Scrollbtn";
 
 
 
@@ -38,22 +41,30 @@ const HomeT = () => {
     "Nursing",
     "Pharmacy",
   ];
+  
+ 
+  
   return (
     <>
-
+    <Scrollbtn/>
       <div className="main-container">
           
         <div className="inner-main-container">
+          
           <div className="main-header">
             <div className="header">
+            
+          
+            
               <div className="filter-switch">
                 <input
                   type="text"
                   name=""
                   id=""
-                  placeholder="search here your department"
+                  placeholder="Search your department"
                 />
               </div>
+              
             </div>
             <h3 className="header-title">Proud to be a MPC ' ian</h3>
             <p className="header-subtitle">PADHLE BHAI PADHLE</p>
@@ -86,7 +97,7 @@ const HomeT = () => {
               <hr />
               <div className="second-footer-section">
                 <ul>
-                  <h3 class="ct-footer-list-header">Learn More</h3>
+                  <h3 className="ct-footer-list-header">Learn More</h3>
                   <li>
                     <a href="">Company</a>
                   </li>
@@ -101,7 +112,7 @@ const HomeT = () => {
                   </li>
                 </ul>
                 <ul>
-                  <h3 class="ct-footer-list-header">Services</h3>
+                  <h3 className="ct-footer-list-header">Services</h3>
                   <li>
                     <a href="">Design</a>
                   </li>
@@ -119,7 +130,7 @@ const HomeT = () => {
                   </li>
                 </ul>
                 <ul>
-                  <h3 class="ct-footer-list-header">The industry</h3>
+                  <h3 className="ct-footer-list-header">The industry</h3>
                   <li>
                     <a href="">Thought Leadership</a>
                   </li>
@@ -143,7 +154,7 @@ const HomeT = () => {
                   </li>
                 </ul>
                 <ul>
-                  <h3 class="ct-footer-list-header">Public Reactions</h3>
+                  <h3 className="ct-footer-list-header">Public Reactions</h3>
                   <li>
                     <a href="">WebCorpCo Blog</a>
                   </li>
@@ -161,7 +172,7 @@ const HomeT = () => {
                   </li>
                 </ul>
                 <ul>
-                  <h3 class="ct-footer-list-header">About</h3>
+                  <h3 className="ct-footer-list-header">About</h3>
                   <li>
                     <a href="">FAQ</a>
                   </li>

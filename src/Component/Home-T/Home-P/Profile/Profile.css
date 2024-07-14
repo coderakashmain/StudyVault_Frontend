@@ -6,6 +6,7 @@
     justify-content: center;
     padding-top: 1.2rem;
     
+    
 }
 .profile-outer-box{
     height: 100%;
@@ -226,12 +227,20 @@
     font-size: 1.3rem;
 }
 .latest-updates-files{
-    margin-top:1rem;
+    margin-top:2rem;
+}
+.latest-updates-files-text{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;    
+}
+.latest-updates-files-text i{
+    font-size: 1.4rem;
 }
 .latest-updates-files h3{
-    text-align: end;
     font-size: 1.1rem;
-    padding: 1rem 0;
+    
 }
 
 .files-items{
@@ -248,9 +257,7 @@
   .files-items p{
     padding: 0.8rem 0;
 }
-.query-box{
-    padding: 5rem 1.4rem;
-}
+
 /* Universer variable */
 .profilecontain{
     padding: 0 3rem;
@@ -302,11 +309,21 @@
     html{
         font-size: 65%;
     }
+    .upperstyle{
+        height: 48%;
+        width: 132%;
+    
+    }
 }
 @media (max-width:360px) {
     html{
         font-size: 54%;
     }
+    .upperstyle{
+        height: 48%;
+        width: 134%;
+    }
+
 }
 @media (max-width:332px) {
     html{
@@ -316,6 +333,12 @@
 @media (max-width:281px) {
     html{
         font-size: 3.6vw;
+    }
+    .upperstyle{
+        height: 50%;
+        width: 166%;
+        left: -70%;
+    
     }
 }
 @media (max-width:188px) {
