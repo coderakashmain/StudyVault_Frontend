@@ -87,12 +87,12 @@ color: rgb(199, 190, 190);
 
 footer{
   background-color: rgb(13, 13, 14);
-color: rgb(200, 195, 195);
+color: white;
 width: 100%;
 padding:6%;
 }
 footer a{
-  color: rgb(200, 195, 195);
+  color: white;
   font-size: 12px;
 }
 .second-footer-section h3{
@@ -147,7 +147,14 @@ footer a{
 }
 .third-footer-section p{
   font-size: 12px;
+  color: white;
 
+}
+.first-footer-section h3{
+  color: white;
+}
+.third-footer-section h4{
+  color: white;
 }
 .footer-comany-logo{
   width: 40px;
@@ -163,7 +170,7 @@ footer a{
   padding: 1% 5%;
   border: 1px solid gray;
   background-color: rgb(11, 11, 11) ;
-  border-radius: 9px;
+  border-radius: 9px
 
 }
 .apple-store-box input[type="image"],.play-store-box input[type="image"]{
@@ -182,7 +189,6 @@ footer a{
 }
 .forth-footer-section{
   display: flex;
-
   align-items: center;
   padding: 5% 0%;
   font-size: 12px;
@@ -192,16 +198,19 @@ footer a{
 .forth-footer-section div{
   display: flex;
   gap: 10%;
-
   width: 50%;
 }
 .forth-footer-section ul{
-
   display: flex;
+
   width: 40%;
 }
 .forth-footer-section ul li{
   margin-right: 20%;
+  color: white;
+}
+.forth-footer-section p{
+  color: white;
 }
 @media only screen and (max-width: 835px){
   .department p{
