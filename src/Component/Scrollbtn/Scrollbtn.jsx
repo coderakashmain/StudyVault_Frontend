@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import "./Scrollbtn.css"
-import Navbar from '../../Navbar/Navbar'
 const Scrollbtn = () => {
     const [sticky, setSticky] = useState(false)
     useEffect(()=>{
@@ -9,6 +8,7 @@ const Scrollbtn = () => {
     
         scrollbtn.addEventListener('click',()=>{
             window.scrollTo({top : 0 , behavior : 'smooth'})
+
         })
         window.addEventListener('scroll',()=>{
             if(window.scrollY > 50){
@@ -20,10 +20,9 @@ const Scrollbtn = () => {
              setSticky(false);
             }
         })
-
+        const navbarscroll = document.querySelector(".navbar");
         scrollbtn.addEventListener('click',()=>{
-            console.log('hle');
-            console.log(Navbar.navbar);
+            navbarscroll.style.transform = 'translate(0)';      
         })
     },[])
   return (

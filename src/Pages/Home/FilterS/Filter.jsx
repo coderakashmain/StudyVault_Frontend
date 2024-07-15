@@ -28,10 +28,10 @@ const Filter = () => {
           </div>
           <h3>Education Lavel :</h3>
           <div className="department-section">
-            <div className="ug-box">
+            <div className="ug-box department-box">
               <h1>UG</h1>
             </div>
-            <div className="pg-box">
+            <div className="pg-box department-box">
               <h1>PG</h1>
             </div>
           </div>

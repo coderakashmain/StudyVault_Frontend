@@ -1,3 +1,6 @@
+.main-container{
+  background-color: #ececec;
+}
 .inner-main-container h2 {
   height: 100%;
   margin-bottom: 7%;
@@ -75,6 +78,7 @@ border: none;
 position: relative;
 padding: 1.6% 0%;
 z-index: 10;
+color: #fff;
 }
 
 
@@ -345,10 +349,17 @@ footer a{
   .forth-footer-section div p{
     margin-bottom: 5%;
   }
+  .filter-switch input[type="text"]{
+    padding: 1rem 0.5rem;
+  }
 
 }
 @media only screen and (max-width: 355px){
   html{
     font-size: 30%;
+  }
+  .department-logo{
+    height: 7rem;
+    width: 7rem;
   }
 }

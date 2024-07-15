@@ -65,7 +65,7 @@ const Profile = () => {
                     </h5>
                   </div>
                 </div>
-                <div className="client-info-name department">
+                <div className="client-info-name departmentprofile">
                   <h4>Department</h4>
                   <div className="client-info-name-inside name-insde">
                     <p>Computer Science</p>
@@ -180,7 +180,9 @@ const Profile = () => {
                     </p>
                   </div>
                 </div>
+            
           </div>
+         
         </div>
       </div>
     </section>

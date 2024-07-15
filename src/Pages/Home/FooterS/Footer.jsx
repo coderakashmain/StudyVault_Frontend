@@ -1,85 +1,22 @@
 
 import React from "react";
-import "./HomeT.css";
+import "../HomeS/HomeT.css";
 
 import 'remixicon/fonts/remixicon.css'
-import Scrollbtn from "./Scrollbtn/Scrollbtn";
 
 
 
 
 const HomeT = () => {
-  const departments = [
-    "Computer Science",
-    "Mechanical Engineering",
-    "Civil Engineering",
-    "Electrical Engineering",
-    "Chemical Engineering",
-    "Biotechnology",
-    "Aeronautical Engineering",
-    "Information Technology",
-    "Electronics and Communication",
-    "Medical Science",
-    "Environmental Science",
-    "Physics",
-    "Chemistry",
-    "Mathematics",
-    "Statistics",
-    "Economics",
-    "History",
-    "Geography",
-    "Political Science",
-    "Psychology",
-    "Sociology",
-    "Philosophy",
-    "Literature",
-    "Linguistics",
-    "Journalism",
-    "Law",
-    "Business Administration",
-    "Education",
-    "Nursing",
-    "Pharmacy",
-  ];
-  
  
   
   return (
     <>
-    <Scrollbtn/>
+    
       <div className="main-container">
           
         <div className="inner-main-container">
           
-          <div className="main-header">
-            <div className="header">
-            
-          
-            
-              <div className="filter-switch">
-                <input
-                  type="text"
-                  name=""
-                  id=""
-                  placeholder="Search your department"
-                />
-              </div>
-              
-            </div>
-            <h3 className="header-title">Proud to be a MPC ' ian</h3>
-            <p className="header-subtitle">PADHLE BHAI PADHLE</p>
-          </div>
-          <div className="department-logo"></div>
-          <div className="content-container">
-            <h2>All departmet :</h2>
-            <div className="department-list">
-              {departments.map((department, index) => (
-                <div className="department" key={index}>
-                  <p>{department}</p>
-                </div>
-              ))}
-            </div>
-          </div>
           <footer>
             <div className="mian-footer-body">
               <div className="first-footer-section">

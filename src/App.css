@@ -1,12 +1,10 @@
-/* Customize default scroll bar of chorme */
 
-/* width */
 body::-webkit-scrollbar {
     width: 10px;
     right: 0px;
   }
   
-  /* Track */
+ 
   body::-webkit-scrollbar-track {
    background-color: #555555;
   }

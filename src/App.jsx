@@ -1,20 +1,26 @@
 import "./App.css";
 import LocomotiveScroll from "locomotive-scroll";
-// import { createBrowserRouter, RouterProvider } from "react-router-dom";
-// import Profile from "./Component/Home-T/Home-P/Profile/Profile";
-import HomeT from "./Component/Home-T/HomeT";
+import Home from "./Pages/Home/Home";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Profile from "./Pages/Profile/Profile";
+// import Filter from "./Component/Home-T/Filter";
 import Navbar from "./Component/Navbar/Navbar";
+import Login from "./Pages/Login/Login";
 
-// const router = createBrowserRouter([
-//   {
-//     Path: "/",
-//     elememt: <>  <Navbar/><HomeT /></>,
-//   },
-//   {
-//     Path: "/Profile",
-//     elememt:<><Navbar/><Profile /></> 
-//   }
-// ]);
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element:( <><Navbar/><Home/></>) ,
+  },
+  {
+    path: "/LogIn",
+    element: ( <><Navbar/><Login/></>  ),
+  },
+  {
+    path: "/Profile",
+    element: ( <><Navbar/><Profile/></>  ),
+  },
+]);
 
 function App() {
   const locomotiveScroll = new LocomotiveScroll();
@@ -22,10 +28,13 @@ function App() {
 
   return (
     <>
-    <Navbar/>
-    <HomeT/>
+    {/* <Home/> */}
+    {/* <Navbar/> */}
+    {/* <HomeT/> */}
+    {/* <Filter/> */}
+    {/* <Profile/> */}
 
-      {/* <RouterProvider router={router} /> */}
+      <RouterProvider router={router} />
     </>
   );
 }

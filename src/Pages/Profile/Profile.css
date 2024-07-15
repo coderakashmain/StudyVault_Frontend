@@ -197,6 +197,7 @@
     justify-content: space-between;
     margin-bottom: 3rem;
 }
+
 .edit button{
     padding: 0.5rem 1.1rem;
     border: none;
@@ -233,30 +234,30 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem 0;    
+    padding: 1.4rem 0;    
 }
 .latest-updates-files-text i{
     font-size: 1.4rem;
 }
 .latest-updates-files h3{
     font-size: 1.1rem;
-    
 }
 
-.files-items{
-    width: 100%;
-    height: 30vw;
-    border-radius:1rem;
-    overflow-y: auto;
-    padding: 0.5rem 1.4rem;
-    background-color: #fff;
-}
-.files-items::-webkit-scrollbar {
-    display: none; /* Hides the scrollbar in WebKit browsers */
+    .files-items{
+        width: 100%; 
+        height: 30vw;
+        border-radius:1rem;
+        overflow-y:auto;
+        padding: 0.5rem 1.4rem;
+        background-color: #fff;
+    }
+.files-items::-webkit-scrollbar{
+    display: none; 
   }
   .files-items p{
     padding: 0.8rem 0;
 }
+
 
 /* Universer variable */
 .profilecontain{
@@ -272,17 +273,15 @@
     html{
         font-size: 78%;
     }
-   .department{
+   .departmentprofile{
     white-space: nowrap;
    }
-   /* .upperstyle{
-     height: 30%;
-   } */
+ 
    
 }
 @media (max-width:747px) {
     html{
-        font-size: 80%;
+        font-size: 70%;
     }
     .profile-right-inner-box{
        display: none;
@@ -296,9 +295,7 @@
      .client-info-name{
          width: 100%;
      }
-     /* .upperstyle{
-        display: none;
-    } */
+   
 }
 @media (max-width:547px) {
     html{

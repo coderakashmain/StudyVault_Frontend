@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import "./Navbar.css";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { Link } from "react-router-dom";
+
+
 
 
 const Navbar = () => {
@@ -56,22 +59,19 @@ const Navbar = () => {
         setNav(false);
       }
     });
-    const navbar = document.querySelector(".navbar");
+     const navbar = document.querySelector(".navbar");
     let isScrollingDown = false;
    
 
     window.addEventListener("wheel", (ele) => {
-      if (window.scrollY >= 200) {
-        // document.querySelector('.log-in a').style.color = 'red';
-        // document.querySelector('.nav-list a').style.color = 'red';
-        if (ele.deltaY >= 0) {
-          // Scrolling down
+      if (window.scrollY >= 500) {
+        if (ele.deltaY <= 0) {
           if (!isScrollingDown) {
             isScrollingDown = true;
             navbar.style.transform = "translateY(-100%)";
           }
         } else {
-          // Scrolling up
+        
           if (isScrollingDown) {
             isScrollingDown = false;
             navbar.style.transform = "translateY(0)";
@@ -91,50 +91,54 @@ const Navbar = () => {
           </div>
           <div className="nav-list">
             <ul>
-              <li><a  href="/">Home</a></li>
-              <li><a  href="/ContactUs">Contact Us</a></li>
-              <li><a  href="/AboutUs">About us</a></li>
+              <Link  to="/"><li>Home</li></Link>
+              <Link  to="/Profile"><li>Profile</li></Link>
+              <Link  to="/ContactUs"><li>Contact Us</li></Link>
+              <Link  to="/AboutUs"><li>About us</li></Link>
             </ul>
           </div>
           <div className="log-in">
-            <a href="/Profile">Log in</a>
+            <Link to="/LogIn">Log in</Link>
           </div>
         </div>
       </div>
       <div className="slidebar">
         <div className="cross-icon">
-          <i className="ri-close-line"></i>
+        <i className="fa-solid fa-xmark"></i>
         </div>
         <div className="slidebar-box">
           <h4 className="slidebar-title">
-            <a href="/">
+            <Link to="/">
               <i className="fa-solid fa-house-chimney"></i>Home
-            </a>
+            </Link>
           </h4>
           <h4 className="slidebar-title">
-            <a href="/Profile">
+            <Link to="/Profile">
               <i className="fa-solid fa-user"></i>Profile
-            </a>
+            </Link>
           </h4>
           <h4 className="slidebar-title">
-            <a href="#">
+            <Link to="#">
               <i className="fa-solid fa-pen"></i>About Us
-            </a>
+            </Link>
           </h4>
           <h4 className="slidebar-title">
-            <a href="#">
+            <Link to="#">
               <i className="fa-solid fa-paper-plane"></i>Contact Us
-            </a>
+            </Link>
           </h4>
         </div>
         <div className="copywrite">
           <p>Copyright 2024 All rights reserved |</p>
           <p>This website is made by</p>
-          <p>akashjitu.com</p>
+          <p>akashjitu.com </p>
         </div>
         <div className="slidebar-foot-item">
           <p>V.1.0.1</p>
         </div>
+      </div>
+      <div className="glitchproblem">
+
       </div>
     </>
   );

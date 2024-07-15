@@ -1,5 +1,6 @@
 .filter-main-div {
   padding: 7% 0%;
+  background-color: #ececec;
 }
 ::-webkit-inner-spin-button {
   display: none;
@@ -20,6 +21,9 @@
   justify-content: space-around;
   align-items: center;
   margin: 10% 0%;
+}
+.department-box{
+  cursor: pointer;
 }
 .ug-box,
 .pg-box {

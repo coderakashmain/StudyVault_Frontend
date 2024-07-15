@@ -29,8 +29,11 @@
   justify-content: space-between;
   gap: 5rem;
 }
-.navbar a{
+.navbar a {
     font-size: 1.1rem;
+    color:#e3e3e3;
+}
+.navbar a li{
     color:#e3e3e3;
 }
 .navbar a:hover{
@@ -48,7 +51,6 @@
 
 .slidebar{
     min-height: 100vh;
-    /* width: 450px; */
     width: 40vw;
     position: fixed;
     left: -100%;
@@ -64,8 +66,6 @@
     text-align: end;
   }
   .cross-icon i{
-    background-color: #fff;
-    border-radius: 50%;
     cursor: pointer;
   }
   .slidebar-box{
@@ -80,7 +80,7 @@
     padding: 1.2rem 0;
   }
   .slidebar h4 i{
-    transform: translate(-50%,-25%);
+    transform: translate(-50%,-5%);
     filter: invert(0%);
   
   }
@@ -93,12 +93,12 @@
       
   }
   .copywrite p{
-   font-size: 1.15rem;
+   font-size: 0.9 rem;
    letter-spacing: 0.03rem;
    font-weight: 300;
   }
   .copywrite p:last-child{
-  color: rgb(56, 186, 242);
+  color: rgb(0, 56, 79);
   }
   
   .slidebar-foot-item{
@@ -114,10 +114,24 @@
     font-weight: 600;
   
   }
+  .glitchproblem{
+    height: 10vw;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #000;
+    z-index: -1;
+  }
+
   @media (min-width : 765px) {
     .hambargar{
       display: none;
     }
+    .slidebar{
+      display: none;
+    }
+  
   }
   @media (max-width : 764px) {
     .hambargar{
@@ -125,6 +139,9 @@
     }
     .nav-list{
       display: none;
+    }
+    .slidebar h4 a{
+      font-size: 1.7rem;
     }
   }
   @media (max-width : 454px) {
