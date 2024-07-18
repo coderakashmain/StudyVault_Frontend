@@ -125,7 +125,7 @@ const Navbar = () => {
             <ul>
               <NavLink className={(e)=>{return e.isActive ? `red ${setHomenav(true)}`  : `${setHomenav(false)}`}} to="/"><li>Home</li></NavLink>
               <NavLink className={(e)=>{return e.isActive ? `red ${setProfilenav(true)}` : ` ${setProfilenav(false)}`}} to="/Profile"><li>Profile</li></NavLink>
-              <NavLink className={(e)=>{return e.isActive ? `red ${setContactnav(true)}` : ` ${setContactnav(false)}`}} to="/Contact-us"><li>Contact Us</li></NavLink>
+              <NavLink className={(e)=>{return e.isActive ? `red ${setContactnav(true)}` : ` ${setContactnav(false)}`}} to="/Contact"><li>Contact Us</li></NavLink>
               <NavLink className={(e)=>{return e.isActive ? `red ${setAboutnav(true)}` :  ` ${setAboutnav(false)}`}} to="/About-us"><li>About us</li></NavLink>
             </ul>
           </div>

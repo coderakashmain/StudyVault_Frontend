@@ -9,6 +9,7 @@ import Navbar from "./Component/Navbar/Navbar";
 import Login from "./Pages/Login/Login";
 import Filter from "./Pages/Home/FilterS/Filter";
 import Departmentlist from './Pages/Home/DepartmentlistS/Departmentlist'
+import Contact from "./Pages/Contact/Contact";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       }
 
     ]
+  },
+  {
+    path: "/contact",
+    element: ( <><  Navbar/><Contact/></>  ),
   },
   {
     path: "/LogIn",

@@ -1,10 +1,12 @@
-import React from 'react'
+import React from 'react' 
+import './Contact.css';
 
 const Contact = () => {
   return (
-    <div>
-      
-    </div>
+    <>
+      <div className="contact_main_conatainer"></div>
+    
+    </>
   )
 }
 
