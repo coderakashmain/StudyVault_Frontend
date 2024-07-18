@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Navbar.css";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { Link } from "react-router-dom";
+import { NavLink ,Link } from "react-router-dom";
 
 
 
@@ -44,61 +44,93 @@ const Navbar = () => {
 
     hambargar.addEventListener("click", () => {
       openTl.restart();
+      gsap.to('.slidebar',{
+        display:'block',
+        duration : 0.01
+      })
     });
 
     crossicon.addEventListener("click", () => {
       closeTl.restart();
     });
+    const refrasher = document.querySelectorAll('.slidebar-title');
+
+    refrasher.forEach((e)=>{
+      e.addEventListener('click',()=>{
+        gsap.to('.slidebar',{
+          display : 'none',
+          duration: 0.01
+        })
+      })
+    })
+   
   });
   const [nav, setNav] = useState(false);
+  
   useEffect(() => {
+    const navbar = document.querySelector(".navbar");
     window.addEventListener("scroll", () => {
       if (window.scrollY > 200) {
         setNav(true);
+
       } else {
         setNav(false);
       }
     });
-     const navbar = document.querySelector(".navbar");
     let isScrollingDown = false;
    
 
     window.addEventListener("wheel", (ele) => {
-      if (window.scrollY >= 500) {
+      if (window.scrollY >= 100) {
         if (ele.deltaY <= 0) {
           if (!isScrollingDown) {
             isScrollingDown = true;
-            navbar.style.transform = "translateY(-100%)";
+            navbar.style.transform = "translateY(0%)";
           }
         } else {
         
           if (isScrollingDown) {
             isScrollingDown = false;
-            navbar.style.transform = "translateY(0)";
+            navbar.style.transform = "translateY(-100%)";
           }
         }
       } else {
-        navbar.style.transform = "translateY(0)";
+        navbar.style.transform = "translateY(0%)";
       }
     });
+
+
   }, []);
+  const [homenav, setHomenav] = useState(false);
+  const [profilenav, setProfilenav] = useState(false);
+  const [contactnav, setContactnav] = useState(false);
+  const [aboutnav, setAboutnav] = useState(false);
+  const [loginnav, setLoginnav] = useState(false);
+
   return (
     <>
-      <div className={`navbar ${nav ? "nav-blur" : ""}`}> 
+      <div className={`navbar
+        ${nav ? "home-nav" : "black-nav"}
+        ${homenav ? (nav ? "home-nav" : "black-nav") : "" }
+        ${profilenav ? "profile-nav" : "" }
+        ${contactnav ? "contact-nav" : "" }
+        ${aboutnav ? "about-nav" : "" }
+        ${loginnav ? "login-nav" : "" }
+        `}> 
         <div className="navber-box">
           <div className="hambargar">
-            <i className="fa-solid fa-bars"></i>
+            <i  className="fa-solid fa-bars"></i>
           </div>
           <div className="nav-list">
             <ul>
-              <Link  to="/"><li>Home</li></Link>
-              <Link  to="/Profile"><li>Profile</li></Link>
-              <Link  to="/ContactUs"><li>Contact Us</li></Link>
-              <Link  to="/AboutUs"><li>About us</li></Link>
+              <NavLink className={(e)=>{return e.isActive ? `red ${setHomenav(true)}`  : `${setHomenav(false)}`}} to="/"><li>Home</li></NavLink>
+              <NavLink className={(e)=>{return e.isActive ? `red ${setProfilenav(true)}` : ` ${setProfilenav(false)}`}} to="/Profile"><li>Profile</li></NavLink>
+              <NavLink className={(e)=>{return e.isActive ? `red ${setContactnav(true)}` : ` ${setContactnav(false)}`}} to="/Contact-us"><li>Contact Us</li></NavLink>
+              <NavLink className={(e)=>{return e.isActive ? `red ${setAboutnav(true)}` :  ` ${setAboutnav(false)}`}} to="/About-us"><li>About us</li></NavLink>
             </ul>
           </div>
           <div className="log-in">
-            <Link to="/LogIn">Log in</Link>
+            <NavLink className={(e)=>{return e.isActive ? `red ${setLoginnav(true)}` :  ` ${setLoginnav(false)}`}} to="/LogIn"><li>Log in</li></NavLink>
           </div>
         </div>
       </div>

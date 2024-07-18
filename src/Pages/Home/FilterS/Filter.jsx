@@ -3,8 +3,13 @@ import "./Filter.css";
 const Filter = () => {
   return (
     <div className="filter-main-div">
-      <div className="filteration-container">
+      <form action="#" className="filteration-container-box">
+        <div className="filteration-container">
+
+        
+        
         <div className="first-filteration">
+         
           <h3>Department Name :</h3>
           <div className="department-type">
             <div className="department-name">
@@ -90,7 +95,11 @@ const Filter = () => {
             </div>
           </div>
         </div>
-      </div>
+        </div>
+        <div className="filter-submission">
+        <input type="submit" value= "Find"/>
+        </div>
+      </form>
     </div>
   );
 };

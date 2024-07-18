@@ -29,7 +29,7 @@ const Profile = () => {
                 </div>
               </div>
               <div className="pdfupload">
-                <button>
+                <button type="file">
                   Upload Now
                   <i className="fa-solid fa-arrow-up-from-bracket"></i>
                 </button>
@@ -113,7 +113,7 @@ const Profile = () => {
                 <h2>Latest Updates</h2>
                 <div className="latest-updates-files">
                   <div className="latest-updates-files-text">
-                  <i class="fa-solid fa-square-pen"></i>
+                  <i className="fa-solid fa-square-pen"></i>
                   <h3>Now available</h3>
                   </div>
                  

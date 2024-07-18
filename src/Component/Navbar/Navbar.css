@@ -7,9 +7,8 @@
     z-index:50;
     padding: 0px 4rem;
     font-size: 1.5rem;
-    background-color: #000;
     backdrop-filter: blur(80px);
-    transition: all 0.15s linear;    
+    transition: all 0.15s linear;
 }
 .navber-box{
     height: 100%;
@@ -22,7 +21,10 @@
 .hambargar i{
     cursor: pointer;
     filter: invert(100%);
+
+    
 }
+
 .nav-list ul{
   display: flex;
   align-items: center;
@@ -30,21 +32,62 @@
   gap: 5rem;
 }
 .navbar a {
-    font-size: 1.1rem;
-    color:#e3e3e3;
+  border-radius: 0.2rem;
+   
 }
 .navbar a li{
+    font-size: 1.1rem;
+    padding: 0.4rem 1rem;
+   
+}
+.navbar a li {
     color:#e3e3e3;
 }
+
 .navbar a:hover{
     color: rgb(184, 184, 184);
 }
+.navbar a li:hover{
+    color: rgb(184, 184, 184);
+}
+.navbar a:active{
+    transform: scale(0.95);
+}
+.log-in a li:active{
+    transform: scale(0.95);
+}
+.red{
+  background-color: #80859391;
+}
 
 
 
-.nav-blur{
+.home-nav{
    background: linear-gradient(20deg, #241856, lightseagreen);
     backdrop-filter: blur(90px);
+}
+.black-nav{
+   background: #000;
+}
+.profile-nav{
+  background: linear-gradient(20deg, #241856, lightseagreen);
+}
+
+.profile-nav a li:hover{
+  color: #b8b8b8;
+}
+.contact-nav{
+  background: linear-gradient(20deg, #241856, lightseagreen);
+}
+.about-nav{
+  background: linear-gradient(20deg, #241856, lightseagreen);
+}
+.login-nav{
+  background: linear-gradient(20deg, #241856, lightseagreen);
+}
+
+.login-nav a li:hover{
+  color: #b8b8b8;
 }
 
 
@@ -122,6 +165,9 @@
     left: 0;
     background-color: #000;
     z-index: -1;
+  }
+  .red li{
+    color: red;
   }
 
   @media (min-width : 765px) {

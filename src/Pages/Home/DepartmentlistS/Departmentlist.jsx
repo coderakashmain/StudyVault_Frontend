@@ -1,6 +1,8 @@
 
 import React from "react";
 import "../HomeS/HomeT.css";
+import { NavLink } from "react-router-dom";
+
 
 
 
@@ -51,9 +53,9 @@ const HomeT = () => {
             <h2>All departmet :</h2>
             <div className="department-list">
               {departments.map((department, index) => (
-                <div className="department" key={index}>
-                  <p>{department}</p>
-                </div>
+                <NavLink to="/Filter" className="department" key={index}>
+                  <p >{department}</p>
+                </NavLink>
               ))}
             </div>
           </div>

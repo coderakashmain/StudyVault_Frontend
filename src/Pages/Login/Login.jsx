@@ -5,17 +5,20 @@ const Login = () => {
   return (
     <>
       <div className="main-login-container ">
+        <div className="back-button">
+        <i class="fa-solid fa-angle-left"></i>
+        </div>
         <div className="inner-main-login ">
           <form action="">
             <h2 className="main-heading" >Hello</h2>
             <h4 className="main-sub-heading">Login your accounts.......!</h4>
             <h3 className="">Email :-</h3>
-            <input type="email" name="" id="" placeholder="" />
+            <input type="email" name="loginemial" id="loginemial" placeholder="" />
             <h3 className="">Password :-</h3>
-            <input type="password" name="" id="" placeholder="" />
+            <input type="current-password" name="" id="loginpassword" placeholder="" />
             <div className="remember-forget-parent">
               <p className="">
-                <input type="checkbox" name="" id="" className="mr-2" />
+                <input type="checkbox" name="logincheckbox" id="" className="mr-2" />
                &nbsp; Remember me
               </p>
               <p>Forget password ?</p>
@@ -25,7 +28,7 @@ const Login = () => {
             </div>
           </form>
           <a href="" className="signup-link">
-            Don't have an account{" "}
+            Don't have an account?{" "}
             <span className="">Register Now</span>
           </a>
         </div>

@@ -4,7 +4,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color:#ececec;
+    background-color:var(--backcolor);
 }
 
 .signup-form{
@@ -12,7 +12,7 @@
     width: 500px;
     border-radius: 8px;
     border: 2px solid rgb(214 214 214);
-    background-color: #e2e2e2;
+    background-color: var(--pagecolor);
     /* background:linear-gradient(rgb(165, 165, 165) ,rgb(162, 207, 199)); */
     padding: 1.8rem;
     box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.19),inset 9px 9px 50px rgba(255, 255, 255, 0.832),inset -9px -9px 50px rgba(111, 111, 111, 0.163);

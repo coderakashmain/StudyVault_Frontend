@@ -22,7 +22,7 @@ const Scrollbtn = () => {
         })
         const navbarscroll = document.querySelector(".navbar");
         scrollbtn.addEventListener('click',()=>{
-            navbarscroll.style.transform = 'translate(0)';      
+            navbarscroll.style.transform = 'translate(0)';  
         })
     },[])
   return (

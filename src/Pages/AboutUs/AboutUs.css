@@ -1,0 +1,233 @@
+#about-us{
+    min-height: 100vh; 
+    width: 100%;
+    backdrop-filter: blur(50px);
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #050b20;
+}
+
+.about-us-back{
+    background-color: #050b20;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    z-index:1;
+
+}   
+ .about-us-back .about-us-back-box1{
+    width: 31vw;
+    height: 15vh;
+    position: absolute;
+    top: 8%;
+    left: 23%;
+    background-color: rgb(24 201 183);
+    border-radius: 4rem;
+}
+.about-us-contain{
+   min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding  :50px 0 0 0;
+    position: relative;
+    z-index: 10;
+    backdrop-filter: blur(80px);
+  
+}
+
+.about-us-box{
+    height: 100%;
+    width: 90vw;
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    
+}
+.left-about-box{
+    width: 80%;
+    height: 100%;
+    border-radius: 0.3rem;
+    text-align: center;
+}
+.our-info-box{
+    margin:2rem 0 1rem ;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap:2rem;
+}
+.self-box{
+    min-height: 28rem;
+    width:50%;
+    margin: auto;
+    padding: 2rem 2rem 0 2rem;
+    background-color: #c6c6c62e;
+    border-radius: 0.5rem;
+
+}
+.self-img-out{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 0.3rem;
+}
+.self-img-box{
+    width: 10rem;
+    height:10rem;
+    overflow:hidden;
+    margin: auto;
+    border-radius: 50%;
+    
+}
+.self-img-box img{
+   height: 10rem;
+   object-fit: cover;
+}
+.self-description{
+    margin: 0.3rem 0 0 0;
+}
+.self-description p{
+    
+    font-size: 1rem;
+    line-height: 1.3rem;
+    letter-spacing: 0.01rem;
+    padding: 0.2rem 0;
+    text-align: justify;
+    color: var(--about-text-color);
+}
+.self-description p span{
+    
+   color: var(--about-text-color);
+   font-size: 1.3rem;
+}
+.self-description b{
+    color: #caf100;
+}
+.self-description a{
+    text-decoration: underline;
+    color: #009eff;
+}
+.self-description h3{
+    color:  var(--about-text-color);
+    font-size: 1.3rem;
+   
+}
+.persional-info{
+    text-align: justify;
+    color:  var(--about-text-color);
+    padding: 0.7rem 0   ;
+    
+}
+.info-visiting{
+    width: 100%;
+}
+.info-visiting i{
+    font-size: 1.2rem;
+    margin: 0.4rem 1.2rem ;
+    filter: invert(100%);
+}
+.info-visiting i:hover{
+    filter: contrast(5);
+}
+.both-info{
+    width: 100%;
+    margin-top: 1rem;
+}
+.both-info p{
+    color: var(--about-text-color);
+    font-size: 1.1rem;
+    text-align:start ;
+    line-height: 1.6rem;
+    letter-spacing: 0.08rem;
+}
+.both-info p:last-child{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.2rem;
+    
+}
+.both-info p button{
+    padding: 0.5rem 0.6rem;
+    background-color:#276eb0;
+    border: none;
+    border-radius: 0.1rem;
+    color: var(--about-text-color);
+    cursor: pointer;
+
+}
+
+.both-info p span{
+    color: var(--about-text-color);
+    font-size: 1.4rem;
+}
+
+.right-about-box{
+    width: 20%;
+    color:  var(--about-text-color);
+    height: 100%;
+}
+.right-about-box-in{
+    margin:2rem 0 ;
+    
+}
+.right-about-box-in h3{
+    color: var(--about-text-color);
+    text-align: end;
+    font-size: 2.1rem;
+}
+.right-about-box-in ul{
+    margin: 2rem 0 0 0;
+   
+}
+.right-about-box-in li{
+    margin: 2rem 0 0 0;
+    color:  var(--about-text-color);
+    font-weight: 600;
+    list-style:disc;
+    font-size: 1.35rem;
+    
+}
+@media (max-width : 1400px) {
+ 
+    .about-us-contain{
+        
+        padding  :60px 0 0 0;
+        
+      
+    }
+    
+}
+@media (max-width : 835px) {
+    .our-info-box{
+        flex-wrap: wrap;
+    }
+    .right-about-box{
+        width: 30%;
+    }
+    .self-box{
+        width: auto;
+    }
+    .about-us-contain{
+        padding  :90px 0 0 0;
+      
+    }
+    
+}
+@media (max-width : 528px) {
+    .about-us-box{
+        flex-wrap: wrap;
+    }
+    .right-about-box{
+        width: auto;
+    }
+    .right-about-box-in h3{
+        text-align:start;
+    }
+    
+}
