@@ -155,7 +155,7 @@ const Navbar = () => {
             </Link>
           </h4>
           <h4 className="slidebar-title">
-            <Link to="#">
+            <Link to="/Contact">
               <i className="fa-solid fa-paper-plane"></i>Contact Us
             </Link>
           </h4>

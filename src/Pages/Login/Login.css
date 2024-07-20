@@ -67,7 +67,16 @@
     align-items: center;
     margin-bottom: 5%;
   }
-.inner-main-login input[type="current-password"],[type="email"]{
+.inner-main-login input[type="current-password"]{
+    border: none;
+    border-bottom: 0.5px solid black;
+    width: 100%;
+    padding: 2% 1%;
+    margin-bottom: 5%;
+    outline: none;
+    background-color: transparent;
+  }
+  .inner-main-login [type="email"]{
     border: none;
     border-bottom: 0.5px solid black;
     width: 100%;

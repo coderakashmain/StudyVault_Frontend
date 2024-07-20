@@ -1,7 +1,78 @@
-.contact_main_conatainer{
-    position:absolute;
-    left: 0px;
-    top: 0px;
-    height: 100vh;
+.conatct-header{
+    background:linear-gradient(90deg ,rgb(31, 31, 78),rgb(33, 143, 160));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    text-align: center;
+    line-height: 30px;
+}
+.conatct-header div h1{
+    color: white;
+}
+.conatct-header div p{
+    color: white;
+}
+.contact-location-details{
+display: flex;
+justify-content: center;
+
+}
+.contact_box{
+margin: 0% 2%;
+text-align: center;
+padding: 3% 4%;
+margin-top: -2%;
+background-color: white;
+box-shadow: 2px 2px 10px 1px rgba(159, 156, 156, 0.581);
+display: flex;
+flex-direction: column;
+gap: 9%;
+}
+.contact_box ul li{
+    margin: 5% 0%;
+    font-size:1rem;
+}
+
+.contact-form-body{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0% 20%;
+    margin: 5% 0%;
+}
+.contact-form-body p,h3{
+    color: black;
+}
+.contact-left-body{
+    width: 80%;
+}
+.contact-right-body{
+    width: 20%;
+}
+.information p,h3{
+    color: black;
+}
+.contact-left-body ,.form-data{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.information input[type="text"],input[type="email"],input[type="number"]{
+    border: none;
+    border-bottom: 1px solid gray;
+    padding: 3% 0%;
+    outline: none;
+    gap: 5%;
+    margin: 6% 0%;
+    width:90%;
+    margin-bottom: 0%;
+}
+.information {
+    width: 50%;
+    margin: 2% 0%;
+
+}
+.message-information{
     width: 100%;
 }

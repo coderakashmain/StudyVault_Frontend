@@ -163,7 +163,6 @@
     position: absolute;
     top: 0;
     left: 0;
-    background-color: #000;
     z-index: -1;
   }
   .red li{
