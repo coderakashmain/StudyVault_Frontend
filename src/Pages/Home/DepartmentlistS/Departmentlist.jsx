@@ -1,7 +1,8 @@
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../HomeS/HomeT.css";
 import { NavLink } from "react-router-dom";
+
 
 
 
@@ -42,8 +43,18 @@ const HomeT = () => {
     "Pharmacy",
   ];
   
- 
+  // const [filterScroll, setFilterScroll] = useState(100)
+  // useEffect(() => {
+  //  if(window.innerWidth < 885){
+  //   setFilterScroll(100);
+  //  }
+  //  if(window.innerWidth < 434){
+  //   setFilterScroll(205);
+  //  }
+  // }, [setFilterScroll])
   
+ 
+
   return (
     <>
       <div className="main-container">
@@ -51,11 +62,19 @@ const HomeT = () => {
         <div className="inner-main-container">
           <div className="content-container">
             <h2>All departmet :</h2>
-            <div className="department-list">
+            <div  className="department-list">
               {departments.map((department, index) => (
-                <NavLink to="/Filter" className="department" key={index}>
-                  <p >{department}</p>
-                </NavLink>
+                <div  className="department" key={index}>
+                  <NavLink 
+                   /* // onClick={()=>{ */
+                /* //   window.addEventListener('click',()=>{ */
+                /* //     window.scrollTo({top :filterScroll}); */
+                /* //   }) */
+                /* // }}  */
+                  to="/Filter"> <p >{department}</p></NavLink>
+                 
+                 
+                </div>
               ))}
             </div>
           </div>

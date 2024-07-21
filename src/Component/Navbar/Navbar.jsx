@@ -8,6 +8,8 @@ import { NavLink ,Link } from "react-router-dom";
 
 
 const Navbar = () => {
+  
+
   useGSAP(() => {
     const hambargar = document.querySelector(".hambargar");
     const crossicon = document.querySelector(".cross-icon i");
@@ -53,7 +55,7 @@ const Navbar = () => {
     crossicon.addEventListener("click", () => {
       closeTl.restart();
     });
-    const refrasher = document.querySelectorAll('.slidebar-title');
+    const refrasher = document.querySelectorAll('.slidebar-title a');
 
     refrasher.forEach((e)=>{
       e.addEventListener('click',()=>{
@@ -68,38 +70,44 @@ const Navbar = () => {
   const [nav, setNav] = useState(false);
   
   useEffect(() => {
-    const navbar = document.querySelector(".navbar");
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 200) {
-        setNav(true);
-
-      } else {
-        setNav(false);
+    const navAnimation = ()=>{
+      const navbar = document.querySelector(".navbar");
+      const handleScroll =  () => {
+        if (window.scrollY > 200) {
+          setNav(true);
+  
+        } else {
+          setNav(false);
+        }
       }
-    });
-    let isScrollingDown = false;
-   
-
-    window.addEventListener("wheel", (ele) => {
-      if (window.scrollY >= 100) {
-        if (ele.deltaY <= 0) {
-          if (!isScrollingDown) {
-            isScrollingDown = true;
-            navbar.style.transform = "translateY(0%)";
+      window.addEventListener("scroll",handleScroll);
+  
+     
+     
+      let isScrollingDown = false;
+     
+  
+      window.addEventListener("wheel", (ele) => {
+        if (window.scrollY >= 100) {
+          if (ele.deltaY <= 0) {
+            if (!isScrollingDown) {
+              isScrollingDown = true;
+              navbar.style.transform = "translateY(0%)";
+            }
+          } else {
+          
+            if (isScrollingDown) {
+              isScrollingDown = false;
+              navbar.style.transform = "translateY(-100%)";
+            }
           }
         } else {
-        
-          if (isScrollingDown) {
-            isScrollingDown = false;
-            navbar.style.transform = "translateY(-100%)";
-          }
+          navbar.style.transform = "translateY(0%)";
+          
         }
-      } else {
-        navbar.style.transform = "translateY(0%)";
-      }
-    });
-
-
+      });
+    }
+    navAnimation();
   }, []);
   const [homenav, setHomenav] = useState(false);
   const [profilenav, setProfilenav] = useState(false);
@@ -109,7 +117,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className={`navbar
+      <div className={`navbar 
         ${nav ? "home-nav" : "black-nav"}
         ${homenav ? (nav ? "home-nav" : "black-nav") : "" }
         ${profilenav ? "profile-nav" : "" }
@@ -125,12 +133,12 @@ const Navbar = () => {
             <ul>
               <NavLink className={(e)=>{return e.isActive ? `red ${setHomenav(true)}`  : `${setHomenav(false)}`}} to="/"><li>Home</li></NavLink>
               <NavLink className={(e)=>{return e.isActive ? `red ${setProfilenav(true)}` : ` ${setProfilenav(false)}`}} to="/Profile"><li>Profile</li></NavLink>
-              <NavLink className={(e)=>{return e.isActive ? `red ${setContactnav(true)}` : ` ${setContactnav(false)}`}} to="/Contact"><li>Contact Us</li></NavLink>
+              <NavLink className={(e)=>{return e.isActive ? `red ${setContactnav(true)}` : ` ${setContactnav(false)}`}} to="/Contact-Us"><li>Contact Us</li></NavLink>
               <NavLink className={(e)=>{return e.isActive ? `red ${setAboutnav(true)}` :  ` ${setAboutnav(false)}`}} to="/About-us"><li>About us</li></NavLink>
             </ul>
           </div>
           <div className="log-in">
-            <NavLink className={(e)=>{return e.isActive ? `red ${setLoginnav(true)}` :  ` ${setLoginnav(false)}`}} to="/LogIn"><li>Log in</li></NavLink>
+            <NavLink className={(e)=>{return e.isActive ? ` log-in-a red ${setLoginnav(true)}` :  ` ${setLoginnav(false)}`}} to="/LogIn"><li>Log in</li></NavLink>
           </div>
         </div>
       </div>
@@ -150,12 +158,12 @@ const Navbar = () => {
             </Link>
           </h4>
           <h4 className="slidebar-title">
-            <Link to="#">
+            <Link to="/About-us">
               <i className="fa-solid fa-pen"></i>About Us
             </Link>
           </h4>
           <h4 className="slidebar-title">
-            <Link to="#">
+            <Link to="/Contact-Us">
               <i className="fa-solid fa-paper-plane"></i>Contact Us
             </Link>
           </h4>

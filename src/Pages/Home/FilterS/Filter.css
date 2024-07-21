@@ -11,15 +11,13 @@
 .second-filteration{
     width: 45%;
 }
-.filteration-container-box{
-  padding: 0% 20%;
 
-}
 .filteration-container {
   display: flex;
   justify-content:space-between;
   width: 100%;
   height: 100%;
+  padding: 0% 20%;
 }
 .department-section {
   display: flex;

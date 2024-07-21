@@ -10,7 +10,7 @@
 
 .about-us-back{
     background-color: #050b20;
-    position: absolute;
+    position: fixed;
     top: 0px;
     left: 0px;
     height: 100%;
@@ -94,11 +94,12 @@
 .self-description p{
     
     font-size: 1rem;
-    line-height: 1.3rem;
+    line-height: 1.5rem;
     letter-spacing: 0.01rem;
     padding: 0.2rem 0;
     text-align: justify;
     color: var(--about-text-color);
+    
 }
 .self-description p span{
     
@@ -144,6 +145,7 @@
     text-align:start ;
     line-height: 1.6rem;
     letter-spacing: 0.08rem;
+    font-weight: 50;
 }
 .both-info p:last-child{
     display: flex;
@@ -193,6 +195,7 @@
     font-size: 1.35rem;
     
 }
+
 @media (max-width : 1400px) {
  
     .about-us-contain{
@@ -217,6 +220,11 @@
         padding  :90px 0 0 0;
       
     }
+    .about-us-box{
+      
+       width: 92vw;
+        
+    }
     
 }
 @media (max-width : 528px) {
@@ -229,5 +237,10 @@
     .right-about-box-in h3{
         text-align:start;
     }
+    /* .self-box{
+        
+        background-color: transparent;
+        
     
+    } */
 }

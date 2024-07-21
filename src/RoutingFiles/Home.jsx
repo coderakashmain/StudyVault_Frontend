@@ -1,7 +1,7 @@
 import React from 'react'
-import Scrollbtn from "../../Component/Scrollbtn/Scrollbtn"
-import Footer from './FooterS/Footer'
-import HomeT from './HomeS/HomeT'
+import Scrollbtn from "../Component/Scrollbtn/Scrollbtn"
+import Footer from '../Pages/Home/FooterS/Footer'
+import HomeT from '../Pages/Home/HomeS/HomeT'
 import { Outlet } from 'react-router-dom'
 
 // import Filter from './FilterS/Filter'

@@ -19,8 +19,7 @@ const AboutUs = () => {
                       <div className="akash-description self-description">
                         <h3>Aaarav ~</h3>
                         <div className="akash-persional-info persional-info">
-                          <p> <span>H</span>ello, I am <b>Akash(Aarav) Bindhani</b>, a passionate <b>Full-Stack Developer</b> and a third-year Computer Science Honors student at <b>M.P.C. Autonomous College.</b> My journey in tech has equipped me with diverse skills in both frontend and backend development.
-                          To learn more about my projects, skills, and experiences, you can visit my <a  href="">Portfolio</a>. Stay connected with me on <a href="https://www.instagram.com/vanity__heart__81/" target='__blank'>Instagram</a> for updates on my latest work and insights. If you have any questions or would like to collaborate, feel free to reach out.</p>
+                          <p> <span>H</span>ello, I am <b>Akash(Aarav) Bindhani</b>, a passionate <b>Full-Stack Developer</b> and a third-year Computer Science Honors student at <b>M.P.C. Autonomous College.</b>  You can visit my <a  href="">Portfolio</a>. Stay connected with me on <a href="https://www.instagram.com/vanity__heart__81/" target='__blank'>Instagram</a> for updates on my latest work and insights. If you have any questions or would like to collaborate, feel free to reach out.</p>
 
                          <div className="info-visiting">
                           <p>Visit me ~
@@ -41,7 +40,7 @@ const AboutUs = () => {
                       <div className="jitu-description self-description">
                           <h3>Jitu ~</h3>
                         <div className="jitu-persional-info persional-info">
-                        <p> This is <b>Jitu Pradhan</b> & I am so happy to share my info with you. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta aspernatur, architecto tempora dolores ad libero labore saepe reiciendis consequatur quae quos, explicabo cumque eum! Eligendi consectetur dignissimos veniam quasi aliquid. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem odit iure molestias odio, dolore ipsa provident facilis, minima .</p>
+                        <p> This is <b>Jitu Pradhan</b> & I am so happy to share my info with you. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta aspernatur, architecto tempora dolores ad libero labore saepe reiciendis consequatur quae quos, explicabo cumque eum! Eligendi consectetur dignissimos veniam quasi aliquid. Lorem ip .</p>
                           
                         </div>
                         <div className="info-visiting">

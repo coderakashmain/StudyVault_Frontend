@@ -188,7 +188,7 @@
     cursor: pointer;
 }
 .client-info-name-inside h5 i{
-    padding-left: 0.3rem;
+    padding-left: 0.3rem 0.6rem;
 }
 .profile-client-info .edit{
     width: 100%;
@@ -311,6 +311,18 @@
         width: 132%;
     
     }
+    .profile-left-inner-box{
+        width: auto;
+        background-color: var(--backcolor);
+        box-shadow: none;
+    }
+    #profile{
+        padding-top: 0;
+    }
+    .profile-outer-box{
+        width: 100vw;
+    }
+    
 }
 @media (max-width:360px) {
     html{

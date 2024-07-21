@@ -1,7 +1,22 @@
 import React from "react";
 import "./Profile.css";
+import{ useEffect, useState } from 'react';
+
+
 
 const Profile = () => {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const storedUserData = localStorage.getItem('user');
+    if (storedUserData) {
+      setUser(JSON.parse(storedUserData));
+    }
+  }, []);
+  if (!user) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <section id="profile">
       <div className="profile-outer-box">
@@ -10,7 +25,7 @@ const Profile = () => {
             <div className="upperstyle"></div>
             <div className="profile-photoes">
               <div className="profile-main-photo-box">
-                <h2>Jotyshree Lohar</h2>
+                <h2>{user.firstname} {user.lastname}</h2>
                 <h3>
                   <i className="fa-solid fa-location-dot"></i>MPC AUTO, BARIPADA
                 </h3>
@@ -28,9 +43,10 @@ const Profile = () => {
                   <h4>Total Uploads</h4>
                 </div>
               </div>
-              <div className="pdfupload">
-                <button type="file">
+              <div className="pdfupload" >
+                <button  type="file" style={{position : 'relative'}} >
                   Upload Now
+                  <input type="file" multiple style={{position : 'absolute', top : '0', left : '0',width : "100%", height : '100%',opacity : '0',}}/>
                   <i className="fa-solid fa-arrow-up-from-bracket"></i>
                 </button>
               </div>
@@ -59,7 +75,7 @@ const Profile = () => {
                 <div className="client-info-name name">
                   <h4>Name</h4>
                   <div className="client-info-name-inside name-insde">
-                    <p>Jotyshree Lohar</p>
+                    <p>{user.firstname} {user.lastname}</p>
                     <h5>
                       Name<i className="fa-solid fa-arrow-right"></i>
                     </h5>
@@ -79,7 +95,7 @@ const Profile = () => {
                 <div className="client-info-name gmail">
                   <h4>Gmail</h4>
                   <div className="client-info-name-inside name-insde">
-                    <p>jotyshree@gmail.com</p>
+                    <p>{user.gmail}</p>
                     <h5>
                       Gmail<i className="fa-solid fa-arrow-right"></i>
                     </h5>
@@ -88,7 +104,7 @@ const Profile = () => {
                 <div className="client-info-name rollno">
                   <h4> Roll No</h4>
                   <div className="client-info-name-inside name-insde">
-                    <p>BT42-843</p>
+                    <p>{user.rollno}</p>
                     <h5>
                       Roll No<i className="fa-solid fa-arrow-right"></i>
                     </h5>
@@ -96,7 +112,11 @@ const Profile = () => {
                 </div>
               </div>
               <div className="edit">
-                <button>
+                <button onClick={() => {
+                      localStorage.removeItem('user');
+                      localStorage.removeItem('token');
+                      navigate('/LogIn');
+                    }} >
                   Log out
                   <i className="fa-solid fa-arrow-right-from-bracket"></i>
                 </button>

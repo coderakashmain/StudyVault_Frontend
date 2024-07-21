@@ -5,7 +5,7 @@
     top: 0px;
     left: 0px;
     z-index:50;
-    padding: 0px 4rem;
+    padding: 0px 2rem;
     font-size: 1.5rem;
     backdrop-filter: blur(80px);
     transition: all 0.15s linear;
@@ -59,6 +59,13 @@
 .red{
   background-color: #80859391;
 }
+.log-in a{
+  color: #fff;
+}
+.log-in a{
+  display: block;
+}
+
 
 
 
@@ -100,7 +107,7 @@
     top: 0%;
     background-color: rgba(255, 255, 255, 0.412);
     z-index:100;
-    padding: 1.9rem 4rem;
+    padding:0.2rem 2rem;
     backdrop-filter: blur(80px);
     overflow: hidden;
   
@@ -112,31 +119,31 @@
     cursor: pointer;
   }
   .slidebar-box{
-    margin-top: 1.8rem;
+    margin-top: 1rem;
   }
   .cross-icon i{
-    font-size: 2rem;
+    font-size: 1.6rem;
     filter: invert(5%);
   
   }
   .slidebar h4{
-    padding: 1.2rem 0;
+    padding: 1rem 0;
   }
   .slidebar h4 i{
     transform: translate(-50%,-5%);
     filter: invert(0%);
   
   }
-  .slidebar h4 a{
-    font-size: 2.6rem;
+  /* .slidebar h4 a{
+    font-size: 2.1rem;
   
-  }
+  } */
   .copywrite{
     margin: 30px 0;
       
   }
   .copywrite p{
-   font-size: 0.9 rem;
+   font-size: 0.7rem;
    letter-spacing: 0.03rem;
    font-weight: 300;
   }
@@ -163,12 +170,9 @@
     position: absolute;
     top: 0;
     left: 0;
-    background-color: #000;
     z-index: -1;
   }
-  .red li{
-    color: red;
-  }
+
 
   @media (min-width : 765px) {
     .hambargar{
@@ -186,15 +190,15 @@
     .nav-list{
       display: none;
     }
-    .slidebar h4 a{
-      font-size: 1.7rem;
-    }
+    .cross-icon{
+      margin-top: 2rem;
+   }
   }
   @media (max-width : 454px) {
     .slidebar{
         width: 55vw;
       }
      .cross-icon{
-        margin-top: 4rem;
+        margin-top: 2rem;
      }
   }
