@@ -2,6 +2,10 @@ import React from "react";
 import "./Contact.css";
 import Footer from '../Home/FooterS/Footer';
 const Contact = () => {
+  const emailAddress = "jitpradhan856@gmail.com"; // Your email address
+  const handleEmailButtonClick = () => {
+    window.open(`mailto:${emailAddress}`, '_blank');
+  };
   return (
     <>
       <div className="contact_main_conatainer">
@@ -60,7 +64,7 @@ const Contact = () => {
           </div>
           <div className="contact-form-body">
             <div className="contact-left-body">
-              <h2>Send us a Message</h2>
+              <h2 className="left-body-heading">Send us a Message</h2>
               <div className="form-data">
                 <div className="information">
                   <p>First Name</p>
@@ -110,7 +114,13 @@ const Contact = () => {
                 </div>
               </div>
             </div>
-            <div className="contact-right-body"></div>
+            <div className="contact-right-body">
+              <h3>Connect with us :</h3>
+              <p onClick={handleEmailButtonClick}>For support or any questions
+                Email us at <span>support@mpc.com</span></p>
+              <h3>MPC baripada</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, nam.</p>
+            </div>
           </div>
         </div>
       </div>

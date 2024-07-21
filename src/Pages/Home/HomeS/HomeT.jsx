@@ -7,39 +7,7 @@ import 'remixicon/fonts/remixicon.css'
 
 
 const HomeT = () => {
-  const departments = [
-    "Computer Science",
-    "Mechanical Engineering",
-    "Civil Engineering",
-    "Electrical Engineering",
-    "Chemical Engineering",
-    "Biotechnology",
-    "Aeronautical Engineering",
-    "Information Technology",
-    "Electronics and Communication",
-    "Medical Science",
-    "Environmental Science",
-    "Physics",
-    "Chemistry",
-    "Mathematics",
-    "Statistics",
-    "Economics",
-    "History",
-    "Geography",
-    "Political Science",
-    "Psychology",
-    "Sociology",
-    "Philosophy",
-    "Literature",
-    "Linguistics",
-    "Journalism",
-    "Law",
-    "Business Administration",
-    "Education",
-    "Nursing",
-    "Pharmacy",
-  ];
-  
+
  
   
   return (
