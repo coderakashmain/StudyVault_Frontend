@@ -28,6 +28,17 @@
 .department-box{
   cursor: pointer;
 }
+.filter-submission{
+  text-align: center;
+}
+.filter-submission input{
+  background-color: #4c98d9;
+  padding: 1rem 4rem;
+  border-radius: 0.2rem;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
 .ug-box,
 .pg-box {
   border: 2px solid gray;
