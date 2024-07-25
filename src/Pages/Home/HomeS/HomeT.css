@@ -86,17 +86,24 @@ color: #fff;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  flex-direction: column;
+
   
 }
-.department {
+.department{
+ flex-grow: 3;
+ flex-basis: 2;
+ margin: 0.8rem 0rem;
+ width: 100%;
+}
+.department p{
+ 
+  padding:1.7rem 1.5rem ;
   border: 2px solid gray;
-  padding: 2% ;
-  margin-bottom: 5%;
+  width: 100%;
+  display: block;
+  border-radius: 0.9rem;
   cursor: pointer;
-  font-size: 14px;
-  font-weight: 700;
-  border-radius: 9px;
-  width: 30%;
 }
 
 .department:active {
@@ -129,6 +136,10 @@ footer a{
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 2% 0%;
+
+}
+.first-footer-section h3{
+  color: #fff;
 
 }
 .first-footer-section form{
@@ -175,7 +186,10 @@ footer a{
 }
 .third-footer-section p{
   font-size: 12px;
-
+  color:#fff;
+}
+.third-footer-section h4{
+  color:#fff;
 }
 .footer-comany-logo{
   width: 40px;
@@ -216,6 +230,12 @@ footer a{
   font-size: 12px;
   justify-content: space-between;
   flex-wrap: wrap;
+}
+.forth-footer-section p{
+  color: #fff;
+}
+.forth-footer-section li{
+  color: #fff;
 }
 .forth-footer-section div{
   display: flex;
@@ -324,14 +344,18 @@ footer a{
     display:block;
   }
   .department {
-    border: 2px solid gray;
-    padding: 4% 4%;
-    margin-bottom: 5%;
+    
+    padding: 0.1rem 0;
     cursor: pointer;
     font-size: 14px;
     font-weight: 700;
-    border-radius: 9px;
     width: 100%;
+  }
+  .department a{
+    
+    border-radius: 9px;
+    padding: 1.3rem 1rem;
+
   }
   .department-logo{
     height: 80px;
@@ -359,7 +383,7 @@ footer a{
   }
 
 }
-@media only screen and (max-width: 355px){
+@media only screen and (max-width: 376px){
   html{
     font-size: 30%;
   }
@@ -367,4 +391,5 @@ footer a{
     height: 7rem;
     width: 7rem;
   }
+  
 }

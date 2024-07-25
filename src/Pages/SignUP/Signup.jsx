@@ -31,17 +31,19 @@ const Signup = (props) => {
     e.preventDefault();
     if(signupdata.password === signupdata.passwordcheck){
       try {
-        const response =  await axios.post('/api/LogIn/Signup',signupdata);
-        console.log(response.data);
+         await axios.post('/api/LogIn/Signup',signupdata);
         navigate("/LogIn");
         props.showAlart('Registerd Seccessfull')
       }
       catch (error) {
         if (error.response && error.response.status === 409) {
           props.showAlart('Email id', 'already exist');
+        } 
+        if (error.response && error.response.status === 408) {
+          props.showAlart("Roll no already exist");
         } else {
           console.error('Error registering user', error);
-          props.showAlart("Roll no already exist");
+         
         }
       }
       
@@ -78,13 +80,13 @@ const Signup = (props) => {
             <div className="sigup-password-box">
               <div className="currnet-password-signin">
                 <label htmlFor="password">Create password :-</label>
-                <input type="password" id="password" name="password"onChange={signupchange}   value={signupdata.password} placeholder="Create a password" className="singup-form-input" required/>
+                <input type="password" id="password" name="password"onChange={signupchange}  autoComplete="off" value={signupdata.password} placeholder="Create a password" className="singup-form-input" required/>
 
               </div>
               <div className="new-password-signin">
 
                 <label htmlFor="passwordcheck">Confirm password :-</label>
-                <input type="password" id="passwordcheck" name="passwordcheck" onChange={signupchange}   value={signupdata.passwordcheck} placeholder="Re-enter your password"className="singup-form-input" />
+                <input type="password" id="passwordcheck" name="passwordcheck" onChange={signupchange} autoComplete="off"  value={signupdata.passwordcheck} placeholder="Re-enter your password"className="singup-form-input" />
               </div>
            
             </div>

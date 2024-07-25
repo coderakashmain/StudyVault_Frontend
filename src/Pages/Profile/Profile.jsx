@@ -1,21 +1,114 @@
 import React from "react";
 import "./Profile.css";
 import{ useEffect, useState } from 'react';
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 
 
-const Profile = () => {
+
+
+const Profile = (props) => {
+  
   const [user, setUser] = useState(null);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [message, setMessage] = useState('');
+  const [uploadedFiles, setUploadedFiles] = useState([]);
+  // const [pdfCount , setPdfcount] = useState('');
 
+  // const incrementPdfCount = () => {
+  //   setPdfcount(pdfCount + 1);
+  // };
+  // const [showmessage, setShowMessage] = useState(true);
+
+  // useEffect(()=>{
+  //     const timer = setTimeout(() => {
+  //       setShowMessage(false);
+  //     }, 2000);
+  //     return ()=> clearTimeout(timer);
+  // },[])
+
+
+
+ 
   useEffect(() => {
     const storedUserData = localStorage.getItem('user');
     if (storedUserData) {
       setUser(JSON.parse(storedUserData));
     }
+ 
   }, []);
+
+
+
+  useEffect(() => {
+    const fetchFiles = async () => {
+      try {
+        const response = await axios.get('/api/Profile');
+        setUploadedFiles(response.data);
+      } catch (error) {
+        console.error('Error fetching files:', error);
+        setUploadedFiles([]);
+      }
+    };
+
+    fetchFiles();
+  }, []);
+  
+
+  const handleFileChange =(e)=>{
+    const file = e.target.files[0];
+    if(file && file.type === 'application/pdf'){
+      setSelectedFile(file);
+    
+    }else{
+      setMessage('Please select a valid PDF file');
+      setSelectedFile(null);
+    }
+  };
+
+    const handleSubmit = async (e)=>{
+    e.preventDefault();
+    if(selectedFile){
+      console.log('selected file',selectedFile);
+      props.showAlart('Upload successfull');
+      // incrementPdfCount();
+   
+      
+    }else{
+      console.log('No file selected or invalid file type')
+      props.showAlart('Error', 'Please select  file')
+      return;
+    };
+
+    const formData = new FormData();
+    formData.append('file', selectedFile);
+
+    try {
+      const response =  axios.post('/api/Profile', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+    
+      });
+      setMessage('Upload successful');
+      setSelectedFile([]);
+      const updatedFilesResponse = await  axios.get('/api/Profile');
+      setUploadedFiles(updatedFilesResponse.data);
+      
+    } catch (error) {
+      console.error('Error uploading file:', error);
+      setMessage('Failed to upload the file.');
+      
+    }
+  };
+
   if (!user) {
-    return <div>Loading...</div>;
-  }
+    return <div style={{position : 'absolute', left : '0', top : '0px',display : 'flex',flexDirection: 'column', alignItems : 'center ', justifyContent : 'center',fontSize : '2rem',height : '100vh' , width : '100%'}}>Oops..Log In fast<Link style = {{color : 'blue',textDecoration : 'underline'}} to="/LogIn">Click here </Link></div>;
+  };
+
+
+
 
   return (
     <section id="profile">
@@ -35,7 +128,7 @@ const Profile = () => {
               </div>
               <div className="profile-downupload-info">
                 <div className="download downupload">
-                  <h5>54</h5>
+                  <h5>6</h5>
                   <h4>Total Download</h4>
                 </div>
                 <div className="Upload downupload">
@@ -44,11 +137,16 @@ const Profile = () => {
                 </div>
               </div>
               <div className="pdfupload" >
+              
+                <form action="#" onSubmit={handleSubmit}>
+                
                 <button  type="file" style={{position : 'relative'}} >
-                  Upload Now
-                  <input type="file" multiple style={{position : 'absolute', top : '0', left : '0',width : "100%", height : '100%',opacity : '0',}}/>
+                  Select file
+                  <input type="file" multiple accept="application/pdf" onChange={handleFileChange}   style={{position : 'absolute', top : '0', left : '0',width : "100%", height : '100%',opacity : '0',}}/>
                   <i className="fa-solid fa-arrow-up-from-bracket"></i>
                 </button>
+                <button type="submit">Send File</button>
+                </form>
               </div>
               <p
                 style={{
@@ -65,7 +163,19 @@ const Profile = () => {
             <div className="recent-work profilecontain">
               <h3>Recent work</h3>
               <div className="recent-work-box">
-                <div className="recent-download recent"></div>
+                <div className="recent-download recent">
+                {uploadedFiles.length > 0 ? (
+                    <ul>
+                      {uploadedFiles.map((file) => (
+                        <li key={file.id}>
+                          <a href={`/${file.filepath}`} target="_blank" rel="noopener noreferrer">{file.filename}</a>
+                        </li>
+                      ))}
+                        </ul>
+                      ) : (
+                        <p>No files uploaded yet.</p>
+                      )}
+                </div>
                 <div className="recent-upload recent"></div>
               </div>
             </div>
@@ -112,14 +222,7 @@ const Profile = () => {
                 </div>
               </div>
               <div className="edit">
-                <button onClick={() => {
-                      localStorage.removeItem('user');
-                      localStorage.removeItem('token');
-                      navigate('/LogIn');
-                    }} >
-                  Log out
-                  <i className="fa-solid fa-arrow-right-from-bracket"></i>
-                </button>
+                
                 <button>
                   Edit profile<i className="fa-solid fa-pen-to-square"></i>
                 </button>

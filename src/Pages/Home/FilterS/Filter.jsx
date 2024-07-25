@@ -1,58 +1,93 @@
 import React,{useState} from "react";
+import axios from 'axios';
 import "./Filter.css";
+import { useNavigate,useLocation } from "react-router-dom";
+
+
 const Filter = (props) => {
-  const [ inputfromValue, setInputfromValue ] = useState('');
-  const [inputtoValue, setInputtoValue] = useState('');
-  const filterData = {
-    departmentName: props,
-    educationLavel: null,
-    fromDate: inputfromValue,
-    toDate: inputtoValue,
-    departmentYear: null,
-    midOne:false,
-    midTwo:false,
-    semOne:false,
-    semTwo:false,
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const initialDepartmentName = location.state?.departmentName || '';
+  
+  const [filters, setFilters] = useState({
+    departmentName: initialDepartmentName,
+    educationLevel: '',
+    fromDate: '',
+    toDate: '',
+    departmentYear: '',
+    Sem: false,
+    midSem: false
+  });
+  // const [results, setResults] = useState([]);
+
+  
+  
+
+  
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFilters({
+      ...filters,
+      [name]: type === "checkbox" ? checked : value,
+    });
+  };
+
+  const handleEducationLevel = (level) => {
+    setFilters({
+      ...filters,
+      educationLevel: level
+    });
+    
+
+  };
+
+
+  const handleDepartmentYear = (year) => {
+    setFilters({
+      ...filters,
+      departmentYear: year
+    });
+  
+  };
+
+  const handlePaperType = (type) => {
+    setFilters({
+      ...filters,
+      [type]: !filters[type],
+    });
     
   };
-  const seteducationLavelug = () => {
-    filterData.educationLavel = "ug";
-    alert(filterData.educationLavel);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    const nonEmptyFilters = Object.fromEntries(
+      Object.entries(filters).filter(([key, value]) => value !== "" && value !== false)
+    );
+   
+    if (Object.keys(nonEmptyFilters).length === 0) {
+       alert("Please provide at least one filter criteria.");
+      return;
+    }
+    try {
+      const response = await axios.get('/api/Filter', { params: nonEmptyFilters });
+      // setResults(response.data);
+      navigate('/Downloadpdf',{ state: { filters } })
+
+      
+    } catch (error) {
+      console.error('Error fetching papers:', error);
+     
+      props.showAlart('Not selected','Please provide at least one filter criteria.');
+    }
   };
-  const seteducationLavelpg = () => {
-    filterData.educationLavel = "pg";
-    alert(filterData.educationLavel);
-  };
-  const setFromDate = (e) => {
-    setInputfromValue(e.target.value);
-  }
-  const setToDate = (e) => {
-    setInputtoValue(e.target.value);
-  }
-  const setDepartmentYearfirst = () => {
-    filterData.departmentYear="1st"
-  }
-  const setDepartmentYearsecond = () => {
-    filterData.departmentYear="2nd"
-  }
-  const setDepartmentYearthird = () => {
-    filterData.departmentYear="3rd"
-  }
-  const setSelectPapermidone = () => {
-    filterData.midOne=true
-  }
-  const setSelectPapermidtwo = () => {
-    filterData.midTwo=true
-  }
-  const setSelectPapersemone= () => {
-    filterData.semOne=true
-  }
-  const setSelectPapersemtwo = () => {
-    filterData.semTwo=true
-  }
+
+
   return (
     <div className="filter-main-div">
-      {/* <form action="#" className="filteration-container-box"> */}
+      <form onSubmit={handleSubmit} className="filteration-container-box">
         <div className="filteration-container">
           <div className="first-filteration">
             <h3>Department Name :</h3>
@@ -60,38 +95,44 @@ const Filter = (props) => {
               <div className="department-name">
                 <input
                   type="text"
-                  name=""
-                  id=""
-                  placeholder="Enter Department Name"
+                  name="departmentName"
+                  value={filters.departmentName}
+                  onChange={handleChange}
+                  placeholder="Enter deparment name"
+                  
                 />
               </div>
             </div>
-            <h3>Enter year's :</h3>
+            <h3>Enter Session :</h3>
             <div className="year-to-year">
               <div className="year-div">
-                <input type="number" placeholder="From"
-                   value={inputfromValue}
-                  onChange={setFromDate} />
+                <input type="number" 
+                placeholder="From"
+                name="fromDate"
+                value={filters.fromDate}
+                onChange={handleChange} />
               </div>
+
               <div className="hr"></div>
               <div className="year-div">
-                <input type="number" placeholder="To" name="" id=""
-                                   value={inputtoValue}
-                                   onChange={setToDate}/>
+                <input type="number"
+                  name="toDate"
+                  value={filters.toDate}
+                  onChange={handleChange}
+                  placeholder="To"/>
               </div>
             </div>
-            <p>{filterData.educationLavel}</p>
             <h3>Education Lavel :</h3>
             <div className="department-section">
               <div
                 className="ug-box department-box"
-                onClick={seteducationLavelug}
+                onClick={() => handleEducationLevel('ug')}
               >
                 <h1>UG</h1>
               </div>
               <div
                 className="pg-box department-box"
-                onClick={seteducationLavelpg}
+                onClick={() => handleEducationLevel('pg')}
               >
                 <h1>PG</h1>
               </div>
@@ -101,13 +142,13 @@ const Filter = (props) => {
             <h3>Department Year :</h3>
             <div className="department-year">
               <ul>
-                <li onClick={setDepartmentYearfirst }>
+                <li  onClick={() => handleDepartmentYear('1st')}>
                   1 <sup>st</sup>
                 </li>
-                <li onClick={setDepartmentYearsecond}>
+                <li onClick={() => handleDepartmentYear('2nd')}>
                   2 <sup>nd</sup>
                 </li>
-                <li onClick={setDepartmentYearthird }>
+                <li onClick={() => handleDepartmentYear('3rd')}>
                   3 <sup>rd</sup>
                 </li>
               </ul>
@@ -115,47 +156,20 @@ const Filter = (props) => {
             <h3>Select paper :</h3>
             <div className="check-paper">
               <div className="first-paper">
-                <div onClick={setSelectPapersemone}>SEM I</div>
-                <div onClick={setSelectPapermidone}>MID I</div>
+                <div onClick={() => handlePaperType('midSem')}>MID SEM</div>
               </div>{" "}
               <div className="second-paper">
-                <div onClick={setSelectPapersemtwo}> SEM II</div>
-                <div onClick={setSelectPapermidtwo}>MID II</div>
+                <div onClick={() => handlePaperType('Sem')}> SEM</div>
               </div>
             </div>
             <h3>Select Subject :</h3>
-            <div className="subjects">
-              <div className="subject">
-                <p>subject one</p>
-                <input type="checkbox" name="" id="" />
-              </div>
-              <div className="subject">
-                <p>subject one</p>
-                <input type="checkbox" name="" id="" />
-              </div>
-              <div className="subject">
-                <p>subject one</p>
-                <input type="checkbox" name="" id="" />
-              </div>
-              <div className="subject">
-                <p>subject one</p>
-                <input type="checkbox" name="" id="" />
-              </div>
-              <div className="subject">
-                <p>subject one</p>
-                <input type="checkbox" name="" id="" />
-              </div>
-              <div className="subject">
-                <p>subject one</p>
-                <input type="checkbox" name="" id="" />
-              </div>
-            </div>
+            
           </div>
         </div>
         <div className="filter-submission">
           <input type="submit" value="Find" />
         </div>
-      {/* </form> */}
+      </form>
     </div>
   );
 };

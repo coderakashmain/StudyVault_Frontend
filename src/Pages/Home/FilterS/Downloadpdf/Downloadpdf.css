@@ -1,0 +1,51 @@
+#download-pdf{
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--backcolor);
+}
+
+.download-box{
+    min-height:35rem;
+    width: 60rem;
+    background-color: rgb(42 47 82);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    position: relative;
+    z-index: 10;
+    padding: 2rem;
+    text-align: center;
+    
+}
+.download-box h2{
+   font-size: 3.5rem;
+   color: #fff;
+}
+.download-data {
+    text-align: center;
+    margin-top: 2rem;
+}
+.download-data li {
+    font-size: 1.4rem;
+    color: #fff;
+    padding: 0.4rem 1rem;
+}
+.download-data a{
+    color: #fff;
+}
+.download-data p{
+    color: #fff;
+}
+
+@media (max-width : 780px) {
+    .download-box{
+        width: 93vw;
+    }
+}

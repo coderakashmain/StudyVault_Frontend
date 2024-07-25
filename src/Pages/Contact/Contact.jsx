@@ -19,7 +19,7 @@ const Contact = () => {
           <div className="conact-box-body">
             <div className="contact-location-details">
               <div className="first-location-box contact_box">
-                <i class="fa-solid fa-street-view"></i>
+                <i className="fa-solid fa-street-view"></i>
                 <h3>@baripada</h3>
                 <ul>
                   <li>hfgjb 4576 6fgjv</li>
@@ -28,7 +28,7 @@ const Contact = () => {
                 </ul>
               </div>
               <div className="second-location-box contact_box">
-                <i class="fa-solid fa-street-view"></i>
+                <i className="fa-solid fa-street-view"></i>
                 <h3>@baripada</h3>
                 <ul>
                   <li>hfgjb 4576 6fgjv</li>
@@ -53,10 +53,10 @@ const Contact = () => {
                   </li>
                   <li>+91 1236549870</li>
                   <div className="social-contact-icon">
-                    <i class="fa-brands fa-facebook"></i>
-                    <i class="fa-brands fa-twitter"></i>
-                    <i class="fa-brands fa-linkedin"></i>
-                    <i class="fa-brands fa-meta"></i>
+                    <i className="fa-brands fa-facebook"></i>
+                    <i className="fa-brands fa-twitter"></i>
+                    <i className="fa-brands fa-linkedin"></i>
+                    <i className="fa-brands fa-meta"></i>
                   </div>
                 </ul>
               </div>
@@ -90,7 +90,7 @@ const Contact = () => {
                     type="Email"
                     name=""
                     id=""
-                    placeholder="Enter your name"
+                    placeholder="Enter your Email"
                   />
                 </div>
                 <div className="information">

@@ -113,8 +113,11 @@
     padding: 0.5rem 0.9rem;
     border:0.2rem solid #5a7d828a;
     border-radius: 1.3rem;
-    cursor: pointer;
     font-size: 1rem;
+    margin: 0rem 1rem;
+}
+.pdfupload button:last-child{
+    cursor: pointer;
 }
 .pdfupload i{
     padding-left: 0.9rem;
@@ -194,7 +197,7 @@
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     margin-bottom: 3rem;
 }
 
@@ -205,14 +208,25 @@
     font-size: 0.9rem;
     border-radius: 01.6rem;
     cursor: pointer;
-    font-weight: 600;
+    font-weight: 400;
+    background-color: rgb(75, 151, 213) ;
+    color: #fff;
+    transition: all 0.2s ease-in-out;
+}
+.edit button:hover{
+    background-color: #fff;
+    transform: scale(0.9);
+    color: #000;
+    
+}
+.edit button:hover i{
+    filter: brightness(0);
 }
 .edit button i{
     padding: 0 0 0 0.3rem ;
+    filter: brightness(10);
 }
-.edit button:first-child{
-    background-color: rgb(213 213 213);
-}
+
 .profile-right-inner-box{
     width: 30%;
     background-color:var(--pagecolor);

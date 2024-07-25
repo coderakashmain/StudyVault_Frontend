@@ -14,6 +14,7 @@ import Signup from "./Pages/SignUP/Signup";
 import Loginsignup from "./RoutingFiles/Loginsignup";
 import { useState } from "react";
 import Alart from "./Component/Alart/Alart";
+import Downloadpdf from "./Pages/Home/FilterS/Downloadpdf/Downloadpdf";
 
 
 
@@ -43,7 +44,7 @@ const router = createBrowserRouter([
       },
       {
         path : 'Filter',
-        element : <Filter/>
+        element : <Filter  showAlart = {showAlart}/>,
       }
 
     ]
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
   {
     path: "/Contact-Us",
     element: ( <><  Navbar/><Alart alart={alart}/><Contact/></>  ),
+  },
+  {
+      path : '/Downloadpdf',
+     element : ( <><Alart alart={alart}/><Downloadpdf/></>  ),
   },
   {
     path: "/LogIn",
@@ -69,7 +74,7 @@ const router = createBrowserRouter([
   
   {
     path: "/Profile",
-    element: ( <><Navbar/><Alart alart={alart}/><Profile /></>  ),
+    element: ( <><Navbar/><Alart alart={alart}/><Profile showAlart = {showAlart} /></>  ),
   },
   {
     path: "/About-us",

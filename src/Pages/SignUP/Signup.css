@@ -96,13 +96,11 @@
     box-shadow: none;
 }
   }
-  @media (max-width:404px) {
+  @media (max-width:460px) {
     .signup-form {
         width: 325px;
       }
-      .signup-form input{
-        padding-left:0.8rem;
-      }
+      
       html{
         font-size: 75%;
     }

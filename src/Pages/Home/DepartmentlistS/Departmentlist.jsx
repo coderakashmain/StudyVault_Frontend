@@ -1,7 +1,8 @@
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "../HomeS/HomeT.css";
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 
 
 
@@ -52,8 +53,12 @@ const HomeT = () => {
   //   setFilterScroll(205);
   //  }
   // }, [setFilterScroll])
+
+  const navigate = useNavigate();
   
- 
+  const handleDepartmentClick = (departmentName) => {
+    navigate('/Filter', { state: { departmentName } });
+  };
 
   return (
     <>
@@ -65,15 +70,13 @@ const HomeT = () => {
             <div  className="department-list">
               {departments.map((department, index) => (
                 <div  className="department" key={index}>
-                  <NavLink 
+                  <p 
                    /* // onClick={()=>{ */
                 /* //   window.addEventListener('click',()=>{ */
                 /* //     window.scrollTo({top :filterScroll}); */
                 /* //   }) */
                 /* // }}  */
-                  to="/Filter"> <p >{department}</p></NavLink>
-                 
-                 
+                onClick={() => handleDepartmentClick(department)}> {department}</p>
                 </div>
               ))}
             </div>

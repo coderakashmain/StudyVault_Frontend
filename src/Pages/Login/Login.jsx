@@ -30,7 +30,9 @@ const Login = (props) => {
           localStorage.setItem('token', response.data.token);
           navigate('/');
           props.showAlart('Log in Successfull.');
-        }else {
+        }
+       
+        else {
           console.error('Invalid credentials');
           alert('Invalid credentials');
           
@@ -38,7 +40,16 @@ const Login = (props) => {
 
 
        } catch(error){
-          props.showAlart('Invalid credentials','try again')
+        // if(error.response && error.response.status === 409){
+        //   showAlart("Gmial is not registered.")
+        // }
+        // if(error.response && error.response.status === 408){
+        //   showAlart("Wrong password");
+        // }
+          
+          props.showAlart('Invalid credentials','try again');
+          
+        
        }
     };
  
@@ -53,7 +64,7 @@ const Login = (props) => {
             <h3 className="">Email :-</h3>
             <input type="email" onChange={loginChange} value={loginData.gmail} name="gmail" id="loginemial" placeholder=""  required/>
             <h3 className="">Password :-</h3>
-            <input  type="password" onChange={loginChange}  value={loginData.password} name="password" id="loginpassword" placeholder="" />
+            <input  type="password" onChange={loginChange} autoComplete="off" value={loginData.password} name="password" id="loginpassword" placeholder="" />
             <div className="remember-forget-parent">
               <p className="">
                 <input type="checkbox" name="logincheckbox" id="" className="mr-2" />
