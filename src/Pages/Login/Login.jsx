@@ -70,7 +70,7 @@ const Login = (props) => {
                 <input type="checkbox" name="logincheckbox" id="" className="mr-2" />
                &nbsp; Remember me
               </p>
-              <Link to='ForgatePw' style={{color : '#4B97D5'}}>Forget password ?</Link>
+              <Link to='ForgatePw' style={{color : '#4B97D5'} } >Forget password ?</Link>
             </div>
             <div className="submit-parant">
               <input type="submit" value="Login" className="" />

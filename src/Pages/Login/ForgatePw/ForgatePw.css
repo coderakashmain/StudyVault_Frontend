@@ -1,0 +1,83 @@
+#forgatepw{
+   min-height: 100vh;
+    width: 100%;
+    background-color: var(--backcolor);
+    display: flex;
+    justify-content: center;
+   
+}
+.forgate-box{
+    width: 28rem;
+    text-align: center;
+    margin-top: 3rem;
+}
+.forgate-logo-box{
+    width: 100%;
+   
+}
+.forgate-logo-box h3{
+    font-size: 1.4rem;
+    font-weight: 600;
+   
+}
+
+.forgate-box img{
+    height: 18rem;
+    filter: brightness(0) saturate(100%) invert(0%) sepia(7%) saturate(7494%) hue-rotate(262deg) brightness(92%) contrast(100%);
+    
+}
+.forgate-email-enter-box{
+    width: 100%;
+    margin: 1.9rem 0 0 0;
+}
+.forgate-email-enter-box p{
+    text-align: justify;
+}
+.forgate-email-enter-box input{
+   border: none;
+   width: 100%;
+   padding: 0.7rem 1rem;
+   margin: 1rem 0 1rem;
+   outline: none;
+   border-radius: 0.2rem;
+   font-size: 1rem;
+}
+.forgate-email-enter-box input::placeholder{
+  color: rgb(190, 190, 190);
+}
+.forgate-email-enter-box button{
+  width: 100%;
+  border: none;
+  background-color: #4B97D5;
+  color: #fff;
+  padding: 0.6rem 0;
+  font-size: 1.1;
+  border-radius: 0.2rem;
+  cursor: pointer;
+}
+#forgatepw hr{
+    margin: 2rem 0;
+    
+}
+#forgatepw a{
+    font-size: 1.08rem;
+    
+}
+.forgate-btn{
+    width: 100%;
+    padding: 1rem 0;
+    border: none;
+    border: 1px solid rgb(184, 178, 178);
+    margin: 4rem 0 2rem;
+    cursor: pointer;
+    border-radius: 0.2rem;
+}
+@media (max-width : 450px) {
+    .forgate-box{
+        width: 80vw;
+    }
+    .forgate-box img{
+        height: 50vw
+        
+    }
+}

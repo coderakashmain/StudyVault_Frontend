@@ -102,7 +102,7 @@ const Profile = (props) => {
   };
 
   if (!user) {
-    return <div style={{position : 'absolute', left : '0', top : '0px',display : 'flex',flexDirection: 'column', alignItems : 'center ', justifyContent : 'center',fontSize : '2rem',height : '100vh' , width : '100%'}}>Oops..Log In fast<Link style = {{color : 'blue',textDecoration : 'underline'}} to="/LogIn">Click here </Link></div>;
+    return <div style={{position : 'absolute', left : '0', top : '0px',display : 'flex',flexDirection: 'column', alignItems : 'center ', justifyContent : 'center',fontSize : '2rem',height : '100vh' , width : '100%'}}><box-icon  name='log-in'  size="cssSize"  style = {{fontSize : '10rem',position : 'relative', left : '-2%'}}></box-icon>Oops. Login Fast<Link style = {{color : 'blue',textDecoration : 'underline',fontSize : '01.4rem'}} to="/LogIn">Click here </Link></div>;
   };
 
 
