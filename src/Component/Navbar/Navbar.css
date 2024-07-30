@@ -29,35 +29,44 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 5rem;
+  gap: 3rem;
 }
 .navbar a {
   border-radius: 0.2rem;
    
 }
 .navbar a li{
-    font-size: 1.1rem;
+    font-size: 1rem;
     padding: 0.4rem 1rem;
    
 }
+/* .web-logo h2{
+    color: #fff;
+} */
 .navbar a li {
     color:#e3e3e3;
 }
 
-.navbar a:hover{
-    color: rgb(184, 184, 184);
-}
-.navbar a li:hover{
+
+.navbar .nav-list a li:hover{
     color: rgb(184, 184, 184);
 }
 .navbar a:active{
     transform: scale(0.95);
 }
+.log-in a li{
+    border: 0.16rem solid #e3e3e3;
+    border-radius: 0.16rem;
+    font-weight: 600;
+}
 .log-in a li:active{
-    transform: scale(0.95);
+    transform: scale(0.99);
 }
 .red{
-  background-color: #80859391;
+  /* background-color: #80859391; */
+  text-decoration: underline;
+  text-underline-offset: 15px;
+  text-decoration-color: #ffffff;
 }
 .log-in a{
   color: #fff;

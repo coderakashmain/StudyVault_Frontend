@@ -1,7 +1,8 @@
 
-import React from "react";
+import React, { useState } from "react";
 import "../HomeS/HomeT.css";
 import { useNavigate } from "react-router-dom";
+
 
 
 
@@ -13,52 +14,62 @@ import { useNavigate } from "react-router-dom";
 const HomeT = () => {
   const departments = [
     "Computer Science",
-    "Mechanical Engineering",
-    "Civil Engineering",
-    "Electrical Engineering",
-    "Chemical Engineering",
-    "Biotechnology",
-    "Aeronautical Engineering",
-    "Information Technology",
-    "Electronics and Communication",
-    "Medical Science",
-    "Environmental Science",
-    "Physics",
+    "Bachelor of Computer Application",
+    "Botany",
     "Chemistry",
-    "Mathematics",
+    "Data Science",
+    "Geology",
+    "Itm",
+    "Mathmatics",
+    "Physics",
+    "Sericalture",
     "Statistics",
+    "Zoology",
+
+    "Commerce",
+
+    "Anthropoloy",
     "Economics",
-    "History",
+    "Education",
+    "English",
     "Geography",
+    "Hindi",
+    "History",
+    "Sociology",
+    "Odia",
+    "Philosophy",
     "Political Science",
     "Psychology",
-    "Sociology",
-    "Philosophy",
-    "Literature",
-    "Linguistics",
-    "Journalism",
-    "Law",
-    "Business Administration",
-    "Education",
-    "Nursing",
-    "Pharmacy",
+    "Sanskrit",
+
+    "Master of Business Administration",
+    "Master of Computer Applications",
+    'Micro Biology',
+    "Bio-Chemistry",
+    "Enviromental Economics",
+    "Industrial Chemistry",
+
+    
+    
   ];
-  
-  // const [filterScroll, setFilterScroll] = useState(100)
-  // useEffect(() => {
-  //  if(window.innerWidth < 885){
-  //   setFilterScroll(100);
-  //  }
-  //  if(window.innerWidth < 434){
-  //   setFilterScroll(205);
-  //  }
-  // }, [setFilterScroll])
+const sortedDepartments = departments.sort((a,b)=> a.localeCompare(b));
 
   const navigate = useNavigate();
+  const [moreDepartment, setMoreDepartment] = useState(false);
+
+  const user = localStorage.getItem('user');
+  const token = localStorage.getItem('token');
   
   const handleDepartmentClick = (departmentName) => {
-    navigate('/Filter', { state: { departmentName } });
+    if( user && token){
+      navigate('/Filter', { state: { departmentName } });
+    }
+    else{
+      navigate('/Login');
+    }
   };
+
+  
 
   return (
     <>
@@ -68,19 +79,31 @@ const HomeT = () => {
           <div className="content-container">
             <h2>All departmet :</h2>
             <div  className="department-list">
-              {departments.map((department, index) => (
+              {sortedDepartments.map((department, index) => (
                 <div  className="department" key={index}>
                   <p 
-                   /* // onClick={()=>{ */
-                /* //   window.addEventListener('click',()=>{ */
-                /* //     window.scrollTo({top :filterScroll}); */
-                /* //   }) */
-                /* // }}  */
                 onClick={() => handleDepartmentClick(department)}> {department}</p>
                 </div>
               ))}
+              
             </div>
-          </div>
+            <button style={{width : '20%', cursor : 'pointer', padding : '0.7rem 0',border: 'none', background : '#4B97D5',borderRadius : '0.1rem',margin : '0.9rem 0 0 0 ' }} onClick={()=>{
+              if(!moreDepartment){
+                  document.querySelector('.department-list').style.maxHeight = '1000vh';
+                  setMoreDepartment(true);
+              }
+              if(moreDepartment){
+                document.querySelector('.department-list').style.maxHeight = '96vh';
+                  setMoreDepartment(false);
+              }
+                
+              }}> 
+                {!moreDepartment ?(
+                  <p style={{color : '#fff' ,fontSize : '1.1rem',whiteSpace : 'nowrap'}}>All Departments</p>
+                ) : (
+                  <p style={{color : '#fff' ,fontSize : '1.1rem',whiteSpace : 'nowrap'}}>See less</p>
+                ) }</button>
+          </div> 
          
         </div>
       </div>

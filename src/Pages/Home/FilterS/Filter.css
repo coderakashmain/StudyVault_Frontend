@@ -55,11 +55,30 @@
   box-shadow: 0.5px 0.5px 30px 0.5px gray;
 }
 
-.ug-box:hover,
+/* .ug-box:hover,
 .pg-box:hover {
   background: linear-gradient(black, rgb(74, 143, 200));
   color: white;
+} */
+
+.ug-active-color{
+  background: linear-gradient(rgba(0, 0, 0, 0.374), rgb(74, 143, 200));
 }
+.pg-active-color{
+  background: linear-gradient(rgba(0, 0, 0, 0.374), rgb(74, 143, 200));
+}
+.active-1st-year{
+  background: linear-gradient(rgba(0, 0, 0, 0.374), rgb(74, 143, 200));
+}
+.active-2nd-year{
+  background: linear-gradient(rgba(0, 0, 0, 0.374), rgb(74, 143, 200));
+
+}
+.active-3rd-year{
+  background: linear-gradient(rgba(0, 0, 0, 0.374), rgb(74, 143, 200));
+
+}
+
 .department-type {
   margin: 10% 0%;
   display: flex;
@@ -84,6 +103,7 @@
   display: flex;
   flex-wrap: wrap;
   margin: 5%;
+  cursor: pointer;
 }
 .department-year ul li {
   border: 1px solid gray;
@@ -92,10 +112,10 @@
   margin: 2%;
   font-weight: 600;
 }
-.department-year ul li:hover {
-  background: linear-gradient(rgb(58, 55, 55), rgb(28, 154, 222));
-  color: white;
-}
+/* .department-year ul li:hover { */
+  /* background: linear-gradient(rgb(58, 55, 55), rgb(28, 154, 222)); */
+  /* color: white; */
+/* } */
 .year-to-year {
   display: flex;
   justify-content: center;
@@ -110,6 +130,7 @@
 }
 .year-div {
   border: 2px solid gray;
+  cursor: pointer;
   height: 50px;
   border-radius: 14px;
   width: 40%;
@@ -119,7 +140,7 @@
   height: 100%;
   width: 100%;
   text-align: center;
-  font-size: 20px;
+  font-size: 1.3rem;
   border: none;
   outline: none;
   background-color: transparent;
@@ -162,6 +183,15 @@
   padding: 5% 10%;
   border-radius: 9px;
   font-size: 14px;
+  cursor: pointer;
+}
+.active-midpaper-year{
+  background: linear-gradient(rgba(0, 0, 0, 0.374), rgb(74, 143, 200));
+
+}
+.active-sempaper-year{
+  background: linear-gradient(rgba(0, 0, 0, 0.374), rgb(74, 143, 200));
+
 }
 
 .filteration-container-box .filter-submission{

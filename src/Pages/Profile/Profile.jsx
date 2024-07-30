@@ -14,20 +14,6 @@ const Profile = (props) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [message, setMessage] = useState('');
   const [uploadedFiles, setUploadedFiles] = useState([]);
-  // const [pdfCount , setPdfcount] = useState('');
-
-  // const incrementPdfCount = () => {
-  //   setPdfcount(pdfCount + 1);
-  // };
-  // const [showmessage, setShowMessage] = useState(true);
-
-  // useEffect(()=>{
-  //     const timer = setTimeout(() => {
-  //       setShowMessage(false);
-  //     }, 2000);
-  //     return ()=> clearTimeout(timer);
-  // },[])
-
 
 
  
@@ -42,27 +28,29 @@ const Profile = (props) => {
 
 
   useEffect(() => {
-    const fetchFiles = async () => {
+    let fetchFiles = async (e) => {
+      e.preventDefault();
       try {
         const response = await axios.get('/api/Profile');
-        setUploadedFiles(response.data);
+        setUploadedFiles(response);
       } catch (error) {
         console.error('Error fetching files:', error);
         setUploadedFiles([]);
       }
     };
 
-    fetchFiles();
+  fetchFiles();
   }, []);
   
 
-  const handleFileChange =(e)=>{
+  const handleFileChange = async (e)=>{
     const file = e.target.files[0];
     if(file && file.type === 'application/pdf'){
       setSelectedFile(file);
     
     }else{
       setMessage('Please select a valid PDF file');
+      props.showAlart('Failed','Please select a pdf file');
       setSelectedFile(null);
     }
   };
@@ -71,7 +59,34 @@ const Profile = (props) => {
     e.preventDefault();
     if(selectedFile){
       console.log('selected file',selectedFile);
-      props.showAlart('Upload successfull');
+
+      const formData = new FormData();
+      formData.append('file', selectedFile);
+        
+      try {
+         const response =  axios.post('/api/Profile', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          },
+      
+        });
+        if(response){
+        setMessage('Upload successful');
+        props.showAlart('Upload successfull');
+        setSelectedFile(null);
+
+        }
+
+        
+       
+        
+      } catch (error) {
+        console.error('Error uploading file:', error);
+        setMessage('Failed to upload the file.');
+        props.showAlert('Error', 'Failed to upload the file.');
+        
+      }
+     
       // incrementPdfCount();
    
       
@@ -81,26 +96,9 @@ const Profile = (props) => {
       return;
     };
 
-    const formData = new FormData();
-    formData.append('file', selectedFile);
+   
 
-    try {
-      const response =  axios.post('/api/Profile', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-    
-      });
-      setMessage('Upload successful');
-      setSelectedFile([]);
-      const updatedFilesResponse = await  axios.get('/api/Profile');
-      setUploadedFiles(updatedFilesResponse.data);
-      
-    } catch (error) {
-      console.error('Error uploading file:', error);
-      setMessage('Failed to upload the file.');
-      
-    }
+  
   };
 
   if (!user) {
@@ -138,7 +136,7 @@ const Profile = (props) => {
               </div>
               <div className="pdfupload" >
               
-                <form action="#" onSubmit={handleSubmit}>
+                <form action="/api/Prifile" onSubmit={handleSubmit}>
                 
                 <button  type="file" style={{position : 'relative'}} >
                   Select file

@@ -1,5 +1,6 @@
 import React from 'react'
 import './AboutUs.css'
+import { Link } from 'react-router-dom'
 
 const AboutUs = () => {
   return (
@@ -11,7 +12,30 @@ const AboutUs = () => {
      <div className="about-us-contain">
         <div className="about-us-box">
             <div className="left-about-box">
-                <div className="our-info-box">
+            <h2><span>O</span>ver the past two years, we've observed that students have had difficulty obtaining previous exam papers. Being students ourselves, we understand these challenges and want to help...</h2>
+            <p>We are also students as you are dear so we hope that the small step from us helps you a little  bit.  If you want say thank you then you definitely give a sweet feedback.</p>
+            <button><a href="#both-info-section">Learn more</a></button>
+                
+            </div>
+            
+            <div className="right-about-box">
+              <div className="right-about-box-in">
+                <h3>Here you can get those Benifits~</h3>
+                <ul>
+                  <li>All Previous Year Question Papers of M.P.C Auto.</li>
+                  <li>Easy download in form of pdf.</li>
+                  <li>You can also upload question paper for others.</li>
+                  <li>Easy Interface.</li>
+                  <li>Fast and Secure.</li>
+                  
+                </ul>
+              </div>
+                    
+            </div>
+        </div>
+        <div className="our-info-box">
+                  <h2>Our Developers</h2>
+                  <div className="our-info-box-in">
                   <div className="akash-box self-box">
                     <div className="akash-img-box self-img-box">
                          <img src="https://www.davidchang.ca/wp-content/uploads/2020/09/David-Chang-Photography-Headshots-Toronto-61-1536x1536.jpg" alt="Akash's Photo" />
@@ -54,27 +78,11 @@ const AboutUs = () => {
                   </div>
                 </div>
                 <hr />
-                <div className="both-info">
+                <div className="both-info" id='both-info-section'>
                   <p><span>O</span>ver the past two years, we've observed that students have had difficulty obtaining previous exam papers. Being students ourselves, we understand these challenges and want to help. That's why we decided to create a website where all past exam papers can be easily accessed by everyone. No matter what challenges we face, our commitment is to assist our fellow students. This platform aims to simplify exam preparation by providing a comprehensive archive of past papers. After all, your success is our success.😊</p>
-                  <p>For any query contact with us ~<a href="#"><button>Contact us</button></a></p>
+                  <p>For any query contact with us ~<Link to="/Contact-Us"><button>Contact us</button></Link></p>
                 </div>
-            </div>
-            
-            <div className="right-about-box">
-              <div className="right-about-box-in">
-                <h3>Here you can get those Benifits~</h3>
-                <ul>
-                  <li>All Previous Year Question Papers of M.P.C Auto.</li>
-                  <li>Easy download in form of pdf.</li>
-                  <li>You can also upload question paper for others.</li>
-                  <li>Easy Interface.</li>
-                  <li>Fast and Secure.</li>
-                  
-                </ul>
-              </div>
-                    
-            </div>
-        </div>
+                </div>
         </div>
     </section>
     </>

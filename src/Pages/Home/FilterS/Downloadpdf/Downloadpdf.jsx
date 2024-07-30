@@ -35,7 +35,7 @@ const Downloadpdf = () => {
                     {papers.length > 0 ? (
                         papers.map((paper) => (
                             <li key={paper.id}>
-                                {paper.title} - <a href={paper.url} download>Download</a>
+                                {paper.title} - <a href={paper.url} download target='__blank'>Download</a>
                             </li>
                         ))
                     ) : (

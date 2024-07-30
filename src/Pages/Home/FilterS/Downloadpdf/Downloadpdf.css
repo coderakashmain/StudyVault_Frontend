@@ -13,7 +13,8 @@
 .download-box{
     min-height:35rem;
     width: 60rem;
-    background-color: rgb(42 47 82);
+    background-color: rgb(28 30 41);
+    border-radius: 0.4rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,6 +23,7 @@
     z-index: 10;
     padding: 2rem;
     text-align: center;
+    
     
 }
 .download-box h2{
@@ -39,6 +41,10 @@
 }
 .download-data a{
     color: #fff;
+    background-color: #3e639e;
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.19rem;
+
 }
 .download-data p{
     color: #fff;

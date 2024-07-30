@@ -26,8 +26,8 @@ const Login = (props) => {
       try{
         const response = await axios.post('/api/logIn', loginData);
         if(response.status === 200 ){
-          localStorage.setItem('user', JSON.stringify(response.data.user));
-          localStorage.setItem('token', response.data.token);
+           localStorage.setItem('user', JSON.stringify(response.data.user));
+           localStorage.setItem('token', response.data.token);
           navigate('/');
           props.showAlart('Log in Successfull.');
         }
@@ -70,7 +70,7 @@ const Login = (props) => {
                 <input type="checkbox" name="logincheckbox" id="" className="mr-2" />
                &nbsp; Remember me
               </p>
-              <p>Forget password ?</p>
+              <Link to='ForgatePw' style={{color : '#4B97D5'}}>Forget password ?</Link>
             </div>
             <div className="submit-parant">
               <input type="submit" value="Login" className="" />

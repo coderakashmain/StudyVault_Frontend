@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useEffect, useState} from "react";
 import axios from 'axios';
 import "./Filter.css";
 import { useNavigate,useLocation } from "react-router-dom";
@@ -9,14 +9,21 @@ const Filter = (props) => {
   const navigate = useNavigate();
   const location = useLocation();
   const initialDepartmentName = location.state?.departmentName || '';
+  const [ugActive,setUgActive]= useState(false);
+  const [pgActive, setPgActive]= useState(false);
+  const [yearfirstActive, setYearfirstActive]= useState(false);
+  const [yearsecondActive, setYearsecondActive]= useState(false);
+  const [yearthirdActive, setYearthirdActive]= useState(false);
+
   
   const [filters, setFilters] = useState({
     departmentName: initialDepartmentName,
-    educationLevel: '',
+    educationLevelug: '',
+    educationLevelpg: '',
     fromDate: '',
     toDate: '',
     departmentYear: '',
-    Sem: false,
+    sem: false,
     midSem: false
   });
   // const [results, setResults] = useState([]);
@@ -34,10 +41,18 @@ const Filter = (props) => {
     });
   };
 
-  const handleEducationLevel = (level) => {
+  const handleEducationLevelug= (level) => {
     setFilters({
       ...filters,
-      educationLevel: level
+      educationLevelug: level
+    });
+    
+
+  };
+  const handleEducationLevelpg= (level) => {
+    setFilters({
+      ...filters,
+      educationLevelpg: level
     });
     
 
@@ -110,7 +125,10 @@ const Filter = (props) => {
                 placeholder="From"
                 name="fromDate"
                 value={filters.fromDate}
-                onChange={handleChange} />
+                onChange={handleChange} 
+                pattern="2 0 [0-9]{2}"
+                required
+                />
               </div>
 
               <div className="hr"></div>
@@ -119,20 +137,47 @@ const Filter = (props) => {
                   name="toDate"
                   value={filters.toDate}
                   onChange={handleChange}
-                  placeholder="To"/>
+                  placeholder="To"
+                  pattern="2 0 [0-9]{2}"
+                  required
+                  />
+                  
               </div>
             </div>
             <h3>Education Lavel :</h3>
             <div className="department-section">
               <div
-                className="ug-box department-box"
-                onClick={() => handleEducationLevel('ug')}
+                className={`ug-box department-box ${ugActive ? 'ug-active-color': ''}`}
+                onClick={() => 
+                {
+                  if(!ugActive){
+                    handleEducationLevelug('ug');
+                    setUgActive(true);
+
+                    
+                  }
+                  if(ugActive){
+                    setUgActive(false);
+                    handleEducationLevelug('');
+                  }
+                }
+                }
               >
                 <h1>UG</h1>
               </div>
               <div
-                className="pg-box department-box"
-                onClick={() => handleEducationLevel('pg')}
+                className={`pg-box department-box ${pgActive ? 'pg-active-color': ''}`}
+                onClick={() =>{
+                  if(!pgActive){
+                    handleEducationLevelpg('pg');
+                    setPgActive(true);
+                    
+                  }
+                  if(pgActive){
+                    setPgActive(false);
+                    handleEducationLevelpg('');
+                  }
+                }}
               >
                 <h1>PG</h1>
               </div>
@@ -142,13 +187,50 @@ const Filter = (props) => {
             <h3>Department Year :</h3>
             <div className="department-year">
               <ul>
-                <li  onClick={() => handleDepartmentYear('1st')}>
+                <li className={` ${yearfirstActive ? 'active-1st-year': ''}`}  onClick={() => {
+                       if(!yearfirstActive){
+                         handleDepartmentYear('1st');
+                         setYearsecondActive(false);
+                         setYearthirdActive(false);
+                         setYearfirstActive(true);
+
+                       }
+                       if(yearfirstActive){
+                         handleDepartmentYear('')
+                        setYearfirstActive(false);
+                       }
+                }
+                   }>
                   1 <sup>st</sup>
                 </li>
-                <li onClick={() => handleDepartmentYear('2nd')}>
+                <li className={` ${yearsecondActive ? 'active-2nd-year': ''}`}  onClick={() =>{
+                       if(!yearsecondActive){
+                         handleDepartmentYear('2nd')
+                         setYearthirdActive(false);
+                        setYearfirstActive(false);
+                         setYearsecondActive(true);
+
+                       }
+                       if(yearsecondActive){
+                         handleDepartmentYear('')
+                         setYearsecondActive(false);
+                       }
+                } }>
                   2 <sup>nd</sup>
                 </li>
-                <li onClick={() => handleDepartmentYear('3rd')}>
+                <li className={` ${yearthirdActive ? 'active-3rd-year': ''}`} onClick={() => {
+                       if(!yearthirdActive){
+                         handleDepartmentYear('3rd')
+                        setYearfirstActive(false);
+                        setYearsecondActive(false);
+                         setYearthirdActive(true);
+
+                       }
+                       if(yearthirdActive){
+                         handleDepartmentYear('')
+                         setYearthirdActive(false);
+                       }
+                } }>
                   3 <sup>rd</sup>
                 </li>
               </ul>
@@ -156,13 +238,14 @@ const Filter = (props) => {
             <h3>Select paper :</h3>
             <div className="check-paper">
               <div className="first-paper">
-                <div onClick={() => handlePaperType('midSem')}>MID SEM</div>
+                <div className={` ${filters.midSem ? 'active-midpaper-year': ''}`} onClick={() =>handlePaperType('midSem')}>MID SEM</div>
+                
               </div>{" "}
               <div className="second-paper">
-                <div onClick={() => handlePaperType('Sem')}> SEM</div>
+                <div className={` ${filters.sem ? 'active-sempaper-year': ''}`} onClick={() => handlePaperType('sem')}> SEM</div>
               </div>
             </div>
-            <h3>Select Subject :</h3>
+            {/* <h3>Select Subject :</h3> */}
             
           </div>
         </div>

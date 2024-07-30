@@ -142,6 +142,10 @@ const Navbar = (props) => {
           <div className="hambargar">
             <i className="fa-solid fa-bars"></i>
           </div>
+          {/* <div className="web-logo">
+                <h2> A℃©®</h2>
+              
+          </div> */}
           <div className="nav-list">
             <ul>
             <NavLink className={getNavClass('/')} to="/"><li>Home</li></NavLink>
@@ -153,11 +157,11 @@ const Navbar = (props) => {
 
           {!isAuthenticated ? (
             <div className="log-in">
-                <NavLink className={getNavClass('/LogIn')} to="/LogIn"><li>Log in</li></NavLink>
+                <NavLink className={getNavClass('/LogIn')} to="/LogIn"><li>Login</li></NavLink>
             </div>
           ) : (
             <div className="log-in">
-              <NavLink onClick={handleLogout} to='/'><li>Log out</li></NavLink>
+              <NavLink onClick={handleLogout} ><li>Logout</li></NavLink>
             </div>
           )}
         </div>

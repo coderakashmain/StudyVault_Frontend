@@ -15,6 +15,7 @@ import Loginsignup from "./RoutingFiles/Loginsignup";
 import { useState } from "react";
 import Alart from "./Component/Alart/Alart";
 import Downloadpdf from "./Pages/Home/FilterS/Downloadpdf/Downloadpdf";
+import ForgatePw from "./Pages/Login/ForgatePw/ForgatePw";
 
 
 
@@ -24,6 +25,8 @@ const locomotiveScroll = new LocomotiveScroll();
 const [alart, setAlart] = useState(null);
 
 const showAlart = (type,message)=>{
+
+    
   setAlart(
     { type : type,
      msg : message}
@@ -68,6 +71,10 @@ const router = createBrowserRouter([
       {
         path: "Signup",
         element: <Signup showAlart = {showAlart}/>
+      },
+      {
+        path: "ForgatePw",
+        element: <ForgatePw showAlart = {showAlart}/>
       },
     ]
   },
