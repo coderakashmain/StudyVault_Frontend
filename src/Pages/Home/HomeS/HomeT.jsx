@@ -19,17 +19,6 @@ const HomeT = () => {
           <div className="main-header">
             <div className="header">
             
-          
-            
-              <div className="filter-switch">
-                <input
-                  type="text"
-                  name=""
-                  id=""
-                  placeholder="Search your department"
-                />
-              </div>
-              
             </div>
             <h3 className="header-title">Proud to be a MPC ' ian</h3>
             <p className="header-subtitle">PADHLE BHAI PADHLE</p>

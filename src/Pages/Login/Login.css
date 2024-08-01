@@ -66,7 +66,7 @@
     align-items: center;
     margin-bottom: 5%;
   }
-.inner-main-login input[type="password"],[type="email"]{
+.inner-main-login input[type="password"],.inner-main-login input[type="email"]{
     border: none;
     border-bottom: 0.5px solid black;
     width: 100%;

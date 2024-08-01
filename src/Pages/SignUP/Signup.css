@@ -21,7 +21,7 @@
 }
 .signup-form .singup-form-input{
     width: 100%;
-    outline: none;
+    /* outline: none; */
     padding: 0.69rem 1rem;
     border: none;
     border-radius: 0.2rem;
@@ -30,6 +30,7 @@
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.093);
     font-size: 0.83rem;
     background-color:#f7f6f6;
+   
 }
 .signup-form .singup-form-input::placeholder{
     color: rgb(179, 178, 178);
@@ -38,6 +39,11 @@
     letter-spacing: 0.1px;
     font-weight: 400;
 }
+.signup-form input{
+  outline-offset: 0.2rem;
+  outline-color: rgb(190, 220, 244) ; 
+}
+
 .signup-form h2{
     font-size: 3em;
     text-align: left;

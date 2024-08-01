@@ -1,5 +1,5 @@
-import "./App.css";
 import LocomotiveScroll from "locomotive-scroll";
+import "./App.css";
 import AboutUs from "./Pages/AboutUs/AboutUs";
 import Home from "./RoutingFiles/Home";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -21,7 +21,10 @@ import ForgatePw from "./Pages/Login/ForgatePw/ForgatePw";
 
 
 function App() {
-const locomotiveScroll = new LocomotiveScroll();
+const locomotiveScroll = new LocomotiveScroll({
+  el: document.querySelector('[data-scroll-container]'),
+  smooth: true
+});
 const [alart, setAlart] = useState(null);
 
 const showAlart = (type,message)=>{

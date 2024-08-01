@@ -32,6 +32,7 @@ const HomeT = () => {
     "Political Science",
     "Psychology",
     "Sanskrit",
+    "Santali",
 
     "Master of Business Administration",
     "Master of Computer Applications",
@@ -44,6 +45,7 @@ const HomeT = () => {
 
   const navigate = useNavigate();
   const [moreDepartment, setMoreDepartment] = useState(false);
+ 
 
   const user = localStorage.getItem("user");
   const token = localStorage.getItem("token");
@@ -74,9 +76,9 @@ const HomeT = () => {
             </div>
             <button
               style={{
-                width: "20%",
+                // width: "20%",
                 cursor: "pointer",
-                padding: "0.7rem 0",
+                padding: "0.7rem 0.5rem",
                 border: "none",
                 background: "#4B97D5",
                 borderRadius: "0.1rem",
@@ -85,36 +87,39 @@ const HomeT = () => {
               onClick={() => {
                 if (!moreDepartment) {
                   document.querySelector(".department-list").style.maxHeight =
-                    "1000vh";
+                    "96vh";
                   setMoreDepartment(true);
                 }
                 if (moreDepartment) {
                   document.querySelector(".department-list").style.maxHeight =
-                    "96vh";
-                  setMoreDepartment(false);
+                    "1000vh";
+                  setMoreDepartment(false); 
                 }
               }}
             >
               {!moreDepartment ? (
+               
+              <p
+              style={{
+                color: "#fff",
+                fontSize: "1.1rem",
+                whiteSpace: "nowrap",
+              }}
+            >
+              See less
+            </p>
+              ): ( 
+               
                 <p
-                  style={{
-                    color: "#fff",
-                    fontSize: "1.1rem",
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  All Departments
-                </p>
-              ) : (
-                <p
-                  style={{
-                    color: "#fff",
-                    fontSize: "1.1rem",
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  See less
-                </p>
+                style={{
+                  color: "#fff",
+                  fontSize: "1.1rem",
+                  // whiteSpace: "nowrap",
+                }}
+              >
+                All Departments
+              </p> 
+               
               )}
             </button>
           </div>

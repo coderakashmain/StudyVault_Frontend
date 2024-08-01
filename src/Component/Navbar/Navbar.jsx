@@ -94,7 +94,7 @@ const Navbar = (props) => {
           setNav(false);
         }
       };
-      window.addEventListener("scroll", handleScroll);
+      window.addEventListener("scroll", handleScroll,{passive : true});
 
       let isScrollingDown = false;
       const handleWheel = (ele) => {
@@ -114,7 +114,9 @@ const Navbar = (props) => {
           navbar.style.transform = "translateY(0%)";
         }
       };
-      window.addEventListener("wheel", handleWheel);
+      window.addEventListener("wheel", handleWheel,{passive : true});
+
+      
     
     return  () =>{
       window.removeEventListener("scroll",handleScroll) ;
@@ -154,6 +156,17 @@ const Navbar = (props) => {
             <NavLink className={getNavClass('/About-us')} to="/About-us"><li>About us</li></NavLink>
             </ul>
           </div>
+
+          <div className="filter-switch">
+            
+                <input
+                  type="text"
+                  name=""
+                  id="searchbox"
+                  placeholder="Search your department"
+                />
+                
+              </div>
 
           {!isAuthenticated ? (
             <div className="log-in">

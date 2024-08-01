@@ -38,7 +38,8 @@
    width: 100%;
    padding: 0.7rem 1rem;
    margin: 1rem 0 1rem;
-   outline: none;
+   outline-offset: 0.25rem;
+   outline-color: rgb(207, 208, 238) ;
    border-radius: 0.2rem;
    font-size: 1rem;
 }

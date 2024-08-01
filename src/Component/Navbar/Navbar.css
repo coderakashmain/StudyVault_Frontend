@@ -17,6 +17,29 @@
     justify-content: space-between;
     align-items: center;
 }
+.filter-switch {
+  width: 43%;
+ 
+}
+
+.filter-switch input{
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border: none;
+  background: transparent;
+  backdrop-filter: blur(50px);
+  border: 1px solid #e3e3e3;
+  color:#e3e3e3 ;
+  outline: none;
+  border-radius: 3rem;
+  font-size: 1rem;
+
+}
+.filter-switch input::placeholder{
+  color: #e3e3e3;
+  font-size: 0.9rem;
+
+}
 
 .hambargar i{
     cursor: pointer;
@@ -29,7 +52,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 3rem;
+  gap: 1rem;
 }
 .navbar a {
   border-radius: 0.2rem;
@@ -202,6 +225,12 @@
     .cross-icon{
       margin-top: 2rem;
    }
+   .filter-switch {
+    width: 55%;
+  }
+   .filter-switch input::placeholder{
+    font-size: 0.8rem;
+  }
   }
   @media (max-width : 454px) {
     .slidebar{

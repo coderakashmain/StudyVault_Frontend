@@ -23,7 +23,7 @@ const ForgatePw = () => {
         <div className="forgate-email-enter-box">
           <p>Enter you Email and we'll send you a link to get back into your account.</p>
           <input type="gmail" name = 'gmail'placeholder='Email' required />
-          <button>Get Link</button>
+          <button>Get OTP</button>
         </div>
         {/* Otp */}
         {/* <div className="forgate-email-enter-box">

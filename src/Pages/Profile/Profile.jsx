@@ -13,7 +13,7 @@ const Profile = (props) => {
   const [user, setUser] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
   const [message, setMessage] = useState('');
-  const [uploadedFiles, setUploadedFiles] = useState([]);
+  // const [uploadedFiles, setUploadedFiles] = useState([]);
 
 
  
@@ -25,22 +25,20 @@ const Profile = (props) => {
  
   }, []);
 
+  // useEffect(() => {
+  //   let fetchFiles = async (e) => {
+  //     e.preventDefault();
+  //     try {
+  //       const response = await axios.get('/api/Profile');
+  //       setUploadedFiles(response);
+  //     } catch (error) {
+  //       console.error('Error fetching files:', error);
+  //       setUploadedFiles([]);
+  //     }
+  //   };
 
-
-  useEffect(() => {
-    let fetchFiles = async (e) => {
-      e.preventDefault();
-      try {
-        const response = await axios.get('/api/Profile');
-        setUploadedFiles(response);
-      } catch (error) {
-        console.error('Error fetching files:', error);
-        setUploadedFiles([]);
-      }
-    };
-
-  fetchFiles();
-  }, []);
+  // fetchFiles();
+  // }, []);
   
 
   const handleFileChange = async (e)=>{
@@ -77,9 +75,6 @@ const Profile = (props) => {
 
         }
 
-        
-       
-        
       } catch (error) {
         console.error('Error uploading file:', error);
         setMessage('Failed to upload the file.');
@@ -89,16 +84,12 @@ const Profile = (props) => {
      
       // incrementPdfCount();
    
-      
     }else{
       console.log('No file selected or invalid file type')
       props.showAlart('Error', 'Please select  file')
       return;
     };
 
-   
-
-  
   };
 
   if (!user) {
@@ -162,7 +153,7 @@ const Profile = (props) => {
               <h3>Recent work</h3>
               <div className="recent-work-box">
                 <div className="recent-download recent">
-                {uploadedFiles.length > 0 ? (
+                {/* {uploadedFiles.length > 0 ? (
                     <ul>
                       {uploadedFiles.map((file) => (
                         <li key={file.id}>
@@ -172,7 +163,7 @@ const Profile = (props) => {
                         </ul>
                       ) : (
                         <p>No files uploaded yet.</p>
-                      )}
+                      )} */}
                 </div>
                 <div className="recent-upload recent"></div>
               </div>

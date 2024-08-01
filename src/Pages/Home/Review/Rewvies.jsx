@@ -5,7 +5,7 @@ const Rewvies = () => {
   return (
     <div className="main-reviews">
       <div className="reviews-header">
-        <i class="fa-solid fa-snowflake"></i>
+        <i className="fa-solid fa-snowflake"></i>
         <div className="first-full-header">
           <div className="first-half-header">
             <div className="first-third-half-header">
@@ -24,7 +24,7 @@ const Rewvies = () => {
                 <p>
                   {" "}
                   Toolfinder Score{" "}
-                  <i class="fa-solid fa-triangle-exclamation"></i>
+                  <i className="fa-solid fa-triangle-exclamation"></i>
                 </p>
                 <p>
                   <strong>7.5</strong>/10
@@ -34,14 +34,14 @@ const Rewvies = () => {
             <div className="rating-div">
               <h3>Rateing</h3>
               <p>
-                <i class="fa-solid fa-star"></i>
+                <i className="fa-solid fa-star"></i>
                 <strong>4.8</strong>/5 <u>120 Rating</u>
               </p>
             </div>
           </div>
           <div className="buton-div-header-review">
             <button className="getlink">
-              Get link <i class="fa-solid fa-location-arrow"></i>
+              Get link <i className="fa-solid fa-location-arrow"></i>
             </button>
           </div>
         </div>

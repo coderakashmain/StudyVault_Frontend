@@ -6,11 +6,14 @@ const Scrollbtn = () => {
 
         const scrollbtn = document.querySelector('#scrollbtn');
     
-        scrollbtn.addEventListener('click',()=>{
-            window.scrollTo({top : 0 , behavior : 'smooth'})
+       const clicktop =  ()=>{
+            window.scrollTo({top : 0 , behavior : 'smooth'});
 
-        })
-        window.addEventListener('scroll',()=>{
+        };
+
+        scrollbtn.addEventListener('click',clicktop,{passive : true})
+       
+       const scrollanim = ()=>{
             if(window.scrollY > 50){
                
                setSticky(true);
@@ -19,11 +22,20 @@ const Scrollbtn = () => {
                
              setSticky(false);
             }
-        })
+        };
+        window.addEventListener('scroll',scrollanim,{passive : true});
+
         const navbarscroll = document.querySelector(".navbar");
-        scrollbtn.addEventListener('click',()=>{
+        const navback =  ()=>{
             navbarscroll.style.transform = 'translate(0)';  
-        })
+        };
+        scrollbtn.addEventListener('click',navback,{passive : true})
+
+        return ()=> {
+            window.removeEventListener('scroll',scrollanim);
+            window.removeEventListener('click',clicktop);
+            scrollbtn.removeEventListener('click',navback)
+        }
     },[])
   return (
     <div id='scrollbtn' className= {`${sticky ? '' : 'hide-btn'}`}>
