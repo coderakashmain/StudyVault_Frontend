@@ -4,7 +4,6 @@ import AboutUs from "./Pages/AboutUs/AboutUs";
 import Home from "./RoutingFiles/Home";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Profile from "./Pages/Profile/Profile";
-// import Filter from "./Component/Home-T/Filter";
 import Navbar from "./Component/Navbar/Navbar";
 import Login from "./Pages/Login/Login";
 import Filter from "./Pages/Home/FilterS/Filter";
@@ -12,7 +11,7 @@ import Departmentlist from './Pages/Home/DepartmentlistS/Departmentlist'
 import Contact from "./Pages/Contact/Contact";
 import Signup from "./Pages/SignUP/Signup";
 import Loginsignup from "./RoutingFiles/Loginsignup";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Alart from "./Component/Alart/Alart";
 import Downloadpdf from "./Pages/Home/FilterS/Downloadpdf/Downloadpdf";
 import ForgatePw from "./Pages/Login/ForgatePw/ForgatePw";
@@ -27,17 +26,17 @@ const locomotiveScroll = new LocomotiveScroll({
 });
 const [alart, setAlart] = useState(null);
 
+
 const showAlart = (type,message)=>{
 
-    
   setAlart(
     { type : type,
      msg : message}
    )
-   setTimeout(() => {
-     setAlart(null);
- }, 1500);
 };
+setTimeout(() => {
+  setAlart(null);
+}, 1500);
 
 const router = createBrowserRouter([
   {
@@ -98,7 +97,6 @@ const router = createBrowserRouter([
   
   return (
     <>
-    
       <RouterProvider router={router} />
     </>
   );

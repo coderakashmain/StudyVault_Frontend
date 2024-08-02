@@ -10,6 +10,16 @@
     backdrop-filter: blur(80px);
     transition: all 0.15s linear;
 }
+/* .navbar::before{
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  background-color: #6a6875;
+} */
 .navber-box{
     height: 100%;
     width: 100%;
@@ -24,9 +34,9 @@
 
 .filter-switch input{
   width: 100%;
-  padding: 0.7rem 1rem;
+  padding: 0.7rem 1.7rem;
   border: none;
-  background: transparent;
+  background: #ffffff00;
   backdrop-filter: blur(50px);
   border: 1px solid #e3e3e3;
   color:#e3e3e3 ;
@@ -40,6 +50,17 @@
   font-size: 0.9rem;
 
 }
+/* .filter-switch input:-webkit-autofill{
+  -webkit-box-shodow : 0 0 0 30px white inset !important;
+  -webkit-text-fill-color: #e3e3e3 !important ;
+
+}
+.filter-switch input:-webkit-autofill:focus{
+  background-color: transparent;
+  -webkit-box-shodow : 0 0 0 30px rgb(216, 106, 106) inset !important;
+  -webkit-text-fill-color: #000 !important ;
+
+} */
 
 .hambargar i{
     cursor: pointer;
@@ -106,7 +127,8 @@
     backdrop-filter: blur(90px);
 }
 .black-nav{
-   background: #000;
+  background: linear-gradient(#5899db, #6e7b959c);
+  
 }
 .profile-nav{
   background: linear-gradient(20deg, #241856, lightseagreen);
@@ -142,6 +164,7 @@
     padding:0.2rem 2rem;
     backdrop-filter: blur(80px);
     overflow: hidden;
+    transition: all 0.2s linear;
   
   }
   .cross-icon{
@@ -166,16 +189,16 @@
     filter: invert(0%);
   
   }
-  /* .slidebar h4 a{
-    font-size: 2.1rem;
+  .slidebar h4 a{
+    font-size: 1.4rem;
   
-  } */
+  }
   .copywrite{
     margin: 30px 0;
       
   }
   .copywrite p{
-   font-size: 0.7rem;
+   font-size: 0.8rem;
    letter-spacing: 0.03rem;
    font-weight: 300;
   }
@@ -234,7 +257,7 @@
   }
   @media (max-width : 454px) {
     .slidebar{
-        width: 55vw;
+        width:60vw;
       }
      .cross-icon{
         margin-top: 2rem;

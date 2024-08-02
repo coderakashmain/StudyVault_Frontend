@@ -5,29 +5,10 @@
     position: absolute;
     top: 0;
     left: 0;
-    background-color: #050b20;
+    background:linear-gradient(90deg ,rgb(31, 31, 78),rgb(33, 143, 160));
     
 }
 
-.about-us-back{
-    background-color: #050b20;
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    height: 100%;
-    width: 100%;
-    z-index:1;
-
-}   
- .about-us-back .about-us-back-box1{
-    width: 31vw;
-    height: 15vh;
-    position: absolute;
-    top: 8%;
-    left: 23%;
-    background-color: rgb(24 201 183);
-    border-radius: 4rem;
-}
 .about-us-contain{
    min-height: 100vh;
     width: 100%;
@@ -35,7 +16,6 @@
     position: relative;
     z-index: 10;
     backdrop-filter: blur(80px);
-    background:linear-gradient(90deg ,rgb(31, 31, 78),rgb(33, 143, 160));
     margin: 0.3rem 0 0  0;
   
 }
@@ -258,16 +238,6 @@
     
 }
 
-/* @media (max-width : 1400px) {
- 
-    .about-us-contain{
-        
-        padding  :60px 0 0 0;
-        
-      
-    }
-    
-} */
 @media (max-width : 835px) {
     .our-info-box-in{
         flex-wrap: wrap;

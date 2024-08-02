@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../HomeS/HomeT.css";
 import { useNavigate } from "react-router-dom";
 
-const HomeT = () => {
+const Departmentlist = () => {
   const departments = [
     "Computer Science",
     "Bachelor of Computer Application",
@@ -63,7 +63,7 @@ const HomeT = () => {
       <div className="main-container">
         <div className="inner-main-container">
           <div className="content-container">
-            <h2>All departmet :</h2>
+            <h2>All departments :</h2>
             <div className="department-list">
               {sortedDepartments.map((department, index) => (
                 <div className="department" key={index}>
@@ -78,7 +78,7 @@ const HomeT = () => {
               style={{
                 // width: "20%",
                 cursor: "pointer",
-                padding: "0.7rem 0.5rem",
+                padding: "0.7rem 1rem",
                 border: "none",
                 background: "#4B97D5",
                 borderRadius: "0.1rem",
@@ -117,7 +117,7 @@ const HomeT = () => {
                   // whiteSpace: "nowrap",
                 }}
               >
-                All Departments
+                More Departments
               </p> 
                
               )}
@@ -128,4 +128,4 @@ const HomeT = () => {
     </>
   );
 };
-export default HomeT;
+export default Departmentlist;

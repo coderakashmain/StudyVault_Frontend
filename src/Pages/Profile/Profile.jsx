@@ -12,7 +12,6 @@ const Profile = (props) => {
   
   const [user, setUser] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
-  const [message, setMessage] = useState('');
   // const [uploadedFiles, setUploadedFiles] = useState([]);
 
 
@@ -22,8 +21,10 @@ const Profile = (props) => {
     if (storedUserData) {
       setUser(JSON.parse(storedUserData));
     }
- 
   }, []);
+  if (!user) {
+    return <div style={{position : 'absolute', left : '0', top : '0px',display : 'flex',flexDirection: 'column', alignItems : 'center ', justifyContent : 'center',fontSize : '2rem',height : '100vh' , width : '100%'}}><box-icon  name='log-in'  size="cssSize"  style = {{fontSize : '10rem',position : 'relative', left : '-2%'}}></box-icon>Oops. Login Fast<Link style = {{color : 'blue',textDecoration : 'underline',fontSize : '01.4rem'}} to="/LogIn">Click here </Link></div>;
+  };
 
   // useEffect(() => {
   //   let fetchFiles = async (e) => {
@@ -39,15 +40,15 @@ const Profile = (props) => {
 
   // fetchFiles();
   // }, []);
-  
+
 
   const handleFileChange = async (e)=>{
+    e.preventDefault();
     const file = e.target.files[0];
     if(file && file.type === 'application/pdf'){
       setSelectedFile(file);
     
     }else{
-      setMessage('Please select a valid PDF file');
       props.showAlart('Failed','Please select a pdf file');
       setSelectedFile(null);
     }
@@ -69,7 +70,6 @@ const Profile = (props) => {
       
         });
         if(response){
-        setMessage('Upload successful');
         props.showAlart('Upload successfull');
         setSelectedFile(null);
 
@@ -77,7 +77,6 @@ const Profile = (props) => {
 
       } catch (error) {
         console.error('Error uploading file:', error);
-        setMessage('Failed to upload the file.');
         props.showAlert('Error', 'Failed to upload the file.');
         
       }
@@ -92,10 +91,7 @@ const Profile = (props) => {
 
   };
 
-  if (!user) {
-    return <div style={{position : 'absolute', left : '0', top : '0px',display : 'flex',flexDirection: 'column', alignItems : 'center ', justifyContent : 'center',fontSize : '2rem',height : '100vh' , width : '100%'}}><box-icon  name='log-in'  size="cssSize"  style = {{fontSize : '10rem',position : 'relative', left : '-2%'}}></box-icon>Oops. Login Fast<Link style = {{color : 'blue',textDecoration : 'underline',fontSize : '01.4rem'}} to="/LogIn">Click here </Link></div>;
-  };
-
+ 
 
 
 

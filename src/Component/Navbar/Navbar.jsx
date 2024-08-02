@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Navbar.css";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { NavLink, Link, useNavigate,useLocation } from "react-router-dom";
 
 const Navbar = (props) => {
+
+  
+
   const navigate = useNavigate();
   const location = useLocation();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -26,23 +29,25 @@ const Navbar = (props) => {
       setIsAuthenticated(false);
     }
   };
+  
+  const hambargar = useRef();
+  const crossicon = useRef();
 
   useGSAP(() => {
-    const hambargar = document.querySelector(".hambargar");
-    const crossicon = document.querySelector(".cross-icon i");
 
     const openTl = gsap.timeline({ paused: true });
 
     openTl
       .to(".slidebar", {
         left: 0,
-        duration: 0.3,
+        duration: 0.4,
       })
       .from(".slidebar-title", {
         x: 100,
-        duration: 0.3,
-        stagger: 0.2,
+        duration: 0.6,
+        stagger: 0.3,
         opacity: 0,
+       ease: "power2.out"
       })
       .from(".cross-icon i", {
         y: -10,
@@ -58,10 +63,10 @@ const Navbar = (props) => {
 
     closeTl.to(".slidebar", {
       left: -950,
-      duration: 0.4,
+      duration: 1.3,
     });
 
-    hambargar.addEventListener("click", () => {
+    hambargar.current.addEventListener("click", () => {
       openTl.restart();
       gsap.to(".slidebar", {
         display: "block",
@@ -69,7 +74,7 @@ const Navbar = (props) => {
       });
     });
 
-    crossicon.addEventListener("click", () => {
+    crossicon.current.addEventListener("click", () => {
       closeTl.restart();
     });
     const refrasher = document.querySelectorAll(".slidebar-title a");
@@ -119,14 +124,28 @@ const Navbar = (props) => {
       
     
     return  () =>{
-      window.removeEventListener("scroll",handleScroll) ;
-      window.removeEventListener('wheel',handleWheel) ;
+      window.removeEventListener("scroll",handleScroll,{passive : true}) ;
+      window.removeEventListener('wheel',handleWheel,{passive : true}) ;
     }
   }, []);
 
   const getNavClass = (path) => {
     return location.pathname === path ? 'red' : '';
   };
+
+  // const searchRef = useRef();
+  // const onSearch = ()=>{
+  //   const input = searchRef.current;
+  //   const filter= input.value.toUpperCase();
+
+  //   const list = document.querySelectorAll('.department p');
+
+  //   list.forEach((el)=>{
+  //     const text = el.textContent.toUpperCase();
+  //     el.style.display = text.includes(filter)  ? '' : 'none';
+  //   });
+  // }
+
 
   return (
     <>
@@ -141,7 +160,7 @@ const Navbar = (props) => {
         `}
       >
         <div className="navber-box">
-          <div className="hambargar">
+          <div ref={hambargar} className="hambargar">
             <i className="fa-solid fa-bars"></i>
           </div>
           {/* <div className="web-logo">
@@ -159,11 +178,13 @@ const Navbar = (props) => {
 
           <div className="filter-switch">
             
-                <input
+                <input 
+                // ref={searchRef}
                   type="text"
                   name=""
                   id="searchbox"
                   placeholder="Search your department"
+                  // onChange={onSearch}
                 />
                 
               </div>
@@ -180,8 +201,8 @@ const Navbar = (props) => {
         </div>
       </div>
       <div className="slidebar">
-        <div className="cross-icon">
-          <i className="fa-solid fa-xmark"></i>
+        <div  className="cross-icon">
+          <i ref={crossicon} className="fa-solid fa-xmark"></i>
         </div>
         <div className="slidebar-box">
           <h4 className="slidebar-title">
