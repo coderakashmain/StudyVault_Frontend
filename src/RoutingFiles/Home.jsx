@@ -11,7 +11,7 @@ const Home = () => {
   return (
    <>
         <Scrollbtn/>
-        <HomeT/>
+        <HomeT title = {'Your StudyVault'} titlepara = {'Welcome to StudyVault, your one-stop solution for accessing a wide array of academic resources and papers across multiple departments. I am help you in your all exams if you make me your exam Bff😊.'}/>
       <Outlet />
       <Reviews/>
         <Footer/>

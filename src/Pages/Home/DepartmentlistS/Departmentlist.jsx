@@ -63,7 +63,10 @@ const Departmentlist = () => {
       <div className="main-container">
         <div className="inner-main-container">
           <div className="content-container">
-            <h2>All departments :</h2>
+            <div className="department-title-box">
+               <h2>All departments :</h2>
+               <button>Question Papers<i className="fa-solid fa-not-equal"></i></button>
+            </div>
             <div className="department-list">
               {sortedDepartments.map((department, index) => (
                 <div className="department" key={index}>

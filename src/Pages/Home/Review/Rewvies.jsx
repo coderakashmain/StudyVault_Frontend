@@ -11,19 +11,19 @@ const Rewvies = () => {
             <div className="first-third-half-header">
               <div>
                 <h2>
-                  Intern{" "}
+                  StudyVault{" "}
                   <sup>
                     <i className="fa-solid fa-certificate"></i>
                   </sup>
                 </h2>
                 <p>
-                  Note-Taking <i className="fa-solid fa-angle-right"></i>Evenote
+                  Papers-Notes <i className="fa-solid fa-angle-right"></i>Downloader
                 </p>
               </div>
               <div>
                 <p>
                   {" "}
-                  Toolfinder Score{" "}
+                  Tool Quality Score {" "}
                   <i className="fa-solid fa-triangle-exclamation"></i>
                 </p>
                 <p>
@@ -32,7 +32,7 @@ const Rewvies = () => {
               </div>
             </div>
             <div className="rating-div">
-              <h3>Rateing</h3>
+              <h3>Rating</h3>
               <p>
                 <i className="fa-solid fa-star"></i>
                 <strong>4.8</strong>/5 <u>120 Rating</u>

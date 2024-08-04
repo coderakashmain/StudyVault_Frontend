@@ -6,6 +6,12 @@ const Contact = () => {
   const handleEmailButtonClick = () => {
     window.open(`mailto:${emailAddress}`, '_blank');
   };
+  const handleEmailButtoncallakashClick = () => {
+    window.open(`tel:${8144958844}`, '_blank');
+  };
+  const handleEmailButtoncalljituClick = () => {
+    window.open(`tel:${7735010252}`, '_blank');
+  };
   return (
     <>
       <div className="contact_main_conatainer">
@@ -20,20 +26,20 @@ const Contact = () => {
             <div className="contact-location-details">
               <div className="first-location-box contact_box">
                 <i className="fa-solid fa-street-view"></i>
-                <h3>@baripada</h3>
+                <h3>Akash Bindhani</h3>
                 <ul>
-                  <li>hfgjb 4576 6fgjv</li>
-                  <li>jbv vjfb fvf</li>
-                  <li>+91 1236549870</li>
+                  <li>Bahalda,Baripada</li>
+                  <li onClick={handleEmailButtonClick}>ab791235@gmail.com</li>
+                  <li onClick={handleEmailButtoncallakashClick} style={{cursor : 'pointer',background : '#d1d1d1',width : '50%',margin : 'auto',padding : '0.2rem 0.3rem',color :''}}>call me</li>
                 </ul>
               </div>
               <div className="second-location-box contact_box">
                 <i className="fa-solid fa-street-view"></i>
-                <h3>@baripada</h3>
+                <h3>Jitu Pradhan</h3>
                 <ul>
-                  <li>hfgjb 4576 6fgjv</li>
-                  <li>jbv vjfb fvf</li>
-                  <li>+91 1236549870</li>
+                  <li>Chikity,Berahampur</li>
+                  <li onClick={handleEmailButtonClick} >jitupra73@gmail.com</li>
+                  <li onClick={handleEmailButtoncalljituClick} style={{cursor : 'pointer',background : '#d1d1d1',width : '50%',margin : 'auto',padding : '0.2rem 0.3rem',color :''}}>call me</li>
                 </ul>
               </div>
               <div className="third-location-box contact_box">

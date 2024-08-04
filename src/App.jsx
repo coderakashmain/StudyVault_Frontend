@@ -15,6 +15,7 @@ import { useEffect, useState } from "react";
 import Alart from "./Component/Alart/Alart";
 import Downloadpdf from "./Pages/Home/FilterS/Downloadpdf/Downloadpdf";
 import ForgatePw from "./Pages/Login/ForgatePw/ForgatePw";
+import Preloader from "./Component/Preloader/Preloader";
 
 
 
@@ -41,7 +42,7 @@ setTimeout(() => {
 const router = createBrowserRouter([
   {
     path: '/',
-    element:( <><Navbar/><Alart alart={alart}/><Home/></>) ,
+    element:( <><Preloader/><Navbar/><Alart alart={alart}/><Home/></>) ,
     children :[
       {
         path : '',
@@ -56,15 +57,15 @@ const router = createBrowserRouter([
   },
   {
     path: "/Contact-Us",
-    element: ( <><  Navbar/><Alart alart={alart}/><Contact/></>  ),
+    element: ( <><Preloader/><  Navbar/><Alart alart={alart}/><Contact/></>  ),
   },
   {
       path : '/Downloadpdf',
-     element : ( <><Alart alart={alart}/><Downloadpdf/></>  ),
+     element : ( <><Preloader/><Alart alart={alart}/><Downloadpdf/></>  ),
   },
   {
     path: "/LogIn",
-    element: ( <><Alart alart={alart}/><Loginsignup /></>  ),
+    element: ( <><Preloader/><Alart alart={alart}/><Loginsignup /></>  ),
     children : [
       {
         path: "",
@@ -83,11 +84,11 @@ const router = createBrowserRouter([
   
   {
     path: "/Profile",
-    element: ( <><Navbar/><Alart alart={alart}/><Profile showAlart = {showAlart} /></>  ),
+    element: ( <><Preloader/><Navbar/><Alart alart={alart}/><Profile showAlart = {showAlart} /></>  ),
   },
   {
     path: "/About-us",
-    element: ( <><Navbar/><Alart alart={alart}/><AboutUs/></>  ),
+    element: ( <><Preloader/><Navbar/><Alart alart={alart}/><AboutUs/></>  ),
   },
 ]);
 

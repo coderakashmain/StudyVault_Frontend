@@ -2,8 +2,11 @@ import React from "react";
 import "./HomeT.css";
 import "remixicon/fonts/remixicon.css";
 import Image from "./home-image.png";
+import {Link, useNavigate} from 'react-router-dom'
 
-const HomeT = () => {
+
+const HomeT = (props) => {
+  const navigate = useNavigate();
   return (
     <>
       <div className="main-container">
@@ -11,31 +14,31 @@ const HomeT = () => {
           <div className="inner-landing">
             <div className="home-info">
               <h1>Hi! I Am</h1>
-              <h2>Dharama Pradhan</h2>
+              <h2>{props.title}</h2>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam
-                voluptate libero illo ad iure praesentium itaque unde deserunt
-                laboriosam porro.
+                {props.titlepara}
               </p>
               <div className="live-count">
                 <div className="counts">
                   <h3>500K+</h3>
-                  <p>Users use this app</p>
+                  <p>Users visite this app</p>
                 </div>
                 <div className="counts">
                   <h3>20K+</h3>
-                  <p>Users review this app</p>
+                  <p>Users use this app</p>
                 </div>
                 <div className="counts">
                   <h3>1K+</h3>
-                  <p>user review this app</p>
+                  <p>Total Resources download </p>
                 </div>
               </div>
               <div className="buttons-home">
-                <button>Read me</button>
-                <a href="">
+                <button onClick={()=>{
+                  navigate('About-us');
+                }}>Read me</button>
+                <Link to="/LogIn/Signup">
                   Sign Up <i className="fa-solid fa-arrow-right"></i>
-                </a>
+                </Link>
               </div>
             </div>
             <div className="home-image-section">
@@ -45,22 +48,22 @@ const HomeT = () => {
               <div className="overfolw-box box-one">
               <i className="fa-solid fa-cloud"></i>
                 <div>
-                <h2>Questions</h2>
-                <p>We are alwes for you Here</p>
+                <h2>Questions Papers</h2>
+                <p>I am always for you Here</p>
                 </div>
               </div>
               <div className="overfolw-box box-two">
               <i className="fa-solid fa-file-pdf"></i>
                 <div>
                 <h2>Notes</h2>
-                <p>We are alwes for you Here</p>
+                <p>I also provide you Notes</p>
                 </div>
               </div>
               <div className="overfolw-box box-three">
               <i className="fa-solid fa-id-card-clip"></i>
                 <div>
                 <h2>Documnets</h2>
-                <p>We are always for you Here</p>
+                <p>You can save you college document Securly</p>
                 </div>
               </div>
             </div>

@@ -1,0 +1,37 @@
+.preloader-box{
+    height: 6rem;
+    width: 6rem;
+    /* background-color: aqua; */
+    animation: translate 1.3s ease-in-out  infinite;
+    border: 0.4rem solid;
+    border-color: rgb(25, 116, 138) #fff rgb(83, 42, 228) #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 29%;
+}
+
+@keyframes translate {
+    from{
+        transform: rotate(0deg);
+    }
+    from{
+        transform: rotate(360deg);
+    }
+}
+.preloader-circle{
+    width: 40%;
+    height: 40%;
+    border-radius: 50%;
+    border: 0.5rem solid;
+    border-color: rgb(196, 212, 225) aqua rgb(196, 212, 225) rgb(196, 212, 225);
+    animation: translatecircel 1s ease-in-out  infinite;
+}
+@keyframes translatecircel {
+    from{
+        transform: rotate(0deg);
+    }
+    from{
+        transform: rotate(360deg);
+    }
+}

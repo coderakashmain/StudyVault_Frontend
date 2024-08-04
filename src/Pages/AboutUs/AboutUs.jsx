@@ -67,9 +67,9 @@ const AboutUs = () => {
                         </div>
                         <div className="info-visiting">
                           <p>Visit me ~
-                          <a href="" target='__blank'><i className="fa-brands fa-github"></i></a>
-                          <a href="" target='__blank'><i className="fa-brands fa-linkedin"></i></a>
-                          <a href="" target='__blank'><i className="fa-brands fa-instagram"></i></a>
+                          <a href="https://github.com/Jitupra9" target='__blank'><i className="fa-brands fa-github"></i></a>
+                          <a href="https://www.linkedin.com/in/jitupradhan99/" target='__blank'><i className="fa-brands fa-linkedin"></i></a>
+                          <a href="https://www.instagram.com/jitu._pradhan._99/" target='__blank'><i className="fa-brands fa-instagram"></i></a>
                           </p>
                         </div>
                       </div>

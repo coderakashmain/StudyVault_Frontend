@@ -52,14 +52,10 @@
   border: none;
   background-color: white;
   font-size: 23px;
-  box-shadow: 0.5px 0.5px 30px 0.5px gray;
+  box-shadow: 0.5px 0.5px 30px 0.5px #80808069;
+  user-select: none;
 }
 
-/* .ug-box:hover,
-.pg-box:hover {
-  background: linear-gradient(black, rgb(74, 143, 200));
-  color: white;
-} */
 
 .ug-active-color{
   background: linear-gradient(rgba(0, 0, 0, 0.374), rgb(74, 143, 200));

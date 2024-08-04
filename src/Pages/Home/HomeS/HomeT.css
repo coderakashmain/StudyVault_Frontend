@@ -83,7 +83,7 @@
   position: absolute; /* Absolute positioning for centering */
   left:5%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: all 0.5s ease;
 }
 .buttons-home{
   display: flex;
@@ -98,13 +98,23 @@
   outline: none;
   padding:1% 6%;
   border-radius: 19px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
 
+}
+.buttons-home button:hover{
+transform: scale(0.94);
+background-color: rgb(0, 157, 255);
 }
 .buttons-home a{
   font-size:14px;
   font-weight: 700;
   color: rgb(10, 55, 88);
   text-shadow: 0.5px 0.5px 1px 1px  black;
+  transition: all 0.2s ease-in-out;
+}
+.buttons-home a:hover{
+  transform: translateX(10%);
 }
 .overfolw-box{
   background-color: white;
@@ -128,6 +138,7 @@
   left: 20%;
   z-index: 2;
   transform: translateX(-50%);
+  transition: all 0.5s ease-in-out;
 }
 .overfolw-box i{
   color: rgb(233, 122, 3);
@@ -138,25 +149,26 @@
   right: -5%;
   z-index: 2;
   transform: translateY(-50%);
+  transition: all 0.5s ease-in-out;
 }
 .box-three {
   bottom: 10%;
   left: 0;
   z-index: 2;
   transform: translateY(-50%);
+  transition: all 0.5s ease-in-out;
 
 }
 .box-one:hover {
-  transform: translateX(-50%) scale(1.5); /* Increase size on hover */
-  transition: transform 0.5s ease;
+  transform: translateX(-50%) scale(1.2); /* Increase size on hover */
+  
 }
 .box-two:hover {
-  transform: translateY(-50%) scale(1.5); /* Increase size on hover */
-  transition: all 0.5s ease-in-out;
+  transform: translateY(-50%) scale(1.2); /* Increase size on hover */
+
 }
 .box-three:hover {
-  transform: scale(1.5); /* Increase size on hover */
-  transition: all 0.5s ease-in-out;
+  transform: scale(1.2); /* Increase size on hover */
 }
 /* ----------------------------- */
 
@@ -168,7 +180,6 @@
   /* flex-direction: column; */
   /* max-height:96vh ; */
   width: 100%;
-  overflow : hidden;
   transition: all 0.5s ease-in-out;
   gap: 2rem;
 
@@ -180,6 +191,33 @@
  flex-basis: 2;
  margin: 0.8rem 0rem;
  width: 25%;
+}
+.department-title-box{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1.4rem 0;
+}
+.department-title-box h2{
+  font-size: 1.9rem;
+}
+.department-title-box button{
+  border: none;
+  outline: none;
+  padding: 0.7rem 1rem;
+  appearance:none;
+  background-color: #07857a;
+  color: #fff;
+  border-radius: 0.4rem;
+  font-size: 1rem;
+
+}
+.department-title-box button i{
+   margin: 0rem 0 0 0.5rem;
+   filter: brightness(0) saturate(100%) invert(100%) sepia(97%) saturate(13%) hue-rotate(237deg) brightness(104%) contrast(104%);
+   font-size: 1.1rem;
+
 }
 .department p{
  
@@ -501,10 +539,15 @@ footer a{
     margin-bottom: 5%;
   }
   
-
+  .department-title-box h2{
+    font-size: 1.5rem;
+  }
 }
 @media only screen and (max-width: 376px){
   html{
     font-size: 30%;
+  }
+  .department-title-box h2{
+    font-size: 1.3rem;
   }
 }

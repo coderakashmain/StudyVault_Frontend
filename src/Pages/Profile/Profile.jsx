@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./Profile.css";
 import{ useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
@@ -14,13 +14,14 @@ const Profile = (props) => {
   const [selectedFile, setSelectedFile] = useState(null);
   // const [uploadedFiles, setUploadedFiles] = useState([]);
 
-
  
   useEffect(() => {
     const storedUserData = localStorage.getItem('user');
     if (storedUserData) {
       setUser(JSON.parse(storedUserData));
     }
+    
+    
   }, []);
   if (!user) {
     return <div style={{position : 'absolute', left : '0', top : '0px',display : 'flex',flexDirection: 'column', alignItems : 'center ', justifyContent : 'center',fontSize : '2rem',height : '100vh' , width : '100%'}}><box-icon  name='log-in'  size="cssSize"  style = {{fontSize : '10rem',position : 'relative', left : '-2%'}}></box-icon>Oops. Login Fast<Link style = {{color : 'blue',textDecoration : 'underline',fontSize : '01.4rem'}} to="/LogIn">Click here </Link></div>;
@@ -43,7 +44,6 @@ const Profile = (props) => {
 
 
   const handleFileChange = async (e)=>{
-    e.preventDefault();
     const file = e.target.files[0];
     if(file && file.type === 'application/pdf'){
       setSelectedFile(file);
@@ -62,7 +62,7 @@ const Profile = (props) => {
       const formData = new FormData();
       formData.append('file', selectedFile);
         
-      try {
+    try {
          const response =  axios.post('/api/Profile', formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
@@ -96,7 +96,7 @@ const Profile = (props) => {
 
 
   return (
-    <section id="profile">
+   <section id="profile">
       <div className="profile-outer-box">
         <div className="profile-left-inner-box">
           <div className="profile-info">
