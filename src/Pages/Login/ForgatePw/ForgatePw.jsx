@@ -16,6 +16,7 @@ const ForgatePw = (props) => {
   const [timer, setTimer] = useState(0);
   const [message, setMessage] = useState('');
   const navigate = useNavigate(); 
+  const [PasswordResetPage, setPasswordResetPage] = useState(false)
   const backtohome = ()=>{
      navigate('/');
   }
@@ -91,10 +92,7 @@ const handleChange = (e)=>{
       try{
         const response =   await axios.post('/api/LogIn/verifyOtp ',{otp : otpValue , email});
         props.showAlart('Verify successfull');
-        if(response.status === 200){
-          navigate('/LogIn/ForgatePw/ResetPassword',{state : {email}});
-
-        }
+        setPasswordResetPage(true);
         
       }
       catch(error){
@@ -119,8 +117,78 @@ const handleChange = (e)=>{
       props.showAlart('Please enter OTP sent to your gmail');
     }
   }
+
+
+  //password reset page
+
+  const [resetPassword, setResetPassword] = useState('');
+    const [reEnterResetPassword, setReEnterResetPassword] = useState('');
+    const [timerresetpage, setTimerResetPage] = useState(300);
+    const [resetback, setResetback] = useState(true);
+
+
+    useEffect(() => {
+       if(PasswordResetPage){
+        let interval;
+        if (timerresetpage > 0) {
+            interval = setInterval(() => {
+              setTimerResetPage((prev) => prev - 1);
+                    
+           }, 1000);
+        }
+        else if (timerresetpage === 0 && resetback) {
+            setResetback(false);
+        }
+        return () => clearInterval(interval);
+       }
+    }, [timerresetpage,resetback,PasswordResetPage]);
+
+    useEffect(()=>{
+        if(timerresetpage === 0){
+          setResetback(false);
+        }
+    },[timerresetpage])
+
+  
+    // }, [email, navigate]);
+
+   
+
+
+
+    const handleSubmitotp = async (e) => {
+        e.preventDefault();
+        if (resetPassword !== reEnterResetPassword) {
+            props.showAlart('Password do not match');
+            return;
+        }
+
+        if (resetPassword === reEnterResetPassword) {
+            try {
+                await axios.post('/api/LogIn/ForgatePw/ResetPassword', { email, resetPassword });
+                props.showAlart('Password Reset succesfully');
+                navigate('/LogIn');
+            }
+            catch (error) {
+                if (error.response && error.response.status === 500) {
+                    props.showAlart('Error  inserting in database')
+                }
+                else {
+                    props.showAlart('Internal error');
+                }
+            }
+        }
+        else {
+
+
+            props.showAlart('Please Write a password');
+
+        }
+
+    }
   return (
-    <div id='forgatepw'>
+    <>
+    {!PasswordResetPage ? (<div id='forgatepw'>
       <BackButton/>
       <div className="forgate-box">
         <div className="forgate-logo-box">
@@ -159,7 +227,39 @@ const handleChange = (e)=>{
           
         </div>
       </div>
-    </div>
+    </div>) : (<div id='reset-password'>
+
+      {resetback ? (
+          <div className="reset-password-box">
+              <h2>Reset your Password</h2> <form onSubmit={handleSubmitotp}>
+                  <input type="password" name="reset-password" onChange={(e) => { setResetPassword(e.target.value) }} value={resetPassword} placeholder='Reset password' id="" required autoCorrect='none' />
+                  <input type="password" name="reenter-reset-password"
+                      onChange={(e) => { setReEnterResetPassword(e.target.value) }}
+                      value={reEnterResetPassword} placeholder='Re-enter password' required  autoCorrect='none'/>
+                  <button type='submit'>Change password</button>
+              </form>
+              <hr />
+              <button onClick={(e)=>{
+                navigate('/');
+                PasswordResetPage(false);
+              }} className=' reset-btn'> Back to Home page</button>
+          </div>) : (<div className=' backto-log-in'>
+              <h2>Session expired, Back to Login Page!
+                  <button onClick={() => {
+                      navigate('/LogIn');
+                      PasswordResetPage(false);
+                      
+                  }}>Back</button>
+              </h2>
+          </div>)}
+      </div>)}
+
+
+
+
+      </>
+
+
   )
 }
 

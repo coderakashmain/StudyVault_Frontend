@@ -61,7 +61,7 @@ const Signup = (props) => {
         <form action="/api/LogIn/signup"  id="form" onSubmit={signupsubmit} method="post" >
           <div className="name-box">    
             <div className="first-name-box">
-            <label htmlFor="firstname">Name :- </label>
+            <label htmlFor="firstname">First Name :- </label>
             <input type="text" name="firstname" onChange={signupchange}    value={signupdata.firstname}  id="firstname" className="singup-form-input" required/>
             </div>
             <div className="last-name-box">
