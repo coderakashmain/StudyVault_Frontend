@@ -1,24 +1,21 @@
-* {
-  box-sizing: border-box;
-  color: rgba(176, 172, 172, 0.943);
-}
+
 .fa-snowflake {
   font-size: 44px;
   color: rgb(13, 79, 61);
   margin-bottom: 2%;
 }
-p {
+.first-third-half-header p {
   font-weight: 500;
 }
-h2 {
-  font-weight: 700;
-  font-size: 34px;
+.first-third-half-header h2 {
+    font-weight: 700;
+    font-size: 2.4rem;
 }
-h2 i {
+.first-third-half-header h2 i {
   font-size: 15px;
   color: rgb(13, 79, 61);
 }
-strong {
+.first-half-header  strong {
   font-size: 16px;
   font-weight: 700;
   color: rgb(13, 79, 61);
@@ -54,7 +51,7 @@ strong {
   font-weight: 600;
   color: rgb(41, 39, 39);
 }
-u {
+.first-half-header  u {
   margin-left: 10%;
   text-decoration-line: underline;
 }
@@ -78,7 +75,7 @@ u {
 
 
 
-input[type="range"]{
+.sectionn-half-two input[type="range"]{
     width:20rem;
     height: 3px;
     outline: none;
@@ -87,7 +84,7 @@ input[type="range"]{
     overflow: hidden;
     box-shadow: inset 0 0 10px rgba(144, 143, 143, 0.5);
 }
-input[type="range"]::-webkit-slider-thumb{
+.sectionn-half-two input[type="range"]::-webkit-slider-thumb{
     appearance: none;
     height: 0px;
     width: 0px;
@@ -96,7 +93,7 @@ input[type="range"]::-webkit-slider-thumb{
     cursor: pointer;
 }
 
-hr{
+.main-reviews  hr{
     margin: 2% 0%;
 }
 
@@ -128,12 +125,13 @@ hr{
     background-color: rgba(255, 179, 0, 0.905);
     margin: 5% 0%;
 }
-sub{
+.section-half-one sub{
     font-size: 10px;
     font-weight: 600;
 }
 .section-half-one strong{
-    font-size: 35px;
+    font-size: 2.6rem;
+    font-weight: 500;
 }
 .star-rating i{
     color: rgb(13, 82, 13);

@@ -200,7 +200,8 @@ background-color: rgb(0, 157, 255);
   margin: 1.4rem 0;
 }
 .department-title-box h2{
-  font-size: 1.9rem;
+  font-size: 2.3rem;
+  font-weight: 500;
 }
 .department-title-box button{
   border: none;

@@ -61,32 +61,32 @@ const Signup = (props) => {
         <form action="/api/LogIn/signup"  id="form" onSubmit={signupsubmit} method="post" >
           <div className="name-box">    
             <div className="first-name-box">
-            <label htmlFor="firstname">Name </label>
-            <input type="text" name="firstname" onChange={signupchange}    value={signupdata.firstname}  id="firstname" placeholder="First name" className="singup-form-input" required/>
+            <label htmlFor="firstname">Name :- </label>
+            <input type="text" name="firstname" onChange={signupchange}    value={signupdata.firstname}  id="firstname" className="singup-form-input" required/>
             </div>
             <div className="last-name-box">
-            <label htmlFor="secondname"> Last Name </label>
-            <input type="text" name="lastname" onChange={signupchange}   value={signupdata.lastname}  id="secondname" placeholder="Last name" className="singup-form-input"/>
+            <label htmlFor="secondname"> Last Name :- </label>
+            <input type="text" name="lastname" onChange={signupchange}   value={signupdata.lastname}  id="secondname"className="singup-form-input"/>
 
             </div>
           </div>
-            <label htmlFor="rollno">College Roll No </label>
-            <input type="text" id="rollno" name="rollno"onChange={signupchange}   value={signupdata.rollno}  placeholder="ZA22-540 " className="singup-form-input" 
-              pattern="[A-Z]{2}[0-9]{2-3} [A-Z]{1-5}-[0-9]{1-5}" required/>
+            <label htmlFor="rollno">College Roll No :- </label>
+            <input type="text" id="rollno" name="rollno"onChange={signupchange}   value={signupdata.rollno} className="singup-form-input" 
+              pattern="[A-Z]{2}[0-9]{2}-[0-9]{1-5}" required/>
 
-           <label htmlFor="gmail">Gmail </label>
+           <label htmlFor="gmail">Gmail :- </label>
             <input type="email" name="gmail" onChange={signupchange} value={signupdata.gmail}  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-         id="gmail" placeholder="yourname@gmail.com" className="singup-form-input" required/>
+         id="gmail"  className="singup-form-input" required/>
             <div className="sigup-password-box">
               <div className="currnet-password-signin">
-                <label htmlFor="password">Password </label>
-                <input type="password" id="password" name="password"onChange={signupchange}  autoComplete="off" value={signupdata.password} placeholder="Create a password" className="singup-form-input" required/>
+                <label htmlFor="password">Password :- </label>
+                <input type="password" id="password" name="password"onChange={signupchange}  autoComplete="off" value={signupdata.password}  className="singup-form-input" required/>
 
               </div>
               <div className="new-password-signin">
 
-                <label htmlFor="passwordcheck">Confirm password </label>
-                <input type="password" id="passwordcheck" name="passwordcheck" onChange={signupchange} autoComplete="off"  value={signupdata.passwordcheck} placeholder="Re-enter your password"className="singup-form-input" />
+                <label htmlFor="passwordcheck">Confirm password :- </label>
+                <input type="password" id="passwordcheck" name="passwordcheck" onChange={signupchange} autoComplete="off"  value={signupdata.passwordcheck} className="singup-form-input" />
               </div>
            
             </div>

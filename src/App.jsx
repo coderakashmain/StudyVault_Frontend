@@ -16,6 +16,8 @@ import Alart from "./Component/Alart/Alart";
 import Downloadpdf from "./Pages/Home/FilterS/Downloadpdf/Downloadpdf";
 import ForgatePw from "./Pages/Login/ForgatePw/ForgatePw";
 import Preloader from "./Component/Preloader/Preloader";
+import PasswordResetPage from "./RoutingFiles/PasswordResetPage";
+import ResetPassword from "./Pages/Login/ForgatePw/ResetPassword/ResetPassword";
 
 
 
@@ -37,7 +39,7 @@ const showAlart = (type,message)=>{
 };
 setTimeout(() => {
   setAlart(null);
-}, 1500);
+}, 2200);
 
 const router = createBrowserRouter([
   {
@@ -77,7 +79,17 @@ const router = createBrowserRouter([
       },
       {
         path: "ForgatePw",
-        element: <ForgatePw showAlart = {showAlart}/>
+        element: <PasswordResetPage showAlart = {showAlart}/>,
+        children :[
+          {
+            path : '',
+            element : <ForgatePw showAlart = {showAlart}/>
+          },
+          {
+            path :'ResetPassword',
+            element :<ResetPassword showAlart = {showAlart}/>
+          }
+        ]
       },
     ]
   },
