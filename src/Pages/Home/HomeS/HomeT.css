@@ -399,6 +399,35 @@ footer a{
 
 
 
+
+@media only screen and (max-width: 985px){
+  html{
+    font-size: 70%;
+  }
+  .slidebar{
+    width: 50vw;
+  }
+  .first-footer-section{
+    justify-content: space-around;
+   
+  }
+  .box-one {
+    top: 5%;
+    transition:all 1s ease-in-out;
+  }
+  .box-two {
+    right: -25%;
+    transition:all 1s ease-in-out;
+  }
+  .box-three {
+    left: -20%;
+    transition:all 1s ease-in-out;
+  }
+  html{
+    font-size: 75%;
+    transition:all 1s ease-in-out;
+  }
+}
 @media only screen and (max-width: 835px){
   .department p{
     font-size: 10px;
@@ -433,40 +462,18 @@ footer a{
     font-size: 50%;
   }
   .home-image-section{
-    width:35%;
+    width: 40%;
+    position: relative;
   }
-}
+  .background-image img{
+    height: 90%;
+    bottom: 0px;
+  }
+  .home-info{
+    width: 50%;
+    /* border: 2px solid rebeccapurple; */
+  }
 
-
-
-@media only screen and (max-width: 985px){
-  html{
-    font-size: 70%;
-  }
-  .slidebar{
-    width: 50vw;
-  }
-  .first-footer-section{
-    justify-content: space-around;
-   
-  }
-  .box-one {
-    top: 5%;
-    left: 5%;
-    transition:all 1s ease-in-out;
-  }
-  .box-two {
-    right: -40%;
-    transition:all 1s ease-in-out;
-  }
-  .box-three {
-    left:-30%;
-    transition:all 1s ease-in-out;
-  }
-  html{
-    font-size: 75%;
-    transition:all 1s ease-in-out;
-  }
 }
 @media only screen and (max-width: 695px){
   html{
@@ -475,6 +482,20 @@ footer a{
   .first-footer-section{
     justify-content: space-evenly;
    
+  }
+  .home-image-section{
+    width: 45%;
+    position: relative;
+  }
+  .background-image img{
+    height: 80%;
+    bottom: 0px;
+  }
+  .background-image{
+    height: 80%;
+  }
+  .box-three{
+    bottom:20%;
   }
 }
 @media only screen and (max-width: 519px){
@@ -497,8 +518,21 @@ footer a{
     padding:2%;
   }
   .home-image-section {
-    height:350px;
+    height: 400px;
     width: 100%;
+  }
+  .background-image{
+    height: 100%;
+  }
+  .background-image img{
+    height: 100%;
+    bottom: 0px;
+  }
+  .box-two {
+   right:-5%;
+  }
+  .box-three{
+    left: -5%;
   }
   
 }

@@ -278,8 +278,7 @@ transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
     margin:5% 0%;
 }
-input[type="range"]{
-    width: 9rem;
-    transition: all 0.5s ease-in-out;
+.sectionn-half-two input[type="range"]{
+    width:12rem;
 }
 }
