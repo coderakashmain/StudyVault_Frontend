@@ -6,7 +6,10 @@ const Preloader = () => {
     useEffect(()=>{
     
         const preloader =()=>{
-            preloaderRef.current.style.display = 'none';
+            if(preloaderRef.current){
+
+                preloaderRef.current.style.display = 'none';
+            }
         }
         window.addEventListener('load',preloader);
 

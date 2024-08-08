@@ -37,15 +37,7 @@ const Navbar = (props) => {
   const hambargar = useRef();
   const crossicon = useRef();
 
-  const glitch = useRef();
-  const glitchOpen = ()=>{
-    setTimeout(() => {
-      glitch.current.style.display = 'block';
-    }, 250);
-  }
-  const glitchclose  = ()=>{
-    glitch.current.style.display = 'none';
-  }
+
    
 
   useGSAP(() => {
@@ -87,7 +79,7 @@ const Navbar = (props) => {
         display: "block",
         duration: 0.01,
       });
-      glitchOpen();
+
 
     }
 
@@ -96,21 +88,18 @@ const Navbar = (props) => {
     
     crossicon.current.addEventListener("click", () => {
       closeTl.restart();
-      glitchclose();
     });
 
     const backToPage = ()=>{
-      glitchclose();
       closeTl.restart();
     } 
 
-    glitch.current.addEventListener('click',backToPage);
+    // glitch.current.addEventListener('click',backToPage);
     const refrasher = document.querySelectorAll(".slidebar-title a");
 
     refrasher.forEach((e) => {
       e.addEventListener("click", () => {
         closeTl.restart();
-        glitchclose();
       });
     });
   });
@@ -294,7 +283,7 @@ useEffect(()=>{
           <p>V.1.0.1</p>
         </div>
       </div>
-      <div ref={glitch} className="glitchproblem"></div>
+      {/* <div ref={glitch} className="glitchproblem"></div> */}
     </>
   );
 };

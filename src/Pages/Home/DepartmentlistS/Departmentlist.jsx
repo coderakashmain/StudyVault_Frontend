@@ -54,7 +54,9 @@ const Departmentlist = () => {
     if (user && token) {
       navigate("/Filter", { state: { departmentName } });
     } else {
-      navigate("/Login");
+      if (confirm('Login first to continue')) {
+        navigate("/Login");
+    } 
     }
   };
 
