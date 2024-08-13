@@ -66,8 +66,7 @@ const {usernav} = useContext(UserContext);
     }
   };
 
-  window.
-
+ 
       
 
 
