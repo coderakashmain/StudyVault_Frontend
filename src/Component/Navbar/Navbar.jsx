@@ -1,44 +1,109 @@
-import React, { useEffect, useRef, useState } from "react";
+import axios from "axios";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import "./Navbar.css";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { NavLink, Link, useNavigate,useLocation } from "react-router-dom";
-// import titlelogo from "../../photo/logo-color .png"
-
+import { NavLink, Link, useNavigate, useLocation } from "react-router-dom";
+import { Departmentlistdata } from "../../Context/DepartmentList/DepartmentListContext";
+import { UserContext } from "../../Context/UserContext/UserContextdata";
+import { ScrollFilterContext } from "../../Context/FilterScroll/FilterScrollContex";
 
 
 const Navbar = (props) => {
-
-
-
+  const { usernav, setUsernav } = useContext(UserContext);
+  let departmentdata = useContext(Departmentlistdata);
+  const [departmetvalue, setDartmentvalue] = useState('');
   const navigate = useNavigate();
   const location = useLocation();
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticateduser, setIsAuthenticateduser] = useState(false);
   const [nav, setNav] = useState(false);
-  const[locationCollege,setLocationCollege]= useState(false);
+  const [locationCollege, setLocationCollege] = useState(false);
+ 
+
+
+  const deparmentChange = (e) => {
+    setDartmentvalue(e.target.value);
+  }
+
+  const {filtersection} = useContext(ScrollFilterContext);
+  const gotofilter = () => {
+    
+      filtersection.scrollIntoView({ behavior: 'smooth' });
+   
+
+  };
+
+
+
+
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      setIsAuthenticated(true);
-    }
-  }, []);
 
-  const handleLogout = () => {
+    const fetchProfile = async () => {
+
+      try {
+        const response = await axios.get('/api/navbar', { withCredentials: true });
+        if (response.status === 200) {
+          setIsAuthenticateduser(true);
+        }
+        else {
+          setIsAuthenticateduser(false);
+        }
+      } catch (error) {
+        console.error('Error fetching profile:', error);
+
+        if (error.response && error.response.status === 401) {
+          setIsAuthenticateduser(false);
+        } else {
+          console.error('Unexpected error:', error.response?.data || error.message);
+        }
+      }
+
+    }
+    fetchProfile();
+  }, [usernav]);
+
+
+
+  const onSearch = (searchdpt) => {
+    if (isAuthenticateduser) {
+
+      setDartmentvalue(searchdpt);
+      navigate("Filter", { state: { searchdpt } });
+      gotofilter();
+      setDartmentvalue('');
+    }
+    else {
+      props.showAlart('Login first');
+      navigate("/Login");
+    }
+
+  }
+
+
+  const handleLogout = async () => {
     if (confirm("Are you sure want to  log out ?")) {
-      localStorage.removeItem("user");
-      localStorage.removeItem("token");
-      navigate("/");
-      props.showAlart("Log out", "Back to main page");
-      setIsAuthenticated(false);
+
+      try {
+        const response = await axios.post('/api/logOut', { withCredentials: true });
+        if (response.status === 200) {
+          setIsAuthenticateduser(false);
+          setUsernav(null);
+          navigate("/");
+          props.showAlart("Log out", "Back to main page");
+        }
+      }
+      catch (error) {
+        console.error('Error in logout');
+      }
     }
   };
-  
+
   const hambargar = useRef();
   const crossicon = useRef();
 
 
-   
+
 
   useGSAP(() => {
 
@@ -54,7 +119,7 @@ const Navbar = (props) => {
         duration: 0.6,
         stagger: 0.3,
         opacity: 0,
-       ease: "power2.out"
+        ease: "power2.out"
       })
       .from(".cross-icon i", {
         y: -10,
@@ -73,7 +138,7 @@ const Navbar = (props) => {
       duration: 1.3,
     });
 
-    const slideopen = ()=>{
+    const slideopen = () => {
       openTl.restart();
       gsap.to(".slidebar", {
         display: "block",
@@ -83,16 +148,21 @@ const Navbar = (props) => {
 
     }
 
-    hambargar.current.addEventListener("click",slideopen);
+    hambargar.current.addEventListener("click", slideopen);
 
-    
+
     crossicon.current.addEventListener("click", () => {
       closeTl.restart();
     });
 
-    const backToPage = ()=>{
+    const backToPage = () => {
       closeTl.restart();
-    } 
+    }
+
+
+    const reback = () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 
     // glitch.current.addEventListener('click',backToPage);
     const refrasher = document.querySelectorAll(".slidebar-title a");
@@ -100,87 +170,81 @@ const Navbar = (props) => {
     refrasher.forEach((e) => {
       e.addEventListener("click", () => {
         closeTl.restart();
+        reback();
+
       });
     });
+
+    return () => {
+      window.removeEventListener('scroll', refrasher)
+    }
+
   });
 
   const navbar = useRef();;
   useEffect(() => {
-    
-      const handleScroll = () => {
-        if (window.scrollY > 200) {
-          setNav(true);
-        } else {
-          setNav(false);
-        }
-      };
-      window.addEventListener("scroll", handleScroll,{passive : true});
 
-      let isScrollingDown = false;
-      const handleWheel = (ele) => {
-        if (window.scrollY >= 100) {
-          if (ele.deltaY <= 0) {
-            if (!isScrollingDown) {
-              isScrollingDown = true;
-              navbar.current.style.transform = "translateY(0%)";
-            }
-          } else {
-            if (isScrollingDown) {
-              isScrollingDown = false;
-              navbar.current.style.transform = "translateY(-100%)";
-            }
+    const handleScroll = () => {
+      if (window.scrollY > 200) {
+        setNav(true);
+      } else {
+        setNav(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    let isScrollingDown = false;
+    const handleWheel = (ele) => {
+      if (window.scrollY >= 100) {
+        if (ele.deltaY <= 0) {
+          if (!isScrollingDown) {
+            isScrollingDown = true;
+            navbar.current.style.transform = "translateY(0%)";
           }
         } else {
-          navbar.current.style.transform = "translateY(0%)";
+          if (isScrollingDown) {
+            isScrollingDown = false;
+            navbar.current.style.transform = "translateY(-100%)";
+          }
         }
-      };
-      window.addEventListener("wheel", handleWheel);
+      } else {
+        navbar.current.style.transform = "translateY(0%)";
+      }
+    };
+    window.addEventListener("wheel", handleWheel);
 
-      
-    
-    return  () =>{
-      window.removeEventListener("scroll",handleScroll,{passive : true}) ;
-      window.removeEventListener('wheel',handleWheel,{passive : true}) ;
+
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll, { passive: true });
+      window.removeEventListener('wheel', handleWheel, { passive: true });
     }
   }, []);
 
-  
+
   const getNavClass = (path) => {
     return location.pathname === path ? 'red' : '';
   };
-  
 
-  // const searchRef = useRef();
-  // const onSearch = ()=>{
-  //   const input = searchRef.current;
-  //   const filter= input.value.toUpperCase();
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 600) {
+        setLocationCollege(true);
 
-  //   const list = document.querySelectorAll('.department p');
-
-  //   list.forEach((el)=>{
-  //     const text = el.textContent.toUpperCase();
-  //     el.style.display = text.includes(filter)  ? '' : 'none';
-  //   });
-  // }
-useEffect(()=>{
-  const handleResize = ()=>{
-    if(window.innerWidth <= 600){
-      setLocationCollege(true);
-      
-    }
-    else{
-      setLocationCollege(false);
+      }
+      else {
+        setLocationCollege(false);
+      };
     };
-  };
-  handleResize();
-  window.addEventListener('resize',handleResize,{passive : true});
+    handleResize();
+    window.addEventListener('resize', handleResize, { passive: true });
 
-  return ()=>{
-    window.removeEventListener('resize',handleResize);
-  }
- 
-},[])
-  
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    }
+
+  }, [])
+
 
 
   return (
@@ -196,60 +260,88 @@ useEffect(()=>{
         `}
       >
         <div className="navber-box">
-          <div ref={hambargar}  className="hambargar">
+          <div ref={hambargar} className="hambargar">
             <i className="fa-solid fa-bars"></i>
           </div>
           {/* <div className="title-logo">
              <img src={titlelogo} alt="title" />
           </div> */}
-                  
+
 
           <div className="nav-list">
             <ul>
-            <NavLink className={getNavClass('/')} to="/"><li>Home</li></NavLink>
-            <NavLink className={getNavClass('/Profile')} to="/Profile"><li>Profile</li></NavLink>
-            <NavLink className={getNavClass('/Contact-Us')} to="/Contact-Us"><li>Contact Us</li></NavLink>
-            <NavLink className={getNavClass('/About-us')} to="/About-us"><li>About us</li></NavLink>
+              <NavLink className={getNavClass('/')} to="/"><li>Home</li></NavLink>
+              <NavLink className={getNavClass('/Profile')} to="/Profile"><li>Profile</li></NavLink>
+              <NavLink className={getNavClass('/Contact-Us')} to="/Contact-Us"><li>Contact Us</li></NavLink>
+              <NavLink className={getNavClass('/About-us')} to="/About-us"><li>About us</li></NavLink>
             </ul>
           </div>
 
           <div className="filter-switch">
-            
-                <input 
-                // ref={searchRef}
-                  type="text"
-                  name=""
-                  id="searchbox"
-                  placeholder="Search your department"
-                  // onChange={onSearch}
-                />
-                <label htmlFor="searchbox"><i className="fa-solid fa-magnifying-glass"></i></label>
-                
-              </div>
+            <input
+              // ref={searchRef}
+              type="text"
+              name=""
+              id="searchbox"
+              placeholder="Search your department"
+              onChange={deparmentChange}
+              value={departmetvalue}
+            />
+
+            <label htmlFor="searchbox"><i className="fa-solid fa-magnifying-glass"></i></label>
+
+            <div className="search-suggestion">
+              {departmetvalue ? (
+                departmentdata && departmentdata.filter((item) => {
+                  const data = item.toLowerCase();
+                  const searchTerm = departmetvalue.toLowerCase();
+                  return data.startsWith(searchTerm);
+                }).length === 0 ? (
+                  <div className="search-item">
+                    <p>No Departments available</p>
+                  </div>
+                ) : (
+                  departmentdata.filter((item) => {
+                    const data = item.toLowerCase();
+                    const searchTerm = departmetvalue.toLowerCase();
+                    return data.startsWith(searchTerm) && data !== searchTerm;
+                  }).map((departmentListdata, index) => (
+                    <div onClick={(e) => {
+                      onSearch(departmentListdata)
+
+                    }} className="search-item" key={index}>
+                      <p >{departmentListdata}</p>
+                    </div>
+                  ))
+                )
+              ) : null}
+            </div>
+
+          </div>
 
           <div className="location-login">
-              <select name="name" id="college-name">
-              {!locationCollege ?(
+            <select name="name" id="college-name">
+              {!locationCollege ? (
                 <option value="M.P.C autonomous">M.P.C Autonomous</option>
-                
-              ):(<option value="M.P.C autonomous">M.P.C</option>)};  
-              
-              </select>
-              {!isAuthenticated ? (
-            <div className="log-in">
+
+              ) : (<option value="M.P.C autonomous">M.P.C</option>)};
+
+            </select>
+            {!isAuthenticateduser ? (
+              <div className="log-in">
                 <NavLink className={getNavClass('/LogIn')} to="/LogIn"><li>Login</li></NavLink>
-            </div>
-          ) : (
-            <div className="log-in">
-              <NavLink onClick={handleLogout} ><li>Logout</li></NavLink>
-            </div>
-          )}
+              </div>
+            ) : (
+              <div className="log-in">
+                <NavLink onClick={handleLogout} ><li>Logout</li></NavLink>
+              </div>
+            )}
           </div>
-          
+
         </div>
       </div>
       <div className="slidebar">
-        <div  className="cross-icon">
+        <div className="cross-icon">
           <i ref={crossicon} className="fa-solid fa-xmark"></i>
         </div>
         <div className="slidebar-box">
@@ -277,7 +369,7 @@ useEffect(()=>{
         <div className="copywrite">
           <p>Copyright 2024 All rights reserved |</p>
           <p>This website is made by</p>
-          <p>akashjitu.com </p>
+          <p>Akash and Jitu  </p>
         </div>
         <div className="slidebar-foot-item">
           <p>V.1.0.1</p>

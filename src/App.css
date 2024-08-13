@@ -18,3 +18,6 @@ body::-webkit-scrollbar {
   body::-webkit-scrollbar-thumb:hover {
     background: #408181ed; 
   }
+  box-icon{
+    margin: 0 0.3rem;
+  }

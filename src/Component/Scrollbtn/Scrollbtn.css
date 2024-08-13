@@ -13,6 +13,7 @@
     cursor: pointer;
     transition: all 0.2s linear;
     animation: move 01s alternate infinite ease-in-out;
+    user-select: none;
 
 }
 #scrollbtn i{

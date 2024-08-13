@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Login.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import BackButton from "../../Component/Backbutton/Backbutton";
+import { UserContext } from "../../Context/UserContext/UserContextdata";
 
 
 
 const Login = (props) => {
+
+  const {setUsernav} = useContext(UserContext);
   const [loginData, setLoginData] = useState({
     gmail : '',
     password : ''
@@ -24,10 +27,11 @@ const Login = (props) => {
     const loginSubmit =async (e)=>{
       e.preventDefault();
       try{
-        const response = await axios.post('/api/logIn', loginData);
+        const response = await axios.post('/api/LogIn', loginData, { withCredentials: true });
         if(response.status === 200 ){
-           localStorage.setItem('user', JSON.stringify(response.data.user));
-           localStorage.setItem('token', response.data.token);
+          //  localStorage.setItem('user', JSON.stringify(response.data.user));
+          //  localStorage.setItem('token', response.data.token);
+          setUsernav(response.data.user);
           navigate('/');
           props.showAlart('Log in Successfull.');
         }
@@ -35,6 +39,7 @@ const Login = (props) => {
         else {
           console.error('Invalid credentials');
           alert('Invalid credentials');
+          props.showAlart('Invalid credentials');
           
         }
 

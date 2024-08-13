@@ -11,22 +11,27 @@ import Departmentlist from './Pages/Home/DepartmentlistS/Departmentlist'
 import Contact from "./Pages/Contact/Contact";
 import Signup from "./Pages/SignUP/Signup";
 import Loginsignup from "./RoutingFiles/Loginsignup";
-import { useEffect, useState } from "react";
-import Alart from "./Component/Alart/Alart";
+import { useState } from "react";
 import Downloadpdf from "./Pages/Home/FilterS/Downloadpdf/Downloadpdf";
 import ForgatePw from "./Pages/Login/ForgatePw/ForgatePw";
-import Preloader from "./Component/Preloader/Preloader";
+// import Preloader from "./Component/Preloader/Preloader";
+import Allpages from "./RoutingFiles/Allpages";
+import Alart from "./Component/Alart/Alart";
+import DepartmentListContext from "./Context/DepartmentList/DepartmentListContext";
+import UserContextdata from "./Context/UserContext/UserContextdata";
+import FilterScrollContex from './Context/FilterScroll/FilterScrollContex'
 
 
 
 
 function App() {
-const locomotiveScroll = new LocomotiveScroll({
-  el: document.querySelector('[data-scroll-container]'),
-  smooth: true
-});
-const [alart, setAlart] = useState(null);
+// const locomotiveScroll = new LocomotiveScroll({
+//   el: document.querySelector('[data-scroll-container]'),
+//   smooth: true
+// });
 
+
+const [alart, setAlart] = useState(null);
 
 const showAlart = (type,message)=>{
 
@@ -34,62 +39,75 @@ const showAlart = (type,message)=>{
     { type : type,
      msg : message}
    )
+   setTimeout(() => {
+    setAlart(null);
+  }, 2200);
 };
-setTimeout(() => {
-  setAlart(null);
-}, 2200);
+
+
+
 
 const router = createBrowserRouter([
   {
-    path: '/',
-    element:( <><Preloader/><Navbar/><Alart alart={alart}/><Home/></>) ,
-    children :[
-      {
-        path : '',
-        element : <Departmentlist/>
-      },
-      {
-        path : 'Filter',
-        element : <Filter  showAlart = {showAlart}/>,
-      }
-
-    ]
-  },
-  {
-    path: "/Contact-Us",
-    element: ( <><Preloader/><  Navbar/><Alart alart={alart}/><Contact/></>  ),
-  },
-  {
-      path : '/Downloadpdf',
-     element : ( <><Preloader/><Alart alart={alart}/><Downloadpdf/></>  ),
-  },
-  {
-    path: "/LogIn",
-    element: ( <><Preloader/><Alart alart={alart}/><Loginsignup /></>  ),
+    path : '/',
+    element : <><UserContextdata><FilterScrollContex> <DepartmentListContext> <Navbar showAlart={showAlart}/><Allpages /><Alart alart={alart}/></DepartmentListContext></FilterScrollContex></UserContextdata></>,
     children : [
+
       {
-        path: "",
-        element: <Login showAlart = {showAlart}/>
+        path: '',
+        element:( <><Home showAlart={showAlart} /> </>) ,
+        children :[
+          {
+            path : '',
+            element : <Departmentlist showAlart={showAlart}/> 
+          },
+          {
+            path : 'Filter',
+            element : <Filter showAlart={showAlart}/>,
+          }
+    
+        ]
       },
       {
-        path: "Signup",
-        element: <Signup showAlart = {showAlart}/>
+        path: "Contact-Us",
+        element: ( <><Contact showAlart={showAlart}/></>  ),
       },
       {
-        path: "ForgatePw",
-        element : <ForgatePw showAlart = {showAlart}/>
+          path : 'Downloadpdf',
+         element : ( <><Downloadpdf showAlart={showAlart}/></>  ),
+      },
+      {
+        path: "LogIn",
+        element: ( <><Loginsignup /></>  ),
+        children : [
+          {
+            path: "",
+            element: <Login showAlart={showAlart}/>
+          },
+          {
+            path: "Signup",
+            element: <> <Signup showAlart={showAlart}/></>
+          },
+          {
+            path: "ForgatePw",
+            element : <ForgatePw showAlart={showAlart}/>
+          },
+        ]
+      },
+      
+      {
+        path: "Profile",
+        element: ( <><Profile  showAlart={showAlart}/></>  ),
+      },
+      {
+        path: "About-us",
+        element: ( <><AboutUs showAlart={showAlart}/></>  ),
       },
     ]
-  },
-  
-  {
-    path: "/Profile",
-    element: ( <><Preloader/><Navbar/><Alart alart={alart}/><Profile showAlart = {showAlart} /></>  ),
-  },
-  {
-    path: "/About-us",
-    element: ( <><Preloader/><Navbar/><Alart alart={alart}/><AboutUs/></>  ),
-  },
+  }
+
+
+
 ]);
 
   

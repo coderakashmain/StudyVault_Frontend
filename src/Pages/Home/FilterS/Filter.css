@@ -30,6 +30,25 @@
 }
 .filter-submission{
   text-align: center;
+ display: flex;
+ justify-content: center;
+}
+.filter-submission-box{
+ 
+  position: relative;
+  text-align: center;
+  margin: 1% 0%;
+  user-select: none;
+
+}
+.filter-submission-box box-icon{
+  position: absolute;
+  font-size: 0.1rem;
+  top: 29%;
+  left: 18%;
+cursor: pointer;
+ 
+
 }
 .filter-submission input{
   background-color: #4c98d9;
@@ -38,6 +57,9 @@
   border: none;
   color: #fff;
   cursor: pointer;
+  user-select: none;
+  
+  
 }
 .ug-box,
 .pg-box {
@@ -48,7 +70,7 @@
   justify-content: center;
   width: 130px;
   height: 150px;
-  margin: 5% 0%;
+ 
   border: none;
   background-color: white;
   font-size: 23px;
@@ -87,7 +109,7 @@
   border: 1px solid gray;
 }
 .department-name input[type="text"] {
-  width: 70%;
+  width: 100%;
   padding: 4%;
   outline: none;
   border: none;
@@ -190,13 +212,12 @@
 
 }
 
-.filteration-container-box .filter-submission{
-  width: 100%;
- text-align: center;
-}
+
 .filteration-container-box input[type="submit"]{
    cursor: pointer;
 } 
+
+
 @media only screen and (max-width: 895px) {
   .ug-box,
   .pg-box {

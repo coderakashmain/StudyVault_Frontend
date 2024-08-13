@@ -15,6 +15,8 @@
     justify-content: center;
     align-items: center;
     background-color: var(--backcolor);
+    z-index: 1001;
+    position: relative;
     
   }
   .back-button{
@@ -107,6 +109,13 @@
   
 }
 
+@media only screen and (max-width: 1300px) {
+    .inner-main-login {
+        width:45%;
+        padding:10% 8%;
+        border-radius: 19px;
+      }
+}
 @media only screen and (max-width: 835px) {
     .inner-main-login {
         width:65%;

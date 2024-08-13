@@ -8,6 +8,7 @@
     align-items: center;
     justify-content: center;
     background: var(--backcolor);
+    z-index: 50;
 }
 
 .download-box{

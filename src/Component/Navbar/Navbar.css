@@ -1,7 +1,7 @@
 .navbar{
     height: 70px;
     width: 100%;
-    position: sticky;
+    position: fixed;
     top: 0px;
     left: 0px;
     z-index:50;
@@ -38,6 +38,7 @@
   margin:0 0.2rem 0 1rem;
   border: 1px solid #e3e3e3;
   border-radius: 3rem 3rem 3rem 3rem;
+  position: relative;
 }
 .filter-switch label{
   border-radius: 0rem 3rem 3rem 0;
@@ -79,6 +80,30 @@
   font-size: 0.9rem;
 
 }
+.filter-switch .search-suggestion{
+  position: absolute;
+  min-width: 110%;
+  /* min-height: 100%; */
+  left: 0%;
+  top: 110%;
+  background-color: #fff;
+  border-radius: 0.4rem;
+  overflow-y: scroll;
+}
+.filter-switch .search-suggestion::-webkit-scrollbar{
+  display: none;
+}
+.search-item{
+  padding: 0.7rem 1rem;
+  cursor: pointer;
+}
+.search-item:hover{
+ background-color: #0707071c;
+}
+.search-item p{
+ font-size: 0.9rem;
+}
+
 /* .filter-switch input:-webkit-autofill{
   -webkit-box-shodow : 0 0 0 30px white inset !important;
   -webkit-text-fill-color: #e3e3e3 !important ;
@@ -94,6 +119,7 @@
 .hambargar i{
     cursor: pointer;
     filter: invert(100%);
+    font-size: 2rem;
 
     
 }
@@ -204,10 +230,9 @@
     position: fixed;
     left: -100%;
     top: 0%;
-    background-color: rgba(255, 255, 255, 0.622);
+    background-color: rgb(255, 255, 255);
     z-index:100;
-    padding:0.2rem 2rem;
-    backdrop-filter: blur(80px);
+    padding:0.2rem 2rem 0.2rem 3rem;
     overflow: hidden;
     transition: all 0.2s linear;
   
@@ -227,7 +252,7 @@
   
   }
   .slidebar h4{
-    padding: 1rem 0;
+    padding: 0.9rem 0;
   }
   .slidebar h4 i{
     transform: translate(-50%,-5%);
@@ -236,6 +261,7 @@
   }
   .slidebar h4 a{
     font-size: 1.4rem;
+    font-weight: 600;
   
   }
   .copywrite{
@@ -245,7 +271,7 @@
   .copywrite p{
    font-size: 0.8rem;
    letter-spacing: 0.03rem;
-   font-weight: 300;
+   font-weight: 700;
   }
   .copywrite p:last-child{
   color: rgb(0, 56, 79);
@@ -304,9 +330,13 @@
   }
   @media (max-width : 454px) {
     .slidebar{
-        width:60vw;
+        width:80vw;
       }
      .cross-icon{
         margin-top: 2rem;
      }
+     .slidebar h4 a{
+      font-size:2.2rem;
+    
+    }
   }

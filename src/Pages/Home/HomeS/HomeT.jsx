@@ -1,7 +1,7 @@
 import React from "react";
 import "./HomeT.css";
 import "remixicon/fonts/remixicon.css";
-import Image from "./home-image-min.png";
+// import Image from "./home-image-min.png";
 import {Link, useNavigate} from 'react-router-dom'
 
 
@@ -43,7 +43,7 @@ const HomeT = (props) => {
             </div>
             <div className="home-image-section">
               <div className="background-image">
-                <img src={Image} alt="not found" />
+                {/* <img src={Image} alt="not found" /> */}
               </div>
               <div className="overfolw-box box-one">
               <i className="fa-solid fa-cloud"></i>

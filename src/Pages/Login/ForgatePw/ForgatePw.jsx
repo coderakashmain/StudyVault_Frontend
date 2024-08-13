@@ -60,8 +60,7 @@ const handleChange = (e)=>{
      catch(error){
       setOtpSent(false);
       if(error.response && error.response.status === 409){
-
-        props.showAlart('Email not found');
+        props.showAlart('Not Registered');
         setLoader(false);
       }
       else if (error.response && error.response.status === 429) {
@@ -204,7 +203,7 @@ const handleChange = (e)=>{
           {timer > 0 && <p>OTP  sent. You can request another OTP after <span style={{color : 'blue'}}>
             {timer}
             </span>  seconds.</p>}
-          <button disabled = {otpSent} type='submit' >{loader && (<box-icon name='loader-alt' size = 'sm' flip='horizontal' animation='spin' color='#ffffff' ></box-icon>)}Get OTP</button>
+          <button disabled = {otpSent} type='submit' >{loader && (<box-icon  name='loader-alt' size = 'sm' flip='horizontal' animation='spin' color='#ffffff' ></box-icon>)}Get OTP</button>
        
         </div>
         </form>) : ( 

@@ -1,80 +1,91 @@
-import React, { useState } from "react";
+import React, {  useRef, useState,useContext, useEffect } from "react";
 import "../HomeS/HomeT.css";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../../Context/UserContext/UserContextdata";
+import {Departmentlistdata} from '../../../Context/DepartmentList/DepartmentListContext';
+// import axios from "axios";
 
-const Departmentlist = () => {
-  const departments = [
-    "Computer Science",
-    "Bachelor of Computer Application",
-    "Botany",
-    "Chemistry",
-    "Data Science",
-    "Geology",
-    "Itm",
-    "Mathmatics",
-    "Physics",
-    "Sericalture",
-    "Statistics",
-    "Zoology",
 
-    "Commerce",
+const Departmentlist = (props) => {
 
-    "Anthropoloy",
-    "Economics",
-    "Education",
-    "English",
-    "Geography",
-    "Hindi",
-    "History",
-    "Sociology",
-    "Odia",
-    "Philosophy",
-    "Political Science",
-    "Psychology",
-    "Sanskrit",
-    "Santali",
+const departmentListdata =useContext(Departmentlistdata);
+const {usernav} = useContext(UserContext);
+// const [isAuthenticateduser, setIsAuthenticateduser] = useState(false);
 
-    "Master of Business Administration",
-    "Master of Computer Applications",
-    "Micro Biology",
-    "Bio-Chemistry",
-    "Enviromental Economics",
-    "Industrial Chemistry",
-  ];
-  const sortedDepartments = departments.sort((a, b) => a.localeCompare(b));
 
   const navigate = useNavigate();
   const [moreDepartment, setMoreDepartment] = useState(false);
+  const departmentList = useRef();
  
 
-  const user = localStorage.getItem("user");
-  const token = localStorage.getItem("token");
+  
+//   useEffect(() => {
+
+//     const fetchProfile = async () => {
+//       try {
+//           const response = await axios.get('/api/dptlist', { withCredentials: true });
+//          if (response.status === 200) {
+//             setIsAuthenticateduser(true);
+//          }
+//          else {
+//           setIsAuthenticateduser(false);
+//       }
+//       }  catch (error) {
+//         console.error('Error fetching profile:', error);
+
+//         if (error.response && error.response.status === 401) {
+//             console.log('User not authenticated.');
+//             setIsAuthenticateduser(false);
+//         } else {
+//             console.error('Unexpected error:', error.response?.data || error.message);
+//         }
+//     }
+     
+//   }
+//   fetchProfile();
+// },[usernav] );
+
+    const contectContainer = useRef();
+
+  const backto = () => {
+    contectContainer.current.scrollIntoView({ behavior: "smooth" });
+    };
+  
+  
 
   const handleDepartmentClick = (departmentName) => {
-    if (user && token) {
+    if (usernav) {
       navigate("/Filter", { state: { departmentName } });
+      backto();
     } else {
-      if (confirm('Login first to continue')) {
+      
+        props.showAlart('Login first');
         navigate("/Login");
-    } 
+        
+        
     }
   };
+
+  window.
+
+      
+
 
   return (
     <>
       <div className="main-container">
         <div className="inner-main-container">
-          <div className="content-container">
+          <div ref={contectContainer} className="content-container">
             <div className="department-title-box">
                <h2>All departments :</h2>
                <button>Question Papers<i className="fa-solid fa-not-equal"></i></button>
             </div>
-            <div className="department-list">
-              {sortedDepartments.map((department, index) => (
+            <div ref={departmentList} className="department-list">
+              {departmentListdata.map((departmentListdata, index) => (
                 <div className="department" key={index}>
-                  <p onClick={() => handleDepartmentClick(department)}>
+                  <p onClick={() => handleDepartmentClick(departmentListdata)}>
                     {" "}
-                    {department}
+                    {departmentListdata}
                   </p>
                 </div>
               ))}
@@ -91,18 +102,18 @@ const Departmentlist = () => {
               }}
               onClick={() => {
                 if (!moreDepartment) {
-                  document.querySelector(".department-list").style.maxHeight =
-                    "96vh";
+                  departmentList.current.style.height =
+                    "350vh";
                   setMoreDepartment(true);
                 }
                 if (moreDepartment) {
-                  document.querySelector(".department-list").style.maxHeight =
-                    "1000vh";
+                  departmentList.current.style.height =
+                    "96vh";
                   setMoreDepartment(false); 
                 }
               }}
             >
-              {!moreDepartment ? (
+              {moreDepartment ? (
                
               <p
               style={{

@@ -154,7 +154,8 @@ const Signup = (props) => {
       
     }
     else{
-      props.showAlart('Mismatched', 'Your password is not match')
+      props.showAlart('Mismatched', 'Your password is not match');
+      return;
     }
     
   }

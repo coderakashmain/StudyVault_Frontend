@@ -1,23 +1,49 @@
-import React,{useEffect, useState} from "react";
+import React,{createContext, useContext, useEffect, useRef, useState} from "react";
 import axios from 'axios';
 import "./Filter.css";
 import { useNavigate,useLocation } from "react-router-dom";
 
 
+import { ScrollFilterContext } from "../../../Context/FilterScroll/FilterScrollContex";
+
+
 const Filter = (props) => {
+
+   const filterboxref = useRef();
+
+   const {setFiltersection} = useContext(ScrollFilterContext);
+   useEffect(()=>{
+    setFiltersection(filterboxref.current);
+   },[])
+   
 
   const navigate = useNavigate();
   const location = useLocation();
-  const initialDepartmentName = location.state?.departmentName || '';
+
   const [ugActive,setUgActive]= useState(false);
   const [pgActive, setPgActive]= useState(false);
   const [yearfirstActive, setYearfirstActive]= useState(false);
   const [yearsecondActive, setYearsecondActive]= useState(false);
   const [yearthirdActive, setYearthirdActive]= useState(false);
+  const [loader,setLoader] = useState(false);
+  const initialDepartmentName = location.state?.departmentName || '';
+  const initialDepartmentNamesearch = location.state?.searchdpt || '';
+const [dptName, setDptName] = useState('');
 
+useEffect(()=>{
+
+  const newDepartmentname = initialDepartmentName || initialDepartmentNamesearch;
+  setDptName(newDepartmentname);
+
+  setFilters((PreFilters) => ({
+    ...PreFilters,
+    departmentName : newDepartmentname,
+  }));
+
+},[initialDepartmentName,initialDepartmentNamesearch])
   
   const [filters, setFilters] = useState({
-    departmentName: initialDepartmentName,
+    departmentName:dptName,
     educationLevelug: '',
     educationLevelpg: '',
     fromDate: '',
@@ -26,10 +52,9 @@ const Filter = (props) => {
     sem: false,
     midSem: false
   });
-  // const [results, setResults] = useState([]);
 
-  
-  
+
+ 
 
   
 
@@ -87,10 +112,10 @@ const Filter = (props) => {
       return;
     }
     try {
+      setLoader(true);
       const response = await axios.get('/api/Filter', { params: nonEmptyFilters });
-      // setResults(response.data);
-      navigate('/Downloadpdf',{ state: { filters } })
-
+      navigate('/Downloadpdf',{ state: { filters } });
+      setLoader(false);
       
     } catch (error) {
       console.error('Error fetching papers:', error);
@@ -101,7 +126,7 @@ const Filter = (props) => {
 
 
   return (
-    <div className="filter-main-div">
+    <div ref={filterboxref} className="filter-main-div">
       <form onSubmit={handleSubmit} className="filteration-container-box">
         <div className="filteration-container">
           <div className="first-filteration">
@@ -250,7 +275,12 @@ const Filter = (props) => {
           </div>
         </div>
         <div className="filter-submission">
-          <input type="submit" value="Find" />
+          <div className="filter-submission-box">
+            
+              {loader && (<box-icon name='loader-alt' size = 'sm' flip='horizontal'  animation='spin' color='#fffff' ></box-icon>)}
+              <input  type="submit" value="Find" />
+          </div>
+       
         </div>
       </form>
     </div>

@@ -4,6 +4,8 @@
     background-color: var(--backcolor);
     display: flex;
     justify-content: center;
+    z-index: 1001;
+    position: relative;
    
 }
 .forgate-box{
@@ -70,9 +72,7 @@
  justify-content: center;
  margin: 1rem 0 0 ;
 }
-.forgate-email-enter-box button box-icon{
-  margin: 0 0.3rem;
-}
+
 #forgatepw hr{
     margin: 2rem 0;
     
@@ -90,6 +90,8 @@
     cursor: pointer;
     border-radius: 0.2rem;
 }
+
+
 
 /* Reset password page */
 
