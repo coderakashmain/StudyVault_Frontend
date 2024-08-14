@@ -102,7 +102,7 @@ const {usernav} = useContext(UserContext);
               onClick={() => {
                 if (!moreDepartment) {
                   departmentList.current.style.height =
-                    "350vh";
+                    "288vh";
                   setMoreDepartment(true);
                 }
                 if (moreDepartment) {

@@ -176,8 +176,6 @@ background-color: rgb(0, 157, 255);
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  /* flex-direction: row; */
-  /* flex-direction: column; */
   height:96vh ;
   width: 100%;
   transition: all 0.5s ease-in-out;
@@ -516,7 +514,7 @@ footer a{
     margin-top: 5%;
   }
   .inner-landing{
-    flex-direction: column-reverse;
+    flex-direction: column;
     justify-content: center;
   }
   .inner-landing{
@@ -525,7 +523,7 @@ footer a{
   .home-image-section {
     height: 400px;
     width: 100%;
-    display: none;
+    /* display: none; */
   }
   
   .background-image{
