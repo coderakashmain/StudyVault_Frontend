@@ -169,6 +169,10 @@ const Profile = (props) => {
                   <i className="fa-solid fa-location-dot"></i>MPC AUTO, BARIPADA
                 </h3>
                 <div className="profile-main-photo">
+                  <div className="profile-main-photo-img-box">
+
+                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvHnbkXhPR46iJHQK3-n1g_jsjeQurfxSuPQ&s" alt="profile photo" />
+                  </div>
                   <div className="profile-main-photo-subpart"></div>
                 </div>
               </div>
