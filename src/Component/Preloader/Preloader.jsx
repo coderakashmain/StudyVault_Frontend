@@ -11,10 +11,12 @@ const Preloader = () => {
                 preloaderRef.current.style.display = 'none';
             }
         }
+        const fallbackTimeout = setTimeout(preloader, 10000);
         window.addEventListener('load',preloader);
 
         return ()=>{
             window.removeEventListener('load',preloader);
+            clearTimeout(fallbackTimeout);
         }
     },[])
   return (

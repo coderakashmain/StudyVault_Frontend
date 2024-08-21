@@ -1,16 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Contact.css";
 import Footer from '../Home/FooterS/Footer';
+import { Photonumdata } from "../../Context/PhoneInfo/PhoneInfo";
+
+
 const Contact = () => {
-  const emailAddress = "jitpradhan856@gmail.com"; // Your email address
+
+  const {akashphonenumber,jituphonenumber,emailAddress} = useContext(Photonumdata);
+  
   const handleEmailButtonClick = () => {
     window.open(`mailto:${emailAddress}`, '_blank');
   };
   const handleEmailButtoncallakashClick = () => {
-    window.open(`tel:${8144958844}`, '_blank');
+    window.open(`tel:${akashphonenumber}`, '_blank');
   };
   const handleEmailButtoncalljituClick = () => {
-    window.open(`tel:${7735010252}`, '_blank');
+    window.open(`tel:${jituphonenumber}`, '_blank');
   };
   return (
     <>

@@ -20,6 +20,7 @@ import Alart from "./Component/Alart/Alart";
 import DepartmentListContext from "./Context/DepartmentList/DepartmentListContext";
 import UserContextdata from "./Context/UserContext/UserContextdata";
 import FilterScrollContex from './Context/FilterScroll/FilterScrollContex'
+import PhoneInfo from "./Context/PhoneInfo/PhoneInfo";
 
 
 
@@ -70,7 +71,7 @@ const router = createBrowserRouter([
       },
       {
         path: "Contact-Us",
-        element: ( <><Contact showAlart={showAlart}/></>  ),
+        element: ( <><PhoneInfo><Contact showAlart={showAlart}/></PhoneInfo></>  ),
       },
       {
           path : 'Downloadpdf',
