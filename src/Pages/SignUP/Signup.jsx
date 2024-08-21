@@ -25,6 +25,8 @@ const Signup = (props) => {
   const [otpValue,setOtpValue] = useState('');
   const [submitoff, setSubmitoff] = useState(false);
   const [passwordcheck, setPasswordcheck] = useState(false);
+  const [spinner, setSpinner] =useState(false)
+  const [disablebtn ,setDisablebtn] = useState(false);
 
   const signupchange = (e) =>{
     const {name,value} = e.target;
@@ -64,11 +66,16 @@ const Signup = (props) => {
     e.preventDefault();
     if(otp){
       try{
+        setSpinner(true);
+        setDisablebtn(true);
         const response = await axios.post('/api/LogIn/Signup/otpVarify',{email : signupdata.gmail})
         if(response.status === 200){
           props.showAlart('OTP send Successfully ');
            setVerifyOtp(true);
            setVerifyOtpsubmit(true);
+           setSpinner(false);
+           setDisablebtn(false);
+           setMessage(<p style={{margin :'0 0 0.45rem 0',fontSize :'0.5rem'}}>OTP valid for 10 minutes.</p>)
 
         }
   
@@ -76,20 +83,23 @@ const Signup = (props) => {
       catch(error){
         if(error.response && error.response.status ===410){
           props.showAlart('internal error ');
+          setDisablebtn(false);
         }
         if(error.response && error.response.status ===420){
-          props.showAlart('OTP send Successfully ');
            setVerifyOtp(true);
            setVerifyOtpsubmit(true);
-           setMessage(<p style={{margin :'0 0 0.45rem 0',fontSize :'0.5rem'}}>OTP valid for 10 minutes.</p>)
+           setDisablebtn(false);
+          
         }
         if(error.response && error.response.status ===500){
-          props.showAlart('Email sending error');
+          props.showAlart('error in genereting OTP');
+          setDisablebtn(false);
         }
       }
     }
     else{
       props.showAlart('Enter your email');
+      setDisablebtn(false);
     }
     
   };
@@ -107,22 +117,27 @@ const Signup = (props) => {
           setOtpValue('');
           setVerifyOtp(false);
           setOtp(false);
+          setDisablebtn(false);
         
       }
       catch(error){
           if(error.response && error.response.status === 410){
             props.showAlart('OTP expired');
+            setDisablebtn(false);
           }
           if(error.response && error.response.status === 409){
             props.showAlart('Error updating data ');
+            setDisablebtn(false);
           }
           if(error.response && error.response.status === 405){
             props.showAlart('Invalid OTP ');
             setMessage(<p style={{margin :'0 0 0.45rem 0',fontSize :'0.5rem',color : 'red'}} >Invalid OTP</p>)
+            setDisablebtn(false);
           }
          else{
 
            props.showAlart('Internal error');
+           setDisablebtn(false);
          }
           
       }
@@ -196,7 +211,7 @@ const Signup = (props) => {
          id="gmail"  className="singup-form-input" required/>
           
          {verifyOtp &&( <input type="number" onChange={(e)=>{setOtpValue(e.target.value)}} value={otpValue} style={{height :'30%',padding : '0.6rem 0.2rem 0.6rem 0.8rem',margin :'auto',border : 'none',borderRadius : '0.2rem',width  : '60%',fontSize : '0.9rem',flexGrow : '1'}} placeholder="OTP" />)}
-        {otp && (<button type="submit"   style={{textAlign : 'end',padding : '0.6rem 1rem',height : '30%',margin :'auto',outline : 'none',border : 'none',backgroundColor : "lightblue",cursor : 'pointer',borderRadius : '0.2rem',transition : 'all 0.2s ease-in-out'}}>{!verifyOtpsubmit ? (<p style={{fontSize :'0.9rem'}}>Verify</p>):(<p style={{fontSize :'0.9rem'}} >Confirm</p>)}</button>)}
+        {otp && (<button disabled = {disablebtn} type="submit"   style={{textAlign : 'end',padding : '0.6rem 1rem',height : '30%',margin :'auto',outline : 'none',border : 'none',backgroundColor : "lightblue",cursor : 'pointer',borderRadius : '0.2rem',transition : 'all 0.2s ease-in-out'}}>{!verifyOtpsubmit ? (<p style={{fontSize :'0.9rem'}}>{!spinner ? ("Verify") : (<box-icon  name='loader-alt' size = 'sm' flip='horizontal' animation='spin' color='#000' ></box-icon>)}</p>):(<p style={{fontSize :'0.9rem'}} >Confirm</p>)}</button>)}
           </div>
        {message}
          
