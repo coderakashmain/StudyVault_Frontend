@@ -252,7 +252,7 @@ const Navbar = (props) => {
       <div ref={navbar}
         className={`navbar 
          ${nav ? "home-nav" : "black-nav"}
-      ${location.pathname === '/' ? (nav ? "home-nav" : "black-nav") : ""}
+      ${location.pathname === '/api' ? (nav ? "home-nav" : "black-nav") : ""}
       ${location.pathname === '/Profile' ? "profile-nav" : ""}
       ${location.pathname === '/Contact-Us' ? "contact-nav" : ""}
       ${location.pathname === '/About-us' ? "about-nav" : ""}
@@ -270,7 +270,7 @@ const Navbar = (props) => {
 
           <div className="nav-list">
             <ul>
-              <NavLink className={getNavClass('/')} to="/"><li>Home</li></NavLink>
+              <NavLink className={getNavClass('/api')} to="/"><li>Home</li></NavLink>
               <NavLink className={getNavClass('/Profile')} to="/Profile"><li>Profile</li></NavLink>
               <NavLink className={getNavClass('/Contact-Us')} to="/Contact-Us"><li>Contact Us</li></NavLink>
               <NavLink className={getNavClass('/About-us')} to="/About-us"><li>About us</li></NavLink>
