@@ -42,7 +42,7 @@ const showAlart = (type,message)=>{
    )
    setTimeout(() => {
     setAlart(null);
-  }, 2200);
+  }, 4000);
 };
 
 

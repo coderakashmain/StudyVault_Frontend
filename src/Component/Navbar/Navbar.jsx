@@ -114,18 +114,19 @@ const Navbar = (props) => {
         left: 0,
         duration: 0.4,
       })
-      .from(".slidebar-title", {
-        x: 100,
-        duration: 0.6,
-        stagger: 0.3,
-        opacity: 0,
-        ease: "power2.out"
-      })
       .from(".cross-icon i", {
         y: -10,
         opacity: 0,
         duration: 0.2,
       })
+      .from(".slidebar-title", {
+        x: 100,
+        duration: 0.6,
+        stagger: 0.1,
+        opacity: 0,
+        ease: "power2.out"
+      })
+      
       .from(".copywrite", {
         opacity: 0,
         duration: 0.15,

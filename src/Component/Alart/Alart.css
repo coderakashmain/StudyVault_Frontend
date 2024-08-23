@@ -1,0 +1,17 @@
+/* Keyframes for fade-in and slide-in animation */
+@keyframes fadeSlideIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-100%) scale(0);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  /* Animation when alert box is visible */
+  #alart-box {
+    animation: fadeSlideIn 0.5s ease-in-out;
+  }
+ 

@@ -1,5 +1,5 @@
 #signup{
-    min-height: 100vh;
+  height: 100vh;
     width:100%;
     display: flex;
     justify-content: center;
@@ -23,12 +23,13 @@
 
 .signup-form .singup-form-input{
     width: 100%;
-    padding: 0.69rem 1rem;
+    padding: 0.69rem 0.1rem;
     border: none;
     border-bottom: 0.4px solid black;
     margin-bottom: 1.3rem;
     font-size: 0.83rem;
     background-color:transparent;
+    font-size: 1.1rem;
    
 }
 .signup-form .singup-form-input[type = 'email']{
@@ -38,14 +39,16 @@
 
 .signup-form label{    
     letter-spacing: 0.1px;
-    font-weight: 500;
+    font-weight: 600;
+    font-size: 1.1rem;
 }
 .signup-form input{
   outline: none;
 }
 
 .signup-form h2{
-    font-size: 3em;
+    font-size: 4em;
+    font-weight: 500;
     text-align: left;
 }
 .name-box{
@@ -90,6 +93,9 @@
     .signup-form {
       width: 400px;
     }
+    #signup{
+      height: 100svh;
+    }
   }
 @media (max-width: 431px) {
   .signup-form{
@@ -102,12 +108,14 @@
   @media (max-width:460px) {
     .signup-form {
         width: 325px;
-        margin: 4rem 0 0 0;
+        transform: translateY(-1%);
+        width: 90vw;
       }
       
       html{
         font-size: 75%;
     }
+  
   }
 
   @media (max-width:220px) {
@@ -117,7 +125,7 @@
       }
   
       html{
-        font-size: 60%;
+        font-size: 70%;
     }
   }
   @media (max-width:150px) {

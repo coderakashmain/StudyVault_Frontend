@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import "./Login.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -10,6 +10,7 @@ import { UserContext } from "../../Context/UserContext/UserContextdata";
 const Login = (props) => {
 
   const {setUsernav} = useContext(UserContext);
+  const [repeatclick,setRepeatclick] =useState(false);
   const [loginData, setLoginData] = useState({
     gmail : '',
     password : ''
@@ -25,38 +26,43 @@ const Login = (props) => {
     }));
   };
     const loginSubmit =async (e)=>{
+      setRepeatclick(true);
       e.preventDefault();
       try{
         const response = await axios.post('/api/LogIn', loginData, { withCredentials: true });
         if(response.status === 200 ){
-          //  localStorage.setItem('user', JSON.stringify(response.data.user));
-          //  localStorage.setItem('token', response.data.token);
           setUsernav(response.data.user);
           navigate('/');
           props.showAlart('Log in Successfull.');
+          setRepeatclick(false);
         }
        
         else {
           console.error('Invalid credentials');
-          alert('Invalid credentials');
           props.showAlart('Invalid credentials');
+          setRepeatclick(false);
           
         }
 
 
        } catch(error){
-        // if(error.response && error.response.status === 409){
-        //   showAlart("Gmial is not registered.")
-        // }
-        // if(error.response && error.response.status === 408){
-        //   showAlart("Wrong password");
-        // }
-          
+        setRepeatclick(false);
           props.showAlart('Invalid credentials','try again');
           
         
        }
     };
+
+    const submitRef  = useRef();
+
+    useEffect(()=>{
+      if(repeatclick){
+        submitRef.current.style.opacity = '0.5';
+      }
+      else{
+        submitRef.current.style.opacity = '1';
+      }
+    },[repeatclick])
  
   return (
     <>
@@ -78,7 +84,7 @@ const Login = (props) => {
               <Link to='ForgatePw' style={{color : '#4B97D5'} } >Forget password ?</Link>
             </div>
             <div className="submit-parant">
-              <input type="submit" value="Login" className="" />
+              <input ref={submitRef} disabled={repeatclick} type="submit" value="Login" className="" />
             </div>
           </form>
           <Link to="Signup" className="signup-link">

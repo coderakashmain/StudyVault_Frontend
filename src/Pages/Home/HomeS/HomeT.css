@@ -459,7 +459,7 @@ footer a{
 
   }
   html{
-    font-size: 50%;
+    font-size: 75%;
   }
   .home-image-section{
     width: 40%;
@@ -500,7 +500,7 @@ footer a{
 }
 @media only screen and (max-width: 519px){
   html{
-    font-size: 65%;
+    font-size: 70%;
   }
   .first-footer-section{
     justify-content: center;
@@ -542,7 +542,7 @@ footer a{
 }
 @media only screen and (max-width: 460px){
   html{
-    font-size: 40%;
+    font-size: 65%;
   }
   .department-list{
     display:block;
@@ -585,7 +585,7 @@ footer a{
 }
 @media only screen and (max-width: 376px){
   html{
-    font-size: 30%;
+    font-size: 50%;
   }
   .department-title-box h2{
     font-size: 1.3rem;

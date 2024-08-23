@@ -10,7 +10,7 @@
 
 .main-login-container{
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -124,12 +124,16 @@
       }
 }
 @media only screen and (max-width: 450px) {
+  .main-login-container{
+    height: 100svh;
+  }
     .inner-main-login {
-        width: 85%;
+        width: 90vw;
         height: 40rem;
-        padding:5% 7%;
+        padding:5% 3%;
         border-radius: 24px;
         margin-top: 1rem;
+        transform: translateY(-3%);
       }
       input[type="password"],[type="email"]{
         margin-bottom: 10%;
