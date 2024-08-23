@@ -176,10 +176,10 @@ background-color: rgb(0, 157, 255);
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  height:96vh ;
   width: 100%;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.05s ease-in-out;
   gap: 2rem;
+  overflow-y: hidden;
   
 }
 
@@ -188,9 +188,6 @@ background-color: rgb(0, 157, 255);
  flex-basis: 2;
  margin: 0.8rem 0rem;
  width: 25%;
-}
-.department-list{
-  overflow-y: hidden;
 }
 .department-title-box{
   width: 100%;

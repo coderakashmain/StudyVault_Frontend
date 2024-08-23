@@ -1,73 +1,85 @@
-import React, {  useRef, useState,useContext, useEffect } from "react";
+import React, { useRef, useState, useContext, useEffect } from "react";
 import "../HomeS/HomeT.css";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../../Context/UserContext/UserContextdata";
-import {Departmentlistdata} from '../../../Context/DepartmentList/DepartmentListContext';
+import { Departmentlistdata } from '../../../Context/DepartmentList/DepartmentListContext';
 // import axios from "axios";
 
 
 const Departmentlist = (props) => {
 
-const departmentListdata =useContext(Departmentlistdata);
-const {usernav} = useContext(UserContext);
-// const [isAuthenticateduser, setIsAuthenticateduser] = useState(false);
+  const departmentListdata = useContext(Departmentlistdata);
+  const { usernav } = useContext(UserContext);
+  // const [isAuthenticateduser, setIsAuthenticateduser] = useState(false);
 
 
   const navigate = useNavigate();
   const [moreDepartment, setMoreDepartment] = useState(false);
   const departmentList = useRef();
- 
 
-  
-//   useEffect(() => {
 
-//     const fetchProfile = async () => {
-//       try {
-//           const response = await axios.get('/api/dptlist', { withCredentials: true });
-//          if (response.status === 200) {
-//             setIsAuthenticateduser(true);
-//          }
-//          else {
-//           setIsAuthenticateduser(false);
-//       }
-//       }  catch (error) {
-//         console.error('Error fetching profile:', error);
 
-//         if (error.response && error.response.status === 401) {
-//             console.log('User not authenticated.');
-//             setIsAuthenticateduser(false);
-//         } else {
-//             console.error('Unexpected error:', error.response?.data || error.message);
-//         }
-//     }
-     
-//   }
-//   fetchProfile();
-// },[usernav] );
+  //   useEffect(() => {
 
-    const contectContainer = useRef();
+  //     const fetchProfile = async () => {
+  //       try {
+  //           const response = await axios.get('/api/dptlist', { withCredentials: true });
+  //          if (response.status === 200) {
+  //             setIsAuthenticateduser(true);
+  //          }
+  //          else {
+  //           setIsAuthenticateduser(false);
+  //       }
+  //       }  catch (error) {
+  //         console.error('Error fetching profile:', error);
+
+  //         if (error.response && error.response.status === 401) {
+  //             console.log('User not authenticated.');
+  //             setIsAuthenticateduser(false);
+  //         } else {
+  //             console.error('Unexpected error:', error.response?.data || error.message);
+  //         }
+  //     }
+
+  //   }
+  //   fetchProfile();
+  // },[usernav] );
+
+  const contectContainer = useRef();
 
   const backto = () => {
     contectContainer.current.scrollIntoView({ behavior: "smooth" });
-    };
-  
-  
+  };
+
+
 
   const handleDepartmentClick = (departmentName) => {
     if (usernav) {
       navigate("/Filter", { state: { departmentName } });
       backto();
     } else {
-      
-        props.showAlart('Login first');
-        navigate("/Login");
-        
-        
+
+      props.showAlart('Login first');
+      navigate("/Login");
+
+
     }
   };
+  const [check, setCheck] = useState(false)
+
+  useEffect(() => {
+    if (departmentList.current) {
+      departmentList.current.style.height = moreDepartment ? "100%" : "96vh";
+      if(!moreDepartment){
+        setCheck(false);
+      }
+      else{
+        setCheck(true);
+      }
+    }
+  }, [moreDepartment]);
 
 
-      
 
 
   return (
@@ -76,8 +88,8 @@ const {usernav} = useContext(UserContext);
         <div className="inner-main-container">
           <div ref={contectContainer} className="content-container">
             <div className="department-title-box">
-               <h2>All departments :</h2>
-               <button>Question Papers<i className="fa-solid fa-not-equal"></i></button>
+              <h2>All departments :</h2>
+              <button>Question Papers<i className="fa-solid fa-not-equal"></i></button>
             </div>
             <div ref={departmentList} className="department-list">
               {departmentListdata.map((departmentListdata, index) => (
@@ -100,42 +112,18 @@ const {usernav} = useContext(UserContext);
                 margin: "0.9rem 0 0 0 ",
               }}
               onClick={() => {
-                if (!moreDepartment) {
-                  departmentList.current.style.height =
-                    "288vh";
-                  setMoreDepartment(true);
-                }
-                if (moreDepartment) {
-                  departmentList.current.style.height =
-                    "96vh";
-                  setMoreDepartment(false); 
-                }
+                setMoreDepartment((prev) => !prev);
               }}
             >
-              {moreDepartment ? (
-               
               <p
-              style={{
-                color: "#fff",
-                fontSize: "1.1rem",
-                whiteSpace: "nowrap",
-              }}
-            >
-              See less
-            </p>
-              ): ( 
-               
-                <p
                 style={{
                   color: "#fff",
                   fontSize: "1.1rem",
-                  // whiteSpace: "nowrap",
+                  whiteSpace: "nowrap",
                 }}
               >
-                More Departments
-              </p> 
-               
-              )}
+                {check ? "See less" : "More Departments"}
+              </p>
             </button>
           </div>
         </div>
