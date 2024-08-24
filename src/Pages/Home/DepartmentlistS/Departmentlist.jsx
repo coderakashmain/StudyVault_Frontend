@@ -69,7 +69,7 @@ const Departmentlist = (props) => {
 
   useEffect(() => {
     if (departmentList.current) {
-      departmentList.current.style.height = moreDepartment ? "100%" : "96vh";
+      departmentList.current.style.height = moreDepartment ? "100%" : "105vh";
       if(!moreDepartment){
         setCheck(false);
       }
