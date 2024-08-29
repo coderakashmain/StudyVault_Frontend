@@ -226,7 +226,7 @@
 
 .slidebar{
     min-height: 100vh;
-    width: 40vw;
+    width: 100vw;
     position: fixed;
     left: -100%;
     top: 0%;
@@ -235,6 +235,7 @@
     padding:0.2rem 2rem 0.2rem 3rem;
     overflow: hidden;
     transition: all 0.2s linear;
+    border-radius: 0% 100% 100% 0% / 25% 50% 50% 25%;
   
   }
   .cross-icon{
@@ -247,16 +248,20 @@
     margin-top: 1rem;
   }
   .cross-icon i{
-    font-size: 1.6rem;
-    filter: invert(5%);
+    font-size: 2rem;
+    color: #000;
+    padding: 1rem;
+    border-radius: 50%;
+
   
   }
   .slidebar h4{
     padding: 0.9rem 0;
   }
   .slidebar h4 i{
-    transform: translate(-50%,-5%);
+    transform: translate(0%,-5%);
     filter: invert(0%);
+    margin: 0 0.9rem 0 0;
   
   }
   .slidebar h4 a{
@@ -329,9 +334,7 @@
   }
   }
   @media (max-width : 454px) {
-    .slidebar{
-        width:80vw;
-      }
+   
      .cross-icon{
         margin-top: 2rem;
      }

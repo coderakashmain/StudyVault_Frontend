@@ -112,38 +112,53 @@ const Navbar = (props) => {
     openTl
       .to(".slidebar", {
         left: 0,
-        duration: 0.4,
-      })
+        borderRadius : 0,
+        duration: 0.5,
+        ease: "power4.inOut",
+      },'same')
+      .from(".slidebar-title", {
+        x: 200,
+        duration: 1.5,
+        stagger: 0.1,
+        // opacity: 0,
+        ease: "power2.out"
+      },'same')
       .from(".cross-icon i", {
         y: -10,
+        x: 0,
         opacity: 0,
         duration: 0.2,
-      })
-      .from(".slidebar-title", {
-        x: 100,
-        duration: 0.6,
-        stagger: 0.1,
-        opacity: 0,
-        ease: "power2.out"
-      })
+        
+      },'same')
+     
       
       .from(".copywrite", {
         opacity: 0,
         duration: 0.15,
-      });
+      },'same');
 
     const closeTl = gsap.timeline({ paused: true });
 
-    closeTl.to(".slidebar", {
+    closeTl
+    .to(".slidebar", {
       left: -950,
+      borderRadius : 100,
       duration: 1.3,
-    });
+      ease: "power2.out"
+    },'sameclose');
+    closeTl.to(".cross-icon i", {
+      x: -100,
+      opacity:0,
+      duration: 0.7,
+      
+    },'sameclose')
 
     const slideopen = () => {
       openTl.restart();
       gsap.to(".slidebar", {
         display: "block",
         duration: 0.01,
+        ease: "power2.out"
       });
 
 
@@ -345,6 +360,8 @@ const Navbar = (props) => {
         <div className="cross-icon">
           <i ref={crossicon} className="fa-solid fa-xmark"></i>
         </div>
+        <h3 style={{margin : '2rem 0 0 0 '}}>NAVIGATION</h3>
+        <hr style={{margin : '2rem 0'}}/>
         <div className="slidebar-box">
           <h4 className="slidebar-title">
             <Link to="/">
@@ -367,6 +384,7 @@ const Navbar = (props) => {
             </Link>
           </h4>
         </div>
+        <hr style={{margin : '2rem 0'}}/>
         <div className="copywrite">
           <p>Copyright 2024 All rights reserved |</p>
           <p>This website is made by</p>
