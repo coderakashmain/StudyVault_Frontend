@@ -3,7 +3,7 @@ import "./HomeT.css";
 import "remixicon/fonts/remixicon.css";
 // import Image from "./home-image-min.png";
 import { Link, useNavigate } from 'react-router-dom'
-import logo from '../../../../public/logo-transparent-png.png'
+import logo from '../../../photo/logo-transparent-png.png'
 
 
 const HomeT = (props) => {
