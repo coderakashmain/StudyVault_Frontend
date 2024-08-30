@@ -2,7 +2,8 @@ import React from "react";
 import "./HomeT.css";
 import "remixicon/fonts/remixicon.css";
 // import Image from "./home-image-min.png";
-import {Link, useNavigate} from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import logo from '../../../../public/logo-transparent-png.png'
 
 
 const HomeT = (props) => {
@@ -13,7 +14,13 @@ const HomeT = (props) => {
         <div className="landing-section">
           <div className="inner-landing">
             <div className="home-info">
-              <h1>Hi! I Am</h1>
+              <div  className="home-info-h1-logo">
+                <h1>Hi! I Am</h1>
+                <div className="h1-box">
+                 
+                    <img src={logo} alt="web logo" />
+                </div>
+              </div>
               <h2>{props.title}</h2>
               <p>
                 {props.titlepara}
@@ -33,7 +40,7 @@ const HomeT = (props) => {
                 </div>
               </div>
               <div className="buttons-home">
-                <button onClick={()=>{
+                <button onClick={() => {
                   navigate('About-us');
                 }}>Read me</button>
                 <Link to="/LogIn/Signup">
@@ -46,24 +53,24 @@ const HomeT = (props) => {
                 {/* <img src={Image} alt="not found" /> */}
               </div>
               <div className="overfolw-box box-one">
-              <i className="fa-solid fa-cloud"></i>
+                <i className="fa-solid fa-cloud"></i>
                 <div>
-                <h2>Questions Papers</h2>
-                <p>I am always for you Here</p>
+                  <h2>Questions Papers</h2>
+                  <p>I am always for you Here</p>
                 </div>
               </div>
               <div className="overfolw-box box-two">
-              <i className="fa-solid fa-file-pdf"></i>
+                <i className="fa-solid fa-file-pdf"></i>
                 <div>
-                <h2>Notes</h2>
-                <p>I also provide you Notes</p>
+                  <h2>Notes</h2>
+                  <p>I also provide you Notes</p>
                 </div>
               </div>
               <div className="overfolw-box box-three">
-              <i className="fa-solid fa-id-card-clip"></i>
+                <i className="fa-solid fa-id-card-clip"></i>
                 <div>
-                <h2>Documnets</h2>
-                <p>You can save you college document Securly</p>
+                  <h2>Documnets</h2>
+                  <p>You can save you college document Securly</p>
                 </div>
               </div>
             </div>

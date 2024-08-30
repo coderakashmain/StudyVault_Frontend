@@ -199,7 +199,6 @@ const Navbar = (props) => {
 
   const navbar = useRef();;
   useEffect(() => {
-
     const handleScroll = () => {
       if (window.scrollY > 200) {
         setNav(true);
@@ -208,33 +207,26 @@ const Navbar = (props) => {
       }
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
-
-    let isScrollingDown = false;
-    const handleWheel = (ele) => {
-      if (window.scrollY >= 100) {
-        if (ele.deltaY <= 0) {
-          if (!isScrollingDown) {
-            isScrollingDown = true;
-            navbar.current.style.transform = "translateY(0%)";
-          }
-        } else {
-          if (isScrollingDown) {
-            isScrollingDown = false;
-            navbar.current.style.transform = "translateY(-100%)";
-          }
-        }
-      } else {
+  
+    let lastScrollY = window.scrollY;
+    const handleTouchMove = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > lastScrollY && currentScrollY >= 100) {
+        // Scrolling down
+        navbar.current.style.transform = "translateY(-100%)";
+      } else if (currentScrollY < lastScrollY) {
+        // Scrolling up
         navbar.current.style.transform = "translateY(0%)";
       }
+      lastScrollY = currentScrollY;
     };
-    window.addEventListener("wheel", handleWheel);
-
-
-
+  
+    window.addEventListener("scroll", handleTouchMove, { passive: true });
+  
     return () => {
       window.removeEventListener("scroll", handleScroll, { passive: true });
-      window.removeEventListener('wheel', handleWheel, { passive: true });
-    }
+      window.removeEventListener("scroll", handleTouchMove, { passive: true });
+    };
   }, []);
 
 
@@ -260,7 +252,37 @@ const Navbar = (props) => {
     }
 
   }, [])
+  const filterRef = useRef();
+  useEffect(()=>{
+    if(window.innerWidth <= 650){
+      if(location.pathname === '/'){
+        filterRef.current.style.display = 'flex';
+      }
+      else{
+        filterRef.current.style.display = 'none';
+      }
+    }else{
+      filterRef.current.style.display = 'flex';
+    }
+   
+  },[location.pathname])
 
+  const [mobileScroll , setMobileScroll] = useState(true);
+
+  useEffect(()=>{
+    const handlemobileScroll = ()=>{
+      if(window.scrollY <= 250){
+        setMobileScroll(true);
+
+      }
+      else{
+        setMobileScroll(false);
+      }
+    }
+    window.addEventListener('scroll',handlemobileScroll,{passive : true});
+
+    return ()=> window.removeEventListener('scroll',handlemobileScroll,{passive : true})
+  },[])
 
 
   return (
@@ -268,7 +290,7 @@ const Navbar = (props) => {
       <div ref={navbar}
         className={`navbar 
          ${nav ? "home-nav" : "black-nav"}
-      ${location.pathname === '/api' ? (nav ? "home-nav" : "black-nav") : ""}
+      ${location.pathname === '/' ? (nav ? "home-nav" : "black-nav") : ""}
       ${location.pathname === '/Profile' ? "profile-nav" : ""}
       ${location.pathname === '/Contact-Us' ? "contact-nav" : ""}
       ${location.pathname === '/About-us' ? "about-nav" : ""}
@@ -293,13 +315,13 @@ const Navbar = (props) => {
             </ul>
           </div>
 
-          <div className="filter-switch">
+          <div ref={filterRef} className={`filter-switch ${mobileScroll && "filter-switch-mobile"}`}>
             <input
               // ref={searchRef}
               type="text"
               name=""
               id="searchbox"
-              placeholder="Search your department"
+              placeholder="Search  Department Here"
               onChange={deparmentChange}
               value={departmetvalue}
             />
