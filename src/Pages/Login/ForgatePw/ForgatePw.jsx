@@ -3,7 +3,6 @@ import './ForgatePw.css'
 import { Link, useNavigate } from 'react-router-dom'
 import BackButton from '../../../Component/Backbutton/Backbutton'
 import axios from 'axios';
-const API_URL = import.meta.env.VITE_API_URL;
 
 
 
@@ -46,7 +45,7 @@ const handleChange = (e)=>{
       try{
         setOtpSent(true);
         setLoader(true);
-        await axios.post(`${API_URL}/LogIn/ForgatePw`,{email});
+        await axios.post('/api/LogIn/ForgatePw',{email});
         props.showAlart('OTP sent seccesfully');
         setMessage(<p>Your OTP expired in 10 minutes.</p>);
 

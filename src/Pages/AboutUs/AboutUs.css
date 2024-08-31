@@ -44,6 +44,9 @@
     margin: 4rem 0 ;
     font-size: 1.3rem;
 }
+.left-about-box span{
+    color:  rgb(118 185 185) ;
+}
 .left-about-box button{
     outline: none;
     margin: 2rem 0 0 0;
@@ -178,6 +181,8 @@
     text-align:start ;
     /* line-height: 1.6rem; */
     letter-spacing: 0.08rem;
+    line-height: 2.3rem;
+    font-weight: 600;
 }
 .both-info p:last-child{
     display: flex;
@@ -205,7 +210,7 @@
 }
 
 .both-info p span{
-    color: rgb(101 151 181);
+    color:  rgb(118 185 185) ;
     font-size: 1.4rem;
 }
 

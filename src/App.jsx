@@ -60,7 +60,7 @@ const router = createBrowserRouter([
         children :[
           {
             path : '',
-            element : <Departmentlist showAlart={showAlart}/> 
+            element : <Departmentlist  showAlart={showAlart}/> 
           },
           {
             path : 'Filter',

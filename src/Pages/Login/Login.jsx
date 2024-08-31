@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import BackButton from "../../Component/Backbutton/Backbutton";
 import { UserContext } from "../../Context/UserContext/UserContextdata";
-const API_URL = import.meta.env.VITE_API_URL;
+
 
 
 
@@ -30,7 +30,7 @@ const Login = (props) => {
       setRepeatclick(true);
       e.preventDefault();
       try{
-        const response = await axios.post(`${API_URL}/LogIn`, loginData, { withCredentials: true });
+        const response = await axios.post('/api/LogIn', loginData, { withCredentials: true });
         if(response.status === 200 ){
           setUsernav(response.data.user);
           navigate('/');

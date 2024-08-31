@@ -115,7 +115,7 @@
   height: 100%;
   width: 100%;
   position: relative; 
-  border: 1px solid green;
+  /* border: 1px solid green; */
 }
 .background-image img {
   width: 100%;
@@ -384,16 +384,24 @@ footer a{
   height: 20px;
   margin: 0 1rem 0 0;
 }
+
 .sosial-media-link{
   display: flex; 
-  gap: 3%;
+  gap: 10%;
 }
 .social-media-icon{
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background-color: white;
+  /* background-color: white; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+.social-media-icon i{
+  font-size: 1.3rem;
+  color: #D6D5D8;
+} 
 .forth-footer-section{
   display: flex;
 
@@ -499,9 +507,12 @@ footer a{
   .second-footer-section ul{
     margin: 5% 4%;
   }
-  .apple-store-box,.play-store-box,.sosial-media-link,.third-footer-section p,.footer-comany-logo{
+  .apple-store-box,.play-store-box,.sosial-media-link,.footer-comany-logo{
     margin-top: 10%;
 
+  }
+  .third-footer-section p{
+    padding: 0.3rem 0;
   }
   html{
     font-size: 75%;

@@ -93,7 +93,7 @@ const Departmentlist = (props) => {
             </div>
             <div ref={departmentList} className="department-list">
               {departmentListdata.map((departmentListdata, index) => (
-                <div className="department" key={index}>
+                <div className="department" key={index} >
                   <p onClick={() => handleDepartmentClick(departmentListdata)}>
                     {" "}
                     {departmentListdata}

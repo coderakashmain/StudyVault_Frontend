@@ -32,6 +32,12 @@ gap: 0.1rem;
     font-size: 18px;
 
 }
+.social-contact-icon i{
+    cursor: pointer;
+}
+.social-contact-icon i:hover{
+    color: rgb(53, 120, 221);
+}
 .contact_box{
 margin: 0% 2%;
 text-align: center;
@@ -127,7 +133,8 @@ padding: 5%;
     font-weight: 500;
     margin-bottom:10%;
 }
-span{
+
+.contact-right-body span{
     color: rgb(85, 184, 238);
     font-weight: 450;
     cursor: pointer;

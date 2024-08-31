@@ -16,7 +16,10 @@ const Contact = () => {
   };
   const handleEmailButtoncalljituClick = () => {
     window.open(`tel:${jituphonenumber}`, '_blank');
-  };
+  };  
+  const handleteamsupport = ()=>{
+    window.open('tel:studyvaultteam@gmail.com','_blank');
+  }
   return (
     <>
       <div className="contact_main_conatainer">
@@ -35,7 +38,7 @@ const Contact = () => {
                 <ul>
                   <li>Bahalda,Baripada</li>
                   <li onClick={handleEmailButtonClick}>ab791235@gmail.com</li>
-                  <li onClick={handleEmailButtoncallakashClick} style={{cursor : 'pointer',background : '#d1d1d1',width : '50%',margin : 'auto',padding : '0.2rem 0.3rem',color :''}}>call me</li>
+                  <li onClick={handleEmailButtoncallakashClick} style={{cursor : 'pointer',background : 'rgb(235 235 235)',width : '50%',margin : 'auto',padding : '0.2rem 0.3rem',color :''}}>call me</li>
                 </ul>
               </div>
               <div className="second-location-box contact_box">
@@ -44,26 +47,23 @@ const Contact = () => {
                 <ul>
                   <li>Chikity,Berahampur</li>
                   <li onClick={handleEmailButtonClick} >jitupra73@gmail.com</li>
-                  <li onClick={handleEmailButtoncalljituClick} style={{cursor : 'pointer',background : '#d1d1d1',width : '50%',margin : 'auto',padding : '0.2rem 0.3rem',color :''}}>call me</li>
+                  <li onClick={handleEmailButtoncalljituClick} style={{cursor : 'pointer',background : 'rgb(235 235 235)',width : '50%',margin : 'auto',padding : '0.2rem 0.3rem',color :''}}>call me</li>
                 </ul>
               </div>
               <div className="third-location-box contact_box">
                 <h3>General Contact</h3>
                 <ul>
                   <li>
-                    inquries <a href="">abcd@efg</a>
+                    StudyVault <a href="#">Team</a>
+                  </li>
+                  <li onClick={handleteamsupport}>
+                  support@studyvault.online
                   </li>
                   <li>
-                    inquries <a href="">abcd@efg</a>
-                  </li>
-                  <li>
-                    inquries <a href="">abcd@efg</a>
-                  </li>
-                  <li>
-                    inquries <a href="">abcd@efg</a>
+                    Message on Social media
                   </li>
                   <li>+91 1236549870</li>
-                  <div className="social-contact-icon">
+                  <div className="social-contact-icon" style={{margin : '0.2rem 0'}}>
                     <i className="fa-brands fa-facebook"></i>
                     <i className="fa-brands fa-twitter"></i>
                     <i className="fa-brands fa-linkedin"></i>
@@ -128,7 +128,7 @@ const Contact = () => {
             <div className="contact-right-body">
               <h3>Connect with us :</h3>
               <p onClick={handleEmailButtonClick}>For support or any questions
-                Email us at <span>support@mpc.com</span></p>
+                Email us at <span>support@studyvault.online</span></p>
               <h3>MPC baripada</h3>
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, nam.</p>
             </div>
