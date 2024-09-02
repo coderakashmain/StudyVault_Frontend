@@ -1,6 +1,7 @@
 import React from 'react'
 import './AboutUs.css'
 import { Link } from 'react-router-dom'
+import akashlogo from '../../photo/profile-pic 1.png'
 
 const AboutUs = () => {
   return (
@@ -39,7 +40,7 @@ const AboutUs = () => {
             <div className="our-info-box-in">
               <div className="akash-box self-box">
                 <div className="akash-img-box self-img-box">
-                  <img src="https://www.davidchang.ca/wp-content/uploads/2020/09/David-Chang-Photography-Headshots-Toronto-61-1536x1536.jpg" alt="Akash's Photo" />
+                  <img src={akashlogo} alt="Akash's Photo" />
                 </div>
                 <div className="akash-description self-description">
                   <h3>Akash ~</h3>

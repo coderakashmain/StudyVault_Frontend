@@ -79,7 +79,7 @@ const Login = (props) => {
             <input  type="password" onChange={loginChange} autoComplete="off" value={loginData.password} name="password" id="loginpassword" placeholder="" />
             <div className="remember-forget-parent">
               <p className="">
-                <input type="checkbox" name="logincheckbox" id="" className="mr-2" />
+                <input type="checkbox" name="logincheckbox" id="" className="mr-2" checked />
                &nbsp; Remember me
               </p>
               <Link to='ForgatePw' style={{color : '#4B97D5'} } >Forget password ?</Link>

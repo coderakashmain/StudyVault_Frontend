@@ -18,7 +18,7 @@ const Contact = () => {
     window.open(`tel:${jituphonenumber}`, '_blank');
   };  
   const handleteamsupport = ()=>{
-    window.open('tel:studyvaultteam@gmail.com','_blank');
+    window.open('mailto:studyvaultteam@gmail.com','_blank');
   }
   return (
     <>
