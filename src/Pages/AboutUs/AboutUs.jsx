@@ -40,7 +40,7 @@ const AboutUs = () => {
             <div className="our-info-box-in">
               <div className="akash-box self-box">
                 <div className="akash-img-box self-img-box">
-                  <img src={akashlogo} alt="Akash's Photo" />
+                  <img src={akashlogo} alt="Akash's Photo" loading="lazy"/>
                 </div>
                 <div className="akash-description self-description">
                   <h3>Akash ~</h3>
@@ -61,7 +61,7 @@ const AboutUs = () => {
               </div>
               <div className="jitu-box self-box">
                 <div className="jitu-img-box self-img-box  ">
-                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcECNLzoKBCjC-n_cm8L-Wg4UlqSywIlzZpw&s" alt="Jitu's Photo" />
+                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcECNLzoKBCjC-n_cm8L-Wg4UlqSywIlzZpw&s" alt="Jitu's Photo" loading='lazy'/>
                 </div>
                 <div className="jitu-description self-description">
                   <h3>Jitu ~</h3>

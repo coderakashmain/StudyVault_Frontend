@@ -18,7 +18,7 @@ const HomeT = (props) => {
                 <h1>Hi! I Am</h1>
                 <div className="h1-box">
                  
-                    <img src={logo} alt="web logo" />
+                    <img src={logo} alt="web logo" loading="lazy"/>
                 </div>
               </div>
               <h2>{props.title}</h2>
@@ -50,7 +50,7 @@ const HomeT = (props) => {
             </div>
             <div className="home-image-section">
               <div className="background-image">
-                <img src={Image} alt="not found" />
+                <img src={Image} alt="not found" loading="lazy"/>
               </div>
               <div className="overfolw-box box-one">
                 <i className="fa-solid fa-cloud"></i>
