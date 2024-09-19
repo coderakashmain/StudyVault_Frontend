@@ -140,7 +140,7 @@ const HomeT = () => {
                     alt=""
                   />
                   <div>
-                    <p>Download us the</p>
+                    <p>Download on </p>
                     <h4>App Store</h4>
                   </div>
                 </div>
@@ -152,7 +152,7 @@ const HomeT = () => {
                   /> */}
                   <i style={{color: '#D6D5D8',padding : '0 0.9rem 0 0',fontSize: '1.2rem'}} className="fa-brands fa-google-play"></i>
                   <div>
-                    <p>Download us the</p>
+                    <p>Download on </p>
                     <h4>Google Play</h4>
                   </div>
                 </div>

@@ -118,6 +118,7 @@
 }
 .self-img-box img{
    height: 10rem;
+   aspect-ratio: 1/1;
    object-fit: cover;
 }
 .self-description{

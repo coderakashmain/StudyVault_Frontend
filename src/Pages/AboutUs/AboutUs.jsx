@@ -1,9 +1,16 @@
 import React from 'react'
 import './AboutUs.css'
 import { Link } from 'react-router-dom'
-import akashlogo from '../../photo/profile-pic 1.png'
+import akashlogo from '../../photo/Akash2.jpg'
 
 const AboutUs = () => {
+
+  const handletopscroll = ()=>{
+ 
+      window.scrollTo({top : 0});
+  
+  
+  }
   return (
     <>
       <section id="about-us">
@@ -11,7 +18,7 @@ const AboutUs = () => {
         <div className="about-us-contain">
           <div className="about-us-box">
             <div className="left-about-box">
-              <h2><span>O</span>ver the past few years, we've observed that students have had difficulty to obtaining notes and papers..In order to overcome these consequences
+              <h2><span style={ { fontWeight : '600'}}>O</span>ver the past few years, we've observed that students have had difficulty to obtaining notes and papers..In order to overcome these consequences
                 we've been trying to provide all the essential
                 exam related materials through this website
                 ..</h2>
@@ -82,7 +89,7 @@ const AboutUs = () => {
             <hr />
             <div className="both-info" id='both-info-section'>
               <p><span>O</span>ver the past two years, we've observed that students have had difficulty obtaining previous exam papers. Being students ourselves, we understand these challenges and want to help. That's why we decided to create a website where all past exam papers can be easily accessed by everyone. No matter what challenges we face, our commitment is to assist our fellow students. This platform aims to simplify exam preparation by providing a comprehensive archive of past papers. After all, your success is our success.😊</p>
-              <p>For any query contact with us ~<Link to="/Contact-Us"><button>Contact us</button></Link></p>
+              <p>For any query contact with us ~<Link to="/Contact-Us" ><button onClick={handletopscroll}>Contact us</button></Link></p>
             </div>
           </div>
         </div>

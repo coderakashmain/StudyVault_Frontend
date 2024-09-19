@@ -1,4 +1,3 @@
-import LocomotiveScroll from "locomotive-scroll";
 import "./App.css";
 import AboutUs from "./Pages/AboutUs/AboutUs";
 import Home from "./RoutingFiles/Home";

@@ -54,16 +54,18 @@ const Departmentlist = (props) => {
 
 
   const handleDepartmentClick = (departmentName) => {
-    if (usernav) {
-      navigate("/Filter", { state: { departmentName } });
+    // if (usernav) {
+    //   navigate("/Filter", { state: { departmentName } });
+    //   backto();
+    // } else {
+
+    //   props.showAlart('Login first');
+    //   navigate("/Login");
+
+
+    // }
+    navigate("/Filter", { state: { departmentName } });
       backto();
-    } else {
-
-      props.showAlart('Login first');
-      navigate("/Login");
-
-
-    }
   };
   const [check, setCheck] = useState(false)
 

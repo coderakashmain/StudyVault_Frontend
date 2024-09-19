@@ -1,14 +1,45 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./HomeT.css";
 import "remixicon/fonts/remixicon.css";
 import Image from "../../../photo/homelogo3.png";
 import { Link, useNavigate } from 'react-router-dom'
 import logo from '../../../photo/logo-transparent-png.png'
+import axios from "axios";
+import { UserContext } from "../../../Context/UserContext/UserContextdata";
+
+
+
 
 
 const HomeT = (props) => {
   const navigate = useNavigate();
-  return (
+  const {usernav} = useContext(UserContext);
+  const[userlogincheck,setUserlogincheck] = useState();
+
+  useEffect(()=>{
+    const userlogin = async()=>{
+      
+      try { 
+        const response = await axios.get('/api/signup-check',{withCredentials : true});
+        
+        if(response.status === 200){
+          setUserlogincheck(true);
+      }
+      else{
+        setUserlogincheck(false);
+      }
+    }
+
+      catch (error) {
+        console.error('Error fetching profile');
+        setUserlogincheck(false);
+    }
+  }
+  userlogin();
+  },[usernav]);
+
+
+  return ( 
     <>
       <div className="main-container">
         <div className="landing-section">
@@ -43,9 +74,9 @@ const HomeT = (props) => {
                 <button onClick={() => {
                   navigate('About-us');
                 }}>Read me</button>
-                <Link to="/LogIn/Signup">
+               {!userlogincheck && ( <Link to="/LogIn/Signup">
                   Sign Up <i className="fa-solid fa-arrow-right"></i>
-                </Link>
+                </Link>)}
               </div>
             </div>
             <div className="home-image-section">

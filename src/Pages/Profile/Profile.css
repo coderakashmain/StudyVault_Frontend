@@ -156,17 +156,17 @@
     left: 0;
     height: 100vh;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.279);
+    background-color: rgba(0, 0, 0, 0.829);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 20;
+    z-index: 1000;
 }
 .filterselect-option{
     background-color: rgb(238, 238, 238);
     padding: 1rem 2rem;
     width: 80vw;
-    height:38rem ;
+    min-height:38rem ;
     border-radius: 0.9rem;
 }
 .filterselct-option-box{
@@ -209,7 +209,7 @@
 .filterselect-option .fa-xmark{
     position: absolute;
     right: -5%;
-    top: -5%;
+    top: -1%;
     font-size: 2rem;
     cursor: pointer;
     filter: brightness(0) saturate(100%) invert(100%) sepia(2%) saturate(0%) hue-rotate(161deg) brightness(103%) contrast(100%);
@@ -218,11 +218,11 @@
     margin: 1rem 0 0 0;
     border: none;
     outline: none;
-    background-color: #6ac8e7;
+    background: blue;
     font-size: 1rem;
     padding: 0.6rem 1rem;
     border-radius: 0.2rem;
-    color: #f2f2f2;
+    color: #fff;
 }
 .rightfilter-select{
     height: 100%;
@@ -232,16 +232,20 @@
     text-align: left;
    margin: 1rem 0.4rem;
    font-size: 1.3rem;
+   overflow-x: hidden;
+  
 }
 .right-file-box li{
      margin: 0.5rem  0.1rem 0.5rem 3rem ;
-   font-size: 1.1rem;
+   font-size: 0.9rem;
    list-style: circle;
+   text-wrap: wrap;
+   
    
    
 }
 .right-file-box ul i{
-    filter: brightness(0) saturate(100%) invert(17%) sepia(97%) saturate(1262%) hue-rotate(205deg) brightness(99%) contrast(100%);
+  filter: brightness(0) saturate(100%) invert(83%) sepia(30%) saturate(7448%) hue-rotate(55deg) brightness(98%) contrast(110%);
    
 }
 .right-file-logo-box{
@@ -262,7 +266,7 @@
     padding-left: 0.9rem;
 }
 .recent-work{
-    height: 20vw;
+    /* height: 20vw; */
     margin: 4rem 0 7rem 0;
 }
 .recent-work h3{
@@ -272,28 +276,34 @@
 }
 .recent-work-box{
     width: 100%;
-    height: 100%;
+ 
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 3.9rem;
     cursor: pointer;
+    flex-wrap: wrap;
     
 }
 .recent{
-    background-color: rgb(181, 181, 181);
-    border-radius: 1rem;
+    background-color: rgba(138, 138, 138, 0.319);
+    border-radius: 0.2rem;
+    flex-grow: 1;
+    flex-basis:240px;
+    min-height: 200px;
+    padding: 1rem;
+    color: #000;
+    
 }
-.recent-download{
-    width: 50%;
-    height: 100%;
+/* .recent-download{
+    width: 50%; 
+     height: 100%; 
     
 }
 .recent-upload{
-    width: 50%;
-    height: 100%;
-    
-}
+     width: 50%;
+     height: 100%; 
+} */
 .profile-client-info h3{
     font-size: 1.5rem;
     margin: 2rem 0 2.4rem 0;
@@ -451,6 +461,18 @@
      .client-info-name{
          width: 100%;
      }
+     .filterselct-option-box{
+        flex-direction: column;
+     }
+     .leftfilter-select{
+        width: 100%;
+     }
+     .rightfilter-select{
+        width: 100%;
+     }
+     .right-file-logo-box i:first-child{
+        display: none;
+    }
    
 }
 @media (max-width:547px) {

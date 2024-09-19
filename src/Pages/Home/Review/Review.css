@@ -167,13 +167,44 @@
     background-color: gray;
     border-radius: 50%;
 }
+.all-reviews-box{
+    width: 100%;
+}
+.all-reviews-box-feedback{
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    
+}
+.all-reviews-givefeedback {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+}
+.all-reviews-givefeedback h4{
+    margin: 2rem 0;
+    font-weight: 500;
+}
+.all-reviews-givefeedback button{
+   outline: none;
+   border: none;
+   padding: 0.6rem 1rem;
+   background-color: #157179;
+   color: #fff;
+   border-radius: 0.4rem;
+   cursor: pointer;
+   font-weight: 500;
+
+}
+
 
 .review-box{
     border: 2px solid gray ;
     padding: 2%;
     margin: 1%;
-    width: 30%;
+    flex-basis: 250px;
     border-radius: 14px;
+    flex-grow: 1;
 }
 .review-user-details{
     border-bottom: 1px solid gray ;
@@ -199,12 +230,116 @@
 .review-star .fa-star{
     color: rgb(16, 77, 16);
 }
-
+.feedback-form{
+    width: 70%;
+    padding: 2rem;
+    background-color: rgb(231 232 235);
+    border-radius: 0.9rem;
+    box-shadow: 5px 5px 10px  rgba(112, 112, 112, 0.136), inset  -5px -5px 10px  rgba(244, 244, 244, 0.523)  ;
+   
+}
 .all-reviews{
     display: flex;
     justify-items: center;
     flex-wrap: wrap;
+    flex-direction: row;
+    /* width: 30%; */
 }
+.feedback-form form .feedback-form-headline{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.feedback-user-info{
+    display: flex;
+    justify-content: center;
+    
+
+}
+.feedback-form-headline h2{
+    font-size: 2rem;
+    font-weight: 500;
+}
+.feedback-user-info h4{
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.feedback-user-image {
+    height: 2rem;
+    width: 2rem;
+    background-color: red;
+    border-radius: 50%;
+    margin: 0 0.5rem;
+}
+.feedback-rating-box{
+    margin: 2rem 0 0 0;
+    font-size: 1.2rem;
+}
+.start-box{
+    margin: 2rem 0rem 0;
+    display: flex;
+    justify-content: space-between;
+    width: 25%;
+    /* gap: 2rem; */
+    flex-direction: row-reverse;
+}
+.start-box input{
+    display: none;
+}
+.start-box label{
+    font-size: 2rem;
+    cursor: pointer;
+    color: #444;
+    transition: all 0.1s ease;
+    
+}
+.start-box input:not(:checked) ~ label:hover,
+.start-box input:not(:checked) ~ label:hover ~ label{
+    color : rgb(236, 193, 0);
+}
+.start-box input:checked ~ label{
+    color: rgb(236, 193, 0);
+}
+.feedback-area{
+    margin: 4rem 0 0 ;
+}
+.feedback-area h4{
+    font-size: 1rem;
+    margin: 1rem 0;
+    text-wrap: wrap;
+}
+.feedback-area textarea{
+ max-width:90%;
+ max-height: 10rem;
+ border: none;
+ border: 2px solid #81a3a645;
+ padding: 1rem;
+ font-size: 0.9rem;
+}
+.feedback-area textarea:focus{
+  outline-width: 0.2rem;
+  outline-color: #c4c4c4;
+}
+.feedback-form form button:last-child{
+    background-color: #4B97D5;
+    padding: 0.4rem 1.9rem;
+    border: none;
+    outline: line;
+    float: right;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 0.2rem;
+}
+.feedback-form form button:last-child:hover{
+   background-color: #4183b9;
+}
+.feedback-form form button:first-child{
+    background-color: #4B97D5;
+}
+
 @media only screen and (max-width:1000px){
     .profile-picture{
         width: 30px;

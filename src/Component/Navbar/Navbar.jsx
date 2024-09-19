@@ -78,7 +78,10 @@ const Navbar = (props) => {
       navigate("/Login");
     }
 
-  }
+  } 
+
+
+   
 
 
   const handleLogout = async () => {

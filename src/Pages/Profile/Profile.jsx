@@ -12,7 +12,10 @@ const Profile = (props) => {
 
   const [user, setUser] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
+  const [singletap,setSingletap] = useState(false);
+  // const [driveUrl,setdriveUrl] = useState('');
+  const [renameFileback,setrenameFileback] = useState('');
 
   const fileInputRef = useRef(null);
 
@@ -27,6 +30,7 @@ const Profile = (props) => {
 
     }
   );
+
 
   const handlechange = (e) => {
     const { name, value } = e.target;
@@ -75,11 +79,11 @@ const Profile = (props) => {
   };
 
 
-
+  
 
   const handleFileChange = async (e) => {
     const file = e.target.files[0];
-    if (file && file.type === 'application/pdf,image/jpeg') {
+    if (file && file.type === 'application/pdf') {
       setSelectedFile(file);
 
     } else {
@@ -91,68 +95,112 @@ const Profile = (props) => {
     }
   };
 
+  const handlerenamed = (newFileName)=>{
+    setrenameFileback(newFileName)
+  }
 
   const handleUpload = () => {
     if (selectedFile) {
       const newFileName = `${filtetuploaddata.departmentName}_${filtetuploaddata.paperName}_${filtetuploaddata.session}_${filtetuploaddata.dptyear}_${filtetuploaddata.semormid}_${filtetuploaddata.paperName}.pdf`;
-
+        handlerenamed(newFileName);
       const renamedFile = new File([selectedFile], newFileName, { type: selectedFile.type });
-
+     
       return renamedFile;
     }
     return null;
   };
 
+  
+ 
+  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setSingletap(true);
+
 
     const fileToUpload = handleUpload();
+
+    
     if (fileToUpload) {
-      console.log('selected file', fileToUpload);
+      // console.log('selected file', fileToUpload);
 
       const formData = new FormData();
       formData.append('file', fileToUpload);
+      formData.append('renameFileback', renameFileback); 
+      console.log(renameFileback);
+      formData.append('userid', user.id); 
 
       formData.append('filtetuploaddata', JSON.stringify(filtetuploaddata));
+      
 
       try {
-        const response = axios.post('/api/Profile', formData, {
+        const response = await axios.post('/api/Profile/upload', formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           },
 
         });
-        if (response) {
-
-          props.showAlart(' successfully send');
+        console.log(user.id);
+        if (response.status === 200) {
+          const fileId = response.data.fileId; // Capture the file ID from backend
+          const driveUrl = `https://drive.google.com/file/d/${fileId}/view`;
+          // setdriveUrl(driveUrl);
+          setrenameFileback('');
+          
           setSelectedFile(null);
           if (fileInputRef.current) {
             fileInputRef.current.value = "";
           }
+          props.showAlart(' successfully send')
           setFiltetuploaddata('');
 
-
-
-
-
+          alert(`View your uploaded file here: ${driveUrl}`);
+          window.open(driveUrl, '_blank');
+          setSingletap(false); 
+        }
+        else{
+          setSingletap(false);
+          props.showAlart('External error')
 
         }
 
       } catch (error) {
         console.error('Error uploading file:', error);
-        props.showAlert('Error', 'Failed to upload the file.');
-
+        props.showAlart('Error', 'Failed to upload the file.');
+        setSingletap(false);
       }
 
     } else {
       console.log('No file selected or invalid file type')
       props.showAlart('Error', 'Please select  file')
+      setSingletap(false);
       return;
     };
 
   };
 
+const  handlepdffetch = async(e) =>{
+e.preventDefault();
+try{
+  const response = await axios.get('/api/Profile/fetchpdf',{userid : user.id},{withCredentials : true});
 
+  if(response.status ===200){
+    setpdfetchfile(response.data);
+  }
+  else{
+    showAlart('something error');
+  }
+}
+
+
+catch(error){
+  if(error.response && error.response.status === 400){
+
+  }
+}
+
+};
 
 
 
@@ -191,7 +239,7 @@ const Profile = (props) => {
               </div>
               <div className="pdfupload" >
 
-                <form action="/api/Prifile" onSubmit={handleSubmit}>
+                <form  onSubmit={handleSubmit}>
 
 
 
@@ -205,13 +253,13 @@ const Profile = (props) => {
                           <div className="leftfilter-select">
                             <p>*</p>
                             <div className="leftfilter-select-item">
-                              <input onChange={handlechange} value={filtetuploaddata.departmentName} type="text" name='departmentName' placeholder=" Department Name" required />
+                              <input onChange={handlechange} value={filtetuploaddata.departmentName} type="text" name='departmentName' placeholder=" Department Name" required  readOnly={singletap ? true : false} />
 
                             </div>
                             <p>*</p>
                             <div className="leftfilter-select-item">
-                              <select onChange={handlechange} value={filtetuploaddata.educationLavel} name="educationLavel" id="dptnameselect" required >
-                                <option value="">Select Education Level</option>
+                              <select onChange={handlechange} value={filtetuploaddata.educationLavel} name="educationLavel" id="dptnameselect" required readOnly={singletap ? true : false} >
+                                <option value="" readOnly={singletap ? true : false} >Select Education Level</option>
                                 <option value="Ug">Under Graduation(UG)</option>
                                 <option value="Pg">Post Graduation(PG)</option>
                               </select>
@@ -221,13 +269,13 @@ const Profile = (props) => {
 
                             <p>*</p>
                             <div className="leftfilter-select-item">
-                              <input onChange={handlechange} value={filtetuploaddata.session} type="number" name='session' placeholder=" Session (2024)" required pattern="[0-9]{4}" />
+                              <input onChange={handlechange} value={filtetuploaddata.session || ''} type="number" name='session' placeholder=" Session (2024)" required pattern="[0-9]{4}" readOnly={singletap ? true : false} />
 
                             </div>
 
                             <p>*</p>
                             <div className="leftfilter-select-item">
-                              <select onChange={handlechange} value={filtetuploaddata.dptyear} name="dptyear" id="dptyear" required>
+                              <select onChange={handlechange} value={filtetuploaddata.dptyear} name="dptyear" id="dptyear" required readOnly={singletap ? true : false}>
                                 <option value="">Choose Semester</option>
                                 <option value="1stsem">1st sem</option>
                                 <option value="2ndsem">2nd sem</option>
@@ -242,7 +290,7 @@ const Profile = (props) => {
                             </div>
                             <p>*</p>
                             <div className="leftfilter-select-item">
-                              <select onChange={handlechange} value={filtetuploaddata.semormid} name="semormid" id="semormid" required>
+                              <select onChange={handlechange} value={filtetuploaddata.semormid} name="semormid" id="semormid" required readOnly={singletap ? true : false}>
                                 <option value="">Select Exam type</option>
                                 <option value="midsem">Mid Semester</option>
                                 <option value="sem">Semester</option>
@@ -251,7 +299,7 @@ const Profile = (props) => {
                             </div>
                             <p>*</p>
                             <div className="leftfilter-select-item">
-                              <input onChange={handlechange} value={filtetuploaddata.paperName} type="text" name='paperName' placeholder=" Paper Name (Core-1)" required />
+                              <input onChange={handlechange} value={filtetuploaddata.paperName} type="text" name='paperName' placeholder=" Paper Name (Core-1)" required readOnly={singletap ? true : false} />
 
                             </div>
 
@@ -264,14 +312,14 @@ const Profile = (props) => {
                               </ul>}
                             </div>
                             <div className="right-file-logo-box">
-                              <i className="fa-solid fa-photo-film"></i>
+                             <i className="fa-regular fa-face-grin-hearts"></i>
 
                               <h2>Thank You for your Contribution 😊</h2>
                             </div>
 
                           </div>
                         </div>
-                        <button type="submit">Send File</button>
+                        <button disabled={singletap} style={{background : ` ${singletap ? 'lightblue' : 'blue'}`}} type="submit">Send File</button>
                       </div>
 
                     </div>
@@ -296,8 +344,12 @@ const Profile = (props) => {
               <h3>Recent work</h3>
               <div className="recent-work-box">
                 <div className="recent-download recent">
+                  
                 </div>
-                <div className="recent-upload recent"></div>
+                <div className="recent-upload recent">
+
+
+                </div>
               </div>
             </div>
             <div className="profile-client-info profilecontain">
