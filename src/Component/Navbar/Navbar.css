@@ -78,16 +78,18 @@
 }
 .filter-switch input::placeholder{
   color: #e2e2e2;
+  font-size: 0.8rem;
 }
 .filter-switch .search-suggestion{
   position: absolute;
-  min-width: 110%;
+  min-width: 100%;
   /* min-height: 100%; */
   left: 0%;
   top: 110%;
   background-color: #fff;
   border-radius: 0.4rem;
   overflow-y: scroll;
+  
 }
 .filter-switch .search-suggestion::-webkit-scrollbar{
   display: none;

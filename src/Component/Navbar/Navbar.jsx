@@ -18,11 +18,14 @@ const Navbar = (props) => {
   const [isAuthenticateduser, setIsAuthenticateduser] = useState(false);
   const [nav, setNav] = useState(false);
   const [locationCollege, setLocationCollege] = useState(false);
+  const hideeSarchSuggestion = useRef();
+  const [showSuggestions, setShowSuggestions] = useState(false);
  
 
 
   const deparmentChange = (e) => {
     setDartmentvalue(e.target.value);
+    setShowSuggestions(true);
   }
 
   const {filtersection} = useContext(ScrollFilterContext);
@@ -66,17 +69,17 @@ const Navbar = (props) => {
 
 
   const onSearch = (searchdpt) => {
-    if (isAuthenticateduser) {
+    // if (isAuthenticateduser) {
 
       setDartmentvalue(searchdpt);
       navigate("Filter", { state: { searchdpt } });
       gotofilter();
       setDartmentvalue('');
-    }
-    else {
-      props.showAlart('Login first');
-      navigate("/Login");
-    }
+    // }
+    // else {
+    //   props.showAlart('Login first');
+    //   navigate("/Login");
+    // }
 
   } 
 
@@ -287,6 +290,19 @@ const Navbar = (props) => {
     return ()=> window.removeEventListener('scroll',handlemobileScroll,{passive : true})
   },[])
 
+  useEffect(()=>{
+    const handlehide = (event)=>{
+      if(hideeSarchSuggestion.current && !hideeSarchSuggestion.current.contains(event.target)){
+        setShowSuggestions(false);
+      }
+    }
+    document.addEventListener("mousedown", handlehide);
+
+    return ()=>{
+      document.removeEventListener("mousedown", handlehide);
+    }
+  })
+
 
   return (
     <>
@@ -330,8 +346,7 @@ const Navbar = (props) => {
             />
 
             <label htmlFor="searchbox"><i className="fa-solid fa-magnifying-glass"></i></label>
-
-            <div className="search-suggestion">
+          { showSuggestions && (<div ref={hideeSarchSuggestion} className="search-suggestion">
               {departmetvalue ? (
                 departmentdata && departmentdata.filter((item) => {
                   const data = item.toLowerCase();
@@ -356,7 +371,7 @@ const Navbar = (props) => {
                   ))
                 )
               ) : null}
-            </div>
+            </div>)}
 
           </div>
 
