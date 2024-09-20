@@ -69,7 +69,7 @@ const Profile = (props) => {
 
   }, []);
   if (loading) {
-    return <p>Loading...</p>;
+    return <p style={{margin  : "5rem 0 0 1rem"}}>Loading...</p>;
 
 }
 
