@@ -211,7 +211,7 @@ const Signup = (props) => {
          id="gmail"  className="singup-form-input" required/>
           
          {verifyOtp &&( <input type="number" onChange={(e)=>{setOtpValue(e.target.value)}} value={otpValue} style={{height :'30%',padding : '0.6rem 0.2rem 0.6rem 0.8rem',margin :'auto',border : 'none',borderRadius : '0.2rem',width  : '60%',fontSize : '0.9rem',flexGrow : '1'}} placeholder="OTP" />)}
-        {otp && (<button disabled = {disablebtn} type="submit"   style={{textAlign : 'end',padding : '0.6rem 1rem',height : '30%',margin :'auto',outline : 'none',border : 'none',backgroundColor : "lightblue",cursor : 'pointer',borderRadius : '0.2rem',transition : 'all 0.2s ease-in-out'}}>{!verifyOtpsubmit ? (<p style={{fontSize :'0.9rem'}}>{!spinner ? ("Verify") : (<box-icon  name='loader-alt' size = 'sm' flip='horizontal' animation='spin' color='#000' ></box-icon>)}</p>):(<p style={{fontSize :'0.9rem'}} >Confirm</p>)}</button>)}
+        {otp && (<button disabled = {disablebtn || spinner} type="submit"   style={{textAlign : 'end',padding : '0.6rem 1rem',height : '30%',margin :'auto',outline : 'none',border : 'none',backgroundColor : "lightblue",cursor : 'pointer',borderRadius : '0.2rem',transition : 'all 0.2s ease-in-out'}}>{!verifyOtpsubmit ? (<p style={{fontSize :'0.9rem'}}>{!spinner ? ("Verify") : (<box-icon  name='loader-alt' size = 'sm' flip='horizontal' animation='spin' color='#fff' ></box-icon>)}</p>):(<p style={{fontSize :'0.9rem'}} >Confirm</p>)}</button>)}
           </div>
        {message}
          

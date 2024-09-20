@@ -26,6 +26,7 @@ const Filter = (props) => {
   const [yearsecondActive, setYearsecondActive]= useState(false);
   const [yearthirdActive, setYearthirdActive]= useState(false);
   const [loader,setLoader] = useState(false);
+  
   const initialDepartmentName = location.state?.departmentName || '';
   const initialDepartmentNamesearch = location.state?.searchdpt || '';
 const [dptName, setDptName] = useState('');
@@ -119,8 +120,8 @@ useEffect(()=>{
       
     } catch (error) {
       console.error('Error fetching papers:', error);
-     
-      props.showAlart('Not selected','Please provide at least one filter criteria.');
+      setLoader(false);
+      props.showAlart('Server errror');
     }
   };
 
@@ -277,8 +278,8 @@ useEffect(()=>{
         <div className="filter-submission">
           <div className="filter-submission-box">
             
-              {loader && (<box-icon name='loader-alt' size = 'sm' flip='horizontal'  animation='spin' color='#fffff' ></box-icon>)}
-              <input  type="submit" value="Find" />
+              {loader && (<box-icon name='loader-alt' size = 'sm' flip='horizontal'  animation='spin' color='#fff' ></box-icon>)}
+              <input disabled= {loader}  type="submit" value="Find" />
           </div>
        
         </div>
