@@ -261,7 +261,7 @@ const Navbar = (props) => {
   const filterRef = useRef();
   useEffect(()=>{
     if(window.innerWidth <= 650){
-      if(location.pathname === '/'){
+      if(location.pathname === '/' || location.pathname === '/Filter'){
         filterRef.current.style.display = 'flex';
       }
       else{
