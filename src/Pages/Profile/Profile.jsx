@@ -52,7 +52,7 @@ const Profile = (props) => {
 
     const fetchProfile = async () => {
       try {
-          const response = await axios.get('/api/profile', { withCredentials: true });
+          const response = await axios.get('/api/Profile', { withCredentials: true });
           if(response.status === 200){
 
             setUser(response.data.user);
