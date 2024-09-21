@@ -17,7 +17,7 @@ const HomeT = () => {
           
         <div className="inner-main-container">
           
-          <footer>
+          <footer className="body-footer">
             <div className="mian-footer-body">
               <div className="first-footer-section">
                 <h3>Join Witih us to recive updates, news & events!</h3>
