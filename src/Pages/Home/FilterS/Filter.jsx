@@ -115,13 +115,32 @@ useEffect(()=>{
     try {
       setLoader(true);
       const response = await axios.get('/api/Filter', { params: nonEmptyFilters });
-      navigate('/Downloadpdf',{ state: { filters } });
-      setLoader(false);
+      if(response.status === 200){
+        navigate('/Downloadpdf',{ state: { filters } });
+        setLoader(false);
+      }
+      else{
+        props.showAlart('Try again after some time .');
+        setLoader(false)
+      }
       
     } catch (error) {
-      console.error('Error fetching papers:', error);
-      setLoader(false);
-      props.showAlart('Server errror');
+      if(error.response && error.response.status === 400){
+        console.error(error);
+        setLoader(false);
+        props.showAlart('No filter parameters provided');
+      }
+      if(error.response && error.response.status === 500){
+        console.error('Internal server error: ', error);
+        setLoader(false);
+        props.showAlart('Server Error');
+      }
+      else{
+        console.error('Internal Error: ', error);
+        setLoader(false);
+        props.showAlart('Server Error');
+      }
+    
     }
   };
 
@@ -134,6 +153,7 @@ useEffect(()=>{
             <h3>Department Name :</h3>
             <div className="department-type">
               <div className="department-name">
+                <p>Please enter valid Name *</p>
                 <input
                   type="text"
                   name="departmentName"
@@ -279,7 +299,7 @@ useEffect(()=>{
           <div className="filter-submission-box">
             
               {loader && (<box-icon name='loader-alt' size = 'sm' flip='horizontal'  animation='spin' color='#fff' ></box-icon>)}
-              <input disabled= {loader}  type="submit" value="Find" />
+              <input disabled= {loader} style={{ background :( loader  ? 'lightblue' : '#4c98d9' )}}  type="submit" value="Find" />
           </div>
        
         </div>

@@ -39,18 +39,23 @@ const Login = (props) => {
         }
        
         else {
-          console.error('Invalid credentials');
-          props.showAlart('Invalid credentials');
+          console.error('Error retrieving data');
+          props.showAlart('Error retrieving data');
           setRepeatclick(false);
           
         }
 
 
        } catch(error){
-        setRepeatclick(false);
+        if(error.response && error.response.status === 401){
           props.showAlart('Invalid credentials','try again');
-          
-        
+          setRepeatclick(false);
+        }
+        if(error.response && error.response.status === 500){
+          props.showAlart('Internal Server Error');
+          setRepeatclick(false);
+        }
+        setRepeatclick(false);
        }
     };
 

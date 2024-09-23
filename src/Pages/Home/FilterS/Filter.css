@@ -107,7 +107,14 @@ cursor: pointer;
   padding-left: 5%;
   border-radius: 9px;
   border: 1px solid gray;
+  position: relative;
 }
+.department-name p{
+    position: absolute;
+    top: -50%;
+    right: 0%;
+    font-size: 0.8rem;
+} 
 .department-name input[type="text"] {
   width: 100%;
   padding: 4%;

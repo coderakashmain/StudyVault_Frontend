@@ -78,28 +78,38 @@ const Signup = (props) => {
            setMessage(<p style={{margin :'0 0 0.45rem 0',fontSize :'0.5rem'}}>OTP valid for 10 minutes.</p>)
 
         }
+        else{
+          props.showAlart('Try again after some time .');
+          setSpinner(false);
+          setDisablebtn(false);
+        }
   
       }
       catch(error){
         if(error.response && error.response.status ===410){
-          props.showAlart('internal error ');
+          props.showAlart('Internal error ');
           setDisablebtn(false);
+          setSpinner(false);
         }
         if(error.response && error.response.status ===420){
            setVerifyOtp(true);
            setVerifyOtpsubmit(true);
            setDisablebtn(false);
+           props.showAlart('Error in genereting OTP');
+           setSpinner(false);
           
         }
         if(error.response && error.response.status ===500){
-          props.showAlart('error in genereting OTP');
+          props.showAlart('Error in genereting OTP');
           setDisablebtn(false);
+          setSpinner(false);
         }
       }
     }
     else{
       props.showAlart('Enter your email');
       setDisablebtn(false);
+      setSpinner(false);
     }
     
   };

@@ -147,15 +147,15 @@ const Navbar = (props) => {
 
     closeTl
     .to(".slidebar", {
-      left: -950,
-      borderRadius : 100,
+      left: -1000,
+      borderRadius : 50,
       duration: 1.3,
       ease: "power2.out"
     },'sameclose');
     closeTl.to(".cross-icon i", {
       x: -100,
       opacity:0,
-      duration: 0.7,
+      duration: 0.4,
       
     },'sameclose')
 
