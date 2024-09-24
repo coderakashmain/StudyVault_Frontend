@@ -65,9 +65,11 @@
     overflow: hidden;
 }
 .profile-main-photo img{
-    object-fit: cover;
+    aspect-ratio: 1;
+    object-fit: contain;
     height: 10rem;
     position:relative;
+    transform: scale(2);
 }
 .profile-main-photo-subpart{
     height: 33%;

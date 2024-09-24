@@ -3,6 +3,7 @@ import "./Profile.css";
 import { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import axios from "axios";
+import profilelogo from '../../photo/profile common logo.jpg'
 
 
 
@@ -219,7 +220,7 @@ catch(error){
                 <div className="profile-main-photo">
                   <div className="profile-main-photo-img-box">
 
-                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvHnbkXhPR46iJHQK3-n1g_jsjeQurfxSuPQ&s" alt="profile photo" />
+                  <img src={profilelogo} alt="profile photo" />
                   </div>
                   <div className="profile-main-photo-subpart"></div>
                 </div>
@@ -344,10 +345,10 @@ catch(error){
               <h3>Recent work</h3>
               <div className="recent-work-box">
                 <div className="recent-download recent">
-                  
+                    Update soon...
                 </div>
                 <div className="recent-upload recent">
-
+                Update soon...
 
                 </div>
               </div>
@@ -367,7 +368,7 @@ catch(error){
                 <div className="client-info-name departmentprofile">
                   <h4>Department</h4>
                   <div className="client-info-name-inside name-insde">
-                    <p>Computer Science</p>
+                    <p></p>
                     <h5>
                       Department<i className="fa-solid fa-arrow-right"></i>
                     </h5>
@@ -415,65 +416,10 @@ catch(error){
 
               <div className="files-items">
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Aliquid officia in.🍫
+                  Update Soon....
                 </p>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Aliquid officia in.🍫
-                </p>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Aliquid officia in🍫.
-                </p>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Aliquid officia in🍫.
-                </p>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Aliquid officia in🍫.
-                </p>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Aliquid officia in🍫.
-                </p>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Aliquid officia in🍫.
-                </p>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Aliquid officia in🍫.
-                </p>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Aliquid officia in🍫.
-                </p>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Aliquid officia in🍫.
-                </p>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Aliquid officia in🍫.
-                </p>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Aliquid officia in🍫.
-                </p>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Aliquid officia in🍫.
-                </p>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Aliquid officia in🍫.
-                </p>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Aliquid officia in🍫.
-                </p>
+                
+                
               </div>
             </div>
 

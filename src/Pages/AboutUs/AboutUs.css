@@ -121,6 +121,10 @@
    aspect-ratio: 1/1;
    object-fit: cover;
 }
+.jitu-img-box img{
+    transform: scale(1.05) translateX(-8%);
+    height: 14rem;
+}
 .self-description{
     margin: 0.3rem 0 0 0;
 }

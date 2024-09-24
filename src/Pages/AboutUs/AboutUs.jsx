@@ -2,6 +2,7 @@ import React from 'react'
 import './AboutUs.css'
 import { Link } from 'react-router-dom'
 import akashlogo from '../../photo/Akash2.jpg'
+import jituphoto from '../../photo/jitu photo.jpg'
 
 const AboutUs = () => {
 
@@ -68,7 +69,7 @@ const AboutUs = () => {
               </div>
               <div className="jitu-box self-box">
                 <div className="jitu-img-box self-img-box  ">
-                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcECNLzoKBCjC-n_cm8L-Wg4UlqSywIlzZpw&s" alt="Jitu's Photo" loading='lazy'/>
+                  <img src={jituphoto} alt="Jitu's Photo" loading='lazy'/>
                 </div>
                 <div className="jitu-description self-description">
                   <h3>Jitu ~</h3>
