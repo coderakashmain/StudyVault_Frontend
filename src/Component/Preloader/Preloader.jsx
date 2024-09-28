@@ -20,7 +20,7 @@ const Preloader = () => {
         }
     },[])
   return (
-    <div ref={preloaderRef} id='preloader' style={{background : '#fff',position : 'fixed',height  :'100svh',width : '100%',zIndex : '1000',display : 'flex', justifyContent : 'center', alignItems : 'center'}}>
+    <div ref={preloaderRef} id='preloader' style={{background : '#fff',position : 'fixed',height  :'100vh',width : '100%',zIndex : '10000000',display : 'flex', justifyContent : 'center', alignItems : 'center'}}>
             <div className="preloader-box">
                 <div className="preloader-circle"></div>
             </div>

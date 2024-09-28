@@ -39,7 +39,7 @@
 
 .signup-form label{    
     letter-spacing: 0.1px;
-    font-weight: 400;
+    font-weight: 600;
     font-size: 1.1rem;
 }
 .signup-form input{
@@ -107,7 +107,6 @@
   }
   @media (max-width:460px) {
     .signup-form {
-        width: 325px;
         transform: translateY(-1%);
         width: 90vw;
       }

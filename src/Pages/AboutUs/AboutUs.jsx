@@ -6,11 +6,11 @@ import jituphoto from '../../photo/jitu photo.jpg'
 
 const AboutUs = () => {
 
-  const handletopscroll = ()=>{
- 
-      window.scrollTo({top : 0});
-  
-  
+  const handletopscroll = () => {
+
+    window.scrollTo({ top: 0 });
+
+
   }
   return (
     <>
@@ -19,7 +19,7 @@ const AboutUs = () => {
         <div className="about-us-contain">
           <div className="about-us-box">
             <div className="left-about-box">
-              <h2><span style={ { fontWeight : '600'}}>O</span>ver the past few years, we've observed that students have had difficulty to obtaining notes and papers..In order to overcome these consequences
+              <h2><span style={{ fontWeight: '600' }}>O</span>ver the past few years, we've observed that students have had difficulty to obtaining notes and papers..In order to overcome these consequences
                 we've been trying to provide all the essential
                 exam related materials through this website
                 ..</h2>
@@ -48,12 +48,12 @@ const AboutUs = () => {
             <div className="our-info-box-in">
               <div className="akash-box self-box">
                 <div className="akash-img-box self-img-box">
-                  <img src={akashlogo} alt="Akash's Photo" loading="lazy"/>
+                  <img src={akashlogo} alt="Akash's Photo" loading="lazy" />
                 </div>
                 <div className="akash-description self-description">
                   <h3>Akash ~</h3>
                   <div className="akash-persional-info persional-info">
-                    <p> <span>H</span>ello, I am <b>Akash(Aarav) Bindhani</b>, a passionate <b>Full-Stack Developer</b> and a third-year Computer Science Honors student at <b>M.P.C. Autonomous College.</b>  You can visit my <a href="">Portfolio</a>. Stay connected with me on <a href="https://www.instagram.com/vanity__heart__81/" target='__blank'>Instagram</a> for updates on my latest work and insights. If you have any questions or would like to collaborate, feel free to reach out.</p>
+                    <p> <span>H</span>ello, I am <b>Akash(Aarav) Bindhani</b>, a passionate <b>Full-Stack Developer</b> and a third-year Computer Science Honors student at <b>M.P.C. Autonomous College.</b>  You can visit my <a href="#">Portfolio</a>. You can visit or stay connected with me on <a href="https://www.instagram.com/vanity__heart__81/" target='__blank'>Instagram</a> for more updates on my latest work and insights. If you have any questions or would like to collaborate, feel free to reach out.</p>
 
                     <div className="info-visiting">
                       <p>Visit me ~
@@ -69,12 +69,14 @@ const AboutUs = () => {
               </div>
               <div className="jitu-box self-box">
                 <div className="jitu-img-box self-img-box  ">
-                  <img src={jituphoto} alt="Jitu's Photo" loading='lazy'/>
+                  <img src={jituphoto} alt="Jitu's Photo" loading='lazy' />
                 </div>
                 <div className="jitu-description self-description">
                   <h3>Jitu ~</h3>
                   <div className="jitu-persional-info persional-info">
-                    <p> This is <b>Jitu Pradhan</b> & I am so happy to share my info with you. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta aspernatur, architecto tempora dolores ad libero labore saepe reiciendis consequatur quae quos, explicabo cumque eum! Eligendi consectetur dignissimos veniam quasi aliquid. Lorem ip .</p>
+                    <p> Hello, I am <b>Jitu Pradhan</b>, a passionate <b>Full-Stack Developer</b> and a second-year MCA department student at <b>M.P.C. Autonomous College</b> . I am dedicated to crafting innovative web applications.
+                      You can check out my latest projects on my <a href="#">Portfolio</a> , and stay connected with me through <a href="https://www.instagram.com/jitu._pradhan._99/">Instagram</a> and  <a href="https://www.linkedin.com/in/jitupradhan99/">LinkedIn</a>. Feel free to reach out if you'd like to collaborate or discuss ideas!
+                    </p>
 
                   </div>
                   <div className="info-visiting">

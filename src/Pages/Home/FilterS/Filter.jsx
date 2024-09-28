@@ -5,6 +5,7 @@ import { useNavigate,useLocation } from "react-router-dom";
 
 
 import { ScrollFilterContext } from "../../../Context/FilterScroll/FilterScrollContex";
+import Loadingicon from "../../../Component/Jsonlicon/Loadingicon";
 
 
 const Filter = (props) => {
@@ -66,8 +67,19 @@ useEffect(()=>{
       [name]: type === "checkbox" ? checked : value,
     });
   };
+  const handleChangenum = (e) => {
+    const { name, value } = e.target;
+    if (/^\d{0,4}$/.test(value)) {
+      setFilters({
+        ...filters,
+        [name]: value,
+      });
+    }
+    };
+   
 
   const handleEducationLevelug= (level) => {
+
     setFilters({
       ...filters,
       educationLevelug: level
@@ -147,7 +159,7 @@ useEffect(()=>{
 
   return (
     <div ref={filterboxref} className="filter-main-div">
-      <form onSubmit={handleSubmit} className="filteration-container-box">
+      <form onSubmit={handleSubmit} className="filteration-container-box" >
         <div className="filteration-container">
           <div className="first-filteration">
             <h3>Department Name :</h3>
@@ -171,7 +183,7 @@ useEffect(()=>{
                 placeholder="From"
                 name="fromDate"
                 value={filters.fromDate}
-                onChange={handleChange} 
+                onChange={handleChangenum} 
                 pattern="2 0 [0-9]{2}"
                 required
                 />
@@ -182,7 +194,7 @@ useEffect(()=>{
                 <input type="number"
                   name="toDate"
                   value={filters.toDate}
-                  onChange={handleChange}
+                  onChange={handleChangenum}
                   placeholder="To"
                   pattern="2 0 [0-9]{2}"
                   required
@@ -298,8 +310,8 @@ useEffect(()=>{
         <div className="filter-submission">
           <div className="filter-submission-box">
             
-              {loader && (<box-icon name='loader-alt' size = 'sm' flip='horizontal'  animation='spin' color='#fff' ></box-icon>)}
-              <input disabled= {loader} style={{ background :( loader  ? 'lightblue' : '#4c98d9' )}}  type="submit" value="Find" />
+              
+              {<input disabled= {loader} style={{ background :( loader  ? 'lightblue' : '#4c98d9' )}}  type="submit" value='Find' />}
           </div>
        
         </div>

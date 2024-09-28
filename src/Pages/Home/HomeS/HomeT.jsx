@@ -6,6 +6,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import logo from '../../../photo/logo-transparent-png.png'
 import axios from "axios";
 import { UserContext } from "../../../Context/UserContext/UserContextdata";
+import { Userlogincheckcontext } from "../../../Context/UserLoginContext/UserLoginContext";
 
 
 
@@ -15,6 +16,7 @@ const HomeT = (props) => {
   const navigate = useNavigate();
   const {usernav} = useContext(UserContext);
   const[userlogincheck,setUserlogincheck] = useState();
+  const  loginCheck = useContext(Userlogincheckcontext);
 
   useEffect(()=>{
     const userlogin = async()=>{
@@ -46,6 +48,8 @@ const HomeT = (props) => {
           <div className="inner-landing">
             <div className="home-info">
               <div  className="home-info-h1-logo">
+              <h1 style={{position : 'absolute', top : '-100%',left : '-100%', opacity : '0'}} >All Previous Year Question Papers of M.P.C Auto.</h1>
+
                 <h1>Hi! I Am</h1>
                 <div className="h1-box">
                  
@@ -74,7 +78,7 @@ const HomeT = (props) => {
                 <button onClick={() => {
                   navigate('About-us');
                 }}>Read me</button>
-               {!userlogincheck && ( <Link to="/LogIn/Signup">
+               {!loginCheck && !userlogincheck && ( <Link to="/LogIn/Signup">
                   Sign Up <i className="fa-solid fa-arrow-right"></i>
                 </Link>)}
               </div>

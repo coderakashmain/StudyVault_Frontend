@@ -1,6 +1,5 @@
-import React, { useContext, useRef } from "react";
+import React, {  useRef,useState,useEffect } from "react";
 import "./Profile.css";
-import { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import axios from "axios";
 import profilelogo from '../../photo/profile common logo.jpg'
@@ -59,7 +58,7 @@ const Profile = (props) => {
             setUser(response.data.user);
           }
       } catch (error) {
-          console.error('Error fetching profile', error.response.data);
+          console.error('Error fetching profile');
       }finally {
         setLoading(false);
     }
@@ -70,7 +69,7 @@ const Profile = (props) => {
 
   }, []);
   if (loading) {
-    return <p style={{margin  : "5rem 0 0 1rem"}}>Loading...</p>;
+    return <p style={{margin  : "100px 0 0 50px"}}>Loading...</p>;
 
 }
 
@@ -252,6 +251,7 @@ catch(error){
                         <i onClick={handleClose} className="fa-solid fa-xmark"></i>
                         <div className="filterselct-option-box">
                           <div className="leftfilter-select">
+                            <h2 ><b></b>PLEASE PROVIDE US FULL INFORMATION*</h2>
                             <p>*</p>
                             <div className="leftfilter-select-item">
                               <input onChange={handlechange} value={filtetuploaddata.departmentName} type="text" name='departmentName' placeholder=" Department Name" required  readOnly={singletap ? true : false} />

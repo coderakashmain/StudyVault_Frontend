@@ -7,6 +7,7 @@ import BackButton from "../../Component/Backbutton/Backbutton"
 
 
 
+
 const Signup = (props) => {
   const [signupdata, setSignupdata] = useState({
     firstname : '',
@@ -163,14 +164,14 @@ const Signup = (props) => {
       try {
          await axios.post('/api/LogIn/Signup',signupdata);
         navigate("/LogIn");
-        props.showAlart('Registerd Seccessfull')
+        props.showAlart('Registerd Seccessfull','',"var(--alartcool)")
       }
       catch (error) {
         if (error.response && error.response.status === 409) {
-          props.showAlart('Email id', 'already exist');
+          props.showAlart('Email id', 'already exist',"var(--alartdenger)");
         } 
         if (error.response && error.response.status === 408) {
-          props.showAlart("Roll no already exist");
+          props.showAlart("Roll no already exist",'',"var(--alartdenger)");
         } else {
           console.error('Error registering user', error);
          
@@ -179,7 +180,7 @@ const Signup = (props) => {
       
     }
     else{
-      props.showAlart('Mismatched', 'Your password is not match');
+      props.showAlart('Mismatched', 'Your password is not match',"var(--alartdenger)");
       return;
     }
     
@@ -188,7 +189,7 @@ const Signup = (props) => {
   const showalart =()=>{
     if(!submitoff){
 
-      props.showAlart('Verify your email id first ');
+      props.showAlart('Verify your email id first ','','var(--alartnormal)');
     }
     if(!passwordcheck && submitoff){
       props.showAlart('Please enter your password ');
@@ -218,10 +219,10 @@ const Signup = (props) => {
 
           <div style={{display : 'flex',gap : '1.3rem'}} className="signup-gmail-box">
             <input type="email" name="gmail" onChange={signupchange} value={signupdata.gmail}  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-         id="gmail"  className="singup-form-input" required/>
+         id="gmail"  className="singup-form-input" required readOnly={spinner}/>
           
          {verifyOtp &&( <input type="number" onChange={(e)=>{setOtpValue(e.target.value)}} value={otpValue} style={{height :'30%',padding : '0.6rem 0.2rem 0.6rem 0.8rem',margin :'auto',border : 'none',borderRadius : '0.2rem',width  : '60%',fontSize : '0.9rem',flexGrow : '1'}} placeholder="OTP" />)}
-        {otp && (<button disabled = {disablebtn || spinner} type="submit"   style={{textAlign : 'end',padding : '0.6rem 1rem',height : '30%',margin :'auto',outline : 'none',border : 'none',backgroundColor : "lightblue",cursor : 'pointer',borderRadius : '0.2rem',transition : 'all 0.2s ease-in-out'}}>{!verifyOtpsubmit ? (<p style={{fontSize :'0.9rem'}}>{!spinner ? ("Verify") : (<box-icon  name='loader-alt' size = 'sm' flip='horizontal' animation='spin' color='#fff' ></box-icon>)}</p>):(<p style={{fontSize :'0.9rem'}} >Confirm</p>)}</button>)}
+        {otp && (<button disabled = {disablebtn || spinner} type="submit"   style={{textAlign : 'end',padding : '0.6rem 1rem',height : '30%',margin :'auto',outline : 'none',border : 'none',backgroundColor : "#4B97D5",cursor : 'pointer',borderRadius : '0.2rem',transition : 'all 0.2s ease-in-out'}}>{!verifyOtpsubmit ? (<p style={{fontSize :'0.9rem'}}>{!spinner ?  <p style={{color : '#fff',fontWeight : '500'}}>Verify</p>: (<box-icon name='loader' flip='vertical' animation='spin' color= "#fff"></box-icon>)}</p>):(<p style={{fontSize :'0.9rem',color : '#fff'}} >Confirm</p>)}</button>)}
           </div>
        {message}
          

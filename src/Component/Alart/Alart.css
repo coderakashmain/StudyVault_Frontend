@@ -13,6 +13,6 @@
   /* Animation when alert box is visible */
   #alart-box {
     animation: fadeSlideIn 0.5s ease-in-out;
-    background-color: rgb(238, 82, 108);
+    
   }
  

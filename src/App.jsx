@@ -1,43 +1,41 @@
 import "./App.css";
-import AboutUs from "./Pages/AboutUs/AboutUs";
-import Home from "./RoutingFiles/Home";
+import { lazy, useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Profile from "./Pages/Profile/Profile";
 import Navbar from "./Component/Navbar/Navbar";
-import Login from "./Pages/Login/Login";
-import Filter from "./Pages/Home/FilterS/Filter";
+import Filter from './Pages/Home/FilterS/Filter';
 import Departmentlist from './Pages/Home/DepartmentlistS/Departmentlist'
-import Contact from "./Pages/Contact/Contact";
-import Signup from "./Pages/SignUP/Signup";
-import Loginsignup from "./RoutingFiles/Loginsignup";
-import { useState } from "react";
+import Login from "./Pages/Login/Login";
 import Downloadpdf from "./Pages/Home/FilterS/Downloadpdf/Downloadpdf";
 import ForgatePw from "./Pages/Login/ForgatePw/ForgatePw";
-// import Preloader from "./Component/Preloader/Preloader";
 import Allpages from "./RoutingFiles/Allpages";
 import Alart from "./Component/Alart/Alart";
 import DepartmentListContext from "./Context/DepartmentList/DepartmentListContext";
 import UserContextdata from "./Context/UserContext/UserContextdata";
 import FilterScrollContex from './Context/FilterScroll/FilterScrollContex'
 import PhoneInfo from "./Context/PhoneInfo/PhoneInfo";
+import UserLoginContext from "./Context/UserLoginContext/UserLoginContext";
+const AboutUs = lazy(()=> import ("./Pages/AboutUs/AboutUs" ) );
+const Home = lazy(()=> import ("./RoutingFiles/Home" ) );
+const Profile = lazy(()=> import ("./Pages/Profile/Profile" ) );
+const Contact = lazy(()=> import ("./Pages/Contact/Contact" ) );
+const Signup = lazy(()=> import ("./Pages/SignUP/Signup" ) );
+const Loginsignup = lazy(()=> import ("./RoutingFiles/Loginsignup" ) );
+
 
 
 
 
 function App() {
-// const locomotiveScroll = new LocomotiveScroll({
-//   el: document.querySelector('[data-scroll-container]'),
-//   smooth: true
-// });
 
 
 const [alart, setAlart] = useState(null);
 
-const showAlart = (type,message)=>{
+const showAlart = (type,message,backgroundColor)=>{
 
   setAlart(
     { type : type,
-     msg : message}
+     msg : message,
+    color : backgroundColor}
    )
    setTimeout(() => {
     setAlart(null);
@@ -50,7 +48,7 @@ const showAlart = (type,message)=>{
 const router = createBrowserRouter([
   {
     path : '/',
-    element : <><UserContextdata><FilterScrollContex> <DepartmentListContext> <Navbar showAlart={showAlart}/><Allpages /><Alart alart={alart}/></DepartmentListContext></FilterScrollContex></UserContextdata></>,
+    element : <><UserContextdata><UserLoginContext><FilterScrollContex> <DepartmentListContext> <Navbar showAlart={showAlart}/><Allpages /><Alart alart={alart}/></DepartmentListContext></FilterScrollContex></UserLoginContext></UserContextdata></>,
     children : [
 
       {

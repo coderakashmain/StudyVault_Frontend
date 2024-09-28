@@ -231,6 +231,7 @@ const handleChange = (e)=>{
       {resetback ? (
           <div className="reset-password-box">
               <h2>Reset your Password</h2> <form onSubmit={handleSubmitotp}>
+                 <p style={ {fontSize : '0.9rem'}}>*Use a combination of uppercase letters, lowercase letters, numbers, and special characters.void common words, phrases, or personal information (e.g., names, birthdates).Use random, unpredictable combinations of characters.</p>
                   <input type="password" name="reset-password" onChange={(e) => { setResetPassword(e.target.value) }} value={resetPassword} placeholder='Reset password' id="" required autoCorrect='none' />
                   <input type="password" name="reenter-reset-password"
                       onChange={(e) => { setReEnterResetPassword(e.target.value) }}

@@ -28,26 +28,17 @@
 .department-box{
   cursor: pointer;
 }
-.filter-submission{
-  text-align: center;
+/* .filter-submission{ */
+  /* text-align: center;
  display: flex;
- justify-content: center;
-}
+ justify-content: center; */
+/* } */
 .filter-submission-box{
  
   position: relative;
   text-align: center;
   margin: 1% 0%;
   user-select: none;
-
-}
-.filter-submission-box box-icon{
-  position: absolute;
-  font-size: 0.1rem;
-  top: 29%;
-  left: 18%;
-cursor: pointer;
- 
 
 }
 .filter-submission input{

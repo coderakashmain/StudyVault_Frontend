@@ -7,6 +7,7 @@ import { NavLink, Link, useNavigate, useLocation } from "react-router-dom";
 import { Departmentlistdata } from "../../Context/DepartmentList/DepartmentListContext";
 import { UserContext } from "../../Context/UserContext/UserContextdata";
 import { ScrollFilterContext } from "../../Context/FilterScroll/FilterScrollContex";
+import { Userlogincheckcontext } from "../../Context/UserLoginContext/UserLoginContext";
 
 
 const Navbar = (props) => {
@@ -20,6 +21,23 @@ const Navbar = (props) => {
   const [locationCollege, setLocationCollege] = useState(false);
   const hideeSarchSuggestion = useRef();
   const [showSuggestions, setShowSuggestions] = useState(false);
+  const loginCheck = useContext(Userlogincheckcontext);
+  const [logincheckdata, setLogincheckdata] = useState()
+  useEffect(()=>{
+    if(loginCheck){
+
+      setLogincheckdata(true);
+    }
+    else{
+      
+      setLogincheckdata(false);
+    }
+    
+  },[loginCheck]);
+  console.log("hello ",loginCheck);
+
+
+  
  
 
 
@@ -83,7 +101,7 @@ const Navbar = (props) => {
 
   } 
 
-
+ 
    
 
 
@@ -104,6 +122,11 @@ const Navbar = (props) => {
       }
     }
   };
+  useEffect(()=>{
+    if(!logincheckdata){
+      setIsAuthenticateduser(false);
+    }
+  },[logincheckdata])
 
   const hambargar = useRef();
   const crossicon = useRef();

@@ -3,6 +3,7 @@ import "../HomeS/HomeT.css";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../../Context/UserContext/UserContextdata";
 import { Departmentlistdata } from '../../../Context/DepartmentList/DepartmentListContext';
+import axios from "axios";
 // import axios from "axios";
 
 
@@ -53,7 +54,32 @@ const Departmentlist = (props) => {
 
 
 
-  const handleDepartmentClick = (departmentName) => {
+  const handleDepartmentClick = async (departmentName) => {
+
+    try{
+       const response = await axios.get('/api/login-check-filter',{withCredentials : true});
+
+       if(response.status === 200){
+        navigate("/Filter", { state: { departmentName } });
+        backto();
+       }
+    }
+    catch(error){
+      if(error.response && error.response.status === 500){
+        props.showAlart('Login First','',"var(--alartdenger)");
+      navigate("/Login");
+        console.error('Internal servererr',error);
+      }
+      if(error.response && error.response.status === 404){
+        props.showAlart('Login First','',"var(--alartdenger)");
+        navigate("/Login");
+        console.error('User not found',error);
+      }
+      else{
+        props.showAlart('Login First','',"var(--alartnormal)");
+        navigate("/Login");
+      }
+    }
     // if (usernav) {
     //   navigate("/Filter", { state: { departmentName } });
     //   backto();
@@ -64,8 +90,8 @@ const Departmentlist = (props) => {
 
 
     // }
-    navigate("/Filter", { state: { departmentName } });
-      backto();
+    // navigate("/Filter", { state: { departmentName } });
+    //   backto();
   };
   const [check, setCheck] = useState(false)
 

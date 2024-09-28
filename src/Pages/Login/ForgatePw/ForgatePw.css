@@ -102,13 +102,17 @@
     justify-content: center;
     align-items: center;
     background: var(--backcolor);
+    position: relative;
+    z-index: 100;
+    
  
  }
  .reset-password-box{
      width: 40rem;
-     border: 2px solid rgba(134, 134, 134, 0.095);
+     border: 2px solid rgb(198 208 212);
      padding: 2rem 1rem;
      border-radius: 0.2rem ;
+     box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.19),inset 9px 9px 50px rgba(255, 255, 255, 0.832),inset -9px -9px 50px rgba(111, 111, 111, 0.163);
      
  }
  .reset-password-box h2{
@@ -121,12 +125,12 @@
  .reset-password-box input{
      width: 100%;
      padding: 1rem 2rem;
-     outline-offset: 0.25rem;
-    outline-color: rgb(178, 180, 232) ;
+     outline-offset: 0rem;
+    outline-color: rgb(133, 151, 161) ;
      border: none;
      border: 2px solid rgba(151, 168, 224, 0.41);
      margin: 1rem 0;
-     border-radius: 0.2rem;
+     border-radius: 5.2rem;
      font-size: 1rem;
  
  }
@@ -139,6 +143,7 @@
      padding: 0.8rem 0;
      cursor: pointer;
      font-size: 1rem;
+     border-radius: 0.4rem;
  
  }
  .reset-password-box hr{

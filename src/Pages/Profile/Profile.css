@@ -1,5 +1,5 @@
 #profile{
-    min-height: 100vh;
+    min-height: 100svh;
     width: 100%;
     background-color: var(--backcolor);
     display: flex;
@@ -35,7 +35,7 @@
     width: 120%;
     border-radius: 50%;
     position: absolute;
-    top: -32%;
+    top: -33%;
     left: -35%;
     background-color: rgba(191, 212, 252, 0.337);
     z-index: 0;
@@ -140,6 +140,7 @@
 }
 .pdfupload input::before{
         content: 'Send Papers';
+        font-size: 1rem;
         width: 100%;
         height: 100%;
         position: absolute;
@@ -162,15 +163,15 @@
     background-color: rgba(0, 0, 0, 0.829);
     display: flex;
     justify-content: center;
-    align-items: center;
     z-index: 1000;
 }
 .filterselect-option{
     background-color: rgb(238, 238, 238);
     padding: 1rem 2rem;
-    width: 80vw;
-    min-height:38rem ;
-    border-radius: 0.9rem;
+    height: 100%;
+    width: 100%;
+
+
 }
 .filterselct-option-box{
    
@@ -181,6 +182,11 @@
     text-align: left;
     width: 50%;
 }
+.leftfilter-select h2{
+    font-size: 1.4rem;
+    margin:  1rem 0;
+    font-weight: 500;
+}
 .leftfilter-select p{
     color: red;
 }
@@ -190,6 +196,7 @@
 .leftfilter-select input{
     width: 90%;
     border: none;
+    border-radius: 2rem;
     outline: none;
     padding: 01rem 1rem;
     font-size: 1rem;
@@ -200,6 +207,7 @@
     padding: 01rem 1rem;
     font-size: 1rem;
     outline: none;
+    border-radius: 2rem;
     border: none;
     border: 2px solid ;
     border-color: rgba(88, 101, 108, 0.178)rgba(88, 101, 108, 0.178);
@@ -211,14 +219,14 @@
 }
 .filterselect-option .fa-xmark{
     position: absolute;
-    right: -5%;
-    top: -1%;
+    right: 4%;
+    top: 4%;
     font-size: 2rem;
     cursor: pointer;
-    filter: brightness(0) saturate(100%) invert(100%) sepia(2%) saturate(0%) hue-rotate(161deg) brightness(103%) contrast(100%);
+    filter: brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(7500%) hue-rotate(217deg) brightness(108%) contrast(108%);
 }
 .filterselect-option button{
-    margin: 1rem 0 0 0;
+    margin: 5rem 0 0 0;
     border: none;
     outline: none;
     background: blue;
@@ -432,6 +440,13 @@
 .profilecontain{
     padding: 0 3rem;
 }   
+@media (max-width:1014px) {
+   .upperstyle{
+    top: -37%;
+   }
+ 
+   
+}
 
 @media (min-width:941px) {
     html{
@@ -451,6 +466,13 @@
 @media (max-width:747px) {
     html{
         font-size: 70%;
+    }
+    .upperstyle{
+        height: 48%;
+        width: 190%;
+        top: -37%;
+        left: -90%;
+    
     }
     .profile-right-inner-box{
        display: none;
@@ -482,18 +504,30 @@
     html{
         font-size: 65%;
     }
+    .filterselect-option .fa-xmark{
+        top: 1%;
+        right: 5%;
+    }
+    .leftfilter-select h2{
+        margin:  3rem 0 0 1rem;
+    }
+    .filterselect-option button{
+        margin: 2rem 0 0 0;
+    }
 }
 @media (max-width:437px) {
     html{
-        font-size: 65%;
+        font-size: 75%;
     }
     .upperstyle{
         height: 48%;
-        width: 132%;
+        width: 190%;
+        top: -37%;
+        left: -90%;
     
     }
     .profile-left-inner-box{
-        width: auto;
+        width: 100%;
         background-color: var(--backcolor);
         box-shadow: none;
     }

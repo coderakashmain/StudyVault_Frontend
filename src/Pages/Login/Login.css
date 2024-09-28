@@ -135,13 +135,13 @@
         margin-top: 1rem;
         transform: translateY(-3%);
       }
-      input[type="password"],[type="email"]{
+      .inner-main-login input[type="password"],[type="email"]{
         margin-bottom: 10%;
       }
       .remember-forget-parent{
         margin-bottom: 10%;
       }
-      input[type="submit"]{
+      .submit-parant input[type="submit"]{
         padding: 4% 20%;
       }
       .inner-main-login {
