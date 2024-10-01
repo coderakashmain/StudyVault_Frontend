@@ -34,7 +34,6 @@ const Navbar = (props) => {
     }
     
   },[loginCheck]);
-  console.log("hello ",loginCheck);
 
 
   
@@ -87,17 +86,17 @@ const Navbar = (props) => {
 
 
   const onSearch = (searchdpt) => {
-    // if (isAuthenticateduser) {
+    if (loginCheck) {
 
       setDartmentvalue(searchdpt);
       navigate("Filter", { state: { searchdpt } });
       gotofilter();
       setDartmentvalue('');
-    // }
-    // else {
-    //   props.showAlart('Login first');
-    //   navigate("/Login");
-    // }
+    }
+    else {
+      props.showAlart('Login first');
+      navigate("/Login");
+    }
 
   } 
 
