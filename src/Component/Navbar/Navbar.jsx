@@ -22,7 +22,7 @@ const Navbar = (props) => {
   const hideeSarchSuggestion = useRef();
   const [showSuggestions, setShowSuggestions] = useState(false);
   const loginCheck = useContext(Userlogincheckcontext);
-  const [logincheckdata, setLogincheckdata] = useState()
+  const [logincheckdata, setLogincheckdata] = useState(false)
   useEffect(()=>{
     if(loginCheck){
 
@@ -71,11 +71,14 @@ const Navbar = (props) => {
         }
       } catch (error) {
         console.error('Error fetching profile:', error);
+        setIsAuthenticateduser(false);
 
         if (error.response && error.response.status === 401) {
           setIsAuthenticateduser(false);
+          
         } else {
           console.error('Unexpected error:', error.response?.data || error.message);
+          setIsAuthenticateduser(false);
         }
       }
 
@@ -125,7 +128,7 @@ const Navbar = (props) => {
     if(!logincheckdata){
       setIsAuthenticateduser(false);
     }
-  },[logincheckdata])
+  },[logincheckdata,usernav])
 
   const hambargar = useRef();
   const crossicon = useRef();

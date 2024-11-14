@@ -13,6 +13,19 @@
   /* Animation when alert box is visible */
   #alart-box {
     animation: fadeSlideIn 0.5s ease-in-out;
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.199),inset -10px -10px 30px #fff;
+    background-color: #fff;
+    
+  }
+  #alart-box p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  #alart-box p img{
+    height: 2rem;
+    padding: 0 0.5rem;
     
   }
  
