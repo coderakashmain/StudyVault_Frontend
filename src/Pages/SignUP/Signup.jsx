@@ -71,7 +71,7 @@ const Signup = (props) => {
         setDisablebtn(true);
         const response = await axios.post('/api/LogIn/Signup/otpVarify',{email : signupdata.gmail})
         if(response.status === 200){
-          props.showAlart('OTP send Successfully ');
+          props.showAlart('OTP send Successfully ','','check');
            setVerifyOtp(true);
            setVerifyOtpsubmit(true);
            setSpinner(false);
@@ -80,7 +80,7 @@ const Signup = (props) => {
 
         }
         else{
-          props.showAlart('Try again after some time .');
+          props.showAlart('Try again after some time .','','mark');
           setSpinner(false);
           setDisablebtn(false);
         }
@@ -88,7 +88,7 @@ const Signup = (props) => {
       }
       catch(error){
         if(error.response && error.response.status ===410){
-          props.showAlart('Internal error ');
+          props.showAlart('Internal error ','','cancel');
           setDisablebtn(false);
           setSpinner(false);
         }
@@ -96,19 +96,19 @@ const Signup = (props) => {
            setVerifyOtp(true);
            setVerifyOtpsubmit(true);
            setDisablebtn(false);
-           props.showAlart('Error in genereting OTP');
+           props.showAlart('Error in genereting OTP','','mark');
            setSpinner(false);
           
         }
         if(error.response && error.response.status ===500){
-          props.showAlart('Error in genereting OTP');
+          props.showAlart('Error in genereting OTP','','mark');
           setDisablebtn(false);
           setSpinner(false);
         }
       }
     }
     else{
-      props.showAlart('Enter your email');
+      props.showAlart('Enter your email','','mark');
       setDisablebtn(false);
       setSpinner(false);
     }
@@ -122,7 +122,7 @@ const Signup = (props) => {
          await axios.post('/api/LogIn/Signup/otpVarify/confirm',{email : signupdata.gmail, otp : otpValue});
 
         
-          props.showAlart('Email verify successfull');
+          props.showAlart('Email verify successfull','','check');
           setSubmitoff(true);
           setMessage(<p style={{margin :'0 0 0.45rem 0',fontSize :'0.5rem',color : 'green'}} >Email verify successfull</p>)
           setOtpValue('');
@@ -133,28 +133,28 @@ const Signup = (props) => {
       }
       catch(error){
           if(error.response && error.response.status === 410){
-            props.showAlart('OTP expired');
+            props.showAlart('OTP expired','','cancel');
             setDisablebtn(false);
           }
           if(error.response && error.response.status === 409){
-            props.showAlart('Error updating data ');
+            props.showAlart('Error updating data ','','mark');
             setDisablebtn(false);
           }
           if(error.response && error.response.status === 405){
-            props.showAlart('Invalid OTP ');
+            props.showAlart('Invalid OTP ','','cancel');
             setMessage(<p style={{margin :'0 0 0.45rem 0',fontSize :'0.5rem',color : 'red'}} >Invalid OTP</p>)
             setDisablebtn(false);
           }
          else{
 
-           props.showAlart('Internal error');
+           props.showAlart('Internal error','','mark');
            setDisablebtn(false);
          }
           
       }
     }
     else{
-      props.showAlart('Please enter  OTP send to your gmail ');
+      props.showAlart('Please enter  OTP send to your gmail ','','mark');
     }
   };
 
@@ -164,14 +164,14 @@ const Signup = (props) => {
       try {
          await axios.post('/api/LogIn/Signup',signupdata);
         navigate("/LogIn");
-        props.showAlart('Registerd Seccessfull','',"var(--alartcool)")
+        props.showAlart('Registerd Seccessfull','',"check")
       }
       catch (error) {
         if (error.response && error.response.status === 409) {
-          props.showAlart('Email id', 'already exist',"var(--alartdenger)");
+          props.showAlart('Email id already exist', '',"mark");
         } 
         if (error.response && error.response.status === 408) {
-          props.showAlart("Roll no already exist",'',"var(--alartdenger)");
+          props.showAlart("Roll no already exist",'',"mark");
         } else {
           console.error('Error registering user', error);
          
@@ -180,7 +180,7 @@ const Signup = (props) => {
       
     }
     else{
-      props.showAlart('Mismatched', 'Your password is not match',"var(--alartdenger)");
+      props.showAlart('Mismatched ! Your password is not match', '',"mark");
       return;
     }
     
@@ -189,10 +189,10 @@ const Signup = (props) => {
   const showalart =()=>{
     if(!submitoff){
 
-      props.showAlart('Verify your email id first ','','var(--alartnormal)');
+      props.showAlart('Verify your email id first ','','mark');
     }
     if(!passwordcheck && submitoff){
-      props.showAlart('Please enter your password ');
+      props.showAlart('Please enter your password ','','mark');
     }
   }
   return (

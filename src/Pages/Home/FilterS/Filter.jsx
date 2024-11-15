@@ -132,7 +132,7 @@ useEffect(()=>{
         setLoader(false);
       }
       else{
-        props.showAlart('Try again after some time .');
+        props.showAlart('Try again after some time .','','cancel');
         setLoader(false)
       }
       
@@ -140,17 +140,17 @@ useEffect(()=>{
       if(error.response && error.response.status === 400){
         console.error(error);
         setLoader(false);
-        props.showAlart('No filter parameters provided');
+        props.showAlart('No filter parameters provided','','cancel');
       }
       if(error.response && error.response.status === 500){
         console.error('Internal server error: ', error);
         setLoader(false);
-        props.showAlart('Server Error');
+        props.showAlart('Server Error','','cancel');
       }
       else{
         console.error('Internal Error: ', error);
         setLoader(false);
-        props.showAlart('Server Error');
+        props.showAlart('Server Error','','cancel');
       }
     
     }

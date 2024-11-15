@@ -30,12 +30,12 @@ function App() {
 
 const [alart, setAlart] = useState(null);
 
-const showAlart = (type,message,backgroundColor)=>{
+const showAlart = (type,message,state)=>{
 
   setAlart(
     { type : type,
      msg : message,
-    color : backgroundColor}
+    state : state}
    )
    setTimeout(() => {
     setAlart(null);

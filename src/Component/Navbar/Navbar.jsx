@@ -97,7 +97,7 @@ const Navbar = (props) => {
       setDartmentvalue('');
     }
     else {
-      props.showAlart('Login first');
+      props.showAlart('Login first','','mark');
       navigate("/Login");
     }
 
@@ -116,7 +116,7 @@ const Navbar = (props) => {
           setIsAuthenticateduser(false);
           setUsernav(null);
           navigate("/");
-          props.showAlart("Log out", "Back to main page");
+          props.showAlart("Log out", "Back to main page",'check');
         }
       }
       catch (error) {

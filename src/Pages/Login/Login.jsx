@@ -34,7 +34,7 @@ const Login = (props) => {
         if(response.status === 200 ){
           setUsernav(response.data.user);
           navigate('/');
-          props.showAlart('Log in Successfull.');
+          props.showAlart('Log in Successfull.','','check');
           setRepeatclick(false);
         }
        
@@ -48,11 +48,11 @@ const Login = (props) => {
 
        } catch(error){
         if(error.response && error.response.status === 401){
-          props.showAlart('Invalid credentials','try again');
+          props.showAlart('Invalid credentials','try again','cancel');
           setRepeatclick(false);
         }
         if(error.response && error.response.status === 500){
-          props.showAlart('Internal Server Error');
+          props.showAlart('Internal Server Error','','cancel');
           setRepeatclick(false);
         }
         setRepeatclick(false);

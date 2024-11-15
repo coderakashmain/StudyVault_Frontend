@@ -46,7 +46,7 @@ const handleChange = (e)=>{
         setOtpSent(true);
         setLoader(true);
         await axios.post('/api/LogIn/ForgatePw',{email});
-        props.showAlart('OTP sent seccesfully');
+        props.showAlart('OTP sent seccesfully','','check');
         setMessage(<p>Your OTP expired in 10 minutes.</p>);
 
         setOtp(true);
@@ -60,11 +60,11 @@ const handleChange = (e)=>{
      catch(error){
       setOtpSent(false);
       if(error.response && error.response.status === 409){
-        props.showAlart('Not Registered');
+        props.showAlart('Not Registered','','mark');
         setLoader(false);
       }
       else if (error.response && error.response.status === 429) {
-        props.showAlart('OTP already sent. Please wait 30 seconds before requesting another OTP.');
+        props.showAlart('OTP already sent. Please wait 30 seconds before requesting another OTP.','','check');
         setOtp(true);
         setLoader(false);
       }
@@ -77,7 +77,7 @@ const handleChange = (e)=>{
      }
     }
     else{
-      props.showAlart('Please enter your email');
+      props.showAlart('Please enter your email','','mark');
       setLoader(false);
     }
       
@@ -90,30 +90,30 @@ const handleChange = (e)=>{
     if(otpValue){
       try{
         const response =   await axios.post('/api/LogIn/verifyOtp ',{otp : otpValue , email});
-        props.showAlart('Verify successfull');
+        props.showAlart('Verify successfull','','check');
         setPasswordResetPage(true);
         
       }
       catch(error){
         if(error.response && error.response.status === 409){
-          props.showAlart('Incorrect OTP');
+          props.showAlart('Incorrect OTP','','cancel');
 
         }
         if(error.response && error.response.status === 410){
-          props.showAlart('OTP expired!');
+          props.showAlart('OTP expired!','','cancel');
           setOtpValue('');
           setOtp(false);
           setMessage(<p style={{color : 'red'}}>OTP expired!</p>);
         }
         if(error.response && error.response.status === 500){
           alert('Internal error');
-          props.showAlart('Internal error');
+          props.showAlart('Internal error','','cancel');
         }
       };
      
     }
     else{
-      props.showAlart('Please enter OTP sent to your gmail');
+      props.showAlart('Please enter OTP sent to your gmail','','mark');
     }
   }
 
@@ -158,29 +158,29 @@ const handleChange = (e)=>{
     const handleSubmitotp = async (e) => {
         e.preventDefault();
         if (resetPassword !== reEnterResetPassword) {
-            props.showAlart('Password do not match');
+            props.showAlart('Password do not match', '','mark');
             return;
         }
 
         if (resetPassword === reEnterResetPassword) {
             try {
                 await axios.post('/api/LogIn/ForgatePw/ResetPassword', { email, resetPassword });
-                props.showAlart('Password Reset succesfully');
+                props.showAlart('Password Reset succesfully','','check');
                 navigate('/LogIn');
             }
             catch (error) {
                 if (error.response && error.response.status === 500) {
-                    props.showAlart('Error  inserting in database')
+                    props.showAlart('Error  inserting in database','','cancel')
                 }
                 else {
-                    props.showAlart('Internal error');
+                    props.showAlart('Internal error','','cancel');
                 }
             }
         }
         else {
 
 
-            props.showAlart('Please Write a password');
+            props.showAlart('Please Write a password','','mark');
 
         }
 

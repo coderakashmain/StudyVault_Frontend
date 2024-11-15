@@ -87,7 +87,7 @@ const Profile = (props) => {
       setSelectedFile(file);
 
     } else {
-      props.showAlart('Failed', 'Please select a pdf file');
+      props.showAlart('Failed', 'Please select a pdf file','cancel');
       setSelectedFile(null);
       if (fileInputRef.current) {
         fileInputRef.current.value = "";
@@ -152,7 +152,7 @@ const Profile = (props) => {
           if (fileInputRef.current) {
             fileInputRef.current.value = "";
           }
-          props.showAlart(' successfully send')
+          props.showAlart(' successfully send','','check')
           setFiltetuploaddata('');
 
           alert(`View your uploaded file here: ${driveUrl}`);
@@ -161,19 +161,19 @@ const Profile = (props) => {
         }
         else{
           setSingletap(false);
-          props.showAlart('External error')
+          props.showAlart('External error','','cancel')
 
         }
 
       } catch (error) {
         console.error('Error uploading file:', error);
-        props.showAlart('Error', 'Failed to upload the file.');
+        props.showAlart('Error', 'Failed to upload the file.','cancel');
         setSingletap(false);
       }
 
     } else {
       console.log('No file selected or invalid file type')
-      props.showAlart('Error', 'Please select  file')
+      props.showAlart('Error', 'Please select  file','cancel')
       setSingletap(false);
       return;
     };
@@ -251,7 +251,7 @@ catch(error){
                         <i onClick={handleClose} className="fa-solid fa-xmark"></i>
                         <div className="filterselct-option-box">
                           <div className="leftfilter-select">
-                            <h2 ><b></b>PLEASE PROVIDE US FULL INFORMATION*</h2>
+                            <h2 ><b></b>PLEASE PROVIDE US FULL INFORMATION ABOUT PAPER*</h2>
                             <p>*</p>
                             <div className="leftfilter-select-item">
                               <input onChange={handlechange} value={filtetuploaddata.departmentName} type="text" name='departmentName' placeholder=" Department Name" required  readOnly={singletap ? true : false} />

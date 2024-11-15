@@ -66,17 +66,17 @@ const Departmentlist = (props) => {
     }
     catch(error){
       if(error.response && error.response.status === 500){
-        props.showAlart('Login First','',"var(--alartdenger)");
+        props.showAlart('Login First','',"mark");
       navigate("/Login");
         console.error('Internal servererr',error);
       }
       if(error.response && error.response.status === 404){
-        props.showAlart('Login First','',"var(--alartdenger)");
+        props.showAlart('Login First','',"mark");
         navigate("/Login");
         console.error('User not found',error);
       }
       else{
-        props.showAlart('Login First','',"var(--alartnormal)");
+        props.showAlart('Login First','',"mark");
         navigate("/Login");
       }
     }
