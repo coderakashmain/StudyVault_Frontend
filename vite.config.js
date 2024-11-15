@@ -27,6 +27,9 @@ export default defineConfig({
       transformMixedEsModules: true,
     },
   },
+  optimizeDeps: {
+    exclude: ['large-package-1', 'large-package-2'],
+  },
   define: {
     'process.env': {}, // Define process.env for modules that expect it
     'eval': '0', // Replace eval with a harmless value
