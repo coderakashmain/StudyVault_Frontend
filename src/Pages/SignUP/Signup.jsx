@@ -76,7 +76,7 @@ const Signup = (props) => {
            setVerifyOtpsubmit(true);
            setSpinner(false);
            setDisablebtn(false);
-           setMessage(<p style={{margin :'0 0 0.45rem 0',fontSize :'0.5rem'}}>OTP valid for 10 minutes.</p>)
+           setMessage(<p style={{margin :'0 0 0.45rem 0',fontSize :'0.5rem',color : '#fff'}}>OTP valid for 10 minutes.</p>)
 
         }
         else{
@@ -124,7 +124,7 @@ const Signup = (props) => {
         
           props.showAlart('Email verify successfull','','check');
           setSubmitoff(true);
-          setMessage(<p style={{margin :'0 0 0.45rem 0',fontSize :'0.5rem',color : 'green'}} >Email verify successfull</p>)
+          setMessage(<p style={{margin :'0 0 0.45rem 0',fontSize :'0.5rem',color : '#00ffec'}} >Email verify successfull</p>)
           setOtpValue('');
           setVerifyOtp(false);
           setOtp(false);
@@ -222,7 +222,7 @@ const Signup = (props) => {
          id="gmail"  className="singup-form-input" required readOnly={spinner}/>
           
          {verifyOtp &&( <input type="number" onChange={(e)=>{setOtpValue(e.target.value)}} value={otpValue} style={{height :'30%',padding : '0.6rem 0.2rem 0.6rem 0.8rem',margin :'auto',border : 'none',borderRadius : '0.2rem',width  : '60%',fontSize : '0.9rem',flexGrow : '1'}} placeholder="OTP" />)}
-        {otp && (<button disabled = {disablebtn || spinner} type="submit"   style={{textAlign : 'end',padding : '0.6rem 1rem',height : '30%',margin :'auto',outline : 'none',border : 'none',backgroundColor : "#4B97D5",cursor : 'pointer',borderRadius : '0.2rem',transition : 'all 0.2s ease-in-out'}}>{!verifyOtpsubmit ? (<p style={{fontSize :'0.9rem'}}>{!spinner ?  <p style={{color : '#fff',fontWeight : '500'}}>Verify</p>: (<box-icon name='loader' flip='vertical' animation='spin' color= "#fff"></box-icon>)}</p>):(<p style={{fontSize :'0.9rem',color : '#fff'}} >Confirm</p>)}</button>)}
+        {otp && (<button disabled = {disablebtn || spinner} type="submit"   style={{textAlign : 'end',padding : '0.6rem 1rem',height : '30%',margin :'auto',outline : 'none',border : 'none',backgroundColor : "#4B97D5",cursor : 'pointer',borderRadius : '0.2rem',transition : 'all 0.2s ease-in-out'}}>{!verifyOtpsubmit ? (<p style={{fontSize :'0.9rem'}}>{!spinner ?  <p style={{color : '#fff',fontWeight : '500'}}>Verify</p>: (<box-icon name='loader' flip='vertical' animation='spin' color= "#fff" ></box-icon>)}</p>):(<p style={{fontSize :'0.9rem',color : '#fff'}} >Confirm</p>)}</button>)}
           </div>
        {message}
          
