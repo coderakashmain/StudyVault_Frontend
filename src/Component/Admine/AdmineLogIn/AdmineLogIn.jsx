@@ -61,7 +61,7 @@ const handleSubmit = async (e)=>{
                 <div className="adminloginlefttext">
                     <h3>We are Very Happy👏 <br /> Pleas Log in Into admin Panel (●'◡'●)</h3>
                 </div>
-                <button onClick={()=> navigate('/')}>Back</button>
+                <button onClick={()=> navigate('/')}><i className="fa-solid fa-arrow-left" style={{color :'#fff' , padding : '0rem 0.6rem 0 0',fontSize : '1rem'}}></i>Back</button>
             </div>
             <div className="rightAlogin">
                 <form  onSubmit={handleSubmit}>
@@ -77,7 +77,7 @@ const handleSubmit = async (e)=>{
                     </div>
                     <button type="submit" disabled = {isactive} className={`${isactive ? 'blur' : 'clear' }`}>Sign In</button>
                     <NavLink> Forgate Password?</NavLink>
-
+                     <button onClick={()=> navigate('/')}><i className="fa-solid fa-arrow-left" style={{color :'#fff' , padding : '0rem 0.6rem 0 0',fontSize : '1rem'}}></i>Back to Home</button>
                     </form>
             </div>
 

@@ -31,6 +31,7 @@
    font-size: 1.4rem;
    color: #fff;
 }
+
 .admin-nav select{
    border-style: none;
    outline: none;
@@ -98,4 +99,22 @@
     .admin-right-box{
         width: 100%;
     }
+    #dashboard {
+        padding: 1.3rem 0 1.3rem 0rem;
+    }
 }
+@media (max-width : 540px) {
+    .admin-nav h2:nth-child(2),.admin-nav select{
+        display: none;
+    }
+
+    .admin-nav h2:nth-child(1){
+        font-size: 1.3rem;
+    }
+}
+@media (max-width : 312px) {
+    .admin-nav h2:nth-child(1){
+        font-size: 5vw;
+    }
+}
+

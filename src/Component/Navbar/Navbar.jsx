@@ -8,7 +8,7 @@ import { Departmentlistdata } from "../../Context/DepartmentList/DepartmentListC
 import { UserContext } from "../../Context/UserContext/UserContextdata";
 import { ScrollFilterContext } from "../../Context/FilterScroll/FilterScrollContex";
 import { Userlogincheckcontext } from "../../Context/UserLoginContext/UserLoginContext";
-import { AdminLoginContext} from '../../Context/AdminLoginCheck/AdminLoginCheck'
+import { AdminLoginContext } from '../../Context/AdminLoginCheck/AdminLoginCheck'
 
 
 const Navbar = (props) => {
@@ -27,51 +27,52 @@ const Navbar = (props) => {
   const BothLoginRef = useRef();
   const LoginRef = useRef();
   const [isOn, setIsOn] = useState(false);
-  const [authentication,setAuthentication] = useState(false);
+  const [authentication, setAuthentication] = useState(false);
   const check = useContext(AdminLoginContext);
-  useEffect(()=>{
+  const [logotext, setLogotext] = useState(false);
+  useEffect(() => {
     const token = localStorage.getItem('admin_token');
-   
-      if(token) {
+
+    if (token) {
 
       const checkAuthorization = async () => {
-          try {
-              const response = await axios.get('/api/adminPage',{
-                headers: {
-                  Authorization: `Bearer ${token}` 
-                },
-              }, { withCredentials: true });
-              if (response.status === 200) {
-                setAuthentication(true);
-              }
-          } catch (error) {
-            setAuthentication(false);
+        try {
+          const response = await axios.get('/api/adminPage', {
+            headers: {
+              Authorization: `Bearer ${token}`
+            },
+          }, { withCredentials: true });
+          if (response.status === 200) {
+            setAuthentication(true);
           }
+        } catch (error) {
+          setAuthentication(false);
+        }
       };
 
       checkAuthorization();
-  }
-    if(!token){
+    }
+    if (!token) {
       setAuthentication(false);
     }
-  },[check]);
+  }, [check]);
 
- 
-useEffect(()=>{
-  const click = ()=>{
-    
-    setIsOn(false);
-  }
-  window.addEventListener('click',click);
 
-  return ()=> window.removeEventListener('click',click);
-})
- 
-    const clickOn = (e)=>{
-      e.stopPropagation();
-      setIsOn(!isOn);
-    };
-  
+  useEffect(() => {
+    const click = () => {
+
+      setIsOn(false);
+    }
+    window.addEventListener('click', click);
+
+    return () => window.removeEventListener('click', click);
+  })
+
+  const clickOn = (e) => {
+    e.stopPropagation();
+    setIsOn(!isOn);
+  };
+
 
 
   useEffect(() => {
@@ -334,17 +335,21 @@ useEffect(()=>{
     }
 
   }, [])
+ 
   const filterRef = useRef();
   useEffect(() => {
     if (window.innerWidth <= 650) {
       if (location.pathname === '/' || location.pathname === '/Filter') {
         filterRef.current.style.display = 'flex';
+        
       }
       else {
         filterRef.current.style.display = 'none';
       }
+      setLogotext(true);
     } else {
       filterRef.current.style.display = 'flex';
+      setLogotext(false);
     }
 
   }, [location.pathname])
@@ -450,8 +455,12 @@ useEffect(()=>{
             </div>)}
 
           </div>
-
+                {mobileScroll && logotext &&(<h2 className="logo-top-css" > STUDYVAULT</h2>)}
           <div className="location-login">
+           {authentication &&( <div className="admin-short" style={{display :'flex',justifyContent : 'center', alignItems : 'center', marginRight : '0.5rem'}}>
+              <i className="fa-solid fa-user-shield" style={{color : '#fff', fontSize : '1.6rem', cursor : 'pointer'}} onClick={()=>navigate('/Admin')}></i>
+              
+            </div>)}
             <select name="name" id="college-name">
               {!locationCollege ? (
                 <option value="M.P.C autonomous">M.P.C Autonomous</option>
@@ -463,8 +472,8 @@ useEffect(()=>{
               <div className="log-in">
                 <div ref={BothLoginRef} onClick={clickOn}><li>Login <div className={`adminLogInBox ${isOn ? 'open' : 'close'} `} ref={LoginRef} >
 
-                  <NavLink className={`${getNavClass('/LogIn')} ${isOn ? 'big' : 'small'}`}to="/LogIn"><i className="fa-solid fa-graduation-cap" ></i>Student LogIn </NavLink>
-                 {!authentication ? ( <NavLink to="/Admin/AdminLogIn" className={`${isOn ? 'big' : 'small'}`}><i className="fa-solid fa-user-tie"></i>Admin LogIn </NavLink>) : ( <NavLink to="/Admin" className={`${isOn ? 'big' : 'small'}`}><i className="fa-solid fa-user-tie"></i>Admin Page</NavLink>)}
+                  <NavLink className={`${getNavClass('/LogIn')} ${isOn ? 'big' : 'small'}`} to="/LogIn"><i className="fa-solid fa-graduation-cap" ></i>Student LogIn </NavLink>
+                  {!authentication ? (<NavLink to="/Admin/AdminLogIn" className={`${isOn ? 'big' : 'small'}`}><i className="fa-solid fa-user-tie"></i>Admin LogIn </NavLink>) : (<NavLink to="/Admin" className={`${isOn ? 'big' : 'small'}`}><i className="fa-solid fa-user-tie"></i>Admin Page</NavLink>)}
                 </div>
                 </li></div>
               </div>

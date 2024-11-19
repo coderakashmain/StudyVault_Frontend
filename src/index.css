@@ -25,7 +25,7 @@ body,html{
   --backcolor : #f2f2fb;
   --pagecolor : #eceff3;
   --about-text-color : #e1e1e1;
-  --alartcool : rgb(0, 174, 87);
+  --alartcool : rgb(0, 174, 87);              
   --alartdenger : rgb(255 53 53);
   --alartnormal : rgba(33, 73, 219, 0.989);
   --uniqcolorback : #14476d;
@@ -50,3 +50,13 @@ input.input-detected{
     user-select: none;
 }
 }
+
+
+
+
+
+
+
+
+
+

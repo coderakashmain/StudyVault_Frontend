@@ -10,7 +10,7 @@ const BackButton = () => {
   };
 
   return (
-    <div  className="back-button">
+    <div  className="back-button" style={{zIndex : 1000}}>
         <i onClick={handleBackClick} style={{color : '#fff'}} className="fa-solid fa-angle-left"></i>
         </div>
   );

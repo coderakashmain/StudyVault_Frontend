@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import './Admine.css'
 import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 import axios from 'axios';
+import logo from '../../photo/StudyVault.png'
 
 import { AdminLoginContext } from '../../Context/AdminLoginCheck/AdminLoginCheck';
 
@@ -63,9 +64,10 @@ const handleLogout = () => {
     <section id="admin">
       <div className="admin-nav">
         <h2><i className="fa-solid fa-gauge-high" style={{ color : '#fff', padding : '0rem 1rem', fontSize : '1.6rem'}}></i>Admin Dashboard</h2>
-        <h2 style={{ fontWeight : '500'}}>StudyVault</h2>
+        <h2 style={{ fontWeight : '500'}}> StudyVault</h2>
+       
         <div className="rightAselectbox">
-
+        <i className="fa-solid fa-house-chimney" style={{color : '#fff',cursor : 'pointer', fontSize : '1.1rem' , paddingRight : '1rem'}} onClick={()=> navigate('/')}></i>
         <select name="admin-data" id="">
           <option value="">Akash</option>
         </select>

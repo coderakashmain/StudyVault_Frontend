@@ -124,9 +124,9 @@ color: #fff;
     font-size: 1rem;
     font-weight: 500;
 }
-.rightAlogin button{ 
+.rightAlogin form button[type="submit"]{ 
     display: block;
-    margin:4rem auto;
+    margin:4rem auto 2.5rem;
     width: 100%;
     outline: none;
     padding: 0.6rem 0;
@@ -140,6 +140,18 @@ color: #fff;
     cursor: pointer;
     cursor: pointer;
 }
+.rightAlogin form button:last-child{
+    color: #fff;
+    background-color: transparent;
+    border: none;
+    display: none;
+    margin: auto;
+    outline: none;
+    font-size: 1rem;
+    cursor: pointer;
+
+
+}
 .blur{
   opacity: 0.6;
 }
@@ -151,6 +163,7 @@ color: #fff;
     text-align: center;
     color: #fff;
     font-size: 1rem;
+    margin-bottom: 1rem;
 }
 @media (max-width : 688px) {
     .leftAlogin{
@@ -170,4 +183,28 @@ color: #fff;
             
         padding: 2rem 0;
     }
+    .rightAlogin form button:last-child{
+     
+        display: block;
+    
+    
+    
+    }
 }
+
+
+.rightAlogin input:-webkit-autofill {
+    background-color: transparent !important;
+    -webkit-box-shadow: 0 0 0px 1000px #123456 inset !important; 
+    box-shadow: 0 0 0px 1000px #123456 inset !important; 
+    color: #fff !important; 
+    -webkit-text-fill-color: rgb(255, 255, 255) !important;
+  }
+  
+  
+  
+  .rightAlogin input:autofill {
+    background-color: transparent !important;
+    box-shadow: 0 0 0px 1000px #224f8a inset !important;
+  }
+  

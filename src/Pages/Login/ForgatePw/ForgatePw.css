@@ -54,8 +54,7 @@
    width: 100%;
    padding: 0.7rem 1rem;
    margin: 1rem 0 0rem;
-   outline-offset: 0.25rem;
-   outline-color: rgb(207, 208, 238) ;
+   outline: none;
    border-radius: 0.2rem;
    font-size: 1rem;
 }
@@ -65,7 +64,7 @@
 
 }
 .forgate-email-enter-box input::placeholder{
-  color: rgb(190, 190, 190);
+  color: rgb(61, 61, 61);
 }
 .forgate-email-enter-box button{
   width: 100%;
@@ -211,3 +210,23 @@
         height: 100svh;
     }
 }
+
+
+
+
+
+.forgate-email-enter-box input:-webkit-autofill {
+    background-color: transparent !important;
+    -webkit-box-shadow: 0 0 0px 1000px #123456 inset !important; 
+    box-shadow: 0 0 0px 1000px #123456 inset !important; 
+    color: #fff !important; 
+    -webkit-text-fill-color: rgb(255, 255, 255) !important;
+  }
+  
+  
+  
+  .forgate-email-enter-box input:autofill {
+    background-color: transparent !important;
+    box-shadow: 0 0 0px 1000px #224f8a inset !important;
+  }
+  
