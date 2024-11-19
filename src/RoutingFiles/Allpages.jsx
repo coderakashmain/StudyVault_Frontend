@@ -13,7 +13,6 @@ const Allpages = () => {
 
   return (
    <> 
-   {/* <Admine/> */}
       <Suspense fallback = {<Loadingicon/>}>   
         <Outlet/>
      </Suspense> 

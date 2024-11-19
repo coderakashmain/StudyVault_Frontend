@@ -11,7 +11,6 @@ const Departmentlist = (props) => {
 
   const departmentListdata = useContext(Departmentlistdata);
   const { usernav } = useContext(UserContext);
-  // const [isAuthenticateduser, setIsAuthenticateduser] = useState(false);
 
 
   const navigate = useNavigate();
@@ -20,31 +19,7 @@ const Departmentlist = (props) => {
 
 
 
-  //   useEffect(() => {
 
-  //     const fetchProfile = async () => {
-  //       try {
-  //           const response = await axios.get('/api/dptlist', { withCredentials: true });
-  //          if (response.status === 200) {
-  //             setIsAuthenticateduser(true);
-  //          }
-  //          else {
-  //           setIsAuthenticateduser(false);
-  //       }
-  //       }  catch (error) {
-  //         console.error('Error fetching profile:', error);
-
-  //         if (error.response && error.response.status === 401) {
-  //             console.log('User not authenticated.');
-  //             setIsAuthenticateduser(false);
-  //         } else {
-  //             console.error('Unexpected error:', error.response?.data || error.message);
-  //         }
-  //     }
-
-  //   }
-  //   fetchProfile();
-  // },[usernav] );
 
   const contectContainer = useRef();
 
@@ -80,18 +55,6 @@ const Departmentlist = (props) => {
         navigate("/Login");
       }
     }
-    // if (usernav) {
-    //   navigate("/Filter", { state: { departmentName } });
-    //   backto();
-    // } else {
-
-    //   props.showAlart('Login first');
-    //   navigate("/Login");
-
-
-    // }
-    // navigate("/Filter", { state: { departmentName } });
-    //   backto();
   };
   const [check, setCheck] = useState(false)
 

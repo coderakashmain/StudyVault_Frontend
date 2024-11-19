@@ -643,7 +643,7 @@ footer a{
 }
 @media only screen and (max-width: 376px){
   html{
-    font-size: 50%;
+    font-size: 75%;
   }
   .department-title-box h2{
     font-size: 1.3rem;

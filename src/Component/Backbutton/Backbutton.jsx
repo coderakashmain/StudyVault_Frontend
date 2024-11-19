@@ -11,7 +11,7 @@ const BackButton = () => {
 
   return (
     <div  className="back-button">
-        <i onClick={handleBackClick} className="fa-solid fa-angle-left"></i>
+        <i onClick={handleBackClick} style={{color : '#fff'}} className="fa-solid fa-angle-left"></i>
         </div>
   );
 };

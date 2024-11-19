@@ -8,6 +8,7 @@ import { Departmentlistdata } from "../../Context/DepartmentList/DepartmentListC
 import { UserContext } from "../../Context/UserContext/UserContextdata";
 import { ScrollFilterContext } from "../../Context/FilterScroll/FilterScrollContex";
 import { Userlogincheckcontext } from "../../Context/UserLoginContext/UserLoginContext";
+import { AdminLoginContext} from '../../Context/AdminLoginCheck/AdminLoginCheck'
 
 
 const Navbar = (props) => {
@@ -23,21 +24,71 @@ const Navbar = (props) => {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const loginCheck = useContext(Userlogincheckcontext);
   const [logincheckdata, setLogincheckdata] = useState(false)
+  const BothLoginRef = useRef();
+  const LoginRef = useRef();
+  const [isOn, setIsOn] = useState(false);
+  const [authentication,setAuthentication] = useState(false);
+  const check = useContext(AdminLoginContext);
   useEffect(()=>{
-    if(loginCheck){
+    const token = localStorage.getItem('admin_token');
+   
+      if(token) {
+
+      const checkAuthorization = async () => {
+          try {
+              const response = await axios.get('/api/adminPage',{
+                headers: {
+                  Authorization: `Bearer ${token}` 
+                },
+              }, { withCredentials: true });
+              if (response.status === 200) {
+                setAuthentication(true);
+              }
+          } catch (error) {
+            setAuthentication(false);
+          }
+      };
+
+      checkAuthorization();
+  }
+    if(!token){
+      setAuthentication(false);
+    }
+  },[check]);
+
+ 
+useEffect(()=>{
+  const click = ()=>{
+    
+    setIsOn(false);
+  }
+  window.addEventListener('click',click);
+
+  return ()=> window.removeEventListener('click',click);
+})
+ 
+    const clickOn = (e)=>{
+      e.stopPropagation();
+      setIsOn(!isOn);
+    };
+  
+
+
+  useEffect(() => {
+    if (loginCheck) {
 
       setLogincheckdata(true);
     }
-    else{
-      
+    else {
+
       setLogincheckdata(false);
     }
-    
-  },[loginCheck]);
+
+  }, [loginCheck]);
 
 
-  
- 
+
+
 
 
   const deparmentChange = (e) => {
@@ -45,11 +96,11 @@ const Navbar = (props) => {
     setShowSuggestions(true);
   }
 
-  const {filtersection} = useContext(ScrollFilterContext);
+  const { filtersection } = useContext(ScrollFilterContext);
   const gotofilter = () => {
-    
-      filtersection.scrollIntoView({ behavior: 'smooth' });
-   
+
+    filtersection.scrollIntoView({ behavior: 'smooth' });
+
 
   };
 
@@ -75,7 +126,7 @@ const Navbar = (props) => {
 
         if (error.response && error.response.status === 401) {
           setIsAuthenticateduser(false);
-          
+
         } else {
           console.error('Unexpected error:', error.response?.data || error.message);
           setIsAuthenticateduser(false);
@@ -97,14 +148,14 @@ const Navbar = (props) => {
       setDartmentvalue('');
     }
     else {
-      props.showAlart('Login first','','mark');
+      props.showAlart('Login first', '', 'mark');
       navigate("/Login");
     }
 
-  } 
+  }
 
- 
-   
+
+
 
 
   const handleLogout = async () => {
@@ -116,7 +167,7 @@ const Navbar = (props) => {
           setIsAuthenticateduser(false);
           setUsernav(null);
           navigate("/");
-          props.showAlart("Log out", "Back to main page",'check');
+          props.showAlart("Log out", "Back to main page", 'check');
         }
       }
       catch (error) {
@@ -124,11 +175,11 @@ const Navbar = (props) => {
       }
     }
   };
-  useEffect(()=>{
-    if(!logincheckdata){
+  useEffect(() => {
+    if (!logincheckdata) {
       setIsAuthenticateduser(false);
     }
-  },[logincheckdata,usernav])
+  }, [logincheckdata, usernav])
 
   const hambargar = useRef();
   const crossicon = useRef();
@@ -143,46 +194,46 @@ const Navbar = (props) => {
     openTl
       .to(".slidebar", {
         left: 0,
-        borderRadius : 0,
+        borderRadius: 0,
         duration: 0.5,
         ease: "power4.inOut",
-      },'same')
+      }, 'same')
       .from(".slidebar-title", {
         x: 200,
         duration: 1.5,
         stagger: 0.1,
         // opacity: 0,
         ease: "power2.out"
-      },'same')
+      }, 'same')
       .from(".cross-icon i", {
         y: -10,
         x: 0,
         opacity: 0,
         duration: 0.2,
-        
-      },'same')
-     
-      
+
+      }, 'same')
+
+
       .from(".copywrite", {
         opacity: 0,
         duration: 0.15,
-      },'same');
+      }, 'same');
 
     const closeTl = gsap.timeline({ paused: true });
 
     closeTl
-    .to(".slidebar", {
-      left: -1000,
-      borderRadius : 50,
-      duration: 1.3,
-      ease: "power2.out"
-    },'sameclose');
+      .to(".slidebar", {
+        left: -1000,
+        borderRadius: 50,
+        duration: 1.3,
+        ease: "power2.out"
+      }, 'sameclose');
     closeTl.to(".cross-icon i", {
       x: -100,
-      opacity:0,
+      opacity: 0,
       duration: 0.4,
-      
-    },'sameclose')
+
+    }, 'sameclose')
 
     const slideopen = () => {
       openTl.restart();
@@ -238,7 +289,7 @@ const Navbar = (props) => {
       }
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
-  
+
     let lastScrollY = window.scrollY;
     const handleTouchMove = () => {
       const currentScrollY = window.scrollY;
@@ -251,9 +302,9 @@ const Navbar = (props) => {
       }
       lastScrollY = currentScrollY;
     };
-  
+
     window.addEventListener("scroll", handleTouchMove, { passive: true });
-  
+
     return () => {
       window.removeEventListener("scroll", handleScroll, { passive: true });
       window.removeEventListener("scroll", handleTouchMove, { passive: true });
@@ -284,46 +335,46 @@ const Navbar = (props) => {
 
   }, [])
   const filterRef = useRef();
-  useEffect(()=>{
-    if(window.innerWidth <= 650){
-      if(location.pathname === '/' || location.pathname === '/Filter'){
+  useEffect(() => {
+    if (window.innerWidth <= 650) {
+      if (location.pathname === '/' || location.pathname === '/Filter') {
         filterRef.current.style.display = 'flex';
       }
-      else{
+      else {
         filterRef.current.style.display = 'none';
       }
-    }else{
+    } else {
       filterRef.current.style.display = 'flex';
     }
-   
-  },[location.pathname])
 
-  const [mobileScroll , setMobileScroll] = useState(true);
+  }, [location.pathname])
 
-  useEffect(()=>{
-    const handlemobileScroll = ()=>{
-      if(window.scrollY <= 250){
+  const [mobileScroll, setMobileScroll] = useState(true);
+
+  useEffect(() => {
+    const handlemobileScroll = () => {
+      if (window.scrollY <= 250) {
         setMobileScroll(true);
 
       }
-      else{
+      else {
         setMobileScroll(false);
       }
     }
-    window.addEventListener('scroll',handlemobileScroll,{passive : true});
+    window.addEventListener('scroll', handlemobileScroll, { passive: true });
 
-    return ()=> window.removeEventListener('scroll',handlemobileScroll,{passive : true})
-  },[])
+    return () => window.removeEventListener('scroll', handlemobileScroll, { passive: true })
+  }, [])
 
-  useEffect(()=>{
-    const handlehide = (event)=>{
-      if(hideeSarchSuggestion.current && !hideeSarchSuggestion.current.contains(event.target)){
+  useEffect(() => {
+    const handlehide = (event) => {
+      if (hideeSarchSuggestion.current && !hideeSarchSuggestion.current.contains(event.target)) {
         setShowSuggestions(false);
       }
     }
     document.addEventListener("mousedown", handlehide);
 
-    return ()=>{
+    return () => {
       document.removeEventListener("mousedown", handlehide);
     }
   })
@@ -371,7 +422,7 @@ const Navbar = (props) => {
             />
 
             <label htmlFor="searchbox"><i className="fa-solid fa-magnifying-glass"></i></label>
-          { showSuggestions && (<div ref={hideeSarchSuggestion} className="search-suggestion">
+            {showSuggestions && (<div ref={hideeSarchSuggestion} className="search-suggestion">
               {departmetvalue ? (
                 departmentdata && departmentdata.filter((item) => {
                   const data = item.toLowerCase();
@@ -410,7 +461,12 @@ const Navbar = (props) => {
             </select>
             {!isAuthenticateduser ? (
               <div className="log-in">
-                <NavLink className={getNavClass('/LogIn')} to="/LogIn"><li>Login</li></NavLink>
+                <div ref={BothLoginRef} onClick={clickOn}><li>Login <div className={`adminLogInBox ${isOn ? 'open' : 'close'} `} ref={LoginRef} >
+
+                  <NavLink className={`${getNavClass('/LogIn')} ${isOn ? 'big' : 'small'}`}to="/LogIn"><i className="fa-solid fa-graduation-cap" ></i>Student LogIn </NavLink>
+                 {!authentication ? ( <NavLink to="/Admin/AdminLogIn" className={`${isOn ? 'big' : 'small'}`}><i className="fa-solid fa-user-tie"></i>Admin LogIn </NavLink>) : ( <NavLink to="/Admin" className={`${isOn ? 'big' : 'small'}`}><i className="fa-solid fa-user-tie"></i>Admin Page</NavLink>)}
+                </div>
+                </li></div>
               </div>
             ) : (
               <div className="log-in">
@@ -425,8 +481,8 @@ const Navbar = (props) => {
         <div className="cross-icon">
           <i ref={crossicon} className="fa-solid fa-xmark"></i>
         </div>
-        <h3 style={{margin : '2rem 0 0 0 '}}>NAVIGATION</h3>
-        <hr style={{margin : '2rem 0'}}/>
+        <h3 style={{ margin: '2rem 0 0 0 ' }}>NAVIGATION</h3>
+        <hr style={{ margin: '2rem 0' }} />
         <div className="slidebar-box">
           <h4 className="slidebar-title">
             <Link to="/">
@@ -449,7 +505,7 @@ const Navbar = (props) => {
             </Link>
           </h4>
         </div>
-        <hr style={{margin : '2rem 0'}}/>
+        <hr style={{ margin: '2rem 0' }} />
         <div className="copywrite">
           <p>Copyright 2024 All rights reserved |</p>
           <p>This website is made by</p>

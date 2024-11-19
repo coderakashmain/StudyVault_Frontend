@@ -2,7 +2,6 @@
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
-    font-family: sans-serif;
     color: #2d2d2d;
    
 }
@@ -15,7 +14,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--backcolor);
+    background-color: var(--uniqcolorback);
     z-index: 1001;
     position: relative;
     
@@ -47,21 +46,23 @@
   .inner-main-login {
     width: 30%;
     padding:5% 3% 5% 3%;
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
     border-radius: 1%;
-    background-color: var(--pagecolor);
-    box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.19),inset 9px 9px 50px rgba(255, 255, 255, 0.832),inset -9px -9px 50px rgba(111, 111, 111, 0.163);
+    background: var(--uniqcolorup);
+    box-shadow: var(--boxshadow);
   }
   .main-heading{
     text-align: center;
     margin-bottom: 1%;
     font-size: 3.4rem;
+    color: #fff;
   }
   .main-sub-heading{
     text-align: center;
     font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 20%;
+    color: #fff;
   }
 
   /* .inner-main-login h3{
@@ -93,19 +94,25 @@
     align-items: center;
     margin-bottom: 5%;
   }
+ 
 .inner-main-login input[type="password"],.inner-main-login input[type="email"]{
     border: none;
-    border-bottom: 0.5px solid black;
+    border-bottom: 0.5px solid  #fff;;
     width: 100%;
     padding: 2% 1%;
     margin-bottom: 5%;
     outline: none;
     background-color: transparent;
+    color: #fff;
+  }
+  .inner-main-login h3{
+    color: #fff;
   }
   .submit-parant{
     display: flex;
     justify-content: center;
     margin-bottom: 5%;
+    
   }
   .submit-parant input{
     cursor: pointer;
@@ -121,7 +128,7 @@
   }
   .signup-link{
     text-align: center;
-    color: black;
+    color: #fff;
     }
 .signup-link span{
     font-weight: 600;
@@ -138,28 +145,28 @@
     .inner-main-login {
         width:45%;
         padding:10% 8%;
-        border-radius: 19px;
+        border-radius: 0.2rem;
       }
 }
 @media only screen and (max-width: 835px) {
     .inner-main-login {
         width:65%;
         padding:10% 8%;
-        border-radius: 19px;
+      }
+}
+@media only screen and (max-width: 835px) {
+    .inner-main-login {
+        width:100%;
+        min-height: 100vh;
+        min-height: 100svh;
+        padding-top: 8rem;
       }
 }
 @media only screen and (max-width: 450px) {
   .main-login-container{
     height: 100svh;
   }
-    .inner-main-login {
-        width: 90vw;
-        min-height: 40rem;
-        padding:5% 3%;
-        border-radius: 24px;
-        margin-top: 1rem;
-        transform: translateY(-3%);
-      }
+   
       .inner-main-login input[type="password"],[type="email"]{
         margin-bottom: 10%;
       }

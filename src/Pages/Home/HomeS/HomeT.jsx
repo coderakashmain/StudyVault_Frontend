@@ -3,7 +3,7 @@ import "./HomeT.css";
 import "remixicon/fonts/remixicon.css";
 import Image from "../../../photo/homelogo3.png";
 import { Link, useNavigate } from 'react-router-dom'
-import logo from '../../../photo/logo-transparent-png.png'
+import logo from '../../../photo/weblogo.png'
 import axios from "axios";
 import { UserContext } from "../../../Context/UserContext/UserContextdata";
 import { Userlogincheckcontext } from "../../../Context/UserLoginContext/UserLoginContext";

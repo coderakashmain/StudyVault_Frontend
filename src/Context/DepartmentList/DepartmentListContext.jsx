@@ -10,7 +10,7 @@ const DepartmentListContext = (props)=>{
     
     const departments = [
         "Computer Science",
-        "Bachelor of Computer Application",
+        "Bca",
         "Botany",
         "Chemistry",
         "Data Science",
@@ -39,8 +39,8 @@ const DepartmentListContext = (props)=>{
         "Sanskrit",
         "Santali",
     
-        "Master of Business Administration",
-        "Master of Computer Applications",
+        "MBA",
+        "MCA",
         "Micro Biology",
         "Bio-Chemistry",
         "Enviromental Economics",

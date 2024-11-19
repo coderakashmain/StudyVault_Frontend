@@ -1,5 +1,5 @@
 import "./App.css";
-import { lazy, useState } from "react";
+import { lazy, Suspense, useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Navbar from "./Component/Navbar/Navbar";
 import Filter from './Pages/Home/FilterS/Filter';
@@ -14,12 +14,21 @@ import UserContextdata from "./Context/UserContext/UserContextdata";
 import FilterScrollContex from './Context/FilterScroll/FilterScrollContex'
 import PhoneInfo from "./Context/PhoneInfo/PhoneInfo";
 import UserLoginContext from "./Context/UserLoginContext/UserLoginContext";
-const AboutUs = lazy(()=> import ("./Pages/AboutUs/AboutUs" ) );
-const Home = lazy(()=> import ("./RoutingFiles/Home" ) );
-const Profile = lazy(()=> import ("./Pages/Profile/Profile" ) );
-const Contact = lazy(()=> import ("./Pages/Contact/Contact" ) );
-const Signup = lazy(()=> import ("./Pages/SignUP/Signup" ) );
-const Loginsignup = lazy(()=> import ("./RoutingFiles/Loginsignup" ) );
+const Admine = lazy(()=> import("./Component/Admine/Admine"));
+const Dashboard = lazy(()=> import("./Component/Admine/Dashboard/Dashboard"));
+const Question = lazy(()=> import("./Component/Admine/Question/Question"));
+const Note = lazy(()=> import("./Component/Admine/Note/Note"));
+const UserSend = lazy(()=> import("./Component/Admine/UserSend/UserSend"));
+const CsUpload = lazy(()=> import("./Component/Admine/CsUpload/CsUpload"));
+import FetchData from "./Context/FretchDataContext/FetchData";
+import AdminLoginCheck from "./Context/AdminLoginCheck/AdminLoginCheck";
+const AdmineLogIn = lazy(() => import("./Component/Admine/AdmineLogIn/AdmineLogIn"));
+const AboutUs = lazy(() => import("./Pages/AboutUs/AboutUs"));
+const Home = lazy(() => import("./RoutingFiles/Home"));
+const Profile = lazy(() => import("./Pages/Profile/Profile"));
+const Contact = lazy(() => import("./Pages/Contact/Contact"));
+const Signup = lazy(() => import("./Pages/SignUP/Signup"));
+const Loginsignup = lazy(() => import("./RoutingFiles/Loginsignup"));
 
 
 
@@ -28,89 +37,125 @@ const Loginsignup = lazy(()=> import ("./RoutingFiles/Loginsignup" ) );
 function App() {
 
 
-const [alart, setAlart] = useState(null);
+  const [alart, setAlart] = useState(null);
 
-const showAlart = (type,message,state)=>{
+  const showAlart = (type, message, state) => {
 
-  setAlart(
-    { type : type,
-     msg : message,
-    state : state}
-   )
-   setTimeout(() => {
-    setAlart(null);
-  }, 4000);
-};
-
-
-
-
-const router = createBrowserRouter([
-  {
-    path : '/',
-    element : <><UserContextdata><UserLoginContext><FilterScrollContex> <DepartmentListContext> <Navbar showAlart={showAlart}/><Allpages /><Alart alart={alart}/></DepartmentListContext></FilterScrollContex></UserLoginContext></UserContextdata></>,
-    children : [
-
+    setAlart(
       {
-        path: '',
-        element:( <><Home showAlart={showAlart} /> </>) ,
-        children :[
-          {
-            path : '',
-            element : <Departmentlist  showAlart={showAlart}/> 
+        type: type,
+        msg: message,
+        state: state
+      }
+    )
+    setTimeout(() => {
+      setAlart(null);
+    }, 4000);
+  };
+
+
+
+
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: <> <AdminLoginCheck><UserContextdata><UserLoginContext><FilterScrollContex> <DepartmentListContext> <Navbar showAlart={showAlart} /><Allpages /><Alart alart={alart} /></DepartmentListContext></FilterScrollContex></UserLoginContext></UserContextdata></AdminLoginCheck></>,
+      children: [
+
+        {
+          path: '',
+          element: (<><Home showAlart={showAlart} /> </>),
+          children: [
+            {
+              path: '',
+              element: <Departmentlist showAlart={showAlart} />
+            },
+            {
+              path: 'Filter',
+              element: <Filter showAlart={showAlart} />,
+            }
+
+          ]
+        },
+        {
+          path: "Contact-Us",
+          element: (<><PhoneInfo><Contact showAlart={showAlart} /></PhoneInfo></>),
+        },
+        {
+          path: 'Downloadpdf',
+          element: (<><Downloadpdf showAlart={showAlart} /></>),
+        },
+        {
+          path: "LogIn",
+          element: (<><Loginsignup /></>),
+          children: [
+            {
+              path: "",
+              element: <Login showAlart={showAlart} />
+            },
+            {
+              path: "Signup",
+              element: <> <Signup showAlart={showAlart} /></>
+            },
+            {
+              path: "ForgatePw",
+              element: <ForgatePw showAlart={showAlart} />
+            },
+          ]
+        },
+
+        {
+          path: "Profile",
+          element: (<><Profile showAlart={showAlart} /></>),
+        },
+        {
+          path: "About-us",
+          element: (<><AboutUs showAlart={showAlart} /></>),
+        },
+        {
+          path: "Admin",
+          element: (<><FetchData><Admine showAlart={showAlart} /></FetchData></>),
+          children: [{
+            path: '',
+            element: <><Suspense fallback  = {<p>Loading...</p>}><Dashboard showAlart={showAlart} /></Suspense>  </>
           },
           {
-            path : 'Filter',
-            element : <Filter showAlart={showAlart}/>,
-          }
-    
-        ]
-      },
-      {
-        path: "Contact-Us",
-        element: ( <><PhoneInfo><Contact showAlart={showAlart}/></PhoneInfo></>  ),
-      },
-      {
-          path : 'Downloadpdf',
-         element : ( <><Downloadpdf showAlart={showAlart}/></>  ),
-      },
-      {
-        path: "LogIn",
-        element: ( <><Loginsignup /></>  ),
-        children : [
-          {
-            path: "",
-            element: <Login showAlart={showAlart}/>
+            path: 'Question',
+            element: <><Suspense fallback  = {<p>Loading...</p>}><Question showAlart={showAlart} /></Suspense> </>
+
           },
           {
-            path: "Signup",
-            element: <> <Signup showAlart={showAlart}/></>
+            path: 'Note',
+            element: <><Suspense fallback  = {<p>Loading...</p>}> <Note showAlart={showAlart} /></Suspense></>
+
           },
           {
-            path: "ForgatePw",
-            element : <ForgatePw showAlart={showAlart}/>
+            path: 'Usersend',
+            element: <><Suspense fallback  = {<p style={{padding : '2rem'}}>Loading...</p>}><UserSend showAlart={showAlart} /></Suspense> </>
+
           },
-        ]
-      },
-      
-      {
-        path: "Profile",
-        element: ( <><Profile  showAlart={showAlart}/></>  ),
-      },
-      {
-        path: "About-us",
-        element: ( <><AboutUs showAlart={showAlart}/></>  ),
-      },
-    ]
-  }
+          {
+            path: 'CsUpload',
+            element: <><Suspense fallback  = {<p>Loading...</p>}> <CsUpload showAlart={showAlart} /></Suspense></>
+
+          },
+         
+          ]
+        },
+        {
+          path : 'Admin/AdminLogIn',
+          element : (<><AdmineLogIn showAlart={showAlart}/></>)
+        }
+      ]
+    }
 
 
 
-]);
+  ]);
 
-  
 
-  
+
+
   return (
     <>
       <RouterProvider router={router} />

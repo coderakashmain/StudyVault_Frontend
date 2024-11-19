@@ -1,0 +1,173 @@
+#adMineLogIn{
+height: 100vh;
+height: 100svh;
+width: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+z-index: 100;
+position: relative;
+background-color: #14476d;
+
+
+}
+.adMineLogIn-box{
+    position: relative;
+    height: 80vh;
+    width: 60rem;
+    background-color: #223540;
+    border-radius: 0.3rem;
+    box-shadow: 18px 10px 25px rgb(0 0 0 / 19%), inset 2px 2px 7px rgb(0 0 0 / 17%), inset 21px 9px 24px rgb(0 0 0 / 0%);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(45deg, #010001, #438ee2);
+
+
+}
+.adMineLogIn-box img:first-child{
+    position: absolute;
+    left: -10%;
+    top: -13%;
+    height: 20rem;
+    width: 20rem;
+    transform: rotate(159deg) ;
+    z-index: 100;
+   
+}
+.adMineLogIn-box .leftAlogin{
+    width: 50%;
+    /* height: 100%; */
+}
+
+.leftAlogin{
+    background-color: #0181b4;
+    padding: 1rem 2rem;
+    z-index: 9;
+}
+.leftAlogin h2{
+text-align: center;
+margin: 10rem 0rem 2rem 0;
+font-weight: 500;
+font-size: 2rem;
+color: #fff;
+}
+.leftAlogin img{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+
+  height: 10rem;
+  width: 10rem;
+  opacity: 0.2;
+ 
+}
+.adminloginlefttext{
+    margin: 7rem 0rem 2rem;
+    letter-spacing: 0.19rem;
+    
+    
+}
+.adminloginlefttext h3{
+  text-wrap: nowrap;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.leftAlogin button{
+    margin: 1rem 0rem;
+   display: block;
+   margin: auto;
+   padding: 0.8rem 4rem;
+   cursor: pointer;
+   outline: none;
+   border: none;
+   background-color: #21BDEE;
+   color: #fff;
+}
+
+.adMineLogIn-box .rightAlogin{
+    width: 50%;
+    height: 100%;
+    padding: 2rem;
+    z-index: 10;
+}
+.rightAlogin h3{
+    
+    font-size: 1.7rem;
+    color: #fff;
+    text-align: center;
+    margin: 1rem 0 7rem 0rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+}
+.useridlogin{
+    width: 100%;
+    margin: 3rem 0 0 0;
+    
+}
+
+.useridlogin input{
+    outline: none;
+    border: none;
+    border-bottom:1.7px solid rgb(206 206 206) ;
+    width: 100%;
+    padding: 0.5rem 0.5rem;
+    background: transparent;
+    color: #fff;
+}
+.useridlogin label{
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+}
+.rightAlogin button{ 
+    display: block;
+    margin:4rem auto;
+    width: 100%;
+    outline: none;
+    padding: 0.6rem 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.08rem;
+    border-radius: 0.2rem;
+    background-color: #0BA7FF;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    cursor: pointer;
+}
+.blur{
+  opacity: 0.6;
+}
+.clear{
+  opacity: 1;
+}
+.rightAlogin a{
+    display: block;
+    text-align: center;
+    color: #fff;
+    font-size: 1rem;
+}
+@media (max-width : 688px) {
+    .leftAlogin{
+        display: none;
+    }
+    .adMineLogIn-box .rightAlogin {
+        width: 80%;
+    }
+    .adMineLogIn-box{
+        height: 100%;
+    }
+    .rightAlogin h3{
+        margin:8rem 0rem;
+       
+    }
+    .adMineLogIn-box .rightAlogin{
+            
+        padding: 2rem 0;
+    }
+}

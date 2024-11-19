@@ -13,6 +13,7 @@
     "@gsap/react": "^2.1.1",
     "@stackbit/types": "^2.0.4",
     "axios": "^1.7.2",
+    "bootstrap": "^5.3.3",
     "boxicons": "^2.1.4",
     "buffer": "^6.0.3",
     "cors": "^2.8.5",
