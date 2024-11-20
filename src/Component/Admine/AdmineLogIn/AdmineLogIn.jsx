@@ -31,17 +31,31 @@ const handleSubmit = async (e)=>{
             navigate('/Admin');
             setCheck(isactive);
         }
-    }catch(error){
-        if(error.response && error.response.status === 400){
-            props.showAlart('Invalid Credentials', "",'mark');
+    }catch (error) {
+        console.log('Error object:', error); 
+    
+        if (error.response) {
+            if (error.response.status === 400) {
+                props.showAlart('Invalid Credentials', "", 'cancel');
+                setIsactive(false);
+                return; 
+            }
+            if (error.response.status === 500) {
+                props.showAlart('Internal Server Error', "", 'cancel');
+                setIsactive(false);
+                return; 
+            }
+    
+     
+            props.showAlart(
+                `Unexpected Error (${error.response.status})`,
+                error.response.statusText || "",
+                'cancel'
+            );
             setIsactive(false);
-        }
-        if(error.response && error.response.status === 500){
-            props.showAlart('Internal Server Error', "",'cancel');
-            setIsactive(false);
-        }
-        else{
-            props.showAlart('Invalid Credentials',"",'cancel');
+        } else {
+            
+            props.showAlart('An unknown error occurred', "", 'cancel');
             setIsactive(false);
         }
     }
