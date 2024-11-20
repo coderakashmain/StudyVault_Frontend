@@ -126,12 +126,25 @@ const Question = (props) => {
             } else {
                 props.showAlart('External Error', 'Failed to upload the file.', 'cancel');
                 setSingletap(false);
+             
             }
         } catch (error) {
-            if(error.response && error.response.status === 400){
-                props.showAlart('Enter Correct Department name', 'Failed to upload the file.', 'mark');
+            if(error.response && error.response.status === 401){
+                props.showAlart('Department does not exist', 'Failed to upload the file.', 'cancel');
+                return;
 
             }
+            if(error.response && error.response.status === 400){
+                props.showAlart('File already present', 'Failed to upload the file.', 'mark');
+                return;
+
+            }
+            if(error.response && error.response.status === 300){
+                props.showAlart('Failed to upload file to Google Drive', 'Failed to upload the file.', 'mark');
+                return;
+
+            }
+            
             console.error('Error uploading file:', error);
             props.showAlart('Error ! Check Department Name is Incorrect', 'Failed to upload the file.', 'cancel');
             setSingletap(false);

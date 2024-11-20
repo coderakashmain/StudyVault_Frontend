@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react'
 import './Admine.css'
 import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 import axios from 'axios';
-import logo from '../../photo/StudyVault.png'
 
 import { AdminLoginContext } from '../../Context/AdminLoginCheck/AdminLoginCheck';
 

@@ -278,7 +278,9 @@
 }
 @media (max-width : 486px) {
   .left-about-box h2{
-    font-size:2rem ;
+    font-size:1.6rem ;
+    
+    text-align: justify;
   }
   .right-about-box{
     padding: 0 3rem 0 0;
