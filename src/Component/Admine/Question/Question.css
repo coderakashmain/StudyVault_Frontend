@@ -25,13 +25,13 @@
   
 }
 .question-box input::after{
-    content:  "Select";
+    content:  "↟   Select";
     position: absolute;
     top: 0%;
     left: 0%;
     height: 100%;
     width: 100%;
-    background-color: #2073a5;
+    background-color: #9d0b6a;
     cursor: pointer;
     color: #fff;
     /* padding: 1rem 1rem; */
@@ -83,6 +83,12 @@
     display: flex;
     flex-wrap: wrap;
 }
+.inputQuestinBox .paperdis{
+   opacity: 0.5;
+}
+.inputQuestinBox .paperen{
+   opacity: 1;
+}
 .inputQuestinBox-each,.inputQuestinBox-in{
     position: relative;
     width: 50%;
@@ -105,11 +111,25 @@
 .inputQuestinBox #Asearch:focus,.inputQuestinBox-in input:focus,.inputQuestinBox-in select:focus {
     border-color: #007BFF;
 }
-.inputQuestinBox-sugg{
+/* .inputQuestinBox-sugg{
     width: 100%;
     position: absolute;
     top: 100%;
     left: 0%;
+} */
+.inputQuestinBox .search-suggestion{
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0%;
+    z-index: 10;
+}
+
+.inputQuestinBox .otherone{
+    opacity: 0.5;
+}
+.inputQuestinBox .otherof{
+    opacity: 1;
 }
 .search-item {
     background-color: #007BFF;
@@ -122,7 +142,7 @@
     
 }
 .search-item:hover{
-    background-color: rgb(55, 209, 58);
+    background-color: rgb(29, 79, 131);
 }
 .AUploadusubmit{
     margin: 2rem 0.3rem;

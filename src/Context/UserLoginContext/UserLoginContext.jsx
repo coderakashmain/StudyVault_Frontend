@@ -16,7 +16,7 @@ const UserLoginContext = (props) => {
 
                 if (response.status === 200) {
                     setLoginCheck(response.data);
-                    console.log(loginCheck);
+                   
                 }
             }
             catch (error) {

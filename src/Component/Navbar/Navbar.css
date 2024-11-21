@@ -101,7 +101,7 @@
 .filter-switch .search-suggestion::-webkit-scrollbar {
   display: none;
 }
-.search-item {
+ .search-item {
   padding: 0.7rem 1rem;
   cursor: pointer;
 }
@@ -418,4 +418,22 @@ transform: scale(0);
   .filter-switch-mobile {
     bottom: -70%;
   }
+}
+
+
+
+
+.filter-switch input:-webkit-autofill {
+  background-color: transparent !important;
+  -webkit-box-shadow: 0 0 0px 1000px #123456 inset !important; 
+  box-shadow: 0 0 0px 1000px #123456 inset !important; 
+  color: #fff !important; 
+  -webkit-text-fill-color: rgb(255, 255, 255) !important;
+}
+
+
+
+.filter-switch input:autofill {
+  background-color: transparent !important;
+  box-shadow: 0 0 0px 1000px #224f8a inset !important;
 }

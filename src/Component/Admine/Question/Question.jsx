@@ -12,12 +12,19 @@ import axios from 'axios'
 const Question = (props) => {
     const departmentlist = useContext(Departmentlistdata);
     const {setPaperList} = useContext(FetchDataContext);
-    const [selectedFile, setSelectedFile] = useState(null);
+    const [selectedFile, setSelectedFile] = useState('');
     const [departmetvalue, setDartmentvalue] = useState('');
     const [showSuggestions, setShowSuggestions] = useState(false);
+    const [showSuggestionspaper, setShowSuggestionspaper] = useState(false);
     const [singletap, setSingletap] = useState(false);
     const hideeSarchSuggestion = useRef();
     const [fetchData, setFetchData] = useState([]);
+    const [honors, setHonors] = useState(true);
+    const [elective, setElective] = useState(false);
+    const [Compulsory, setCompulsory] = useState(false);
+    const [eandv, setEandv] = useState(false);
+    const [updatedata,setUpdatedata] = useState('');
+    const paperboxhide = useRef();
    
     const [filtetuploaddata, setFiltetuploaddata] = useState(
         {
@@ -31,7 +38,6 @@ const Question = (props) => {
 
         }
     );
-    // console.log(filtetuploaddata);
 
     useEffect(() => {
         const yearMap = {
@@ -55,6 +61,7 @@ const Question = (props) => {
 
 
     const handleFileChange = (e) => {
+       
         const file = e.target.files?.[0];
         if (file && file.type === 'application/pdf') {
             setSelectedFile(file);
@@ -76,6 +83,7 @@ const Question = (props) => {
         }
         return null;
     };
+  
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -107,7 +115,7 @@ const Question = (props) => {
                 const driveUrl = `https://drive.google.com/file/d/${fileId}/view`;
 
                 // Reset states and show success message
-                setSelectedFile(null);
+                setSelectedFile('');
                 setFiltetuploaddata({
                     departmentName: '',
                     educationLavel: '',
@@ -120,9 +128,11 @@ const Question = (props) => {
                 setSingletap(false);
                 // if (fileInputRef.current) fileInputRef.current.value = '';
                 setDartmentvalue('');
-
-
                 props.showAlart('Successfully uploaded.', '', 'check');
+                setElective(false);
+                setCompulsory(false);
+                setEandv(false);
+                setHonors(true);
             } else {
                 props.showAlart('External Error', 'Failed to upload the file.', 'cancel');
                 setSingletap(false);
@@ -135,18 +145,23 @@ const Question = (props) => {
 
             }
             if(error.response && error.response.status === 400){
-                props.showAlart('File already present', 'Failed to upload the file.', 'mark');
+                props.showAlart('File already present', 'Failed to upload the file.', 'cancel');
                 return;
 
             }
-            if(error.response && error.response.status === 300){
-                props.showAlart('Failed to upload file to Google Drive', 'Failed to upload the file.', 'mark');
+            if(error.response && error.response.status === 500){
+                props.showAlart('Failed to save file information to the database', 'Failed to upload the file.', 'mark');
+                return;
+
+            }
+            if(error.response && error.response.status === 502){
+                props.showAlart('Failed to verify file existence', 'Failed to upload the file.', 'mark');
                 return;
 
             }
             
             console.error('Error uploading file:', error);
-            props.showAlart('Error ! Check Department Name is Incorrect', 'Failed to upload the file.', 'cancel');
+            props.showAlart('Unexpected Error', 'Failed to upload the file.', 'cancel');
             setSingletap(false);
         } finally {
             setSingletap(false);
@@ -160,6 +175,7 @@ const Question = (props) => {
 
     const deparmentChange = (e) => {
         setDartmentvalue(e.target.value);
+        setUpdatedata(e.target.value);
         setShowSuggestions(true);
         handlechange(e);
 
@@ -170,21 +186,35 @@ const Question = (props) => {
                 setShowSuggestions(false);
             }
         }
+        const paperhide = (event) =>{
+            if(paperboxhide.current && !paperboxhide.current.contains(event.target)){
+                setShowSuggestionspaper(false);
+            }
+        }
         document.addEventListener("mousedown", handlehide);
+        document.addEventListener("mousedown", paperhide);
 
         return () => {
             document.removeEventListener("mousedown", handlehide);
+            document.removeEventListener("mousedown", paperhide);
         }
     });
 
     const handlechange = (e) => {
         const { name, value } = e.target;
+        if( name === 'paperName'){
+            setShowSuggestionspaper(true);
+        }
         setFiltetuploaddata((preData) => ({
             ...preData,
             [name]: value,
 
         }))
     };
+    useEffect(()=>{
+        if(!filtetuploaddata.paperName)
+        setShowSuggestionspaper(false);
+    },[filtetuploaddata.paperName]);
 
   
     useEffect(()=>{
@@ -205,6 +235,61 @@ const Question = (props) => {
         fatchData();
     },[singletap]);
 
+    const  handlesubjet = (e)=>{
+        const value = e.target.innerText
+     
+        if(value !== 'Honors'){
+
+            setDartmentvalue(value);
+        }
+        else{
+            setDartmentvalue(updatedata);
+        }
+        setFiltetuploaddata({
+          ...filtetuploaddata,
+          departmentName: value === 'Honors' ? updatedata : value,
+        });
+    }
+
+
+ const subjectlist = [
+    'C-1',
+    'C-2',
+    'C-3',
+    'C-4',
+    'C-5',
+    'C-6',
+    'C-7',
+    'C-8',
+    'C-9',
+    'C-10',
+    'C-11',
+    'C-12',
+    'C-13',
+    'C-14',
+    'PHY GE-1',
+    'MATH GE-2',
+    'PHY GE-3',
+    'MATH GE-4',
+    'CHEM GE-1',
+    'CHEM GE-3',
+    'AECC-1(EVS)',
+    'AECC-2(ODIA)',
+    'AECC-2(ENGLISH)',
+    'AECC-2(SANSKRIT)',
+    'SEC-1(CE)',
+    'SEC-2(QLT)',
+    'DSE-1',
+    'DSE-2',
+    'DSE-3',
+    'DSE-4',
+    'E&V-1',
+    'E&V-2',
+    'E&V-3',
+    'E&V-4',
+    'E&V-5',
+    'E&V-6',
+ ]
 
 
     return (
@@ -214,10 +299,10 @@ const Question = (props) => {
             <form onSubmit={handleSubmit}>
                 <div className="question-box">
 
-                    <input type="file" accept="application/pdf,image/jpeg" name="ApaperUpload" id="" onChange={handleFileChange} />
+                    <input type="file" accept="application/pdf" name="ApaperUpload" id="" onChange={handleFileChange} />
                     <div className="filestorebox">
 
-                        <input type="text" value={selectedFile ? (selectedFile.name) : 'Please Select a File :'} readOnly={true} />
+                        <input type="text" value={selectedFile ? selectedFile.name : 'Please Select a File :'} readOnly={true} />
                         <button onClick={() => {
                             setSelectedFile(null)
                             props.showAlart('Cleard', '', 'check');
@@ -227,7 +312,8 @@ const Question = (props) => {
 
                     <div className="inputQuestinBox">
                         <div className="inputQuestinBox-each inputQuestinBox-in">
-                            <input type="text" id='Asearch' name='departmentName' placeholder='Department Name' onChange={deparmentChange} value={departmetvalue} required />
+                            <input type="text" id='Asearch' name='departmentName' placeholder='Department Name' onChange={deparmentChange} value={departmetvalue} required  readOnly={Compulsory || elective || eandv ? true : false} 
+                            className={`${Compulsory || elective || eandv ? 'paperdis' : 'paperen'}`} />
                             {showSuggestions && (<div ref={hideeSarchSuggestion} className="search-suggestion">
                                 {departmetvalue ? (
                                     departmentlist && departmentlist.filter((item) => {
@@ -245,7 +331,9 @@ const Question = (props) => {
                                             return data.startsWith(searchTerm) && data !== searchTerm;
                                         }).map((departmentlist, index) => (
                                             <div onClick={(e) => {
-                                                setDartmentvalue(departmentlist)
+                                                setShowSuggestionspaper(false);
+                                                setDartmentvalue(departmentlist);
+                                                setUpdatedata(departmentlist);
                                                 setFiltetuploaddata((preData) => ({
                                                     ...preData,
                                                     departmentName: departmentlist,
@@ -301,9 +389,94 @@ const Question = (props) => {
                         </div>
 
                         <div className="leftfilter-select-item inputQuestinBox-in">
-                            <input onChange={handlechange} value={filtetuploaddata.paperName} type="text" name='paperName' placeholder=" Paper Name (Core-1)" required readOnly={singletap ? true : false} />
+                            <input  onChange={handlechange} value={filtetuploaddata.paperName} type="text" name='paperName' placeholder=" Paper Name (Core-1)" required readOnly={singletap ? true : false} />
+
+                            {showSuggestionspaper && (<div ref={paperboxhide}  className="search-suggestion">
+                                { filtetuploaddata.paperName ? (
+                                    subjectlist && subjectlist.filter((item) => {
+                                        const data = item.toLowerCase();
+                                        const searchTerm = filtetuploaddata.paperName.toLowerCase();
+                                        return data.startsWith(searchTerm);
+                                    }).length === 0 ? (
+                                        <div className="search-item">
+                                            <p>No paper type available</p>
+                                        </div>
+                                    ) : (
+                                        subjectlist.filter((item) => {
+                                            const data = item.toLowerCase();
+                                            const searchTerm = filtetuploaddata.paperName.toLowerCase();
+                                            return data.startsWith(searchTerm) && data !== searchTerm;
+                                        }).map((subjectlist, index) => (
+                                            <div onClick={(e) => {
+                                                setFiltetuploaddata((preData) => ({
+                                                    ...preData,
+                                                    paperName: subjectlist,
+
+                                                }))
+
+                                            }} className="search-item" key={index}>
+                                                <p >{subjectlist}</p>
+                                            </div>
+                                        ))
+                                    )
+                                ) : null}
+                            </div>)}
 
                         </div>
+                        <div className="subject-select">
+              <div className="subject-select-each">
+                
+                  <p onClick={(e)=>{
+                    
+                    handlesubjet(e);
+                    setHonors(!honors);
+                    setElective(false);
+                    setCompulsory(false);
+                    setEandv(false);
+                    
+                    }} className={`${honors ? 'ok' : 'no'}`}>Honors</p>
+              </div>
+              <div className="subject-select-each">
+                  <p onClick={(e)=>
+                    
+                    {setElective(!elective);
+                      handlesubjet(e);
+                      setCompulsory(false);
+                    setEandv(false);
+                    setHonors(false);
+
+                    }}
+                     className={`${elective ? 'ok' : 'no'}`}>Elective</p>
+              
+              </div>
+              <div className="subject-select-each">
+                  <p onClick={(e)=>
+                  
+                  {setCompulsory(!Compulsory);
+                    handlesubjet(e);
+                    setEandv(false);
+                    setHonors(false);
+                    setElective(false);
+
+                  }}  className={`${Compulsory ? 'ok' : 'no'}`}>Compulsory</p>
+
+              </div>
+              <div className="subject-select-each">
+                  <p onClick={
+                    (e)=>{setEandv(!eandv);
+                      handlesubjet(e);
+                     setCompulsory(false);
+                    setHonors(false);
+                    setElective(false);
+
+                    }
+                
+                } className={`${eandv ? 'ok' : 'no'}`}>E&V</p> 
+              
+              </div>
+
+
+            </div>
 
                     </div>
                     <div className="AUploadusubmit">
@@ -323,6 +496,8 @@ const Question = (props) => {
                         }}>Reset All</button>
                         <button type='submit'>Upload</button>
                     </div>
+
+                    
                 </div>
             </form>
             <h3 style={{margin : '1rem 0rem',display : 'block', textAlign : 'center',padding : '0.4rem 0',backgroundColor : 'rgb(34 100 162)', color  :  '#fff',borderRadius : '0.2rem'}}>All PDF</h3>

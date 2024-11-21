@@ -84,7 +84,7 @@ const Departmentlist = (props) => {
         <div className="inner-main-container">
           <div ref={contectContainer} className="content-container">
             <div className="department-title-box">
-              <h2>All departments :</h2>
+              <h2>Departments :</h2>
               <button>Question Papers<i className="fa-solid fa-not-equal"></i></button>
             </div>
             <div ref={departmentList} className="department-list">

@@ -24,7 +24,7 @@ const DepartmentListContext = (props)=>{
     
         "Commerce",
     
-        "Anthropoloy",
+        "Anthropology",
         "Economics",
         "Education",
         "English",

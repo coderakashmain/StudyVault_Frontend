@@ -52,6 +52,41 @@
   
   
 }
+.department-type .search-suggestion{
+  width: 100%;
+  position: absolute;
+  left: 0%;
+  top: 100%;
+  background-color: red;
+  
+}
+.department-type .otherone{
+  opacity: 0.5;
+  
+}
+.department-type .otherof{
+  opacity: 1;
+  
+}
+
+.department-type .search-suggestion .search-item {
+  background-color: #007BFF;
+  padding: 0.7rem 1rem;
+  cursor: pointer;
+  
+ 
+}
+.department-type .search-suggestion .search-item:hover {
+  background-color: rgb(29, 79, 131);
+ 
+}
+.department-type .search-suggestion .search-item p{
+
+  color: #fff;
+  position: relative;
+  font-size: 0.9rem;
+  
+}
 .ug-box,
 .pg-box {
   border: 2px solid gray;
@@ -214,6 +249,36 @@
 .filteration-container-box input[type="submit"]{
    cursor: pointer;
 } 
+
+.subject-select{
+  display: flex;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.subject-select-each{
+ 
+  border-radius: 50%;
+  margin: 1rem 1rem;
+}
+.subject-select-each p{
+padding: 0.5rem 1rem;
+cursor: pointer;
+border: 1px solid rgb(132 132 132);
+user-select: none;
+}
+
+
+.subject-select-each .ok{
+  background: linear-gradient(rgba(0, 0, 0, 0.374), rgb(74, 143, 200));
+  color: #fff;
+  border: none;
+}
+.subject-select-each .no{
+  background-color: initial;
+}
+
+
 
 
 @media only screen and (max-width: 895px) {

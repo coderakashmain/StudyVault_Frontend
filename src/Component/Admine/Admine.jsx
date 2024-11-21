@@ -45,7 +45,7 @@ const Admine = (props) => {
 
       checkAuthorization();
   }
-}, [check]);
+}, []);
 
 const handleLogout = () => {
   localStorage.removeItem('admin_token');

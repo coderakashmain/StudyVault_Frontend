@@ -1,51 +1,60 @@
-import React,{createContext, useContext, useEffect, useRef, useState} from "react";
+import React, { createContext, useContext, useEffect, useRef, useState } from "react";
 import axios from 'axios';
 import "./Filter.css";
-import { useNavigate,useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 
 import { ScrollFilterContext } from "../../../Context/FilterScroll/FilterScrollContex";
 import Loadingicon from "../../../Component/Jsonlicon/Loadingicon";
+import { Departmentlistdata } from "../../../Context/DepartmentList/DepartmentListContext";
 
 
 const Filter = (props) => {
 
-   const filterboxref = useRef();
+  const filterboxref = useRef();
 
-   const {setFiltersection} = useContext(ScrollFilterContext);
-   useEffect(()=>{
+  const { setFiltersection } = useContext(ScrollFilterContext);
+  useEffect(() => {
     setFiltersection(filterboxref.current);
-   },[])
-   
+  }, [])
+
 
   const navigate = useNavigate();
   const location = useLocation();
+  const [ugActive, setUgActive] = useState(false);
+  const [pgActive, setPgActive] = useState(false);
+  const [yearfirstActive, setYearfirstActive] = useState(false);
+  const [yearsecondActive, setYearsecondActive] = useState(false);
+  const [yearthirdActive, setYearthirdActive] = useState(false);
+  const [loader, setLoader] = useState(false);
+  const [honors, setHonors] = useState(true);
+  const [elective, setElective] = useState(false);
+  const [Compulsory, setCompulsory] = useState(false);
+  const [eandv, setEandv] = useState(false);
+  const [dptnamechange,setdptnamechange ] =useState('');
+  const departmentlist = useContext(Departmentlistdata);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const hideeSarchSuggestion = useRef();
 
-  const [ugActive,setUgActive]= useState(false);
-  const [pgActive, setPgActive]= useState(false);
-  const [yearfirstActive, setYearfirstActive]= useState(false);
-  const [yearsecondActive, setYearsecondActive]= useState(false);
-  const [yearthirdActive, setYearthirdActive]= useState(false);
-  const [loader,setLoader] = useState(false);
-  
+
   const initialDepartmentName = location.state?.departmentName || '';
   const initialDepartmentNamesearch = location.state?.searchdpt || '';
-const [dptName, setDptName] = useState('');
+  const [dptName, setDptName] = useState('');
 
-useEffect(()=>{
+  useEffect(() => {
 
-  const newDepartmentname = initialDepartmentName || initialDepartmentNamesearch;
-  setDptName(newDepartmentname);
+    const newDepartmentname = initialDepartmentName || initialDepartmentNamesearch;
+    setDptName(newDepartmentname);
 
-  setFilters((PreFilters) => ({
-    ...PreFilters,
-    departmentName : newDepartmentname,
-  }));
+    setFilters((PreFilters) => ({
+      ...PreFilters,
+      departmentName: newDepartmentname,
+    }));
 
-},[initialDepartmentName,initialDepartmentNamesearch])
-  
+  }, [initialDepartmentName, initialDepartmentNamesearch])
+
   const [filters, setFilters] = useState({
-    departmentName:dptName,
+    departmentName: dptName,
     educationLevelug: '',
     educationLevelpg: '',
     fromDate: '',
@@ -55,13 +64,24 @@ useEffect(()=>{
     midSem: false
   });
 
+const  handlesubjet = (e)=>{
+  const value = e.target.innerText
+  setFilters({
+    ...filters,
+    departmentName: value === 'Honors' ? (dptnamechange ? dptnamechange :dptName) : value,
+  });
+}
 
- 
 
-  
+
+
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
+    if(name === 'departmentName'){
+      setdptnamechange(value);
+      setShowSuggestions(true);
+    }
     setFilters({
       ...filters,
       [name]: type === "checkbox" ? checked : value,
@@ -75,24 +95,24 @@ useEffect(()=>{
         [name]: value,
       });
     }
-    };
-   
+  };
 
-  const handleEducationLevelug= (level) => {
+
+  const handleEducationLevelug = (level) => {
 
     setFilters({
       ...filters,
       educationLevelug: level
     });
-    
+
 
   };
-  const handleEducationLevelpg= (level) => {
+  const handleEducationLevelpg = (level) => {
     setFilters({
       ...filters,
       educationLevelpg: level
     });
-    
+
 
   };
 
@@ -102,7 +122,7 @@ useEffect(()=>{
       ...filters,
       departmentYear: year
     });
-  
+
   };
 
   const handlePaperType = (type) => {
@@ -110,113 +130,162 @@ useEffect(()=>{
       ...filters,
       [type]: !filters[type],
     });
-    
+
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     const nonEmptyFilters = Object.fromEntries(
       Object.entries(filters).filter(([key, value]) => value !== "" && value !== false)
     );
-   
+
     if (Object.keys(nonEmptyFilters).length === 0) {
-       alert("Please provide at least one filter criteria.");
+      alert("Please provide at least one filter criteria.");
       return;
     }
     try {
       setLoader(true);
       const response = await axios.get('/api/Filter', { params: nonEmptyFilters });
-      if(response.status === 200){
-        navigate('/Downloadpdf',{ state: { filters } });
+      if (response.status === 200) {
+        navigate('/Downloadpdf', { state: { filters } });
         setLoader(false);
       }
-      else{
-        props.showAlart('Try again after some time .','','cancel');
+      else {
+        props.showAlart('Try again after some time .', '', 'cancel');
         setLoader(false)
       }
-      
+
     } catch (error) {
-      if(error.response && error.response.status === 400){
+      if (error.response && error.response.status === 400) {
         console.error(error);
         setLoader(false);
-        props.showAlart('No filter parameters provided','','cancel');
+        props.showAlart('No filter parameters provided', '', 'cancel');
       }
-      if(error.response && error.response.status === 500){
+      if (error.response && error.response.status === 500) {
         console.error('Internal server error: ', error);
         setLoader(false);
-        props.showAlart('Server Error','','cancel');
+        props.showAlart('Server Error', '', 'cancel');
       }
-      else{
+      else {
         console.error('Internal Error: ', error);
         setLoader(false);
-        props.showAlart('Server Error','','cancel');
+        props.showAlart('Server Error', '', 'cancel');
       }
-    
+
     }
   };
 
 
-  useEffect(()=>{
-    
-  const handleDepartmentClick = async (departmentName) => {
+  useEffect(() => {
 
-    try{
-       const response = await axios.get('/api/login-check-filter',{withCredentials : true});
+    const handleDepartmentClick = async (departmentName) => {
 
-       if(response.status === 200){
-        props.showAlart('Authorized','','check')
-       }
+      try {
+        const response = await axios.get('/api/login-check-filter', { withCredentials: true });
+
+        if (response.status === 200) {
+          props.showAlart('Authorized', '', 'check')
+        }
+      }
+      catch (error) {
+        if (error.response && error.response.status === 500) {
+          props.showAlart('Login First', '', "mark");
+          navigate("/Login");
+          console.error('Internal servererr', error);
+        }
+        if (error.response && error.response.status === 404) {
+          props.showAlart('Login First', '', "mark");
+          navigate("/Login");
+          console.error('User not found', error);
+        }
+        else {
+          props.showAlart('Login First', '', "mark");
+          navigate("/Login");
+        }
+      }
+    };
+    handleDepartmentClick();
+  }, [])
+
+
+  useEffect(() => {
+    const handlehide = (event) => {
+        if (hideeSarchSuggestion.current && !hideeSarchSuggestion.current.contains(event.target)) {
+            setShowSuggestions(false);
+        }
     }
-    catch(error){
-      if(error.response && error.response.status === 500){
-        props.showAlart('Login First','',"mark");
-      navigate("/Login");
-        console.error('Internal servererr',error);
-      }
-      if(error.response && error.response.status === 404){
-        props.showAlart('Login First','',"mark");
-        navigate("/Login");
-        console.error('User not found',error);
-      }
-      else{
-        props.showAlart('Login First','',"mark");
-        navigate("/Login");
-      }
+    document.addEventListener("mousedown", handlehide);
+
+    return () => {
+        document.removeEventListener("mousedown", handlehide);
     }
-  };
-  handleDepartmentClick();
-  },[])
+});
 
   return (
     <div ref={filterboxref} className="filter-main-div">
       <form onSubmit={handleSubmit} className="filteration-container-box" >
         <div className="filteration-container">
           <div className="first-filteration">
-            <h3>Department Name :</h3>
+          {elective || Compulsory || eandv ? (<h3>Papers Name :</h3>) :(  <h3>Department Name :</h3>)}
             <div className="department-type">
+
               <div className="department-name">
                 <p>Please enter valid Name *</p>
+                <div className="department-name-inside">
                 <input
                   type="text"
                   name="departmentName"
                   value={filters.departmentName}
                   onChange={handleChange}
                   placeholder="Enter deparment name"
-                  
+                  className={`${elective || Compulsory || eandv ? 'otherone' : 'otherof'}`}  readOnly ={elective || Compulsory || eandv ? true : false}
+
                 />
+              </div>
+              {showSuggestions && (<div ref={hideeSarchSuggestion} className="search-suggestion">
+                                {dptnamechange ? (
+                                    departmentlist && departmentlist.filter((item) => {
+                                        const data = item.toLowerCase();
+                                        const searchTerm = dptnamechange.toLowerCase();
+                                        return data.startsWith(searchTerm);
+                                    }).length === 0 ? (
+                                        <div className="search-item">
+                                            <p>No Departments available</p>
+                                        </div>
+                                    ) : (
+                                        departmentlist.filter((item) => {
+                                            const data = item.toLowerCase();
+                                            const searchTerm = dptnamechange.toLowerCase();
+                                            return data.startsWith(searchTerm) && data !== searchTerm;
+                                        }).map((departmentlist, index) => (
+                                            <div onClick={(e) => {
+                                                setdptnamechange(departmentlist)
+                                                setFilters((preData) => ({
+                                                    ...preData,
+                                                    departmentName: departmentlist,
+
+                                                }))
+
+                                            }} className="search-item" key={index}>
+                                                <p >{departmentlist}</p>
+                                            </div>
+                                        ))
+                                    )
+                                ) : null}
+                            </div>)}
               </div>
             </div>
             <h3>Enter Session :</h3>
             <div className="year-to-year">
               <div className="year-div">
-                <input type="number" 
-                placeholder="From"
-                name="fromDate"
-                value={filters.fromDate}
-                onChange={handleChangenum} 
-                pattern="2 0 [0-9]{2}"
-                required
+                <input type="number"
+                  placeholder="From"
+                  name="fromDate"
+                  value={filters.fromDate}
+                  onChange={handleChangenum}
+                  pattern="2 0 [0-9]{2}"
+                  required
                 />
               </div>
 
@@ -229,23 +298,22 @@ useEffect(()=>{
                   placeholder="To"
                   pattern="2 0 [0-9]{2}"
                   required
-                  />
-                  
+                />
+
               </div>
             </div>
             <h3>Education Lavel :</h3>
             <div className="department-section">
               <div
-                className={`ug-box department-box ${ugActive ? 'ug-active-color': ''}`}
-                onClick={() => 
-                {
-                  if(!ugActive){
+                className={`ug-box department-box ${ugActive ? 'ug-active-color' : ''}`}
+                onClick={() => {
+                  if (!ugActive) {
                     handleEducationLevelug('ug');
                     setUgActive(true);
 
-                    
+
                   }
-                  if(ugActive){
+                  if (ugActive) {
                     setUgActive(false);
                     handleEducationLevelug('');
                   }
@@ -255,14 +323,14 @@ useEffect(()=>{
                 <h1>UG</h1>
               </div>
               <div
-                className={`pg-box department-box ${pgActive ? 'pg-active-color': ''}`}
-                onClick={() =>{
-                  if(!pgActive){
+                className={`pg-box department-box ${pgActive ? 'pg-active-color' : ''}`}
+                onClick={() => {
+                  if (!pgActive) {
                     handleEducationLevelpg('pg');
                     setPgActive(true);
-                    
+
                   }
-                  if(pgActive){
+                  if (pgActive) {
                     setPgActive(false);
                     handleEducationLevelpg('');
                   }
@@ -276,50 +344,50 @@ useEffect(()=>{
             <h3>Department Year :</h3>
             <div className="department-year">
               <ul>
-                <li className={` ${yearfirstActive ? 'active-1st-year': ''}`}  onClick={() => {
-                       if(!yearfirstActive){
-                         handleDepartmentYear('1st');
-                         setYearsecondActive(false);
-                         setYearthirdActive(false);
-                         setYearfirstActive(true);
+                <li className={` ${yearfirstActive ? 'active-1st-year' : ''}`} onClick={() => {
+                  if (!yearfirstActive) {
+                    handleDepartmentYear('1st');
+                    setYearsecondActive(false);
+                    setYearthirdActive(false);
+                    setYearfirstActive(true);
 
-                       }
-                       if(yearfirstActive){
-                         handleDepartmentYear('')
-                        setYearfirstActive(false);
-                       }
+                  }
+                  if (yearfirstActive) {
+                    handleDepartmentYear('')
+                    setYearfirstActive(false);
+                  }
                 }
-                   }>
+                }>
                   1 <sup>st</sup>
                 </li>
-                <li className={` ${yearsecondActive ? 'active-2nd-year': ''}`}  onClick={() =>{
-                       if(!yearsecondActive){
-                         handleDepartmentYear('2nd')
-                         setYearthirdActive(false);
-                        setYearfirstActive(false);
-                         setYearsecondActive(true);
+                <li className={` ${yearsecondActive ? 'active-2nd-year' : ''}`} onClick={() => {
+                  if (!yearsecondActive) {
+                    handleDepartmentYear('2nd')
+                    setYearthirdActive(false);
+                    setYearfirstActive(false);
+                    setYearsecondActive(true);
 
-                       }
-                       if(yearsecondActive){
-                         handleDepartmentYear('')
-                         setYearsecondActive(false);
-                       }
-                } }>
+                  }
+                  if (yearsecondActive) {
+                    handleDepartmentYear('')
+                    setYearsecondActive(false);
+                  }
+                }}>
                   2 <sup>nd</sup>
                 </li>
-                <li className={` ${yearthirdActive ? 'active-3rd-year': ''}`} onClick={() => {
-                       if(!yearthirdActive){
-                         handleDepartmentYear('3rd')
-                        setYearfirstActive(false);
-                        setYearsecondActive(false);
-                         setYearthirdActive(true);
+                <li className={` ${yearthirdActive ? 'active-3rd-year' : ''}`} onClick={() => {
+                  if (!yearthirdActive) {
+                    handleDepartmentYear('3rd')
+                    setYearfirstActive(false);
+                    setYearsecondActive(false);
+                    setYearthirdActive(true);
 
-                       }
-                       if(yearthirdActive){
-                         handleDepartmentYear('')
-                         setYearthirdActive(false);
-                       }
-                } }>
+                  }
+                  if (yearthirdActive) {
+                    handleDepartmentYear('')
+                    setYearthirdActive(false);
+                  }
+                }}>
                   3 <sup>rd</sup>
                 </li>
               </ul>
@@ -327,24 +395,78 @@ useEffect(()=>{
             <h3>Select paper :</h3>
             <div className="check-paper">
               <div className="first-paper">
-                <div className={` ${filters.midSem ? 'active-midpaper-year': ''}`} onClick={() =>handlePaperType('midSem')}>MID SEM</div>
-                
+                <div className={` ${filters.midSem ? 'active-midpaper-year' : ''}`} onClick={() => handlePaperType('midSem')}>MID SEM</div>
+
               </div>{" "}
               <div className="second-paper">
-                <div className={` ${filters.sem ? 'active-sempaper-year': ''}`} onClick={() => handlePaperType('sem')}> SEM</div>
+                <div className={` ${filters.sem ? 'active-sempaper-year' : ''}`} onClick={() => handlePaperType('sem')}> SEM</div>
               </div>
             </div>
-            {/* <h3>Select Subject :</h3> */}
-            
+            <h3>Subjects :</h3>
+            <div className="subject-select">
+              <div className="subject-select-each">
+                
+                  <p onClick={(e)=>{
+                    
+                    handlesubjet(e);
+                    setHonors(!honors);
+                    setElective(false);
+                    setCompulsory(false);
+                    setEandv(false);
+                    
+                    }} className={`${honors ? 'ok' : 'no'}`}> Honors</p>
+              </div>
+              <div className="subject-select-each">
+                  <p onClick={(e)=>
+                    
+                    {setElective(!elective);
+                      handlesubjet(e);
+                      setCompulsory(false);
+                    setEandv(false);
+                    setHonors(false);
+
+                    }}
+                     className={`${elective ? 'ok' : 'no'}`}>Elective</p>
+              
+              </div>
+              <div className="subject-select-each">
+                  <p onClick={(e)=>
+                  
+                  {setCompulsory(!Compulsory);
+                    handlesubjet(e);
+                    setEandv(false);
+                    setHonors(false);
+                    setElective(false);
+
+                  }}  className={`${Compulsory ? 'ok' : 'no'}`}>Compulsory</p>
+
+              </div>
+              <div className="subject-select-each">
+                  <p onClick={
+                    (e)=>{setEandv(!eandv);
+                      handlesubjet(e);
+                     setCompulsory(false);
+                    setHonors(false);
+                    setElective(false);
+
+                    }
+                
+                } className={`${eandv ? 'ok' : 'no'}`}>E&V</p> 
+              
+              </div>
+
+
+            </div>
+
           </div>
         </div>
         <div className="filter-submission">
           <div className="filter-submission-box">
-            
-              
-              {<input disabled= {loader} style={{ background :( loader  ? 'lightblue' : '#4c98d9' )}}  type="submit" value='Find' />}
+
+
+            {<input disabled={loader} style={{ background: (loader ? 'lightblue' : '#4c98d9') }} type="submit" value='Find' />}
           </div>
-       
+
         </div>
       </form>
     </div>
