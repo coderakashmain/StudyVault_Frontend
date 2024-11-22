@@ -23,6 +23,7 @@ const Departmentlist = (props) => {
 
   const contectContainer = useRef();
 
+
   const backto = () => {
     contectContainer.current.scrollIntoView({ behavior: "smooth" });
   };

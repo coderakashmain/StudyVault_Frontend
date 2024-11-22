@@ -25,6 +25,7 @@ const Question = (props) => {
     const [eandv, setEandv] = useState(false);
     const [updatedata,setUpdatedata] = useState('');
     const paperboxhide = useRef();
+    const fileInputRef = useRef();
    
     const [filtetuploaddata, setFiltetuploaddata] = useState(
         {
