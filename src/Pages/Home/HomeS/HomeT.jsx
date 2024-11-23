@@ -72,7 +72,7 @@ const HomeT = (props) => {
                 </div>
                 <div className="counts">
                   <h3>1K+</h3>
-                  <p>Total Resources download </p>
+                  <p>Total Resources downloaded </p>
                 </div>
               </div>
               <div className="buttons-home">
