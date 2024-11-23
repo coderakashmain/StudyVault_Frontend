@@ -18,6 +18,7 @@ const HomeT = (props) => {
   const[userlogincheck,setUserlogincheck] = useState();
   const  loginCheck = useContext(Userlogincheckcontext);
 
+
   useEffect(()=>{
     const userlogin = async()=>{
       
@@ -62,11 +63,11 @@ const HomeT = (props) => {
               </p>
               <div className="live-count">
                 <div className="counts">
-                  <h3>500K+</h3>
+                  <h3>10K+</h3>
                   <p>Users visite this app</p>
                 </div>
                 <div className="counts">
-                  <h3>20K+</h3>
+                  <h3>5K+</h3>
                   <p>Users use this app</p>
                 </div>
                 <div className="counts">
