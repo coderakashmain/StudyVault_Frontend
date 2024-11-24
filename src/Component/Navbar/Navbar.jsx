@@ -167,7 +167,8 @@ const Navbar = (props) => {
         if (response.status === 200) {
           setIsAuthenticateduser(false);
           setUsernav(null);
-          navigate("/");
+          // navigate("/");
+          window.location.href = '/';
           props.showAlart("Log out", "Back to main page", 'check');
         }
       }
@@ -415,7 +416,7 @@ const Navbar = (props) => {
             </ul>
           </div>
 
-          <div ref={filterRef} className={`filter-switch ${mobileScroll && "filter-switch-mobile"}`}>
+          <div ref={filterRef} className={`filter-switch  ${mobileScroll && "filter-switch-mobile"}`}>
             <input
               // ref={searchRef}
               type="text"

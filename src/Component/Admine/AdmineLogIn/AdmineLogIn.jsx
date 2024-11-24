@@ -6,6 +6,7 @@ import logo from '../../../photo/weblogo.png'
 import { NavLink, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { AdminLoginContext } from '../../../Context/AdminLoginCheck/AdminLoginCheck'
+import API from '../API'
 
 
 const AdmineLogIn = (props) => {
@@ -14,23 +15,24 @@ const [password,setPassword] = useState('');
 const [isactive,setIsactive] = useState(false);
 const {setCheck} = useContext(AdminLoginContext);
 
+
 const navigate = useNavigate();
 
 const handleSubmit = async (e)=>{
     setIsactive(true);
     e.preventDefault();
     try{
-        const respone = await axios.post('/api/Admin/AdminLogIn',  {  userid, password  },{withCredentials : true});
-        if(respone.status === 200){
+        const respone = await API.post("/Admin/AdminLogIn", { userid, password });
+        
             const token = respone.data.token;
-            localStorage.setItem('admin_token', token);
+            localStorage.setItem('admin_token',token);
             props.showAlart('LogIn Seccessfully',"","check");
             setUserid('');
             setPassword('');
             setIsactive(false);
-            navigate('/Admin');
+            window.location.href = "/Admin";
             setCheck(isactive);
-        }
+ 
     }catch (error) {
         console.log('Error object:', error); 
     

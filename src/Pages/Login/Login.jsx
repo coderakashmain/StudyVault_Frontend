@@ -34,7 +34,8 @@ const Login = (props) => {
       const response = await axios.post('/api/LogIn', loginData, { withCredentials: true });
       if (response.status === 200) {
         setUsernav(response.data.user);
-        navigate('/');
+        window.location.href = "/";
+        
         props.showAlart('Log in Successfull.', '', 'check');
         setRepeatclick(false);
       }

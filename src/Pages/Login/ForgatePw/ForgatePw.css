@@ -1,6 +1,7 @@
 #forgatepw{
   min-height: 100vh;
   min-height: 100svh;
+  min-height: 100lvh;
     width: 100%;
     background: var(--uniqcolorup);
     display: flex;

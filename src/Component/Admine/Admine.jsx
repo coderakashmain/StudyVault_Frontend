@@ -4,6 +4,7 @@ import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 import axios from 'axios';
 
 import { AdminLoginContext } from '../../Context/AdminLoginCheck/AdminLoginCheck';
+import API from './API';
 
 const Admine = (props) => {
  const navigate = useNavigate();
@@ -16,13 +17,14 @@ const Admine = (props) => {
 
   if (!token) {
       // If no token, redirect to login page
-      navigate('/Admin/AdminLogIn');
+      window.location.href = "/Admin/AdminLogIn";
+      // navigate('/Admin/AdminLogIn');
       props.showAlart('Unautherized', '', 'mark');
   } else {
       // If token exists, verify it on the server
       const checkAuthorization = async () => {
           try {
-              const response = await axios.get('/api/adminPage',{
+            const response = await API.get("/adminPage",{
                 headers: {
                   Authorization: `Bearer ${token}` // Include the token in the Authorization header
                 },
@@ -47,12 +49,20 @@ const Admine = (props) => {
   }
 }, []);
 
-const handleLogout = () => {
-  localStorage.removeItem('admin_token');
-  navigate('/Admin/AdminLogIn');
-  props.showAlart('Logged out successfully', '', 'check');
-  setIsactive(!isactive);
-  setCheck(isactive);
+const handleLogout = async () => {
+  try{
+    await API.post("/Admin/logout");
+    localStorage.removeItem('admin_token');
+    window.location.href = "/AdminLogIn";
+    props.showAlart('Logged out successfully', '', 'check');
+  
+    setIsactive(!isactive);
+    setCheck(isactive);
+  }catch(err){
+    console.error(err);
+    props.showAlart('Failed to log out', '', 'cancel');
+ 
+  }
 
 };
 

@@ -127,8 +127,8 @@ const Profile = (props) => {
 
       const formData = new FormData();
       formData.append('file', fileToUpload);
-      formData.append('renameFileback', renameFileback); 
-      console.log(renameFileback);
+      formData.append('renameFileback', fileToUpload.name); 
+
       formData.append('userid', user.id); 
 
       formData.append('filtetuploaddata', JSON.stringify(filtetuploaddata));
@@ -141,7 +141,7 @@ const Profile = (props) => {
           },
 
         });
-        console.log(user.id);
+ 
         if (response.status === 200) {
           const fileId = response.data.fileId; // Capture the file ID from backend
           const driveUrl = `https://drive.google.com/file/d/${fileId}/view`;
@@ -152,11 +152,8 @@ const Profile = (props) => {
           if (fileInputRef.current) {
             fileInputRef.current.value = "";
           }
-          props.showAlart(' successfully send','','check')
+          props.showAlart(' Successfully send','','check')
           setFiltetuploaddata('');
-
-          alert(`View your uploaded file here: ${driveUrl}`);
-          window.open(driveUrl, '_blank');
           setSingletap(false); 
         }
         else{
@@ -172,7 +169,7 @@ const Profile = (props) => {
       }
 
     } else {
-      console.log('No file selected or invalid file type')
+     
       props.showAlart('Error', 'Please select  file','cancel')
       setSingletap(false);
       return;

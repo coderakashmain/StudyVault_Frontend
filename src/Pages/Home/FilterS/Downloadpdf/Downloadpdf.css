@@ -1,6 +1,7 @@
 #download-pdf{
     min-height: 100vh;
     min-height: 100svh;
+    min-height: 100lvh;
     width: 100%;
     position: absolute;
     top: 0px;
@@ -51,6 +52,7 @@
 }
 .download-data a i{
     color: #d9d9d9;
+    padding: 0rem 0rem 0rem 0.2rem;
 
 }
 .download-data p{
@@ -62,10 +64,15 @@
     .download-box{
         width: 93vw;
     }
+    
 }
 @media (max-width : 550px) {
     .download-box h2{
         font-size: 8vw;
      }
+     .download-data a{
+        font-size: 1.1rem;
+    
+    }
 }
 
