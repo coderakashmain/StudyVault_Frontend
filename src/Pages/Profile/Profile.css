@@ -283,28 +283,52 @@
 .recent-work h3{
     font-size: 1.5rem;
     justify-self: flex-end;
-    padding: 0px 0px 1.8rem 0;
+    padding: 0px 1rem 1.8rem 0;
+    font-weight: 500;
 }
 .recent-work-box{
     width: 100%;
- 
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 3.9rem;
+    gap: 2rem;
     cursor: pointer;
     flex-wrap: wrap;
+    flex-direction: column;
     
 }
 .recent{
-    background-color: rgba(138, 138, 138, 0.319);
+    background-color: rgb(202 200 247 / 32%);
     border-radius: 0.2rem;
     flex-grow: 1;
-    flex-basis:240px;
-    min-height: 200px;
+    width: 100%;
+    /* flex-basis:240px; */
+    height: 200px;
     padding: 1rem;
     color: #000;
+    overflow-y: scroll;
+    overflow-x: hidden;
     
+    
+}
+.recent::-webkit-scrollbar {
+    width: 10px;
+    right: 0px;
+ 
+  }
+  
+.recent li{
+ text-wrap: wrap;
+ padding: 0.5rem 0.4rem;
+ box-shadow: 2px 2px 4px rgb(152, 164, 170);
+ margin: 0.5rem 0rem;
+}
+.recent li:hover{
+background-color: rgb(155, 184, 236);
+}
+.recent li a{
+ text-wrap: wrap;
+overflow: hidden; 
 }
 /* .recent-download{
     width: 50%; 
@@ -315,12 +339,36 @@
      width: 50%;
      height: 100%; 
 } */
+.profile-client-info {
+    border-radius: 0.2rem;
+    /* border: 2px solid #104a5f2e; */
+    margin: 0rem 3rem 0.2rem;
+    padding: 0rem 1rem;
+  
+   
+}
 .profile-client-info h3{
     font-size: 1.5rem;
-    margin: 2rem 0 2.4rem 0;
+    margin: 2rem 0 2rem 0;
+    font-weight: 600;
+   display: flex;
+   align-items: center;
+   cursor: pointer;
+   
 }
+.profile-client-info h3 i{
+ padding: 0rem 01rem 0rem 0rem;
+ transition:  all 0.5s ease;
+ transform:  translateY(-10%);
+}
+.profile-client-info  .shut-right{
+    transform: rotate(270deg) translateX(23%);
+    
+}
+
 .client-info-name{
     margin: 0 0 2rem 0;
+   
 }
 .forwrap{
     display: flex;
@@ -329,6 +377,8 @@
     gap : 1rem;
     width: 100%;
 }
+
+
 .client-info-name{
     width: 50%;
 }
@@ -337,12 +387,24 @@
     font-size: 1.1rem;
     margin: 0 0 0.5rem 0;
 }
+.forwrap-out{
+    max-height: 100vh;
+    transition: all 0.5s ease;
+
+
+}
+.info-true{
+    max-height: 100vh;
+}
+.info-false{
+    max-height: 0vh;
+}
 .client-info-name-inside{
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0.9rem 1rem;
-    background-color: #e1e1e1b5;
+    background-color: rgb(202 200 247 / 32%);
     border-radius: 0.3rem;
     font-size: 0.95rem;
     /* box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.13),inset 9px 9px 50px rgba(255, 255, 255, 0.832),inset -9px -9px 50px rgba(111, 111, 111, 0.163); */
@@ -513,6 +575,9 @@
     }
     .filterselect-option button{
         margin: 2rem 0 0 0;
+    }
+    .profilecontain {
+        padding: 0rem 0.6rem;
     }
 }
 @media (max-width:437px) {

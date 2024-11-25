@@ -10,12 +10,14 @@ import profilelogo from '../../photo/profile common logo.jpg'
 
 const Profile = (props) => {
 
+  const [pdfetchfile,setpdfetchfile] = useState([]);
   const [user, setUser] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
   const [loading, setLoading] = useState(true);
   const [singletap,setSingletap] = useState(false);
   // const [driveUrl,setdriveUrl] = useState('');
   const [renameFileback,setrenameFileback] = useState('');
+  const [isActive,setIsActive] = useState(false);
 
   const fileInputRef = useRef(null);
 
@@ -30,6 +32,10 @@ const Profile = (props) => {
 
     }
   );
+
+
+
+  
 
 
   const handlechange = (e) => {
@@ -68,6 +74,43 @@ const Profile = (props) => {
   
 
   }, []);
+
+
+
+  useEffect(()=>{
+    const  handlepdffetch = async() =>{
+      
+      try{
+        const userid = user.id;
+        console.log(userid)
+
+        const response = await axios.get('/api/Profile/fetchpdf',{params : {userid},withCredentials : true});
+      
+        if(response.status === 200){
+          setpdfetchfile(response.data);
+        }
+        else{
+          props.showAlart('something error','','cancel');
+        }
+      }
+      
+      catch(error){
+        
+        if(error.response && error.response.status === 400){
+          props.showAlart('Not send yet', '','mark')
+        }
+      }
+      
+      };
+      handlepdffetch();
+    },[singletap,user]);
+
+
+    
+    useEffect(() => {
+      console.log("Updated pdfetchfile:", pdfetchfile);
+    }, [pdfetchfile]);
+
   if (loading) {
     return <p style={{margin  : "100px 0 0 50px"}}>Loading...</p>;
 
@@ -79,7 +122,9 @@ const Profile = (props) => {
   };
 
 
-  
+ 
+
+
 
   const handleFileChange = async (e) => {
     const file = e.target.files[0];
@@ -177,27 +222,6 @@ const Profile = (props) => {
 
   };
 
-const  handlepdffetch = async(e) =>{
-e.preventDefault();
-try{
-  const response = await axios.get('/api/Profile/fetchpdf',{userid : user.id},{withCredentials : true});
-
-  if(response.status ===200){
-    setpdfetchfile(response.data);
-  }
-  else{
-    showAlart('something error');
-  }
-}
-
-
-catch(error){
-  if(error.response && error.response.status === 400){
-
-  }
-}
-
-};
 
 
 
@@ -339,19 +363,30 @@ catch(error){
               </p>
             </div>
             <div className="recent-work profilecontain">
-              <h3>Recent work</h3>
+              <h3>Papers Send({pdfetchfile.length})</h3>
               <div className="recent-work-box">
                 <div className="recent-download recent">
-                    Update soon...
+                 
+                      {pdfetchfile.length > 0 ? (
+                        pdfetchfile.map((pdfetchfile) => (
+                            <li key={pdfetchfile.id}>
+                             * <a href={pdfetchfile.paperlink} download target='__blank'>{pdfetchfile.papername}<i className="fa-solid fa-file-pdf" style={{ padding : '0rem 0rem 0rem 0.2rem', fontSize : '1.3rem', color : '#ce0d0d'}}></i></a>
+                            </li>
+                        ))
+                    ) : (
+                        <p>No papers Uploaded</p>
+                    )}
                 </div>
+                <h3>You Downloaded</h3>
                 <div className="recent-upload recent">
                 Update soon...
 
                 </div>
               </div>
             </div>
-            <div className="profile-client-info profilecontain">
-              <h3>Personal Information</h3>
+            <div className="profile-client-info ">
+              <h3 onClick={()=> setIsActive(!isActive)}><i className={`fa-solid fa-sort-down ${isActive ? '' :'shut-right'}`}></i>Personal Information</h3>
+              <div className={`forwrap-out ${isActive ? 'info-true' : 'info-false'}`}>
               <div className="forwrap">
                 <div className="client-info-name name">
                   <h4>Name</h4>
@@ -398,6 +433,7 @@ catch(error){
                   Edit profile<i className="fa-solid fa-pen-to-square"></i>
                 </button>
               </div>
+            </div>
             </div>
           </div>
         </div>

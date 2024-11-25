@@ -34,7 +34,7 @@ const AboutUs = () => {
                 <ul>
                   <li>All Previous Year Question Papers of M.P.C Auto.</li>
                   <li>Easy download in form of pdf.</li>
-                  <li>You can also upload question paper for others.</li>
+                  <li>You can  send us question papers for others.</li>
                   <li>Easy Interface.</li>
                   <li>Fast and Secure.</li>
 
