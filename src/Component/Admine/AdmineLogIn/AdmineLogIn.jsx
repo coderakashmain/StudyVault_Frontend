@@ -24,7 +24,7 @@ const handleSubmit = async (e)=>{
     try{
         const respone = await API.post("/Admin/AdminLogIn", { userid, password });
         
-            const token = respone.data.token;
+            const token = respone.data.accestoken;
             localStorage.setItem('admin_token',token);
             props.showAlart('LogIn Seccessfully',"","check");
             setUserid('');

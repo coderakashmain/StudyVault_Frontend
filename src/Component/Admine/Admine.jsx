@@ -53,14 +53,15 @@ const handleLogout = async () => {
   try{
     await API.post("/Admin/logout");
     localStorage.removeItem('admin_token');
-    window.location.href = "/AdminLogIn";
+    window.location.href = "/Admin/AdminLogIn";
+    
+    
     props.showAlart('Logged out successfully', '', 'check');
-  
     setIsactive(!isactive);
     setCheck(isactive);
   }catch(err){
     console.error(err);
-    props.showAlart('Failed to log out', '', 'cancel');
+    // props.showAlart('Failed to log out', '', 'cancel');
  
   }
 
