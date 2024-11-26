@@ -58,8 +58,8 @@ const HomeT = (props) => {
                 <h1>Hi! I Am</h1>
                 <div className="h1-box">
                  <picture>
-                  <source srcset={logoa} type="image/avif"/>
-                  <source srcset={logow} type="image/webp"/>
+                  <source srcSet={logoa} type="image/avif"/>
+                  <source srcSet={logow} type="image/webp"/>
                   <img src={logo} alt="web logo" loading="lazy"/>
                  </picture>
                 </div>
@@ -94,8 +94,8 @@ const HomeT = (props) => {
             <div className="home-image-section">
               <div className="background-image">
                 <picture>
-                <source srcset={Imagea} type="image/avif"/>
-                <source srcset={Imagew} type="image/webp"/>
+                <source srcSet={Imagea} type="image/avif"/>
+                <source srcSet={Imagew} type="image/webp"/>
                 <img src={Image} alt="not found" loading="lazy"/>
                 
                 </picture>

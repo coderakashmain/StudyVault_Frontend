@@ -5,6 +5,7 @@ import axios from "axios";
 import profilelogo from '../../photo/profile common logo.jpg'
 import profilelogow from '../../photo/profile common logo.webp'
 import profilelogoa from '../../photo/profile common logo.avif'
+import Compressor from "compressorjs";
 
 
 
@@ -20,8 +21,10 @@ const Profile = (props) => {
   // const [driveUrl,setdriveUrl] = useState('');
   const [renameFileback,setrenameFileback] = useState('');
   const [isActive,setIsActive] = useState(false);
+  const [uploadpicture,setUploadpicture] = useState(null);
 
   const fileInputRef = useRef(null);
+  const uploadpicref = useRef(null);
 
   const [filtetuploaddata, setFiltetuploaddata] = useState(
     {
@@ -84,7 +87,7 @@ const Profile = (props) => {
       
       try{
         const userid = user.id;
-        console.log(userid)
+ 
 
         const response = await axios.get('/api/Profile/fetchpdf',{params : {userid},withCredentials : true});
       
@@ -108,10 +111,7 @@ const Profile = (props) => {
     },[singletap,user]);
 
 
-    
-    useEffect(() => {
-      console.log("Updated pdfetchfile:", pdfetchfile);
-    }, [pdfetchfile]);
+
 
   if (loading) {
     return <p style={{margin  : "100px 0 0 50px"}}>Loading...</p>;
@@ -224,6 +224,50 @@ const Profile = (props) => {
 
   };
 
+  const updateprofilephoto = async (e)=>{
+    const file = e.target.files[0];
+
+    const MAX_FILE_SIZE_KB = 500;
+
+    if ((file.type === "image/jpeg" || file.type === "image/png")) {
+      new Compressor(file,{
+        quality : 0.8,
+        success(compressedfile){
+          if(compressedfile.size <= MAX_FILE_SIZE_KB * 1024){
+            setUploadpicture(compressedfile);
+
+          }else{
+            if (uploadpicref.current) {
+              uploadpicref.current.value = "";
+            }
+            props.showAlart('File is too large','','mark');
+          }
+        },
+        error(err) {
+          console.error("Compression failed:", err);
+        },
+      })
+
+    } else {
+      // props.showAlart('Failed', 'Please select a photo','cancel');
+      setUploadpicture(null);
+      if (uploadpicref.current) {
+        uploadpicref.current.value = "";
+      }
+    }
+  }
+  // console.log(uploadpicture);
+  const handlePpUpload = () => {
+    if (uploadpicref) {
+      const newppFileName = `${user.firstname} ${user.lastname} Profile Photo`;
+        handlerenamed(newppFileName);
+      const renamedppFile = new File([selectedFile], newppFileName, { type: selectedFile.type });
+     
+      return renamedppFile;
+    }
+    return null;
+  };
+
 
 
 
@@ -242,14 +286,22 @@ const Profile = (props) => {
                 <div className="profile-main-photo">
                   <div className="profile-main-photo-img-box">
                     <picture>
-                      <source  srcset={profilelogoa} type="image/avif" />
-                      <source  srcset={profilelogow} type="image/webp" />
+                      <source  srcSet={profilelogoa} type="image/avif" />
+                      <source  srcSet={profilelogow} type="image/webp" />
                        <img src={profilelogo} alt="profile photo" />
 
                     </picture>
 
                   </div>
-                  <div className="profile-main-photo-subpart"></div>
+                  <div className="profile-main-photo-subpart" >
+             
+
+                    
+                       <input type="file" name="profile-photo" id="profile-photo"accept="image/jpeg, image/png" onChange={updateprofilephoto} ref={uploadpicref}/>
+                       
+                       <i className="fa-solid fa-camera"></i>
+                       </div>
+               
                 </div>
               </div>
               <div className="profile-downupload-info">

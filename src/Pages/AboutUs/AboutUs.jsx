@@ -53,8 +53,8 @@ const AboutUs = () => {
               <div className="akash-box self-box">
                 <div className="akash-img-box self-img-box">
                   <picture>
-                  <source srcset={akashlogoa} type="image/avif"/>
-                  <source srcset={akashlogow} type="image/webp"/>
+                  <source srcSet={akashlogoa} type="image/avif"/>
+                  <source srcSet={akashlogow} type="image/webp"/>
                   <img src={akashlogo} alt="Akash's Photo" loading="lazy" />
                   </picture>
                 </div>
@@ -78,8 +78,8 @@ const AboutUs = () => {
               <div className="jitu-box self-box">
                 <div className="jitu-img-box self-img-box  ">
                   <picture>
-                  <source srcset={jituphotoa} type="image/avif"/>
-                  <source srcset={jituphotow} type="image/webp"/>
+                  <source srcSet={jituphotoa} type="image/avif"/>
+                  <source srcSet={jituphotow} type="image/webp"/>
                   </picture>
                   <img src={jituphoto} alt="Jitu's Photo" loading='lazy' />
                 </div>
