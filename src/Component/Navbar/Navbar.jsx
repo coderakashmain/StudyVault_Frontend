@@ -149,7 +149,7 @@ const Navbar = (props) => {
       setDartmentvalue('');
     }
     else {
-      props.showAlart('Login first', '', 'mark');
+      props.showAlart('Login Karna padega Bhai 😁', '', 'mark');
       navigate("/Login");
     }
 

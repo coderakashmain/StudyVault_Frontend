@@ -30,6 +30,7 @@ const Signup = (props) => {
   const [passwordcheck, setPasswordcheck] = useState(false);
   const [spinner, setSpinner] =useState(false)
   const [disablebtn ,setDisablebtn] = useState(false);
+  const [showHide, setShowHide] = useState(false);
 
   const signupchange = (e) =>{
     const {name,value} = e.target;
@@ -233,11 +234,13 @@ const Signup = (props) => {
             <div className="sigup-password-box">
               <div className="currnet-password-signin">
                 <label htmlFor="password">Password :- </label>
-                <input type="password" id="password" name="password"onChange={signupchange}  autoComplete="off" value={signupdata.password}  className="singup-form-input" />
-
+                <div className="show-hide" style={ {position : 'relative'}}>
+                <input type={`${showHide ? 'text' : 'password'}`} id="password" name="password"onChange={signupchange}  autoComplete="off" value={signupdata.password}  className="singup-form-input" />
+                {signupdata.password && (<i className={`fa-solid fa-${showHide ?'eye-slash' : 'eye' }` }style={{ position: 'absolute', right: '0%', top: '50%', color: 'lightblue', fontSize: '01rem', userSelect: 'none' }} onClick={() => { setShowHide(!showHide) }}></i>)}
+                </div>
               </div>
               <div className="new-password-signin">
-
+            
                 <label htmlFor="passwordcheck">Confirm password :- </label>
                 <input type="password" id="passwordcheck" name="passwordcheck" onChange={signupchange} autoComplete="off"  value={signupdata.passwordcheck} className="singup-form-input" />
               </div>

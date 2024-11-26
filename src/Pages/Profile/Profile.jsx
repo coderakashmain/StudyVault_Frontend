@@ -3,6 +3,8 @@ import "./Profile.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import profilelogo from '../../photo/profile common logo.jpg'
+import profilelogow from '../../photo/profile common logo.webp'
+import profilelogoa from '../../photo/profile common logo.avif'
 
 
 
@@ -239,8 +241,13 @@ const Profile = (props) => {
                 </h3>
                 <div className="profile-main-photo">
                   <div className="profile-main-photo-img-box">
+                    <picture>
+                      <source  srcset={profilelogoa} type="image/avif" />
+                      <source  srcset={profilelogow} type="image/webp" />
+                       <img src={profilelogo} alt="profile photo" />
 
-                  <img src={profilelogo} alt="profile photo" />
+                    </picture>
+
                   </div>
                   <div className="profile-main-photo-subpart"></div>
                 </div>

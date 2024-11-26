@@ -13,6 +13,7 @@ const Login = (props) => {
 
   const { setUsernav } = useContext(UserContext);
   const [repeatclick, setRepeatclick] = useState(false);
+  const [showHide, setShowHide] = useState(false);
   const [loginData, setLoginData] = useState({
     gmail: '',
     password: ''
@@ -33,16 +34,16 @@ const Login = (props) => {
     try {
       const response = await axios.post('/api/LogIn', loginData, { withCredentials: true });
       if (response.status === 200) {
+        props.showAlart('Log in Successfull.', '', 'check');
         setUsernav(response.data.user);
         window.location.href = "/";
-        
-        props.showAlart('Log in Successfull.', '', 'check');
+
         setRepeatclick(false);
       }
 
       else {
         console.error('Error retrieving data');
-        props.showAlart('Error retrieving data', '','cancel');
+        props.showAlart('Error retrieving data', '', 'cancel');
         setRepeatclick(false);
 
       }
@@ -81,11 +82,17 @@ const Login = (props) => {
             <h2 className="main-heading" >Hello</h2>
             <h4 className="main-sub-heading">Login your accounts.......!</h4>
             <h3 className="">Email :-</h3>
+
             <input type="email" onChange={loginChange} value={loginData.gmail} name="gmail" id="loginemial" placeholder="" required />
+
+
             <h3 className="">Password :-</h3>
-            <input type="password" onChange={loginChange} autoComplete="off" value={loginData.password} name="password" id="loginpassword" placeholder="" />
+            <div className="show-hide" style={{ position: 'relative' }}>
+              <input type={`${showHide ? 'text' : 'password'}`} onChange={loginChange} autoComplete="off" value={loginData.password} name="password" id="loginpassword" placeholder="" />
+              {loginData.password && (<i className={`fa-solid fa-${showHide ?'eye-slash' : 'eye' }` }style={{ position: 'absolute', right: '0%', top: '50%', color: 'lightblue', fontSize: '1rem', userSelect: 'none' }} onClick={() => { setShowHide(!showHide) }}></i>)}
+            </div>
             <div className="remember-forget-parent">
-              <p className="" style={{color : '#fff'}}>
+              <p className="" style={{ color: '#fff' }}>
                 <input type="checkbox" name="logincheckbox" id="" className="mr-2" defaultChecked />
                 &nbsp; Remember me
               </p>
@@ -99,8 +106,8 @@ const Login = (props) => {
             Don't have an account?{" "}
             <span className="">Register Now</span>
           </Link>
-          <div className="backtohome" style={{width : '100%', display : "flex" , justifyContent : 'center', alignItems : 'center',paddingTop : '0.1rem',textDecoration : 'underline'}}>
-            <NavLink to='/' style={{textAlign : 'center',cursor : 'pointer',color : '#fff',marginTop : '2rem'} }> Back to Home</NavLink>
+          <div className="backtohome" style={{ width: '100%', display: "flex", justifyContent: 'center', alignItems: 'center', paddingTop: '0.1rem', textDecoration: 'underline' }}>
+            <NavLink to='/' style={{ textAlign: 'center', cursor: 'pointer', color: '#fff', marginTop: '2rem' }}> Back to Home</NavLink>
 
           </div>
         </div>

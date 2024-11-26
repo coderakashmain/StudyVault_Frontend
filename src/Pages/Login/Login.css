@@ -96,7 +96,7 @@
     margin-bottom: 5%;
   }
  
-.inner-main-login input[type="password"],.inner-main-login input[type="email"]{
+.inner-main-login input[type="password"],.inner-main-login input[type="email"],.inner-main-login input[type="text"]{
     border: none;
     border-bottom: 0.5px solid  #fff;;
     width: 100%;
@@ -141,6 +141,9 @@
   text-decoration-thickness:0.1rem;  
   
 }
+.main-login-container .show-hide i{ 
+  transform: translateY(-130%);
+}
 
 @media only screen and (max-width: 1300px) {
     .inner-main-login {
@@ -177,7 +180,7 @@
     height: 100svh;
   }
    
-      .inner-main-login input[type="password"],[type="email"]{
+      .inner-main-login input[type="password"],.inner-main-login input[type="email"],.inner-main-login input[type="text"]{
         margin-bottom: 10%;
       }
       .remember-forget-parent{
@@ -189,6 +192,10 @@
       .inner-main-login {
         box-shadow: none;
       }
+      .main-login-container .show-hide i{ 
+        transform: translateY(-150%);
+      }
+      
 
   }
 

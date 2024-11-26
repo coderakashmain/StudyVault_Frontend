@@ -52,7 +52,7 @@ const Departmentlist = (props) => {
         console.error('User not found',error);
       }
       else{
-        props.showAlart('Login First','',"mark");
+        props.showAlart('Login Karna padega Bhai 😁','',"mark");
         navigate("/Login");
       }
     }

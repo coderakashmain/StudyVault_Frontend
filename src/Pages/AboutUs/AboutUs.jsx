@@ -2,7 +2,11 @@ import React from 'react'
 import './AboutUs.css'
 import { Link } from 'react-router-dom'
 import akashlogo from '../../photo/Akash2.jpg'
+import akashlogoa from '../../photo/Akash2.avif'
+import akashlogow from '../../photo/Akash2.webp'
 import jituphoto from '../../photo/jitu photo.jpg'
+import jituphotoa from '../../photo/jitu photo.avif'
+import jituphotow from '../../photo/jitu photo.webp'
 
 const AboutUs = () => {
 
@@ -48,7 +52,11 @@ const AboutUs = () => {
             <div className="our-info-box-in">
               <div className="akash-box self-box">
                 <div className="akash-img-box self-img-box">
+                  <picture>
+                  <source srcset={akashlogoa} type="image/avif"/>
+                  <source srcset={akashlogow} type="image/webp"/>
                   <img src={akashlogo} alt="Akash's Photo" loading="lazy" />
+                  </picture>
                 </div>
                 <div className="akash-description self-description">
                   <h3>Akash ~</h3>
@@ -69,6 +77,10 @@ const AboutUs = () => {
               </div>
               <div className="jitu-box self-box">
                 <div className="jitu-img-box self-img-box  ">
+                  <picture>
+                  <source srcset={jituphotoa} type="image/avif"/>
+                  <source srcset={jituphotow} type="image/webp"/>
+                  </picture>
                   <img src={jituphoto} alt="Jitu's Photo" loading='lazy' />
                 </div>
                 <div className="jitu-description self-description">

@@ -2,8 +2,12 @@ import React, { useContext, useEffect, useState } from "react";
 import "./HomeT.css";
 import "remixicon/fonts/remixicon.css";
 import Image from "../../../photo/homelogo3.png";
+import Imagew from "../../../photo/homelogo3.webp";
+import Imagea from "../../../photo/homelogo3.avif";
 import { Link, useNavigate } from 'react-router-dom'
 import logo from '../../../photo/weblogo.png'
+import logow from '../../../photo/weblogo.webp'
+import logoa from '../../../photo/weblogo.avif'
 import axios from "axios";
 import { UserContext } from "../../../Context/UserContext/UserContextdata";
 import { Userlogincheckcontext } from "../../../Context/UserLoginContext/UserLoginContext";
@@ -53,8 +57,11 @@ const HomeT = (props) => {
 
                 <h1>Hi! I Am</h1>
                 <div className="h1-box">
-                 
-                    <img src={logo} alt="web logo" loading="lazy"/>
+                 <picture>
+                  <source srcset={logoa} type="image/avif"/>
+                  <source srcset={logow} type="image/webp"/>
+                  <img src={logo} alt="web logo" loading="lazy"/>
+                 </picture>
                 </div>
               </div>
               <h2>{props.title}</h2>
@@ -86,7 +93,13 @@ const HomeT = (props) => {
             </div>
             <div className="home-image-section">
               <div className="background-image">
+                <picture>
+                <source srcset={Imagea} type="image/avif"/>
+                <source srcset={Imagew} type="image/webp"/>
                 <img src={Image} alt="not found" loading="lazy"/>
+                
+                </picture>
+             
               </div>
               <div className="overfolw-box box-one">
                 <i className="fa-solid fa-cloud"></i>
