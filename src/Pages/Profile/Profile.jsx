@@ -1,4 +1,4 @@
-import React, {  useRef,useState,useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import "./Profile.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -11,20 +11,37 @@ import Compressor from "compressorjs";
 
 
 
+
 const Profile = (props) => {
 
-  const [pdfetchfile,setpdfetchfile] = useState([]);
+  const [pdfetchfile, setpdfetchfile] = useState([]);
   const [user, setUser] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [singletap,setSingletap] = useState(false);
+  const [singletap, setSingletap] = useState(false);
   // const [driveUrl,setdriveUrl] = useState('');
-  const [renameFileback,setrenameFileback] = useState('');
-  const [isActive,setIsActive] = useState(false);
-  const [uploadpicture,setUploadpicture] = useState(null);
-
+  const [renameFileback, setrenameFileback] = useState('');
+  const [isActive, setIsActive] = useState(false);
+  const [uploadpicture, setUploadpicture] = useState(null);
   const fileInputRef = useRef(null);
   const uploadpicref = useRef(null);
+  const [image, setImage] = useState(null);
+  const [popup, setPopup] = useState(false);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [dragging, setDragging] = useState(false);
+  const [startPos, setStartPos] = useState({ x: 0, y: 0 });
+  const containerRef = useRef(null);
+  const [maxOffsets, setMaxOffsets] = useState({ x: 0, y: 0 });
+  const [backfileid, setBackfileid] = useState(null);
+  const [wait, setWait] = useState(false);
+  const [finalpp, setfinalpp] = useState(() => localStorage.getItem('finalpp') || '');
+  const [positionset, setPositionset] = useState(false);
+  const [newPositionpp, setnewPositionpp] = useState(() => {
+    const savedPosition = localStorage.getItem('newPositionpp');
+    return savedPosition ? JSON.parse(savedPosition) : { x: 0, y: 0 };
+  });
+
+
 
   const [filtetuploaddata, setFiltetuploaddata] = useState(
     {
@@ -40,7 +57,261 @@ const Profile = (props) => {
 
 
 
-  
+
+
+
+
+  const updateprofilephoto = async (e) => {
+    const MAX_FILE_SIZE_KB = 2 * 1024;
+    const file = e.target.files[0];
+
+    if (file && (file.type === "image/jpeg" || file.type === "image/png")) {
+      new Compressor(file, {
+        quality: 0.8,
+        success(compressedfile) {
+          if (compressedfile.size <= MAX_FILE_SIZE_KB * 1024) {
+            setUploadpicture(compressedfile);
+            setPopup(true);
+          } else {
+            if (uploadpicref.current) {
+              uploadpicref.current.value = "";
+            }
+            props.showAlart('File is too large', '', 'mark');
+          }
+        },
+        error(err) {
+          console.error("Compression failed:", err);
+        },
+      });
+    } else {
+      setUploadpicture(null);
+      if (uploadpicref.current) {
+        uploadpicref.current.value = "";
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (uploadpicture) {
+      const ImageUrl = URL.createObjectURL(uploadpicture);
+      setImage(ImageUrl);
+    }
+    else {
+      setImage(null)
+    }
+
+  }, [uploadpicture]);
+
+
+
+
+
+
+
+  const handlePpUpload = () => {
+    if (uploadpicture) {
+      const newuploadpicturename = `${user.firstname} ${user.lastname} Profile Photo`;
+
+      const renamedppFile = new File([uploadpicture], newuploadpicturename, { type: uploadpicture.type });
+
+      return renamedppFile;
+    }
+    return null;
+  };
+
+
+
+  const handleppSubmit = async (e) => {
+    e.preventDefault();
+    setWait(true);
+    setPopup(false);
+    const finelppFile = handlePpUpload();
+
+    if (finelppFile) {
+
+
+      const formData = new FormData();
+      formData.append('file', finelppFile);
+      formData.append('renameFileback', finelppFile.name);
+
+      formData.append('userid', user.id);
+      formData.append('image', image);
+
+
+      try {
+
+        const response = await axios.post('/api/Profile/PPupload', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          },
+
+        });
+
+        if (response.status === 200) {
+          const fileIdpp = response.data.fileId;
+          setBackfileid(fileIdpp);
+          props.showAlart('Set succefully', '', 'check')
+          setWait(false);
+          setPositionset(true);
+          setUploadpicture(null)
+        }
+
+      } catch (error) {
+        console.error('Error to set Profile:', error);
+        props.showAlart('Error', 'Failed to upload the file.', 'cancel');
+        setSingletap(false);
+        setWait(false);
+      }
+    }
+  }
+
+
+
+  useEffect(() => {
+    const ppphoto = async () => {
+
+      try {
+
+        const response = await axios.get('/api/Profile/PPuploadAutofetch', { params: { id: user.id }, withCredentials: true });
+
+        if (response.status === 200) {
+
+          props.showAlart('Set done', '', 'check');
+          // console.log(response.data.photoid);
+          setfinalpp(response.data.photoid)
+          // console.log(finalpp);
+
+
+        }
+        else {
+
+          props.showAlart('Set done outsise', '', 'check');
+        }
+
+      } catch (error) {
+        if (error.response && error.response.status === 500) {
+          console.error("internal server error");
+          props.showAlart('error', '', 'check');
+        }
+      }
+    }
+    ppphoto();
+  }, [!wait, user]);
+
+
+
+  useEffect(() => {
+    if (positionset) {
+      axios.post('/api/updatePosition', {
+        userId: user.id,
+        position,
+      });
+    }
+
+  }, [positionset]);
+
+  useEffect(() => {
+    if (!user || !user.id) return;
+    console.log(user.id);
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('/api/getUserProfile', { params: { userId: user.id } });
+        if (response.data) {
+          setfinalpp(response.data.photoid);
+          
+          console.log(finalpp);
+
+          setnewPositionpp(response.data.position || { x: 0, y: 0 });
+         
+          localStorage.setItem('finalpp', response.data.photoid);
+          localStorage.setItem('newPositionpp', JSON.stringify(response.data.position || { x: 0, y: 0 }));
+          console.log(finalpp);
+        }
+      } catch (error) {
+        console.error('Error fetching user profile:', error);
+      }
+
+    };
+    fetchData();
+  }, [positionset, user]);
+
+
+
+
+
+
+
+
+
+  useEffect(() => {
+    if (containerRef.current && image) {
+      const container = containerRef.current;
+      const containerSize = container.offsetWidth; // Assuming square container
+      const imageSize = containerSize * 2; // Based on `transform: scale(2)` in CSS
+      const maxOffset = (imageSize - containerSize) / 2;
+
+      setMaxOffsets({ x: maxOffset, y: maxOffset });
+    }
+  }, [image]);
+
+
+
+
+
+
+
+
+
+
+  const startDrag = (e) => {
+    // e.preventDefault();
+    setDragging(true);
+    document.body.style.overflow = "hidden";
+    // Get initial cursor position
+    const clientX = e.touches?.[0]?.clientX || e.clientX;
+    const clientY = e.touches?.[0]?.clientY || e.clientY;
+
+    setStartPos({
+      x: clientX - position.x,
+      y: clientY - position.y,
+    });
+  };
+
+  const onDrag = (e) => {
+    if (!dragging) return;
+
+    const clientX = e.touches?.[0]?.clientX || e.clientX;
+    const clientY = e.touches?.[0]?.clientY || e.clientY;
+
+    const newX = clientX - startPos.x;
+    const newY = clientY - startPos.y;
+
+    // Constrain movement within the allowed offsets
+    setPosition({
+      x: Math.min(Math.max(newX, -maxOffsets.x), maxOffsets.x),
+      y: Math.min(Math.max(newY, -maxOffsets.y), maxOffsets.y),
+    });
+  };
+
+
+
+
+
+
+
+
+
+
+  const stopDrag = () => {
+    setDragging(false);
+    document.body.style.overflow = "";
+  };
+
+
+
+
+
+
 
 
   const handlechange = (e) => {
@@ -63,68 +334,68 @@ const Profile = (props) => {
 
     const fetchProfile = async () => {
       try {
-          const response = await axios.get('/api/Profile', { withCredentials: true });
-          if(response.status === 200){
+        const response = await axios.get('/api/Profile', { withCredentials: true });
+        if (response.status === 200) {
 
-            setUser(response.data.user);
-          }
+          setUser(response.data.user);
+        }
       } catch (error) {
-          console.error('Error fetching profile');
-      }finally {
+        console.error('Error fetching profile');
+      } finally {
         setLoading(false);
-    }
-     
-  };
-  fetchProfile();
-  
+      }
+
+    };
+    fetchProfile();
+
 
   }, []);
 
 
 
-  useEffect(()=>{
-    const  handlepdffetch = async() =>{
-      
-      try{
-        const userid = user.id;
- 
+  useEffect(() => {
+    const handlepdffetch = async () => {
 
-        const response = await axios.get('/api/Profile/fetchpdf',{params : {userid},withCredentials : true});
-      
-        if(response.status === 200){
+      try {
+        const userid = user.id;
+
+
+        const response = await axios.get('/api/Profile/fetchpdf', { params: { userid }, withCredentials: true });
+
+        if (response.status === 200) {
           setpdfetchfile(response.data);
         }
-        else{
-          props.showAlart('something error','','cancel');
+        else {
+          props.showAlart('something error', '', 'cancel');
         }
       }
-      
-      catch(error){
-        
-        if(error.response && error.response.status === 400){
-          props.showAlart('Not send yet', '','mark')
+
+      catch (error) {
+
+        if (error.response && error.response.status === 400) {
+          props.showAlart('Not send yet', '', 'mark')
         }
       }
-      
-      };
-      handlepdffetch();
-    },[singletap,user]);
+
+    };
+    handlepdffetch();
+  }, [singletap, user]);
 
 
 
 
   if (loading) {
-    return <p style={{margin  : "100px 0 0 50px"}}>Loading...</p>;
+    return <p style={{ margin: "100px 0 0 50px" }}>Loading...</p>;
 
-}
+  }
 
- 
+
   if (!user) {
-    return <div style={{ position: 'absolute', left: '0', top: '0px', display: 'flex', flexDirection: 'column', alignItems: 'center ', justifyContent: 'center', fontSize: '2rem', height: '100vh', width: '100%' }}><i style={{fontSize : '4rem'}} className="fa-regular fa-face-frown"></i>Oops. Login Fast<Link style={{ color: 'blue', fontSize: '01.4rem' }} to="/LogIn">LogIn </Link></div>;
+    return <div style={{ position: 'absolute', left: '0', top: '0px', display: 'flex', flexDirection: 'column', alignItems: 'center ', justifyContent: 'center', fontSize: '2rem', height: '100vh', width: '100%' }}><i style={{ fontSize: '4rem' }} className="fa-regular fa-face-frown"></i>Oops. Login Fast<Link style={{ color: 'blue', fontSize: '01.4rem' }} to="/LogIn">LogIn </Link></div>;
   };
 
 
- 
+
 
 
 
@@ -134,7 +405,7 @@ const Profile = (props) => {
       setSelectedFile(file);
 
     } else {
-      props.showAlart('Failed', 'Please select a pdf file','cancel');
+      props.showAlart('Failed', 'Please select a pdf file', 'cancel');
       setSelectedFile(null);
       if (fileInputRef.current) {
         fileInputRef.current.value = "";
@@ -142,24 +413,24 @@ const Profile = (props) => {
     }
   };
 
-  const handlerenamed = (newFileName)=>{
+  const handlerenamed = (newFileName) => {
     setrenameFileback(newFileName)
   }
 
   const handleUpload = () => {
     if (selectedFile) {
       const newFileName = `${filtetuploaddata.departmentName}_${filtetuploaddata.paperName}_${filtetuploaddata.session}_${filtetuploaddata.dptyear}_${filtetuploaddata.semormid}_${filtetuploaddata.paperName}.pdf`;
-        handlerenamed(newFileName);
+      handlerenamed(newFileName);
       const renamedFile = new File([selectedFile], newFileName, { type: selectedFile.type });
-     
+
       return renamedFile;
     }
     return null;
   };
 
-  
- 
-  
+
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -168,18 +439,18 @@ const Profile = (props) => {
 
     const fileToUpload = handleUpload();
 
-    
+
     if (fileToUpload) {
-      // console.log('selected file', fileToUpload);
+
 
       const formData = new FormData();
       formData.append('file', fileToUpload);
-      formData.append('renameFileback', fileToUpload.name); 
+      formData.append('renameFileback', fileToUpload.name);
 
-      formData.append('userid', user.id); 
+      formData.append('userid', user.id);
 
       formData.append('filtetuploaddata', JSON.stringify(filtetuploaddata));
-      
+
 
       try {
         const response = await axios.post('/api/Profile/upload', formData, {
@@ -188,86 +459,61 @@ const Profile = (props) => {
           },
 
         });
- 
+
         if (response.status === 200) {
           const fileId = response.data.fileId; // Capture the file ID from backend
           const driveUrl = `https://drive.google.com/file/d/${fileId}/view`;
           // setdriveUrl(driveUrl);
           setrenameFileback('');
-          
+
           setSelectedFile(null);
           if (fileInputRef.current) {
             fileInputRef.current.value = "";
           }
-          props.showAlart(' Successfully send','','check')
+          props.showAlart(' Successfully send', '', 'check')
           setFiltetuploaddata('');
-          setSingletap(false); 
-        }
-        else{
           setSingletap(false);
-          props.showAlart('External error','','cancel')
+        }
+        else {
+          setSingletap(false);
+          props.showAlart('External error', '', 'cancel')
 
         }
 
       } catch (error) {
         console.error('Error uploading file:', error);
-        props.showAlart('Error', 'Failed to upload the file.','cancel');
+        props.showAlart('Error', 'Failed to upload the file.', 'cancel');
         setSingletap(false);
       }
 
     } else {
-     
-      props.showAlart('Error', 'Please select  file','cancel')
+
+      props.showAlart('Error', 'Please select  file', 'cancel')
       setSingletap(false);
       return;
     };
 
   };
 
-  const updateprofilephoto = async (e)=>{
-    const file = e.target.files[0];
 
-    const MAX_FILE_SIZE_KB = 500;
 
-    if ((file.type === "image/jpeg" || file.type === "image/png")) {
-      new Compressor(file,{
-        quality : 0.8,
-        success(compressedfile){
-          if(compressedfile.size <= MAX_FILE_SIZE_KB * 1024){
-            setUploadpicture(compressedfile);
 
-          }else{
-            if (uploadpicref.current) {
-              uploadpicref.current.value = "";
-            }
-            props.showAlart('File is too large','','mark');
-          }
-        },
-        error(err) {
-          console.error("Compression failed:", err);
-        },
-      })
 
-    } else {
-      // props.showAlart('Failed', 'Please select a photo','cancel');
-      setUploadpicture(null);
-      if (uploadpicref.current) {
-        uploadpicref.current.value = "";
-      }
-    }
-  }
-  // console.log(uploadpicture);
-  const handlePpUpload = () => {
-    if (uploadpicref) {
-      const newppFileName = `${user.firstname} ${user.lastname} Profile Photo`;
-        handlerenamed(newppFileName);
-      const renamedppFile = new File([selectedFile], newppFileName, { type: selectedFile.type });
-     
-      return renamedppFile;
-    }
-    return null;
-  };
 
+
+
+
+
+  // const handlePpUpload = () => {
+  //   if (uploadpicref) {
+  //     const newppFileName = `${user.firstname} ${user.lastname} Profile Photo`;
+  //       handlerenamed(newppFileName);
+  //     const renamedppFile = new File([selectedFile], newppFileName, { type: selectedFile.type });
+
+  //     return renamedppFile;
+  //   }
+  //   return null;
+  // };
 
 
 
@@ -286,27 +532,73 @@ const Profile = (props) => {
                 <div className="profile-main-photo">
                   <div className="profile-main-photo-img-box">
                     <picture>
-                      <source  srcSet={profilelogoa} type="image/avif" />
-                      <source  srcSet={profilelogow} type="image/webp" />
-                       <img src={profilelogo} alt="profile photo" />
+                      <img src={finalpp ? finalpp : profilelogoa}  style={
+                        finalpp && !popup
+                          ? { transform: `translate(${newPositionpp.x}px, ${newPositionpp.y}px) scale(2)` }
+                          : {}
+                      } alt="profile photo" />
+                      <source srcSet={finalpp ? finalpp : profilelogoa} style={
+                        finalpp && !popup
+                          ? { transform: `translate(${newPositionpp.x}px, ${newPositionpp.y}px) scale(2)` }
+                          : {}
+                      } type="image/avif" />
+                      <source srcSet={finalpp ? finalpp : profilelogow} style={
+                        finalpp && !popup
+                          ? { transform: `translate(${newPositionpp.x}px, ${newPositionpp.y}px) scale(2)` }
+                          : {}
+                      } type="image/webp" />
+
 
                     </picture>
 
                   </div>
+                  {wait && (<div className="waitpp" style={{ position: 'absolute', top: '0%', left: '0%', height: '100%', width: '100%', background: 'rgb(64 64 64 / 47%)', borderRadius: '50%' }}></div>)}
                   <div className="profile-main-photo-subpart" >
-             
 
-                    
-                       <input type="file" name="profile-photo" id="profile-photo"accept="image/jpeg, image/png" onChange={updateprofilephoto} ref={uploadpicref}/>
-                       
-                       <i className="fa-solid fa-camera"></i>
-                       </div>
-               
+
+
+                    <input type="file" name="profile-photo" id="profile-photo" accept="image/jpeg, image/png" onChange={updateprofilephoto} ref={uploadpicref} disabled = {true}/>
+
+                    <i className="fa-solid fa-camera"></i>
+                    <div
+                      onMouseMove={onDrag}
+                      onMouseUp={stopDrag}
+                      onMouseLeave={stopDrag} // Stops dragging if cursor leaves the frame
+                      onTouchMove={onDrag} // For touch devices
+                      onTouchEnd={stopDrag}
+                    >
+                      {popup && (<div className="model-inside">
+
+
+                        <div className="model-inside-box" ref={containerRef}>
+                          <img src={image} alt="Profilephoto"
+                            style={{
+                              transform: `translate(${position.x}px, ${position.y}px) scale(2)`,
+                              cursor: dragging ? "grabbing" : "grab",
+                            }}
+                            onMouseDown={startDrag}
+                            onTouchStart={startDrag}
+                            draggable={false}
+                          />
+                        </div>
+                        <div className="ppconfirm-button">
+                          <button onClick={() => {
+                            setPopup(false);
+                            setUploadpicture(null);
+                          }}>Cancel</button>
+                          <button onClick={handleppSubmit}>Set</button>
+                        </div>
+
+                      </div>)}
+                    </div>
+
+                  </div>
+
                 </div>
               </div>
               <div className="profile-downupload-info">
                 <h4> {user.firstname} {user.lastname}</h4>
-             
+
                 <hr />
                 {/* <div className="download downupload">
                   <h5>6</h5>
@@ -319,7 +611,7 @@ const Profile = (props) => {
               </div>
               <div className="pdfupload" >
 
-                <form  onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit}>
 
 
 
@@ -334,7 +626,7 @@ const Profile = (props) => {
                             <h2 ><b></b>PLEASE PROVIDE US FULL INFORMATION ABOUT PAPER*</h2>
                             <p>*</p>
                             <div className="leftfilter-select-item">
-                              <input onChange={handlechange} value={filtetuploaddata.departmentName} type="text" name='departmentName' placeholder=" Department Name" required  readOnly={singletap ? true : false} />
+                              <input onChange={handlechange} value={filtetuploaddata.departmentName} type="text" name='departmentName' placeholder=" Department Name" required readOnly={singletap ? true : false} />
 
                             </div>
                             <p>*</p>
@@ -393,14 +685,14 @@ const Profile = (props) => {
                               </ul>}
                             </div>
                             <div className="right-file-logo-box">
-                             <i className="fa-regular fa-face-grin-hearts"></i>
+                              <i className="fa-regular fa-face-grin-hearts"></i>
 
                               <h2>Thank You for your Contribution 😊</h2>
                             </div>
 
                           </div>
                         </div>
-                        <button disabled={singletap} style={{background : ` ${singletap ? 'lightblue' : 'blue'}`}} type="submit">Send File</button>
+                        <button disabled={singletap} style={{ background: ` ${singletap ? 'lightblue' : 'blue'}` }} type="submit">Send File</button>
                       </div>
 
                     </div>
@@ -425,74 +717,74 @@ const Profile = (props) => {
               <h3>Papers Send({pdfetchfile.length})</h3>
               <div className="recent-work-box">
                 <div className="recent-download recent">
-                 
-                      {pdfetchfile.length > 0 ? (
-                        pdfetchfile.map((pdfetchfile) => (
-                            <li key={pdfetchfile.id}>
-                             * <a href={pdfetchfile.paperlink} download target='__blank'>{pdfetchfile.papername}<i className="fa-solid fa-file-pdf" style={{ padding : '0rem 0rem 0rem 0.2rem', fontSize : '1.3rem', color : '#ce0d0d'}}></i></a>
-                            </li>
-                        ))
-                    ) : (
-                        <p>No papers Uploaded</p>
-                    )}
+
+                  {pdfetchfile.length > 0 ? (
+                    pdfetchfile.map((pdfetchfile) => (
+                      <li key={pdfetchfile.id}>
+                        * <a href={pdfetchfile.paperlink} download target='__blank'>{pdfetchfile.papername}<i className="fa-solid fa-file-pdf" style={{ padding: '0rem 0rem 0rem 0.2rem', fontSize: '1.3rem', color: '#ce0d0d' }}></i></a>
+                      </li>
+                    ))
+                  ) : (
+                    <p>No papers Uploaded</p>
+                  )}
                 </div>
                 <h3>You Downloaded</h3>
                 <div className="recent-upload recent">
-                Update soon...
+                  Update soon...
 
                 </div>
               </div>
             </div>
             <div className="profile-client-info ">
-              <h3 onClick={()=> setIsActive(!isActive)}><i className={`fa-solid fa-sort-down ${isActive ? '' :'shut-right'}`}></i>Personal Information</h3>
+              <h3 onClick={() => setIsActive(!isActive)}><i className={`fa-solid fa-sort-down ${isActive ? '' : 'shut-right'}`}></i>Personal Information</h3>
               <div className={`forwrap-out ${isActive ? 'info-true' : 'info-false'}`}>
-              <div className="forwrap">
-                <div className="client-info-name name">
-                  <h4>Name</h4>
-                  <div className="client-info-name-inside name-insde">
-                    <p>{user.firstname} {user.lastname}</p>
-                    <h5>
-                      Name<i className="fa-solid fa-arrow-right"></i>
-                    </h5>
+                <div className="forwrap">
+                  <div className="client-info-name name">
+                    <h4>Name</h4>
+                    <div className="client-info-name-inside name-insde">
+                      <p>{user.firstname} {user.lastname}</p>
+                      <h5>
+                        Name<i className="fa-solid fa-arrow-right"></i>
+                      </h5>
+                    </div>
+                  </div>
+                  <div className="client-info-name departmentprofile">
+                    <h4>Department</h4>
+                    <div className="client-info-name-inside name-insde">
+                      <p></p>
+                      <h5>
+                        Department<i className="fa-solid fa-arrow-right"></i>
+                      </h5>
+                    </div>
                   </div>
                 </div>
-                <div className="client-info-name departmentprofile">
-                  <h4>Department</h4>
-                  <div className="client-info-name-inside name-insde">
-                    <p></p>
-                    <h5>
-                      Department<i className="fa-solid fa-arrow-right"></i>
-                    </h5>
+                <div className="forwrap">
+                  <div className="client-info-name gmail">
+                    <h4>Gmail</h4>
+                    <div className="client-info-name-inside name-insde">
+                      <p>{user.gmail}</p>
+                      <h5>
+                        Gmail<i className="fa-solid fa-arrow-right"></i>
+                      </h5>
+                    </div>
+                  </div>
+                  <div className="client-info-name rollno">
+                    <h4> Roll No</h4>
+                    <div className="client-info-name-inside name-insde">
+                      <p>{user.rollno}</p>
+                      <h5>
+                        Roll No<i className="fa-solid fa-arrow-right"></i>
+                      </h5>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="forwrap">
-                <div className="client-info-name gmail">
-                  <h4>Gmail</h4>
-                  <div className="client-info-name-inside name-insde">
-                    <p>{user.gmail}</p>
-                    <h5>
-                      Gmail<i className="fa-solid fa-arrow-right"></i>
-                    </h5>
-                  </div>
-                </div>
-                <div className="client-info-name rollno">
-                  <h4> Roll No</h4>
-                  <div className="client-info-name-inside name-insde">
-                    <p>{user.rollno}</p>
-                    <h5>
-                      Roll No<i className="fa-solid fa-arrow-right"></i>
-                    </h5>
-                  </div>
-                </div>
-              </div>
-              <div className="edit">
+                <div className="edit">
 
-                <button>
-                  Edit profile<i className="fa-solid fa-pen-to-square"></i>
-                </button>
+                  <button>
+                    Edit profile<i className="fa-solid fa-pen-to-square"></i>
+                  </button>
+                </div>
               </div>
-            </div>
             </div>
           </div>
         </div>
@@ -510,8 +802,8 @@ const Profile = (props) => {
                 <p>
                   Update Soon....
                 </p>
-                
-                
+
+
               </div>
             </div>
 

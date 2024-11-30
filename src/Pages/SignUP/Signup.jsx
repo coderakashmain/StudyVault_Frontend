@@ -18,6 +18,8 @@ const Signup = (props) => {
     passwordcheck : ''
   });
 
+  
+
   // console.log(signupdata.gmail);
 
   const navigate = useNavigate();

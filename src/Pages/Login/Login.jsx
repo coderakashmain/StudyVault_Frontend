@@ -50,8 +50,12 @@ const Login = (props) => {
 
 
     } catch (error) {
+      if (error.response && error.response.status === 300) {
+        props.showAlart('Invalid password', 'try again', 'cancel');
+        setRepeatclick(false);
+      }
       if (error.response && error.response.status === 401) {
-        props.showAlart('Invalid credentials', 'try again', 'cancel');
+        props.showAlart('You are not Resgistered', 'try again', 'cancel');
         setRepeatclick(false);
       }
       if (error.response && error.response.status === 500) {
