@@ -68,21 +68,24 @@
     width: 100%;
     border-radius: 50%;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
    
     
 }
 .profile-main-photo img{
     aspect-ratio: 1/1;
     object-fit:contain;
-    height: 10rem;
+    height: 13rem;
     position:relative;
-    transform: scale(2);
+    transform: translateY(10%);
    
 }
 .profile-main-photo-subpart{
     height: 3rem;
     width: 3rem;
-    background-color: #ffffff;
+    background-color: #29c966;
     position: absolute;
     border-radius: 50%;
     right : -2%;
@@ -90,76 +93,12 @@
     border: 0.31rem solid #fff;
     display: flex;
     justify-content: center;
-    cursor: pointer;
     align-items: center;
     
 }
 
-.profile-main-photo-subpart i{
-    color: rgb(42, 54, 58);
-    font-size: 01.5rem;
-}
-.profile-main-photo-subpart input{
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    position: absolute;
-    left: 0%;
-    top: 0%;
-}
-.model-inside{
-    height: 100vh;
-    height: 100svh;
-    height: 100lvh;
-    width: 100%;
-    position: fixed;
-    top: 0%;
-    left: 0%;
-    z-index: 10000000000;
-   
-    background: rgba(29, 29, 29, 0.467);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; 
-}
-.model-inside-box{
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-   width: 10rem;
-   height: 10rem;
-   border-radius: 50%;
-    overflow: hidden;
-    transform: scale(2) ;
-    background-color: rgba(181, 181, 181, 0.603);
-    flex-direction: column;
-    margin-top: 10rem;
-    
-    
-}
 
- .model-inside-box img{
-    aspect-ratio: 1/1;
-    object-fit:contain;
-    /* height:; */
-    
-    transform: scale(2);
-   
-}
-.ppconfirm-button{
-    margin-top: 8rem;
-    
-}
-.ppconfirm-button button{
-  outline: none;
-  border: none;
-  margin:  0rem 0.8rem;
-  padding: 0.7rem 2rem;
-  text-transform: uppercase;
-  font-weight: 500;
-}
+
 
 .profile-main-photo-box h2{
     font-size: 1.8rem;
@@ -378,7 +317,8 @@
     
 }
 .recent{
-    background-color: rgb(202 200 247 / 32%);
+    background-color: rgb(255 255 255 / 38%);
+    border: 2px solid #a5bae7;
     border-radius: 0.2rem;
     flex-grow: 1;
     width: 100%;
@@ -404,7 +344,8 @@
  margin: 0.5rem 0rem;
 }
 .recent li:hover{
-background-color: rgb(155, 184, 236);
+background-color: rgb(240, 244, 254);
+
 }
 .recent li a{
  text-wrap: wrap;

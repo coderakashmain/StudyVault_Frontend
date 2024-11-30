@@ -14,6 +14,7 @@ const Admine = (props) => {
 
  useEffect(() => {
   const token = localStorage.getItem('admin_token');
+  console.log(token);
 
   if (!token) {
       // If no token, redirect to login page
@@ -36,7 +37,7 @@ const Admine = (props) => {
           } catch (error) {
               // Handle unauthorized or other errors
               if (error.response && error.response.status === 401) {
-                  props.showAlart('Unauthorized', '', 'cancel');
+                  props.showAlart('Unauthorized user', '', 'cancel');
                   
               } else {
                   props.showAlart('Error verifying token', '', 'cancel');

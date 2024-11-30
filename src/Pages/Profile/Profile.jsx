@@ -2,9 +2,9 @@ import React, { useRef, useState, useEffect } from "react";
 import "./Profile.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import profilelogo from '../../photo/profile common logo.jpg'
-import profilelogow from '../../photo/profile common logo.webp'
-import profilelogoa from '../../photo/profile common logo.avif'
+import profilelogo from '../../photo/avatar.jpg'
+import profilelogow from '../../photo/avatar.webp'
+import profilelogoa from '../../photo/avatar.avif'
 import Compressor from "compressorjs";
 
 
@@ -56,260 +56,7 @@ const Profile = (props) => {
   );
 
 
-
-
-
-
-
-  const updateprofilephoto = async (e) => {
-    const MAX_FILE_SIZE_KB = 2 * 1024;
-    const file = e.target.files[0];
-
-    if (file && (file.type === "image/jpeg" || file.type === "image/png")) {
-      new Compressor(file, {
-        quality: 0.8,
-        success(compressedfile) {
-          if (compressedfile.size <= MAX_FILE_SIZE_KB * 1024) {
-            setUploadpicture(compressedfile);
-            setPopup(true);
-          } else {
-            if (uploadpicref.current) {
-              uploadpicref.current.value = "";
-            }
-            props.showAlart('File is too large', '', 'mark');
-          }
-        },
-        error(err) {
-          console.error("Compression failed:", err);
-        },
-      });
-    } else {
-      setUploadpicture(null);
-      if (uploadpicref.current) {
-        uploadpicref.current.value = "";
-      }
-    }
-  };
-
-  useEffect(() => {
-    if (uploadpicture) {
-      const ImageUrl = URL.createObjectURL(uploadpicture);
-      setImage(ImageUrl);
-    }
-    else {
-      setImage(null)
-    }
-
-  }, [uploadpicture]);
-
-
-
-
-
-
-
-  const handlePpUpload = () => {
-    if (uploadpicture) {
-      const newuploadpicturename = `${user.firstname} ${user.lastname} Profile Photo`;
-
-      const renamedppFile = new File([uploadpicture], newuploadpicturename, { type: uploadpicture.type });
-
-      return renamedppFile;
-    }
-    return null;
-  };
-
-
-
-  const handleppSubmit = async (e) => {
-    e.preventDefault();
-    setWait(true);
-    setPopup(false);
-    const finelppFile = handlePpUpload();
-
-    if (finelppFile) {
-
-
-      const formData = new FormData();
-      formData.append('file', finelppFile);
-      formData.append('renameFileback', finelppFile.name);
-
-      formData.append('userid', user.id);
-      formData.append('image', image);
-
-
-      try {
-
-        const response = await axios.post('/api/Profile/PPupload', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          },
-
-        });
-
-        if (response.status === 200) {
-          const fileIdpp = response.data.fileId;
-          setBackfileid(fileIdpp);
-          props.showAlart('Set succefully', '', 'check')
-          setWait(false);
-          setPositionset(true);
-          setUploadpicture(null)
-        }
-
-      } catch (error) {
-        console.error('Error to set Profile:', error);
-        props.showAlart('Error', 'Failed to upload the file.', 'cancel');
-        setSingletap(false);
-        setWait(false);
-      }
-    }
-  }
-
-
-
-  useEffect(() => {
-    const ppphoto = async () => {
-
-      try {
-
-        const response = await axios.get('/api/Profile/PPuploadAutofetch', { params: { id: user.id }, withCredentials: true });
-
-        if (response.status === 200) {
-
-          props.showAlart('Set done', '', 'check');
-          // console.log(response.data.photoid);
-          setfinalpp(response.data.photoid)
-          // console.log(finalpp);
-
-
-        }
-        else {
-
-          props.showAlart('Set done outsise', '', 'check');
-        }
-
-      } catch (error) {
-        if (error.response && error.response.status === 500) {
-          console.error("internal server error");
-          props.showAlart('error', '', 'check');
-        }
-      }
-    }
-    ppphoto();
-  }, [!wait, user]);
-
-
-
-  useEffect(() => {
-    if (positionset) {
-      axios.post('/api/updatePosition', {
-        userId: user.id,
-        position,
-      });
-    }
-
-  }, [positionset]);
-
-  useEffect(() => {
-    if (!user || !user.id) return;
-    console.log(user.id);
-    const fetchData = async () => {
-      try {
-        const response = await axios.get('/api/getUserProfile', { params: { userId: user.id } });
-        if (response.data) {
-          setfinalpp(response.data.photoid);
-          
-          console.log(finalpp);
-
-          setnewPositionpp(response.data.position || { x: 0, y: 0 });
-         
-          localStorage.setItem('finalpp', response.data.photoid);
-          localStorage.setItem('newPositionpp', JSON.stringify(response.data.position || { x: 0, y: 0 }));
-          console.log(finalpp);
-        }
-      } catch (error) {
-        console.error('Error fetching user profile:', error);
-      }
-
-    };
-    fetchData();
-  }, [positionset, user]);
-
-
-
-
-
-
-
-
-
-  useEffect(() => {
-    if (containerRef.current && image) {
-      const container = containerRef.current;
-      const containerSize = container.offsetWidth; // Assuming square container
-      const imageSize = containerSize * 2; // Based on `transform: scale(2)` in CSS
-      const maxOffset = (imageSize - containerSize) / 2;
-
-      setMaxOffsets({ x: maxOffset, y: maxOffset });
-    }
-  }, [image]);
-
-
-
-
-
-
-
-
-
-
-  const startDrag = (e) => {
-    // e.preventDefault();
-    setDragging(true);
-    document.body.style.overflow = "hidden";
-    // Get initial cursor position
-    const clientX = e.touches?.[0]?.clientX || e.clientX;
-    const clientY = e.touches?.[0]?.clientY || e.clientY;
-
-    setStartPos({
-      x: clientX - position.x,
-      y: clientY - position.y,
-    });
-  };
-
-  const onDrag = (e) => {
-    if (!dragging) return;
-
-    const clientX = e.touches?.[0]?.clientX || e.clientX;
-    const clientY = e.touches?.[0]?.clientY || e.clientY;
-
-    const newX = clientX - startPos.x;
-    const newY = clientY - startPos.y;
-
-    // Constrain movement within the allowed offsets
-    setPosition({
-      x: Math.min(Math.max(newX, -maxOffsets.x), maxOffsets.x),
-      y: Math.min(Math.max(newY, -maxOffsets.y), maxOffsets.y),
-    });
-  };
-
-
-
-
-
-
-
-
-
-
-  const stopDrag = () => {
-    setDragging(false);
-    document.body.style.overflow = "";
-  };
-
-
-
-
+  
 
 
 
@@ -497,26 +244,6 @@ const Profile = (props) => {
 
 
 
-
-
-
-
-
-
-
-  // const handlePpUpload = () => {
-  //   if (uploadpicref) {
-  //     const newppFileName = `${user.firstname} ${user.lastname} Profile Photo`;
-  //       handlerenamed(newppFileName);
-  //     const renamedppFile = new File([selectedFile], newppFileName, { type: selectedFile.type });
-
-  //     return renamedppFile;
-  //   }
-  //   return null;
-  // };
-
-
-
   return (
     <section id="profile">
       <div className="profile-outer-box">
@@ -532,66 +259,15 @@ const Profile = (props) => {
                 <div className="profile-main-photo">
                   <div className="profile-main-photo-img-box">
                     <picture>
-                      <img src={finalpp ? finalpp : profilelogo}  style={
-                        finalpp && !popup
-                          ? { transform: `translate(${newPositionpp.x}px, ${newPositionpp.y}px) scale(2)` }
-                          : {}
-                      } alt="profile photo" />
-                      <source srcSet={finalpp ? finalpp : profilelogoa} style={
-                        finalpp && !popup
-                          ? { transform: `translate(${newPositionpp.x}px, ${newPositionpp.y}px) scale(2)` }
-                          : {}
-                      } type="image/avif" />
-                      <source srcSet={finalpp ? finalpp : profilelogow} style={
-                        finalpp && !popup
-                          ? { transform: `translate(${newPositionpp.x}px, ${newPositionpp.y}px) scale(2)` }
-                          : {}
-                      } type="image/webp" />
-
+                      <img src={ profilelogo}  alt="profile photo" />
+                      <source srcSet={profilelogoa}  type="image/avif" />
+                      <source srcSet={profilelogow}type="image/webp" />
 
                     </picture>
 
                   </div>
-                  {wait && (<div className="waitpp" style={{ position: 'absolute', top: '0%', left: '0%', height: '100%', width: '100%', background: 'rgb(64 64 64 / 47%)', borderRadius: '50%' }}></div>)}
+               
                   <div className="profile-main-photo-subpart" >
-
-
-
-                    <input type="file" name="profile-photo" id="profile-photo" accept="image/jpeg, image/png" onChange={updateprofilephoto} ref={uploadpicref} disabled = {true}/>
-
-                    <i className="fa-solid fa-camera"></i>
-                    <div
-                      onMouseMove={onDrag}
-                      onMouseUp={stopDrag}
-                      onMouseLeave={stopDrag} // Stops dragging if cursor leaves the frame
-                      onTouchMove={onDrag} // For touch devices
-                      onTouchEnd={stopDrag}
-                    >
-                      {popup && (<div className="model-inside">
-
-
-                        <div className="model-inside-box" ref={containerRef}>
-                          <img src={image} alt="Profilephoto"
-                            style={{
-                              transform: `translate(${position.x}px, ${position.y}px) scale(2)`,
-                              cursor: dragging ? "grabbing" : "grab",
-                            }}
-                            onMouseDown={startDrag}
-                            onTouchStart={startDrag}
-                            draggable={false}
-                          />
-                        </div>
-                        <div className="ppconfirm-button">
-                          <button onClick={() => {
-                            setPopup(false);
-                            setUploadpicture(null);
-                          }}>Cancel</button>
-                          <button onClick={handleppSubmit}>Set</button>
-                        </div>
-
-                      </div>)}
-                    </div>
-
                   </div>
 
                 </div>
