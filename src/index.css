@@ -33,7 +33,7 @@ body,html{
   --alartdenger : rgb(255 53 53);
   --alartnormal : rgba(33, 73, 219, 0.989);
   --uniqcolorback : #14476d;
-  --uniqcolorup : linear-gradient(45deg, #010001, #438ee2);;
+  --uniqcolorup : linear-gradient(45deg, #010001, #438ee2);
   --boxshadow : 18px 10px 25px rgb(0 0 0 / 19%), inset 2px 2px 7px rgb(0 0 0 / 17%), inset 21px 9px 24px rgb(0 0 0 / 0%);
 }
 input.input-detected{
