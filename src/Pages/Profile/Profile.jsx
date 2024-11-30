@@ -532,7 +532,7 @@ const Profile = (props) => {
                 <div className="profile-main-photo">
                   <div className="profile-main-photo-img-box">
                     <picture>
-                      <img src={finalpp ? finalpp : profilelogoa}  style={
+                      <img src={finalpp ? finalpp : profilelogo}  style={
                         finalpp && !popup
                           ? { transform: `translate(${newPositionpp.x}px, ${newPositionpp.y}px) scale(2)` }
                           : {}

@@ -235,7 +235,7 @@ const Signup = (props) => {
           
             <div className="sigup-password-box">
               <div className="currnet-password-signin">
-                <label htmlFor="password">Password :- </label>
+                <label htmlFor="password">Create Password :- </label>
                 <div className="show-hide" style={ {position : 'relative'}}>
                 <input type={`${showHide ? 'text' : 'password'}`} id="password" name="password"onChange={signupchange}  autoComplete="off" value={signupdata.password}  className="singup-form-input" />
                 {signupdata.password && (<i className={`fa-solid fa-${showHide ?'eye-slash' : 'eye' }` }style={{ position: 'absolute', right: '0%', top: '50%', color: 'lightblue', fontSize: '01rem', userSelect: 'none' }} onClick={() => { setShowHide(!showHide) }}></i>)}
