@@ -613,7 +613,7 @@ const Navbar = (props) => {
           <p>Akash and Jitu  </p>
         </div>
         <div className="slidebar-foot-item">
-          <p>V.1.0.1</p>
+          <p>V.1.5.3</p>
         </div>
       </div>
       {/* <div ref={glitch} className="glitchproblem"></div> */}

@@ -100,26 +100,43 @@
   border: none;
   background-color: white;
   font-size: 23px;
-  box-shadow: 0.5px 0.5px 30px 0.5px #80808069;
+  box-shadow:0.5px 0.5px 9px 0.5px #80808069;
   user-select: none;
 }
 
 
 .ug-active-color{
   background: linear-gradient(rgba(0, 0, 0, 0.374), rgb(74, 143, 200));
+  color: #fff;
+}
+.ug-active-color h1,.pg-active-color h1{
+  color: #fff;
 }
 .pg-active-color{
   background: linear-gradient(rgba(0, 0, 0, 0.374), rgb(74, 143, 200));
 }
 .active-1st-year{
   background: linear-gradient(rgba(0, 0, 0, 0.374), rgb(74, 143, 200));
+  color: #fff;
+}
+.active-1st-year sup{
+  color: #fff;
+}
+.active-2nd-year sup{
+  color: #fff;
+}
+.active-3rd-year sup{
+  color: #fff;
 }
 .active-2nd-year{
   background: linear-gradient(rgba(0, 0, 0, 0.374), rgb(74, 143, 200));
+  color: #fff;
+
 
 }
 .active-3rd-year{
   background: linear-gradient(rgba(0, 0, 0, 0.374), rgb(74, 143, 200));
+  color: #fff;
 
 }
 
@@ -238,10 +255,12 @@
 }
 .active-midpaper-year{
   background: linear-gradient(rgba(0, 0, 0, 0.374), rgb(74, 143, 200));
+  color: #fff;
 
 }
 .active-sempaper-year{
   background: linear-gradient(rgba(0, 0, 0, 0.374), rgb(74, 143, 200));
+  color: #fff;
 
 }
 

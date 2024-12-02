@@ -306,6 +306,7 @@ const  handlesubjet = (e)=>{
             <div className="department-section">
               <div
                 className={`ug-box department-box ${ugActive ? 'ug-active-color' : ''}`}
+             
                 onClick={() => {
                   if (!ugActive) {
                     handleEducationLevelug('ug');
