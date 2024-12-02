@@ -11,6 +11,7 @@ import { Userlogincheckcontext } from "../../Context/UserLoginContext/UserLoginC
 import { AdminLoginContext } from '../../Context/AdminLoginCheck/AdminLoginCheck'
 
 
+
 const Navbar = (props) => {
   const { usernav, setUsernav } = useContext(UserContext);
   let departmentdata = useContext(Departmentlistdata);
@@ -30,6 +31,24 @@ const Navbar = (props) => {
   const [authentication, setAuthentication] = useState(false);
   const check = useContext(AdminLoginContext);
   const [logotext, setLogotext] = useState(false);
+  const [mobileView, setMobileView] = useState(false);
+  const notificationref = useRef(null);
+  const notificationIconRef = useRef(null);
+  const closeNotification = useRef(null);
+
+  useEffect(() => {
+    const view = () => {
+      if (window.innerWidth < 500) {
+        setMobileView(true);
+      } else {
+        setMobileView(false);
+      }
+    }
+    view();
+
+    window.addEventListener("resize", view);
+    return () => window.removeEventListener('resize', view);
+  }, [])
   useEffect(() => {
     const token = localStorage.getItem('admin_token');
 
@@ -244,7 +263,7 @@ const Navbar = (props) => {
         duration: 0.01,
         ease: "power2.out"
       });
-
+      document.body.style.overflow = "hidden";
 
     }
 
@@ -253,6 +272,7 @@ const Navbar = (props) => {
 
     crossicon.current.addEventListener("click", () => {
       closeTl.restart();
+      document.body.style.overflow = "scroll";
     });
 
     const backToPage = () => {
@@ -336,13 +356,13 @@ const Navbar = (props) => {
     }
 
   }, [])
- 
+
   const filterRef = useRef();
   useEffect(() => {
     if (window.innerWidth <= 650) {
       if (location.pathname === '/' || location.pathname === '/Filter') {
         filterRef.current.style.display = 'flex';
-        
+
       }
       else {
         filterRef.current.style.display = 'none';
@@ -384,6 +404,58 @@ const Navbar = (props) => {
       document.removeEventListener("mousedown", handlehide);
     }
   })
+
+
+
+
+
+  useGSAP(() => {
+
+
+      const openTl = gsap.timeline({ paused: true });
+
+    openTl
+    .to(notificationref.current,{
+      right: 0,
+      duration: 0.5,
+      ease: "power4.inOut",
+    })
+   
+  
+   
+    const close = gsap.timeline({ paused: true });
+
+    
+    close.to(notificationref.current,{
+      right: "-100%",
+      duration: 0.5,
+      ease: "power4.inOut",
+    })
+
+
+    const handlenotification = ()=>{
+      openTl.restart();
+      document.body.style.overflow = "hidden";
+
+    };
+    
+    const handlenotificationclose = ()=>{
+      close.restart();
+ 
+      document.body.style.overflow = "scroll";
+    };
+
+
+
+    notificationIconRef.current.addEventListener("click", handlenotification);
+    closeNotification.current.addEventListener("click", handlenotificationclose);
+  
+
+    return () => {
+      notificationIconRef.current.removeEventListener("click", handlenotification);
+      closeNotification.current.removeEventListener("click", handlenotificationclose); 
+    };
+  });
 
 
   return (
@@ -456,19 +528,26 @@ const Navbar = (props) => {
             </div>)}
 
           </div>
-                {mobileScroll && logotext &&(<h2 className="logo-top-css" > STUDYVAULT</h2>)}
+          {mobileScroll && logotext && (<h2 className="logo-top-css" > STUDYVAULT</h2>)}
           <div className="location-login">
-           {authentication &&( <div className="admin-short" style={{display :'flex',justifyContent : 'center', alignItems : 'center', marginRight : '0.5rem'}}>
-              <i className="fa-solid fa-user-shield" style={{color : '#fff', fontSize : '1.6rem', cursor : 'pointer'}} onClick={()=>navigate('/Admin')}></i>
-              
+            {authentication && (<div className="admin-short" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginRight: '0.5rem' }}>
+              <i className="fa-solid fa-user-shield" style={{ color: '#fff', fontSize: '1.6rem', cursor: 'pointer' }} onClick={() => navigate('/Admin')}></i>
+
             </div>)}
-            <select name="name" id="college-name">
+            {!mobileView && (<select name="name" id="college-name">
               {!locationCollege ? (
                 <option value="M.P.C autonomous">M.P.C Autonomous</option>
 
               ) : (<option value="M.P.C autonomous">M.P.C</option>)};
 
-            </select>
+            </select>)}
+            <div className="notificatonicon" style={{ margin: '0rem 1.8rem', userSelect: 'none' ,display : 'flex', justifyContent : 'center', alignItems : 'center'}} ref={notificationIconRef}>
+              <i className="fa-solid fa-bell" style={{ color: '#fff', cursor: 'pointer' }}></i>
+            </div>
+            
+
+
+              
             {!isAuthenticateduser ? (
               <div className="log-in">
                 <div ref={BothLoginRef} onClick={clickOn}><li>Login <div className={`adminLogInBox ${isOn ? 'open' : 'close'} `} ref={LoginRef} >
@@ -480,10 +559,12 @@ const Navbar = (props) => {
               </div>
             ) : (
               <div className="log-in">
-                <NavLink onClick={handleLogout} ><li>Logout</li></NavLink>
+                <NavLink onClick={handleLogout} alt='Log Out' ><i className="fa-solid fa-right-from-bracket" style={{ margin: '0rem 0 0 0.5rem', color: '#fff' }}></i></NavLink>
               </div>
             )}
           </div>
+
+
 
         </div>
       </div>
@@ -526,6 +607,17 @@ const Navbar = (props) => {
         </div>
       </div>
       {/* <div ref={glitch} className="glitchproblem"></div> */}
+
+
+      
+      <aside ref={notificationref} id="notification">
+                 <h2>Notification <s></s>  <i className="fa-solid fa-xmark" style={{cursor : 'pointer'}} ref={closeNotification}></i></h2>
+                 <h4>All</h4>
+                 <hr  style={{ margin : '0rem 0rem 1rem 0rem'}}/>
+                 <div className="notification-data">
+                    <p>No message</p>
+                 </div>
+              </aside>
     </>
   );
 };
