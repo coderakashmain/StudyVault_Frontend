@@ -357,7 +357,7 @@ transform: scale(0);
  position: relative;
  color: #fff;
 }
-/* .notificatonicon i::after{
+.notificatonicon i::after{
    content: '';
    position:absolute ;
   width:0.6rem;
@@ -366,7 +366,7 @@ transform: scale(0);
   top: -10%;
   border-radius: 50%;
   background-color: #ff5c5c; 
-} */
+}
 
 #notification{
   height: 100vh;

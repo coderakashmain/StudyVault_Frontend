@@ -9,7 +9,9 @@ import { UserContext } from "../../Context/UserContext/UserContextdata";
 import { ScrollFilterContext } from "../../Context/FilterScroll/FilterScrollContex";
 import { Userlogincheckcontext } from "../../Context/UserLoginContext/UserLoginContext";
 import { AdminLoginContext } from '../../Context/AdminLoginCheck/AdminLoginCheck'
-
+import Avatar from '@mui/material/Avatar';
+import Stack from '@mui/material/Stack';
+import logo from '../../photo/weblogo.png'
 
 
 const Navbar = (props) => {
@@ -541,7 +543,7 @@ const Navbar = (props) => {
               ) : (<option value="M.P.C autonomous">M.P.C</option>)};
 
             </select>)}
-            <div className="notificatonicon" style={{ margin: '0rem 1.8rem', userSelect: 'none' ,display : 'flex', justifyContent : 'center', alignItems : 'center'}} ref={notificationIconRef}>
+            <div className="notificatonicon" style={{ margin: '0rem 1.3rem 0rem 0.3rem', userSelect: 'none' ,display : 'flex', justifyContent : 'center', alignItems : 'center'}} ref={notificationIconRef}>
               <i className="fa-solid fa-bell" style={{ color: '#fff', cursor: 'pointer' }}></i>
             </div>
             
@@ -621,9 +623,10 @@ const Navbar = (props) => {
       <aside ref={notificationref} id="notification">
                  <h2>Notification <s></s>  <i className="fa-solid fa-xmark" style={{cursor : 'pointer'}} ref={closeNotification}></i></h2>
                  <h4>All</h4>
-                 <hr  style={{ margin : '0rem 0rem 1rem 0rem'}}/>
+                 <hr  style={{ margin : '0rem 0rem 1.4rem 0rem'}}/>
                  <div className="notification-data">
-                    <p>No message</p>
+                 
+                <div style={{display : 'flex', alignItems : "center", gap : '1rem'}}><Avatar alt="Remy Sharp" src={logo} sx={ {width : 24,height : 24, padding : '0rem 0rem 0 0', display : 'inline-block', } } /> <p style={{ fontSize : '1.1rem'}}> Now you can access all <b style={{ fontWeight : '700'}}>Questions papers</b> without login.</p> </div>  
                  </div>
               </aside>
     </>

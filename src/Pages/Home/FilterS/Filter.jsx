@@ -177,36 +177,36 @@ const  handlesubjet = (e)=>{
   };
 
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    const handleDepartmentClick = async (departmentName) => {
+  //   const handleDepartmentClick = async (departmentName) => {
 
-      try {
-        const response = await axios.get('/api/login-check-filter', { withCredentials: true });
+  //     try {
+  //       const response = await axios.get('/api/login-check-filter', { withCredentials: true });
 
-        if (response.status === 200) {
-          props.showAlart('Authorized', '', 'check')
-        }
-      }
-      catch (error) {
-        if (error.response && error.response.status === 500) {
-          props.showAlart('Login First', '', "mark");
-          navigate("/Login");
-          console.error('Internal servererr', error);
-        }
-        if (error.response && error.response.status === 404) {
-          props.showAlart('Login First', '', "mark");
-          navigate("/Login");
-          console.error('User not found', error);
-        }
-        else {
-          props.showAlart('Login First', '', "mark");
-          navigate("/Login");
-        }
-      }
-    };
-    handleDepartmentClick();
-  }, [])
+  //       if (response.status === 200) {
+  //         props.showAlart('Authorized', '', 'check')
+  //       }
+  //     }
+  //     catch (error) {
+  //       if (error.response && error.response.status === 500) {
+  //         props.showAlart('Login First', '', "mark");
+  //         navigate("/Login");
+  //         console.error('Internal servererr', error);
+  //       }
+  //       if (error.response && error.response.status === 404) {
+  //         props.showAlart('Login First', '', "mark");
+  //         navigate("/Login");
+  //         console.error('User not found', error);
+  //       }
+  //       else {
+  //         props.showAlart('Login First', '', "mark");
+  //         navigate("/Login");
+  //       }
+  //     }
+  //   };
+  //   handleDepartmentClick();
+  // }, [])
 
 
   useEffect(() => {

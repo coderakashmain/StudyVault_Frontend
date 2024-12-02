@@ -30,47 +30,51 @@ const Departmentlist = (props) => {
 
 
 
-  const handleDepartmentClick = async (departmentName) => {
+  // const handleDepartmentClick = async (departmentName) => {
 
-    try{
-       const response = await axios.get('/api/login-check-filter',{withCredentials : true});
+  //   try{
+  //      const response = await axios.get('/api/login-check-filter',{withCredentials : true});
 
-       if(response.status === 200){
-        navigate("/Filter", { state: { departmentName } });
-        backto();
-       }
-    }
-    catch(error){
-      if(error.response && error.response.status === 500){
-        props.showAlart('Login First','',"mark");
-      navigate("/Login");
-        console.error('Internal servererr',error);
-      }
-      if(error.response && error.response.status === 404){
-        props.showAlart('Login First','',"mark");
-        navigate("/Login");
-        console.error('User not found',error);
-      }
-      else{
-        props.showAlart('Login Karna padega Bhai 😁','',"mark");
-        navigate("/Login");
-      }
-    }
-  };
+  //      if(response.status === 200){
+  //       navigate("/Filter", { state: { departmentName } });
+  //       backto();
+  //      }
+  //   }
+  //   catch(error){
+  //     if(error.response && error.response.status === 500){
+  //       props.showAlart('Login First','',"mark");
+  //     navigate("/Login");
+  //       console.error('Internal servererr',error);
+  //     }
+  //     if(error.response && error.response.status === 404){
+  //       props.showAlart('Login First','',"mark");
+  //       navigate("/Login");
+  //       console.error('User not found',error);
+  //     }
+  //     else{
+  //       props.showAlart('Login Karna padega Bhai 😁','',"mark");
+  //       navigate("/Login");
+  //     }
+  //   }
+  // };
+
+  const handleDepartmentClick = (departmentName ) => {
+    navigate("/Filter", { state: { departmentName } });
+    backto();
+  }
   const [check, setCheck] = useState(false)
 
   useEffect(() => {
     if (departmentList.current) {
-      if(departmentList.current.style.height = moreDepartment)
-        {
-          departmentList.current.style.height= '100%';
-        }else{
-          departmentList.current.style.height= '94vh';
-        }
-      if(!moreDepartment){
+      if (departmentList.current.style.height = moreDepartment) {
+        departmentList.current.style.height = '100%';
+      } else {
+        departmentList.current.style.height = '94vh';
+      }
+      if (!moreDepartment) {
         setCheck(false);
       }
-      else{
+      else {
         setCheck(true);
       }
     }
