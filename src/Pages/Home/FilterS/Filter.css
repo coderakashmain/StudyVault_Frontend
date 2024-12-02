@@ -89,8 +89,8 @@
 }
 .ug-box,
 .pg-box {
-  border: 2px solid gray;
-  border-radius: 19px;
+  border: 1px solid rgb(132 132 132);
+  border-radius: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -148,8 +148,8 @@
 .department-name {
   width: 100%;
   padding-left: 5%;
-  border-radius: 9px;
-  border: 1px solid gray;
+  border: 1px solid rgb(132 132 132);
+  border-radius: 0.2rem;
   position: relative;
 }
 .department-name p{
@@ -174,9 +174,9 @@
   cursor: pointer;
 }
 .department-year ul li {
-  border: 1px solid gray;
+  border: 1px solid rgb(132 132 132);
+  border-radius: 0.2rem;
   padding: 3% 8%;
-  border-radius: 14px;
   margin: 2%;
   font-weight: 600;
 }
@@ -197,10 +197,10 @@
   border: 1px solid gray;
 }
 .year-div {
-  border: 2px solid gray;
+  border: 1px solid rgb(132 132 132);
+  border-radius: 0.3rem;
   cursor: pointer;
   height: 50px;
-  border-radius: 14px;
   width: 40%;
 }
 .year-div input[type="number"] {
@@ -247,9 +247,9 @@
 }
 .first-paper div,
 .second-paper div {
-  border: 2px solid gray;
+  border: 1px solid rgb(132 132 132);
+  border-radius: 0.2rem;
   padding: 5% 10%;
-  border-radius: 9px;
   font-size: 14px;
   cursor: pointer;
 }
@@ -310,10 +310,7 @@ user-select: none;
   }
 }
 @media only screen and (max-width: 435px) {
-  .ug-box,
-  .pg-box {
-    box-shadow: 0.5px 0.5px 30px 0.5px gray;
-  }
+
   .first-filteration{
     width: 100%;
 }

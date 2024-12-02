@@ -3,6 +3,7 @@ import "../HomeS/HomeT.css";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../../Context/UserContext/UserContextdata";
 import { Departmentlistdata } from '../../../Context/DepartmentList/DepartmentListContext';
+import { ScrollFilterContext } from "../../../Context/FilterScroll/FilterScrollContex";
 import axios from "axios";
 // import axios from "axios";
 
@@ -11,17 +12,21 @@ const Departmentlist = (props) => {
 
   const departmentListdata = useContext(Departmentlistdata);
   const { usernav } = useContext(UserContext);
-
-
+  
+  
   const navigate = useNavigate();
   const [moreDepartment, setMoreDepartment] = useState(false);
   const departmentList = useRef();
-
-
-
-
-
   const contectContainer = useRef();
+  const { setFiltersection } = useContext(ScrollFilterContext);
+  useEffect(() => {
+    setFiltersection(contectContainer.current);
+  }, [])
+
+
+
+
+  
 
 
   const backto = () => {

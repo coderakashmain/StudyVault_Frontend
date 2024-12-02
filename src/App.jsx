@@ -59,7 +59,7 @@ function App() {
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <> <AdminLoginCheck><UserContextdata><UserLoginContext><FilterScrollContex> <DepartmentListContext> <Navbar showAlart={showAlart} /><Allpages /><Alart alart={alart} /></DepartmentListContext></FilterScrollContex></UserLoginContext></UserContextdata></AdminLoginCheck></>,
+      element: <><AdminLoginCheck><UserContextdata><UserLoginContext><FilterScrollContex> <DepartmentListContext> <Navbar showAlart={showAlart} /><Allpages /><Alart alart={alart} /></DepartmentListContext></FilterScrollContex></UserLoginContext></UserContextdata></AdminLoginCheck></>,
       children: [
 
         {
@@ -68,7 +68,7 @@ function App() {
           children: [
             {
               path: '',
-              element: <Departmentlist showAlart={showAlart} />
+              element: <><Departmentlist showAlart={showAlart} /></>
             },
             {
               path: 'Filter',

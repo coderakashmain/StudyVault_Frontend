@@ -37,6 +37,8 @@ const Navbar = (props) => {
   const notificationref = useRef(null);
   const notificationIconRef = useRef(null);
   const closeNotification = useRef(null);
+  const { filtersection } = useContext(ScrollFilterContext);
+
 
   useEffect(() => {
     const view = () => {
@@ -118,9 +120,7 @@ const Navbar = (props) => {
     setShowSuggestions(true);
   }
 
-  const { filtersection } = useContext(ScrollFilterContext);
   const gotofilter = () => {
-
     filtersection.scrollIntoView({ behavior: 'smooth' });
 
 
@@ -162,17 +162,19 @@ const Navbar = (props) => {
 
 
   const onSearch = (searchdpt) => {
-    if (loginCheck) {
+    // if (loginCheck) {
 
       setDartmentvalue(searchdpt);
       navigate("Filter", { state: { searchdpt } });
       gotofilter();
       setDartmentvalue('');
-    }
-    else {
-      props.showAlart('Login Karna padega Bhai 😁', '', 'mark');
-      navigate("/Login");
-    }
+    
+    
+    // }
+    // else {
+    //   props.showAlart('Login Karna padega Bhai 😁', '', 'mark');
+    //   navigate("/Login");
+    // }
 
   }
 
