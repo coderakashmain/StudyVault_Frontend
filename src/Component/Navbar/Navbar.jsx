@@ -576,22 +576,30 @@ const Navbar = (props) => {
         <hr style={{ margin: '2rem 0' }} />
         <div className="slidebar-box">
           <h4 className="slidebar-title">
-            <Link to="/">
+            <Link to="/" onClick={()=>{
+               document.body.style.overflow = "scroll";
+            }}>
               <i className="fa-solid fa-house-chimney"></i>Home
             </Link>
           </h4>
           <h4 className="slidebar-title">
-            <Link to="/Profile">
+            <Link to="/Profile" onClick={()=>{
+               document.body.style.overflow = "scroll";
+            }} >
               <i className="fa-solid fa-user"></i>Profile
             </Link>
           </h4>
-          <h4 className="slidebar-title">
-            <Link to="/About-us">
+          <h4 className="slidebar-title" >
+            <Link to="/About-us"  onClick={()=>{
+               document.body.style.overflow = "scroll";
+            }}>
               <i className="fa-solid fa-pen"></i>About Us
             </Link>
           </h4>
-          <h4 className="slidebar-title">
-            <Link to="/Contact-Us">
+          <h4 className="slidebar-title" >
+            <Link to="/Contact-Us"  onClick={()=>{
+               document.body.style.overflow = "scroll";
+            }}>
               <i className="fa-solid fa-paper-plane"></i>Contact Us
             </Link>
           </h4>
