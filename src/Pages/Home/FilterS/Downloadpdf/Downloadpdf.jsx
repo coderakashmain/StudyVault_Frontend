@@ -48,7 +48,12 @@ const Downloadpdf = () => {
                             </li>
                         ))
                     ) : (
-                        <p>No papers available 😞</p>
+                        <div>
+                             <p>No papers available 😞</p>
+                             <p style={{marginTop : '10rem'}}>Don't worry! We will upload soon. We are actively working on it.</p>
+                        </div>
+                    
+                        
                     )}
                     </div>
                    

@@ -6,17 +6,20 @@ import { Photonumdata } from "../../Context/PhoneInfo/PhoneInfo";
 
 const Contact = () => {
 
-  const {akashphonenumber,jituphonenumber,emailAddress} = useContext(Photonumdata);
+  const {akashemailAddress,jituemailAddress} = useContext(Photonumdata);
   
   const handleEmailButtonClick = () => {
-    window.open(`mailto:${emailAddress}`, '_blank');
+    window.open(`mailto:${jituemailAddress}`, '_blank');
   };
-  const handleEmailButtoncallakashClick = () => {
-    window.open(`tel:${akashphonenumber}`, '_blank');
+  const akahandleEmailButtonClick = () => {
+    window.open(`mailto:${akashemailAddress}`, '_blank');
   };
-  const handleEmailButtoncalljituClick = () => {
-    window.open(`tel:${jituphonenumber}`, '_blank');
-  };  
+  // const handleEmailButtoncallakashClick = () => {
+  //   window.open(`tel:${akashphonenumber}`, '_blank');
+  // };
+  // const handleEmailButtoncalljituClick = () => {
+  //   window.open(`tel:${jituphonenumber}`, '_blank');
+  // };  
   const handleteamsupport = ()=>{
     window.open('mailto:studyvaultteam@gmail.com','_blank');
   }
@@ -37,8 +40,8 @@ const Contact = () => {
                 <h3>Akash Bindhani</h3>
                 <ul>
                   <li>Bahalda,Baripada</li>
-                  <li onClick={handleEmailButtonClick}>ab791235@gmail.com</li>
-                  <li onClick={handleEmailButtoncallakashClick} style={{cursor : 'pointer',background : 'rgb(235 235 235)',width : '50%',margin : 'auto',padding : '0.2rem 0.3rem',color :''}}>call me</li>
+                  <li onClick={akahandleEmailButtonClick}>ab791235@gmail.com</li>
+                  <li onClick={akahandleEmailButtonClick} style={{cursor : 'pointer',background : 'rgb(235 235 235)',width : '50%',margin : 'auto',padding : '0.2rem 0.3rem',color :''}}>Message</li>
                 </ul>
               </div>
               <div className="second-location-box contact_box">
@@ -47,7 +50,7 @@ const Contact = () => {
                 <ul>
                   <li>Chikity,Berahampur</li>
                   <li onClick={handleEmailButtonClick} >jitupra73@gmail.com</li>
-                  <li onClick={handleEmailButtoncalljituClick} style={{cursor : 'pointer',background : 'rgb(235 235 235)',width : '50%',margin : 'auto',padding : '0.2rem 0.3rem',color :''}}>call me</li>
+                  <li onClick={handleEmailButtonClick} style={{cursor : 'pointer',background : 'rgb(235 235 235)',width : '50%',margin : 'auto',padding : '0.2rem 0.3rem',color :''}}>Message</li>
                 </ul>
               </div>
               <div className="third-location-box contact_box">
@@ -64,10 +67,13 @@ const Contact = () => {
                   </li>
                   <li>+91 1236549870</li>
                   <div className="social-contact-icon" style={{margin : '0.2rem 0'}}>
-                    <i className="fa-brands fa-facebook"></i>
-                    <i className="fa-brands fa-twitter"></i>
-                    <i className="fa-brands fa-linkedin"></i>
-                    <i className="fa-brands fa-meta"></i>
+                  <a href="" target="__blank"> <i className="fa-brands fa-facebook"></i></a> 
+                   <a href="https://x.com/AKASHBIN814" target="__blank">  <i className="fa-brands fa-twitter"></i></a>
+                   <a href="https://www.linkedin.com/in/akash-bindhani-7b71b9311/" target="__blank">    <i className="fa-brands fa-linkedin"></i></a>
+                   <a href="#" target="__blank">    <i className="fa-brands fa-meta"></i></a>
+               
+                
+                
                   </div>
                 </ul>
               </div>

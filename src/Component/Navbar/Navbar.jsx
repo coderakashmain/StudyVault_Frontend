@@ -446,7 +446,7 @@ const Navbar = (props) => {
     const handlenotificationclose = ()=>{
       close.restart();
  
-      document.body.style.overflow = "scroll";
+      document.body.style.overflowY = "scroll";
     };
 
 

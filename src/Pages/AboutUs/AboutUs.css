@@ -1,7 +1,8 @@
 #about-us{
     min-height: 100vh; 
     width: 100%;
-    background:linear-gradient(90deg ,rgb(31, 31, 78),rgb(33, 143, 160));
+    /* background:linear-gradient(90deg ,rgb(31, 31, 78),rgb(33, 143, 160)); */
+    /* background:var(--pagecolor); */
     padding: 4.6rem 0 0 0;
     
 }
@@ -34,19 +35,19 @@
 /*  */
 
 .left-about-box h2{
-    color: var(--about-text-color);
+    /* color: var(--about-text-color); */
     font-weight: 500;
    
     font-size: 2.8rem;
 }
 .left-about-box p{
-    color: var(--about-text-color);
+    /* color: var(--about-text-color); */
     margin: 4rem 0 ;
     font-size: 1.3rem;
 }
-.left-about-box span{
-    color:  rgb(118 185 185) ;
-}
+/* .left-about-box span{ */
+    /* color:  rgb(118 185 185) ; */
+/* } */
 .left-about-box button{
     outline: none;
     margin: 2rem 0 0 0;
@@ -54,13 +55,19 @@
    font-size: 1.2rem;
    cursor: pointer;
    border-radius: 0.1rem;
-   color: #1138ab;
+   color: #fff;
    font-weight: 500;
    transition: all 0.1s linear;
    border: none;
+   background-color:#276eb0;
+}
+.left-about-box button a{
+ 
+   color: #fff;
 }
 .left-about-box button:hover{
     transform: scale(0.95);
+    background-color:#bababa;
 }
 @media (max-width : 450px) {
     .left-about-box h2{
@@ -75,7 +82,7 @@
     margin:5rem 0 0 ;
 }
 .our-info-box h2{
-    color: var(--about-text-color);
+    /* color: var(--about-text-color); */
     margin: 2rem 0  6rem;
     font-size: 2.5rem;
     font-weight: 500;
@@ -100,6 +107,9 @@
     padding: 2rem 2rem 0 2rem;
     /* background-color: #c6c6c62e; */
     border-radius: 0.5rem;
+    box-shadow: 12px 12px 18px #c1c1c166;
+    background: #f3f5fb;
+
 
 }
 .self-img-out{
@@ -136,29 +146,30 @@
     letter-spacing: 0.01rem;
     padding: 0.2rem 0;
     text-align: justify;
-    color: var(--about-text-color);
+    /* color: var(--about-text-color); */
     
 }
 .self-description p span{
     
-   color: var(--about-text-color);
+   /* color: var(--about-text-color); */
    font-size: 1.3rem;
 }
 .self-description b{
-    color: #c7e8ff;
+    color: #220111;
+    font-weight: 700;
 }
 .self-description a{
     text-decoration: underline;
     color: #009eff;
 }
 .self-description h3{
-    color:  var(--about-text-color);
+    /* color:  var(--about-text-color); */
     font-size: 1.3rem;
    
 }
 .persional-info{
     text-align: justify;
-    color:  var(--about-text-color);
+    /* color:  var(--about-text-color); */
     padding: 0.7rem 0   ;
     
 }
@@ -168,7 +179,7 @@
 .info-visiting i{
     font-size: 1.2rem;
     margin: 0.4rem 1.2rem ;
-    filter: invert(100%);
+    /* filter: invert(100%); */
     transition: all 0.2s ease-in-out;
 }
 .info-visiting i:hover{
@@ -181,7 +192,7 @@
     padding: 0 0 5rem 0;
 }
 .both-info p{
-    color: var(--about-text-color);
+    /* color: var(--about-text-color); */
     font-size: 1.3rem;
     text-align:start ;
     /* line-height: 1.6rem; */
@@ -210,24 +221,25 @@
 }
 .both-info p button:hover{
   transform: scale(0.95);
-  background-color: #fff;
+  background-color: #e0e0e0;
   color: #000;
 }
 
 .both-info p span{
-    color:  rgb(118 185 185) ;
+    /* color:  rgb(118 185 185) ; */
     font-size: 1.4rem;
+    font-weight: 700;
 }
 
 .right-about-box{
     width: 20%;
-    color:  var(--about-text-color);
+    /* color:  var(--about-text-color); */
     height: 100%;
    
 }
 
 .right-about-box-in h3{
-    color: var(--about-text-color);
+    /* color: var(--about-text-color); */
     text-align: end;
     font-size: 2.1rem;
 }
@@ -237,7 +249,7 @@
 }
 .right-about-box-in li{
     margin: 2rem 0 0 0;
-    color:  var(--about-text-color);
+    /* color:  var(--about-text-color); */
     font-weight: 600;
     list-style:disc;
     font-size: 1.35rem;
@@ -274,6 +286,9 @@
     }
   .self-box{
     padding: 2rem 0 0 0;
+        box-shadow: none;
+        background: none;
+
   }
 }
 @media (max-width : 486px) {
