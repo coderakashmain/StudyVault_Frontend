@@ -492,7 +492,7 @@ const Navbar = (props) => {
             </ul>
           </div>
 
-          <div ref={filterRef} className={`filter-switch  ${mobileScroll && "filter-switch-mobile"}`}>
+          <div ref={filterRef} className={`filter-switch  ${mobileScroll ? "filter-switch-mobile" : "filter-switch-mobile-off"}`}>
             <input
               // ref={searchRef}
               type="text"

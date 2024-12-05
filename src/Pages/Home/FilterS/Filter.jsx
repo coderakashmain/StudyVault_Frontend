@@ -341,7 +341,7 @@ useEffect(()=>{
       <form onSubmit={handleSubmit} className="filteration-container-box" >
         <div className="filteration-container">
           <div className="first-filteration">
-          {elective || Compulsory || eandv ? (<h3>Papers Name :</h3>) :(  <h3>Department Name :</h3>)}
+          {elective || Compulsory || eandv || (filters.departmentName === 'Integrated B.Ed') ? (<h3>Papers Name :</h3>) :(  <h3>Department Name :</h3>)}
             <div className="department-type">
 
               <div className="department-name">

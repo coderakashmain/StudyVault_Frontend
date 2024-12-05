@@ -441,9 +441,22 @@ background-color: rgb(4 214 4 / 61%);
     border-radius: 0.2rem;
     /* border: 2px solid rgb(63, 78, 138); */
     height: 4rem;
+    transition: all 0.3s ease;
 
     /* left: 10%; */
   }
+  .filter-switch-mobile-off {
+   position: relative;
+    bottom: 0%;
+  /* background-color: #0E2F58; */
+    border-radius: 9rem;
+
+   
+    transition: all 0.3s linear;
+
+  }
+ 
+
   .filter-switch-mobile input {
     background: rgba(3, 33, 77, 0.629);
     border-radius: 0.2rem 0 0 0.2rem;
