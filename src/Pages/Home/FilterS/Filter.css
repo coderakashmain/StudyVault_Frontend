@@ -1,3 +1,11 @@
+
+.backHome{
+  display: inline-block;
+  font-weight: 500;
+  margin: 0rem 5rem 1rem ;
+  font-size: 1.5rem;
+  transform: translateY(-100%);
+}
 .filter-main-div {
   padding: 7% 0%;
   background-color: var(--backcolor);
@@ -128,6 +136,9 @@
 .active-3rd-year sup{
   color: #fff;
 }
+.active-4th-year sup{
+  color: #fff;
+}
 .active-2nd-year{
   background: linear-gradient(rgba(0, 0, 0, 0.374), rgb(74, 143, 200));
   color: #fff;
@@ -138,6 +149,10 @@
   background: linear-gradient(rgba(0, 0, 0, 0.374), rgb(74, 143, 200));
   color: #fff;
 
+}
+.active-4th-year{
+  background: linear-gradient(rgba(0, 0, 0, 0.374), rgb(74, 143, 200));
+  color: #fff;
 }
 
 .department-type {
@@ -308,6 +323,10 @@ user-select: none;
   .filteration-container {
     padding: 0% 5%;
   }
+  .backHome{
+    margin: 0rem 2rem 1rem ;
+
+  }
 }
 @media only screen and (max-width: 435px) {
 
@@ -319,5 +338,10 @@ user-select: none;
 }
   .filteration-container {
     flex-direction: column;
+  }
+  .backHome{
+    margin: 0rem 1.5rem 1rem ;
+    transform: translateY(-30%);
+
   }
 }

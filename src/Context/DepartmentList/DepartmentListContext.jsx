@@ -45,6 +45,8 @@ const DepartmentListContext = (props)=>{
         "Bio-Chemistry",
         "Enviromental Economics",
         "Industrial Chemistry",
+
+        "Integrated B.Ed"
       ];
     
       const sortedDepartments = departments.sort((a, b) => a.localeCompare(b));

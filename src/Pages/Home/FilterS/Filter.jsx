@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useEffect, useRef, useState } from "react";
 import axios from 'axios';
 import "./Filter.css";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, NavLink } from "react-router-dom";
 
 
 import { ScrollFilterContext } from "../../../Context/FilterScroll/FilterScrollContex";
@@ -26,6 +26,7 @@ const Filter = (props) => {
   const [yearfirstActive, setYearfirstActive] = useState(false);
   const [yearsecondActive, setYearsecondActive] = useState(false);
   const [yearthirdActive, setYearthirdActive] = useState(false);
+  const [yearforthdActive, setYearforthActive] = useState(false);
   const [loader, setLoader] = useState(false);
   const [honors, setHonors] = useState(true);
   const [elective, setElective] = useState(false);
@@ -40,6 +41,10 @@ const Filter = (props) => {
   const initialDepartmentName = location.state?.departmentName || '';
   const initialDepartmentNamesearch = location.state?.searchdpt || '';
   const [dptName, setDptName] = useState('');
+  const [buttonDisable,setButtonDisable] =useState(false);
+  const [integratedBed,setIntegratedBed] =useState(false);
+  const [homebackShow,setHomebackShow] = useState(false);
+  const [onlyug,setOnlyug]= useState(false);
 
   useEffect(() => {
 
@@ -51,7 +56,7 @@ const Filter = (props) => {
       departmentName: newDepartmentname,
     }));
 
-  }, [initialDepartmentName, initialDepartmentNamesearch])
+  }, [initialDepartmentName, initialDepartmentNamesearch,dptName])
 
   const [filters, setFilters] = useState({
     departmentName: dptName,
@@ -63,6 +68,104 @@ const Filter = (props) => {
     sem: false,
     midSem: false
   });
+
+// console.log(filters.departmentName)
+  const pgdpt = ['MBA','MCA','Micro Biology','Bio-Chemistry','Enviromental Economics','Industrial Chemistry'];
+  const onlyugdpt = ['Bca','Itm'];
+
+  useEffect(()=>{
+    if(pgdpt.includes(filters.departmentName)){
+      setButtonDisable(true);
+    }else{
+      
+      
+      setButtonDisable(false);
+    }
+  },[dptName,dptnamechange,filters.departmentName]);
+  useEffect(()=>{
+    if(onlyugdpt.includes(filters.departmentName)){
+      setOnlyug(true);
+    }else{
+      
+      
+      setOnlyug(false);
+    }
+  },[dptName,dptnamechange,filters.departmentName]);
+
+  useEffect(()=>{
+    if(filters.departmentName === 'Integrated B.Ed'){
+      setIntegratedBed(true);
+    }else{
+      setIntegratedBed(false);
+    }
+  },[dptName,dptnamechange,filters.departmentName]);
+  
+  useEffect(()=>{
+    if(buttonDisable){
+      setUgActive(false);
+      handleDepartmentYear('');
+      setYearthirdActive(false);
+      if(filters.educationLevelug){
+        
+       
+        handleEducationLevelug('');
+
+      }
+      
+    }else{
+      handleEducationLevelug('');
+    }
+
+  },[buttonDisable]);
+  useEffect(()=>{
+    if(onlyug){
+      setPgActive(false);
+      if(filters.educationLevelpg){
+        
+       
+        handleEducationLevelpg('');
+
+      }
+      
+    }else{
+      handleEducationLevelpg('');
+    }
+
+  },[onlyug]);
+
+ 
+
+  useEffect(()=>{
+    if(integratedBed){
+      setPgActive(false);
+   
+      handleEducationLevelpg('');
+      
+      
+    }else{
+      setYearforthActive(false);
+      handleDepartmentYear('');
+    }
+  },[integratedBed]);
+  
+  useEffect(()=>{
+
+      if(integratedBed){
+        setFilters((preData)=>({
+          ...preData,
+          midSem:false,
+        }));
+
+     
+      }
+  },[integratedBed])
+
+  // console.log(filters);
+
+
+  
+
+
 
 const  handlesubjet = (e)=>{
   const value = e.target.innerText
@@ -222,8 +325,19 @@ const  handlesubjet = (e)=>{
     }
 });
 
+
+useEffect(()=>{
+  if(location.pathname === '/Filter'){
+    setHomebackShow(true);
+  }
+  else{
+    setHomebackShow(false);
+  }
+},[])
+
   return (
     <div ref={filterboxref} className="filter-main-div">
+       { homebackShow ? <h5  className="backHome"><NavLink to = '/'> Home &nbsp; </NavLink> -&gt; &nbsp;Filter </h5> : null}
       <form onSubmit={handleSubmit} className="filteration-container-box" >
         <div className="filteration-container">
           <div className="first-filteration">
@@ -308,7 +422,7 @@ const  handlesubjet = (e)=>{
                 className={`ug-box department-box ${ugActive ? 'ug-active-color' : ''}`}
              
                 onClick={() => {
-                  if (!ugActive) {
+                  if (!ugActive && !buttonDisable) {
                     handleEducationLevelug('ug');
                     setUgActive(true);
 
@@ -320,13 +434,15 @@ const  handlesubjet = (e)=>{
                   }
                 }
                 }
+                disabled={buttonDisable }
+                style={buttonDisable  ? { opacity : '0.4'} : {}}
               >
                 <h1>UG</h1>
               </div>
               <div
                 className={`pg-box department-box ${pgActive ? 'pg-active-color' : ''}`}
                 onClick={() => {
-                  if (!pgActive) {
+                  if (!pgActive && !integratedBed && !onlyug) {
                     handleEducationLevelpg('pg');
                     setPgActive(true);
 
@@ -336,6 +452,9 @@ const  handlesubjet = (e)=>{
                     handleEducationLevelpg('');
                   }
                 }}
+                disabled={integratedBed || onlyug}
+                style={integratedBed || onlyug ? { opacity : '0.4'} : {}}
+
               >
                 <h1>PG</h1>
               </div>
@@ -351,6 +470,7 @@ const  handlesubjet = (e)=>{
                     setYearsecondActive(false);
                     setYearthirdActive(false);
                     setYearfirstActive(true);
+                    setYearforthActive(false);
 
                   }
                   if (yearfirstActive) {
@@ -367,6 +487,7 @@ const  handlesubjet = (e)=>{
                     setYearthirdActive(false);
                     setYearfirstActive(false);
                     setYearsecondActive(true);
+                    setYearforthActive(false);
 
                   }
                   if (yearsecondActive) {
@@ -377,26 +498,54 @@ const  handlesubjet = (e)=>{
                   2 <sup>nd</sup>
                 </li>
                 <li className={` ${yearthirdActive ? 'active-3rd-year' : ''}`} onClick={() => {
-                  if (!yearthirdActive) {
+                  if (!yearthirdActive && !buttonDisable) {
                     handleDepartmentYear('3rd')
                     setYearfirstActive(false);
                     setYearsecondActive(false);
                     setYearthirdActive(true);
+                    setYearforthActive(false);
 
                   }
                   if (yearthirdActive) {
                     handleDepartmentYear('')
                     setYearthirdActive(false);
                   }
-                }}>
+                }}
+                disabled={buttonDisable}
+                style={buttonDisable ? { opacity : '0.4'} : {}}
+                >
                   3 <sup>rd</sup>
                 </li>
+              { integratedBed && (  <li className={` ${yearforthdActive ? 'active-4th-year' : ''}`} onClick={() => {
+                  if (!yearforthdActive && !buttonDisable) {
+                    handleDepartmentYear('4th')
+                    setYearfirstActive(false);
+                    setYearsecondActive(false);
+                    setYearthirdActive(false);
+                    setYearforthActive(true);
+
+                  }
+                  if (yearforthdActive) {
+                    handleDepartmentYear('')
+                    setYearforthActive(false);
+                  }
+                }}
+               
+                >
+                  4 <sup>th</sup>
+                </li>)}
               </ul>
             </div>
             <h3>Select paper :</h3>
             <div className="check-paper">
               <div className="first-paper">
-                <div className={` ${filters.midSem ? 'active-midpaper-year' : ''}`} onClick={() => handlePaperType('midSem')}>MID SEM</div>
+                <div className={` ${filters.midSem && !integratedBed ? 'active-midpaper-year' : ''}`} onClick={() =>{
+                  if(!integratedBed){
+                    handlePaperType('midSem')}}
+                  }
+                 disabled={integratedBed}
+                 style={integratedBed ? { opacity : '0.4'} : {}}
+                >MID SEM</div>
 
               </div>{" "}
               <div className="second-paper">
@@ -444,15 +593,20 @@ const  handlesubjet = (e)=>{
               </div>
               <div className="subject-select-each">
                   <p onClick={
-                    (e)=>{setEandv(!eandv);
-                      handlesubjet(e);
-                     setCompulsory(false);
-                    setHonors(false);
-                    setElective(false);
-
+                    (e)=>{
+                      if(!buttonDisable){
+                        setEandv(!eandv);
+                        handlesubjet(e);
+                       setCompulsory(false);
+                      setHonors(false);
+                      setElective(false);
+                      }
                     }
                 
-                } className={`${eandv ? 'ok' : 'no'}`}>E&V</p> 
+                } className={`${eandv ? 'ok' : 'no'}`}
+                disabled={buttonDisable}
+                style={buttonDisable ? { opacity : '0.4'} : {}}
+                >E&V</p> 
               
               </div>
 
