@@ -446,12 +446,10 @@ background-color: rgb(4 214 4 / 61%);
     /* left: 10%; */
   }
   .filter-switch-mobile-off {
-   position: relative;
-    bottom: 0%;
+   /* position: relative; */
+    /* bottom: 0%; */
   /* background-color: #0E2F58; */
-    border-radius: 9rem;
 
-   
     transition: all 0.3s linear;
 
   }
