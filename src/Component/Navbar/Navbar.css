@@ -373,7 +373,7 @@ transform: scale(0);
   height: 100svh;
   min-height: 100lvh;
   width: 40vw;
-  background-color: #fff;
+  background-color: var(--notificationbackcolor);
   color: #fff;
   padding: 2rem;
   position: fixed;
@@ -404,6 +404,22 @@ background-color: rgb(4 214 4 / 61%);
  margin: 1rem 0 ;
  /* text-transform: uppercase; */
  
+}
+.notification-data{
+margin: 2rem 0;
+  opacity: 0.8;
+}
+.each-notification h3{
+  font-weight: 600;
+  font-size: 1.3rem;
+}
+
+.notification-data p{
+  margin: 1rem 0 0 2rem;
+  padding: 0.5rem 1rem 0.5rem;
+  background: #e2e8f1;
+  border-radius: 1rem;
+  font-size: 01rem;
 }
 
 @media (min-width: 765px) {

@@ -58,7 +58,7 @@
     /* background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvHnbkXhPR46iJHQK3-n1g_jsjeQurfxSuPQ&s') no-repeat center center/cover; */
     position:relative;
     /* outline-offset: 0.1rem; */
-    outline : 3px solid #1399c2 !important;
+    outline : 3px solid #29b971 !important;
    
     
   
@@ -318,7 +318,7 @@
 }
 .recent{
     background-color: rgb(255 255 255 / 38%);
-    border: 2px solid #a5bae7;
+    border: 2px solid #efefef;
     border-radius: 0.2rem;
     flex-grow: 1;
     width: 100%;

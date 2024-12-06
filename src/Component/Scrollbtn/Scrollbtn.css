@@ -16,8 +16,45 @@
     user-select: none;
 
 }
+.whatsappopen{
+    width: 4rem;
+    height: 4rem;
+    position: fixed;
+    background-color: #3EDE5B;
+   
+    right: 5%;
+    z-index: 10;
+    /* background-color: rgb(55, 193, 205); */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s linear;
+    user-select: none;
+    animation: zoom 0.7s alternate infinite ease-in-out;
+}
+@keyframes zoom {
+    from{
+        transform: scale(0.9);
+    }
+    to{
+        transform:scale(1);
+    }
+}
+.bottomp{
+    bottom: 28%;
+}
+.originalp{
+    bottom: 13%;
+}
+.whatsappopen i{
+    font-size: 2.7rem;
+    color: #fff;
+}
 #scrollbtn i{
     font-size: 1.6rem;
+    color: #fff;
 }
 .hide-btn{
     opacity: 0;

@@ -164,12 +164,12 @@ const Navbar = (props) => {
   const onSearch = (searchdpt) => {
     // if (loginCheck) {
 
-      setDartmentvalue(searchdpt);
-      navigate("Filter", { state: { searchdpt } });
-      gotofilter();
-      setDartmentvalue('');
-    
-    
+    setDartmentvalue(searchdpt);
+    navigate("Filter", { state: { searchdpt } });
+    gotofilter();
+    setDartmentvalue('');
+
+
     // }
     // else {
     //   props.showAlart('Login Karna padega Bhai 😁', '', 'mark');
@@ -416,36 +416,36 @@ const Navbar = (props) => {
   useGSAP(() => {
 
 
-      const openTl = gsap.timeline({ paused: true });
+    const openTl = gsap.timeline({ paused: true });
 
     openTl
-    .to(notificationref.current,{
-      right: 0,
-      duration: 0.5,
-      ease: "power4.inOut",
-    })
-   
-  
-   
+      .to(notificationref.current, {
+        right: 0,
+        duration: 0.5,
+        ease: "power4.inOut",
+      })
+
+
+
     const close = gsap.timeline({ paused: true });
 
-    
-    close.to(notificationref.current,{
+
+    close.to(notificationref.current, {
       right: "-100%",
       duration: 0.5,
       ease: "power4.inOut",
     })
 
 
-    const handlenotification = ()=>{
+    const handlenotification = () => {
       openTl.restart();
       document.body.style.overflow = "hidden";
 
     };
-    
-    const handlenotificationclose = ()=>{
+
+    const handlenotificationclose = () => {
       close.restart();
- 
+
       document.body.style.overflowY = "scroll";
     };
 
@@ -453,11 +453,11 @@ const Navbar = (props) => {
 
     notificationIconRef.current.addEventListener("click", handlenotification);
     closeNotification.current.addEventListener("click", handlenotificationclose);
-  
+
 
     return () => {
       notificationIconRef.current.removeEventListener("click", handlenotification);
-      closeNotification.current.removeEventListener("click", handlenotificationclose); 
+      closeNotification.current.removeEventListener("click", handlenotificationclose);
     };
   });
 
@@ -545,13 +545,13 @@ const Navbar = (props) => {
               ) : (<option value="M.P.C autonomous">M.P.C</option>)};
 
             </select>)}
-            <div className="notificatonicon" style={{ margin: '0rem 1.3rem 0rem 0.3rem', userSelect: 'none' ,display : 'flex', justifyContent : 'center', alignItems : 'center'}} ref={notificationIconRef}>
+            <div className="notificatonicon" style={{ margin: '0rem 1.3rem 0rem 0.3rem', userSelect: 'none', display: 'flex', justifyContent: 'center', alignItems: 'center' }} ref={notificationIconRef}>
               <i className="fa-solid fa-bell" style={{ color: '#fff', cursor: 'pointer' }}></i>
             </div>
-            
 
 
-              
+
+
             {!isAuthenticateduser ? (
               <div className="log-in">
                 <div ref={BothLoginRef} onClick={clickOn}><li>Login <div className={`adminLogInBox ${isOn ? 'open' : 'close'} `} ref={LoginRef} >
@@ -580,29 +580,29 @@ const Navbar = (props) => {
         <hr style={{ margin: '2rem 0' }} />
         <div className="slidebar-box">
           <h4 className="slidebar-title">
-            <Link to="/" onClick={()=>{
-               document.body.style.overflow = "scroll";
+            <Link to="/" onClick={() => {
+              document.body.style.overflow = "scroll";
             }}>
               <i className="fa-solid fa-house-chimney"></i>Home
             </Link>
           </h4>
           <h4 className="slidebar-title">
-            <Link to="/Profile" onClick={()=>{
-               document.body.style.overflow = "scroll";
+            <Link to="/Profile" onClick={() => {
+              document.body.style.overflow = "scroll";
             }} >
               <i className="fa-solid fa-user"></i>Profile
             </Link>
           </h4>
           <h4 className="slidebar-title" >
-            <Link to="/About-us"  onClick={()=>{
-               document.body.style.overflow = "scroll";
+            <Link to="/About-us" onClick={() => {
+              document.body.style.overflow = "scroll";
             }}>
               <i className="fa-solid fa-pen"></i>About Us
             </Link>
           </h4>
           <h4 className="slidebar-title" >
-            <Link to="/Contact-Us"  onClick={()=>{
-               document.body.style.overflow = "scroll";
+            <Link to="/Contact-Us" onClick={() => {
+              document.body.style.overflow = "scroll";
             }}>
               <i className="fa-solid fa-paper-plane"></i>Contact Us
             </Link>
@@ -621,16 +621,34 @@ const Navbar = (props) => {
       {/* <div ref={glitch} className="glitchproblem"></div> */}
 
 
-      
+
       <aside ref={notificationref} id="notification">
-                 <h2>Notification <s></s>  <i className="fa-solid fa-xmark" style={{cursor : 'pointer'}} ref={closeNotification}></i></h2>
-                 <h4>All</h4>
-                 <hr  style={{ margin : '0rem 0rem 1.4rem 0rem'}}/>
-                 <div className="notification-data">
-                 
-                <div style={{display : 'flex', alignItems : "center", gap : '1rem'}}><Avatar alt="Remy Sharp" src={logo} sx={ {width : 24,height : 24, padding : '0rem 0rem 0 0', display : 'inline-block', } } /> <p style={{ fontSize : '1.1rem'}}> Now you can access all <b style={{ fontWeight : '700'}}>Questions papers</b> without login.</p> </div>  
-                 </div>
-              </aside>
+        <h2>Notification <s></s>  <i className="fa-solid fa-xmark" style={{ cursor: 'pointer' }} ref={closeNotification}></i></h2>
+        <h4>All</h4>
+        <hr style={{ margin: '0rem 0rem 1.4rem 0rem' }} />
+
+        <div className="notification-data" style={{opacity : '1'}}>
+
+          <div style={{ display: 'flex', alignItems: "center", gap: '0.6rem' }} className="each-notification">
+
+            <Avatar alt="Remy Sharp" src={logo} sx={{ width: 24, height: 24, padding: '0rem 0rem 0 0', display: 'inline-block', }} />
+            <h3>StudyVault Team</h3>
+
+          </div>
+          <p>Join Our <b style={{ fontWeight: '700' }}>Whatsapp Channel</b> to get new updates and type of question uploaded.</p>
+        </div>
+        <div className="notification-data">
+
+          <div style={{ display: 'flex', alignItems: "center", gap: '0.6rem' }} className="each-notification">
+
+            <Avatar alt="Remy Sharp" src={logo} sx={{ width: 24, height: 24, padding: '0rem 0rem 0 0', display: 'inline-block', }} />
+            <h3>StudyVault Team</h3>
+
+          </div>
+          <p> Now you can access all <b style={{ fontWeight: '700' }}>Questions papers</b> without login.</p>
+        </div>
+
+      </aside>
     </>
   );
 };
