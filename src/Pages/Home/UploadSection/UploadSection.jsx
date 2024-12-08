@@ -152,6 +152,15 @@ const location = useLocation();
       <div className="right-upload-section">
         <h4>Send Us!</h4>
         <input type="file" name= 'Qupload' accept='application/pdf,image/jpeg,image/png'   multiple  onChange={handleFileChange} ref={fileInputRef} disabled={falsepdffinal}/>
+
+        {singletap && (<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '80%' ,gap : '2rem', margin : '2rem 0 1rem 0'}}>
+          <span style={{ marginTop: '1rem', fontSize: '1.2rem', color: '#333' }}>
+          {uploadProgress}%
+        </span>
+        <meter value={uploadProgress} min="0" max="100" style={{width : '100%'}}></meter>
+        
+      </div>)}
+        
         <article>Click the button  to send Question papers. Every bit counts.</article>
       </div>
       <form  onSubmit={handleSubmit}>
