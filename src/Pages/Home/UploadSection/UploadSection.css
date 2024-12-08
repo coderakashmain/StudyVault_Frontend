@@ -1,0 +1,150 @@
+#upload-section{
+    min-height: 10rem;
+    width: 100%;
+    background: var(--notificationbackcolor);
+    padding: 3rem 1rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5rem;
+}
+#upload-section .left-upload-section{
+    flex-grow: 1;
+    flex-basis: 1000px;
+}
+
+#upload-section h3{
+  line-height: 3rem;
+  font-size: 2rem;
+
+  font-weight: 700;
+  /* text-transform: uppercase; */
+  /* letter-spacing: 0.1rem; */
+  font-style: normal;
+  color: #000000;
+text-align: center;
+
+}
+
+#upload-section .right-upload-section{
+    flex-grow: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#upload-section .right-upload-section input{
+position: relative;
+padding: 2rem 3rem;
+width: 75%;
+border-radius: 3rem;
+
+
+   
+}
+#upload-section .right-upload-section input::before{
+   content: 'Choose a File ⇈';
+   width: 100%;
+   height: 100%;
+   position: absolute;
+   top: 0%;
+   left: 0%;
+   background-color: #000000;
+   text-align: center;
+    color: #fff;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   font-size: 2rem;
+   font-weight: 500;
+   cursor: pointer;
+   /* padding: 0rem 1rem; */
+   
+
+}
+
+#upload-section .right-upload-section h4{
+  padding: 0rem  0rem 1rem 0rem;
+  font-size: 3rem;
+  font-weight: 800;
+}
+#upload-section article{
+    margin-top: 7rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    
+}
+.papers-submit{
+    position: fixed;
+    width: 100%;
+    min-height: 50vh;
+    bottom: -100%;
+    left: 0%;
+    background-color: #fff;
+    z-index: 100;
+    padding: 2rem 2rem;
+    transition: all 0.9s ease;
+}
+.papers-head-submit{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.5rem;
+    margin: 0rem 0rem 1rem 0;
+    width: 100%;
+
+}
+.papers-head-submit h1{
+font-weight: 600;
+}
+.papers-head-submit i{
+border-radius: 50%;
+padding: 0.9rem 1.1rem;
+}
+.final-submit-btn{
+    position: absolute;
+   
+    bottom: 10%;
+    left: 0%;
+    margin-top: 4rem;
+   
+ 
+}
+.final-submit-btn button{
+    width: 90%;
+    padding: 1rem 0rem;
+    background-color: blue;
+    color: #fff;
+    border: none;
+    border-radius: 4rem;
+
+
+    font-size: 1.5rem;
+}
+.papers-head-submit i:active{
+background-color: #5151511e !important;
+transition: all 0.3s ease;
+}
+.file-item-box{
+    display: flex;
+   flex-direction: row;
+   overflow-y: scroll;
+   font-size: 0.9rem;
+}   
+
+.file-item img{
+    height: 4rem;
+}
+
+
+@media (max-width : 764px) {
+    #upload-section h3{
+      text-align: center;
+      font-size: 1.4rem;
+      line-height: 2rem;
+   
+      
+      }
+      
+  }
