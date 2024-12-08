@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import './UploadSection.css'
 import axios from 'axios';
+import { useLocation } from 'react-router-dom';
 
 
 const UploadSection = (props) => {
@@ -13,7 +14,8 @@ const UploadSection = (props) => {
   const [previewdata,setPreviewdata] = useState([]);
   const [singletap,setSingletap]  = useState(false);
   const[message,setMessage] = useState('');
-
+  const blockref = useRef();
+const location = useLocation();
 
   const handleFileChange = (e) => {
     const files = Array.from(e.target.files);
@@ -43,6 +45,20 @@ const UploadSection = (props) => {
     }
   };
   
+
+  useEffect(()=>{ 
+    if(falsepdffinal){
+      document.body.style.overflowY = "hidden";
+      blockref.current.style.bottom = '0%'
+      
+    }
+    else{
+      document.body.style.overflowY = "scroll";
+      blockref.current.style.bottom = '-100%'
+
+    }
+  },[falsepdffinal])
+
 
 
 
@@ -96,14 +112,16 @@ const UploadSection = (props) => {
             falsepdffinalref.current.style.bottom = '-100%';
             setMessage('');
           }, 800);
+          setFalsepdffinal(false);
       
         } else {
           setMessage(<p style={{color : 'red'}}>Error: Failed to upload files</p>);
-          
+            setMessage('')
           setSingletap(false);
         }
       } catch (error) {
         console.error("Error uploading files:", error);
+        setMessage('')
 
         setMessage(<p style={{color : 'red'}}>Error: Failed to upload files</p>);
         setSingletap(false);
@@ -112,6 +130,7 @@ const UploadSection = (props) => {
       setMessage(<p style={{color : 'red'}} >No files selected for upload</p>);
 
       setSingletap(false);
+      setMessage('');
     }
   };
   
@@ -125,7 +144,7 @@ const UploadSection = (props) => {
       </div>
       <div className="right-upload-section">
         <h4>Send Us!</h4>
-        <input type="file" name= 'Qupload' accept='application/pdf,image/jpeg,image/png'   multiple  onChange={handleFileChange} ref={fileInputRef}/>
+        <input type="file" name= 'Qupload' accept='application/pdf,image/jpeg,image/png'   multiple  onChange={handleFileChange} ref={fileInputRef} disabled={falsepdffinal}/>
         <article>Click the button  to send Question papers. Every bit counts.</article>
       </div>
       <form  onSubmit={handleSubmit}>
@@ -154,6 +173,9 @@ const UploadSection = (props) => {
         <button  type='submit' style={ singletap ? {opacity : 0.5} : {}} disabled = {singletap}>Send</button>
         </div>
      </aside>
+     <div className="block" ref={blockref} >
+
+     </div>
      </form>
 
     </aside>
