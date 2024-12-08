@@ -91,11 +91,11 @@ border-radius: 3rem;
     width: 100%;
     height: 100vh;
     height: 100svh;
-    bottom: -100%;
+    bottom: 0%;
     left: 0%;
+    display: none;
     background-color: #55545436;
     z-index: 99;
-    transition: all 0.4s ease;
 }
 .papers-head-submit{
     display: flex;
@@ -133,6 +133,38 @@ padding: 0.9rem 1.1rem;
 
     font-size: 1.5rem;
 }
+.final-submit-btn meter{
+    width: 90%;
+    border-radius: 4rem;
+    height: 3rem;
+    
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #f3f3f3;
+    border: none;
+}
+meter::-webkit-meter-bar {
+    background-color: #f3f3f3 !important;
+    border-radius: 4rem;
+    height: 3rem;  
+  }
+ meter::-webkit-meter-optimum-value {
+    background-color: #c230a0 !important; /* Green progress */
+    border-radius: 4rem;
+    height: 3rem;  
+  }
+ meter::-webkit-meter-suboptimum-value {
+    background-color: #ff9800 !important; /* Orange progress */
+  }
+ meter::-webkit-meter-even-less-good-value {
+    background-color: #f44336 !important; /* Red progress */
+  }
+
+  .final-submit-btn span {
+    font-size: 1rem;
+    color: #555;
+  }
+
 .papers-head-submit i:active{
 background-color: #5151511e !important;
 transition: all 0.3s ease;

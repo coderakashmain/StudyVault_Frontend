@@ -14,6 +14,8 @@ const UploadSection = (props) => {
   const [previewdata,setPreviewdata] = useState([]);
   const [singletap,setSingletap]  = useState(false);
   const[message,setMessage] = useState('');
+
+const [uploadProgress, setUploadProgress] = useState(0);
   const blockref = useRef();
 const location = useLocation();
 
@@ -98,9 +100,14 @@ const location = useLocation();
       try {
         const response = await axios.post("/api/Profile/upload/non-user", formData, {
           headers: { "Content-Type": "multipart/form-data" },
+          onUploadProgress: (progressEvent) => {
+            const percentage = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+            setUploadProgress(percentage);
+          },
         });
   
         if (response.status === 200) {
+          setUploadProgress(0);
           setMessage(<p style={{color : 'green'}}>Files uploaded successfully</p>);
           setPreviewdata([]);
           setSelectedFile(null);
@@ -170,7 +177,15 @@ const location = useLocation();
         </div>
       <div className=' final-submit-btn' style={{ width : '100%', display : 'flex', flexDirection : 'column',gap : '0.9rem',justifyContent : 'center', alignItems : 'center'}}>
         {message}
-        <button  type='submit' style={ singletap ? {opacity : 0.5} : {}} disabled = {singletap}>Send</button>
+       { !singletap ? ( <button  type='submit' style={ singletap ? {opacity : 0.5} : {}} disabled = {singletap}>Send</button>) : 
+       (
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '90%' }}>
+        <span style={{ marginBottom: '0.3rem', fontSize: '1.2rem', color: '#333' }}>
+          {uploadProgress}%
+        </span>
+        <meter value={uploadProgress} min="0" max="100"></meter>
+      </div>
+       )}
         </div>
      </aside>
      <div className="block" ref={blockref} >
