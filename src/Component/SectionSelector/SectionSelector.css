@@ -26,6 +26,7 @@ font-size: 0.9rem;
 }
 .sectoin-off{
     background-color: rgb(116 116 116);
+    opacity: 0.2;
 }
 
 @media (min-width :838px ) {
