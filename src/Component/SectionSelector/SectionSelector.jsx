@@ -21,9 +21,9 @@ const SectionSelector = (props) => {
     <aside id="section-selector" ref={sectionRef} >
       <div className="section-selector-inside">
             <NavLink to= '/' disable = {true} className='sectoin-on '>Questions</NavLink>
-            <NavLink to= '/' disable = {true}className='sectoin-off ' onClick={popup}>Syllabus</NavLink>
-            <NavLink to= '/' disable = {true}className='sectoin-off ' onClick={popup}>Notes</NavLink>
-            <NavLink to= '/' disable = {true}className='sectoin-off active' onClick={popup}>Books</NavLink>
+            <NavLink to= '#' disable = {false}className='sectoin-off ' onClick={popup}>Syllabus</NavLink>
+            <NavLink to= '#' disable = {false}className='sectoin-off ' onClick={popup}>Notes</NavLink>
+            <NavLink to= '#' disable = {false}className='sectoin-off active' onClick={popup}>Books</NavLink>
       </div>
     </aside>
   )
