@@ -115,19 +115,21 @@ const location = useLocation();
           if (fileInputRef.current) {
             fileInputRef.current.value = "";
           }
-          setTimeout(() => {
+          props.showAlart('Successfully send', '', 'check');
             falsepdffinalref.current.style.bottom = '-100%';
             setMessage('');
-          }, 800);
+         
           setFalsepdffinal(false);
       
         } else {
           setMessage(<p style={{color : 'red'}}>Error: Failed to upload files</p>);
+          props.showAlart('Error: Failed to upload files', '', 'cancel');
             setMessage('')
           setSingletap(false);
         }
       } catch (error) {
         console.error("Error uploading files:", error);
+        props.showAlart('Error uploading files:', '', 'cancel');
         setMessage('')
 
         setMessage(<p style={{color : 'red'}}>Error: Failed to upload files</p>);
@@ -151,7 +153,7 @@ const location = useLocation();
       </div>
       <div className="right-upload-section">
         <h4>Send Us!</h4>
-        <input type="file" name= 'Qupload' accept='application/pdf,image/jpeg,image/png'   multiple  onChange={handleFileChange} ref={fileInputRef} disabled={falsepdffinal}/>
+        <input type="file" name= 'Qupload' accept='application/pdf,image/jpeg,image/png' className='active'  multiple  onChange={handleFileChange} ref={fileInputRef} disabled={falsepdffinal}/>
 
         {singletap && (<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '80%' ,gap : '2rem', margin : '2rem 0 1rem 0'}}>
           <span style={{ marginTop: '1rem', fontSize: '1.2rem', color: '#333' }}>

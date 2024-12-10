@@ -357,7 +357,7 @@ transform: scale(0);
  position: relative;
  color: #fff;
 }
-.notificatonicon i::after{
+/* .notificatonicon i::after{
    content: '';
    position:absolute ;
   width:0.6rem;
@@ -366,6 +366,15 @@ transform: scale(0);
   top: -10%;
   border-radius: 50%;
   background-color: #ff5c5c; 
+  animation: zoom 0.5s ease alternate-reverse infinite;
+} */
+@keyframes zoom {
+  0%{
+    transform: scale(0.9);
+  }
+  100%{
+    transform: scale(1.5);
+  }
 }
 
 #notification{
