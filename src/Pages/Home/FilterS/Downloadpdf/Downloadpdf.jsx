@@ -40,7 +40,7 @@ const Downloadpdf = () => {
                 <div className="download-box">
                     <h2>Download here</h2>
                     <div className="download-data">
-                    {papers.length > 0 ? (
+                    {papers.length > 0 && papers? (
                         papers.map((paper) => (
                             <li key={paper.id}>
                                  <a href={paper.url} download target='__blank'>{paper.title} 😊<i className="fa-solid fa-download"></i></a>

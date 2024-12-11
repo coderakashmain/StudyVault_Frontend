@@ -15,8 +15,8 @@ const Home = (props) => {
    <>
         <Scrollbtn/>
         <HomeT title = {'Your StudyVault'} titlepara = {'Welcome to StudyVault, Get all Previous Year Question Papers of M.P.C Autonomous college. We shall try to provides note also. So I gonna help you in your all exams if you make me your exam Bff😊. '}/>
-        <MessageBox />
         <SectionSelector showAlart={props.showAlart}/>
+        <MessageBox />
       <Outlet />
       <UploadSection showAlart={props.showAlart}/>
       {/* <Review/> */}

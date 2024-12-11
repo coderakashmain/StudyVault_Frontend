@@ -12,7 +12,7 @@
 .message-inside-box{
     width: 90%;
     height: 90%;
-    border-radius: 3rem;
+    border-radius: 1rem;
     background-color: #e6ebf7;
     display: flex;
     justify-content: center;

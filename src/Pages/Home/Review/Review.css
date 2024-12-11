@@ -172,8 +172,7 @@
 }
 .all-reviews-box-feedback{
     display: flex;
-    justify-content: space-between;
-    gap: 2rem;
+    justify-content: flex-end;
     
 }
 .all-reviews-givefeedback {
@@ -186,6 +185,7 @@
     font-weight: 500;
 }
 .all-reviews-givefeedback button{
+    margin: 2rem 0;
    outline: none;
    border: none;
    padding: 0.6rem 1rem;
@@ -371,6 +371,15 @@ input[type="range"]{
 .rating-div{
     display: none;
 }
+.sectionn-half-two input[type="range"] {
+    width: 19rem;
+}
+}
+
+@media only screen and (max-width:569px){
+    .sectionn-half-two input[type="range"] {
+        width: 15rem;
+    }
 }
 
 @media only screen and (max-width:450px){

@@ -222,7 +222,7 @@ const Review = () => {
       <hr />
       <div className="all-reviews-box">
         <div className="all-reviews-givefeedback">
-          <h4>Please provide your feedback to us .</h4>
+          {/* <h4>Please provide your feedback to us .</h4> */}
           {!feedbackActive && (<button onClick={handlecheckuser}>Give your Feedback</button>)}
         </div>
         <div className="all-reviews-box-feedback">

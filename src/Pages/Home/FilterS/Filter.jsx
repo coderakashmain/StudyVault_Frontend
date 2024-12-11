@@ -74,7 +74,7 @@ const Filter = (props) => {
   const onlyugdpt = ['Bca','Itm'];
 
   useEffect(()=>{
-    if(pgdpt.includes(filters.departmentName)){
+    if(pgdpt.some((dept) => dept.toLowerCase() === filters.departmentName.toLowerCase())){
       setButtonDisable(true);
     }else{
       
@@ -83,7 +83,7 @@ const Filter = (props) => {
     }
   },[dptName,dptnamechange,filters.departmentName]);
   useEffect(()=>{
-    if(onlyugdpt.includes(filters.departmentName)){
+    if(onlyugdpt.some((dept) => dept.toLowerCase() === filters.departmentName.toLowerCase())){
       setOnlyug(true);
     }else{
       
