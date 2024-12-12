@@ -20,10 +20,10 @@ const SectionSelector = (props) => {
   return (
     <aside id="section-selector" ref={sectionRef} >
       <div className="section-selector-inside">
-            <NavLink to= '/' className='sectoin-on '>Questions</NavLink>
-            <NavLink to= '#' className='sectoin-off ' onClick={popup}>Syllabus</NavLink>
-            <NavLink to= '#'className='sectoin-off ' onClick={popup}>Notes</NavLink>
-            <NavLink to= '#' className='sectoin-off ' onClick={popup}>Books</NavLink>
+            <NavLink to= '/' className='sectoin-on active'>Questions</NavLink>
+            <NavLink to= '#' className='sectoin-off active' onClick={popup}>Syllabus</NavLink>
+            <NavLink to= '#'className='sectoin-off active' onClick={popup}>Notes</NavLink>
+            <NavLink to= '#' className='sectoin-off active' onClick={popup}>Books</NavLink>
       </div>
     </aside>
   )
