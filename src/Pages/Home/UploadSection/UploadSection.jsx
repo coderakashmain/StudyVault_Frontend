@@ -51,12 +51,12 @@ const location = useLocation();
   useEffect(()=>{ 
     if(falsepdffinal){
       document.body.style.overflowY = "hidden";
-      blockref.current.style.bottom = '0%'
+      blockref.current.style.top = '0%'
       
     }
     else{
       document.body.style.overflowY = "scroll";
-      blockref.current.style.bottom = '-100%'
+      blockref.current.style.top = '-100%'
 
     }
   },[falsepdffinal])

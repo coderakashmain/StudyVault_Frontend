@@ -412,7 +412,7 @@ const Navbar = (props) => {
 
 
 
-
+const wholenotificationbackRef = useRef();
   useGSAP(() => {
 
 
@@ -421,9 +421,17 @@ const Navbar = (props) => {
     openTl
       .to(notificationref.current, {
         right: 0,
+        duration: 0.3,
+        ease: "ease",
+      },'same')
+
+    
+      .to(wholenotificationbackRef.current, {
+        left: 0,
         duration: 0.5,
-        ease: "power4.inOut",
-      })
+        ease: "ease",
+      },'same')
+ 
 
 
 
@@ -434,7 +442,12 @@ const Navbar = (props) => {
       right: "-100%",
       duration: 0.5,
       ease: "power4.inOut",
-    })
+    },'same2')
+    .to(wholenotificationbackRef.current, {
+      left: "-100%",
+      duration: 0.5,
+      ease: "power4.inOut",
+    },'same2')
 
 
     const handlenotification = () => {
@@ -621,7 +634,7 @@ const Navbar = (props) => {
       {/* <div ref={glitch} className="glitchproblem"></div> */}
 
 
-
+    <aside ref={wholenotificationbackRef} id='full-notification-back'>
       <aside ref={notificationref} id="notification">
         <h2>Notification <s></s>  <i className="fa-solid fa-xmark" style={{ cursor: 'pointer' }} ref={closeNotification}></i></h2>
         <h4>All</h4>
@@ -648,6 +661,7 @@ const Navbar = (props) => {
           <p> Now you can access all <b style={{ fontWeight: '700' }}>Questions papers</b> without login.</p>
         </div>
 
+      </aside>
       </aside>
     </>
   );

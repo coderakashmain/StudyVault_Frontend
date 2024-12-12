@@ -7,6 +7,7 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 5rem;
+    z-index: 1000000000000;
 }
 #upload-section .left-upload-section{
     flex-grow: 1;
@@ -91,11 +92,11 @@ border-radius: 3rem;
     width: 100%;
     height: 100vh;
     height: 100svh;
-    bottom: 0%;
+    top: -100%;
     left: 0%;
-    display: none;
-    background-color: #55545436;
+    background-color: #00000072;
     z-index: 99;
+    transition: all 0.4s ease;
 }
 .papers-head-submit{
     display: flex;
