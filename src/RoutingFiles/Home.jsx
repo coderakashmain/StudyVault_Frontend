@@ -19,7 +19,7 @@ const Home = (props) => {
         <MessageBox />
       <Outlet />
       <UploadSection showAlart={props.showAlart}/>
-      <Review/>
+      {/* <Review/> */}
         <Footer/>
    </>
   )
