@@ -58,13 +58,13 @@ const HomeT = () => {
                     <NavLink to="#" >Integrated B.Ed</NavLink>
                   </li>
                   <li>
-                    <NavLink to="#">Honers</NavLink>
+                    <NavLink to="#">Honors</NavLink>
                   </li>
                   <li>
                     <NavLink to="#">Elective</NavLink>
                   </li>
                   <li>
-                    <NavLink to="#">Compusory</NavLink>
+                    <NavLink to="#">Compulsory</NavLink>
                   </li>
                   <li>
                     <NavLink to="#">E&V</NavLink>
