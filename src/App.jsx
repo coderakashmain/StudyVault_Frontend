@@ -22,6 +22,7 @@ const UserSend = lazy(()=> import("./Component/Admine/UserSend/UserSend"));
 const CsUpload = lazy(()=> import("./Component/Admine/CsUpload/CsUpload"));
 import FetchData from "./Context/FretchDataContext/FetchData";
 import AdminLoginCheck from "./Context/AdminLoginCheck/AdminLoginCheck";
+const TermsConditions = lazy(() => import("./Pages/TermsandConditions/TermsConditions"));
 const PrivecyandPolicy = lazy(() => import("./Pages/Home/Privecy&Policy/PrivecyandPolicy"));
 const AdmineLogIn = lazy(() => import("./Component/Admine/AdmineLogIn/AdmineLogIn"));
 const AboutUs = lazy(() => import("./Pages/AboutUs/AboutUs"));
@@ -116,6 +117,10 @@ function App() {
         { 
           path: "Privacy&Policy",
           element: (<><PrivecyandPolicy showAlart={showAlart} /></>),
+        },
+        { 
+          path: "Terms&Conditions",
+          element: (<><TermsConditions showAlart={showAlart} /></>),
         },
         {
           path: "Admin",

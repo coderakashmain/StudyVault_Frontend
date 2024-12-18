@@ -236,6 +236,7 @@
     transition: all 0.1s linear;
     font-size: 0.9rem;
     white-space: nowrap;
+    color: #fff;
 
 }
 .both-info p button:hover{

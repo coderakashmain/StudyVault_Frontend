@@ -13,16 +13,18 @@
 
 padding: 0.5rem 1rem;
 margin: 0rem 1rem 0rem 0rem;
-border-radius: 0.5rem;
-border: 2px solid rgb(232, 232, 232);
-
+border-radius: 02rem;
 color: #fff;
 font-size: 0.9rem;
 
 
 }
 .sectoin-on{
-    background-color: rgb(22 172 107);
+    background-color: rgb(89 136 178);
+    transition: all 0.3s ease;
+}
+.sectoin-on:hover{
+    background-color: rgb(22, 97, 162);
 }
 .sectoin-off{
     background-color: rgb(116 116 116);

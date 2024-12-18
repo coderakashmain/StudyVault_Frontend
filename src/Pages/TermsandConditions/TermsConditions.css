@@ -1,0 +1,84 @@
+.termsandconditionyheader{
+    background:linear-gradient(90deg ,rgb(31, 31, 78),rgb(33, 143, 160));
+    height: 30vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    color: #ffff;
+    font-weight: 600;
+}
+.termsandconditionyheader header{
+
+    color: #ffff;
+    font-weight: 600;
+    transform: translateY(30%);
+}
+
+#TermsandConditions{
+    padding:0rem 15vw 4rem;
+   
+    background-color:#FFFFFF;
+    overflow-x: hidden;
+}
+#TermsandConditions strong{
+    font-weight: 600;
+}
+#TermsandConditions h2{
+    margin: 2rem 0 2rem;
+}
+#TermsandConditions h2 strong{
+  font-size: 2rem;
+ 
+  font-weight: 600;
+}
+#TermsandConditions h3 {
+ margin: 1rem 0;
+}
+#TermsandConditions h3 strong{
+  font-size: 1.5rem;
+ 
+  font-weight: 600;
+}
+#TermsandConditions p{
+  font-size: 0.9rem;
+ margin: 0.9rem 0;
+ line-height: 24px;
+}
+#TermsandConditions ul li{
+    text-decoration:dashed !important;
+    list-style: disc;
+    margin: 0.5rem 0rem 0 4rem;
+    font-size: 0.9rem;
+}
+#TermsandConditions a{
+
+    text-decoration: underline;
+    color: blue !important;
+    }
+
+    
+@media (max-width : 600px) {
+    #TermsandConditions{
+        padding:0rem 7vw 3rem;
+    
+       
+    }
+    .termsandconditionyheader{
+        font-size: 2rem;
+    }
+    .termsandconditionyheader header{
+
+       
+        transform: translateY(60%);
+    }
+   
+}
+@media (max-width : 450px) {
+    #TermsandConditions{
+        padding:0rem 5vw 3rem;
+    
+       
+    }
+}

@@ -142,9 +142,14 @@ const HomeT = () => {
           </footer>
           <footer className="finalFooter">
             <aside className="lastfooter-left">
+              <div>
               <NavLink to='/About-us'>About Us</NavLink>
               <NavLink to='/Contact-Us'>Contact Us</NavLink>
+              </div>
+              <div>
               <NavLink to='/Privacy&Policy'>Privacy Policy</NavLink>
+              <NavLink to='/Terms&Conditions'>Terms & Conditions</NavLink>
+              </div>
             </aside>
             <aside className="lastfooter-right">
               <p>&copy; Copyright StudyVault  All Rights Reserved </p>
