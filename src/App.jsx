@@ -115,11 +115,11 @@ function App() {
           element: (<><AboutUs showAlart={showAlart} /></>),
         },
         { 
-          path: "Privacy&Policy",
+          path: "PrivacyPolicy",
           element: (<><PrivecyandPolicy showAlart={showAlart} /></>),
         },
         { 
-          path: "Terms&Conditions",
+          path: "TermsConditions",
           element: (<><TermsConditions showAlart={showAlart} /></>),
         },
         {

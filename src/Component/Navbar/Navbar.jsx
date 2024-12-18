@@ -628,7 +628,7 @@ const wholenotificationbackRef = useRef();
           <p>Akash and Jitu  </p>
         </div>
         <div className="slidebar-foot-item">
-          <NavLink to= '/Privacy&Policy' onClick={() => {
+          <NavLink to= '/PrivacyPolicy' onClick={() => {
               document.body.style.overflow = "scroll";
             }}> Privacy & Policy</NavLink>
           <p>V.1.5.3</p>
