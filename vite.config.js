@@ -34,7 +34,21 @@ export default defineConfig({
     'process.env': {}, // Define process.env for modules that expect it
     'eval': '0', // Replace eval with a harmless value
   },
-  plugins: [react()],
+  plugins: [
+    react(),
+    viteStaticCopy({
+      targets: [
+        {
+          src: 'robots.txt',
+          dest: './',
+        },
+        {
+          src: 'sitemap.xml',
+          dest: './',
+        },
+      ],
+    }),
+  ],
   resolve: {
     alias: {
       'lottie-web': 'lottie-web/build/player/lottie_light', // Use the light version of lottie-web

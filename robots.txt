@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /Admin/
+Disallow: /LogIn/
+Disallow: /LogIn/Signup/
+Allow: /
+
+Sitemap: https://studyvault.online/sitemap.xml
