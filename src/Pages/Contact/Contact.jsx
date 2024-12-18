@@ -67,10 +67,10 @@ const Contact = () => {
                   </li>
                   <li>+91 1236549870</li>
                   <div className="social-contact-icon" style={{margin : '0.2rem 0'}}>
-                  <a href="" target="__blank"> <i className="fa-brands fa-facebook"></i></a> 
+                  {/* <a href="" target="__blank"> <i className="fa-brands fa-facebook"></i></a>  */}
                    <a href="https://x.com/AKASHBIN814" target="__blank">  <i className="fa-brands fa-twitter"></i></a>
                    <a href="https://www.linkedin.com/in/akash-bindhani-7b71b9311/" target="__blank">    <i className="fa-brands fa-linkedin"></i></a>
-                   <a href="#" target="__blank">    <i className="fa-brands fa-meta"></i></a>
+                   <a href="https://github.com/coderakashmain"><i className="fa-brands fa-github" target='__blank'></i></a>
                
                 
                 
@@ -136,7 +136,7 @@ const Contact = () => {
               <p onClick={handleEmailButtonClick}>For support or any questions
                 Email us at <span>support@studyvault.online</span></p>
               <h3>MPC baripada</h3>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, nam.</p>
+              <p>Don’t forget to share your thoughts – together, we can make this journey even more exciting!</p>
             </div>
           </div>
         </div>

@@ -333,15 +333,24 @@ transform: scale(0);
 
 .slidebar-foot-item {
   position: absolute;
-  bottom: 4%;
-  right: 5%;
+  bottom: 22%;
+  left: 0%;
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0rem 2.5rem;
 }
 .slidebar-foot-item p {
-  text-align: end;
+  /* text-align: end; */
   font-size: 0.8rem;
   font-weight: 600;
 }
+.slidebar-foot-item a{
+  text-decoration: underline;
+  font-size: 0.8rem;
+  font-weight: 600;
+} 
 .glitchproblem {
   height: 100vh;
   width: 100%;

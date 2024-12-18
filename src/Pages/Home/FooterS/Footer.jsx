@@ -4,38 +4,26 @@ import "../HomeS/HomeT.css";
 
 import 'remixicon/fonts/remixicon.css'
 
-
+import { NavLink } from "react-router-dom";
 
 
 const HomeT = () => {
- 
-  
+
+
   return (
     <>
-    
+
       <div className="main-container">
-          
+
         <div className="inner-main-container">
-          
+
           <footer className="body-footer">
             <div className="mian-footer-body">
-              <div className="first-footer-section">
-                <h3>Join Witih us to recive updates, news & events!</h3>
-                <form action="#">
-                  <input
-                    type="text"
-                    name=""
-                    id=""
-                    placeholder="Enter your email adress"
-                  />
-                  <input type="submit" value="Join" />
-                </form>
-              </div>
-              <hr />
+
               <div className="second-footer-section">
                 <ul>
-                  <h3 className="ct-footer-list-header">Learn More</h3>
-                  <li>
+                  <h3 className="footor-update-title">New Updates</h3>
+                  {/* <li>
                     <a href="#">Company</a>
                   </li>
                   <li>
@@ -46,93 +34,77 @@ const HomeT = () => {
                   </li>
                   <li>
                     <a href="#">Careers</a>
-                  </li>
+                  </li> */}
                 </ul>
                 <ul>
-                  <h3 className="ct-footer-list-header">Services</h3>
+                  <h3 className="footor-departments-title">Content</h3>
                   <li>
-                    <a href="#">Design</a>
+                    <NavLink to="#">Question Papers</NavLink>
                   </li>
                   <li>
-                    <a href="#">Marketing</a>
+                    <NavLink to="#">Note</NavLink>
                   </li>
                   <li>
-                    <a href="#">Sales</a>
+                    <NavLink to="#">Syllabus</NavLink>
                   </li>
                   <li>
-                    <a href="#">Programming</a>
+                    <NavLink to="#">Books</NavLink>
                   </li>
-                  <li>
-                    <a href="#">Support</a>
-                  </li>
+                 
                 </ul>
                 <ul>
-                  <h3 className="ct-footer-list-header">The industry</h3>
+                  <h3 className="footor-papers-title">Papers</h3>
                   <li>
-                    <a href="#">Thought Leadership</a>
+                    <NavLink to="#" >Integrated B.Ed</NavLink>
                   </li>
                   <li>
-                    <a href="#">Webinars</a>
+                    <NavLink to="#">Honers</NavLink>
                   </li>
                   <li>
-                    <a href="#">Events</a>
+                    <NavLink to="#">Elective</NavLink>
                   </li>
                   <li>
-                    <a href="#">Sponsorships</a>
+                    <NavLink to="#">Compusory</NavLink>
                   </li>
                   <li>
-                    <a href="#">Advisors</a>
+                    <NavLink to="#">E&V</NavLink>
                   </li>
                   <li>
-                    <a href="#">Training Program</a>
+                    <NavLink to="#">Pg Papers</NavLink>
                   </li>
                   <li>
-                    <a href="#">Activities & Campaigns</a>
-                  </li>
-                </ul>
-                <ul>
-                  <h3 className="ct-footer-list-header">Public Reactions</h3>
-                  <li>
-                    <a href="#">WebCorpCo Blog</a>
-                  </li>
-                  <li>
-                    <a href="#">Hackathons</a>
-                  </li>
-                  <li>
-                    <a href="#">Videos</a>
-                  </li>
-                  <li>
-                    <a href="#">News Releases</a>
-                  </li>
-                  <li>
-                    <a href="#">Newsletters</a>
+                    <NavLink to="#">Ug Papers</NavLink>
                   </li>
                 </ul>
+
                 <ul>
-                  <h3 className="ct-footer-list-header">About</h3>
-                  <li>
-                    <a href="#">FAQ</a>
-                  </li>
-                  <li>
-                    <a href="#">Our Board</a>
-                  </li>
-                  <li>
-                    <a href="#">Our Staff</a>
-                  </li>
-                  <li>
-                    <a href="#">Contact Us</a>
-                  </li>
+                  <h3 className="footor-contact-box-title">Conact Us</h3>
+                  <p>WQH8+X8Odisha, 757003, India<br />Takatpur, Baripada, Mayurbhanj, Baripada </p>
+                  <p>Email : studyvaultteam@gmail.com</p>
+                  <h4>StudyVault Pvt. Ltd.</h4>
+                  <div className="sosial-media-link">
+                    {/* <div className="social-media-icon">
+                      <a href="http://"><i className="fa-brands fa-facebook"></i></a>
+                    </div> */}
+                    <div className="social-media-icon">
+                      <a href="https://www.instagram.com/akash_bindhani_/" target='__blank'><i className="fa-brands fa-instagram"></i></a>
+                    </div>
+                    <div className="social-media-icon">
+                      <a href="https://x.com/AKASHBIN814" target='__blank'><i className="fa-brands fa-square-twitter"></i></a>
+                    </div>
+                    <div className="social-media-icon">
+                      <a href="https://www.linkedin.com/in/akash-bindhani-7b71b9311/" target='__blank'><i className="fa-brands fa-linkedin"></i></a>
+                    </div>
+                    <div className="social-media-icon">
+                      <a href="https://github.com/coderakashmain"><i className="fa-brands fa-github" target='__blank'></i></a>
+                    </div>
+                  </div>
+
                 </ul>
               </div>
-              <hr />
-              <div className="third-footer-section">
-                {/* <div className="footer-comany-logo"></div>
-                <p>
-                  Lorem ipsum dolor <br /> sit amet consectetur <br />{" "}
-                  adipisicing elit.
-                  <br />
-                  Officiis, illum.
-                </p> */}
+              {/* <hr /> */}
+              {/* <div className="third-footer-section">
+                
                 <div className="apple-store-box">
                   <input
                     type="image"
@@ -145,37 +117,17 @@ const HomeT = () => {
                   </div>
                 </div>
                 <div className="play-store-box">
-                  {/* <input
-                    type="image"
-                    src="https://e7.pngegg.com/pngimages/530/733/png-clipart-goggle-playstore-icon-google-play-computer-icons-android-play-button-angle-rectangle.pn"
-                    alt=""
-                  /> */}
+                 
                   <i style={{color: '#D6D5D8',padding : '0 0.9rem 0 0',fontSize: '1.2rem'}} className="fa-brands fa-google-play"></i>
                   <div>
                     <p>Download on </p>
                     <h4>Google Play</h4>
                   </div>
                 </div>
-                <div className="sosial-media-link">
-                  <div className="social-media-icon">
-                    <a href="http://"><i className="fa-brands fa-facebook"></i></a>
-                  </div>
-                  <div className="social-media-icon">
-                    <a href="http://"><i className="fa-brands fa-instagram"></i></a>
-                  </div>
-                  <div className="social-media-icon">
-                    <a href="http://"><i className="fa-brands fa-square-twitter"></i></a>
-                  </div>
-                  <div className="social-media-icon">
-                    <a href="http://"><i className="fa-brands fa-linkedin"></i></a>
-                  </div>
-                  <div className="social-media-icon">
-                    <a href="http://"><i className="fa-brands fa-square-threads"></i></a>
-                  </div>
-                </div>
-              </div>
-              <hr />
-              <div className="forth-footer-section">
+             
+              </div> */}
+              {/* <hr /> */}
+              {/* <div className="forth-footer-section">
                   <ul>
                     <li>FAQ</li>
                     <li>News</li>
@@ -185,8 +137,18 @@ const HomeT = () => {
                 <p> Copyright @ 2024 Webpro. privacy policy</p>
                 <p>Web Designed by Jitu and Akash</p>
                  </div>
-              </div>
+              </div> */}
             </div>
+          </footer>
+          <footer className="finalFooter">
+            <aside className="lastfooter-left">
+              <NavLink to='/About-us'>About Us</NavLink>
+              <NavLink to='/Contact-Us'>Contact Us</NavLink>
+              <NavLink to='/Privacy&Policy'>Privacy Policy</NavLink>
+            </aside>
+            <aside className="lastfooter-right">
+              <p>&copy; Copyright StudyVault  All Rights Reserved </p>
+            </aside>
           </footer>
         </div>
       </div>

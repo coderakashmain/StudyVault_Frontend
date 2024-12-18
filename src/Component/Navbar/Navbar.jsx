@@ -289,7 +289,7 @@ const Navbar = (props) => {
     }
 
     // glitch.current.addEventListener('click',backToPage);
-    const refrasher = document.querySelectorAll(".slidebar-title a");
+    const refrasher = document.querySelectorAll(".slidebar-title a ,.slidebar-foot-item a");
 
     refrasher.forEach((e) => {
       e.addEventListener("click", () => {
@@ -628,6 +628,9 @@ const wholenotificationbackRef = useRef();
           <p>Akash and Jitu  </p>
         </div>
         <div className="slidebar-foot-item">
+          <NavLink to= '/Privacy&Policy' onClick={() => {
+              document.body.style.overflow = "scroll";
+            }}> Privacy & Policy</NavLink>
           <p>V.1.5.3</p>
         </div>
       </div>

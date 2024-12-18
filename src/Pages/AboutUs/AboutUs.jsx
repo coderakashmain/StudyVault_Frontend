@@ -7,6 +7,7 @@ import akashlogow from '../../photo/Akash2.webp'
 import jituphoto from '../../photo/jitupp.jpg'
 import jituphotoa from '../../photo/jitupp.avif'
 import jituphotow from '../../photo/jitupp.webp'
+import Footer from '../Home/FooterS/Footer'
 
 const AboutUs = () => {
 
@@ -19,8 +20,9 @@ const AboutUs = () => {
   return (
     <>
       <section id="about-us">
-
+      <div className="aboutusheader"><header>About Us</header></div>
         <div className="about-us-contain">
+          
           <div className="about-us-box">
             <div className="left-about-box">
               <h2><span style={{ fontWeight: '600' }}>O</span>ver the past few years, we've observed that students have had difficulty to obtaining notes and papers..In order to overcome these consequences
@@ -109,6 +111,7 @@ const AboutUs = () => {
           </div>
         </div>
       </section>
+      <Footer/>
     </>
   )
 }

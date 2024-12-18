@@ -1,0 +1,111 @@
+.privecyandpolicyheader{
+    background:linear-gradient(90deg ,rgb(31, 31, 78),rgb(33, 143, 160));
+    height: 30vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    color: #ffff;
+    font-weight: 600;
+}
+.privecyandpolicyheader header{
+
+    color: #ffff;
+    font-weight: 600;
+    transform: translateY(30%);
+}
+#privecyandpolicy{
+    padding:0rem 15vw 4rem;
+    position: relative;
+    /* z-index: 100000000; */
+    background-color:#FFFFFF;
+    overflow-x: hidden;
+
+   
+}
+#privecyandpolicy header{
+   padding:2rem 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+  transform: translateX(-2%);
+
+}
+#privecyandpolicy hr{
+  transform: scaleX(2);
+
+}
+#privecyandpolicy h1{
+font-size: 3rem;
+font-weight: 600;
+padding: 2rem 0rem 2rem 0 ;
+font-family: Arial, Helvetica, sans-serif;
+   
+}
+#privecyandpolicy h2{
+font-size:2rem;
+font-weight: 600;
+margin: 2rem 0rem 3rem;
+font-family: Arial, Helvetica, sans-serif;
+
+   
+}
+#privecyandpolicy h3{
+font-size:1.5rem;
+font-weight: 600;
+margin: 1rem 0rem;
+font-family: Arial, Helvetica, sans-serif;
+
+   
+}
+#privecyandpolicy p{
+font-size: 1rem;
+padding: 0.7rem 0;
+font-family: Arial, Helvetica, sans-serif;
+line-height: 25px;
+
+   
+}
+#privecyandpolicy a{
+
+text-decoration: underline;
+color: blue !important;
+}
+#privecyandpolicy li{
+  
+text-decoration:dashed !important;
+list-style: disc;
+margin: 0.5rem 0rem 0 4rem;
+
+
+   
+}
+#privecyandpolicy li p{
+  padding: 0.4rem 0;
+}
+#privecyandpolicy strong{
+  
+font-weight: 600;
+   
+}
+
+@media (max-width : 600px) {
+    #privecyandpolicy{
+        padding:0rem 7vw 3rem;
+    
+       
+    }
+    #privecyandpolicy li{
+        margin: 0.5rem 0rem 0 2rem;
+        
+        
+           
+        }
+}
+@media (max-width : 450px) {
+    #privecyandpolicy{
+        padding:0rem 5vw 3rem;
+    
+       
+    }
+}
