@@ -132,7 +132,7 @@ const TermsConditions = () => {
             <p>The limitations and prohibitions of liability set in this Section and elsewhere in this disclaimer: (a) are subject to the preceding paragraph; and (b) govern all liabilities arising under the disclaimer, including liabilities arising in contract, in tort and for breach of statutory duty.</p>
 
             <p>As long as the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature.</p>
-
+            <p>The question papers are <strong> publicly</strong> available and we are not infringing on copyrights.</p>
         </section>
         <Footer/>
         </>
