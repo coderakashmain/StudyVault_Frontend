@@ -75,7 +75,7 @@ const handleSubmit = async (e)=>{
                 <img src={logo} alt="Web Logo"  loading='lazy'/>
 
                 <div className="adminloginlefttext">
-                    <h3>We are Very Happy👏 <br /> Pleas Log in Into admin Panel (●'◡'●)</h3>
+                    <h3>We are Very Happy👏 <br /> Please Log in Into admin Panel (●'◡'●)</h3>
                 </div>
                 <button onClick={()=> navigate('/')}><i className="fa-solid fa-arrow-left" style={{color :'#fff' , padding : '0rem 0.6rem 0 0',fontSize : '1rem'}}></i>Back</button>
             </div>

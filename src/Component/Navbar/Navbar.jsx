@@ -480,7 +480,7 @@ const wholenotificationbackRef = useRef();
       <div ref={navbar}
         className={`navbar 
          ${nav ? "home-nav" : "black-nav"}
-      ${location.pathname === '/' ? (nav ? "home-nav" : "black-nav") : ""}
+      ${location.pathname === '' ? (nav ? "home-nav" : "black-nav") : ""}
       ${location.pathname === '/Profile' ? "profile-nav" : ""}
       ${location.pathname === '/Contact-Us' ? "contact-nav" : ""}
       ${location.pathname === '/About-us' ? "about-nav" : ""}

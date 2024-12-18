@@ -60,7 +60,7 @@ function App() {
 
   const router = createBrowserRouter([
     {
-      path: '/',
+      path: '',
       element: <><AdminLoginCheck><UserContextdata><UserLoginContext><FilterScrollContex> <DepartmentListContext> <Navbar showAlart={showAlart} /><Allpages /><Alart alart={alart} /></DepartmentListContext></FilterScrollContex></UserLoginContext></UserContextdata></AdminLoginCheck></>,
       children: [
 
