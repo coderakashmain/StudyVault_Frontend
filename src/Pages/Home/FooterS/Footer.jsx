@@ -147,8 +147,8 @@ const HomeT = () => {
               <NavLink to='/Contact-Us'>Contact Us</NavLink>
               </div>
               <div>
-              <NavLink to='/PrivacyPolicy'>Privacy Policy</NavLink>
-              <NavLink to='/TermsConditions'>Terms & Conditions</NavLink>
+              <NavLink to='/Privacy-Policy'>Privacy Policy</NavLink>
+              <NavLink to='/Terms-Conditions'>Terms & Conditions</NavLink>
               </div>
             </aside>
             <aside className="lastfooter-right">
