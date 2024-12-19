@@ -14,7 +14,7 @@ const Admine = (props) => {
 
  useEffect(() => {
   const token = localStorage.getItem('admin_token');
-  console.log(token);
+
 
   if (!token) {
       // If no token, redirect to login page

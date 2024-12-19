@@ -2,6 +2,7 @@ import React, { useContext, useState, useRef, useEffect } from 'react'
 import Lottie from 'lottie-react'
 import loadinganimation from '../../../photo/lottieflow-loading-04-2-000000-easey.json'
 import { FetchDataContext } from '../../../Context/FretchDataContext/FetchData'
+import { degrees,PDFDocument, rgb } from 'pdf-lib';
 
 
 import './Question.css'
@@ -76,12 +77,36 @@ const Question = (props) => {
         }
     };
 
-    const handleUpload = () => {
+
+    const addWatermark = async (file, watermarkText) => {
+        const pdfBytes = await file.arrayBuffer();
+        const pdfDoc = await PDFDocument.load(pdfBytes);
+        const pages = pdfDoc.getPages();
+    
+        pages.forEach((page) => {
+            const { width, height } = page.getSize();
+            page.drawText(watermarkText, {
+                x: width / 2 - 100,
+                y: height / 2,
+                size: 40,
+                color: rgb(0.75, 0.75, 0.75),
+                opacity: 0.6,
+                rotate: degrees(45),
+            });
+        });
+    
+        const watermarkedPdfBytes = await pdfDoc.save();
+        const watermarkedFile = new File([watermarkedPdfBytes], file.name, { type: file.type });
+        return watermarkedFile;
+    };
+
+    const handleUpload = async () => {
         if (selectedFile) {
             const newFileName = `${filtetuploaddata.departmentName}_${filtetuploaddata.studentyear}_${filtetuploaddata.dptyear}_${filtetuploaddata.paperName}_${filtetuploaddata.semormid}_${filtetuploaddata.educationLavel}_${filtetuploaddata.session}.pdf`;
             // Rename the file
             const renamedFile = new File([selectedFile], newFileName, { type: selectedFile.type });
-            return renamedFile;
+            const watermarkedFile = await addWatermark(renamedFile, 'StudyVault - Protected');
+            return watermarkedFile;
         }
         return null;
     };
@@ -91,7 +116,7 @@ const Question = (props) => {
         e.preventDefault();
         setSingletap(true);
 
-        const fileToUpload = handleUpload(); // Get renamed file
+        const fileToUpload = await handleUpload(); // Get renamed file
         if (!fileToUpload) {
             props.showAlart('Selet a File', 'Please select a valid file.', 'cancel');
             setSingletap(false);
@@ -114,8 +139,9 @@ const Question = (props) => {
 
             if (response.status === 200) {
                 const fileId = response.data.fileId; // Google Drive File ID
-                const driveUrl = `https://drive.google.com/file/d/${fileId}/view`;
-
+                // const driveUrl = `https://drive.google.com/file/d/${fileId}/view`;
+                // window.open(driveUrl);
+                // alert(driveUrl);
                 // Reset states and show success message
                 setSelectedFile('');
                 setFiltetuploaddata({
