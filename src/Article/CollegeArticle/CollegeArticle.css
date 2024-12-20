@@ -10,15 +10,91 @@
 }
 .college-article-box{
     width: 100%;
-    padding: 2rem 10rem;
+    padding: 2rem 6rem;
 }
+
+
 .college-article-box h1{
-   font-size: 4rem;
+   font-size: 2rem;
    font-weight: 600;
-   text-decoration: underline;
+   padding: 3rem 0rem 1rem;
+   /* text-transform: uppercase; */
+   border-bottom: 0.14rem solid #131414;
+
 }
+.college-article-content{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 2rem 0;
+    gap: 1rem;
+    flex-wrap:wrap ;
+    cursor: pointer;
+    opacity: 1;
+}
+.college-article-content h2{
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 600;
+    font-size: 1.6rem;
+    cursor: pointer;
+}
+/* .college-article-content h2:hover{
+   text-decoration: underline;
+} */
+.college-article-content p{
+    font-family: 'Times New Roman', Times, serif;
+    margin-top: 3rem;
+    opacity: 0.8;
+    cursor: pointer;
+}
+.college-article-content strong{
+    font-family: 'Times New Roman', Times, serif;
+    text-decoration: underline;
+    color: blue;
+    cursor: pointer;
+}
+.mpc-image-1-college-home{
+    /* width: 50%; */
+    flex-grow: 1;
+    flex-basis: 300px;
+    height: 15rem;
+    overflow: hidden;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.mpc-image-1-college-home img{
+    height:25rem;
+    aspect-ratio: 3/2;
+    object-fit: fill;
+    cursor: pointer;
+    opacity: 1;
+}
+/* .mpc-image-1-college-home img:hover{
+    opacity: 0.8;
+} */
+.mpc-link-to-read-article{
+    flex-grow: 1;
+    flex-basis: 300px;
+}
+
+
+
 @media (max-width : 875px) {
     .college-article-box{
         padding: 2rem 4vw;
     }
+}
+@media (max-width : 600px) {
+    .mpc-image-1-college-home{
+        height: 15rem;
+    }
+    .mpc-image-1-college-home img{
+        height: 20rem;
+    }
+    .college-article-content p{
+        margin-top: 2rem;
+    }
+    
 }

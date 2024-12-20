@@ -1,0 +1,80 @@
+#mpc-article{
+    min-height: 100vh;
+    width: 100%;
+    
+}
+#mpc-article a,#mpc-article p,#mpc-article h1,#mpc-article li,#mpc-article button,#mpc-article strong,#mpc-article h2{
+    font-family: 'Times New Roman', Times, serif;
+    color: #09152a;
+
+}
+.mpc-article-box{
+    width: 100%;
+    padding: 2rem 20rem;
+}
+.mpc-article-box h1{
+   font-size: 3rem;
+   font-weight: 600;
+   text-decoration: underline;
+   /* text-align: center; */
+
+}
+.mpc-article-box h2{
+   font-size: 2rem;
+   font-weight: 500;
+   margin: 2rem 0;
+   /* text-decoration: underline; */
+   /* text-align: center; */
+
+}
+.mpc-article-box p{
+   font-size: 1.1rem;
+   margin: 1rem 0rem 0 0;
+   line-height: 1.8rem;
+   letter-spacing: 0.06rem;
+
+}
+.mpc-article-box  strong{
+   font-weight: 600;
+   text-decoration: underline;
+
+}
+.mpc-image-1{
+    width: 100%;
+    height: 25rem;
+    overflow: hidden;
+    margin: 2rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: rgb(206, 206, 206); */
+}
+.mpc-image-1 img{
+    height:37rem;
+    aspect-ratio: 3/2;
+    object-fit: fill;
+}
+
+
+
+@media (max-width : 875px) {
+    .mpc-article-box{
+        padding: 2rem 4vw;
+    }
+}
+@media (max-width : 600px) {
+    .mpc-image-1{
+        height: 15rem;
+    }
+    .mpc-image-1 img{
+        height: 20rem;
+    }
+    .mpc-article-box h1{
+        font-size: 2.2rem;
+     
+     }
+    .mpc-article-box h2{
+        font-size: 1.6rem;
+     
+     }
+}

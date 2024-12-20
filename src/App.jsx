@@ -25,6 +25,7 @@ import AdminLoginCheck from "./Context/AdminLoginCheck/AdminLoginCheck";
 import ArticleContainerRouter from "./RoutingFiles/ArticleContainerRouter";
 import CollegeArticleRouter from "./Article/CollegeArticle/CollegeArticleRouter";
 import MpcArticle from "./Article/CollegeArticle/MpcAritcle/MpcArticle";
+import ArticleSubheading from "./Context/ArticleSubheading/ArticleSubheading";
 const CollegeAritcle = lazy(() => import("./Article/CollegeArticle/CollegeAritcle"));
 const ArticleHome = lazy(() => import("./Article/ArticleHome/ArticleHome"));
 const TermsConditions = lazy(() => import("./Pages/TermsandConditions/TermsConditions"));
@@ -163,7 +164,7 @@ function App() {
           element : (<><AdmineLogIn showAlart={showAlart}/></>)
         } , {
           path: '/article-section',
-          element: (<><ArticleContainerRouter showAlart={showAlart} /> </>),
+          element: (<><ArticleSubheading><ArticleContainerRouter showAlart={showAlart} /></ArticleSubheading> </>),
           children: [
             {
               path: '',

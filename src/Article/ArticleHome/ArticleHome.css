@@ -1,6 +1,69 @@
 #article-home{
     min-height: 100vh;
     width: 100%;
-  
+}
+
+#article-home a,#article-home p,#article-home h1,#article-home li,#article-home button{
+    font-family: 'Times New Roman', Times, serif;
+    color: #09152a;
+ }
+ .article-home-header{
+    padding: 2rem 6rem 0.3rem;
+    font-family: 'Times New Roman', Times, serif;
+    color: #09152a;
+    font-size: 2rem;
+    font-weight: 600;
+    text-decoration: underline;
+    border-bottom: 2px solid #1d1d1d;
+ }
+.news-article-box {
+    width: 100%;
+    padding: 2rem 6rem;
+}
+
+.news-article-box h1{
+    font-size: 2rem;
+    color: #196874;
+    font-weight: 600;
+    padding: 3rem 0rem 1rem;
+    /* text-transform: uppercase; */
+    border-bottom: 0.14rem solid #131414;
+ 
+ }
+
+.news-article-content{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.news-image-1-box{
+    height: 20rem;
+    background-color: #e9e9e9;
+    width: 50%;
+}
+.news-link-to-read-article{
+    width: 50%;
     /* background-color: red; */
 }
+
+@media (max-width : 875px) {
+    .news-article-box{
+        padding: 2rem 4vw;
+    }
+    .article-home-header{
+        padding: 2rem 4vw 0.3rem;
+     }
+}
+@media (max-width : 600px) {
+    .news-image-1-box{
+        height: 10rem;
+    }
+    .news-article-content p{
+        margin-top: 2rem;
+    }
+    
+}
+

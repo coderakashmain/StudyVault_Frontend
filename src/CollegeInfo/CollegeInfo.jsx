@@ -1,6 +1,6 @@
 import React, { useEffect, useState ,useRef} from 'react'
 import './CollegeInfo.css'
-import logo from './College Photoes/College1.jpg'
+import logo6 from '../Article/ArticlePhotoes/Colleges/MPCautoCollege/mpc5.jpg'
 import logo2 from './College Photoes/unnamed.jpg'
 import logo3 from './College Photoes/College3.jpg'
 import logo4 from './College Photoes/College4.jpg'
@@ -11,7 +11,7 @@ const CollegeInfo = () => {
     const sliderRef = useRef(null);
     const navigate = useNavigate();
     const image = [
-        logo,
+        logo6,
         logo3,
         logo5,
         logo4,
@@ -45,6 +45,11 @@ const CollegeInfo = () => {
           slide.style.transform = `translateX(-${count * 100}%)`;
         });
       }, [count]);
+
+      const onclick = ()=>{
+        window.location.href = "/article-section/colleges-article/mpc-article";
+        
+      }
    
   return (
     <>
@@ -53,7 +58,7 @@ const CollegeInfo = () => {
         <aside className="college-photos college-info-boxes">
             <div className="college-photos-box" ref={sliderRef}>
                 {image.map((image,index)=>(
-                       <img src={image} alt="college photo" className='slide' key={index} />
+                       <img src={image} alt="college photo" className='slide' key={index}  />
                 ))}
                 
             </div>
@@ -67,7 +72,7 @@ const CollegeInfo = () => {
 </p>
             <br />
             <p>Over the years, the institution has flourished, reaching new heights of excellence and adding countless accolades to its ever-growing legacy of success....</p>
-            <button onClick={()=> navigate('/article-section/colleges-article/mpc-article')}>Explore</button>
+            <button onClick={onclick}>Explore</button>
         </aside>
     </section>
     </>

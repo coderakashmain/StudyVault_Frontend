@@ -1,6 +1,9 @@
 #article-header {
   width: 100%;
 }
+#article-header hr{
+  opacity: 0.5;
+}
 .article-header-box {
   width: 100%;
   display: flex;
@@ -20,6 +23,11 @@
   /* flex-grow: 1; */
   text-align: center;
   color: #09152a;
+}
+.article-header-box sub {
+font-size: 0.6rem;
+font-weight: 700;
+color: #09152a;
 }
 .article-header-box a:last-child {
   text-align: center;
@@ -46,6 +54,18 @@
   border-right: 1px solid #2a2a2aa4;
 }
 .article-content-item a:hover {
-  background-color: #09152a;
+  background-color: #112b58;
   color: #fff;
+}
+.state-on{
+  color: #fff;
+  background-color: #09152a;
+}
+.article-content-item .state-on{
+  color: #fff;
+  background-color: #09152a;
+}
+.state-off{
+  background-color: none;
+  color: #000;
 }
