@@ -26,7 +26,7 @@ const SectionSelector = (props) => {
             <NavLink to= '' className='section-off active' onClick={popup}>Books</NavLink>
       </div>
       <div className="section-selector-inside-right  section-selector-common">
-      <NavLink to= '/article-section' className={` ${location.pathname === '/article-section' ? 'section-on' : 'section-nutral ' } active`}>Aritcle</NavLink>
+      <NavLink to= '/article-section' className={` ${location.pathname === '/article-section' ? 'section-on' : 'section-nutral ' } active`}>Article</NavLink>
       </div>
     </aside>
   )

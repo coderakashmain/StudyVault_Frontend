@@ -35,6 +35,7 @@ padding: 0.5rem 1rem;
 border-radius: 02rem;
 /* color: #fff; */
 font-size: 0.9rem;
+font-weight: 500;
 
 
 }
@@ -62,6 +63,7 @@ font-size: 0.9rem;
 }
 .section-selector-inside-right  a{
     color: #000;
+    font-weight: 600;
 }
 @media (max-width :838px ) {
     #section-selector{
