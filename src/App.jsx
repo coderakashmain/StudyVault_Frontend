@@ -22,6 +22,11 @@ const UserSend = lazy(()=> import("./Component/Admine/UserSend/UserSend"));
 const CsUpload = lazy(()=> import("./Component/Admine/CsUpload/CsUpload"));
 import FetchData from "./Context/FretchDataContext/FetchData";
 import AdminLoginCheck from "./Context/AdminLoginCheck/AdminLoginCheck";
+import ArticleContainerRouter from "./RoutingFiles/ArticleContainerRouter";
+import CollegeArticleRouter from "./Article/CollegeArticle/CollegeArticleRouter";
+import MpcArticle from "./Article/CollegeArticle/MpcAritcle/MpcArticle";
+const CollegeAritcle = lazy(() => import("./Article/CollegeArticle/CollegeAritcle"));
+const ArticleHome = lazy(() => import("./Article/ArticleHome/ArticleHome"));
 const TermsConditions = lazy(() => import("./Pages/TermsandConditions/TermsConditions"));
 const PrivecyandPolicy = lazy(() => import("./Pages/Home/Privecy&Policy/PrivecyandPolicy"));
 const AdmineLogIn = lazy(() => import("./Component/Admine/AdmineLogIn/AdmineLogIn"));
@@ -66,7 +71,7 @@ function App() {
 
         {
           path: '',
-          element: (<><Home showAlart={showAlart} /> </>),
+          element: (<><Home  showAlart={showAlart} /> </>),
           children: [
             {
               path: '',
@@ -79,6 +84,7 @@ function App() {
 
           ]
         },
+      
         {
           path: "Contact-Us",
           element: (<><PhoneInfo><Contact showAlart={showAlart} /></PhoneInfo></>),
@@ -155,9 +161,35 @@ function App() {
         {
           path : 'Admin/AdminLogIn',
           element : (<><AdmineLogIn showAlart={showAlart}/></>)
-        }
+        } , {
+          path: '/article-section',
+          element: (<><ArticleContainerRouter showAlart={showAlart} /> </>),
+          children: [
+            {
+              path: '',
+              element: <><ArticleHome showAlart={showAlart} /></>
+            },
+            {
+              path: 'colleges-article',
+              element: <CollegeArticleRouter showAlart={showAlart} />,
+              children : [
+                {
+                  path : '',
+                  element: <CollegeAritcle showAlart={showAlart} />,
+                  
+                },{
+                  path : 'mpc-article',
+                  element : <MpcArticle showAlart={showAlart}/>
+                }
+              ]
+            }
+    
+          ]
+        },
       ]
-    }
+    },
+  
+   
 
 
 

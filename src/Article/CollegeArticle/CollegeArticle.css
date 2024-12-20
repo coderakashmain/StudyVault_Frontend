@@ -1,0 +1,24 @@
+#college-article{
+    min-height: 100vh;
+    width: 100%;
+    
+}
+#college-article a,#college-article p,#college-article h1,#college-article li,#college-article button{
+    font-family: 'Times New Roman', Times, serif;
+    color: #09152a;
+
+}
+.college-article-box{
+    width: 100%;
+    padding: 2rem 10rem;
+}
+.college-article-box h1{
+   font-size: 4rem;
+   font-weight: 600;
+   text-decoration: underline;
+}
+@media (max-width : 875px) {
+    .college-article-box{
+        padding: 2rem 4vw;
+    }
+}

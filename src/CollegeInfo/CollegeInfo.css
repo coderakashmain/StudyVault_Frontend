@@ -1,0 +1,118 @@
+#college-info{
+    min-height: 20rem;
+    width: 100%;
+    background: var(--notificationbackcolor);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 3rem 2rem 5rem;
+
+}
+.college-info-boxes{
+    flex-grow: 1;
+    flex-basis: 400px;
+    width: 50%;
+    height: 100%;
+}
+.college-photos{
+  height: 100%;
+}
+
+.college-photos-box{
+    border-radius: 0.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 30rem;
+    transition: all 0.2s ease;
+    box-shadow: 2px 2px 3px rgb(200, 200, 200);
+    position: relative;
+    left: 0%;
+    top: 0%;
+    overflow: hidden;
+    padding: 0rem 0.2rem;
+}
+
+.college-photos-box:hover{
+   box-shadow: 2px 2px 10px rgb(152, 152, 152);
+}
+.college-photos-box img{
+    aspect-ratio: 3/2;
+    object-fit: contain;
+    height:27rem ;
+    width: 100%;
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    transition: all 0.5s linear;
+   
+  
+
+}
+.college-detail{
+    padding: 0rem 0 0 2rem;
+}
+.college-detail h1{
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin: 0rem 0rem 0.8rem;
+    /* color: #3a7a7f; */
+    color: #11274d;
+}
+.college-detail p{
+    font-family:  'Times New Roman', Times, serif;
+    line-height: 1.5rem;
+    font-size: 1.1rem;
+    letter-spacing: 0.03rem;
+    /* color: #3a7a7f; */
+    color: #09152A;
+
+}
+.college-detail button{
+    font-size: 2.2rem;
+    border: none;
+    outline: none;
+    font-weight: 500;
+    /* border: 2px solid black; */
+    border-radius: 2rem;
+    margin: auto;
+    padding: 0.5rem  0rem;
+   display: block;
+   margin-top: 4rem;
+   width: 100%;
+   /* background: #7bb9b6; */
+   background: #11274d;
+   cursor: pointer;
+   color: #fff;
+   transition: all 0.2s ease;
+   user-select: none;
+
+}
+.college-detail button:hover{
+    /* background-color: rgb(100, 175, 170); */
+    background: #09152A;
+   }
+.college-detail button:active{
+    transform: scale(0.97);
+   }
+
+    @media (max-width : 847px) {
+        #college-info{
+           gap:  3rem;
+        
+        }
+    }
+    @media (max-width : 600px) {
+        .college-photos-box img{
+            height:16rem ;
+        
+        }
+        .college-detail{
+            padding: 0rem 0 0 0rem;
+        }
+        #college-info{
+            padding: 3rem 1.5rem 5rem;
+        
+        }
+    }

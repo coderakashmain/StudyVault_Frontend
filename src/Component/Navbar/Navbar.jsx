@@ -248,9 +248,9 @@ const Navbar = (props) => {
 
     closeTl
       .to(".slidebar", {
-        left: -1000,
-        borderRadius: 50,
-        duration: 1.3,
+        left: '-100%',
+        borderRadius: '50%',
+        duration: 0.2,
         ease: "power2.out"
       }, 'sameclose');
     closeTl.to(".cross-icon i", {
@@ -473,6 +473,14 @@ const wholenotificationbackRef = useRef();
       closeNotification.current.removeEventListener("click", handlenotificationclose);
     };
   });
+  // useEffect(()=>{
+  //   if(location.pathname.startsWith( '/article-section')){
+  //     navbar.current.style.background = 'black';
+  //   }
+  //   else{
+  //     navbar.current.style.background = '';
+  //   }
+  // },[location.pathname])
 
 
   return (

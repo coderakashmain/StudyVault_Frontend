@@ -7,6 +7,7 @@ import MessageBox from '../Pages/MessageBox/MessageBox'
 import Review from '../Pages/Home/Review/Review'
 import UploadSection from '../Pages/Home/UploadSection/UploadSection'
 import SectionSelector from '../Component/SectionSelector/SectionSelector'
+import CollegeInfo from '../CollegeInfo/CollegeInfo'
 
 // import Filter from './FilterS/Filter'
 
@@ -20,6 +21,7 @@ const Home = (props) => {
       <Outlet />
       <UploadSection showAlart={props.showAlart}/>
       {/* <Review/> */}
+      <CollegeInfo/>
         <Footer/>
    </>
   )

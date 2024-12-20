@@ -2,7 +2,7 @@
     min-height: 10rem;
     width: 100%;
     background: var(--notificationbackcolor);
-    padding: 3rem 1rem;
+    padding: 3rem 1rem 0rem;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -41,7 +41,7 @@ padding: 2rem 3rem;
 width: 75%;
 border-radius: 3rem;
 
-
+transition: all 0.3s ease;
    
 }
 #upload-section .right-upload-section input::before{
@@ -60,6 +60,7 @@ border-radius: 3rem;
    font-size: 2rem;
    font-weight: 500;
    cursor: pointer;
+   
    /* padding: 0rem 1rem; */
    
 
@@ -183,6 +184,13 @@ transition: all 0.3s ease;
 }
 
 
+@media (min-width : 618px) {
+    #upload-section{
+        padding: 3rem 1rem 3rem;
+    
+    }
+      
+  }
 @media (max-width : 764px) {
     #upload-section h3{
       text-align: center;
