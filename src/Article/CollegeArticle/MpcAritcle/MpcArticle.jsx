@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import './MpcArticle.css'
-import image1 from '../../../CollegeInfo/College Photoes/College1.jpg'
 import image2 from '../../ArticlePhotoes/Colleges/MPCautoCollege/mpc2.jpg'
 import image3 from '../../ArticlePhotoes/Colleges/MPCautoCollege/mpc3.jpg'
 import image4 from '../../ArticlePhotoes/Colleges/MPCautoCollege/mpc4.jpg'
