@@ -13,7 +13,7 @@ const ArticleHome = () => {
                 <div className="news-image-1-box">
                 </div>
                 <div className="news-link-to-read-article">
-                  <h1>Update Soon</h1>
+                  <h1>Update Soon...</h1>
                 </div>
               </div>
       
