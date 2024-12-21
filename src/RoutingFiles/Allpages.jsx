@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom'
 import Loadingicon from '../Component/Jsonlicon/Loadingicon'
 import Admine from '../Component/Admine/Admine'
 import ReCaptha from '../Component/Captha/ReCaptha'
+import PhoneInfo from '../Context/PhoneInfo/PhoneInfo'
 
 
 
@@ -29,13 +30,14 @@ const Allpages = () => {
 
 
    <> 
+   <PhoneInfo>
     {!isCaptchaVerified && <ReCaptha onCaptchaSuccess={handleCaptchaSuccess} />}
 
       <Suspense fallback = {<Loadingicon/>}>   
 
         <Outlet/>
      </Suspense> 
-  
+     </PhoneInfo>
    </>
   )
 }

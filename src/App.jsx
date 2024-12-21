@@ -88,7 +88,7 @@ function App() {
       
         {
           path: "Contact-Us",
-          element: (<><PhoneInfo><Contact showAlart={showAlart} /></PhoneInfo></>),
+          element: (<><Contact showAlart={showAlart} /></>),
         },
         {
           path: 'Downloadpdf',

@@ -1,11 +1,18 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useEffect } from 'react';
 import axios from 'axios';
-import zIndex from '@mui/material/styles/zIndex';
+
+
+
 
 const ReCaptha = () => {
+  
   const [captchaValue, setCaptchaValue] = useState(null);
-  const sitekey = process.env.REACT_APP_SITE_KEY;
+  // const {sitekey} = useContext(Photonumdata);
+  const sitekey = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
+
+
+
 
   useEffect(() => {
     // Dynamically load the ReCAPTCHA script
@@ -17,6 +24,7 @@ const ReCaptha = () => {
     };
     document.body.appendChild(script);
   }, [sitekey]);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,6 +40,7 @@ const ReCaptha = () => {
     });
 
     if (response.data.success) {
+
       alert('Form submitted successfully');
     } else {
       alert('Captcha verification failed');
@@ -42,6 +51,7 @@ const ReCaptha = () => {
     // Call ReCAPTCHA and get a token
     window.grecaptcha.execute(sitekey, { action: 'submit' }).then((token) => {
       setCaptchaValue(token);
+      alert();
     });
   };
 //   console.log('Captcha token:', captchaValue);
