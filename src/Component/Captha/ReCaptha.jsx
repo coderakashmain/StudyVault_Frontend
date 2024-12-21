@@ -1,68 +1,50 @@
 import React, { useContext, useState } from 'react';
 import { useEffect } from 'react';
 import axios from 'axios';
+import './ReCaptha.css'
 
 
 
-
-const ReCaptha = () => {
+const ReCaptha = ({onVerified}) => {
   
-  const [captchaValue, setCaptchaValue] = useState(null);
-  // const {sitekey} = useContext(Photonumdata);
-  const sitekey = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
-
-
-
-
   useEffect(() => {
-    // Dynamically load the ReCAPTCHA script
-    const script = document.createElement('script');
-    script.src = `https://www.google.com/recaptcha/api.js?render=${sitekey}`;
-    script.async = true;
-    script.onload = () => {
-    //   console.log('ReCAPTCHA script loaded successfully');
+    
+    const siteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
+
+    const loadRecaptcha = () => {
+      if (!window.grecaptcha) {
+        const script = document.createElement('script');
+        script.src = `https://www.google.com/recaptcha/api.js?render=${siteKey}`;
+        script.async = true;
+        script.defer = true;
+        script.onload = () => {
+          window.grecaptcha.ready(() => {
+            window.grecaptcha.execute(siteKey, { action: 'homepage' }).then((token) => {
+              // Send token to your backend for verification
+              console.log('ReCAPTCHA token:', token);
+
+              // Simulate backend verification response
+              setTimeout(() => {
+                const isValid = true; // Assume verification passed
+                if (isValid) {
+                  onVerified(true); // Notify parent of successful verification
+                }
+              }, 1000);
+            });
+          });
+        };
+        document.body.appendChild(script);
+      }
     };
-    document.body.appendChild(script);
-  }, [sitekey]);
 
+    loadRecaptcha();
+  }, [onVerified]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    if (!captchaValue) {
-      alert("Please verify you're not a bot!");
-      return;
-    }
-
-    // Send captchaValue (token) to your backend for verification
-    const response = await axios.post('/api/verify-captcha', {
-      captcha: captchaValue,
-    });
-
-    if (response.data.success) {
-
-      alert('Form submitted successfully');
-    } else {
-      alert('Captcha verification failed');
-    }
-  };
-
-  const handleCaptcha = async () => {
-    // Call ReCAPTCHA and get a token
-    window.grecaptcha.execute(sitekey, { action: 'submit' }).then((token) => {
-      setCaptchaValue(token);
-      alert();
-    });
-  };
-//   console.log('Captcha token:', captchaValue);
   return (
-    <form onSubmit={handleSubmit} style={{position : 'absolute',top : '0',left : '0', zIndex :'-10'}}>
-      {/* Your form fields go here */}
-      <button type="button" onClick={handleCaptcha}>
-        Verify you're not a bot
-      </button>
-      <button type="submit">Submit</button>
-    </form>
+    <div className='capta-box'>
+      <h1>Welcome to the Website</h1>
+      <p>Verifying reCAPTCHA, please wait...</p>
+    </div>
   );
 };
 

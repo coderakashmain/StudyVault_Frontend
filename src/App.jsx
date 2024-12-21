@@ -1,7 +1,6 @@
 import "./App.css";
 import { lazy, Suspense, useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Navbar from "./Component/Navbar/Navbar";
 import Filter from './Pages/Home/FilterS/Filter';
 import Departmentlist from './Pages/Home/DepartmentlistS/Departmentlist'
 import Login from "./Pages/Login/Login";
@@ -67,7 +66,7 @@ function App() {
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <><AdminLoginCheck><UserContextdata><UserLoginContext><FilterScrollContex> <DepartmentListContext> <Navbar showAlart={showAlart} /><Allpages /><Alart alart={alart} /></DepartmentListContext></FilterScrollContex></UserLoginContext></UserContextdata></AdminLoginCheck></>,
+      element: <><AdminLoginCheck><UserContextdata><UserLoginContext><FilterScrollContex> <DepartmentListContext> <Allpages showAlart={showAlart} /><Alart alart={alart} /></DepartmentListContext></FilterScrollContex></UserLoginContext></UserContextdata></AdminLoginCheck></>,
       children: [
 
         {
