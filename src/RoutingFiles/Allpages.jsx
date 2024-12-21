@@ -20,16 +20,16 @@ const Allpages = (props) => {
   return (
 
     <>
-    {!isVerified ? (
-      // Show ReCaptcha until user is verified
+    {/* {!isVerified ? (
+  
       <ReCaptha onVerified={handleVerification} />
-    ) : (
-      // Load the main application once verified
+    ) : ( */}
+
       <Suspense fallback={<Loadingicon />}>
         <Navbar showAlart={props.showAlart}/>
         <Outlet />
       </Suspense>
-    )}
+    {/* )} */}
   </>
   )
 }
