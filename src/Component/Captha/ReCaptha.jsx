@@ -59,7 +59,7 @@ const ReCaptha = ({onVerified}) => {
 
   return (
     <div className='capta-box'>
-      <h1>Welcome to the Website</h1>
+      <h1>Welcome to the StudyVault</h1>
       <div className="capta-box-p">
       <p> <box-icon name='loader' flip='vertical' animation='spin' color= "#000"  ></box-icon> Verifying reCAPTCHA, please wait...</p>
       </div>

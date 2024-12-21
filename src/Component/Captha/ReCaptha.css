@@ -9,11 +9,17 @@
     justify-content: center;
     align-items: center;
 }
+.capta-box h1{
+  font-size: 2rem;
+}
 .capta-box-p{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: row;
+}
+.capta-box-p p{
+   font-size: 1rem;
 }
 .capta-box-p box-icon {
     transform: translateY(26%); /* Moves the icon 20px to the right and 10px down */
