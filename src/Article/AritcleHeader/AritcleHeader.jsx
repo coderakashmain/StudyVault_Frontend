@@ -3,9 +3,11 @@ import './ArticleHeader.css'
 import { NavLink, useLocation } from 'react-router-dom'
 import { ArticleSubheadingContext } from '../../Context/ArticleSubheading/ArticleSubheading'
 
+
 const AritcleHeader = () => {
     const location = useLocation();
     const {heading} = useContext(ArticleSubheadingContext);
+ 
 
     return (
         <>
@@ -13,7 +15,7 @@ const AritcleHeader = () => {
                 <header className='article-header-box'>
                     <NavLink to= '/'>Main Page</NavLink>
                     <h1 className="web-logo-top" > STUDYVAULT<sub>ARTICLE</sub></h1>
-                    <NavLink to = '/logIn'>Log In</NavLink>
+                  <h2 style={{ color: '#000',padding : '0rem 2rem 0 1rem', fontSize : '1rem',fontWeight : '500' }}>Article</h2>
                 </header>
             <hr />
                 <div className="article-content-item">
