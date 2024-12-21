@@ -15,7 +15,7 @@ const AritcleHeader = () => {
                 <header className='article-header-box'>
                     <NavLink to= '/'>Main Page</NavLink>
                     <h1 className="web-logo-top" > STUDYVAULT<sub>ARTICLE</sub></h1>
-                  <h2 style={{ color: '#000',padding : '0rem 2rem 0 1rem', fontSize : '1rem',fontWeight : '500' }}>Article</h2>
+                  <h2 style={{ color: '#000',padding : '0rem 2rem 0 1rem', fontSize : '1rem',fontWeight : '600' }}>Article</h2>
                 </header>
             <hr />
                 <div className="article-content-item">
