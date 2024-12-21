@@ -11,25 +11,25 @@ import Navbar from '../Component/Navbar/Navbar'
 const Allpages = (props) => {
 
   const [isVerified, setIsVerified] = useState(false); // Track verification status
-
+  
   const handleVerification = (status) => {
+    console.log(isVerified);
     setIsVerified(status); // Update state after successful verification
   };
-
  
   return (
 
     <>
-    {/* {!isVerified ? (
+    {!isVerified ? (
   
       <ReCaptha onVerified={handleVerification} />
-    ) : ( */}
+    ) : (
 
       <Suspense fallback={<Loadingicon />}>
         <Navbar showAlart={props.showAlart}/>
         <Outlet />
       </Suspense>
-    {/* )} */}
+    )}
   </>
   )
 }
