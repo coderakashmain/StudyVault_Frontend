@@ -13,7 +13,7 @@ const Allpages = (props) => {
   const [isVerified, setIsVerified] = useState(false); // Track verification status
   
   const handleVerification = (status) => {
-    console.log(isVerified);
+   
     setIsVerified(status); // Update state after successful verification
   };
  
