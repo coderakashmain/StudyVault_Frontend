@@ -9,7 +9,7 @@ const ReCaptha = () => {
   
   const [captchaValue, setCaptchaValue] = useState(null);
   // const {sitekey} = useContext(Photonumdata);
-  const sitekey = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
+  const sitekey = process.env.REACT_APP_SITE_KEY;
 
 
 
