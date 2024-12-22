@@ -50,16 +50,21 @@ const Admine = (props) => {
 
 const handleLogout = async () => {
   try{
-    await axios.post("/api/Admin/logout");
+   const response =  await axios.post("/api/Admin/logout");
    
     window.location.href = "/Admin/AdminLogIn";
     
     props.showAlart('Logged out successfully', '', 'check');
     setIsactive(!isactive);
     setCheck(isactive);
-  }catch(err){
-    console.error(err);
-    props.showAlart('Failed to log out', '', 'cancel');
+  }catch(error){
+    console.error(error);
+    // props.showAlart('Failed to log out', '', 'cancel');
+    props.showAlart(
+      `Unexpected Error (${error.response.status})`,
+      error.response.statusText || "",
+      'cancel'
+  );
   }
 
 };
