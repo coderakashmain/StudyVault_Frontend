@@ -5,7 +5,7 @@ import logo2 from './College Photoes/unnamed.jpg'
 import logo3 from './College Photoes/College3.jpg'
 import logo4 from './College Photoes/College4.jpg'
 import logo5 from './College Photoes/College5.jpg'
-import { useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 const CollegeInfo = () => {
     var [count,setCount] = useState(0);
     const sliderRef = useRef(null);
@@ -72,7 +72,7 @@ const CollegeInfo = () => {
 </p>
             <br />
             <p>Over the years, the institution has flourished, reaching new heights of excellence and adding countless accolades to its ever-growing legacy of success....</p>
-            <button onClick={onclick}>Explore</button>
+             <NavLink to="/article-section/colleges-article/mpc-article">Explore</NavLink>
         </aside>
     </section>
     </>

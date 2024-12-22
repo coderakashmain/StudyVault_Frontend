@@ -54,30 +54,22 @@ const Navbar = (props) => {
     return () => window.removeEventListener('resize', view);
   }, [])
   useEffect(() => {
-    const token = localStorage.getItem('admin_token');
-
-    if (token) {
-
+   
       const checkAuthorization = async () => {
+        
         try {
-          const response = await axios.get('/api/adminPage', {
-            headers: {
-              Authorization: `Bearer ${token}`
-            },
-          }, { withCredentials: true });
+          const response = await axios.get('/api/adminPage',{ withCredentials: true });
           if (response.status === 200) {
             setAuthentication(true);
           }
+          
         } catch (error) {
           setAuthentication(false);
         }
       };
 
       checkAuthorization();
-    }
-    if (!token) {
-      setAuthentication(false);
-    }
+
   }, [check]);
 
 

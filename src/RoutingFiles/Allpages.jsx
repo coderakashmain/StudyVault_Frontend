@@ -3,6 +3,8 @@ import { Outlet } from 'react-router-dom'
 import Loadingicon from '../Component/Jsonlicon/Loadingicon'
 import ReCaptha from '../Component/Captha/ReCaptha'
 import Navbar from '../Component/Navbar/Navbar'
+import SiteKeyContext from '../Context/SiteKeyContextT/SiteKeyContext '
+
 
 
 
@@ -20,9 +22,12 @@ const Allpages = (props) => {
   return (
 
     <>
+ 
     {!isVerified ? (
-  
+     <SiteKeyContext>
       <ReCaptha onVerified={handleVerification} />
+      </SiteKeyContext>
+  
     ) : (
 
       <Suspense fallback={<Loadingicon />}>
@@ -30,6 +35,7 @@ const Allpages = (props) => {
         <Outlet />
       </Suspense>
     )}
+   
   </>
   )
 }

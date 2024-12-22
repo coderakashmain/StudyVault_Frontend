@@ -1,15 +1,17 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { useEffect } from 'react';
-import axios from 'axios';
 import './ReCaptha.css'
 
-
+import { SiteKeyContextProvider } from '../../Context/SiteKeyContextT/SiteKeyContext ';
+import axios from 'axios';
 
 const ReCaptha = ({onVerified}) => {
+  const siteKey = useContext(SiteKeyContextProvider);
   
+
   useEffect(() => {
     
-    const siteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
+  
     const loadRecaptcha = () => {
       
       if (!window.grecaptcha) {
@@ -18,28 +20,26 @@ const ReCaptha = ({onVerified}) => {
         script.async = true;
         script.defer = true;
 
-
-
-
         script.onload = () => {
 
-     
          
           window.grecaptcha.ready(() => {
 
-        
-
             window.grecaptcha.execute(siteKey, { action: 'homepage' }).then((token) => {
            
-          
-
-              
-              setTimeout(() => {
-                const isValid = true; // Assume verification passed
-                if (isValid) {
+              axios.post('/api/verify-recaptcha', { token })
+              .then(response => {
+                if (response.data.success) {
                   onVerified(true); // Notify parent of successful verification
+                } else {
+                  onVerified(false); // Notify parent of failed verification
+                  console.error('reCAPTCHA verification failed');
                 }
-              }, 1000);
+              })
+              .catch(error => {
+                console.error('Error during reCAPTCHA verification:', error);
+                onVerified(false);
+              });
             });
           });
         };
@@ -50,12 +50,35 @@ const ReCaptha = ({onVerified}) => {
       
         document.body.appendChild(script);
       }
+      else {
+        window.grecaptcha.ready(() => {
+          window.grecaptcha.execute(siteKey, { action: 'homepage' }).then((token) => {
+            axios.post('/api/verify-recaptcha', { token })
+              .then(response => {
+                if (response.data.success) {
+                  onVerified(true);
+                } else {
+                  onVerified(false);
+                  console.error('reCAPTCHA verification failed');
+                }
+              })
+              .catch(error => {
+                console.error('Error during reCAPTCHA verification:', error);
+                onVerified(false);
+              });
+          });
+        });
+      }
     };
 
-    loadRecaptcha();
+    if (siteKey) {
+      loadRecaptcha();
+    } else {
+      console.error("ReCAPTCHA site key is not defined");
+    }
 
 
-  }, [onVerified]);
+  }, [onVerified,siteKey]);
 
   return (
     <div className='capta-box'>

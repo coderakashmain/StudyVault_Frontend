@@ -19,7 +19,7 @@ const Login = (props) => {
     password: ''
   });
 
-  const navigate = useNavigate();
+
 
   const loginChange = (e) => {
     const { name, value } = e.target;

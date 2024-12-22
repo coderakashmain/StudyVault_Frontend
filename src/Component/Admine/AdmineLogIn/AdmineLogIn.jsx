@@ -6,7 +6,7 @@ import logo from '../../../photo/weblogo.png'
 import { NavLink, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { AdminLoginContext } from '../../../Context/AdminLoginCheck/AdminLoginCheck'
-import API from '../API'
+
 
 
 const AdmineLogIn = (props) => {
@@ -22,10 +22,9 @@ const handleSubmit = async (e)=>{
     setIsactive(true);
     e.preventDefault();
     try{
-        const respone = await API.post("/Admin/AdminLogIn", { userid, password });
+        // alert();
+        const response = await axios.post("/api/Admin/AdminLogIn", { userid, password ,withCredentials: true });
         
-            const token = respone.data.accestoken;
-            localStorage.setItem('admin_token',token);
             props.showAlart('LogIn Seccessfully',"","check");
             setUserid('');
             setPassword('');
@@ -47,14 +46,18 @@ const handleSubmit = async (e)=>{
                 setIsactive(false);
                 return; 
             }
+            else {
+            
+                props.showAlart(
+                    `Unexpected Error (${error.response.status})`,
+                    error.response.statusText || "",
+                    'cancel'
+                );
+                setIsactive(false);
+            }
     
-     
-            props.showAlart(
-                `Unexpected Error (${error.response.status})`,
-                error.response.statusText || "",
-                'cancel'
-            );
-            setIsactive(false);
+           
+       
         } else {
             
             props.showAlart('An unknown error occurred', "", 'cancel');

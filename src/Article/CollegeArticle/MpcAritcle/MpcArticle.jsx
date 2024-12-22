@@ -9,6 +9,10 @@ import { ArticleSubheadingContext } from '../../../Context/ArticleSubheading/Art
 const MpcArticle = () => {
   const subhheadingRef = useRef();
   const { setHeading } = useContext(ArticleSubheadingContext);
+  useEffect(() => {
+    window.scrollTo(0, 0); 
+  }, []);
+
 
   useEffect(() => {
     const text = subhheadingRef.current?.innerText || '';

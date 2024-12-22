@@ -133,6 +133,16 @@ const TermsConditions = () => {
 
             <p>As long as the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature.</p>
             <p>The question papers are <strong> publicly</strong> available and we are not infringing on copyrights.</p>
+
+
+            <h3><strong> Website Scraping and Cloning</strong></h3>
+                <p><strong>1. Prohibition of Scraping and Cloning:</strong> You are prohibited from scraping, harvesting, or otherwise extracting any data, content, or code from this website without express written permission from the website owner. This includes, but is not limited to, the use of automated software, bots, or similar tools to extract content.</p>
+                <p><strong>2. Intellectual Property: </strong>  All content, design, structure, and functionality of this website, including but not limited to text, images, logos, and software, are protected by copyright, trademark, and other intellectual property laws. Unauthorized copying or replication of the website's content, design, or functionality is strictly prohibited.</p>
+
+                <p><strong>3. Legal Action:</strong> Any unauthorized scraping or cloning of the website will be considered a violation of intellectual property rights. The website owner reserves the right to take legal action, including pursuing civil or criminal charges, against any individual or entity engaging in such activities.</p>
+                <p><strong>4. Liability for Damages:</strong> Any individual or entity found to be scraping or cloning the website without permission will be held liable for any damages incurred, including but not limited to legal fees, loss of business, and reputational harm.</p>
+
+            <p><strong style={{fontSize : '1.1rem'}}>By using this website, you acknowledge and agree to these terms.</strong></p>
         </section>
         <Footer/>
         </>

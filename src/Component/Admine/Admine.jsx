@@ -4,7 +4,7 @@ import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 import axios from 'axios';
 
 import { AdminLoginContext } from '../../Context/AdminLoginCheck/AdminLoginCheck';
-import API from './API';
+
 
 const Admine = (props) => {
  const navigate = useNavigate();
@@ -13,57 +13,53 @@ const Admine = (props) => {
 
 
  useEffect(() => {
-  const token = localStorage.getItem('admin_token');
 
-
-  if (!token) {
-      // If no token, redirect to login page
-      window.location.href = "/Admin/AdminLogIn";
-      // navigate('/Admin/AdminLogIn');
-      props.showAlart('Unautherized', '', 'mark');
-  } else {
-      // If token exists, verify it on the server
-      const checkAuthorization = async () => {
-          try {
-            const response = await API.get("/adminPage",{
-                headers: {
-                  Authorization: `Bearer ${token}` // Include the token in the Authorization header
-                },
-              }, { withCredentials: true });
+      const checkAuthorization = async (e) => {
+        // e.preventDefault();
+        try {
+            const response = await axios.get("/api/adminPage");
               if (response.status === 200) {
-                  // Token is valid, show alert for authorized access
+                setCheck(isactive);
                   props.showAlart('Authorized', '', 'check');
               }
           } catch (error) {
-              // Handle unauthorized or other errors
-              if (error.response && error.response.status === 401) {
-                  props.showAlart('Unauthorized user', '', 'cancel');
+         
+              if (error.response && error.response.status === 500) {
+                  props.showAlart('Internal Error', '', 'cancel');
+                 
+              }  
+              if (error.response && error.response.status === 400 || error.response && error.response.status === 401) {
+                  props.showAlart('You are not Autherized', '', 'cancel');
                   
-              } else {
-                  props.showAlart('Error verifying token', '', 'cancel');
+              } 
+              if (error.response && error.response.status === 405) {
+                  props.showAlart('Log in expired', '', 'cancel');
+                  
+              } 
+              else {
+                  props.showAlart('Error verifying user', '', 'cancel');
               }
-              navigate('/Admin/AdminLogIn');  // Redirect to login page if unauthorized
+              setCheck(isactive);
+              navigate('/Admin/AdminLogIn');  
           }
       };
 
       checkAuthorization();
-  }
-}, []);
+
+}, [isactive]);
 
 const handleLogout = async () => {
   try{
-    await API.post("/Admin/logout");
-    localStorage.removeItem('admin_token');
+    await axios.post("/api/Admin/logout");
+   
     window.location.href = "/Admin/AdminLogIn";
-    
     
     props.showAlart('Logged out successfully', '', 'check');
     setIsactive(!isactive);
     setCheck(isactive);
   }catch(err){
     console.error(err);
-    // props.showAlart('Failed to log out', '', 'cancel');
- 
+    props.showAlart('Failed to log out', '', 'cancel');
   }
 
 };

@@ -1,5 +1,6 @@
 import "./App.css";
-import { lazy, Suspense, useState } from "react";
+
+import React, { lazy, Suspense, useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Filter from './Pages/Home/FilterS/Filter';
 import Departmentlist from './Pages/Home/DepartmentlistS/Departmentlist'
@@ -36,9 +37,6 @@ const Profile = lazy(() => import("./Pages/Profile/Profile"));
 const Contact = lazy(() => import("./Pages/Contact/Contact"));
 const Signup = lazy(() => import("./Pages/SignUP/Signup"));
 const Loginsignup = lazy(() => import("./RoutingFiles/Loginsignup"));
-
-
-
 
 
 function App() {

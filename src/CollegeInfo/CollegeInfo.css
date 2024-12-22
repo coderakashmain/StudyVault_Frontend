@@ -69,14 +69,15 @@
     color: #09152A;
 
 }
-.college-detail button{
+.college-detail a{
     font-size: 2.2rem;
+    text-align: center;
     border: none;
     outline: none;
     font-weight: 500;
     /* border: 2px solid black; */
-    border-radius: 2rem;
-    margin: auto;
+    border-radius: 2.4rem;
+    /* margin: auto; */
     padding: 0.5rem  0rem;
    display: block;
    margin-top: 4rem;
