@@ -6,6 +6,7 @@ import logo3 from './College Photoes/College3.jpg'
 import logo4 from './College Photoes/College4.jpg'
 import logo5 from './College Photoes/College5.jpg'
 import { NavLink, useNavigate } from 'react-router-dom'
+import HomeAdd1 from '../Component/AddSense/HomeAdd1'
 const CollegeInfo = () => {
     var [count,setCount] = useState(0);
     const sliderRef = useRef(null);
@@ -55,6 +56,7 @@ const CollegeInfo = () => {
     <>
     <hr  />
     <section id='college-info'>
+      <HomeAdd1/>
         <aside className="college-photos college-info-boxes">
             <div className="college-photos-box" ref={sliderRef}>
                 {image.map((image,index)=>(

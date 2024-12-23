@@ -4,6 +4,7 @@ import { Outlet } from 'react-router-dom'
 const CollegeArticleRouter = () => {
   return (
     <>
+    
     <Outlet/>
       
     </>

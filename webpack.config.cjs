@@ -3,10 +3,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin'); // For HTML generation
 const CopyWebpackPlugin = require('copy-webpack-plugin'); // For copying static files
 
 module.exports = {
-  entry: './src/main.jsx', // Update this to match your entry point
+  mode: 'production',
+  entry: './src/main.jsx', // Correct relative path for the entry file
   output: {
     filename: 'bundle.js', // The bundled file name
     path: path.resolve(__dirname, 'dist'), // Output directory
+    publicPath: '/', // Ensures proper handling of routes
   },
 
   module: {
@@ -42,7 +44,7 @@ module.exports = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: './index.html', // Path to your HTML template
+      template: './index.html', // Path to your HTML template in the root folder
     }),
     new CopyWebpackPlugin({
       patterns: [
@@ -58,8 +60,9 @@ module.exports = {
   },
 
   devServer: {
-    contentBase: path.join(__dirname, 'dist'), // Serve content from the 'dist' folder
+    static: path.join(__dirname, 'dist'), // Serve content from the 'dist' folder
     compress: true, // Enable gzip compression
-    port: 9000, // Port number for the development server
+    port: 4173, // Port number for the development server
+    historyApiFallback: true, // Enable history API fallback for React Router
   },
 };

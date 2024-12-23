@@ -1,5 +1,5 @@
 #college-info{
-    min-height: 20rem;
+    /* min-height: 20rem; */
     width: 100%;
     background: var(--notificationbackcolor);
     display: flex;

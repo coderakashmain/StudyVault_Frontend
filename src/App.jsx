@@ -24,8 +24,10 @@ import FetchData from "./Context/FretchDataContext/FetchData";
 import AdminLoginCheck from "./Context/AdminLoginCheck/AdminLoginCheck";
 import ArticleContainerRouter from "./RoutingFiles/ArticleContainerRouter";
 import CollegeArticleRouter from "./Article/CollegeArticle/CollegeArticleRouter";
-import MpcArticle from "./Article/CollegeArticle/MpcAritcle/MpcArticle";
 import ArticleSubheading from "./Context/ArticleSubheading/ArticleSubheading";
+import Navbar from "./Component/Navbar/Navbar";
+// import MpcArticle from "./Article/CollegeArticle/MpcAritcle/MpcArticle";
+const MpcArticle = lazy(() => import("./Article/CollegeArticle/MpcAritcle/MpcArticle"));
 const CollegeAritcle = lazy(() => import("./Article/CollegeArticle/CollegeAritcle"));
 const ArticleHome = lazy(() => import("./Article/ArticleHome/ArticleHome"));
 const TermsConditions = lazy(() => import("./Pages/TermsandConditions/TermsConditions"));
@@ -64,7 +66,7 @@ function App() {
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <><AdminLoginCheck><UserContextdata><UserLoginContext><FilterScrollContex> <DepartmentListContext> <Allpages showAlart={showAlart} /><Alart alart={alart} /></DepartmentListContext></FilterScrollContex></UserLoginContext></UserContextdata></AdminLoginCheck></>,
+      element: <><AdminLoginCheck><UserContextdata><UserLoginContext><FilterScrollContex> <DepartmentListContext><Allpages showAlart={showAlart} /><Navbar/> <Alart alart={alart} /></DepartmentListContext></FilterScrollContex></UserLoginContext></UserContextdata></AdminLoginCheck></>,
       children: [
 
         {
@@ -159,8 +161,9 @@ function App() {
         {
           path : 'Admin/AdminLogIn',
           element : (<><AdmineLogIn showAlart={showAlart}/></>)
-        } , {
-          path: '/article-section',
+        } ,
+         {
+          path: 'article-section',
           element: (<><ArticleSubheading><ArticleContainerRouter showAlart={showAlart} /></ArticleSubheading> </>),
           children: [
             {
@@ -169,15 +172,17 @@ function App() {
             },
             {
               path: 'colleges-article',
-              element: <CollegeArticleRouter showAlart={showAlart} />,
+           
+              element:<><Suspense fallback  = {<p style={{minHeight : '100vh'}}>Loading...</p>}>  <CollegeArticleRouter showAlart={showAlart} /></Suspense></>,
               children : [
                 {
                   path : '',
-                  element: <CollegeAritcle showAlart={showAlart} />,
+                  element:<><Suspense fallback  = {<p style={{minHeight : '100vh'}}>Loading...</p>}> <CollegeAritcle showAlart={showAlart} /></Suspense></>,
                   
                 },{
                   path : 'mpc-article',
-                  element : <MpcArticle showAlart={showAlart}/>
+                  element:<><Suspense fallback  = {<p style={{minHeight : '100vh'}}>Loading...</p>}> <MpcArticle showAlart={showAlart}/></Suspense></>,
+                
                 }
               ]
             }

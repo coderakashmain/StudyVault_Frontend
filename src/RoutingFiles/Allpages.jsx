@@ -31,7 +31,7 @@ const Allpages = (props) => {
     ) : (
 
       <Suspense fallback={<Loadingicon />}>
-        <Navbar showAlart={props.showAlart}/>
+       
         <Outlet />
       </Suspense>
     )}
