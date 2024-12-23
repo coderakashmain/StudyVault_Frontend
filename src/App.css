@@ -3,6 +3,12 @@
     transform: scale(0.95) !important;
     transition: all 0.2s ease;
 }
+.ads-center{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 body::-webkit-scrollbar {
     width: 10px;

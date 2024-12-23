@@ -1,7 +1,10 @@
+#college-info-out-box{
+    background: var(--notificationbackcolor);
+
+}
 #college-info{
     /* min-height: 20rem; */
     width: 100%;
-    background: var(--notificationbackcolor);
     display: flex;
     justify-content: center;
     flex-wrap: wrap;

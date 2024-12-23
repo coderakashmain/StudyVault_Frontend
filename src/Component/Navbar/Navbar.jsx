@@ -548,7 +548,7 @@ const wholenotificationbackRef = useRef();
           {mobileScroll && logotext && (<h2 className="logo-top-css" > STUDYVAULT</h2>)}
           <div className="location-login">
             {authentication && (<div className="admin-short" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginRight: '0.5rem' }}>
-              <i className="fa-solid fa-user-shield" style={{ color: '#fff', fontSize: '1.6rem', cursor: 'pointer' }} onClick={() => navigate('/Admin')}></i>
+              <i className="fa-solid fa-user-shield" style={{ color: '#fff', fontSize: '1.6rem', cursor: 'pointer' ,paddingLeft : '0.3rem'}} onClick={() => navigate('/Admin')}></i>
 
             </div>)}
             {!mobileView && (<select name="name" id="college-name">

@@ -10,7 +10,7 @@ import HomeAdd1 from '../Component/AddSense/HomeAdd1'
 const CollegeInfo = () => {
     var [count,setCount] = useState(0);
     const sliderRef = useRef(null);
-    const navigate = useNavigate();
+
     const image = [
         logo6,
         logo3,
@@ -47,16 +47,19 @@ const CollegeInfo = () => {
         });
       }, [count]);
 
-      const onclick = ()=>{
-        window.location.href = "/article-section/colleges-article/mpc-article";
-        
-      }
+      
+
+    
    
   return (
     <>
-    <hr  />
-    <section id='college-info'>
+    {/* <hr  /> */}
+    <section id='college-info-out-box'>
+      <div className="ads-center">
       <HomeAdd1/>
+
+      </div>
+      <div id='college-info'>
         <aside className="college-photos college-info-boxes">
             <div className="college-photos-box" ref={sliderRef}>
                 {image.map((image,index)=>(
@@ -64,6 +67,7 @@ const CollegeInfo = () => {
                 ))}
                 
             </div>
+           
         </aside>
         <aside className="college-detail college-info-boxes">
             <h1>M.P.C Autonomous College </h1>
@@ -76,6 +80,11 @@ const CollegeInfo = () => {
             <p>Over the years, the institution has flourished, reaching new heights of excellence and adding countless accolades to its ever-growing legacy of success....</p>
              <NavLink to="/article-section/colleges-article/mpc-article">Explore</NavLink>
         </aside>
+             </div>
+             <div className="ads-center">
+
+             <HomeAdd1/>
+             </div>
     </section>
     </>
   )

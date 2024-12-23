@@ -7,9 +7,14 @@ import { useNavigate, useLocation, NavLink } from "react-router-dom";
 import { ScrollFilterContext } from "../../../Context/FilterScroll/FilterScrollContex";
 import Loadingicon from "../../../Component/Jsonlicon/Loadingicon";
 import { Departmentlistdata } from "../../../Context/DepartmentList/DepartmentListContext";
+// import Horizontalads from "../../../Component/AddSense/Horizontalads";
+// import Verticalads from "../../../Component/AddSense/Verticalads";
+import HomeAdd1 from "../../../Component/AddSense/HomeAdd1";
+import LongWidthAds from "../../../Component/AddSense/LongWidthAds";
 
 
 const Filter = (props) => {
+const [adsmobileview,setAdsmobileview] = useState(false);
 
   const filterboxref = useRef();
 
@@ -280,36 +285,17 @@ const  handlesubjet = (e)=>{
   };
 
 
-  // useEffect(() => {
-
-  //   const handleDepartmentClick = async (departmentName) => {
-
-  //     try {
-  //       const response = await axios.get('/api/login-check-filter', { withCredentials: true });
-
-  //       if (response.status === 200) {
-  //         props.showAlart('Authorized', '', 'check')
-  //       }
+  // useEffect(()=>{
+  //   const handleresize  = ()=>{
+  //     if(window.innerWidth >894){
+  //       setAdsmobileview(true);
   //     }
-  //     catch (error) {
-  //       if (error.response && error.response.status === 500) {
-  //         props.showAlart('Login First', '', "mark");
-  //         navigate("/Login");
-  //         console.error('Internal servererr', error);
-  //       }
-  //       if (error.response && error.response.status === 404) {
-  //         props.showAlart('Login First', '', "mark");
-  //         navigate("/Login");
-  //         console.error('User not found', error);
-  //       }
-  //       else {
-  //         props.showAlart('Login First', '', "mark");
-  //         navigate("/Login");
-  //       }
-  //     }
-  //   };
-  //   handleDepartmentClick();
-  // }, [])
+  //   }
+  //   window.addEventListener('resize',handleresize);
+
+  //   return ()=> window.removeEventListener('resize', handleresize);
+    
+  // })
 
 
   useEffect(() => {
@@ -337,6 +323,8 @@ useEffect(()=>{
 
   return (
     <div ref={filterboxref} className="filter-main-div">
+      
+     
        { homebackShow ? <h5  className="backHome"><NavLink to = '/'> Home &nbsp; </NavLink> -&gt; &nbsp;Filter </h5> : null}
       <form onSubmit={handleSubmit} className="filteration-container-box" >
         <div className="filteration-container">
@@ -624,6 +612,9 @@ useEffect(()=>{
 
         </div>
       </form>
+      <div  className="ads-center">
+      {/* <LongWidthAds/> */}
+      </div>
     </div>
   );
 };

@@ -18,21 +18,20 @@ const HomeAdd1 = () => {
 
     return () => {
       // Cleanup the script when the component unmounts
-      document.head.removeChild(script);
+      document.head.removeChild(script);  
     };
   }, []);  // Empty array ensures the effect runs only once when the component mounts
 
+  
   return (
     <div>
 
-    <ins className="adsbygoogle"
-  style={{ display: 'block', width: '100%', minWidth: '250px' }} 
+<ins class="adsbygoogle"
+     style={{ display: 'block', width: '100%', minWidth: '250px' }} 
      data-ad-format="fluid"
      data-ad-layout-key="-f9+4w+7x-eg+3a"
      data-ad-client="ca-pub-9796833231647897"
-     data-ad-slot="7860403674"
-     key="uniqueAd1" 
-     ></ins>
+     data-ad-slot="7860403674"></ins>
     </div>
   );
 };

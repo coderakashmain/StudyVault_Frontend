@@ -9,6 +9,7 @@
 .filter-main-div {
   padding: 7% 0%;
   background-color: var(--backcolor);
+  position: relative;
 }
 ::-webkit-inner-spin-button {
   display: none;

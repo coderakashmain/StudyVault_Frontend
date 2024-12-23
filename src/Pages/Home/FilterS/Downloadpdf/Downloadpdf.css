@@ -7,71 +7,187 @@
     top: 0px;
     left: 0px;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    background: #215368;
+    /* justify-content: center; */
+    background: rgb(242 244 246);
     z-index: 100;
+    color: #000;
+}
+#download-pdf header{
+    width: 100%;
+    background: rgb(252 252 252);
+    box-shadow: 2px 2px 10px #4a72c71e;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* background-color: lightblue; */
+    align-items: center;
+    height: 5rem;
+}
+#download-pdf header h1{
+    font-size: 2rem ;
+    user-select: none;
+    /* padding: 1rem ; */
+    font-weight: 600;
+    color: rgb(0, 145, 255);
+}
+#download-pdf header sub{
+    font-size: 0.5rem ;
+    user-select: none;
+    font-weight: 600;
+    color: rgb(0, 145, 255);
+}
+.back-to-filter {
+    /* background-color: rgb(0, 145, 255); */
+    padding: 0rem 2rem;
+     height: 100%;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     transition:all  0.2s  ease;
+   
+}
+.back-to-filter:hover {
+    background-color: rgb(10, 126, 214);
+    
+    cursor: pointer;
+    
+}
+.back-to-filter i{
+    font-size: 1.5rem ;
+    width: 100%;
+    align-items: center;
+    transition: all 0.2s  ease;
+    color: #000;
+}
+
+.back-to-filter:hover i {
+    color: #fff; /* Change to white on hover */
+}
+.search-resuorces{
+    margin: 0rem 0;
+   width: 100%;
+   transform: translateY(-100%) scale(0);
+   transition: all  0.4s ease;
+   opacity: 0;
+}
+.search-resuorces input{
+  width: 100%;
+  box-shadow: 12px 7px 7px #4a72c71e ,inset 12px 7px 9px  rgba(255, 255, 255, 0.071);
+  outline: none;
+  border: none;
+  border-radius: 0.2rem;
+  padding: 1rem;
+  transition:  all 0.2s ease;
+   
+}
+.search-resuorces input:active{
+ transform: scale(1.02);
+   
 }
 
 .download-box{
     min-height:35rem;
     width: 60rem;
-    background: var(--uniqcolorup);
-    box-shadow: var(--boxshadow);
+    /* background: var(--uniqcolorup);
+    box-shadow: var(--boxshadow); */
     border-radius: 0.4rem;
     z-index: 10;
-    padding: 2rem;
+    padding: 2rem 1rem;
+    
     
     
 }
 .download-box h2{
-   font-size: 3.5rem;
-   color: #fff;
-   text-align: center;
+   font-size: 1.5rem;
+   font-weight: 600;
+   color: #474747;
+   /* text-align: center; */
 }
+
 .download-data {
     margin-top: 2rem;
+    transition: all 0.4s ease;
 }
 .download-data li {
-    font-size: 1.4rem;
-    color: #fff;
-    padding: 0.4rem 1rem;
-   
+    
+    color: #000;
+    padding: 0rem 0rem 0rem  1.5rem;
+    box-shadow: 12px 7px 7px #4a72c71e ,inset 12px 7px 9px  rgba(255, 255, 255, 0.071);
+    background: rgb(252 252 252);
+    border-radius: 0.2rem;
+   margin: 1rem 0;
     display: block;
+    transition: all 0.2s ease;
+}
+.download-data li:hover {
+    
+ transform: scale(1.01);
+}
+.download-data li:active {
+    
+ transform: scale(1.01);
 }
 .download-data a{
-    font-size: 1.3rem;
+    font-size: 1rem;
     display: flex;
     justify-content: space-between;
     width: 100%;
-    color: #fff;
-    /* background-color: #3e639e; */
-    padding: 0.2rem 0.4rem;
-    border-radius: 0.19rem;
+    color: #000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    padding: 1rem 0;
+
+}
+
+.download-data .paper-downlon-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(0, 145, 255);
+  padding: 1rem 0;
+  border-radius: 0.2rem 0 0 0.2rem;
 
 }
 .download-data a i{
-    color: #d9d9d9;
-    padding: 0rem 0rem 0rem 0.2rem;
+    color: #fff;
+    padding:0rem 1rem;
+    text-align: center;
 
 }
 .download-data p{
     color: #fff;
     text-align: center;
 }
+.name-instruction{
+    margin: 5rem 0 2rem;
+}
+.name-instruction h3{
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #474747;
+}
+.name-instruction p{
+   
+    color: rgb(0, 145, 255);
+   margin: 1rem 1rem 0;
+ }
 
 @media (max-width : 780px) {
     .download-box{
-        width: 93vw;
+        width: 100vw;
     }
     
 }
 @media (max-width : 550px) {
     .download-box h2{
-        font-size: 8vw;
+        font-size: 1.4rem;
      }
      .download-data a{
-        font-size: 1.1rem;
+        font-size: 1rem;
     
     }
 }
