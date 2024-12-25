@@ -112,11 +112,11 @@ const Navbar = (props) => {
     setShowSuggestions(true);
   }
 
-  const gotofilter = () => {
-    filtersection.scrollIntoView({ behavior: 'smooth' });
+  // const gotofilter = () => {
+  //   filtersection.scrollIntoView({ behavior: 'smooth' });
 
 
-  };
+  // };
 
 
 
@@ -158,7 +158,7 @@ const Navbar = (props) => {
 
     setDartmentvalue(searchdpt);
     navigate("Filter", { state: { searchdpt } });
-    gotofilter();
+    // gotofilter();
     setDartmentvalue('');
 
 

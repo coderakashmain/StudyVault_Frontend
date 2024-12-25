@@ -19,7 +19,8 @@
    font-weight: 600;
    padding: 3rem 0rem 1rem;
    /* text-transform: uppercase; */
-   border-bottom: 0.14rem solid rgb(7, 81, 138);
+   border-bottom: 1px solid rgb(0, 145, 255);
+   font-family: "Poppins", sans-serif !important;
 
 }
 .college-article-content{

@@ -22,6 +22,10 @@ const HomeT = (props) => {
   const[userlogincheck,setUserlogincheck] = useState();
   const  loginCheck = useContext(Userlogincheckcontext);
 
+      useEffect(()=>{
+        document.title = 'StudyVault- Access all previous years question papers and free notes from M.P.C Autonomous College.'
+      },[])
+
 
   useEffect(()=>{
     const userlogin = async()=>{

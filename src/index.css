@@ -36,6 +36,12 @@ body,html{
   --uniqcolorback : #14476d;
   --uniqcolorup : linear-gradient(45deg, #010001, #438ee2);
   --boxshadow : 18px 10px 25px rgb(0 0 0 / 19%), inset 2px 2px 7px rgb(0 0 0 / 17%), inset 21px 9px 24px rgb(0 0 0 / 0%);
+  --newcolor : rgb(0, 145, 255);
+  --newbackcolor : rgb(242 244 246);
+  --newheadcolor : rgb(252 252 252);
+  --newshadow : 2px 2px 10px #4a72c71e;
+  --filterbuttoncolor: linear-gradient(rgb(185 203 255 / 37%), rgb(74, 143, 200));
+
 }
 input.input-detected{
   border: 2px solid red;

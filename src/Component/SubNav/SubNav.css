@@ -1,0 +1,103 @@
+#sub-nav-component{
+    position: relative;
+    z-index: 2;
+}
+
+#sub-nav {
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--newheadcolor);
+    box-shadow: 2px 2px 10px #4a72c71e;
+    position: relative;
+}
+#sub-nav  .back-to-home-nav,#sub-nav .search-metatrila{
+    padding: 0rem 2rem;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition:all  0.2s  ease;
+    /* box-shadow: 2px 2px 10px #4a72c71e; */
+  
+}
+.same:hover {
+    background-color: rgb(10, 126, 214);
+    
+    cursor: pointer;
+    
+}
+
+#sub-nav  h1{
+    font-size: 2rem ;
+    user-select: none;
+    /* padding: 1rem ; */
+    font-weight: 600;
+    color: rgb(0, 145, 255);
+}
+#sub-nav sub{
+    font-size: 0.5rem ;
+    user-select: none;
+    font-weight: 600;
+    color: rgb(0, 145, 255);
+}
+#sub-nav i{
+    font-size: 1.5rem ;
+    width: 100%;
+    align-items: center;
+    transition: all 0.2s  ease;
+    color: #000;
+}
+
+.same:hover i{
+    color: #fff !important; /* Change to white on hover */
+}
+
+.sub-to-sub-nav{
+    width: 100%;
+    height: 4rem;
+    box-shadow: 2px 2px 10px #4a72c71e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    overflow-x: scroll;
+}
+.sub-to-sub-nav::-webkit-scrollbar{
+   display: none;
+}
+.sub-to-sub-nav a{
+    text-align: center;
+  color: #000;
+  font-size: 1.3rem;
+  font-weight: 500;
+  height: 100%;
+  padding: 0rem 2rem;
+  transition: all 0.2s ease;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+.sub-to-sub-nav a:hover{
+  background: var(--newcolor);
+  color: #fff;
+
+}
+.sub-nav-active{
+    background: var(--newcolor);
+    color: #fff !important; 
+}
+.sub-to-sub-nav a:active{
+ transform: scale(1.04);
+
+}
+
+@media (max-width : 600px) {
+    .sub-to-sub-nav{
+     
+        justify-content: flex-start;
+     
+    }
+}

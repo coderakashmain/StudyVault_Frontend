@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './AboutUs.css'
-import { Link } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import akashlogo from '../../photo/Akash2.jpg'
 import akashlogoa from '../../photo/Akash2.avif'
 import akashlogow from '../../photo/Akash2.webp'
@@ -11,12 +11,14 @@ import Footer from '../Home/FooterS/Footer'
 
 const AboutUs = () => {
 
+  const navigate = useNavigate();
   const handletopscroll = () => {
 
     window.scrollTo({ top: 0 });
 
 
   }
+ 
   return (
     <>
       <section id="about-us">
@@ -25,16 +27,24 @@ const AboutUs = () => {
           
           <div className="about-us-box">
             <div className="left-about-box">
+             
               <h2><span style={{ fontWeight: '600' }}>O</span>ver the past few years, we've observed that students have had difficulty to obtaining notes and papers..In order to overcome these consequences
                 we've been trying to provide all the essential
                 exam related materials through this website
                 ..</h2>
+             
               <p>We are also students as you are . so we hope that the small step from us helps you a little  bit.  If you want say thank you then you definitely give a sweet feedback.</p>
               <button><a href="#both-info-section">Learn more</a></button>
 
             </div>
+         
 
             <div className="right-about-box">
+            <div className="back-to-homepage " >
+              <p>Go Back to Home Page</p>
+              <button className='active' onClick={()=>navigate('/')}> Click</button>
+
+              </div>
               <div className="right-about-box-in">
                 <h3>Here you can get those Benifits~</h3>
                 <ul>

@@ -1,26 +1,28 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import './SectionSelector.css'
 import { NavLink, useLocation } from 'react-router-dom';
+import { ScrollFilterContext } from '../../Context/FilterScroll/FilterScrollContex';
 
 const SectionSelector = (props) => {
     const location = useLocation();
     const sectionRef = useRef();
-    // const [questionactive,setQustionactive] = useState(false);
-
-    // useEffect(()=>{
-    //     if(location.pathname === '/'){
-    //         setQustionactive(true);
-    //     }
-    // },location.pathname)
-
+    const {filtersection} = useContext(ScrollFilterContext);
+   
     const popup = ()=>{
         props.showAlart('Available Soon', '','mark');
     }
   
+    // const gotofilter = () => {
+    //   filtersection.scrollIntoView({ behavior: 'smooth' });
+  
+  
+    // };
+  
+  
   return (
     <aside id="section-selector" ref={sectionRef} >
       <div className="section-selector-inside section-selector-common" >
-            <NavLink to= '/' className={` ${location.pathname === '/' ? 'section-on' : 'section-nutral ' } active`}>Questions</NavLink>
+            <NavLink to= '/Filter'   className={` ${location.pathname === '/Filter' ? 'section-on' : 'section-nutral ' } active`}>Questions</NavLink>
             <NavLink to= '' className='section-off active' onClick={popup}>Syllabus</NavLink>
             <NavLink to= ''className='section-off active' onClick={popup}>Notes</NavLink>
             <NavLink to= '' className='section-off active' onClick={popup}>Books</NavLink>

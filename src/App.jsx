@@ -1,8 +1,9 @@
 import "./App.css";
 
 import React, { lazy, Suspense, useState } from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Filter from './Pages/Home/FilterS/Filter';
+import { createBrowserRouter, RouterProvider, useLocation } from "react-router-dom";
+const Filter = lazy(()=> import("./Pages/Home/FilterS/Filter"));
+// import Filter from './Pages/Home/FilterS/Filter';
 import Departmentlist from './Pages/Home/DepartmentlistS/Departmentlist'
 import Login from "./Pages/Login/Login";
 import Downloadpdf from "./Pages/Home/FilterS/Downloadpdf/Downloadpdf";
@@ -26,7 +27,8 @@ import ArticleContainerRouter from "./RoutingFiles/ArticleContainerRouter";
 import CollegeArticleRouter from "./Article/CollegeArticle/CollegeArticleRouter";
 import ArticleSubheading from "./Context/ArticleSubheading/ArticleSubheading";
 import Navbar from "./Component/Navbar/Navbar";
-// import MpcArticle from "./Article/CollegeArticle/MpcAritcle/MpcArticle";
+import MaterialRouting from "./RoutingFiles/MaterialRouting";
+const Syllabus = lazy(() => import("./Pages/Syllabus/Syllabus"));
 const MpcArticle = lazy(() => import("./Article/CollegeArticle/MpcAritcle/MpcArticle"));
 const CollegeAritcle = lazy(() => import("./Article/CollegeArticle/CollegeAritcle"));
 const ArticleHome = lazy(() => import("./Article/ArticleHome/ArticleHome"));
@@ -45,6 +47,7 @@ function App() {
 
 
   const [alart, setAlart] = useState(null);
+  const [subheadingtype, setSubheadingtype] = useState('');
 
   const showAlart = (type, message, state) => {
 
@@ -61,12 +64,22 @@ function App() {
   };
 
 
+  const subheadingtypedata = (type) => {
+
+    setSubheadingtype(
+      {
+        type: type,
+      }
+    )
+  };
+
+
 
 
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <><AdminLoginCheck><UserContextdata><UserLoginContext><FilterScrollContex> <DepartmentListContext><Allpages showAlart={showAlart} /><Navbar/> <Alart alart={alart} /></DepartmentListContext></FilterScrollContex></UserLoginContext></UserContextdata></AdminLoginCheck></>,
+      element: <><AdminLoginCheck><UserContextdata><UserLoginContext><FilterScrollContex> <DepartmentListContext><Allpages showAlart={showAlart} /> <Alart alart={alart} /></DepartmentListContext></FilterScrollContex></UserLoginContext></UserContextdata></AdminLoginCheck></>,
       children: [
 
         {
@@ -77,17 +90,29 @@ function App() {
               path: '',
               element: <><Departmentlist showAlart={showAlart} /></>
             },
-            {
-              path: 'Filter',
-              element: <Filter showAlart={showAlart} />,
-            }
+           
 
+          ]
+        },
+        {
+          path: 'Filter',
+          element: <MaterialRouting showAlart={showAlart}  subheadingtypedata = {subheadingtype}/>,
+          children : [
+            {
+              path: '',
+              element:<><Suspense fallback  = {<p>Loading...</p>}> <Filter showAlart={showAlart} subheadingtypedata = {subheadingtypedata}/> </Suspense></>,
+         
+            },
+            {
+              path: 'syllabus',
+              element:<><Suspense fallback  = {<p>Loading...</p>}> <Syllabus showAlart={showAlart}  subheadingtypedata = {subheadingtypedata}/> </Suspense></>,
+            },
           ]
         },
       
         {
           path: "Contact-Us",
-          element: (<><PhoneInfo><Contact showAlart={showAlart} /></PhoneInfo> </>),
+          element: (<><Navbar showAlart={showAlart}/> <PhoneInfo><Contact showAlart={showAlart} /></PhoneInfo> </>),
         },
         {
           path: 'Downloadpdf',
@@ -114,19 +139,19 @@ function App() {
 
         {
           path: "Profile",
-          element: (<><Profile showAlart={showAlart} /></>),
+          element: (<><Navbar showAlart={showAlart}/> <Profile showAlart={showAlart} /></>),
         },
         {
           path: "About-us",
-          element: (<><AboutUs showAlart={showAlart} /></>),
+          element: (<><Navbar showAlart={showAlart}/> <AboutUs showAlart={showAlart} /></>),
         },
         { 
           path: "Privacy-Policy",
-          element: (<><PrivecyandPolicy showAlart={showAlart} /></>),
+          element: (<><Navbar showAlart={showAlart}/> <PrivecyandPolicy showAlart={showAlart} /></>),
         },
         { 
           path: "Terms-Conditions",
-          element: (<><TermsConditions showAlart={showAlart} /></>),
+          element: (<><Navbar showAlart={showAlart}/> <TermsConditions showAlart={showAlart} /></>),
         },
         {
           path: "Admin",
@@ -197,6 +222,9 @@ function App() {
 
 
   ]);
+
+
+
 
 
 

@@ -11,6 +11,7 @@ import { Departmentlistdata } from "../../../Context/DepartmentList/DepartmentLi
 // import Verticalads from "../../../Component/AddSense/Verticalads";
 import HomeAdd1 from "../../../Component/AddSense/HomeAdd1";
 import LongWidthAds from "../../../Component/AddSense/LongWidthAds";
+import Horizontalads from "../../../Component/AddSense/Horizontalads";
 
 
 const Filter = (props) => {
@@ -22,6 +23,8 @@ const [adsmobileview,setAdsmobileview] = useState(false);
   useEffect(() => {
     setFiltersection(filterboxref.current);
   }, [])
+
+
 
 
   const navigate = useNavigate();
@@ -50,6 +53,16 @@ const [adsmobileview,setAdsmobileview] = useState(false);
   const [integratedBed,setIntegratedBed] =useState(false);
   const [homebackShow,setHomebackShow] = useState(false);
   const [onlyug,setOnlyug]= useState(false);
+
+  useEffect(() => {
+    // Calling the function passed as a prop
+    props.subheadingtypedata("Question");
+  }, []);
+
+
+  useEffect(()=>{
+    window.scrollTo(0,0);
+  },[])
 
   useEffect(() => {
 
@@ -285,17 +298,7 @@ const  handlesubjet = (e)=>{
   };
 
 
-  // useEffect(()=>{
-  //   const handleresize  = ()=>{
-  //     if(window.innerWidth >894){
-  //       setAdsmobileview(true);
-  //     }
-  //   }
-  //   window.addEventListener('resize',handleresize);
 
-  //   return ()=> window.removeEventListener('resize', handleresize);
-    
-  // })
 
 
   useEffect(() => {
@@ -321,6 +324,8 @@ useEffect(()=>{
   }
 },[])
 
+
+
   return (
     <div ref={filterboxref} className="filter-main-div">
       
@@ -332,16 +337,16 @@ useEffect(()=>{
           {elective || Compulsory || eandv || (filters.departmentName === 'Integrated B.Ed') ? (<h3>Papers Name :</h3>) :(  <h3>Department Name :</h3>)}
             <div className="department-type">
 
-              <div className="department-name">
+              <div className="department-name ">
                 <p>Please enter valid Name *</p>
-                <div className="department-name-inside">
+                <div className="department-name-inside ">
                 <input
                   type="text"
                   name="departmentName"
                   value={filters.departmentName}
                   onChange={handleChange}
                   placeholder="Enter deparment name"
-                  className={`${elective || Compulsory || eandv ? 'otherone' : 'otherof'}`}  readOnly ={elective || Compulsory || eandv ? true : false}
+                  className={` ${elective || Compulsory || eandv ? 'otherone' : 'otherof'}`}  readOnly ={elective || Compulsory || eandv ? true : false}
 
                 />
               </div>
@@ -407,7 +412,7 @@ useEffect(()=>{
             <h3>Education Lavel :</h3>
             <div className="department-section">
               <div
-                className={`ug-box department-box ${ugActive ? 'ug-active-color' : ''}`}
+                className={`ug-box active department-box ${ugActive ? 'ug-active-color' : ''}`}
              
                 onClick={() => {
                   if (!ugActive && !buttonDisable) {
@@ -428,7 +433,7 @@ useEffect(()=>{
                 <h1>UG</h1>
               </div>
               <div
-                className={`pg-box department-box ${pgActive ? 'pg-active-color' : ''}`}
+                className={`pg-box active department-box ${pgActive ? 'pg-active-color' : ''}`}
                 onClick={() => {
                   if (!pgActive && !integratedBed && !onlyug) {
                     handleEducationLevelpg('pg');
@@ -452,7 +457,7 @@ useEffect(()=>{
             <h3>Department Year :</h3>
             <div className="department-year">
               <ul>
-                <li className={` ${yearfirstActive ? 'active-1st-year' : ''}`} onClick={() => {
+                <li className={` active ${yearfirstActive ? 'active-1st-year' : ''}`} onClick={() => {
                   if (!yearfirstActive) {
                     handleDepartmentYear('1st');
                     setYearsecondActive(false);
@@ -469,7 +474,7 @@ useEffect(()=>{
                 }>
                   1 <sup>st</sup>
                 </li>
-                <li className={` ${yearsecondActive ? 'active-2nd-year' : ''}`} onClick={() => {
+                <li className={`active ${yearsecondActive ? 'active-2nd-year' : ''}`} onClick={() => {
                   if (!yearsecondActive) {
                     handleDepartmentYear('2nd')
                     setYearthirdActive(false);
@@ -485,7 +490,7 @@ useEffect(()=>{
                 }}>
                   2 <sup>nd</sup>
                 </li>
-                <li className={` ${yearthirdActive ? 'active-3rd-year' : ''}`} onClick={() => {
+                <li className={`active ${yearthirdActive ? 'active-3rd-year' : ''}`} onClick={() => {
                   if (!yearthirdActive && !buttonDisable) {
                     handleDepartmentYear('3rd')
                     setYearfirstActive(false);
@@ -504,7 +509,7 @@ useEffect(()=>{
                 >
                   3 <sup>rd</sup>
                 </li>
-              { integratedBed && (  <li className={` ${yearforthdActive ? 'active-4th-year' : ''}`} onClick={() => {
+              { integratedBed && (  <li className={`active ${yearforthdActive ? 'active-4th-year' : ''}`} onClick={() => {
                   if (!yearforthdActive && !buttonDisable) {
                     handleDepartmentYear('4th')
                     setYearfirstActive(false);
@@ -527,7 +532,7 @@ useEffect(()=>{
             <h3>Select paper :</h3>
             <div className="check-paper">
               <div className="first-paper">
-                <div className={` ${filters.midSem && !integratedBed ? 'active-midpaper-year' : ''}`} onClick={() =>{
+                <div className={`active ${filters.midSem && !integratedBed ? 'active-midpaper-year' : ''}`} onClick={() =>{
                   if(!integratedBed){
                     handlePaperType('midSem')}}
                   }
@@ -537,12 +542,12 @@ useEffect(()=>{
 
               </div>{" "}
               <div className="second-paper">
-                <div className={` ${filters.sem ? 'active-sempaper-year' : ''}`} onClick={() => handlePaperType('sem')}> SEM</div>
+                <div className={`active ${filters.sem ? 'active-sempaper-year' : ''}`} onClick={() => handlePaperType('sem')}> SEM</div>
               </div>
             </div>
             <h3>Subjects :</h3>
             <div className="subject-select">
-              <div className="subject-select-each">
+              <div className="subject-select-each active">
                 
                   <p onClick={(e)=>{
                     
@@ -554,7 +559,7 @@ useEffect(()=>{
                     
                     }} className={`${honors ? 'ok' : 'no'}`}> Honors</p>
               </div>
-              <div className="subject-select-each">
+              <div className="subject-select-each active">
                   <p onClick={(e)=>
                     
                     {setElective(!elective);
@@ -567,7 +572,7 @@ useEffect(()=>{
                      className={`${elective ? 'ok' : 'no'}`}>Elective</p>
               
               </div>
-              <div className="subject-select-each">
+              <div className="subject-select-each active">
                   <p onClick={(e)=>
                   
                   {setCompulsory(!Compulsory);
@@ -579,7 +584,7 @@ useEffect(()=>{
                   }}  className={`${Compulsory ? 'ok' : 'no'}`}>Compulsory</p>
 
               </div>
-              <div className="subject-select-each">
+              <div className="subject-select-each active">
                   <p onClick={
                     (e)=>{
                       if(!buttonDisable){
@@ -607,13 +612,13 @@ useEffect(()=>{
           <div className="filter-submission-box">
 
 
-            {<input disabled={loader} style={{ background: (loader ? 'lightblue' : '#4c98d9') }} type="submit" value='Find' />}
+            {<input disabled={loader} style={{ background: (loader ? 'rgb(15 103 170 / 31%)' : 'var(--newcolor)') }} type="submit" value='Find' />}
           </div>
 
         </div>
       </form>
       <div  className="ads-center">
-      {/* <LongWidthAds/> */}
+      <Horizontalads background = "var(--backcolor)"/>
       </div>
     </div>
   );

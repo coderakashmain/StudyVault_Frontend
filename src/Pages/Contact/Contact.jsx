@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import "./Contact.css";
 import Footer from '../Home/FooterS/Footer';
 import { Photonumdata } from "../../Context/PhoneInfo/PhoneInfo";
@@ -23,6 +23,7 @@ const Contact = () => {
   const handleteamsupport = ()=>{
     window.open('mailto:studyvaultteam@gmail.com','_blank');
   }
+  
   return (
     <>
       <div className="contact_main_conatainer">

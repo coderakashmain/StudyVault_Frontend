@@ -12,8 +12,8 @@ const AritcleHeader = () => {
     return (
         <>
             <section id='article-header'>
-                <header className='article-header-box active' >
-                    <NavLink to= '/'>Main Page</NavLink>
+                <header className='article-header-box' >
+                    <NavLink to= '/' className= ' active'>Main Page</NavLink>
                     <h1 className="web-logo-top" > STUDYVAULT<sub>ARTICLE</sub></h1>
                   <h2 style={{ color: '#000',padding : '0rem 2rem 0 1rem', fontSize : '1rem',fontWeight : '600' }}>Article</h2>
                 </header>

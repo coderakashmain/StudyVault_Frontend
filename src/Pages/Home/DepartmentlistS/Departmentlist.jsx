@@ -5,6 +5,7 @@ import { UserContext } from "../../../Context/UserContext/UserContextdata";
 import { Departmentlistdata } from '../../../Context/DepartmentList/DepartmentListContext';
 import { ScrollFilterContext } from "../../../Context/FilterScroll/FilterScrollContex";
 import axios from "axios";
+import LongWidthAds from "../../../Component/AddSense/LongWidthAds";
 // import axios from "axios";
 
 
@@ -19,9 +20,11 @@ const Departmentlist = (props) => {
   const departmentList = useRef();
   const contectContainer = useRef();
   const { setFiltersection } = useContext(ScrollFilterContext);
-  useEffect(() => {
-    setFiltersection(contectContainer.current);
-  }, [])
+
+  
+  // useEffect(() => {
+  //   setFiltersection(contectContainer.current);
+  // }, [])
 
 
 
@@ -29,43 +32,14 @@ const Departmentlist = (props) => {
   
 
 
-  const backto = () => {
-    contectContainer.current.scrollIntoView({ behavior: "smooth" });
-  };
-
-
-
-  // const handleDepartmentClick = async (departmentName) => {
-
-  //   try{
-  //      const response = await axios.get('/api/login-check-filter',{withCredentials : true});
-
-  //      if(response.status === 200){
-  //       navigate("/Filter", { state: { departmentName } });
-  //       backto();
-  //      }
-  //   }
-  //   catch(error){
-  //     if(error.response && error.response.status === 500){
-  //       props.showAlart('Login First','',"mark");
-  //     navigate("/Login");
-  //       console.error('Internal servererr',error);
-  //     }
-  //     if(error.response && error.response.status === 404){
-  //       props.showAlart('Login First','',"mark");
-  //       navigate("/Login");
-  //       console.error('User not found',error);
-  //     }
-  //     else{
-  //       props.showAlart('Login Karna padega Bhai 😁','',"mark");
-  //       navigate("/Login");
-  //     }
-  //   }
+  // const backto = () => {
+  //   contectContainer.current.scrollIntoView({ behavior: "smooth" });
   // };
+
 
   const handleDepartmentClick = (departmentName ) => {
     navigate("/Filter", { state: { departmentName } });
-    backto();
+    // backto();
   }
   const [check, setCheck] = useState(false)
 
@@ -91,7 +65,12 @@ const Departmentlist = (props) => {
   return (
     <>
       <div className="main-container">
+    
         <div className="inner-main-container">
+        <div className="ads-center">
+               <LongWidthAds background = "var(--backcolor)"/>
+               
+              </div>
           <div ref={contectContainer} className="content-container">
             <div className="department-title-box">
               <h2>Departments :</h2>

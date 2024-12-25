@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 
-const LongWidthAds = (props) => {
+const AritcleAds = (props) => {
 
-     useEffect(() => {
+      useEffect(() => {
         // Dynamically create and insert the AdSense script
         const script = document.createElement('script');
         script.async = true;
@@ -21,17 +21,19 @@ const LongWidthAds = (props) => {
           // Cleanup the script when the component unmounts
           document.head.removeChild(script);  
         };
-      }, []);  
+      }, []);  // Empty array ensures the effect runs only once when the component mounts
+    
   return (
-    <div style={{width : '100%', maxHeight : '125px',overflow : 'hidden' }}>
-        <ins className="adsbygoogle"
-      style={{ display: 'block', width: '100%', minWidth: '300px', maxHeight : '120px',background : props.background || '#fff' , textAlign : 'center'}} 
-     data-ad-format="autorelaxed"
+    <div style={{width: '100%', overflow : 'hidden' ,maxHeight : props.Height || '10rem'}}>
+      <ins className="adsbygoogle"
+     style={{display : 'block', textAlign : 'center',width :'100%', minWidth : '300px' , background : props.background  || '#fff'}}
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
      data-ad-client="ca-pub-9796833231647897"
-     data-ad-slot="4571350183"
-     data-full-width-responsive="true"></ins>
+     data-ad-slot="9011527763"></ins>
     </div>
   )
 }
 
-export default LongWidthAds
+export default AritcleAds
+

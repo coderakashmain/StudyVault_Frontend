@@ -7,6 +7,7 @@ import logo4 from './College Photoes/College4.jpg'
 import logo5 from './College Photoes/College5.jpg'
 import { NavLink, useNavigate } from 'react-router-dom'
 import HomeAdd1 from '../Component/AddSense/HomeAdd1'
+import AritcleAds from '../Component/AddSense/AritcleAds'
 const CollegeInfo = () => {
     var [count,setCount] = useState(0);
     const sliderRef = useRef(null);
@@ -56,7 +57,7 @@ const CollegeInfo = () => {
     {/* <hr  /> */}
     <section id='college-info-out-box'>
       <div className="ads-center">
-      <HomeAdd1/>
+      {/* <HomeAdd1/> */}
 
       </div>
       <div id='college-info'>
@@ -83,7 +84,7 @@ const CollegeInfo = () => {
              </div>
              <div className="ads-center">
 
-             <HomeAdd1/>
+        <AritcleAds background = "var( --notificationbackcolor )"/>
              </div>
     </section>
     </>

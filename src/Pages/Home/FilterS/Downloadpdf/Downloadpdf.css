@@ -17,7 +17,7 @@
 #download-pdf header{
     width: 100%;
     background: rgb(252 252 252);
-    box-shadow: 2px 2px 10px #4a72c71e;
+    box-shadow: 2px 2px 10px #4a72c71e !important;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -39,6 +39,7 @@
     color: rgb(0, 145, 255);
 }
 .back-to-filter {
+    /* box-shadow: 2px 2px 10px #4a72c71e; */
     /* background-color: rgb(0, 145, 255); */
     padding: 0rem 2rem;
      height: 100%;
@@ -72,6 +73,7 @@
    transition: all  0.4s ease;
    opacity: 0;
 }
+
 .search-resuorces input{
   width: 100%;
   box-shadow: 12px 7px 7px #4a72c71e ,inset 12px 7px 9px  rgba(255, 255, 255, 0.071);
@@ -107,7 +109,7 @@
 }
 
 .download-data {
-    margin-top: 2rem;
+    margin: 2rem 0 ;
     transition: all 0.4s ease;
 }
 .download-data li {
@@ -122,14 +124,15 @@
     transition: all 0.2s ease;
 }
 .download-data li:hover {
-    
+    background: rgb(59, 203, 255);
  transform: scale(1.01);
 }
+
 .download-data li:active {
     
  transform: scale(1.01);
 }
-.download-data a{
+.download-data .each-paper-box{
     font-size: 1rem;
     display: flex;
     justify-content: space-between;
@@ -140,8 +143,12 @@
     align-items: center;
     flex-direction: row;
     padding: 1rem 0;
+    cursor: pointer;
 
 }
+.download-data li:hover .each-paper-box{
+    color: #fff;
+    }
 
 .download-data .paper-downlon-button{
   display: flex;
@@ -152,11 +159,11 @@
   border-radius: 0.2rem 0 0 0.2rem;
 
 }
-.download-data a i{
+.download-data .each-paper-box i{
     color: #fff;
     padding:0rem 1rem;
     text-align: center;
-
+    width: 3rem;
 }
 .download-data p{
     color: #fff;
@@ -186,7 +193,7 @@
     .download-box h2{
         font-size: 1.4rem;
      }
-     .download-data a{
+     .download-data .each-paper-box{
         font-size: 1rem;
     
     }

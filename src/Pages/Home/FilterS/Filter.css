@@ -8,7 +8,7 @@
 }
 .filter-main-div {
   padding: 7% 0%;
-  background-color: var(--backcolor);
+  background-color: var(--newbackcolor);
   position: relative;
 }
 ::-webkit-inner-spin-button {
@@ -51,7 +51,7 @@
 
 }
 .filter-submission input{
-  background-color: #4c98d9;
+  background-color: var(--newcolor);
   padding: 1rem 4rem;
   border-radius: 0.2rem;
   border: none;
@@ -109,23 +109,23 @@
   border: none;
   background-color: white;
   font-size: 23px;
-  box-shadow:0.5px 0.5px 9px 0.5px #80808069;
+  box-shadow:var(--newshadow);
   user-select: none;
 }
 
 
 .ug-active-color{
-  background: linear-gradient(rgba(0, 0, 0, 0.374), rgb(74, 143, 200));
+  background:var(--filterbuttoncolor);
   color: #fff;
 }
 .ug-active-color h1,.pg-active-color h1{
   color: #fff;
 }
 .pg-active-color{
-  background: linear-gradient(rgba(0, 0, 0, 0.374), rgb(74, 143, 200));
+  background:var(--filterbuttoncolor);
 }
 .active-1st-year{
-  background: linear-gradient(rgba(0, 0, 0, 0.374), rgb(74, 143, 200));
+  background:var(--filterbuttoncolor);
   color: #fff;
 }
 .active-1st-year sup{
@@ -141,18 +141,18 @@
   color: #fff;
 }
 .active-2nd-year{
-  background: linear-gradient(rgba(0, 0, 0, 0.374), rgb(74, 143, 200));
+  background:var(--filterbuttoncolor);
   color: #fff;
 
 
 }
 .active-3rd-year{
-  background: linear-gradient(rgba(0, 0, 0, 0.374), rgb(74, 143, 200));
+  background:var(--filterbuttoncolor);
   color: #fff;
 
 }
 .active-4th-year{
-  background: linear-gradient(rgba(0, 0, 0, 0.374), rgb(74, 143, 200));
+  background:var(--filterbuttoncolor);
   color: #fff;
 }
 
@@ -164,7 +164,9 @@
 .department-name {
   width: 100%;
   padding-left: 5%;
-  border: 1px solid rgb(132 132 132);
+  border: 1px solid rgb(245, 245, 245);
+  background: white;
+  box-shadow: var(--newshadow);
   border-radius: 0.2rem;
   position: relative;
 }
@@ -190,7 +192,9 @@
   cursor: pointer;
 }
 .department-year ul li {
-  border: 1px solid rgb(132 132 132);
+  border: 1px solid rgb(245, 245, 245);
+  background-color: white;
+  box-shadow: var(--newshadow);
   border-radius: 0.2rem;
   padding: 3% 8%;
   margin: 2%;
@@ -210,10 +214,12 @@
 .hr {
   width: 8%;
   height: 1%;
-  border: 1px solid gray;
+  border: 1px solid #d7d7d7;
 }
 .year-div {
-  border: 1px solid rgb(132 132 132);
+  border: 1px solid rgb(245, 245, 245);
+  background-color: white;
+  box-shadow: var(--newshadow);
   border-radius: 0.3rem;
   cursor: pointer;
   height: 50px;
@@ -251,7 +257,8 @@
   height: 30px;
 }
 .first-paper {
-  border-right: 2px solid gray;
+  /* border-right: 2px solid #fff; */
+  border-right: 1px solid #d7d7d7;
 }
 .first-paper,
 .second-paper {
@@ -263,19 +270,21 @@
 }
 .first-paper div,
 .second-paper div {
-  border: 1px solid rgb(132 132 132);
+  border: 1px solid rgb(245, 245, 245);
+  background-color: white;
+  box-shadow: var(--newshadow);
   border-radius: 0.2rem;
   padding: 5% 10%;
   font-size: 14px;
   cursor: pointer;
 }
 .active-midpaper-year{
-  background: linear-gradient(rgba(0, 0, 0, 0.374), rgb(74, 143, 200));
+  background:var(--filterbuttoncolor);
   color: #fff;
 
 }
 .active-sempaper-year{
-  background: linear-gradient(rgba(0, 0, 0, 0.374), rgb(74, 143, 200));
+  background:var(--filterbuttoncolor);
   color: #fff;
 
 }
@@ -299,18 +308,20 @@
 .subject-select-each p{
 padding: 0.5rem 1rem;
 cursor: pointer;
-border: 1px solid rgb(132 132 132);
+border: 1px solid rgb(245, 245, 245);
+background-color: white;
+box-shadow: var(--newshadow);
 user-select: none;
 }
 
 
 .subject-select-each .ok{
-  background: linear-gradient(rgba(0, 0, 0, 0.374), rgb(74, 143, 200));
-  color: #fff;
+  background:var(--filterbuttoncolor);
+  color: white;
   border: none;
 }
 .subject-select-each .no{
-  background-color: initial;
+  background-color: white;
 }
 
 
@@ -319,7 +330,7 @@ user-select: none;
 @media only screen and (max-width: 895px) {
   .ug-box,
   .pg-box {
-    box-shadow: 0.5px 0.5px 10px 0.5px gray;
+    box-shadow:var(--newshadow);
   }
   .filteration-container {
     padding: 0% 5%;

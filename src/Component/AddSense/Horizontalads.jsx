@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 
 
-const Horizontalads = () => {
+const Horizontalads = (props) => {
        useEffect(() => {
             // Dynamically create and insert the AdSense script
             const script = document.createElement('script');
@@ -23,13 +23,13 @@ const Horizontalads = () => {
             };
           }, []); 
   return (
-      <div>
+      <div style={{overflow : 'hidden'}}>
       <ins className="adsbygoogle"
       
-      style={{ display: 'block', width: '100%', minWidth: '250px' }} 
+      style={{ display: 'block', width: '100%', minWidth: '300px',overflow : 'hidden', maxHeight: '120px', background : props.background  || '#fff'}} 
       data-ad-client="ca-pub-9796833231647897"
       data-ad-slot="5568441934"
-      data-ad-format="auto"
+      data-ad-format="horizontal"
       data-full-width-responsive="true"></ins>
     </div>
   )

@@ -4,17 +4,20 @@
 }
 
 #article-home a,#article-home p,#article-home h1,#article-home li,#article-home button{
-    font-family: 'Times New Roman', Times, serif;
+    /* font-family: 'Times New Roman', Times, serif; */
     color: #09152a;
  }
  .article-home-header{
     padding: 2rem 6rem 0.3rem;
-    font-family: 'Times New Roman', Times, serif;
+    /* font-family: 'Times New Roman', Times, serif; */
     color: #09152a;
+    text-decoration: solid rgb(0, 145, 255) underline 1px ;
+    text-underline-offset: 10px;
+    /* text-decoration-color: blue; */
     font-size: 2rem;
     font-weight: 600;
     /* text-decoration: underline; */
-    border-bottom: 2px solid rgb(7, 81, 138);
+    /* border-bottom: 2px solid rgb(7, 81, 138); */
    
  }
 .news-article-box {
@@ -24,11 +27,14 @@
 
 .news-article-box h1{
     font-size: 2rem;
+    
     color: #196874;
     font-weight: 600;
     padding: 3rem 0rem 1rem;
+    text-decoration: solid rgb(0, 145, 255) underline 1px ;
+    text-underline-offset: 10px;
     /* text-transform: uppercase; */
-    border-bottom: 0.14rem solid rgb(7, 81, 138);
+    /* border-bottom: 0.1rem solid rgb(0, 145, 255) ; */
  
  }
 

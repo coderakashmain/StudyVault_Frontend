@@ -1,9 +1,10 @@
-/* .main-container{ 
-
- }  */
+.main-container{ 
+  background: var(--backcolor);
+ } 
 .inner-main-container h2 {
   height: 100%;
   margin-bottom: 3%;
+
   position: relative;
 }
 
@@ -267,7 +268,7 @@
   background-color: rgb(214, 214, 214);
 }
 .content-container {
-  padding: 4% 5%;
+  padding: 1% 5% 4%;
   background-color: var(--backcolor);
 }
 
