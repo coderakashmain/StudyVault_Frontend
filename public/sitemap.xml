@@ -31,4 +31,28 @@
         <changefreq>monthly</changefreq>
         <priority>0.3</priority>
     </url>
+             <url>
+        <loc>https://www.studyvault.online/article-section</loc>
+        <lastmod>2024-12-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.3</priority>
+    </url>
+             <url>
+        <loc>https://www.studyvault.online/article-section/colleges-article</loc>
+        <lastmod>2024-12-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.3</priority>
+    </url>
+             <url>
+        <loc>https://www.studyvault.online/Filter/syllabus</loc>
+        <lastmod>2024-12-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.3</priority>
+    </url>
+             <url>
+        <loc>https://www.studyvault.online/Filter</loc>
+        <lastmod>2024-12-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.3</priority>
+    </url>
 </urlset>

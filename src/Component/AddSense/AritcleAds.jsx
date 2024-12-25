@@ -24,9 +24,9 @@ const AritcleAds = (props) => {
       }, []);  // Empty array ensures the effect runs only once when the component mounts
     
   return (
-    <div style={{width: '100%', overflow : 'hidden' ,maxHeight : props.Height || '10rem'}}>
+    <div style={{width: '100%', overflow : 'hidden' }}>
       <ins className="adsbygoogle"
-     style={{display : 'block', textAlign : 'center',width :'100%', minWidth : '300px' , background : props.background  || '#fff'}}
+     style={{display : 'block', textAlign : 'center',width :'100%', minWidth : '300px' , background : props.background  || 'var( --notificationbackcolor )'}}
      data-ad-layout="in-article"
      data-ad-format="fluid"
      data-ad-client="ca-pub-9796833231647897"

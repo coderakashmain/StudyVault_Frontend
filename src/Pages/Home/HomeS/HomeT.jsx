@@ -11,12 +11,13 @@ import logoa from '../../../photo/weblogo.avif'
 import axios from "axios";
 import { UserContext } from "../../../Context/UserContext/UserContextdata";
 import { Userlogincheckcontext } from "../../../Context/UserLoginContext/UserLoginContext";
-
+import { Helmet } from "react-helmet";
 
 
 
 
 const HomeT = (props) => {
+  
   const navigate = useNavigate();
   const {usernav} = useContext(UserContext);
   const[userlogincheck,setUserlogincheck] = useState();
@@ -57,6 +58,18 @@ const HomeT = (props) => {
           <div className="inner-landing">
             <div className="home-info">
               <div  className="home-info-h1-logo">
+              <Helmet>
+                <title>StudyVault | MPC Autonomous Previous Year Question Papers</title>
+                <meta
+                    name="description"
+                    content="Access MPC Autonomous College's previous year question papers on StudyVault. Free and easy to use!"
+                />
+                <meta
+                    name="keywords"
+                    content="MPC Autonomous, question papers, previous year, StudyVault, college exams"
+                />
+                <meta name="author" content="StudyVault" />
+            </Helmet>
               <h1 style={{position : 'absolute', top : '-100%',left : '-100%', opacity : '0'}} >All Previous Year Question Papers of M.P.C Auto.</h1>
 
                 <h1>Hi! I Am</h1>
@@ -68,7 +81,7 @@ const HomeT = (props) => {
                  </picture>
                 </div>
               </div>
-              <h2>{props.title}</h2>
+              <h1 className="header-sub-head">{props.title}</h1>
               <p>
                 {props.titlepara}
               </p>

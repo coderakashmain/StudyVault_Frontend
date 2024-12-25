@@ -12,6 +12,7 @@ import { Departmentlistdata } from "../../../Context/DepartmentList/DepartmentLi
 import HomeAdd1 from "../../../Component/AddSense/HomeAdd1";
 import LongWidthAds from "../../../Component/AddSense/LongWidthAds";
 import Horizontalads from "../../../Component/AddSense/Horizontalads";
+import AritcleAds from "../../../Component/AddSense/AritcleAds";
 
 
 const Filter = (props) => {
@@ -60,9 +61,6 @@ const [adsmobileview,setAdsmobileview] = useState(false);
   }, []);
 
 
-  useEffect(()=>{
-    window.scrollTo(0,0);
-  },[])
 
   useEffect(() => {
 
@@ -618,7 +616,7 @@ useEffect(()=>{
         </div>
       </form>
       <div  className="ads-center">
-      <Horizontalads background = "var(--backcolor)"/>
+      <AritcleAds background = "var(--backcolor)"/>
       </div>
     </div>
   );

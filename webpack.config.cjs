@@ -50,7 +50,9 @@ module.exports = {
       patterns: [
         { from: path.resolve(__dirname, 'public/ads.txt'), to: '' }, // Place ads.txt in the root of dist
         { from: path.resolve(__dirname, 'public/robots.txt'), to: '' }, // Place robots.txt in the root of dist
-        { from: path.resolve(__dirname, 'public/sitemap.xml'), to: '' }, // Place sitemap.xml in the root of dist
+        { from: path.resolve(__dirname, 'public/sitemap.xml'), to: '' },
+        { from: path.resolve(__dirname, 'public/logo-transparent-png.png'), to: '' },
+        // { from: 'public', to: '' },  // Place sitemap.xml in the root of dist
       ],
     }),
   ],

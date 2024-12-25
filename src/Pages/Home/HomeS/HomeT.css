@@ -55,7 +55,7 @@
     transform: rotate(360deg) scale(0.8);
   }
 }
-.home-info h1 {
+.home-info h1:nth-child(2) {
   font-size: 40px;
   margin-bottom: 1%;
   font-weight: 700;
@@ -63,14 +63,14 @@
   color: var(--about-text-color);
   text-shadow: 1px 1px 2px black;
 }
-.home-info h2 {
-  font-size: 28px;
+.home-info .header-sub-head{
+  font-size: 1.6rem  !important;
   font-weight: 700;
   /* color: rgb(10, 55, 88); */
   color: var(--about-text-color);
-  text-shadow: 0.5px 0.5px 1px black;
-  margin-bottom: 2%;
-  letter-spacing: 2px;
+  text-shadow: 0.5px 0.5px 1px black !important;
+  margin-bottom: 2% !important;
+  letter-spacing: 2px !important;
 }
 .home-info p {
   /* color: gray; */

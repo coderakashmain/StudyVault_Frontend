@@ -1,7 +1,150 @@
-#syllbus-component{
-    min-height: 50vh;
+#syllabus-component{
+    min-height: 100vh;
     width: 100%;
-    display: flex;
+    background: var(--newbackcolor);
+    /* display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
+
 }
+.syllabus-component-box{
+padding: 2rem 5rem;
+  width: 100%;
+
+
+}
+#syllabus-component h1{
+   font-size: 1.7rem;
+   font-weight: 600;
+   margin: 1rem 0 ;
+   color: rgb(73, 73, 73);
+   text-transform: uppercase;
+   font-style:italic
+   
+
+}
+#syllabus-component p{
+   font-size: 1rem;
+   
+   font-style:italic
+}
+.syllabus-commout-out-box{
+    width: 100%;
+    margin: 3rem 0 2rem 0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    min-height: 30rem;
+    gap: 1rem;
+
+}
+.syllabu-left-box{
+    flex-grow: 1;
+    flex-basis: 700px;
+   
+
+}
+.syllabu-right-box{
+    flex-grow: 1;
+    
+    background-color: white;
+    box-shadow: 9px 9px 10px #bdc2c6a1;
+    border-radius: 1rem;
+    transition: all 0.2s ease;
+}
+.syllabu-right-box:hover{
+    flex-grow: 2;
+    box-shadow: 16px 15px 20px #bdc2c69c;
+   
+}
+.syllabus-common-box ul {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+   margin: 1rem 0;
+    
+}
+.syllabus-common-box h2 {
+font-size: 1.4rem;
+text-transform: uppercase;
+font-weight: 600;
+color: rgb(73, 73, 73);
+font-style:italic
+    
+}
+.syllabus-common-box h2:nth-child(3){
+margin-top: 5rem ;
+
+    
+}
+.syllabus-common-box ul li{
+    flex-basis: 100px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    flex-grow: 1;
+    background: white ;
+    padding: 2rem 3rem;
+    display: inline-block;
+    border-radius:0.4rem;
+   
+    box-shadow: var(--newshadow2);
+    cursor: pointer;
+    user-select: none;
+    text-transform: uppercase;
+    transition: all 0.2s linear;
+}
+
+.ug-pg-syllabus-button {
+    width: 100%;
+    padding: 0;
+    border: none;
+    outline: none;
+    transition: all 0.2s linear;
+    cursor: pointer;
+    font-size: 1.1rem;
+    border-radius:0.4rem;
+    text-transform: uppercase;
+    box-shadow: var(--newshadow2);
+    font-weight: 600;
+    background-color: white ;
+    margin: 0;
+    background: var(--newcolor);
+    /* background: linear-gradient(to right , rgb(0, 145, 255) ,#0e0600); */
+    color: #fff;
+    transform:scale(0);
+    opacity: 0;
+   
+}
+.ug-btn-reposition{
+    transform:scale(1);
+    opacity: 1;
+    margin: 4rem 0;
+    padding: 1.5rem 3rem;
+}
+
+.syllabus-btn-true{
+    background: var(--newcolor) !important;
+    color: #fff;
+    flex-grow: 2 !important;
+}
+.syllabus-btn-true-pg{
+    background: var(--newcolor) !important;
+    color: #fff;
+    flex-grow: 2 !important;
+}
+@media (min-width : 473px) {
+    .syllabus-common-box ul li:hover{
+        background: var(--newcolor);
+        color: #fff;
+        flex-grow: 2;
+     }
+}
+@media (max-width : 473px) {
+    .syllabus-component-box{
+        padding: 2rem 2rem;
+          width: 100%;
+        
+        }
+}
+

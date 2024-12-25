@@ -28,6 +28,7 @@ import CollegeArticleRouter from "./Article/CollegeArticle/CollegeArticleRouter"
 import ArticleSubheading from "./Context/ArticleSubheading/ArticleSubheading";
 import Navbar from "./Component/Navbar/Navbar";
 import MaterialRouting from "./RoutingFiles/MaterialRouting";
+import FallbackLoad from "./Component/Fallbackload/FallbackLoad";
 const Syllabus = lazy(() => import("./Pages/Syllabus/Syllabus"));
 const MpcArticle = lazy(() => import("./Article/CollegeArticle/MpcAritcle/MpcArticle"));
 const CollegeAritcle = lazy(() => import("./Article/CollegeArticle/CollegeAritcle"));
@@ -100,12 +101,12 @@ function App() {
           children : [
             {
               path: '',
-              element:<><Suspense fallback  = {<p>Loading...</p>}> <Filter showAlart={showAlart} subheadingtypedata = {subheadingtypedata}/> </Suspense></>,
+              element:<><Suspense fallback  = {<FallbackLoad/>}><Filter showAlart={showAlart} subheadingtypedata = {subheadingtypedata}/> </Suspense></>,
          
             },
             {
               path: 'syllabus',
-              element:<><Suspense fallback  = {<p>Loading...</p>}> <Syllabus showAlart={showAlart}  subheadingtypedata = {subheadingtypedata}/> </Suspense></>,
+              element:<><Suspense fallback  = {<FallbackLoad/>}> <Syllabus showAlart={showAlart}  subheadingtypedata = {subheadingtypedata}/> </Suspense></>,
             },
           ]
         },
@@ -158,26 +159,26 @@ function App() {
           element: (<><FetchData><Admine showAlart={showAlart} /></FetchData></>),
           children: [{
             path: '',
-            element: <><Suspense fallback  = {<p>Loading...</p>}><Dashboard showAlart={showAlart} /></Suspense>  </>
+            element: <><Suspense fallback  = {<FallbackLoad/>}><Dashboard showAlart={showAlart} /></Suspense>  </>
           },
           {
             path: 'Question',
-            element: <><Suspense fallback  = {<p>Loading...</p>}><Question showAlart={showAlart} /></Suspense> </>
+            element: <><Suspense fallback  = {<FallbackLoad/>}><Question showAlart={showAlart} /></Suspense> </>
 
           },
           {
             path: 'Note',
-            element: <><Suspense fallback  = {<p>Loading...</p>}> <Note showAlart={showAlart} /></Suspense></>
+            element: <><Suspense fallback  = {<FallbackLoad/>}> <Note showAlart={showAlart} /></Suspense></>
 
           },
           {
             path: 'Usersend',
-            element: <><Suspense fallback  = {<p style={{padding : '2rem'}}>Loading...</p>}><UserSend showAlart={showAlart} /></Suspense> </>
+            element: <><Suspense fallback  = {<FallbackLoad/>}><UserSend showAlart={showAlart} /></Suspense> </>
 
           },
           {
             path: 'CsUpload',
-            element: <><Suspense fallback  = {<p>Loading...</p>}> <CsUpload showAlart={showAlart} /></Suspense></>
+            element: <><Suspense fallback  = {<FallbackLoad/>}> <CsUpload showAlart={showAlart} /></Suspense></>
 
           },
          
@@ -198,15 +199,15 @@ function App() {
             {
               path: 'colleges-article',
            
-              element:<><Suspense fallback  = {<p style={{minHeight : '100vh'}}>Loading...</p>}>  <CollegeArticleRouter showAlart={showAlart} /></Suspense></>,
+              element:<><Suspense fallback  = {<FallbackLoad/>}>  <CollegeArticleRouter showAlart={showAlart} /></Suspense></>,
               children : [
                 {
                   path : '',
-                  element:<><Suspense fallback  = {<p style={{minHeight : '100vh'}}>Loading...</p>}> <CollegeAritcle showAlart={showAlart} /></Suspense></>,
+                  element:<><Suspense fallback  = {<FallbackLoad/>}> <CollegeAritcle showAlart={showAlart} /></Suspense></>,
                   
                 },{
                   path : 'mpc-article',
-                  element:<><Suspense fallback  = {<p style={{minHeight : '100vh'}}>Loading...</p>}> <MpcArticle showAlart={showAlart}/></Suspense></>,
+                  element:<><Suspense fallback  = {<FallbackLoad/>}> <MpcArticle showAlart={showAlart}/></Suspense></>,
                 
                 }
               ]

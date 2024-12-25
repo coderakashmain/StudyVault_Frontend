@@ -86,7 +86,7 @@ const Allpages = (props) => {
 
           <Outlet />
         </Suspense>
-       )} 
+       )}
 
     </>
   )

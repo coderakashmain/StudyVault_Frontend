@@ -98,9 +98,10 @@
 }
 .ug-box,
 .pg-box {
-  border: 1px solid rgb(132 132 132);
+
   border-radius: 0.5rem;
   display: flex;
+  transition: all 0.2s linear;
   align-items: center;
   justify-content: center;
   width: 130px;
@@ -109,7 +110,7 @@
   border: none;
   background-color: white;
   font-size: 23px;
-  box-shadow:var(--newshadow);
+  box-shadow:var(--newshadow2);
   user-select: none;
 }
 
@@ -164,9 +165,10 @@
 .department-name {
   width: 100%;
   padding-left: 5%;
-  border: 1px solid rgb(245, 245, 245);
+
   background: white;
-  box-shadow: var(--newshadow);
+  box-shadow: var(--newshadow2);
+  transition: all 0.2s linear;
   border-radius: 0.2rem;
   position: relative;
 }
@@ -192,9 +194,10 @@
   cursor: pointer;
 }
 .department-year ul li {
-  border: 1px solid rgb(245, 245, 245);
+
   background-color: white;
-  box-shadow: var(--newshadow);
+  box-shadow: var(--newshadow2);
+  transition: all 0.2s linear;
   border-radius: 0.2rem;
   padding: 3% 8%;
   margin: 2%;
@@ -217,9 +220,10 @@
   border: 1px solid #d7d7d7;
 }
 .year-div {
-  border: 1px solid rgb(245, 245, 245);
+ 
   background-color: white;
-  box-shadow: var(--newshadow);
+  transition: all 0.2s linear;
+  box-shadow: var(--newshadow2);
   border-radius: 0.3rem;
   cursor: pointer;
   height: 50px;
@@ -256,10 +260,7 @@
   width: 1%;
   height: 30px;
 }
-.first-paper {
-  /* border-right: 2px solid #fff; */
-  border-right: 1px solid #d7d7d7;
-}
+
 .first-paper,
 .second-paper {
   display: flex;
@@ -270,9 +271,10 @@
 }
 .first-paper div,
 .second-paper div {
-  border: 1px solid rgb(245, 245, 245);
+
+  transition: all 0.2s linear;
   background-color: white;
-  box-shadow: var(--newshadow);
+  box-shadow: var(--newshadow2);
   border-radius: 0.2rem;
   padding: 5% 10%;
   font-size: 14px;
@@ -308,9 +310,10 @@
 .subject-select-each p{
 padding: 0.5rem 1rem;
 cursor: pointer;
-border: 1px solid rgb(245, 245, 245);
+transition: all 0.2s linear;
+
 background-color: white;
-box-shadow: var(--newshadow);
+box-shadow: var(--newshadow2);
 user-select: none;
 }
 
@@ -318,6 +321,7 @@ user-select: none;
 .subject-select-each .ok{
   background:var(--filterbuttoncolor);
   color: white;
+  transition: all 0.2s linear;
   border: none;
 }
 .subject-select-each .no{
@@ -330,7 +334,7 @@ user-select: none;
 @media only screen and (max-width: 895px) {
   .ug-box,
   .pg-box {
-    box-shadow:var(--newshadow);
+    box-shadow:var(--newshadow2);
   }
   .filteration-container {
     padding: 0% 5%;
@@ -355,5 +359,8 @@ user-select: none;
     margin: 0rem 1.5rem 1rem ;
     transform: translateY(-30%);
 
+  }
+  .filter-main-div {
+    padding: 14% 0%;
   }
 }

@@ -1,0 +1,28 @@
+.loading-fallback{
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+}
+.loading-fallback div{
+   height: 3rem ;
+   width: 3rem;
+   border-left: 2px solid rgb(45, 131, 177);
+   animation: rotate 0.5s ease-in-out forwards infinite;
+   border-radius: 50%;
+   margin-top: 7rem;
+}
+@keyframes rotate {
+    0%{
+        transform: rotate(0deg);
+    }
+    50%{
+        transform: rotate(180deg);
+    }
+    75%{
+        transform: rotate(320deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
