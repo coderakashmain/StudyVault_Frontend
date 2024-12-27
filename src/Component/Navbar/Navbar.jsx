@@ -40,6 +40,14 @@ const Navbar = (props) => {
   const { filtersection } = useContext(ScrollFilterContext);
 
 
+
+
+
+
+
+
+
+
   useEffect(() => {
     const view = () => {
       if (window.innerWidth < 500) {
@@ -135,11 +143,11 @@ const Navbar = (props) => {
           setIsAuthenticateduser(false);
         }
       } catch (error) {
-        console.error('Error fetching profile:', error);
-        setIsAuthenticateduser(false);
-
+        // setIsAuthenticateduser(false);
+        
         if (error.response && error.response.status === 401) {
           setIsAuthenticateduser(false);
+          console.error('User not found');
 
         } else {
           console.error('Unexpected error:', error.response?.data || error.message);
@@ -181,7 +189,7 @@ const Navbar = (props) => {
         const response = await axios.post('/api/logOut', { withCredentials: true });
         if (response.status === 200) {
           setIsAuthenticateduser(false);
-          setUsernav(null);
+          setUsernav('');
           // navigate("/");
           window.location.href = '/';
           props.showAlart("Log out", "Back to main page", 'check');
@@ -241,7 +249,7 @@ const Navbar = (props) => {
     closeTl
       .to(".slidebar", {
         left: '-100%',
-        borderRadius: '50%',
+        borderRadius: '0%',
         duration: 0.2,
         ease: "power2.out"
       }, 'sameclose');
@@ -465,15 +473,16 @@ const wholenotificationbackRef = useRef();
       closeNotification.current.removeEventListener("click", handlenotificationclose);
     };
   });
-  // useEffect(()=>{
-  //   if(location.pathname.startsWith( '/article-section')){
-  //     navbar.current.style.background = 'black';
-  //   }
-  //   else{
-  //     navbar.current.style.background = '';
-  //   }
-  // },[location.pathname])
 
+  useEffect(()=>{
+    if(navbar.current){
+      
+      if( props.navrefvalue){
+
+        props.navrefvalue(navbar.current);
+      }
+    }
+  },[navbar.current])
 
   return (
     <>
@@ -532,11 +541,11 @@ const wholenotificationbackRef = useRef();
                     const data = item.toLowerCase();
                     const searchTerm = departmetvalue.toLowerCase();
                     return data.startsWith(searchTerm) && data !== searchTerm;
-                  }).map((departmentListdata, index) => (
+                  }).map((departmentListdata, index1) => (
                     <div onClick={(e) => {
                       onSearch(departmentListdata)
 
-                    }} className="search-item" key={index}>
+                    }} className="search-item" key={index1}>
                       <p >{departmentListdata}</p>
                     </div>
                   ))
@@ -672,13 +681,4 @@ const wholenotificationbackRef = useRef();
 
 export default Navbar;
 
-// const [activeStatus,setActiveStatus] = useState(false);
 
-// const handleActive = (e)=>{
-//       if(e.isActive){
-//         setActiveStatus(true);
-//       }
-//       else{
-//         setActiveStatus(false)
-//       }
-// }

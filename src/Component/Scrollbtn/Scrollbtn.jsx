@@ -1,19 +1,26 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import "./Scrollbtn.css"
 
-const Scrollbtn = () => {
-    const [sticky, setSticky] = useState(false)
-    
+const Scrollbtn = (props) => {
+    const [sticky, setSticky] = useState(false);
+    const scrollbtnRef = useRef();
+    // const [navvalueforuse,setnavvalueforuse] = useState('');
+
+
+
+
+
+
     useEffect(()=>{
 
-        const scrollbtn = document.querySelector('#scrollbtn');
+       
     
        const clicktop =  ()=>{
             window.scrollTo({top : 0 , behavior : 'smooth'});
 
         };
 
-        scrollbtn.addEventListener('click',clicktop,{passive : true})
+        scrollbtnRef.current.addEventListener('click',clicktop,{passive : true})
        
        const scrollanim = ()=>{
             if(window.scrollY > 50){
@@ -27,16 +34,19 @@ const Scrollbtn = () => {
         };
         window.addEventListener('scroll',scrollanim,{passive : true});
 
-        const navbarscroll = document.querySelector(".navbar");
+        
         const navback =  ()=>{
-            navbarscroll.style.transform = 'translate(0)';  
+            props.navRefvalue.value.style.transform = 'translateX(0)';  
         };
-        scrollbtn.addEventListener('click',navback,{passive : true})
+        scrollbtnRef.current.addEventListener('click',navback,{passive : true})
 
         return ()=> {
             window.removeEventListener('scroll',scrollanim);
             window.removeEventListener('click',clicktop);
-            scrollbtn.removeEventListener('click',navback)
+            if( scrollbtnRef.current){
+
+                scrollbtnRef.current.removeEventListener('click',navback)
+            }
         }
     },[]);
 
@@ -48,7 +58,7 @@ const Scrollbtn = () => {
       };
   return (
     <>
-    <div id='scrollbtn' className= {`${sticky ? '' : 'hide-btn'}`}>
+    <div id='scrollbtn' className= {`${sticky ? '' : 'hide-btn'}`} ref={scrollbtnRef}>
         <i className="fa-solid fa-arrow-up"></i>
     </div>
     <div className={`whatsappopen ${sticky ? 'bottomp' : 'originalp'}`} onClick={handleEmailButtonClick}>

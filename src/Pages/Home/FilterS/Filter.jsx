@@ -363,7 +363,7 @@ useEffect(()=>{
                                             const data = item.toLowerCase();
                                             const searchTerm = dptnamechange.toLowerCase();
                                             return data.startsWith(searchTerm) && data !== searchTerm;
-                                        }).map((departmentlist, index) => (
+                                        }).map((departmentlist, index2) => (
                                             <div onClick={(e) => {
                                                 setdptnamechange(departmentlist)
                                                 setFilters((preData) => ({
@@ -372,7 +372,7 @@ useEffect(()=>{
 
                                                 }))
 
-                                            }} className="search-item" key={index}>
+                                            }} className="search-item" key={index2}>
                                                 <p >{departmentlist}</p>
                                             </div>
                                         ))

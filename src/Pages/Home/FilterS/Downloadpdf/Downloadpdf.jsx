@@ -19,9 +19,11 @@ const Downloadpdf = (props) => {
     const [networkslow, setNetworkslow] = useState(false);
 
     useEffect(() => {
-        setTimeout(() => {
+      const networkslowtimeout =  setTimeout(() => {
             setNetworkslow(true);
         }, 10000);
+
+        return ()=> clearTimeout(networkslowtimeout)
     }, [loading])
 
     useEffect(() => {
@@ -83,13 +85,15 @@ const Downloadpdf = (props) => {
         // Show interstitial ad after every 3 clicks
         if ((clickCount + 1) % 2 === 0) {
             setShowAd(true);
-            setTimeout(() => {
+          const timout =   setTimeout(() => {
                 setShowAd(false);
                 window.open(paper.url, "_blank"); // Open question paper after ad
             }, 5000); // Show the ad for 5 seconds
+            return ()=> clearTimeout(timout)
         } else {
             window.open(paper.url, "_blank"); // Open question paper immediately
         }
+
     };
 
 

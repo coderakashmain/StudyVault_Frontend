@@ -87,7 +87,12 @@ const Profile = (props) => {
           setUser(response.data.user);
         }
       } catch (error) {
-        console.error('Error fetching profile');
+        if (error.response && error.response.status === 401) {
+          
+          console.error('Error fetching profile');
+          // console.error('User not found');
+
+        }
       } finally {
         setLoading(false);
       }

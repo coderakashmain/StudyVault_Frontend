@@ -400,7 +400,7 @@ const Question = (props) => {
                                             const data = item.toLowerCase();
                                             const searchTerm = departmetvalue.toLowerCase();
                                             return data.startsWith(searchTerm) && data !== searchTerm;
-                                        }).map((departmentlist, index) => (
+                                        }).map((departmentlist, index4) => (
                                             <div onClick={(e) => {
                                                 setShowSuggestionspaper(false);
                                                 setDartmentvalue(departmentlist);
@@ -411,7 +411,7 @@ const Question = (props) => {
 
                                                 }))
 
-                                            }} className="search-item" key={index}>
+                                            }} className="search-item" key={index4}>
                                                 <p >{departmentlist}</p>
                                             </div>
                                         ))
@@ -477,7 +477,7 @@ const Question = (props) => {
                                             const data = item.toLowerCase();
                                             const searchTerm = filtetuploaddata.paperName.toLowerCase();
                                             return data.startsWith(searchTerm) && data !== searchTerm;
-                                        }).map((subjectlist, index) => (
+                                        }).map((subjectlist, index5) => (
                                             <div onClick={(e) => {
                                                 setFiltetuploaddata((preData) => ({
                                                     ...preData,
@@ -485,7 +485,7 @@ const Question = (props) => {
 
                                                 }))
 
-                                            }} className="search-item" key={index}>
+                                            }} className="search-item" key={index5}>
                                                 <p >{subjectlist}</p>
                                             </div>
                                         ))

@@ -1,6 +1,6 @@
 #sub-nav-component{
     position: relative;
-    z-index: 2;
+    z-index: 10000;
 }
 
 #sub-nav {
@@ -64,6 +64,7 @@
     align-items: center;
     gap: 1rem;
     overflow-x: scroll;
+    background: white   ;
 }
 .sub-to-sub-nav::-webkit-scrollbar{
    display: none;

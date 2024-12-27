@@ -4,15 +4,15 @@ import React, { lazy, Suspense, useState } from "react";
 import { createBrowserRouter, RouterProvider, useLocation } from "react-router-dom";
 const Filter = lazy(()=> import("./Pages/Home/FilterS/Filter"));
 // import Filter from './Pages/Home/FilterS/Filter';
-import Departmentlist from './Pages/Home/DepartmentlistS/Departmentlist'
-import Login from "./Pages/Login/Login";
+const Departmentlist = lazy(()=> import("./Pages/Home/DepartmentlistS/Departmentlist"));
+const Login = lazy(()=> import("./Pages/Login/Login"));
 import Downloadpdf from "./Pages/Home/FilterS/Downloadpdf/Downloadpdf";
-import ForgatePw from "./Pages/Login/ForgatePw/ForgatePw";
+const ForgatePw = lazy(()=> import("./Pages/Login/ForgatePw/ForgatePw"));
 import Allpages from "./RoutingFiles/Allpages";
-import Alart from "./Component/Alart/Alart";
-import DepartmentListContext from "./Context/DepartmentList/DepartmentListContext";
+const Alart = lazy(()=> import("./Component/Alart/Alart"));
+import DepartmentListContext  from "./Context/DepartmentList/DepartmentListContext";
 import UserContextdata from "./Context/UserContext/UserContextdata";
-import FilterScrollContex from './Context/FilterScroll/FilterScrollContex'
+import FilterScrollContex from "./Context/FilterScroll/FilterScrollContex";
 import PhoneInfo from "./Context/PhoneInfo/PhoneInfo";
 import UserLoginContext from "./Context/UserLoginContext/UserLoginContext";
 const Admine = lazy(()=> import("./Component/Admine/Admine"));
@@ -21,14 +21,21 @@ const Question = lazy(()=> import("./Component/Admine/Question/Question"));
 const Note = lazy(()=> import("./Component/Admine/Note/Note"));
 const UserSend = lazy(()=> import("./Component/Admine/UserSend/UserSend"));
 const CsUpload = lazy(()=> import("./Component/Admine/CsUpload/CsUpload"));
-import FetchData from "./Context/FretchDataContext/FetchData";
-import AdminLoginCheck from "./Context/AdminLoginCheck/AdminLoginCheck";
-import ArticleContainerRouter from "./RoutingFiles/ArticleContainerRouter";
-import CollegeArticleRouter from "./Article/CollegeArticle/CollegeArticleRouter";
-import ArticleSubheading from "./Context/ArticleSubheading/ArticleSubheading";
+import FetchData  from "./Context/FretchDataContext/FetchData";
+import AdminLoginCheck  from "./Context/AdminLoginCheck/AdminLoginCheck";
+const ArticleContainerRouter = lazy(() => import("./RoutingFiles/ArticleContainerRouter"));
+const CollegeArticleRouter = lazy(() => import("./Article/CollegeArticle/CollegeArticleRouter"));
+import ArticleSubheading  from "./Context/ArticleSubheading/ArticleSubheading";
 import Navbar from "./Component/Navbar/Navbar";
-import MaterialRouting from "./RoutingFiles/MaterialRouting";
-import FallbackLoad from "./Component/Fallbackload/FallbackLoad";
+
+
+const MaterialRouting = lazy(() => import("./RoutingFiles/MaterialRouting"));
+import FallbackLoad from "./Component/Fallbackload/FallbackLoad"
+import ErrorBoundary from "./Component/ErrorBoundary/ErrorBoundary";
+import Loadingicon from "./Component/Jsonlicon/Loadingicon";
+
+// import NotFound from "./Component/NotFound/NotFound";
+const NotFound = lazy(() => import("./Component/NotFound/NotFound"));
 const Syllabus = lazy(() => import("./Pages/Syllabus/Syllabus"));
 const MpcArticle = lazy(() => import("./Article/CollegeArticle/MpcAritcle/MpcArticle"));
 const CollegeAritcle = lazy(() => import("./Article/CollegeArticle/CollegeAritcle"));
@@ -59,9 +66,11 @@ function App() {
         state: state
       }
     )
-    setTimeout(() => {
+ const timeout =    setTimeout(() => {
       setAlart(null);
     }, 4000);
+
+    return ()=> clearTimeout(timeout);
   };
 
 
@@ -74,22 +83,39 @@ function App() {
     )
   };
 
+  const [navRefvalue,setNavref] = useState();
+
+
+const navrefvalue = (value) => {
+
+  setNavref(
+    {
+      value: value,
+    
+    }
+  );
+};
 
 
 
   const router = createBrowserRouter([
+
+    {
+      path : '*',
+      element : <ErrorBoundary><NotFound/></ErrorBoundary>
+    },
     {
       path: '/',
-      element: <><AdminLoginCheck><UserContextdata><UserLoginContext><FilterScrollContex> <DepartmentListContext><Allpages showAlart={showAlart} /> <Alart alart={alart} /></DepartmentListContext></FilterScrollContex></UserLoginContext></UserContextdata></AdminLoginCheck></>,
+      element: <><ErrorBoundary><AdminLoginCheck><UserContextdata><UserLoginContext><FilterScrollContex><DepartmentListContext><Allpages showAlart={showAlart} /> <Navbar showAlart={showAlart}  navrefvalue = {navrefvalue}  /><Alart alart={alart} /></DepartmentListContext></FilterScrollContex></UserLoginContext></UserContextdata></AdminLoginCheck></ErrorBoundary></>,
       children: [
 
         {
           path: '',
-          element: (<><Home  showAlart={showAlart} /> </>),
+          element: (<><Home  showAlart={showAlart}  navRefvalue = {navRefvalue} /></>),
           children: [
             {
               path: '',
-              element: <><Departmentlist showAlart={showAlart} /></>
+              element: <><ErrorBoundary><Departmentlist showAlart={showAlart} /></ErrorBoundary></>
             },
            
 
@@ -97,88 +123,88 @@ function App() {
         },
         {
           path: 'Filter',
-          element: <MaterialRouting showAlart={showAlart}  subheadingtypedata = {subheadingtype}/>,
+          element:<MaterialRouting showAlart={showAlart}  subheadingtypedata = {subheadingtype}/>,
           children : [
             {
               path: '',
-              element:<><Suspense fallback  = {<FallbackLoad/>}><Filter showAlart={showAlart} subheadingtypedata = {subheadingtypedata}/> </Suspense></>,
+              element:<><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}><Filter showAlart={showAlart} subheadingtypedata = {subheadingtypedata}/> </Suspense></ErrorBoundary></>,
          
             },
             {
               path: 'syllabus',
-              element:<><Suspense fallback  = {<FallbackLoad/>}> <Syllabus showAlart={showAlart}  subheadingtypedata = {subheadingtypedata}/> </Suspense></>,
+              element:<><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}> <Syllabus showAlart={showAlart}  subheadingtypedata = {subheadingtypedata}/> </Suspense></ErrorBoundary></>,
             },
           ]
         },
       
         {
           path: "Contact-Us",
-          element: (<><Navbar showAlart={showAlart}/> <PhoneInfo><Contact showAlart={showAlart} /></PhoneInfo> </>),
+          element: (<><ErrorBoundary><Suspense fallback={<FallbackLoad/>}> <PhoneInfo><Contact showAlart={showAlart} /></PhoneInfo></Suspense></ErrorBoundary> </>),
         },
         {
           path: 'Downloadpdf',
-          element: (<><Downloadpdf showAlart={showAlart} /></>),
+          element: (<><ErrorBoundary><Downloadpdf showAlart={showAlart} /></ErrorBoundary></>),
         },
         {
           path: "LogIn",
-          element: (<><Loginsignup /></>),
+          element: (<><Suspense fallback  = {<Loadingicon/>}><Loginsignup /></Suspense></>),
           children: [
             {
               path: "",
-              element: <Login showAlart={showAlart} />
+              element:<ErrorBoundary><Suspense fallback  = {<Loadingicon/>}> <Login showAlart={showAlart} /></Suspense></ErrorBoundary>
             },
             {
               path: "Signup",
-              element: <> <Signup showAlart={showAlart} /></>
+              element: <> <ErrorBoundary><Suspense fallback  = {<Loadingicon/>}> <Signup showAlart={showAlart} /></Suspense></ErrorBoundary></>
             },
             {
               path: "ForgatePw",
-              element: <ForgatePw showAlart={showAlart} />
+              element:<ErrorBoundary><Suspense fallback  = {<Loadingicon/>}>  <ForgatePw showAlart={showAlart} /></Suspense></ErrorBoundary>
             },
           ]
         },
 
         {
           path: "Profile",
-          element: (<><Navbar showAlart={showAlart}/> <Profile showAlart={showAlart} /></>),
+          element: (<><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}>  <Profile showAlart={showAlart} /></Suspense></ErrorBoundary></>),
         },
         {
           path: "About-us",
-          element: (<><Navbar showAlart={showAlart}/> <AboutUs showAlart={showAlart} /></>),
+          element: (<><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}>  <AboutUs showAlart={showAlart} /></Suspense></ErrorBoundary></>),
         },
         { 
           path: "Privacy-Policy",
-          element: (<><Navbar showAlart={showAlart}/> <PrivecyandPolicy showAlart={showAlart} /></>),
+          element: (<><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}> <PrivecyandPolicy showAlart={showAlart} /></Suspense></ErrorBoundary></>),
         },
         { 
           path: "Terms-Conditions",
-          element: (<><Navbar showAlart={showAlart}/> <TermsConditions showAlart={showAlart} /></>),
+          element: (<><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}>  <TermsConditions showAlart={showAlart} /></Suspense></ErrorBoundary></>),
         },
         {
           path: "Admin",
           element: (<><FetchData><Admine showAlart={showAlart} /></FetchData></>),
           children: [{
             path: '',
-            element: <><Suspense fallback  = {<FallbackLoad/>}><Dashboard showAlart={showAlart} /></Suspense>  </>
+            element: <><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}><Dashboard showAlart={showAlart} /></Suspense>  </ErrorBoundary></>
           },
           {
             path: 'Question',
-            element: <><Suspense fallback  = {<FallbackLoad/>}><Question showAlart={showAlart} /></Suspense> </>
+            element: <><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}><Question showAlart={showAlart} /></Suspense> </ErrorBoundary></>
 
           },
           {
             path: 'Note',
-            element: <><Suspense fallback  = {<FallbackLoad/>}> <Note showAlart={showAlart} /></Suspense></>
+            element: <><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}> <Note showAlart={showAlart} /></Suspense></ErrorBoundary></>
 
           },
           {
             path: 'Usersend',
-            element: <><Suspense fallback  = {<FallbackLoad/>}><UserSend showAlart={showAlart} /></Suspense> </>
+            element: <><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}><UserSend showAlart={showAlart} /></Suspense></ErrorBoundary> </>
 
           },
           {
             path: 'CsUpload',
-            element: <><Suspense fallback  = {<FallbackLoad/>}> <CsUpload showAlart={showAlart} /></Suspense></>
+            element: <><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}> <CsUpload showAlart={showAlart} /></Suspense></ErrorBoundary></>
 
           },
          
@@ -186,28 +212,28 @@ function App() {
         },
         {
           path : 'Admin/AdminLogIn',
-          element : (<><AdmineLogIn showAlart={showAlart}/></>)
+          element : (<><ErrorBoundary><AdmineLogIn showAlart={showAlart}/></ErrorBoundary></>)
         } ,
          {
           path: 'article-section',
-          element: (<><ArticleSubheading><ArticleContainerRouter showAlart={showAlart} /></ArticleSubheading> </>),
+          element: (<><Suspense fallback  = {<FallbackLoad/>}> <ArticleSubheading><ArticleContainerRouter showAlart={showAlart} /></ArticleSubheading></Suspense> </>),
           children: [
             {
               path: '',
-              element: <><ArticleHome showAlart={showAlart} /></>
+              element: <><ErrorBoundary><ArticleHome showAlart={showAlart} /></ErrorBoundary></>
             },
             {
               path: 'colleges-article',
            
-              element:<><Suspense fallback  = {<FallbackLoad/>}>  <CollegeArticleRouter showAlart={showAlart} /></Suspense></>,
+              element:<><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}>  <CollegeArticleRouter showAlart={showAlart} /></Suspense></ErrorBoundary></>,
               children : [
                 {
                   path : '',
-                  element:<><Suspense fallback  = {<FallbackLoad/>}> <CollegeAritcle showAlart={showAlart} /></Suspense></>,
+                  element:<><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}> <CollegeAritcle showAlart={showAlart} /></Suspense></ErrorBoundary></>,
                   
                 },{
                   path : 'mpc-article',
-                  element:<><Suspense fallback  = {<FallbackLoad/>}> <MpcArticle showAlart={showAlart}/></Suspense></>,
+                  element:<><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}> <MpcArticle showAlart={showAlart}/></Suspense></ErrorBoundary></>,
                 
                 }
               ]
@@ -232,7 +258,9 @@ function App() {
 
   return (
     <>
+    {/* <ErrorBoundary> */}
       <RouterProvider router={router} />
+      {/* </ErrorBoundary> */}
     </>
   );
 }

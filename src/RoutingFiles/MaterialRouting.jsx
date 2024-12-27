@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import SubNav from '../Component/SubNav/SubNav'
 import { Outlet } from 'react-router-dom'
 import Footer from '../Pages/Home/FooterS/Footer'
+import ErrorBoundary from '../Component/ErrorBoundary/ErrorBoundary'
 
   
 const MaterialRouting = (props) => {
@@ -10,12 +11,12 @@ const MaterialRouting = (props) => {
     },[])
   
   return (
-    <>
+    <section style={{ position : 'relative', zIndex : '1000'}}>
 
-    <SubNav showAlart = {props.showAlart} subheadingtypedata = {props.subheadingtypedata}/>
+   <ErrorBoundary> <SubNav showAlart = {props.showAlart} subheadingtypedata = {props.subheadingtypedata}/></ErrorBoundary>
     <Outlet/>
-      <Footer/>
-    </>
+    <ErrorBoundary>  <Footer/></ErrorBoundary>
+    </section>
   )
 }
 

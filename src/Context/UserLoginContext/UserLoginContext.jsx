@@ -22,15 +22,15 @@ const UserLoginContext = (props) => {
             catch (error) {
                 if (error.response && error.response.status === 500) {
                     setLoginCheck(null);
-                    console.error('Unauthorized',error)
+                    console.error('Internal error',error)
                 }
-                if (error.response && error.response.status === 404) {
+                if (error.response && error.response.status === 401) {
                     setLoginCheck(null);
-                    console.error('Unauthorized',error)
+                    console.error('User not found')
                 }
                 else {
                     setLoginCheck(null);
-                    console.error('Unauthorized',error);
+                    console.error('Internal error',error);
                 }
             }
         }

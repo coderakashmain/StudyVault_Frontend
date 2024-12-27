@@ -57,6 +57,7 @@ const ReCaptha = ({onVerified}) => {
               .then(response => {
                 if (response.data.success) {
                   onVerified(true);
+                  sessionStorage.setItem('isVerified', 'true');
                 } else {
                   onVerified(false);
                   console.error('reCAPTCHA verification failed');

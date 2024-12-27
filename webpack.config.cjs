@@ -10,7 +10,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'), // Output directory
     publicPath: '/', // Ensures proper handling of routes
   },
-
+  devtool: 'source-map',
   module: {
     rules: [
       {
