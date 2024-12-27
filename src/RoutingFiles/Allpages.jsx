@@ -36,11 +36,11 @@ const Allpages = (props) => {
 
       ) : (
 
-        <section>
+        <Suspense fallback={<Loadingicon/>}>
          <TitleSet/>
    
           <Outlet />
-          </section>
+          </Suspense>
     
        )} 
 

@@ -127,7 +127,7 @@ const navrefvalue = (value) => {
           children : [
             {
               path: '',
-              element:<><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}><Filter showAlart={showAlart} subheadingtypedata = {subheadingtypedata}/> </Suspense></ErrorBoundary></>,
+              element:<><Suspense fallback  = {<FallbackLoad/>}><Filter showAlart={showAlart} subheadingtypedata = {subheadingtypedata}/> </Suspense></>,
          
             },
             {
