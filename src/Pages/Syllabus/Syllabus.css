@@ -149,12 +149,16 @@ margin: 1rem 0 2rem ;
         color: #fff;
         flex-grow: 2;
      }
+  
 }
 @media (max-width : 473px) {
     .syllabus-component-box{
         padding: 2rem 2rem;
           width: 100%;
         
+        }
+        .syllabu-right-box{
+            display: none;
         }
 }
 

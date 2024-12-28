@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-const HomeAdd1 = () => {
+const HomeAdd1 = (props) => {
   useEffect(() => {
     // Dynamically create and insert the AdSense script
     const script = document.createElement('script');
@@ -27,7 +27,7 @@ const HomeAdd1 = () => {
     <div style={{overflow : 'hidden'}}>
 
 <ins className="adsbygoogle"
-     style={{ display: 'block', width: '100%', minWidth: '300px' }} 
+     style={{ display: 'block', width: '100%', minWidth: '300px', background :  props.background  || 'var(--newbackcolor)' }} 
      data-ad-format="fluid"
      data-ad-layout-key="-f9+4w+7x-eg+3a"
      data-ad-client="ca-pub-9796833231647897"

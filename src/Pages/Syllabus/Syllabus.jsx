@@ -156,7 +156,7 @@ const  notavialable = () =>{
            </p>
            and expectations of each course in your college curriculum.
 
-           <HomeAdd1/>
+           <HomeAdd1 background = 'var(--newbackcolor)'/>
            <div className="syllabus-commout-out-box">
            <div className="syllabu-left-box syllabus-common-box" >
            <h3 style={{textAlign :'center', fontWeight : '500', color : 'red', margin : '0rem 0rem 1rem 0'}}>No syllabus available. Upload Soon</h3>
