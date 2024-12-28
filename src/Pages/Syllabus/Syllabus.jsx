@@ -1,12 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react'
 import './Syllabus.css'
-
+import HomeAdd1 from '../../Component/AddSense/HomeAdd1';
+import LongWidthAds from '../../Component/AddSense/LongWidthAds';
+import Horizontalads from '../../Component/AddSense/Horizontalads';
+import axios from 'axios';
+import { useNavigate } from 'react-router';
 
 
 const Syllabus = (props) => {
 const ugbtnRef = useRef();
 
-
+const navigate = useNavigate();
 
   useEffect(() => {
      
@@ -55,17 +59,17 @@ useEffect(()=>{
 },[ syllabusData.Stream])
 
 const[ syllabusDataPg , setSyllabusDataPg] = useState({
-  EducationlavelPg : '',
-  StreamPg : '',
+  Educationlavel : '',
+  Stream: '',
 },[]);
 
 const syllabusdatahandlePg = (e)=>{
   const value = e.target.innerText;
-if( syllabusDataPg.StreamPg !== value){
+if( syllabusDataPg.Stream !== value){
   setSyllabusDataPg({
     ...syllabusDataPg,
-    EducationlavelPg : 'PG',
-    StreamPg : value
+    Educationlavel : 'PG',
+    Stream : value
   })
   setSyllabusData({
     ...syllabusData,
@@ -75,23 +79,90 @@ if( syllabusDataPg.StreamPg !== value){
 }else{
   setSyllabusDataPg({
     ...syllabusDataPg,
-    EducationlavelPg : '',
-    StreamPg : ''
+    Educationlavel : '',
+    Stream : ''
   })
 }
 }
+
+const [btnrepositionpg,Setbtnrepositionpg] = useState(false);
+useEffect(()=>{
+  if(syllabusDataPg.Educationlavel && syllabusDataPg.Stream){
+    Setbtnrepositionpg(true)
+  }else{
+    Setbtnrepositionpg(false);
+  }
+},[ syllabusDataPg.Stream])
+
+
+const syllabussubmit = async(e) => {
+  e.preventDefault();
+ 
+    try{
+      const response = await axios.get('/api/syllabus', {params : syllabusData});
+
+      // if(response.status === 200){
+        navigate('/Downloadpdf', { state: { data : response.data } });
+     
+      // }
+    }catch(error){
+      if (error.response && error.response.status === 400) {
+        console.error(error);
+     
+      }
+      else{
+        console.error(error);
+    
+      }
+    
+    
+  }
+
+}
+const syllabussubmitpg = async(e) => {
+  e.preventDefault();
+
+    try{
+      const response = await axios.get('/api/syllabus', {params : syllabusDataPg});
+
+      if(response.status === 200){
+        navigate('/Downloadpdf', { state: { syllabusDataPg } });
+     
+      }
+    }catch(error){
+      if (error.response && error.response.status === 400) {
+        console.error(error);
+        alert("error 404", error);
+      }
+      else{
+        console.error(error);
+        alert("error else", error);
+      }
+  }
+
+}
+
+const  notavialable = () =>{
+  props.showAlart('Upload Soon', '', 'cancel')
+}
+
+
 
   return (
     <section id='syllabus-component'>
       <div className="syllabus-component-box">
            <h1>Syllabus Ug & Pg</h1>
            <p>The syllabus is an essential tool for every student, guiding you through the subjects and chapters that form the backbone of your academic journey. It serves as your roadmap, detailing thetopics, objectives,
+           </p>
            and expectations of each course in your college curriculum.
 
-           </p>
+           <HomeAdd1/>
            <div className="syllabus-commout-out-box">
            <div className="syllabu-left-box syllabus-common-box" >
+           <h3 style={{textAlign :'center', fontWeight : '500', color : 'red', margin : '0rem 0rem 1rem 0'}}>No syllabus available. Upload Soon</h3>
               <h2>Ug syllabus</h2>
+              <p>The Undergraduate (UG) Model Syllabus serves as a vital resource for students pursuing higher education in Odisha. Designed to align with the state's academic guidelines and national educational standards, it ensures a structured and comprehensive learning experience for students across various disciplines.</p>
+               <form  onSubmit={syllabussubmit}>
                 <ul>
                   <li  className={`active ${syllabusData.Educationlavel === 'UG' && syllabusData.Stream === 
                     'SCIENCE' && 'syllabus-btn-true'
@@ -109,28 +180,31 @@ if( syllabusDataPg.StreamPg !== value){
                     'E&V' && 'syllabus-btn-true'
                   }`} onClick={syllabusdatahandle}>E&V</li>
                 </ul>
-                <button   className={`ug-pg-syllabus-button active ${ugbtnreposition && 'ug-btn-reposition'}`}  ref={ugbtnRef}>
+                <button   onClick={notavialable} type='submit'  className={`ug-pg-syllabus-button active ${ugbtnreposition && 'ug-btn-reposition'}`}  ref={ugbtnRef}>
                     Click To Get
                 </button>
+                </form>
+                <Horizontalads background = "var(--newbackcolor)"/>
               <h2>Pg syllabus</h2>
+              <p>The Postgraduate (PG) Model Syllabus is an essential academic guide for students pursuing advanced studies in Odisha. It provides a well-structured framework to help students delve deeper into their chosen fields of study while adhering to national and state educational standards.</p>
+              <form   onSubmit={syllabussubmitpg}>
                 <ul>
-                  <li  className={`active ${syllabusDataPg.EducationlavelPg === 'PG' && syllabusDataPg.StreamPg === 
+                  <li  className={`active ${syllabusDataPg.Educationlavel === 'PG' && syllabusDataPg.Stream === 
                     'SCIENCE' && 'syllabus-btn-true-pg'
                   }`}  onClick={syllabusdatahandlePg}>Science</li>
-                  <li  className={`active ${syllabusDataPg.EducationlavelPg === 'PG' && syllabusDataPg.StreamPg === 
+                  <li  className={`active ${syllabusDataPg.Educationlavel === 'PG' && syllabusDataPg.Stream === 
                     'COMMERCE' && 'syllabus-btn-true-pg'
                   }`}  onClick={syllabusdatahandlePg}>Commerce</li>
-                  <li  className={`active ${syllabusDataPg.EducationlavelPg === 'PG' && syllabusDataPg.StreamPg === 
+                  <li  className={`active ${syllabusDataPg.Educationlavel === 'PG' && syllabusDataPg.Stream === 
                     'ARTS' && 'syllabus-btn-true-pg'
                   }`}  onClick={syllabusdatahandlePg}>Arts</li>
-                  <li  className={`active ${syllabusDataPg.EducationlavelPg === 'PG' && syllabusDataPg.StreamPg === 
-                    'AECC' && 'syllabus-btn-true-pg'
-                  }`}  onClick={syllabusdatahandlePg}> AECC</li>
+                  
                 
                 </ul>
-                <button  className="ug-pg-syllabus-button active">
+                <button  onClick={notavialable} type='submit' className={`ug-pg-syllabus-button active ${btnrepositionpg &&  "pg-btn-reposition"} `}>
                     Click To Get
                 </button>
+                </form>
            </div>
            <div className="syllabu-right-box syllabus-common-box"></div>
            </div>

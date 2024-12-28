@@ -8,7 +8,9 @@ import AritcleAds from "../../../../Component/AddSense/AritcleAds";
 
 const Downloadpdf = (props) => {
     const navigate = useNavigate();
-    const { state } = useLocation();
+    // const { state } = useLocation();
+    const location = useLocation();
+
     const [papers, setPapers] = useState([]);
     const searchRef = useRef();
     const [searchbaractivecheck, setsearchbaractivecheck] = useState(false);
@@ -17,6 +19,7 @@ const Downloadpdf = (props) => {
     const [clickCount, setClickCount] = useState(0); // Track clicks for ads
     const [showAd, setShowAd] = useState(false); // Show interstitial ad
     const [networkslow, setNetworkslow] = useState(false);
+    const { data } = location.state || {};
 
     useEffect(() => {
       const networkslowtimeout =  setTimeout(() => {
@@ -26,25 +29,36 @@ const Downloadpdf = (props) => {
         return ()=> clearTimeout(networkslowtimeout)
     }, [loading])
 
-    useEffect(() => {
-        const fetchPapers = async () => {
+    useEffect(()=>{
+        if(data){
+            setPapers(data);
+        setLoading(true);
+        }else{
+            setPapers([{ id: "error", title: "Error loading papers, please try again later." }]);
+            setLoading(true);
+        }
+        
+    },[])
 
-            try {
+    // useEffect(() => {
+    //     const fetchPapers = async () => {
 
-                const response = await axios.get('/api/Filter', { params: state.filters });
+    //         try {
 
-                setPapers(response.data);
-                setLoading(true);
+    //             const response = await axios.get('/api/Filter', { params: state.filters });
 
-            } catch (error) {
-                console.error('Error fetching papers:', error);
-                setLoading(true);
-                setPapers([{ id: "error", title: "Error loading papers, please try again later." }]);
-            }
-        };
+    //             setPapers(response.data);
+    //             setLoading(true);
 
-        fetchPapers();
-    }, [state.filters]);
+    //         } catch (error) {
+    //             console.error('Error fetching papers:', error);
+    //             setLoading(true);
+    //             setPapers([{ id: "error", title: "Error loading papers, please try again later." }]);
+    //         }
+    //     };
+
+    //     fetchPapers();
+    // }, [state.filters]);
 
 
 

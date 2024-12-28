@@ -78,6 +78,10 @@ margin-top: 5rem ;
 
     
 }
+.syllabus-common-box p{
+margin: 1rem 0 2rem ;
+    
+}
 .syllabus-common-box ul li{
     flex-basis: 100px;
     font-size: 1.1rem;
@@ -118,6 +122,12 @@ margin-top: 5rem ;
 }
 .ug-btn-reposition{
     transform:scale(1);
+    opacity: 1;
+    margin: 4rem 0;
+    padding: 1.5rem 3rem;
+}
+.pg-btn-reposition{
+    transform:scale(1) ;
     opacity: 1;
     margin: 4rem 0;
     padding: 1.5rem 3rem;

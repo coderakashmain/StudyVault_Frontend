@@ -23,9 +23,9 @@ const LongWidthAds = (props) => {
         };
       }, []);  
   return (
-    <div style={{width : '100%', maxHeight : '125px',overflow : 'hidden' }}>
+    <div style={{width : '100%', maxHeight : '200px',overflow : 'hidden' }}>
         <ins className="adsbygoogle"
-      style={{ display: 'block', width: '100%', minWidth: '300px', maxHeight : '120px',background : props.background || '#fff' , textAlign : 'center'}} 
+      style={{ display: 'block', width: '100%', minWidth: '300px', maxHeight : '200px',background : props.background || '#fff' , textAlign : 'center'}} 
      data-ad-format="autorelaxed"
      data-ad-client="ca-pub-9796833231647897"
      data-ad-slot="4571350183"
