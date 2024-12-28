@@ -32,7 +32,7 @@ padding: 2rem 5rem;
     width: 100%;
     margin: 3rem 0 2rem 0;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     flex-wrap: wrap;
     min-height: 30rem;
     gap: 1rem;
@@ -40,7 +40,7 @@ padding: 2rem 5rem;
 }
 .syllabu-left-box{
     flex-grow: 1;
-    flex-basis: 200px;
+    flex-basis: 100px;
    
 
 }
@@ -149,7 +149,6 @@ margin: 1rem 0 2rem ;
         color: #fff;
         flex-grow: 2;
      }
-  
 }
 @media (max-width : 473px) {
     .syllabus-component-box{
@@ -158,12 +157,7 @@ margin: 1rem 0 2rem ;
         
         }
         .syllabu-right-box{
-            display: none;
-        }
-        .syllabus-commout-out-box{
-          
-            gap: 0rem;
-        
+         display: none;
         }
 }
 
