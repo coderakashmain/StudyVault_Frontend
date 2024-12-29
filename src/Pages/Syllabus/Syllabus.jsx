@@ -155,8 +155,11 @@ const  notavialable = () =>{
            <p>The syllabus is an essential tool for every student, guiding you through the subjects and chapters that form the backbone of your academic journey. It serves as your roadmap, detailing thetopics, objectives,
            </p>
            and expectations of each course in your college curriculum.
-
+        <div className="ads-center">
            <HomeAdd1 background = 'var(--newbackcolor)'/>
+
+        </div>
+
            <div className="syllabus-commout-out-box">
            <div className="syllabu-left-box syllabus-common-box" >
            <h3 style={{textAlign :'center', fontWeight : '500', color : 'red', margin : '0rem 0rem 1rem 0'}}>No syllabus available. Upload Soon</h3>
@@ -184,7 +187,10 @@ const  notavialable = () =>{
                     Click To Get
                 </button>
                 </form>
+                <div className="ads-center">
+
                 <Horizontalads background = "var(--newbackcolor)"/>
+                </div>
               <h2>Pg syllabus</h2>
               <p>The Postgraduate (PG) Model Syllabus is an essential academic guide for students pursuing advanced studies in Odisha. It provides a well-structured framework to help students delve deeper into their chosen fields of study while adhering to national and state educational standards.</p>
               <form   onSubmit={syllabussubmitpg}>

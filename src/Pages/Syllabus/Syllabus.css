@@ -39,13 +39,13 @@ padding: 2rem 5rem;
 
 }
 .syllabu-left-box{
-    flex-grow: 1;
-    flex-basis: 100px;
+width: 50%;
+height: 100%;
    
 
 }
 .syllabu-right-box{
-    flex-grow: 1;
+    width: 50%;
     
     background-color: white;
     box-shadow: 9px 9px 10px #bdc2c6a1;
@@ -150,11 +150,25 @@ margin: 1rem 0 2rem ;
         flex-grow: 2;
      }
 }
+@media (max-width : 673px) {
+    .syllabus-component-box{
+        padding: 2rem 3rem;
+          width: 100%;
+        
+        }
+        .syllabu-left-box{
+         width: 70%;
+        }
+       
+}
 @media (max-width : 473px) {
     .syllabus-component-box{
         padding: 2rem 2rem;
           width: 100%;
         
+        }
+        .syllabu-left-box{
+         width: 100%;
         }
         .syllabu-right-box{
          display: none;
