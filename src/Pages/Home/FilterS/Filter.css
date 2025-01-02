@@ -7,7 +7,7 @@
   transform: translateY(-100%);
 }
 .filter-main-div {
-  padding: 7% 0%;
+  padding: 7% 0% 2%;
   background-color: var(--newbackcolor);
   position: relative;
 }
