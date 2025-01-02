@@ -23,10 +23,10 @@ const Horizontalads = (props) => {
             };
           }, []); 
   return (
-      <div style={{overflow : 'hidden' , margin : '1rem 0'}}>
+      <div style={{overflow : 'hidden' }}>
       <ins className="adsbygoogle"
       
-      style={{ display: 'block', width: '100%', minWidth: '300px',overflow : 'hidden', maxHeight: '200px', background : props.background  || '#fff'}} 
+      style={{ display: 'block', width: '100%', minWidth: '250px',overflow : 'hidden', maxHeight: '200px', background : props.background  || '#fff'}} 
       data-ad-client="ca-pub-9796833231647897"
       data-ad-slot="5568441934"
       data-ad-format="horizontal"
