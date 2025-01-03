@@ -98,12 +98,13 @@ const Downloadpdf = (props) => {
 
         // Show interstitial ad after every 3 clicks
         if ((clickCount + 1) % 2 === 0) {
-            setShowAd(true);
-          const timout =   setTimeout(() => {
-                setShowAd(false);
-                window.open(paper.url, "_blank"); // Open question paper after ad
-            }, 5000); // Show the ad for 5 seconds
-            return ()=> clearTimeout(timout)
+            // setShowAd(true);
+        //   const timout =   setTimeout(() => {
+        //         setShowAd(false);
+        //         window.open(paper.url, "_blank"); // Open question paper after ad
+        //     }, 5000); // Show the ad for 5 seconds
+        //     return ()=> clearTimeout(timout)
+        window.open(paper.url, "_blank"); // Open question paper immediately
         } else {
             window.open(paper.url, "_blank"); // Open question paper immediately
         }
@@ -157,7 +158,7 @@ const Downloadpdf = (props) => {
                         </div>
                     )}
 
-                    <LongWidthAds background="rgb(242 244 246)" />
+                    {/* <LongWidthAds background="rgb(242 244 246)" /> */}
 
                     {showAd && (
                         <div
@@ -191,7 +192,7 @@ const Downloadpdf = (props) => {
                                 ×
                             </button>
                             <div>
-                                <AritcleAds Height = '100%'/>
+                                {/* <AritcleAds Height = '100%'/> */}
                             </div>
                         </div>
                     )}

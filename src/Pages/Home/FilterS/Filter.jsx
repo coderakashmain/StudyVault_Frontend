@@ -615,9 +615,9 @@ useEffect(()=>{
 
         </div>
       </form>
-      <div  className="ads-center">
+      {/* <div  className="ads-center">
       <AritcleAds background = "var(--backcolor)"/>
-      </div>
+      </div> */}
     </div>
   );
 };
