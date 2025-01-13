@@ -141,6 +141,38 @@
     color: #fff;
     
 }
+.subject-select{
+    display: flex;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .subject-select-each{
+   
+    border-radius: 50%;
+    margin: 1rem 1rem;
+  }
+  .subject-select-each p{
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s linear;
+  
+  background-color: white;
+  box-shadow: var(--newshadow2);
+  user-select: none;
+  }
+  
+  
+  .subject-select-each .ok{
+    background:var(--filterbuttoncolor);
+    color: white;
+    transition: all 0.2s linear;
+    border: none;
+  }
+  .subject-select-each .no{
+    background-color: white;
+  }
+  
 .search-item:hover{
     background-color: rgb(29, 79, 131);
 }

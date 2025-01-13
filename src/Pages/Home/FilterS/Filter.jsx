@@ -328,7 +328,7 @@ useEffect(()=>{
     <div ref={filterboxref} className="filter-main-div">
       
      
-       { homebackShow ? <h5  className="backHome"><NavLink to = '/'> Home &nbsp; </NavLink> -&gt; &nbsp;Filter </h5> : null}
+       {/* { homebackShow ? <h5  className="backHome"><NavLink to = '/'> Home &nbsp; </NavLink> -&gt; &nbsp;Filter </h5> : null} */}
       <form onSubmit={handleSubmit} className="filteration-container-box" >
         <div className="filteration-container">
           <div className="first-filteration">
