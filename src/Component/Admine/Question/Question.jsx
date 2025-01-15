@@ -90,7 +90,7 @@ const Question = (props) => {
                 y: height / 2,
                 size: 40,
                 color: rgb(0.75, 0.75, 0.75),
-                opacity: 0.6,
+                opacity: 0.4,
                 rotate: degrees(45),
             });
         });

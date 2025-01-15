@@ -9,7 +9,8 @@ import { useNavigate } from 'react-router';
 
 const Syllabus = (props) => {
 const ugbtnRef = useRef();
-
+const [ugloading,setUgloading]= useState(false);
+const [pgloading,setPgloading] = useState(false);
 const navigate = useNavigate();
 
   useEffect(() => {
@@ -97,13 +98,13 @@ useEffect(()=>{
 
 const syllabussubmit = async(e) => {
   e.preventDefault();
- 
+  setUgloading(true);
     try{
       const response = await axios.get('/api/syllabus', {params : syllabusData});
 
       // if(response.status === 200){
         navigate('/Downloadpdf', { state: { data : response.data } });
-     
+        setUgloading(false);
       // }
     }catch(error){
       if (error.response && error.response.status === 400) {
@@ -114,20 +115,20 @@ const syllabussubmit = async(e) => {
         console.error(error);
     
       }
-    
+      setUgloading(false);
     
   }
 
 }
 const syllabussubmitpg = async(e) => {
   e.preventDefault();
-
+setPgloading(true);
     try{
       const response = await axios.get('/api/syllabus', {params : syllabusDataPg});
 
       
         navigate('/Downloadpdf', { state: { data : response.data } });
-    
+    setPgloading(false);
     }catch(error){
       if (error.response && error.response.status === 400) {
         console.error(error);
@@ -137,6 +138,7 @@ const syllabussubmitpg = async(e) => {
         console.error(error);
         alert("error else", error);
       }
+      setPgloading(false);
   }
 
 }
@@ -182,7 +184,7 @@ const  notavialable = () =>{
                     'E&V' && 'syllabus-btn-true'
                   }`} onClick={syllabusdatahandle}>E&V</li>
                 </ul>
-                <button   onClick={notavialable} type='submit'  className={`ug-pg-syllabus-button active ${ugbtnreposition && 'ug-btn-reposition'}`}  ref={ugbtnRef}>
+                <button  disabled={ugloading} onClick={notavialable} type='submit'  className={`ug-pg-syllabus-button active ${ugbtnreposition && 'ug-btn-reposition'} ${ugloading && 'syllabus-loading'}`}  ref={ugbtnRef}>
                     Show
                 </button>
                 </form>
@@ -206,7 +208,7 @@ const  notavialable = () =>{
                   
                 
                 </ul>
-                <button  onClick={notavialable} type='submit' className={`ug-pg-syllabus-button active ${btnrepositionpg &&  "pg-btn-reposition"} `}>
+                <button disabled={pgloading}  onClick={notavialable} type='submit' className={`ug-pg-syllabus-button active ${btnrepositionpg &&  "pg-btn-reposition" } ${pgloading && 'syllabus-loading'}`}>
                    Show
                 </button>
                 </form>
