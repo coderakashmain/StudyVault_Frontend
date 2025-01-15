@@ -71,7 +71,7 @@ const Downloadpdf = (props) => {
     const handleclicksearch = () => {
         if (!searchbaractivecheck) {
             searchRef.current.style.transform = 'translate(0%) scale(1)';
-            searchRef.current.style.margin = ' 2rem 0';
+            searchRef.current.style.margin = ' 1rem 0 2rem 0';
             searchRef.current.style.opacity = ' 1';
 
             setsearchbaractivecheck(!searchbaractivecheck);
@@ -197,17 +197,22 @@ const Downloadpdf = (props) => {
                             </div>
                         </div>
                     )}
-                   { data.length > 0 && ( <div className="name-instruction">
+                   { data.length > 0 ? ( <div className="name-instruction">
                         <h3>INSTRUCTION :)</h3>
                         <p style={{ fontWeight: '500' }}>If  you don't understand the naming system then i will guide you to understand. Here is the decode...</p>
                         <p style={{ padding: '0rem 0 0 1rem', color: 'black', fontSize: '0.9rem' }}>Department Name / Paper Name _Student Year _ which Semester _ Core paper Name _ sem / mid _ Ug/Pg _ Session.</p>
 
                         <p style={{ margin: '4rem 0', color: '#000', fontWeight: '600' }}>Don't Forgate to give feedback.</p>
-                    </div>)}
+                    </div>) : (
+                        <div className="name-instruction">
+                            <h3>Sorry we don't have  resources that you need. </h3>
+                            <p>We shall try to upload as soon as possible.</p>
+                            <p>Or you can enter session as <strong style={{fontWeight : '600', fontStyle : 'italic'}}>2020-2025</strong> so if their are any resources present during those session, you can get.</p>
+                            <p>Check  you have entered correct Department name. If your enter name and search suggestion name aren't same then you can not get any results;</p>
+                             </div>
+                    )}
                 </div>
-            <footer style={{fontWeight : '600'}}>
-            &lt;/&gt; StudyVault Pvt. Ltd. 2024
-            </footer>
+            
             </div>
             <Footer/>
         </>

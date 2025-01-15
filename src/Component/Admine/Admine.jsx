@@ -79,7 +79,7 @@ const handleLogout = async () => {
         <h2 style={{ fontWeight : '500'}}> StudyVault</h2>
        
         <div className="rightAselectbox">
-        <i className="fa-solid fa-house-chimney" style={{color : '#fff',cursor : 'pointer', fontSize : '1.1rem' , paddingRight : '1rem'}} onClick={()=> navigate('/')}></i>
+        <i className="fa-solid fa-house-chimney active" style={{color : '#fff',cursor : 'pointer', fontSize : '1.1rem' , paddingRight : '1rem'}} onClick={()=> navigate('/')}></i>
         <select name="admin-data" id="">
           <option value="">Akash</option>
         </select>

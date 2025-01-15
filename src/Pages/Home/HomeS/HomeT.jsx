@@ -59,10 +59,10 @@ const HomeT = (props) => {
 
                 <h1>Hi! I Am</h1>
                 <div className="h1-box">
-                 <picture>
+                 <picture >
                   <source srcSet={logoa} type="image/avif"/>
                   <source srcSet={logow} type="image/webp"/>
-                  <img src={logo} alt="web logo" loading="lazy"/>
+                  <img  src={logo} alt="web logo" loading="lazy"/>
                  </picture>
                 </div>
               </div>

@@ -1,7 +1,7 @@
 #download-pdf{
-    min-height: 100vh;
-    min-height: 100svh;
-    min-height: 100lvh;
+    min-height: 70vh;
+    min-height: 70svh;
+    min-height: 70lvh;
     width: 100%;
     position: relative;
     top: 0px;
@@ -176,11 +176,13 @@
     font-size: 1.1rem;
     font-weight: 600;
     color: #474747;
+    font-style: italic;
+    color: rgb(0, 145, 255);
 }
 .name-instruction p{
    
-    color: rgb(0, 145, 255);
    margin: 1rem 1rem 0;
+   font-style: italic;
  }
 
 @media (max-width : 780px) {
