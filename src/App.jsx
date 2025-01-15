@@ -168,19 +168,19 @@ const navrefvalue = (value) => {
 
         {
           path: "Profile",
-          element: (<><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}>  <Profile showAlart={showAlart} /></Suspense></ErrorBoundary></>),
+          element: (<><ErrorBoundary> <Profile showAlart={showAlart} /></ErrorBoundary></>),
         },
         {
           path: "About-us",
-          element: (<><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}>  <AboutUs showAlart={showAlart} /></Suspense></ErrorBoundary></>),
+          element: (<><ErrorBoundary> <AboutUs showAlart={showAlart} /></ErrorBoundary></>),
         },
         { 
           path: "Privacy-Policy",
-          element: (<><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}> <PrivecyandPolicy showAlart={showAlart} /></Suspense></ErrorBoundary></>),
+          element: (<><ErrorBoundary> <PrivecyandPolicy showAlart={showAlart} /></ErrorBoundary></>),
         },
         { 
           path: "Terms-Conditions",
-          element: (<><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}>  <TermsConditions showAlart={showAlart} /></Suspense></ErrorBoundary></>),
+          element: (<><ErrorBoundary> <TermsConditions showAlart={showAlart} /></ErrorBoundary></>),
         },
         {
           path: "Admin",

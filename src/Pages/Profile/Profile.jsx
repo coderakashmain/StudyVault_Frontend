@@ -22,24 +22,8 @@ const Profile = (props) => {
   // const [driveUrl,setdriveUrl] = useState('');
   const [renameFileback, setrenameFileback] = useState('');
   const [isActive, setIsActive] = useState(false);
-  const [uploadpicture, setUploadpicture] = useState(null);
   const fileInputRef = useRef(null);
-  const uploadpicref = useRef(null);
-  const [image, setImage] = useState(null);
-  const [popup, setPopup] = useState(false);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [dragging, setDragging] = useState(false);
-  const [startPos, setStartPos] = useState({ x: 0, y: 0 });
-  const containerRef = useRef(null);
-  const [maxOffsets, setMaxOffsets] = useState({ x: 0, y: 0 });
-  const [backfileid, setBackfileid] = useState(null);
-  const [wait, setWait] = useState(false);
-  const [finalpp, setfinalpp] = useState(() => localStorage.getItem('finalpp') || '');
-  const [positionset, setPositionset] = useState(false);
-  const [newPositionpp, setnewPositionpp] = useState(() => {
-    const savedPosition = localStorage.getItem('newPositionpp');
-    return savedPosition ? JSON.parse(savedPosition) : { x: 0, y: 0 };
-  });
+ 
 
 
 
@@ -213,9 +197,8 @@ const Profile = (props) => {
         });
 
         if (response.status === 200) {
-          const fileId = response.data.fileId; // Capture the file ID from backend
-          const driveUrl = `https://drive.google.com/file/d/${fileId}/view`;
-          // setdriveUrl(driveUrl);
+          
+          
           setrenameFileback('');
 
           setSelectedFile(null);
@@ -281,14 +264,6 @@ const Profile = (props) => {
                 <h4> {user.firstname} {user.lastname}</h4>
 
                 <hr />
-                {/* <div className="download downupload">
-                  <h5>6</h5>
-                  <h4>Total Download</h4>
-                </div>
-                <div className="Upload downupload">
-                  <h5>54</h5>
-                  <h4>Total Uploads</h4>
-                </div> */}
               </div>
               <div className="pdfupload" >
 
