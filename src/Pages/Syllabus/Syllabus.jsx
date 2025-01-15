@@ -143,9 +143,9 @@ setPgloading(true);
 
 }
 
-const  notavialable = () =>{
-  props.showAlart('Upload Soon', '', 'cancel')
-}
+// const  notavialable = () =>{
+//   props.showAlart('Upload Soon', '', 'cancel')
+// }
 
 
 
@@ -184,7 +184,7 @@ const  notavialable = () =>{
                     'E&V' && 'syllabus-btn-true'
                   }`} onClick={syllabusdatahandle}>E&V</li>
                 </ul>
-                <button  disabled={ugloading} onClick={notavialable} type='submit'  className={`ug-pg-syllabus-button active ${ugbtnreposition && 'ug-btn-reposition'} ${ugloading && 'syllabus-loading'}`}  ref={ugbtnRef}>
+                <button  disabled={ugloading}  type='submit'  className={`ug-pg-syllabus-button active ${ugbtnreposition && 'ug-btn-reposition'} ${ugloading && 'syllabus-loading'}`}  ref={ugbtnRef}>
                     Show
                 </button>
                 </form>

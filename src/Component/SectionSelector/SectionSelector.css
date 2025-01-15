@@ -8,7 +8,7 @@
     z-index: 2;
 }
 .section-selector-common{
-    width: 50%;
+    width: 100%;
     overflow-x:scroll;
     display: flex;
     align-items: center;
@@ -20,11 +20,11 @@
 }
 .section-selector-inside-right {
     padding: 0rem 0 0 0.8rem;
-    border-left: 1px solid #113f68;
+    /* border-left: 1px solid #113f68; */
 }
 .section-selector-inside{
     display: flex;
-    border-right: 1px solid #113f68;
+    /* border-right: 1px solid #113f68; */
     gap: 0.7rem;
     
 }
@@ -43,7 +43,7 @@
 }
 .section-selector-common a{
 padding: 0.5rem 1rem;
-border-radius: 02rem;
+border-radius: 0.3rem;
 /* color: #fff; */
 font-size: 0.9rem;
 font-weight: 500;
@@ -52,7 +52,7 @@ font-weight: 500;
 }
 .section-on{
     color: #fff;
-    background: rgb(89 136 178);
+    background: #0085A1 !important;
     transition: all 0.3s ease;
 }
 .section-selector-inside-right .section-on{
