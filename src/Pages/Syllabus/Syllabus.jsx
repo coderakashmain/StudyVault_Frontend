@@ -208,7 +208,7 @@ setPgloading(true);
                   
                 
                 </ul>
-                <button disabled={pgloading}  onClick={notavialable} type='submit' className={`ug-pg-syllabus-button active ${btnrepositionpg &&  "pg-btn-reposition" } ${pgloading && 'syllabus-loading'}`}>
+                <button disabled={pgloading}   type='submit' className={`ug-pg-syllabus-button active ${btnrepositionpg &&  "pg-btn-reposition" } ${pgloading && 'syllabus-loading'}`}>
                    Show
                 </button>
                 </form>
