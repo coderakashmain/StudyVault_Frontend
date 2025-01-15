@@ -23,7 +23,7 @@ const SectionSelector = (props) => {
     <aside id="section-selector" ref={sectionRef} >
       <div className="section-selector-inside section-selector-common" >
             <NavLink to= '/Filter'   className={` ${location.pathname === '/Filter' ? 'section-on' : 'section-nutral ' } active`}>Questions</NavLink>
-            <NavLink to= '' className='section-off active' onClick={popup}>Syllabus</NavLink>
+            <NavLink to= '/Filter/syllabus' className={` ${location.pathname === '/Filter/syllabus' ? 'section-on' : 'section-nutral ' } active`} >Syllabus</NavLink>
             <NavLink to= ''className='section-off active' onClick={popup}>Notes</NavLink>
             <NavLink to= '' className='section-off active' onClick={popup}>Books</NavLink>
       </div>

@@ -90,6 +90,7 @@ const handleLogout = async () => {
           <div className="admin-left-box">
             <NavLink to= ''><h2><i className="fa-solid fa-gauge-high"></i>Dashboard</h2></NavLink>
             <NavLink to= 'Question'><h2><i className="fa-solid fa-newspaper" ></i>Question</h2></NavLink>
+            <NavLink to= 'syllabusupload'><h2><i className="fa-solid fa-newspaper" ></i>Syllabus</h2></NavLink>
             <NavLink to= 'Note'><h2><i className="fa-solid fa-book-open"></i>Note</h2></NavLink>
             <NavLink to= 'Usersend'><h2><i className="fa-regular fa-folder-closed"></i>User Send</h2></NavLink>
             <NavLink to= 'CsUpload'><h2><i className="fa-solid fa-computer"></i>Cs Upload</h2></NavLink>

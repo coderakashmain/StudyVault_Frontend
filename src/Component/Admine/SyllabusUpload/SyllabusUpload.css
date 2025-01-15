@@ -1,0 +1,72 @@
+#syllbus-upload{
+    padding: 1rem 1rem;
+    position: relative;
+}
+#syllbus-upload input{
+    display: block;
+    width: 100%;
+    position: relative;
+    padding: 1rem 2rem;
+    border-radius: 5rem;
+    height: 6rem;
+    overflow: hidden;
+    margin: 1rem 0rem 3rem;
+}
+#syllbus-upload input::after{
+    content: 'Choose a File ';
+  
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    background-color: #e4dddd;
+    font-size: 1.5rem;
+    font-weight: 500;
+
+}
+#syllbus-upload select{
+    display: block;
+    width: 100%;
+    position: relative;
+    padding: 1rem 2rem;
+    border-radius: 0.3rem;
+    margin: 1rem 0rem 3rem;
+    outline: none;
+    border: 1px solid rgb(15, 93, 119);
+}
+#syllbus-upload button{
+    padding: 1rem 4rem;
+    margin-left: 2rem;
+    text-align: right;
+    color: #fff;
+    outline: none;
+    border: none;
+    border-radius: 0.4rem;
+}
+#syllbus-upload button[type = 'reset']{
+    background-color: rgb(193, 67, 67);
+    
+}
+#syllbus-upload button[type = 'submit']{
+    background-color: rgb(67, 122, 193);
+    cursor: pointer;
+    
+}
+.syllbus-loading{
+    position: absolute;
+    display: flex;
+    left: 0;
+    top: 0;
+    justify-content: center;
+    align-items: center;
+    min-height: 120%;
+    width: 100%;
+    background-color: rgba(19, 19, 19, 0.808);
+    font-weight: 600;
+    color: #fff;
+}

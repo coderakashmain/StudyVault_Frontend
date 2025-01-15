@@ -4,6 +4,7 @@ import axios from "axios";
 import './Downloadpdf.css'
 import LongWidthAds from "../../../../Component/AddSense/LongWidthAds";
 import AritcleAds from "../../../../Component/AddSense/AritcleAds";
+import Footer from '../../FooterS/Footer'
 
 
 const Downloadpdf = (props) => {
@@ -196,15 +197,19 @@ const Downloadpdf = (props) => {
                             </div>
                         </div>
                     )}
-                    <div className="name-instruction">
+                   { data.length > 0 && ( <div className="name-instruction">
                         <h3>INSTRUCTION :)</h3>
                         <p style={{ fontWeight: '500' }}>If  you don't understand the naming system then i will guide you to understand. Here is the decode...</p>
-                        <p style={{ padding: '0rem 0 0 1rem', color: 'black', fontSize: '0.9rem' }}>Department Name / Paper Name --Student Year -- which Semester -- Core paper Name -- sem / mid -- Ug/Pg -- Session.</p>
+                        <p style={{ padding: '0rem 0 0 1rem', color: 'black', fontSize: '0.9rem' }}>Department Name / Paper Name _Student Year _ which Semester _ Core paper Name _ sem / mid _ Ug/Pg _ Session.</p>
 
                         <p style={{ margin: '4rem 0', color: '#000', fontWeight: '600' }}>Don't Forgate to give feedback.</p>
-                    </div>
+                    </div>)}
                 </div>
+            <footer style={{fontWeight : '600'}}>
+            &lt;/&gt; StudyVault Pvt. Ltd. 2024
+            </footer>
             </div>
+            <Footer/>
         </>
     )
 }

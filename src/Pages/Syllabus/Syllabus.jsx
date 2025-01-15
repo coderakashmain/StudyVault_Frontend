@@ -37,8 +37,8 @@ if( syllabusData.Stream !== value){
   })
   setSyllabusDataPg({
     ...syllabusDataPg,
-    EducationlavelPg : '',
-    StreamPg : ''
+    Educationlavel : '',
+    Stream : ''
   })
 }else{
   setSyllabusData({
@@ -125,10 +125,9 @@ const syllabussubmitpg = async(e) => {
     try{
       const response = await axios.get('/api/syllabus', {params : syllabusDataPg});
 
-      if(response.status === 200){
-        navigate('/Downloadpdf', { state: { syllabusDataPg } });
-     
-      }
+      
+        navigate('/Downloadpdf', { state: { data : response.data } });
+    
     }catch(error){
       if (error.response && error.response.status === 400) {
         console.error(error);
@@ -156,13 +155,13 @@ const  notavialable = () =>{
            </p>
            and expectations of each course in your college curriculum.
         <div className="ads-center">
-           <HomeAdd1 background = 'var(--newbackcolor)'/>
+           {/* <HomeAdd1 background = 'var(--newbackcolor)'/> */}
 
         </div>
 
            <div className="syllabus-commout-out-box">
            <div className="syllabu-left-box syllabus-common-box" >
-           <h3 style={{textAlign :'center', fontWeight : '500', color : 'red', margin : '0rem 0rem 1rem 0'}}>No syllabus are available. Upload Soon</h3>
+           {/* <h3 style={{textAlign :'center', fontWeight : '500', color : 'red', margin : '0rem 0rem 1rem 0'}}>No syllabus are available. Upload Soon</h3> */}
               <h2>Ug syllabus</h2>
               <p>The Undergraduate (UG) Model Syllabus serves as a vital resource for students pursuing higher education in Odisha. Designed to align with the state's academic guidelines and national educational standards, it ensures a structured and comprehensive learning experience for students across various disciplines.</p>
                <form  onSubmit={syllabussubmit}>
@@ -184,12 +183,12 @@ const  notavialable = () =>{
                   }`} onClick={syllabusdatahandle}>E&V</li>
                 </ul>
                 <button   onClick={notavialable} type='submit'  className={`ug-pg-syllabus-button active ${ugbtnreposition && 'ug-btn-reposition'}`}  ref={ugbtnRef}>
-                    Click To Get
+                    Show
                 </button>
                 </form>
                 <div className="ads-center">
 
-                <Horizontalads background = "var(--newbackcolor)"/>
+                {/* <Horizontalads background = "var(--newbackcolor)"/> */}
                 </div>
               <h2>Pg syllabus</h2>
               <p>The Postgraduate (PG) Model Syllabus is an essential academic guide for students pursuing advanced studies in Odisha. It provides a well-structured framework to help students delve deeper into their chosen fields of study while adhering to national and state educational standards.</p>
@@ -208,7 +207,7 @@ const  notavialable = () =>{
                 
                 </ul>
                 <button  onClick={notavialable} type='submit' className={`ug-pg-syllabus-button active ${btnrepositionpg &&  "pg-btn-reposition"} `}>
-                    Click To Get
+                   Show
                 </button>
                 </form>
            </div>

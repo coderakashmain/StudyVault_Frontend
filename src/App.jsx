@@ -33,8 +33,10 @@ const MaterialRouting = lazy(() => import("./RoutingFiles/MaterialRouting"));
 import FallbackLoad from "./Component/Fallbackload/FallbackLoad"
 import ErrorBoundary from "./Component/ErrorBoundary/ErrorBoundary";
 import Loadingicon from "./Component/Jsonlicon/Loadingicon";
+// import SyllabusUpload from "./Component/Admine/SyllabusUpload/SyllabusUpload";
 
 // import NotFound from "./Component/NotFound/NotFound";
+const SyllabusUpload = lazy(() => import("./Component/Admine/SyllabusUpload/SyllabusUpload"));
 const NotFound = lazy(() => import("./Component/NotFound/NotFound"));
 const Syllabus = lazy(() => import("./Pages/Syllabus/Syllabus"));
 const MpcArticle = lazy(() => import("./Article/CollegeArticle/MpcAritcle/MpcArticle"));
@@ -190,6 +192,11 @@ const navrefvalue = (value) => {
           {
             path: 'Question',
             element: <><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}><Question showAlart={showAlart} /></Suspense> </ErrorBoundary></>
+
+          },
+          {
+            path: 'syllabusupload',
+            element: <><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}><SyllabusUpload showAlart={showAlart} /></Suspense> </ErrorBoundary></>
 
           },
           {
