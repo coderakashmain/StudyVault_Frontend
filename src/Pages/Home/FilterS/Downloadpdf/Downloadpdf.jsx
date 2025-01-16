@@ -21,8 +21,8 @@ const Downloadpdf = (props) => {
     const [showAd, setShowAd] = useState(false); // Show interstitial ad
     const [networkslow, setNetworkslow] = useState(false);
     const { data } = location.state || {};
-    const [iframeUrl, setIframeUrl] = useState(null); // State for iframe URL
-    const [showIframe, setShowIframe] = useState(false); 
+    // const [iframeUrl, setIframeUrl] = useState(null); // State for iframe URL
+    // const [showIframe, setShowIframe] = useState(false); 
 
     useEffect(() => {
       const networkslowtimeout =  setTimeout(() => {
@@ -107,21 +107,21 @@ const Downloadpdf = (props) => {
         //         window.open(paper.url, "_blank"); // Open question paper after ad
         //     }, 5000); // Show the ad for 5 seconds
         //     return ()=> clearTimeout(timout)
-        // window.open(paper.url, "_blank");
+        window.open(paper.url, "_blank");
 
-        setIframeUrl(paper.url);
-        setShowIframe(true);
+        // setIframeUrl(paper.url);
+        // setShowIframe(true);
         } else {
-            setIframeUrl(paper.url);
-            setShowIframe(true);
-            // window.open(paper.url, "_blank"); 
+            // setIframeUrl(paper.url);
+            // setShowIframe(true);
+            window.open(paper.url, "_blank"); 
         }
 
     };
-    const closeIframe = () => {
-        setShowIframe(false);
-        setIframeUrl(null);
-    };
+    // const closeIframe = () => {
+    //     setShowIframe(false);
+    //     setIframeUrl(null);
+    // };
 
 
 
@@ -222,7 +222,7 @@ const Downloadpdf = (props) => {
                              </div>
                     )}
                 </div>
-                {showIframe && (
+                {/* {showIframe && (
                 <div style={{
                     position: "fixed",
                     top: 0,
@@ -259,7 +259,7 @@ const Downloadpdf = (props) => {
                         Close
                     </button>
                 </div>
-            )}
+            )} */}
 
             
             </div>
