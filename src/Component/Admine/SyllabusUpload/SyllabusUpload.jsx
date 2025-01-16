@@ -6,6 +6,7 @@ import { Departmentlistdata } from '../../../Context/DepartmentList/DepartmentLi
 const SyllabusUpload = (props) => {
     const [selectedFile,setSelectedFile] = useState('');
     const departmentlistdata = useContext(Departmentlistdata);
+        const [uploadProgress, setUploadProgress] = useState(0);
     const [filtetuploaddata,setFiltetuploaddata] = useState({
         EducationLevel :'',
         Stream : '',
@@ -61,6 +62,10 @@ const SyllabusUpload = (props) => {
             const response = await axios.post('/api/Admin/syllabusUpload', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
+                    onUploadProgress: (progressEvent) => {
+                        const percentage = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+                        setUploadProgress(percentage);
+                    },
                 },
             });
 
@@ -158,7 +163,15 @@ const SyllabusUpload = (props) => {
             </div>
        </form>
       {singletap &&( <div className="syllbus-loading">
-        Uploading....
+        Uploading.... <br />
+        <div style={{  width: '40rem'  ,display : 'flex', justifyContent : 'center', alignItems : 'center'}}>
+                       
+                        
+                       <meter value={uploadProgress} min="0" max="100" style={{margin : '0rem 1rem',width : '30rem'}}></meter>
+                       <span style={{ marginBottom: '0.3rem', fontSize: '1.2rem', color: 'white' }}>
+                           {uploadProgress}%
+                       </span>
+                   </div>
        </div>)}
     </section>
   )

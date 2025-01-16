@@ -15,6 +15,7 @@ const DepartmentListContext = (props)=>{
         "Chemistry",
         "Data Science",
         "Geology",
+        "BBA",
         "Itm",
         "Mathmatics",
         "Physics",

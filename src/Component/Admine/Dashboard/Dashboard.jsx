@@ -50,6 +50,14 @@ const Dashboard = (props) => {
                     </p>
 
                 </div>
+                <div className="TotalSyllabus common">
+                <i className="fa-solid fa-book-open FstI"></i>
+                    <h3>45</h3>
+                    <h4>Total Syllabus Uploads</h4>
+                    <p className="moreTotalNote common-dash" onClick={()=> navigate('syllabusupload')}>
+                        More<i className="fa-solid fa-angle-right"></i>
+                    </p>
+                </div>
 
                 <div className="TotalNote common">
                 <i className="fa-solid fa-book-open FstI"></i>
@@ -59,6 +67,7 @@ const Dashboard = (props) => {
                         More<i className="fa-solid fa-angle-right"></i>
                     </p>
                 </div>
+               
                 <div className="totalUserUpload common">
                 <i className="fa-regular fa-folder-closed FstI"></i>
                     <h3>45</h3>

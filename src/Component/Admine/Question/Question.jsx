@@ -1,6 +1,4 @@
 import React, { useContext, useState, useRef, useEffect } from 'react'
-import Lottie from 'lottie-react'
-import loadinganimation from '../../../photo/lottieflow-loading-04-2-000000-easey.json'
 import { FetchDataContext } from '../../../Context/FretchDataContext/FetchData'
 import { degrees, PDFDocument, rgb } from 'pdf-lib';
 
@@ -27,6 +25,7 @@ const Question = (props) => {
     const [updatedata, setUpdatedata] = useState('');
     const paperboxhide = useRef();
     const fileInputRef = useRef();
+    const [uploadProgress, setUploadProgress] = useState(0);
 
     const [filtetuploaddata, setFiltetuploaddata] = useState(
         {
@@ -134,6 +133,10 @@ const Question = (props) => {
             const response = await axios.post('/api/Admin/upload', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
+                    onUploadProgress: (progressEvent) => {
+                        const percentage = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+                        setUploadProgress(percentage);
+                    },
                 },
             });
 
@@ -298,6 +301,7 @@ const Question = (props) => {
         'C-101',
         'C-102',
         'C-103',
+        'C-104',
         'C-105',
         'C-201',
         'C-202',
@@ -335,6 +339,9 @@ const Question = (props) => {
         'P.SC GE-3',
         'BCA GE-1',
         'BCA GE-2',
+        'BCA GE-2 (STAT)',
+        'BBA GE-1 (G.E)',
+        'BBA GE-2 ',
         'COM GE-1',
         'COM GE-2',
         'COM GE-3',
@@ -584,8 +591,16 @@ const Question = (props) => {
                         <p>No papers found</p>
                     )}
                 </div>
-                {singletap && (<div style={{ height: '100svh', width: '100%', backgroundColor: 'rgb(0 0 0 / 44%)', display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'absolute', top: '0%', left: '0%', transform: 'scale(1)' }}>
-                    <Lottie animationData={loadinganimation} loop={true} autoPlay={true} style={{ width: '4rem', height: '4rem' }} />
+                {singletap && (<div style={{ height: '100svh', width: '100%', backgroundColor: 'rgb(0 0 0 / 44%)', display: 'flex',flexDirection : 'column', justifyContent: 'center', alignItems: 'center', position: 'absolute', top: '0%', left: '0%', transform: 'scale(1)', fontWeight: '600' }}>
+                     <span style={{ color: '#fff', fontWeight: '600' }}>Uploading...</span><br />
+                    <div style={{  width: '40rem'  ,display : 'flex', justifyContent : 'center', alignItems : 'center'}}>
+                       
+                        
+                        <meter value={uploadProgress} min="0" max="100" style={{margin : '0rem 1rem',width : '30rem'}}></meter>
+                        <span style={{ marginBottom: '0.3rem', fontSize: '1.2rem', color: 'white' }}>
+                            {uploadProgress}%
+                        </span>
+                    </div>
                 </div>)}
             </aside>
 
