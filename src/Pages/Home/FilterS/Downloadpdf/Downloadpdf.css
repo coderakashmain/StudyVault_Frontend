@@ -184,6 +184,13 @@
    margin: 1rem 1rem 0;
    font-style: italic;
  }
+ #download-pdf iframe{
+    width: 80%;
+    height: 80%;
+ }
+ #download-pdf .iframe{
+    transition: all 0.2s linear;
+ }
 
 @media (max-width : 780px) {
     .download-box{
@@ -199,5 +206,9 @@
         font-size: 1rem;
     
     }
+    #download-pdf iframe{
+        width: 100%;
+        height: 100%;
+     }
 }
 

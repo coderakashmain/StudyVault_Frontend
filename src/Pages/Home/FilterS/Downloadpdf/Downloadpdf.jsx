@@ -21,6 +21,8 @@ const Downloadpdf = (props) => {
     const [showAd, setShowAd] = useState(false); // Show interstitial ad
     const [networkslow, setNetworkslow] = useState(false);
     const { data } = location.state || {};
+    const [iframeUrl, setIframeUrl] = useState(null); // State for iframe URL
+    const [showIframe, setShowIframe] = useState(false); 
 
     useEffect(() => {
       const networkslowtimeout =  setTimeout(() => {
@@ -105,13 +107,21 @@ const Downloadpdf = (props) => {
         //         window.open(paper.url, "_blank"); // Open question paper after ad
         //     }, 5000); // Show the ad for 5 seconds
         //     return ()=> clearTimeout(timout)
-        window.open(paper.url, "_blank"); // Open question paper immediately
+        // window.open(paper.url, "_blank");
+
+        setIframeUrl(paper.url);
+        setShowIframe(true);
         } else {
-            window.open(paper.url, "_blank"); // Open question paper immediately
+            setIframeUrl(paper.url);
+            setShowIframe(true);
+            // window.open(paper.url, "_blank"); 
         }
 
     };
-
+    const closeIframe = () => {
+        setShowIframe(false);
+        setIframeUrl(null);
+    };
 
 
 
@@ -212,6 +222,45 @@ const Downloadpdf = (props) => {
                              </div>
                     )}
                 </div>
+                {showIframe && (
+                <div style={{
+                    position: "fixed",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    backgroundColor: "rgba(0, 0, 0, 0.5)",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    zIndex: 1000,
+                }}
+                className="iframe">
+                    <iframe
+                        src={iframeUrl}
+                        style={{
+                            border: "none",
+                            backgroundColor: "#fff",
+                        }}
+                    ></iframe>
+                    <button
+                        onClick={closeIframe}
+                        style={{
+                            position: "absolute",
+                            top: 20,
+                            right: 20,
+                            background: "red",
+                            color: "white",
+                            border: "none",
+                            padding: "10px 15px",
+                            cursor: "pointer",
+                        }}
+                    >
+                        Close
+                    </button>
+                </div>
+            )}
+
             
             </div>
             <Footer/>
