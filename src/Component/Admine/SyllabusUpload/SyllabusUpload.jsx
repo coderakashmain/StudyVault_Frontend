@@ -61,12 +61,12 @@ const SyllabusUpload = (props) => {
         try {
             const response = await axios.post('/api/Admin/syllabusUpload', formData, {
                 headers: {
-                    'Content-Type': 'multipart/form-data',
+                    'Content-Type': 'multipart/form-data'},
                     onUploadProgress: (progressEvent) => {
                         const percentage = Math.round((progressEvent.loaded * 100) / progressEvent.total);
                         setUploadProgress(percentage);
                     },
-                },
+                
             });
 
             if (response.status === 200) {
@@ -167,7 +167,7 @@ const SyllabusUpload = (props) => {
         <div style={{  width: '40rem'  ,display : 'flex', justifyContent : 'center', alignItems : 'center'}}>
                        
                         
-                       <meter value={uploadProgress} min="0" max="100" style={{margin : '0rem 1rem',width : '30rem'}}></meter>
+                       <meter value={uploadProgress} min="0" max="100" style={{margin : '0rem 1rem',width : '30rem',height : '2rem'}}></meter>
                        <span style={{ marginBottom: '0.3rem', fontSize: '1.2rem', color: 'white' }}>
                            {uploadProgress}%
                        </span>
