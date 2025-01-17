@@ -29,12 +29,12 @@ const Allpages = (props) => {
 
     <>
 
-      {/* {!isVerified ? (
+      {!isVerified ? (
         <SiteKeyContext>
           <ReCaptha onVerified={handleVerification} />
         </SiteKeyContext>
 
-      ) : ( */}
+      ) : (
 
         <Suspense fallback={<Loadingicon/>}>
          <TitleSet/>
@@ -42,7 +42,7 @@ const Allpages = (props) => {
           <Outlet />
           </Suspense>
     
-     {/* )}   */}
+      )}   
 
     </>
   )
