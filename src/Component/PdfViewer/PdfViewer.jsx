@@ -47,7 +47,7 @@ const PDFViewer = ({ pdfUrl, onClose }) => {
             }}
         >
             {/* Close Button */}
-            <div style={{ height: '5rem ', width: '100%', padding: '1rem 2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row' }}>
+            <div style={{ height: '5rem ', width: '100%', padding: '1rem 1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row' }}>
                 <div>
                     <div style={{ display  : 'inline-block', padding : '0.5rem 1rem', backgroundColor : 'red', color : '#fff', borderRadius : '0.2rem', fontWeight : '600',fontSize : '1rem'}}>
                         PDF
@@ -71,6 +71,7 @@ const PDFViewer = ({ pdfUrl, onClose }) => {
                             zIndex: 1001,
                             margin  : '0rem 1rem'
                         }}
+                        className="active"
                     >
                        <i className="fa-solid fa-download" style={{color : '#fff', fontSize : '1.3rem'}}></i>
                     </button>
