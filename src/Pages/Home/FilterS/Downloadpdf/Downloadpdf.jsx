@@ -4,7 +4,8 @@ import axios from "axios";
 import './Downloadpdf.css'
 import LongWidthAds from "../../../../Component/AddSense/LongWidthAds";
 import AritcleAds from "../../../../Component/AddSense/AritcleAds";
-import Footer from '../../FooterS/Footer'
+import Footer from '../../FooterS/Footer';
+import PDFViewer from "../../../../Component/PdfViewer/PdfViewer";
 
 
 const Downloadpdf = (props) => {
@@ -21,6 +22,7 @@ const Downloadpdf = (props) => {
     const [showAd, setShowAd] = useState(false); // Show interstitial ad
     const [networkslow, setNetworkslow] = useState(false);
     const { data } = location.state || {};
+    const [selectedPdf, setSelectedPdf] = useState(null);
     // const [iframeUrl, setIframeUrl] = useState(null); // State for iframe URL
     // const [showIframe, setShowIframe] = useState(false); 
 
@@ -107,22 +109,27 @@ const Downloadpdf = (props) => {
         //         window.open(paper.url, "_blank"); // Open question paper after ad
         //     }, 5000); // Show the ad for 5 seconds
         //     return ()=> clearTimeout(timout)
-        window.open(paper.url, "_blank");
+        // window.open(paper.url, "_blank");
+        setSelectedPdf(paper.url);
 
-        // setIframeUrl(paper.url);
-        // setShowIframe(true);
         } else {
-            // setIframeUrl(paper.url);
-            // setShowIframe(true);
-            window.open(paper.url, "_blank"); 
+            // window.open(paper.url, "_blank"); 
+            setSelectedPdf(paper.url);
         }
 
     };
-    // const closeIframe = () => {
-    //     setShowIframe(false);
-    //     setIframeUrl(null);
-    // };
+    const handleCloseViewer = () => {
+        setSelectedPdf(null); // Close the viewer
+    };
 
+useEffect(()=>{
+    if(selectedPdf){
+        document.body.style.overflow = 'hidden';
+    }else{
+        
+        document.body.style.overflow = 'scroll';
+    }
+},[selectedPdf])
 
 
     return (
@@ -222,44 +229,7 @@ const Downloadpdf = (props) => {
                              </div>
                     )}
                 </div>
-                {/* {showIframe && (
-                <div style={{
-                    position: "fixed",
-                    top: 0,
-                    left: 0,
-                    width: "100%",
-                    height: "100%",
-                    backgroundColor: "rgba(0, 0, 0, 0.5)",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    zIndex: 1000,
-                }}
-                className="iframe">
-                    <iframe
-                        src={iframeUrl}
-                        style={{
-                            border: "none",
-                            backgroundColor: "#fff",
-                        }}
-                    ></iframe>
-                    <button
-                        onClick={closeIframe}
-                        style={{
-                            position: "absolute",
-                            top: 20,
-                            right: 20,
-                            background: "red",
-                            color: "white",
-                            border: "none",
-                            padding: "10px 15px",
-                            cursor: "pointer",
-                        }}
-                    >
-                        Close
-                    </button>
-                </div>
-            )} */}
+                {selectedPdf && <PDFViewer pdfUrl={selectedPdf} onClose={handleCloseViewer} />}
 
             
             </div>
