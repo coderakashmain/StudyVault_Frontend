@@ -1,0 +1,230 @@
+#website-info{
+    min-height: 50vw;
+    width : 100%;
+    background: linear-gradient(to bottom , #2c5e92, #09152A);
+    padding: 1rem 2rem;
+}
+.studyvault-logo{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    user-select: none;
+}
+
+#website-info img{
+user-select: none;
+height: 5rem;
+filter: brightness(0) saturate(65%) invert(100%) sepia(37%) saturate(34%) hue-rotate(128deg) brightness(83%) contrast(121%);
+
+}
+.website-info-msg{
+    padding: 0rem 0rem 0rem 5rem;
+    width: 100%;
+}
+#website-info h1{
+ font-size: 5rem;
+ color: rgb(141 182 207);
+ color : #fff;
+ letter-spacing: 0.1rem;
+ font-weight: 500;
+}
+#website-info h1 span{
+ font-size: 10rem;
+ color: rgb(164 211 241);
+ color: rgb(141 182 207);
+ color : #fff;
+ 
+}
+.website-info-msg h2{
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+#website-info h3{
+    text-align: center;
+    margin: 5rem 0 0 0;
+    color: #fff;
+    font-size: 1.8rem;
+    /* font-family:Georgia,Arial; */
+    letter-spacing: 0.1rem;
+    font-weight: 500;
+    
+}
+
+#website-info button{
+   display: block;
+   margin:  2rem auto;
+   outline: none;
+   border: none;
+   padding: 1rem 3rem;
+   font-weight: 500;
+   font-size: 1.3rem;
+   cursor: pointer;
+   border-radius: 3rem ;
+   transition:  all 0.2s ease;
+    
+}
+#website-info button:hover{
+background: rgb(43, 113, 226);
+ transform: scale(0.99);   
+ color: #fff;
+}
+.connectus-popup{
+    display: none;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    background-color: rgba(28, 27, 27, 0.577);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000000000;
+}
+.connectus-popup-msg{
+    position: relative;
+    width: 80%;
+    min-height: 40rem;
+    background-color: white;
+    padding: 1rem 2rem;
+    border-radius: 00.4rem;
+    transition: all 0.3s ease;
+
+}
+
+.connectus-popup-msg small{
+    font-size: 1.2rem;
+    color: #000;
+}
+.connectus-popup-msg   img{
+    filter: brightness(0) saturate(100%) invert(37%) sepia(29%) saturate(1415%) hue-rotate(151deg) brightness(93%) contrast(95%) !important;
+    height: 10rem !important;
+   display: block;
+   margin: auto;
+}
+.connectus-input-box{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.connectus-popup-msg  input{
+    flex-grow: 1;
+    flex-basis: 300px;
+   padding: 1rem 1rem 1rem 0.4rem ;
+   margin: 1rem 2rem 1rem 0;
+   border: none;
+   border-bottom: 1px solid #0C7397;
+   outline: none;
+   font-size: 1.1rem;
+   color: #0C7397;
+}
+.connectus-popup-msg textarea{
+    max-width: 100%;
+    outline: none;
+    padding: 1rem;
+    max-height: 10rem;
+    width: 100%;
+    border: 1px solid #0C7397;
+    font-size: 1.1rem;
+    color: #0C7397;
+}
+.connectus-popup-msg button{
+ padding: 1rem 4rem !important;
+ color: #fff !important;
+ display: block;
+ float:right;
+ background-color: rgb(43, 113, 226);
+}
+.connectus-popup-msg button:hover{
+
+ background-color: rgb(27, 84, 176) ;
+ padding: 1rem 10rem !important;
+}
+.connectus-popup-close{
+    position: absolute;
+    right: 2%;
+    top: 2%;
+    font-weight: 500;
+    font-size: 2rem;
+    color: #000;
+    padding: 1rem 2rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 11111111;
+    
+}
+.connectus-popup-close:hover{
+  background-color: #00000039;
+  color: #fff;
+}
+@media (max-width : 700px) {
+    .connectus-popup-msg{
+       
+        width: 90%;
+        padding: 1rem 1rem;
+    
+    }
+    .website-info-msg{
+        padding: 0rem 0rem 0rem 3rem;
+        width: 100%;
+    }
+    #website-info h1{
+        font-size: 4rem;
+       }
+  
+        
+        
+    
+}
+@media (max-width : 500px) {
+    .connectus-popup-msg{
+       
+        width: 90%;
+        padding: 1rem 1rem;
+    
+    }
+    .website-info-msg{
+        padding: 0rem 0rem 0rem 0rem;
+        width: 100%;
+    }
+    #website-info h1{
+        font-size: 2.8rem;
+       }
+    #website-info h2{
+        font-size: 1rem;
+       }
+       #website-info img{
+        height: 3rem;
+        transform: translateX(-10%);
+        }
+        #website-info h3{
+          font-size: 1.2rem;
+            margin: 5rem 0 0 0;
+         
+            
+        }
+        #website-info{
+            padding: 1rem 1rem;
+        }
+        
+        
+    
+}
+
+
+
+.loader {
+    width: 10px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    animation: l5 1s infinite linear alternate;
+  }
+  @keyframes l5 {
+      0%  {box-shadow: 20px 0 #fff, -20px 0 #ffffff20;background: #fff }
+      33% {box-shadow: 20px 0 #fff, -20px 0 #ffffff20;background: #ffffff20}
+      66% {box-shadow: 20px 0 #ffffff20,-20px 0 #fff; background: #ffffff20}
+      100%{box-shadow: 20px 0 #ffffff20,-20px 0 #fff; background: #fff }
+  }

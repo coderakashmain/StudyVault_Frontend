@@ -29,7 +29,7 @@ text-align: center;
 
 #upload-section .right-upload-section{
     flex-grow: 1;
-
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -60,11 +60,17 @@ transition: all 0.3s ease;
    font-size: 2rem;
    font-weight: 500;
    cursor: pointer;
+   transition: all 0.2s ease;
+   
    
    /* padding: 0rem 1rem; */
    
 
 }
+#upload-section .right-upload-section input:hover::before {
+    background-color: #046072 !important;
+    transform: scale(1.02);
+ }
 
 #upload-section .right-upload-section h4{
   padding: 0rem  0rem 1rem 0rem;

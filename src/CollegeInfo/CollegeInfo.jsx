@@ -79,7 +79,7 @@ const CollegeInfo = () => {
 </p>
             <br />
             <p>Over the years, the institution has flourished, reaching new heights of excellence and adding countless accolades to its ever-growing legacy of success....</p>
-             <NavLink to="/article-section/colleges-article/mpc-article">Explore</NavLink>
+             <NavLink to="/article-section/colleges-article/mpc-article" >Explore <span style={{color : '#fff', fontWeight : '900'}}>↗</span></NavLink>
         </aside>
              </div>
              {/* <div className="ads-center">

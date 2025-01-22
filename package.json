@@ -31,7 +31,8 @@
     "lottie-react": "^2.4.0",
     "lottie-web": "^5.12.2",
     "pdf-lib": "^1.17.1",
-    "pdfjs-dist": "^3.11.174",
+    "pdfjs-dist": "^3.0.279",
+    "razorpay": "^2.9.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-error-boundary": "^4.0.13",
@@ -41,9 +42,9 @@
     "react-icons": "^5.3.0",
     "react-image-crop": "^11.0.7",
     "react-modal": "^3.16.1",
+    "react-pdf": "^9.2.1",
     "react-router": "^6.28.1",
     "react-router-dom": "^6.28.1",
-    "react-transition-group": "^4.4.5",
     "remixicon": "^4.3.0"
   },
   "devDependencies": {

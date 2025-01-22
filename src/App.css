@@ -34,23 +34,8 @@ body::-webkit-scrollbar {
     margin: 0 0.3rem;
   }
 
-  /* App.css */
-
-/* .page-enter {
-  transform: scale(0.5);
-  opacity: 0;
-}
-.page-enter-active {
-  transform: scale(1);
-  opacity: 1;
-  transition: transform 500ms ease-in-out, opacity 500ms ease-in-out;
-}
-.page-exit {
-  transform: translateX(0) scale(0.5);
-  opacity: 1;
-}
-.page-exit-active {
-  transform: translateX(-100%) scale(1);
-  opacity: 1;
-  transition: transform 500ms ease-in-out, opacity 500ms ease-in-out;
-} */
+ @media (min-width : 1000px) {
+  html{
+    font-size: 87%;
+  }
+ }

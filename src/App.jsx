@@ -33,9 +33,8 @@ const MaterialRouting = lazy(() => import("./RoutingFiles/MaterialRouting"));
 import FallbackLoad from "./Component/Fallbackload/FallbackLoad"
 import ErrorBoundary from "./Component/ErrorBoundary/ErrorBoundary";
 import Loadingicon from "./Component/Jsonlicon/Loadingicon";
-// import SyllabusUpload from "./Component/Admine/SyllabusUpload/SyllabusUpload";
 
-// import NotFound from "./Component/NotFound/NotFound";
+const Razorpay = lazy(() => import("./Pages/Razorpay/Razorpay"));
 const SyllabusUpload = lazy(() => import("./Component/Admine/SyllabusUpload/SyllabusUpload"));
 const NotFound = lazy(() => import("./Component/NotFound/NotFound"));
 const Syllabus = lazy(() => import("./Pages/Syllabus/Syllabus"));
@@ -169,6 +168,10 @@ const navrefvalue = (value) => {
         {
           path: "Profile",
           element: (<><ErrorBoundary> <Profile showAlart={showAlart} /></ErrorBoundary></>),
+        },
+        {
+          path: "payment-donate-us",
+          element: (<><ErrorBoundary> <Razorpay showAlart={showAlart} /></ErrorBoundary></>),
         },
         {
           path: "About-us",
