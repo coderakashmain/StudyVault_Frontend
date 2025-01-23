@@ -33,8 +33,11 @@ const MaterialRouting = lazy(() => import("./RoutingFiles/MaterialRouting"));
 import FallbackLoad from "./Component/Fallbackload/FallbackLoad"
 import ErrorBoundary from "./Component/ErrorBoundary/ErrorBoundary";
 import Loadingicon from "./Component/Jsonlicon/Loadingicon";
+import PaymentRouter from "./RoutingFiles/PaymentRouter";
+import PaymentStatus from "./Pages/CashfreePay/PaymentStatus";
 
-const Razorpay = lazy(() => import("./Pages/Razorpay/Razorpay"));
+
+const Cashfree = lazy(() => import("./Pages/CashfreePay/Cashfree"));
 const SyllabusUpload = lazy(() => import("./Component/Admine/SyllabusUpload/SyllabusUpload"));
 const NotFound = lazy(() => import("./Component/NotFound/NotFound"));
 const Syllabus = lazy(() => import("./Pages/Syllabus/Syllabus"));
@@ -171,7 +174,18 @@ const navrefvalue = (value) => {
         },
         {
           path: "payment-donate-us",
-          element: (<><ErrorBoundary> <Razorpay showAlart={showAlart} /></ErrorBoundary></>),
+          element: (<><ErrorBoundary> <PaymentRouter showAlart={showAlart} /></ErrorBoundary></>),
+          children : [
+            {
+              path: "",
+              element: (<><ErrorBoundary> <Cashfree showAlart={showAlart} /></ErrorBoundary></>),
+            },
+         
+          ]
+        },
+        {
+          path: "payment-response",
+          element: (<><ErrorBoundary> <PaymentStatus showAlart={showAlart} /></ErrorBoundary></>),
         },
         {
           path: "About-us",

@@ -74,7 +74,7 @@ const Websiteinfo = (props) => {
                 <h2>Small step to make your exam easy.</h2>
 
                 <h3>This  website is running in our own fund. <br />Support our mission by donating to help us grow.</h3>
-                <button className='active' onClick={() => props.showAlart('Not available','','cancel')}>Donate Us</button>
+                <button className='active' onClick={() => navigate('/payment-donate-us')}>Donate Us</button>
 
                 <h3>Connect with Us <br /> for advertising opportunities and reach a wider audience!</h3>
                 <button className='active' onClick={() => setConnectuspopup(true)}>Connect Us</button>
