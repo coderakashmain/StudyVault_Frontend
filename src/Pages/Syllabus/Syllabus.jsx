@@ -147,6 +147,10 @@ setPgloading(true);
 //   props.showAlart('Upload Soon', '', 'cancel')
 // }
 
+ useEffect(() => {
+    document.body.style.overflowY = 'scroll';
+ 
+  }, []);
 
 
   return (

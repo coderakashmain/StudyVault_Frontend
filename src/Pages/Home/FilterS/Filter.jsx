@@ -56,9 +56,11 @@ const [adsmobileview,setAdsmobileview] = useState(false);
   const [onlyug,setOnlyug]= useState(false);
 
   useEffect(() => {
-    // Calling the function passed as a prop
+    document.body.style.overflowY = 'scroll';
     props.subheadingtypedata("Question");
   }, []);
+
+
 
 
 
