@@ -146,7 +146,7 @@ const navrefvalue = (value) => {
           element: (<><ErrorBoundary><Suspense fallback={<FallbackLoad/>}> <PhoneInfo><Contact showAlart={showAlart} /></PhoneInfo></Suspense></ErrorBoundary> </>),
         },
         {
-          path: 'Downloadpdf',
+          path: '/Downloadpdf/:fName',
           element: (<><ErrorBoundary><Downloadpdf showAlart={showAlart} /></ErrorBoundary></>),
         },
         {

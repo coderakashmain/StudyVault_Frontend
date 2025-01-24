@@ -103,7 +103,7 @@ const syllabussubmit = async(e) => {
       const response = await axios.get('/api/syllabus', {params : syllabusData});
 
       // if(response.status === 200){
-        navigate('/Downloadpdf', { state: { data : response.data } });
+        navigate(`/Downloadpdf/${syllabusData.Stream}`, { state: { data : response.data } });
         setUgloading(false);
       // }
     }catch(error){
@@ -127,7 +127,7 @@ setPgloading(true);
       const response = await axios.get('/api/syllabus', {params : syllabusDataPg});
 
       
-        navigate('/Downloadpdf', { state: { data : response.data } });
+        navigate(`/Downloadpdf/${syllabusDataPg.Stream}`, { state: { data : response.data } });
     setPgloading(false);
     }catch(error){
       if (error.response && error.response.status === 400) {
@@ -147,10 +147,7 @@ setPgloading(true);
 //   props.showAlart('Upload Soon', '', 'cancel')
 // }
 
- useEffect(() => {
-    document.body.style.overflowY = 'scroll';
- 
-  }, []);
+
 
 
   return (

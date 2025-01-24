@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import './Downloadpdf.css'
 import LongWidthAds from "../../../../Component/AddSense/LongWidthAds";
@@ -10,7 +10,7 @@ import PDFViewer from "../../../../Component/PdfViewer/PdfViewer";
 
 const Downloadpdf = (props) => {
     const navigate = useNavigate();
-    // const { state } = useLocation();
+    const {pdfName} = useParams();
     const location = useLocation();
 
     const [papers, setPapers] = useState([]);
@@ -21,7 +21,7 @@ const Downloadpdf = (props) => {
     const [clickCount, setClickCount] = useState(0); // Track clicks for ads
     const [showAd, setShowAd] = useState(false); // Show interstitial ad
     const [networkslow, setNetworkslow] = useState(false);
-    const { data } = location.state || {};
+    const { data } = location.state || { data: [] };
     const [selectedPdf, setSelectedPdf] = useState(null);
     // const [iframeUrl, setIframeUrl] = useState(null); // State for iframe URL
     // const [showIframe, setShowIframe] = useState(false); 
@@ -110,17 +110,32 @@ const Downloadpdf = (props) => {
         //     }, 5000); // Show the ad for 5 seconds
         //     return ()=> clearTimeout(timout)
         // window.open(paper.url, "_blank");
+        navigate(`/Downloadpdf/${paper.title}`)
         setSelectedPdf(paper.url);
 
         } else {
-            // window.open(paper.url, "_blank"); 
+            // window.open(paper.url, "_blank");
+            navigate(`/Downloadpdf/${paper.title}`) 
             setSelectedPdf(paper.url);
         }
 
     };
     const handleCloseViewer = () => {
-        setSelectedPdf(null); // Close the viewer
+        setSelectedPdf(null); 
+        navigate(-1) 
     };
+    useEffect(() => {
+        const handleBackButton = (event) => {
+            // event.preventDefault();
+            setSelectedPdf(null); 
+        };
+
+        window.addEventListener("popstate", handleBackButton);
+
+        return () => {
+            window.removeEventListener("popstate", handleBackButton);
+        };
+    }, [navigate]);
 
 useEffect(()=>{
     if(selectedPdf){
@@ -136,6 +151,7 @@ useEffect(()=>{
         <>
             {/* <BackButton /> */}
             <div id='download-pdf' >
+
                 <header>
                     <div className="back-to-filter active" onClick={backnavigate}>
                         <i className="fa-solid fa-arrow-left"></i>

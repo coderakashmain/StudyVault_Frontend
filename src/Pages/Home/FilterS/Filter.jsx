@@ -56,7 +56,7 @@ const [adsmobileview,setAdsmobileview] = useState(false);
   const [onlyug,setOnlyug]= useState(false);
 
   useEffect(() => {
-    document.body.style.overflowY = 'scroll';
+   
     props.subheadingtypedata("Question");
   }, []);
 
@@ -269,7 +269,7 @@ const  handlesubjet = (e)=>{
       setLoader(true);
       const response = await axios.get('/api/Filter', { params: nonEmptyFilters });
       if (response.status === 200) {
-        navigate('/Downloadpdf', { state:{  data :  response.data} });
+        navigate(`/Downloadpdf/${filters.departmentName}`, { state:{  data :  response.data} });
         setLoader(false);
       }
       else {
