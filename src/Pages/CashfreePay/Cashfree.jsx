@@ -2,15 +2,24 @@ import { useState } from 'react';
 import React from 'react';
 import './Cashfree.css';
 import axios from 'axios';
+import { useNavigate } from 'react-router';
 
 const Cashfree = () => {
   const [loading, setLoading] = useState(false);
+  const [amount, setAmount] = useState('');
+  const [message,setMessage] = useState('');
+  const navigate = useNavigate();
+
 
   const handlePayment = async () => {
+   
+    if(amount){
+      setMessage('');
     setLoading(true);
-    try {
-      const redirectUrl = `${window.location.origin}/payment-response`;  // Ensure proper redirect path
+    const redirectUrl = `${window.location.origin}/payment-donate-us/payment-response`;  // Ensure proper redirect path
 
+    try {
+      
       const response = await axios.post('/api/donate-us', {
         amount: 10,  // Payment amount in INR
         customerEmail: "ab79212235@gmail.com",
@@ -29,14 +38,24 @@ const Cashfree = () => {
     } finally {
       setLoading(false);
     }
+  }else{
+    setMessage("Enter a Amount");
+   }
   };
+
+  const handleback = ()=>{
+    navigate(-1);
+  }
 
   return (
     <section id='cashfree'>
       <h2>StudyVault Payment</h2>
+      <input type="number" placeholder='Enter amount' name='amount' onChange={(e)=>setAmount(e.target.value)} />
+      {message && (<p>{message}</p>)}
       <button onClick={handlePayment} disabled={loading} className='active'>
         {loading ? "Processing..." : "Pay Now"}
       </button>
+      <button onClick={handleback} className='active' style={{position : 'absolute',color: '#71abc2', top : '3%', left : '3%', background : '#bfd7de8f',border : 'none', borderRadius : '0.2rem'}}>Back</button>
     </section>
   );
 };

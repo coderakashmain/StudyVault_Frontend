@@ -177,16 +177,18 @@ const navrefvalue = (value) => {
           element: (<><ErrorBoundary> <PaymentRouter showAlart={showAlart} /></ErrorBoundary></>),
           children : [
             {
+              index: true,
               path: "",
               element: (<><ErrorBoundary> <Cashfree showAlart={showAlart} /></ErrorBoundary></>),
+            },
+            {
+              path: "payment-response",
+              element: (<><ErrorBoundary> <PaymentStatus showAlart={showAlart} /></ErrorBoundary></>),
             },
          
           ]
         },
-        {
-          path: "payment-response",
-          element: (<><ErrorBoundary> <PaymentStatus showAlart={showAlart} /></ErrorBoundary></>),
-        },
+      
         {
           path: "About-us",
           element: (<><ErrorBoundary> <AboutUs showAlart={showAlart} /></ErrorBoundary></>),

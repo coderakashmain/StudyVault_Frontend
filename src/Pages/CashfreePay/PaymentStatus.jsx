@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 const PaymentStatus = () => {
     const query = new URLSearchParams(useLocation().search);
     const status = query.get("txStatus");  // Get transaction status from URL
-    const orderId = query.get("orderId");  // Get order ID
+    const orderId = query.get("order_id");  // Get order ID
 
     return (
         <div style={{ textAlign: "center", marginTop: "50px" , position : 'relative', zIndex : '100000000', background : '#fff',top : '0%'}}>
