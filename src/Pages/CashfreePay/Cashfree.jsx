@@ -60,7 +60,7 @@ const Cashfree = () => {
       <button onClick={handlePayment} disabled={loading} className='active'>
         {loading ? "Processing..." : "Pay Now"}
       </button>
-      <button onClick={handleback} className='active' style={{position : 'absolute',color: '#71abc2', top : '3%', left : '3%', background : '#bfd7de8f',border : 'none', borderRadius : '0.2rem'}}>Back</button>
+      <button onClick={handleback} className='active' style={{position : 'absolute',color: 'black', top : '3%', left : '3%', background : '#FFFFFF',border : 'none', borderRadius : '0.2rem'}}>Back</button>
     </section>
   );
 };
