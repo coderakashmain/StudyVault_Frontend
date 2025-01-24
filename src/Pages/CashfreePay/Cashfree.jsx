@@ -8,6 +8,9 @@ const Cashfree = () => {
   const [loading, setLoading] = useState(false);
   const [amount, setAmount] = useState('');
   const [message,setMessage] = useState('');
+  const [mobilenumber,setmobilenumber] = useState('');
+  const [gmail,setgmail] = useState('');
+
   const navigate = useNavigate();
 
 
@@ -22,8 +25,8 @@ const Cashfree = () => {
       
       const response = await axios.post('/api/donate-us', {
         amount: 10,  // Payment amount in INR
-        customerEmail: "ab79212235@gmail.com",
-        customerPhone: "6144128744",
+        customerEmail: gmail,
+        customerPhone: mobilenumber,
         redirect_url: redirectUrl
       });
 
@@ -51,6 +54,8 @@ const Cashfree = () => {
     <section id='cashfree'>
       <h2>StudyVault Payment</h2>
       <input type="number" placeholder='Enter amount' name='amount' onChange={(e)=>setAmount(e.target.value)} />
+      <input type="number" placeholder='Enter mobile number' name='number' onChange={(e)=>setmobilenumber(e.target.value)} required/>
+      <input type="gmail" placeholder='Enter Gmail' name='gmail' onChange={(e)=>setgmail(e.target.value)} required />
       {message && (<p>{message}</p>)}
       <button onClick={handlePayment} disabled={loading} className='active'>
         {loading ? "Processing..." : "Pay Now"}
