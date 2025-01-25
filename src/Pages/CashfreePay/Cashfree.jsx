@@ -12,6 +12,7 @@ const Cashfree = () => {
   const [mobilenumber, setmobilenumber] = useState('');
   const [gmail, setgmail] = useState('');
   const [paymentSessionId, setPaymentSessionId] = useState(null);
+  const [oderid,setOrderid] = useState(null);
   const navigate = useNavigate();
 
   // Amount validation
@@ -44,6 +45,8 @@ const Cashfree = () => {
       });
 
       const sessionId = response.data.paymentSessionId;
+      const orderidvalue = response.data.orderid;
+      setOrderid(orderidvalue);
       setPaymentSessionId(sessionId);
       doPayment(sessionId);
 
@@ -69,9 +72,10 @@ const Cashfree = () => {
       cashfree.checkout(checkoutOptions).then((result) => {
         if (result.error) {
           console.log("Payment error:", result.error);
+          window.location.href = `${redirectUrl}?order_id=${oderid}&txStatus=FAILED`;
 
         } else if (result.paymentDetails) {
-          
+          window.location.href = `${redirectUrl}?order_id=${oderid}&txStatus=PAID`;
           console.log("Payment completed successfully:", result.paymentDetails.paymentMessage);
         }
       });
@@ -79,7 +83,7 @@ const Cashfree = () => {
   };
 
   const handleback = () => {
-    navigate(-1);
+    navigate("/");
   };
 
   return (

@@ -189,7 +189,7 @@ const navrefvalue = (value) => {
               element: (<><ErrorBoundary> <PaymentStatus showAlart={showAlart} /></ErrorBoundary></>),
             },
             {
-              path: "notifyurlCheck",
+              path: "notifyurl",
               element: (<><ErrorBoundary><Checknotificaiton/></ErrorBoundary></>),
             },
          
