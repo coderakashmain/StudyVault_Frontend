@@ -1,0 +1,37 @@
+#paymentstatus{
+    background-color: rgb(230, 240, 243);
+    height: 100vh;
+    height: 100svh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#paymentstatus i{
+ color: Green;
+ font-size: 10rem;
+}
+#paymentstatus img{
+  position: absolute;
+  top: 2%;
+  left: 1%;
+  height: 5rem;
+  user-select: none;
+}
+#paymentstatus h2{
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin: 1rem 0;
+}
+#paymentstatus p{
+  font-size: 1rem;
+  /* font-weight: 500; */
+  margin: 0 0 0.7rem 0;
+}
+#paymentstatus a{
+  font-size: 1.1rem;
+  margin-top: 2rem;
+ color: blue;
+ text-decoration: underline;
+}

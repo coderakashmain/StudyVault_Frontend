@@ -2,65 +2,97 @@ import { useState } from 'react';
 import React from 'react';
 import './Cashfree.css';
 import axios from 'axios';
-import { useNavigate } from 'react-router';
+import {  useNavigate } from 'react-router';
+import { load } from "@cashfreepayments/cashfree-js";
 
 const Cashfree = () => {
   const [loading, setLoading] = useState(false);
   const [amount, setAmount] = useState('');
-  const [message,setMessage] = useState('');
-  const [mobilenumber,setmobilenumber] = useState('');
-  const [gmail,setgmail] = useState('');
-
+  const [message, setMessage] = useState('');
+  const [mobilenumber, setmobilenumber] = useState('');
+  const [gmail, setgmail] = useState('');
+  const [paymentSessionId, setPaymentSessionId] = useState(null);
   const navigate = useNavigate();
 
+  // Amount validation
+  const isValidAmount = (amount) => !isNaN(amount) && Number(amount) > 0;
 
   const handlePayment = async () => {
-   
-    if(amount){
-      setMessage('');
+    if (!amount || !isValidAmount(amount)) {
+      setMessage('Please enter a valid amount.');
+      return;
+    }
+    if (!mobilenumber || mobilenumber.length !== 10) {
+      setMessage('Please enter a valid 10-digit mobile number.');
+      return;
+    }
+    if (!gmail || !/\S+@\S+\.\S+/.test(gmail)) {
+      setMessage('Please enter a valid email.');
+      return;
+    }
+
+    setMessage('');
     setLoading(true);
-    const redirectUrl = `${window.location.origin}/payment-donate-us/payment-response`;  // Ensure proper redirect path
 
     try {
-      
-      const response = await axios.post('/api/donate-us', {
-        amount: 10,  // Payment amount in INR
+      const redirectUrl = `${window.location.origin}/payment-donate-us/payment-response`;
+      const response = await axios.post('/api/create-payment-order', {
+        amount : Number(amount),
         customerEmail: gmail,
         customerPhone: mobilenumber,
-        redirect_url: redirectUrl
+        redirect_url: redirectUrl,
       });
 
-      if (response.data && response.data.payment_link) {
-        window.location.href = response.data.payment_link;  // Redirect to payment page
-      } else {
-        alert("Payment failed. Please try again.");
-      }
+      const sessionId = response.data.paymentSessionId;
+      setPaymentSessionId(sessionId);
+      doPayment(sessionId);
+
     } catch (error) {
-      console.error("Payment error:", error?.response?.data || error.message);
-      alert("Something went wrong! Please try again.");
+      setMessage("Something Error happend!")
+      console.error('Error creating payment order:', error);
     } finally {
       setLoading(false);
     }
-  }else{
-    setMessage("Enter a Amount");
-   }
   };
 
-  const handleback = ()=>{
+  const doPayment = async (paymentSessionId) => {
+    let cashfree;
+    await load({
+      mode: "production",
+    }).then((instance) => {
+      cashfree = instance;
+      const checkoutOptions = {
+        paymentSessionId: paymentSessionId,
+        redirectTarget: "_self",
+      };
+
+      cashfree.checkout(checkoutOptions).then((result) => {
+        if (result.error) {
+          console.log("Payment error:", result.error);
+
+        } else if (result.paymentDetails) {
+          
+          console.log("Payment completed successfully:", result.paymentDetails.paymentMessage);
+        }
+      });
+    });
+  };
+
+  const handleback = () => {
     navigate(-1);
-  }
+  };
 
   return (
     <section id='cashfree'>
       <h2>StudyVault Payment</h2>
-      <input type="number" placeholder='Enter amount' name='amount' onChange={(e)=>setAmount(e.target.value)} />
-      <input type="number" placeholder='Enter mobile number' name='number' onChange={(e)=>setmobilenumber(e.target.value)} required/>
-      <input type="gmail" placeholder='Enter Gmail' name='gmail' onChange={(e)=>setgmail(e.target.value)} required />
+      <input type="number" placeholder='Enter amount' name='amount' onChange={(e) => setAmount(e.target.value)} />
+      <input type="number" placeholder='Enter mobile number' name='number' onChange={(e) => setmobilenumber(e.target.value)} required />
+      <input type="email" placeholder='Enter Gmail' name='gmail' onChange={(e) => setgmail(e.target.value)} required />
       {message && (<p>{message}</p>)}
       <button onClick={handlePayment} disabled={loading} className='active'>
         {loading ? "Processing..." : "Pay Now"}
       </button>
-      <button onClick={handleback} className='active' style={{position : 'absolute',color: 'black', top : '3%', left : '3%', background : '#FFFFFF',border : 'none', borderRadius : '0.2rem'}}>Back</button>
+      <button onClick={handleback} className='active' style={{ position: 'absolute', color: 'black', top: '3%', left: '3%', background: '#FFFFFF', border: 'none', borderRadius: '0.2rem' }}>Back</button>
     </section>
   );
 };

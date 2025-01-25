@@ -35,6 +35,7 @@ import ErrorBoundary from "./Component/ErrorBoundary/ErrorBoundary";
 import Loadingicon from "./Component/Jsonlicon/Loadingicon";
 import PaymentRouter from "./RoutingFiles/PaymentRouter";
 import PaymentStatus from "./Pages/CashfreePay/PaymentStatus";
+import Notifyurl from "./Pages/CashfreePay/notifyurl";
 
 
 const Cashfree = lazy(() => import("./Pages/CashfreePay/Cashfree"));
@@ -184,6 +185,10 @@ const navrefvalue = (value) => {
             {
               path: "payment-response",
               element: (<><ErrorBoundary> <PaymentStatus showAlart={showAlart} /></ErrorBoundary></>),
+            },
+            {
+              path: "notifyurl",
+              element: (<><ErrorBoundary> <Notifyurl showAlart={showAlart} /></ErrorBoundary></>),
             },
          
           ]
