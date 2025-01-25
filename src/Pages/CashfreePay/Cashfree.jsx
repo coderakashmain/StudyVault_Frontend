@@ -67,15 +67,16 @@ const Cashfree = () => {
       const checkoutOptions = {
         paymentSessionId: paymentSessionId,
         redirectTarget: "_self",
+        // redirectTarget: "_modal",
       };
 
       cashfree.checkout(checkoutOptions).then((result) => {
         if (result.error) {
           console.log("Payment error:", result.error);
-          // window.location.href = `${redirectUrl}?order_id=${oderid}&txStatus=FAILED`;
+          window.location.href = `${redirectUrl}?order_id=${oderid}&txStatus=FAILED`;
 
         } else if (result.paymentDetails) {
-          // window.location.href = `${redirectUrl}?order_id=${oderid}&txStatus=PAID`;
+          window.location.href = `${redirectUrl}?order_id=${oderid}&txStatus=PAID`;
           console.log("Payment completed successfully:", result.paymentDetails.paymentMessage);
         }
       });
