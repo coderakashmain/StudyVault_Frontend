@@ -7,7 +7,7 @@ import "./Loadingicon.css"
 const Loadingicon = () => {
     
   return (
-    <div style={{ minHeight : '100svh', minWidth : '100%', backgroundColor : 'rgb(0 0 0 / 48%)',display : 'flex', justifyContent :  'center', alignItems : 'center',position : 'fixed', zIndex : '1000000',flexDirection : 'column'}}>
+    <div style={{ minHeight : '100svh', minWidth : '100%', backgroundColor : 'rgb(204 204 204)',display : 'flex', justifyContent :  'center', alignItems : 'center',position : 'fixed', zIndex : '1000000',flexDirection : 'column'}}>
       {/* <Lottie animationData={loadinganimation} loop={true} autoPlay={true} style={{width : '6rem', height : '6rem'}}/> */}
       <div className="mainloading" >
         <img src={loadinglogo} alt="weblogo" />

@@ -28,7 +28,7 @@ const Allpages = (props) => {
   return (
 
     <>
-  
+ 
       {!isVerified ? (
         <SiteKeyContext>
           <ReCaptha onVerified={handleVerification} />
