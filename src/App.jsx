@@ -35,9 +35,10 @@ import ErrorBoundary from "./Component/ErrorBoundary/ErrorBoundary";
 import Loadingicon from "./Component/Jsonlicon/Loadingicon";
 import PaymentRouter from "./RoutingFiles/PaymentRouter";
 import PaymentStatus from "./Pages/CashfreePay/PaymentStatus";
-import Notifyurl from "./Pages/CashfreePay/notifyurl";
 
 
+
+const Notifyurl = lazy(() => import("./Pages/CashfreePay/notifyurl"));
 const Cashfree = lazy(() => import("./Pages/CashfreePay/Cashfree"));
 const SyllabusUpload = lazy(() => import("./Component/Admine/SyllabusUpload/SyllabusUpload"));
 const NotFound = lazy(() => import("./Component/NotFound/NotFound"));
