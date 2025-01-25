@@ -38,7 +38,8 @@ import PaymentStatus from "./Pages/CashfreePay/PaymentStatus";
 
 
 
-const Notifyurl = lazy(() => import("./Pages/CashfreePay/Notifyurl"));
+
+const Notifyurl = lazy(() => import("./Pages/CashfreePay/notifyurl"));
 const Cashfree = lazy(() => import("./Pages/CashfreePay/Cashfree"));
 const SyllabusUpload = lazy(() => import("./Component/Admine/SyllabusUpload/SyllabusUpload"));
 const NotFound = lazy(() => import("./Component/NotFound/NotFound"));
