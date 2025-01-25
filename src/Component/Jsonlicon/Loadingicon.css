@@ -1,0 +1,38 @@
+.mainloading {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   overflow: hidden;
+   border: 1px solid #70aec3;
+   background-color: #fff;
+   border-radius: 50%;
+ 
+   position: relative;
+   height: 4rem;
+   width: 4rem;
+}
+
+.mainloading img{
+    height: 2rem;
+    transform: translate(50%,50%);
+
+    aspect-ratio: 1/1;
+    transform: scale(0.9);
+    user-select: none;
+    object-fit: contain;
+    animation: scale 01s ease-in-out alternate infinite ;
+}
+@keyframes scale {
+    0%{
+        transform: scale(1) rotate(0deg);
+    }
+    50%{
+        transform: scale(1.5) rotate(180deg);
+    }
+    75%{
+        transform: scale(1) rotate(2700deg);
+    }
+    100%{
+        transform: scale(2) rotate(360deg);
+    }
+}

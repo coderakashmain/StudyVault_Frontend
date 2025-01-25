@@ -28,14 +28,14 @@ const Allpages = (props) => {
   return (
 
     <>
-
+  
       {!isVerified ? (
         <SiteKeyContext>
           <ReCaptha onVerified={handleVerification} />
         </SiteKeyContext>
 
       ) : (
-
+        
         <Suspense fallback={<Loadingicon/>}>
          <TitleSet/>
    

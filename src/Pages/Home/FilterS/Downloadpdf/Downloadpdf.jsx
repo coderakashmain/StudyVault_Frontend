@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { NavLink, useLocation, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import './Downloadpdf.css'
 import LongWidthAds from "../../../../Component/AddSense/LongWidthAds";
@@ -23,8 +23,8 @@ const Downloadpdf = (props) => {
     const [networkslow, setNetworkslow] = useState(false);
     const { data } = location.state || { data: [] };
     const [selectedPdf, setSelectedPdf] = useState(null);
-    // const [iframeUrl, setIframeUrl] = useState(null); // State for iframe URL
-    // const [showIframe, setShowIframe] = useState(false); 
+    const[donatepopup,setDonatePopup] = useState(false);
+
 
     useEffect(() => {
       const networkslowtimeout =  setTimeout(() => {
@@ -45,25 +45,7 @@ const Downloadpdf = (props) => {
         
     },[])
 
-    // useEffect(() => {
-    //     const fetchPapers = async () => {
 
-    //         try {
-
-    //             const response = await axios.get('/api/Filter', { params: state.filters });
-
-    //             setPapers(response.data);
-    //             setLoading(true);
-
-    //         } catch (error) {
-    //             console.error('Error fetching papers:', error);
-    //             setLoading(true);
-    //             setPapers([{ id: "error", title: "Error loading papers, please try again later." }]);
-    //         }
-    //     };
-
-    //     fetchPapers();
-    // }, [state.filters]);
 
 
 
@@ -144,7 +126,21 @@ useEffect(()=>{
         
         document.body.style.overflowY = 'scroll';
     }
-},[selectedPdf])
+},[selectedPdf]);
+
+
+useEffect(() => {
+    const isRepeat = sessionStorage.getItem("donationpopup");
+    if (!isRepeat) {
+        const timeoutId = setTimeout(() => {
+            setDonatePopup(true);
+            sessionStorage.setItem("donationpopup", "true");
+        }, 20000);  // 10 seconds
+
+        return () => clearTimeout(timeoutId);
+    }
+}, []);
+
 
 
     return (
@@ -250,6 +246,16 @@ useEffect(()=>{
             
             </div>
             <Footer/>
+           { donatepopup && ( <div className="donation-popup">
+                <div className="donation-popup-box">
+                    <h1>Hey Dear User, <br /> Support our growth by Donating to us!</h1>
+                    <span>This website is running on our own funds, and we're unsure how far we can take it.  Your support can help us sustain and expand StudyVault to benefit more students!</span>
+
+                    <button className="active" onClick={()=> navigate('/payment-donate-us')}>Donate Us</button>
+                    <p onClick={()=>setDonatePopup(false)}> I do it later</p>
+
+                </div>
+            </div>)}
         </>
     )
 }

@@ -4,6 +4,7 @@ import './Cashfree.css';
 import axios from 'axios';
 import {  useNavigate } from 'react-router';
 import { load } from "@cashfreepayments/cashfree-js";
+import studyvault from '../../photo/Study⁐Vault-logo-black.png'
 
 const Cashfree = () => {
   const [loading, setLoading] = useState(false);
@@ -89,15 +90,43 @@ const Cashfree = () => {
 
   return (
     <section id='cashfree'>
-      <h2>StudyVault Payment</h2>
-      <input type="number" placeholder='Enter amount' name='amount' onChange={(e) => setAmount(e.target.value)} />
-      <input type="number" placeholder='Enter mobile number' name='number' onChange={(e) => setmobilenumber(e.target.value)} required />
+      <div className="cashfree-left">
+        <div className="decorate1"></div>
+        <div className="decorate2"></div>
+        <h1>Grow Our Own website for Our and Our future Juniors!</h1>
+
+        <p>Your support make Us!</p>
+        <ul>
+          <li><strong>01</strong> &nbsp;&nbsp;Your support makes us stronger, helping us provide better study resources.</li>
+          <li><strong>02</strong> &nbsp;&nbsp;With your help, we can expand our reach and assist more students in their academic journey.</li>
+          <li><strong>03</strong> &nbsp;&nbsp;Every contribution drives our mission forward, keeping StudyVault free and accessible for all.</li>
+        </ul>
+       
+
+      </div>
+      <div className="cashfree-right">
+        <div className="web-logo" >  
+        <img src={studyvault} alt="" />
+            </div>
+        <div className="cashfree-right-box">
+    
+       
+       <h1>Grow Our Own website for Our and Our future Juniors!</h1>
+      <h2>Enter this information</h2>
+      <input type="number" placeholder='Enter amount ' name='amount' onChange={(e) => setAmount(e.target.value)} />
+      <input type="number" placeholder='Enter Mobile Number' name='number' onChange={(e) => setmobilenumber(e.target.value)} required />
       <input type="email" placeholder='Enter Gmail' name='gmail' onChange={(e) => setgmail(e.target.value)} required />
       {message && (<p>{message}</p>)}
       <button onClick={handlePayment} disabled={loading} className='active'>
         {loading ? "Processing..." : "Pay Now"}
       </button>
-      <button onClick={handleback} className='active' style={{ position: 'absolute', color: 'black', top: '3%', left: '3%', background: '#FFFFFF', border: 'none', borderRadius: '0.2rem' }}>Back</button>
+      <big>This donation will fuel our future goals, enabling us to enhance the website and expand our resources for students.</big>
+     
+      </div>
+      <button onClick={handleback} className='active' style={{ position: 'absolute', color: 'black', top: '1.5%', left: '3%', background: '#FFFFFF', border: 'none', borderRadius: '0.2rem' }}>Back</button>
+      
+      </div>
+
     </section>
   );
 };

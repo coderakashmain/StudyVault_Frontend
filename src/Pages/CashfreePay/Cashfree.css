@@ -1,5 +1,6 @@
 #cashfree{
     background-color: rgb(230, 240, 243);
+    /* background-color: #fff; */
     width: 100%;
     height: 100vh;
     display: flex;
@@ -7,15 +8,125 @@
     align-items: center;
     position: relative;
     z-index: 1111;
-    flex-direction: column;
-    position: relative;
+
+    flex-direction: row;
+ 
+}
+.cashfree-left{
+flex-grow: 1;
+   width: 50%;
+   height: 100%;
+   background-color: #10324a;
+   position: relative;
+   overflow: hidden;
+   padding: 10rem 3rem;
+   flex-basis: 500px;
+}
+.decorate1{
+   position: absolute;
+   top: -10%;
+   right: 0%;
+   height: 7rem;
+   width: 15rem;
+   background-color: rgb(94 119 137);
+   transform: rotate(325deg);
+   border-radius: 2rem;
+}
+.decorate2{
+   position: absolute;
+   bottom: -14%;
+   left: 7%;
+   height: 10rem;
+   width: 14rem;
+   background-color: #57500d;
+   border-radius: 2rem;
+   transform: rotate(325deg);
+}
+.cashfree-left h1{
+
+   color: #fff;
+   font-size: 2.5rem;
+   font-weight: 600;
+}
+
+.cashfree-left p{
+  margin-top: 2rem;
+   color: #fff !important;
+   text-transform: uppercase;
+   font-size: 1.2rem;
+   font-weight: 600;
+}
+.cashfree-left ul{
+  margin-top: 4rem;
+  margin-left: 2rem;
+   
+}
+.cashfree-left ul li{
+ color: #808e91;
+ font-size: 1.2rem;
+ margin-bottom: 3rem;
+   
+}
+.cashfree-left ul li strong{
+font-weight: 600;
+color: #d6d6d6;
+font-size: 1.3rem;
+}
+.cashfree-right{
+   width: 50%;
+   flex-grow: 1;
+   height: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   z-index: 1111;
+   flex-basis: 500px;
+ 
+}
+.cashfree-right-box{
+
+   width: 80%;
+   height: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   position: relative;
+ 
+}
+.cashfree-right-box h1{
+
+  text-align: left !important;
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+ 
+}
+.cashfree-right-box big{
+
+font-size: 1rem;
+margin-top: 2rem;
+ 
+}
+.cashfree-right .web-logo{
+position: absolute;
+top: 2%;
+right:  2%;
+
+ 
+}
+.cashfree-right .web-logo img{
+height: 4rem;
+user-select: none;
+ 
 }
 #cashfree h2{
    margin: 1rem 0;
    color: #000000;
-   font-size: 2.5rem;
+   font-size: 1.2rem;
+   text-transform: uppercase;
    font-weight: 500;
-   text-align: center;
+   text-align: left ;
 }
 #cashfree p{
    color: red;
@@ -25,8 +136,11 @@
    font-size: 1.2rem;
    padding: 1rem;
    border-radius: 0.5rem;
-   border: none;
+   border: 1px solid #bccfe6;
    margin-bottom: 0.5rem;
+   /* box-shadow: var(--newshadow2); */
+   width: 80%;
+   /* background-color: rgb(230, 240, 243); */
 }
 #cashfree input:focus{
    border: 2px solid #000000;
@@ -37,9 +151,7 @@
   margin: 0;
 }
 
-#cashfree input[type="number"] {
-    -moz-appearance: textfield;
-  }
+
 
 #cashfree button{
     padding: 1rem 2rem;
@@ -52,4 +164,22 @@
     cursor: pointer;
     font-weight: 500;
     margin: 1rem 0 0 0;
+    box-shadow: var(--newshadow2);
+}
+
+@media (max-width : 700px) {
+  
+  .cashfree-left{
+display: none;
+   
+  }
+  .cashfree-right{
+   width: 100%;
+
+  }
+  .cashfree-right-box{
+
+   width: 90%;
+ 
+}
 }
