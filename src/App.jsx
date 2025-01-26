@@ -39,7 +39,6 @@ import PaymentStatus from "./Pages/CashfreePay/PaymentStatus";
 
 
 
-const Checknotificaiton = lazy(() => import("./Pages/CashfreePay/Checknotificaiton"));
 const Cashfree = lazy(() => import("./Pages/CashfreePay/Cashfree"));
 const SyllabusUpload = lazy(() => import("./Component/Admine/SyllabusUpload/SyllabusUpload"));
 const NotFound = lazy(() => import("./Component/NotFound/NotFound"));
@@ -177,7 +176,7 @@ const navrefvalue = (value) => {
         },
         {
           path: "payment-donate-us",
-          element: (<><ErrorBoundary> <PaymentRouter showAlart={showAlart} /></ErrorBoundary></>),
+          element: (<><ErrorBoundary> <Suspense fallback  = {<Loadingicon/>}> <PaymentRouter showAlart={showAlart} /></Suspense> </ErrorBoundary></>),
           children : [
             {
               index: true,
@@ -187,10 +186,6 @@ const navrefvalue = (value) => {
             {
               path: "payment-response",
               element: (<><ErrorBoundary> <PaymentStatus showAlart={showAlart} /></ErrorBoundary></>),
-            },
-            {
-              path: "notifyurl",
-              element: (<><ErrorBoundary><Checknotificaiton/></ErrorBoundary></>),
             },
          
           ]

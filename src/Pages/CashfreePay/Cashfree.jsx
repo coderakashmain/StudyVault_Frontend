@@ -63,6 +63,7 @@ const Cashfree = () => {
     let cashfree;
     await load({
       mode: "production",
+      // mode: "sandbox",
     }).then((instance) => {
       cashfree = instance;
       const checkoutOptions = {
