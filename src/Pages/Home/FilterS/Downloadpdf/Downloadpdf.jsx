@@ -190,7 +190,7 @@ useEffect(() => {
 
                     {/* <LongWidthAds background="rgb(242 244 246)" /> */}
 
-                    {showAd && (
+                    {showAd &&  (
                         <div
                             style={{
                                 position: "fixed",
@@ -246,7 +246,7 @@ useEffect(() => {
             </div>
             <Footer/>
                 {selectedPdf && <PDFViewer pdfUrl={selectedPdf} onClose={handleCloseViewer} />}
-           { donatepopup && ( <div className="donation-popup">
+           { donatepopup && filteredPapers.length > 0 && ( <div className="donation-popup">
                 <div className="donation-popup-box">
                     <h1>Hey Dear User, <br /> Support our growth by Donating to us!</h1>
                     <span>This website is running on our own funds, and we're unsure how far we can take it.  Your support can help us sustain and expand StudyVault to benefit more students!</span>
