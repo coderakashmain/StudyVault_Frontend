@@ -43,7 +43,7 @@ const PDFViewer = ({ pdfUrl, onClose }) => {
                 width: "100%",
                 height: "100%",
                 backgroundColor: "rgba(0, 0, 0, 0.8)",
-                zIndex: 1000,
+                zIndex: 10000,
             }}
         >
             {/* Close Button */}

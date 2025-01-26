@@ -241,11 +241,11 @@ useEffect(() => {
                              </div>
                     )}
                 </div>
-                {selectedPdf && <PDFViewer pdfUrl={selectedPdf} onClose={handleCloseViewer} />}
 
             
             </div>
             <Footer/>
+                {selectedPdf && <PDFViewer pdfUrl={selectedPdf} onClose={handleCloseViewer} />}
            { donatepopup && ( <div className="donation-popup">
                 <div className="donation-popup-box">
                     <h1>Hey Dear User, <br /> Support our growth by Donating to us!</h1>
