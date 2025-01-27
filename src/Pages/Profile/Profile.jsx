@@ -261,7 +261,7 @@ const Profile = (props) => {
                 </div>
               </div>
               <div className="profile-downupload-info">
-                <h4> {user.firstname} {user.lastname}</h4>
+                <h4> {user.firstname && (<span>{user.firstname}</span>)} {user.lastname && (<span>{user.lastname}</span>)}</h4>
 
                 <hr />
               </div>
@@ -398,7 +398,7 @@ const Profile = (props) => {
                   <div className="client-info-name name">
                     <h4>Name</h4>
                     <div className="client-info-name-inside name-insde">
-                      <p>{user.firstname} {user.lastname}</p>
+                      <p>{user.firstname && (<span>{user.firstname}</span>)} {user.lastname && (<span>{user.lastname}</span>)}</p>
                       <h5>
                         Name<i className="fa-solid fa-arrow-right"></i>
                       </h5>
@@ -418,7 +418,7 @@ const Profile = (props) => {
                   <div className="client-info-name gmail">
                     <h4>Gmail</h4>
                     <div className="client-info-name-inside name-insde">
-                      <p>{user.gmail}</p>
+                      <p>{user.gmail && (<span>{user.gmail}</span>)}</p>
                       <h5>
                         Gmail<i className="fa-solid fa-arrow-right"></i>
                       </h5>
@@ -427,7 +427,7 @@ const Profile = (props) => {
                   <div className="client-info-name rollno">
                     <h4> Roll No</h4>
                     <div className="client-info-name-inside name-insde">
-                      <p>{user.rollno}</p>
+                      <p>{user.rollno && (<span>{user.rollno}</span>)}</p>
                       <h5>
                         Roll No<i className="fa-solid fa-arrow-right"></i>
                       </h5>

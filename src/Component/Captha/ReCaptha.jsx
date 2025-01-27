@@ -6,11 +6,12 @@ import { SiteKeyContextProvider } from '../../Context/SiteKeyContextT/SiteKeyCon
 import axios from 'axios';
 
 const ReCaptha = ({onVerified}) => {
-  const siteKey = useContext(SiteKeyContextProvider);
+  // const siteKey = useContext(SiteKeyContextProvider);
+  const siteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
+
   
 
   useEffect(() => {
-    
   
     const loadRecaptcha = () => {
       

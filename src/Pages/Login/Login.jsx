@@ -4,6 +4,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 import BackButton from "../../Component/Backbutton/Backbutton";
 import { UserContext } from "../../Context/UserContext/UserContextdata";
+import GoogleAuth from "../../auth/GoogleAuth";
 
 
 
@@ -100,7 +101,7 @@ const Login = (props) => {
                 <input type="checkbox" name="logincheckbox" id="" className="mr-2" defaultChecked />
                 &nbsp; Remember me
               </p>
-              <Link to='ForgatePw' style={{ color: '#4B97D5' }} >Forget password ?</Link>
+              <Link to='ForgatePw' style={{ color: 'rgb(107 183 251)' }} >Forget password ?</Link>
             </div>
             <div className="submit-parant">
               <input ref={submitRef} disabled={repeatclick} type="submit" value="Login" className="" />
@@ -110,10 +111,14 @@ const Login = (props) => {
             Don't have an account?{" "}
             <span className="">Register Now</span>
           </Link>
+          <div style={{margin : "0.8rem 0"}}>
+          <GoogleAuth userdata={setUsernav} showAlart={props.showAlart}/>
+          </div>
           <div className="backtohome" style={{ width: '100%', display: "flex", justifyContent: 'center', alignItems: 'center', paddingTop: '0.1rem', textDecoration: 'underline' }}>
             <NavLink to='/' style={{ textAlign: 'center', cursor: 'pointer', color: '#fff', marginTop: '2rem' }}> Back to Home</NavLink>
 
           </div>
+         
         </div>
       </div>
     </>
