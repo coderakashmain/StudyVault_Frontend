@@ -2,11 +2,11 @@ import React, { useContext } from 'react';
 import { useEffect } from 'react';
 import './ReCaptha.css'
 
-import { SiteKeyContextProvider } from '../../Context/SiteKeyContextT/SiteKeyContext ';
+
 import axios from 'axios';
 
 const ReCaptha = ({onVerified}) => {
-  // const siteKey = useContext(SiteKeyContextProvider);
+ 
   const siteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 
   

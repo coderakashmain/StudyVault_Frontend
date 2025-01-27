@@ -2,11 +2,14 @@ import React from "react";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import { useLocation } from "react-router";
+import "./GoogleAuth.css"
 
 
 const  GoogleAuth = ({userdata , showAlart})=> {
     const googleClientId = import.meta.env.VITE_AUTH_CLIENTID_GOOGLE;
-    const location = useLocation();
+  
+
+    
     
 
    
@@ -35,7 +38,9 @@ const  GoogleAuth = ({userdata , showAlart})=> {
   return (
     <GoogleOAuthProvider clientId={googleClientId} >
       <div className="google-auth" >
-        <GoogleLogin onSuccess={handleSuccess} onError={handleFailure} />
+      <div className="custom-google-btn">
+      <GoogleLogin onSuccess={handleSuccess} onError={handleFailure} />
+    </div>
       </div>
     </GoogleOAuthProvider>
   );

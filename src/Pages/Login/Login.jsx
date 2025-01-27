@@ -111,7 +111,7 @@ const Login = (props) => {
             Don't have an account?{" "}
             <span className="">Register Now</span>
           </Link>
-          <div style={{margin : "0.8rem 0"}}>
+          <div style={{margin : "0.8rem 0" , display : 'flex', justifyContent : 'center', alignItems : 'center', width: '100%'}}>
           <GoogleAuth userdata={setUsernav} showAlart={props.showAlart}/>
           </div>
           <div className="backtohome" style={{ width: '100%', display: "flex", justifyContent: 'center', alignItems: 'center', paddingTop: '0.1rem', textDecoration: 'underline' }}>

@@ -2,10 +2,7 @@ import React, { Suspense, useEffect, useState } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import Loadingicon from '../Component/Jsonlicon/Loadingicon'
 import ReCaptha from '../Component/Captha/ReCaptha'
-import Navbar from '../Component/Navbar/Navbar'
-import SiteKeyContext from '../Context/SiteKeyContextT/SiteKeyContext '
 import TitleSet from '../Component/TitleSet/TitleSet'
-import ErrorBoundary from '../Component/ErrorBoundary/ErrorBoundary'
 
 
 
@@ -30,9 +27,9 @@ const Allpages = (props) => {
     <>
   {/* <Loadingicon/> */}
       {!isVerified ? (
-        <SiteKeyContext>
+       
           <ReCaptha onVerified={handleVerification} />
-        </SiteKeyContext>
+       
 
       ) : (
         
