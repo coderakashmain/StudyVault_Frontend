@@ -26,12 +26,12 @@ const Allpages = (props) => {
 
     <>
  
-      {/* {!isVerified ? (
+      {!isVerified ? (
        
           <ReCaptha onVerified={handleVerification} />
        
 
-      ) : ( */}
+      ) : (
         
         <Suspense fallback={<Loadingicon/>}>
          <TitleSet/>
@@ -39,7 +39,7 @@ const Allpages = (props) => {
           <Outlet />
           </Suspense>
     
-       {/* )}    */}
+       )}   
 
     </>
   )
