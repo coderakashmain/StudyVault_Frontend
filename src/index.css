@@ -43,6 +43,9 @@ body,html{
   --newshadow : 2px 2px 10px #4a72c71e;
   --newshadow2 :  4px 4px 7px #215ab536;;
   --filterbuttoncolor: linear-gradient(rgb(185 203 255 / 37%), rgb(74, 143, 200));
+  --homep-text-color : #e4e4e4;
+  --sectionS-b-c : #E6EBF7;
+  --sectionS-a-b-c:rgb(245, 245, 245);;
 
 }
 input.input-detected{
@@ -64,9 +67,18 @@ input.input-detected{
 }
 }
 
-/* .adsbygoogle[data-anchor-ad="top"] {
-  display: none !important;
-} */
+body.light {
+  transition: all 0.4s linear;
+  /* --sectionS-b-c : #E6EBF7;
+  --sectionS-a-b-c:rgb(245, 245, 245);; */
+}
+
+body.dark {
+  transition: all 0.4s linear; 
+  /* --sectionS-b-c : #18384d;
+  --sectionS-a-b-c:rgb(88, 119, 182);; */
+  
+}
 
 
 

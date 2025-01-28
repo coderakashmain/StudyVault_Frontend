@@ -13,6 +13,7 @@ import { values } from 'pdf-lib'
 import ErrorBoundary from '../Component/ErrorBoundary/ErrorBoundary'
 import Websiteinfo from '../Pages/Home/WebsiteInfo/Websiteinfo'
 
+
 // import Filter from './FilterS/Filter'
 
 const Home = (props) => {
@@ -32,6 +33,12 @@ const Home = (props) => {
     <ErrorBoundary>  <UploadSection showAlart={props.showAlart}/></ErrorBoundary>
       {/* <Review/> */}
     <ErrorBoundary>  <CollegeInfo/></ErrorBoundary>
+
+
+
+
+
+
     <ErrorBoundary>  <Websiteinfo  showAlart={props.showAlart}/></ErrorBoundary>
     <ErrorBoundary>  <Footer/></ErrorBoundary>  
    </>

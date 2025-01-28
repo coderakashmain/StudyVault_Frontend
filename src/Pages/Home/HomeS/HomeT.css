@@ -76,7 +76,7 @@
 }
 .home-info p {
   /* color: gray; */
-  color: #e4e4e4;
+  color: var(--homep-text-color);
   line-height: 18px;
   letter-spacing: 1px;
   font-size: 12px;
@@ -271,7 +271,7 @@
 }
 .content-container {
   padding: 1% 5% 4%;
-  background-color: var(--backcolor);
+  /* background-color: var(--backcolor); */
 }
 
 /* ------------------------------------------------------------footer css-------------------------------------------------------------------------------- */

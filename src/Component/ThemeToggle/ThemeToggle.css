@@ -1,0 +1,63 @@
+.mode{
+    width: 6rem;
+    height: 3.3rem;
+    border-radius: 2rem;
+    display: flex;
+    align-items: center;
+    transition : all 0.5s ease-in-out !important;
+    transform: scale(0.6);
+}
+
+ .backlight{
+    background-color: #e5e5e5;
+}
+ .backdard{
+    background-color: #34a0c1;
+}
+.toggle-switch{
+    height: 2.6rem;
+    margin: 0rem 0.4rem;
+    width: 2.6rem;
+    background-color: #F0F1F5;
+    border-radius: 50%;
+    cursor: pointer;
+
+    transition : all 0.5s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+}
+.toggle-switch i{
+ font-size: 0rem;
+ color: #000000;
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+ opacity: 0;
+ transition: all 0.5s ease-in-out;
+
+
+}
+.darkTheme i:first-child{
+opacity: 1 ;
+font-size: 1.8rem;
+color: #000000;
+
+}
+ .lightTheme  i:last-child{
+opacity: 1;
+font-size: 1.8rem;
+color: #91b0b6;
+
+}
+.lightTheme{
+ transform: translateX(0%);
+ box-shadow: 1px 1px 1px #4b4a4a8c, -0.5px -0.5px 0.5px #b0b0b08a;
+}
+.darkTheme{
+    transform: translateX(98%);
+    box-shadow: -1px 1px 1px #4b4a4a8c, 0.5px -0.5px 0.5px #b0b0b08a;
+}

@@ -1,11 +1,12 @@
 #section-selector{
-    background: #E6EBF7;
+    background: var(--sectionS-b-c);
     width: 100%;
     padding: 1rem 3.8rem;
     display: flex;
     justify-content: center;
     position: relative;
     z-index: 2;
+    transition: all 0.2s linear;
 }
 .section-selector-common{
     width: 100%;
@@ -29,7 +30,8 @@
     
 }
 .section-selector-inside a,.section-selector-inside-right a{
-    background-color: rgb(245, 245, 245);
+    background-color: var(  --sectionS-a-b-c);
+      transition: all 0.2s linear;
     
 }
 .section-selector-inside a:hover,.section-selector-inside-right a:hover{

@@ -12,6 +12,7 @@ import { AdminLoginContext } from '../../Context/AdminLoginCheck/AdminLoginCheck
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import logo from '../../photo/weblogo.png'
+import ThemeToggle from '../ThemeToggle/ThemeToggle'
 
 
 const Navbar = (props) => {
@@ -554,16 +555,17 @@ const wholenotificationbackRef = useRef();
             </div>)}
 
           </div>
-          {mobileScroll && logotext && (<h2 className="logo-top-css" > STUDYVAULT</h2>)}
+          {mobileScroll && logotext && (<h2 style={{marginLeft : '0.2rem'}} className="logo-top-css" > STUDYVAULT</h2>)}
           <div className="location-login">
             {authentication && (<div className="admin-short" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginRight: '0.5rem' }}>
               <i className="fa-solid fa-user-shield" style={{ color: '#fff', fontSize: '1.6rem', cursor: 'pointer' ,paddingLeft : '0.3rem'}} onClick={() => navigate('/Admin')}></i>
 
             </div>)}
+              {/* <ThemeToggle/> */}
             {!mobileView && (<select name="name" id="college-name">
               {!locationCollege ? (
                 <option value="M.P.C autonomous">M.P.C Autonomous</option>
-
+                
               ) : (<option value="M.P.C autonomous">M.P.C</option>)};
 
             </select>)}
@@ -575,8 +577,8 @@ const wholenotificationbackRef = useRef();
 
 
             {!isAuthenticateduser ? (
-              <div className="log-in">
-                <div ref={BothLoginRef} onClick={clickOn}><li>Login <div className={`adminLogInBox ${isOn ? 'open' : 'close'} `} ref={LoginRef} >
+              <div className="log-in" style={{display : 'flex', justifyContent : 'center', alignItems : 'center'}}>
+                <div ref={BothLoginRef}  onClick={clickOn}><li>Login <div className={`adminLogInBox ${isOn ? 'open' : 'close'} `} ref={LoginRef} >
 
                   <NavLink className={`${getNavClass('/LogIn')} ${isOn ? 'big' : 'small'}`} to="/LogIn"><i className="fa-solid fa-graduation-cap" ></i>Student LogIn </NavLink>
                   {!authentication ? (<NavLink to="/Admin/AdminLogIn" className={`${isOn ? 'big' : 'small'}`}><i className="fa-solid fa-user-tie"></i>Admin LogIn </NavLink>) : (<NavLink to="/Admin" className={`${isOn ? 'big' : 'small'}`}><i className="fa-solid fa-user-tie"></i>Admin Page</NavLink>)}
@@ -584,7 +586,7 @@ const wholenotificationbackRef = useRef();
                 </li></div>
               </div>
             ) : (
-              <div className="log-in">
+              <div className="log-in" style={{display : 'flex', justifyContent : 'center', alignItems : 'center'}} >
                 <NavLink onClick={handleLogout} alt='Log Out' ><i className="fa-solid fa-right-from-bracket" style={{ margin: '0rem 0 0 0.5rem', color: '#fff' }}></i></NavLink>
               </div>
             )}
