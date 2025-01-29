@@ -147,6 +147,7 @@ const SyllabusUpload = (props) => {
                 {(departmentlistdata &&departmentlistdata.map((listdata,index)=>( 
                     <option value={listdata} key= {index}> {listdata}</option>
                 )))}
+                <option value="E&V">E&V</option>
             </select>
             <div style={{ display : 'block', float : 'right'}}>
 
