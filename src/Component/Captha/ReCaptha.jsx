@@ -22,41 +22,53 @@ const ReCaptcha = ({ onVerified }) => {
       script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js";
       script.async = true;
       script.defer = true;
-      document.body.appendChild(script);
-
+      
       script.onload = () => {
-        window.turnstile?.render("#captcha-container", {
-          sitekey: siteKey,
-          callback: (token) => {
-            console.log("Turnstile verified:", token);
+        // Render the Turnstile widget
+        if (window.turnstile) {
+          window.turnstile?.render("#captcha-container", {
+            sitekey: siteKey,
+            callback: (token) => {
+              console.log("Turnstile verified:", token);
 
-            // Send the token to your backend for validation (optional)
-            axios
-              .post("/api/verify-turnstile", { token })
-              .then((response) => {
-                if (response.data.success) {
-                  onVerified(true);
-                  sessionStorage.setItem("isVerified", "true");
-                } else {
+              // Send the token to your backend for validation (optional)
+              axios
+                .post("/api/verify-turnstile", { token })
+                .then((response) => {
+                  if (response.data.success) {
+                    onVerified(true);
+                    sessionStorage.setItem("isVerified", "true");
+                  } else {
+                    onVerified(false);
+                    console.error("Turnstile verification failed.");
+                  }
+                })
+                .catch((error) => {
+                  console.error("Error verifying Turnstile token:", error);
                   onVerified(false);
-                  console.error("Turnstile verification failed.");
-                }
-              })
-              .catch((error) => {
-                console.error("Error verifying Turnstile token:", error);
-                onVerified(false);
-              });
-          },
-        });
+                });
+            },
+          });
+        } else {
+          console.error("Turnstile is not available.");
+        }
 
         // Mark script as loaded
         scriptLoaded.current = true;
       };
 
+      script.onerror = () => {
+        console.error("Failed to load Turnstile script.");
+      };
+
+      document.body.appendChild(script);
+
       return () => {
-        document.body.removeChild(script); // Cleanup on unmount
+        // Cleanup on unmount
+        document.body.removeChild(script);
       };
     }
+
   }, [onVerified, siteKey]);
 
   return (
