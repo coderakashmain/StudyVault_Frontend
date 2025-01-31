@@ -6,7 +6,7 @@ import TitleSet from '../Component/TitleSet/TitleSet'
 
 
 
-const Allpages = (props) => {
+const Allpages = () => {
 
   const [isVerified, setIsVerified] = useState(() => {
     // Check if user is already verified in session storage
