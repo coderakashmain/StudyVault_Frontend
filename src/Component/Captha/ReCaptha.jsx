@@ -5,8 +5,10 @@ import axios from "axios";
 import './Recapthacloud.css'
 
 const ReCaptcha = ({ onVerified }) => {
-  const siteKey = import.meta.env.VITE_ARECAPTCHA_SITE_KEY_CLOUDFIRE;
   const scriptLoaded = useRef(false); 
+  const siteKey = import.meta.env.VITE_ARECAPTCHA_SITE_KEY_CLOUDFIRE;
+
+
 
   useEffect(() => {
     if (!siteKey) {
