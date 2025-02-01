@@ -3,6 +3,7 @@ import SubNav from '../Component/SubNav/SubNav'
 import { Outlet } from 'react-router-dom'
 import Footer from '../Pages/Home/FooterS/Footer'
 import ErrorBoundary from '../Component/ErrorBoundary/ErrorBoundary'
+import Review from '../Pages/Home/Review/Review'
 
   
 const MaterialRouting = (props) => {
@@ -15,6 +16,7 @@ const MaterialRouting = (props) => {
 
    <ErrorBoundary> <SubNav showAlart = {props.showAlart} subheadingtypedata = {props.subheadingtypedata}/></ErrorBoundary>
     <Outlet/>
+    {/* <Review/> */}
     <ErrorBoundary>  <Footer/></ErrorBoundary>
     </section>
   )

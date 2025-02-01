@@ -329,8 +329,8 @@ useEffect(()=>{
   return (
     <div ref={filterboxref} className="filter-main-div">
       
-     
-       {/* { homebackShow ? <h5  className="backHome"><NavLink to = '/'> Home &nbsp; </NavLink> -&gt; &nbsp;Filter </h5> : null} */}
+
+    
       <form onSubmit={handleSubmit} className="filteration-container-box" >
         <div className="filteration-container">
           <div className="first-filteration">
@@ -616,10 +616,12 @@ useEffect(()=>{
           </div>
 
         </div>
-      </form>
-      {/* <div  className="ads-center">
+         <div  className="ads-center">
       <AritcleAds background = "var(--backcolor)"/>
-      </div> */}
+      </div>
+      </form>
+      <div className="filter-right-ads-div"></div> 
+     
     </div>
   );
 };

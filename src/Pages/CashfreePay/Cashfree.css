@@ -131,6 +131,30 @@ user-select: none;
 #cashfree p{
    color: red;
 }
+.cashfree-payment-input{
+   width: 80%;
+   display: block;
+   display: flex;
+   justify-content: center;
+   position: relative;
+   border-radius: 0.5rem;
+   overflow: hidden;
+
+}
+.inr-box{
+width: 20%;
+background-color: rgb(34 62 77);
+color: #fff;
+margin-bottom: 0.5rem;
+border-radius:  0 0.5rem 0.5rem 0;
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 1.2rem;
+font-weight: 600;
+user-select: none;
+
+}
 #cashfree input{
    outline: none;
    font-size: 1.2rem;
@@ -138,13 +162,24 @@ user-select: none;
    border-radius: 0.5rem;
    border: 1px solid #bccfe6;
    margin-bottom: 0.5rem;
-   /* box-shadow: var(--newshadow2); */
+
    width: 80%;
-   /* background-color: rgb(230, 240, 243); */
+
+}
+#cashfree input:first-child{
+border-radius: 0.5rem 0 0 0.5rem;
+
+
 }
 #cashfree input:focus{
-   border: 2px solid #000000;
+   border: 2px solid rgb(34 62 77);
 }
+#cashfree input:first-child:focus{
+   border: 2px solid rgb(34 62 77);
+   border-right: none;
+}
+
+
 #cashfree input[type="number"]::-webkit-outer-spin-button,
 #cashfree input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;

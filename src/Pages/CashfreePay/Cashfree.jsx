@@ -114,7 +114,11 @@ const Cashfree = () => {
        
        <h1>Grow Our Own website for Our and Our future Juniors!</h1>
       <h2>Enter this information</h2>
-      <input type="number" placeholder='Enter amount ' name='amount' onChange={(e) => setAmount(e.target.value)} />
+      <div className="cashfree-payment-input">
+      <input type="number" placeholder='Enter Amount ' name='amount' onChange={(e) => setAmount(e.target.value)} />
+      <div className="inr-box">INR</div>
+
+      </div>
       <input type="number" placeholder='Enter Mobile Number' name='number' onChange={(e) => setmobilenumber(e.target.value)} required />
       <input type="email" placeholder='Enter Gmail' name='gmail' onChange={(e) => setgmail(e.target.value)} required />
       {message && (<p>{message}</p>)}

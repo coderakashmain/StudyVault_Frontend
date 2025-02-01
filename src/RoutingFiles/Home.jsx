@@ -14,7 +14,7 @@ import ErrorBoundary from '../Component/ErrorBoundary/ErrorBoundary'
 import Websiteinfo from '../Pages/Home/WebsiteInfo/Websiteinfo'
 
 
-// import Filter from './FilterS/Filter'
+
 
 const Home = (props) => {
 
@@ -31,7 +31,7 @@ const Home = (props) => {
         {/* <MessageBox /> */}
       <Outlet />
     <ErrorBoundary>  <UploadSection showAlart={props.showAlart}/></ErrorBoundary>
-      {/* <Review/> */}
+     
     <ErrorBoundary>  <CollegeInfo/></ErrorBoundary>
 
 

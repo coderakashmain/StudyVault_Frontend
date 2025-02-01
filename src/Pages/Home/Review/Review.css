@@ -1,428 +1,115 @@
-
-.fa-snowflake {
-  font-size: 44px;
-  color: rgb(13, 79, 61);
-  margin-bottom: 2%;
+#review{
+    height: 100vh;
+    width: 100%;
+    background: var(--newbackcolor);
+    padding: 0rem 5rem;
 }
-.first-third-half-header p {
-  font-weight: 500;
-}
-.first-third-half-header h2 {
-    font-weight: 700;
-    font-size: 2.4rem;
-}
-.first-third-half-header h2 i {
-  font-size: 15px;
-  color: rgb(13, 79, 61);
-}
-.first-half-header  strong {
-  font-size: 16px;
-  font-weight: 700;
-  color: rgb(13, 79, 61);
-}
-.main-reviews {
-  width: 100%;
-  padding: 5%;
-  background-color: var(--backcolor);
-  white-space: nowrap;
-}
-.first-full-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-}
-.first-half-header,
-.first-third-half-header {
-  display: flex;
-  align-items: center;
-}
-.first-third-half-header {
-  border-right: 2px solid gray;
-  gap: 10%;
-  padding-right: 10%;
-}
-.first-half-header {
-  box-sizing: border-box;
-  width: 70%;
-  gap: 5%;
-}
-.rating-div h3 {
-  font-weight: 600;
-  color: rgb(41, 39, 39);
-}
-.first-half-header  u {
-  margin-left: 10%;
-  text-decoration-line: underline;
-}
-.buton-div-header-review{
-    width: 30%;
-    text-align: right;
-}
-.getlink {
-  padding:3% 8%;
-  font-weight: 500;
-  border: none;
-  border-radius: 9px;
-  background-color: rgb(21, 113, 121);
-  color: white;
-  margin-right: 5%;
-}
-.getlink i {
-  color: white;
-  margin-left: 10%;
-}
-
-
-
-.sectionn-half-two input[type="range"]{
-    width:20rem;
-    height: 3px;
-    outline: none;
-    appearance: none;
-    border-radius: 44px;
-    overflow: hidden;
-    box-shadow: inset 0 0 10px rgba(144, 143, 143, 0.5);
-}
-.sectionn-half-two input[type="range"]::-webkit-slider-thumb{
-    appearance: none;
-    height: 0px;
-    width: 0px;
-    background: rgb(244, 171, 3);
-    box-shadow: -407px 0 0 400px rgb(240, 168, 13);
-    cursor: pointer;
-}
-
-.main-reviews  hr{
-    margin: 2% 0%;
-}
-
-.section-one-review{
-    display: flex;
-    justify-content: space-between;
-    /* border: 2px solid green; */
-}
-.total-average-review h3{
- font-size: 16px;
- font-weight: 600;
-}
-.section-half-one{
-    width: 30%;
-    border-right: 2px solid gray;
-    padding: 0% 5% 0% 0%;
-}
-.sectionn-half-two{
-    width: 70%;
-    /* border: 2px solid red; */
-    padding: 0% 5% 0 2%;
-}
-.section-half-one button{
-    font-weight: 700;
-    font-size: 10px;
-    padding: 3% 15%;
-    border-radius: 4px;
-    border: none;
-    background-color: rgba(255, 179, 0, 0.905);
-    margin: 5% 0%;
-}
-.section-half-one sub{
-    font-size: 10px;
-    font-weight: 600;
-}
-.section-half-one strong{
-    font-size: 2.6rem;
+.review-inside h2{
+    font-size: 2rem;
     font-weight: 500;
+    padding: 4rem 0;
+    border-top: 1px solid #c5d2d2;
+    border-bottom: 1px solid #c5d2d2;
+    color: #303030;
 }
-.star-rating i{
-    color: rgb(13, 82, 13);
-}
-.star-rating span{
-    color: rgb(13, 82, 13);
-    font-weight: 700;
-    font-size: 10px;
-    margin-left: 5%;
-}
-
-.sectionn-half-two{
-    display: flex;
-    gap: 2%;
-    justify-items: center;
-    align-items: center;
-    flex-wrap: wrap;
-}
-.sectionn-half-two div{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5%;
-}
-.sectionn-half-two div label{
-    font-weight: 600;
-    font-size: 12px;
-}
-
-.profile-picture{
-    width: 60px;
-    height: 60px;
-    background-color: gray;
-    border-radius: 50%;
-}
-.all-reviews-box{
+.review-write{
+    margin-top: 1rem;
     width: 100%;
 }
-.all-reviews-box-feedback{
+.review-write-out{
+    width: 100%;
     display: flex;
-    justify-content: flex-end;
-    
-}
-.all-reviews-givefeedback {
- display: flex;
- justify-content: space-between;
- align-items: center;
-}
-.all-reviews-givefeedback h4{
-    margin: 2rem 0;
-    font-weight: 500;
-}
-.all-reviews-givefeedback button{
-    margin: 2rem 0;
-   outline: none;
-   border: none;
-   padding: 0.6rem 1rem;
-   background-color: #157179;
-   color: #fff;
-   border-radius: 0.4rem;
-   cursor: pointer;
-   font-weight: 500;
-
-}
-
-
-.review-box{
-    border: 2px solid gray ;
-    padding: 2%;
-    margin: 1%;
-    flex-basis: 250px;
-    border-radius: 14px;
-    flex-grow: 1;
-}
-.review-user-details{
-    border-bottom: 1px solid gray ;
-    padding-bottom: 5%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.review-box-header{
-    display: flex;
-    gap: 5%;
-    align-items: center;
-}
-.review-text{
-    white-space: wrap;
-    margin: 3%;
-    font-size: 10px;
-}
-.user-details h4{
-    font-weight: 600;
-    color: rgb(67, 61, 61);
-}
-.review-star .fa-star{
-    color: rgb(16, 77, 16);
-}
-.feedback-form{
-    width: 70%;
-    padding: 2rem;
-    background-color: rgb(231 232 235);
-    border-radius: 0.9rem;
-    box-shadow: 5px 5px 10px  rgba(112, 112, 112, 0.136), inset  -5px -5px 10px  rgba(244, 244, 244, 0.523)  ;
-   
-}
-.all-reviews{
-    display: flex;
-    justify-items: center;
-    flex-wrap: wrap;
     flex-direction: row;
-    /* width: 30%; */
+
 }
-.feedback-form form .feedback-form-headline{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.reivew-write-left-out{
+    width: 80%;
 }
-.feedback-user-info{
+.reivew-write-right-out{
+    width: 20%;
+}
+.review-write span{
+    font-size: 1.2rem;
+    color:  #303030;    
+    font-weight: 500;
+}
+.review-input-box{
+    margin-top: 2rem;
+    width: 100%;
     display: flex;
     justify-content: center;
-    
+    align-items: center;
+    gap: 1rem;
+}
+.review-input-each-box{
+    width: 100%;
+    position: relative;
 
-}
-.feedback-form-headline h2{
-    font-size: 2rem;
-    font-weight: 500;
-}
-.feedback-user-info h4{
-    font-size: 1.1rem;
-    font-weight: 500;
+  
 }
 
-.feedback-user-image {
-    height: 2rem;
-    width: 2rem;
-    background-color: red;
-    border-radius: 50%;
-    margin: 0 0.5rem;
+.review-input-each-box input{
+  flex-grow: 1;
+  font-size: 1.1rem;
+  padding: 1rem 1rem;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  border: 1px solid #c5d2d2;
+  border-radius: 0.1rem;
+  width: 100%;
+
+
 }
-.feedback-rating-box{
-    margin: 2rem 0 0 0;
-    font-size: 1.2rem;
-}
-.start-box{
-    margin: 2rem 0rem 0;
+.review-input-each-box label{
+    width: 100%;
+    position: absolute;
+    top: 30%;
+    left: 1rem;
+    display: inline;
+    transition: all 0.5s ease;
+    cursor: text; 
+    pointer-events: none;
+    background-color: transparent;
+     display: inline;  /* Ensure the label fits the text content only */
+    width: auto;
+    padding: 0.1rem 0.1rem;
+    text-wrap: nowrap;
     display: flex;
-    justify-content: space-between;
-    width: 25%;
-    /* gap: 2rem; */
-    flex-direction: row-reverse;
-}
-.start-box input{
-    display: none;
-}
-.start-box label{
-    font-size: 2rem;
-    cursor: pointer;
-    color: #444;
-    transition: all 0.1s ease;
-    
-}
-.start-box input:not(:checked) ~ label:hover,
-.start-box input:not(:checked) ~ label:hover ~ label{
-    color : rgb(236, 193, 0);
-}
-.start-box input:checked ~ label{
-    color: rgb(236, 193, 0);
-}
-.feedback-area{
-    margin: 4rem 0 0 ;
-}
-.feedback-area h4{
-    font-size: 1rem;
-    margin: 1rem 0;
-    text-wrap: wrap;
-}
-.feedback-area textarea{
- max-width:90%;
- max-height: 10rem;
- border: none;
- border: 2px solid #81a3a645;
- padding: 1rem;
- font-size: 0.9rem;
-}
-.feedback-area textarea:focus{
-  outline-width: 0.2rem;
-  outline-color: #c4c4c4;
-}
-.feedback-form form button:last-child{
-    background-color: #4B97D5;
-    padding: 0.4rem 1.9rem;
-    border: none;
-    outline: line;
-    float: right;
-    font-size: 1.1rem;
-    font-weight: 400;
-    color: #fff;
-    cursor: pointer;
-    border-radius: 0.2rem;
-}
-.feedback-form form button:last-child:hover{
-   background-color: #4183b9;
-}
-.feedback-form form button:first-child{
-    background-color: #4B97D5;
+    justify-content: center;
 }
 
-@media only screen and (max-width:1000px){
-    .profile-picture{
-        width: 30px;
-        height: 30px;
-        transition: all 0.5s ease-in-out;
-    }
-    .user-details{
-        font-size: 10px;
-        transition: all 0.5s ease-in-out;
-    }
-}
-
-@media only screen and (max-width:660px){
-.review-user-details{
-    flex-direction: column;
-    transition: all 0.5s ease-in-out;
-}
-.review-box{
-    padding: 1%;
-    transition: all 0.5s ease-in-out;
-}
-input[type="range"]{
-    width: 15rem;
-    transition: all 0.5s ease-in-out;
-}
-.first-third-half-header{
-    border: none;
-}
-.rating-div{
-    display: none;
-}
-.sectionn-half-two input[type="range"] {
-    width: 19rem;
-}
-}
-
-@media only screen and (max-width:569px){
-    .sectionn-half-two input[type="range"] {
-        width: 15rem;
-    }
-}
-
-@media only screen and (max-width:450px){
-.first-full-header{
-    flex-direction: column;
-    transition: all 0.5s ease-in-out;
-}
-.first-half-header {
-width: 100%;
-padding-right:30% ;
-transition: all 0.5s ease-in-out;
-}
-.buton-div-header-review{
-    width: 100%;
-    text-align: left;
-    margin: 7% 0%;
-    transition: all 0.5s ease-in-out;
-}
-.getlink {
-    padding:2% 5%;
-    transition: all 0.5s ease-in-out;
+.review-input-each-box input:focus {
+    border: 1px solid #85d0e7;
   }
+  
 
-  .total-average-review{
-    margin: 10% 0%;
-    transition: all 0.5s ease-in-out;
+  .review-input-each-box input:focus + label,
+  .review-input-each-box input:not(:placeholder-shown) + label {
+    top: -10px;     /* Move label up */
+    left: 80%;     /* Keep aligned */
+    font-size: 12px;
+    color: #007bff;
+    opacity: 1;     /* Keep it visible */
+    background-color: var(--newbackcolor);
   }
-  .section-half-one strong{
-    font-size:25px;
-}
-.review-box{
-    width: 100%;
-}
-.review-user-details{
-    flex-direction:row;
-    transition: all 0.5s ease-in-out;
-}
-.review-box{
-    padding: 5%;
-    transition: all 0.5s ease-in-out;
-    margin:5% 0%;
-}
-.sectionn-half-two input[type="range"]{
-    width:12rem;
-}
-}
+  .review-input-each-box textarea{
+    max-width: 100%;
+    min-width: 100%;
+    margin-top: 3rem;
+   min-height: 12rem;
+   border: none;
+   border: 1px solid #c5d2d2;
+   outline: none;
+   background-color: transparent;
+   padding: 1rem ;
+  }
+  .review-input-each-box label[for="message"]{
+    top: 25%;
+    position: absolute;
+    left: 1rem;
+    transition: all 0.3s ease;
+  }
+  .review-input-each-box textarea:focus{
+    border: 1px solid #85d0e7;
+  }
