@@ -29,7 +29,7 @@ const ReCaptcha = ({ onVerified }) => {
           window.turnstile?.render("#captcha-container", {
             sitekey: siteKey,
             callback: (token) => {
-              console.log("Turnstile verified:", token);
+    
 
               // Send the token to your backend for validation (optional)
               axios
