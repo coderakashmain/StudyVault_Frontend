@@ -69,22 +69,19 @@ const ReCaptcha = ({ onVerified }) => {
       };
     }
 
-  }, [onVerified, siteKey]);
+  }, [ siteKey]);
 
   return (
-    <div className="capta-box">
-      <h1>Welcome to StudyVault</h1>
-      <div className="capta-box-p">
-        <p>
-          <box-icon name="loader" flip="vertical" animation="spin" color="#000"></box-icon> Verifying, please wait...
-        </p>
-      </div>
-      <div id="captcha-container" className="cf-turnstile" style={{marginTop : '1rem'}}></div>
-      
-      
+    <div className="captcha-fullscreen">
+  <div className="captcha-content">
+    <h1>studyvault.online</h1>
+    <p>Verifing you are human by completing the action below.</p>
+    <div id="captcha-container" className="cf-turnstile"></div>
+    <p>StudyVault needs to review the security of your connection before proceeding.</p>
+    <p>Protected by <span >Cloudflare</span></p>
+  </div>
+</div>
 
-
-    </div>
   );
 };
 

@@ -7,7 +7,8 @@ const Review = () => {
       <div className="review-inside">
         <h2>Asked Question & Answers</h2>
         <div className="review-write">
-          <span>Leave a Comment</span>
+          <h3>Leave a Comment</h3>
+          <p style={{margin : '0.8rem 0 0 0' , fontSize : '1rem'}}>Required fields are marked <span style={{color: 'red'}}>*</span></p>
           <div className="review-write-out">
             <div className="reivew-write-left-out">
 
@@ -31,7 +32,7 @@ const Review = () => {
 
             </div>
             <div className="review-input-each-box">
-              <textarea name="message" id="massage" placeholder="Write Comment"></textarea>
+              <textarea name="message" id="massage" placeholder="Write Comment*"></textarea>
 
             </div>
             </div>

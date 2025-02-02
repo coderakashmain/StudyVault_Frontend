@@ -24,14 +24,22 @@
 }
 .reivew-write-left-out{
     width: 80%;
+    
 }
 .reivew-write-right-out{
     width: 20%;
+
 }
-.review-write span{
-    font-size: 1.2rem;
+.review-write h3{
+    font-size: 1.3rem;
     color:  #303030;    
     font-weight: 500;
+    margin-top: 2rem;
+  
+}
+.review-write p{
+    font-size: 1rem;
+  
 }
 .review-input-box{
     margin-top: 2rem;
@@ -40,16 +48,19 @@
     justify-content: center;
     align-items: center;
     gap: 1rem;
+    flex-wrap: wrap;
 }
 .review-input-each-box{
+    flex-grow: 1;
     width: 100%;
     position: relative;
-
+    flex-basis: 150px;
+   
   
 }
 
 .review-input-each-box input{
-  flex-grow: 1;
+ 
   font-size: 1.1rem;
   padding: 1rem 1rem;
   outline: none;
@@ -64,10 +75,10 @@
 .review-input-each-box label{
     width: 100%;
     position: absolute;
-    top: 30%;
+    top: 28%;
     left: 1rem;
     display: inline;
-    transition: all 0.5s ease;
+    transition: all 0.3s ease;
     cursor: text; 
     pointer-events: none;
     background-color: transparent;
@@ -87,7 +98,7 @@
   .review-input-each-box input:focus + label,
   .review-input-each-box input:not(:placeholder-shown) + label {
     top: -10px;     /* Move label up */
-    left: 80%;     /* Keep aligned */
+    left: 1rem;     /* Keep aligned */
     font-size: 12px;
     color: #007bff;
     opacity: 1;     /* Keep it visible */
@@ -112,4 +123,22 @@
   }
   .review-input-each-box textarea:focus{
     border: 1px solid #85d0e7;
+  }
+
+  @media (max-width : 750px) {
+    #review{
+        padding: 0rem 2rem;
+    }
+   
+  }
+  @media (max-width : 450px) {
+    #review{
+        padding: 0rem 1.1rem;
+    }
+    .reivew-write-left-out{
+        width: 100%;
+    }
+    .reivew-write-right-out{
+        display: none;
+    }
   }

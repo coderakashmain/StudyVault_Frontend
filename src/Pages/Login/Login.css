@@ -1,10 +1,10 @@
-*{
+/* *{
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
     color: #2d2d2d;
    
-}
+} */
 
 
 .main-login-container{
@@ -15,7 +15,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--uniqcolorback);
+    background-color: rgb(211, 232, 234);
+    /* background-color: var(--uniqcolorback); */
     z-index: 1001;
     position: relative;
     
@@ -49,7 +50,8 @@
     padding:5% 3% 5% 3%;
     /* margin-top: 1rem; */
     border-radius: 1%;
-    background: var(--uniqcolorup);
+    background: rgb(214, 214, 214);
+    /* background: var(--uniqcolorup); */
     box-shadow: var(--boxshadow);
   }
   .main-heading{
