@@ -39,7 +39,7 @@ const Allpages = () => {
           <Outlet />
           </Suspense>
     
-     )}   
+        )}   
 
     </>
   )

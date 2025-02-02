@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import { NavLink, useLocation, useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+
 import './Downloadpdf.css'
 import LongWidthAds from "../../../../Component/AddSense/LongWidthAds";
 import AritcleAds from "../../../../Component/AddSense/AritcleAds";
@@ -24,6 +24,7 @@ const Downloadpdf = (props) => {
     const { data } = location.state || { data: [] };
     const [selectedPdf, setSelectedPdf] = useState(null);
     const[donatepopup,setDonatePopup] = useState(false);
+    
 
 
     useEffect(() => {
@@ -83,20 +84,17 @@ const Downloadpdf = (props) => {
     const handleClickPaper = (paper) => {
         setClickCount((prevCount) => prevCount + 1);
 
-        // Show interstitial ad after every 3 clicks
+     
         if ((clickCount + 1) % 2 === 0) {
-            // setShowAd(true);
-        //   const timout =   setTimeout(() => {
-        //         setShowAd(false);
-        //         window.open(paper.url, "_blank"); // Open question paper after ad
-        //     }, 5000); // Show the ad for 5 seconds
-        //     return ()=> clearTimeout(timout)
-        // window.open(paper.url, "_blank");
-        navigate(`/Downloadpdf/${paper.title}`)
-        setSelectedPdf(paper.url);
-
+            setShowAd(true);
+          const timout =   setTimeout(() => {
+                setShowAd(false);
+            
+            }, 5000); 
+            return ()=> clearTimeout(timout)
+   
         } else {
-            // window.open(paper.url, "_blank");
+   
             navigate(`/Downloadpdf/${paper.title}`) 
             setSelectedPdf(paper.url);
         }
@@ -188,7 +186,7 @@ useEffect(() => {
                         </div>
                     )}
 
-                    {/* <LongWidthAds background="rgb(242 244 246)" /> */}
+                    <LongWidthAds background="rgb(242 244 246)" />
 
                     {showAd &&  (
                         <div
@@ -217,12 +215,15 @@ useEffect(() => {
                                     fontSize: "1.5rem",
                                     cursor: "pointer",
                                 }}
-                                onClick={() => setShowAd(false)}
+                                onClick={() => {
+                                    setShowAd(false)
+                                    // setSelectedPdf(null);
+                                }}
                             >
                                 ×
                             </button>
                             <div>
-                                {/* <AritcleAds Height = '100%'/> */}
+                            <LongWidthAds background = "var(--newbackcolor)"/>
                             </div>
                         </div>
                     )}

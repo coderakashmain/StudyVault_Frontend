@@ -67,10 +67,10 @@ const Departmentlist = (props) => {
       <div className="main-container">
     
         <div className="inner-main-container">
-        {/* <div className="ads-center">
+        <div className="ads-center">
                <LongWidthAds background = "var(--backcolor)"/>
                
-              </div> */}
+              </div>
           <div ref={contectContainer} className="content-container">
             <div className="department-title-box">
               <h2>Departments :</h2>

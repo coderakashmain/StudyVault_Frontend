@@ -616,11 +616,13 @@ useEffect(()=>{
           </div>
 
         </div>
-         {/* <div  className="ads-center">
+         <div  className="ads-center">
       <AritcleAds background = "var(--backcolor)"/>
-      </div> */}
+      </div>
       </form>
-      <div className="filter-right-ads-div"></div> 
+      <div className="filter-right-ads-div">
+        
+        </div> 
      
     </div>
   );

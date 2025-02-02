@@ -158,7 +158,7 @@ setPgloading(true);
            </p>
            and expectations of each course in your college curriculum.
         <div className="ads-center">
-           {/* <HomeAdd1 background = 'var(--newbackcolor)'/> */}
+        <Horizontalads background = "var(--newbackcolor)"/>
 
         </div>
 
@@ -191,7 +191,7 @@ setPgloading(true);
                 </form>
                 <div className="ads-center">
 
-                {/* <Horizontalads background = "var(--newbackcolor)"/> */}
+                <Horizontalads background = "var(--newbackcolor)"/>
                 </div>
               <h2>Pg syllabus</h2>
               <p>The Postgraduate (PG) Model Syllabus is an essential academic guide for students pursuing advanced studies in Odisha. It provides a well-structured framework to help students delve deeper into their chosen fields of study while adhering to national and state educational standards.</p>

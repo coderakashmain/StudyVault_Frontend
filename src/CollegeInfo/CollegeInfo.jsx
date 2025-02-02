@@ -82,10 +82,10 @@ const CollegeInfo = () => {
              <NavLink to="/article-section/colleges-article/mpc-article" >Explore <span style={{color : '#fff', fontWeight : '900'}}>↗</span></NavLink>
         </aside>
              </div>
-             {/* <div className="ads-center">
+             <div className="ads-center">
 
         <AritcleAds background = "var( --notificationbackcolor )"/>
-             </div> */}
+             </div>
     </section>
     </>
   )
