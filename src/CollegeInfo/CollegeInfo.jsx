@@ -84,7 +84,7 @@ const CollegeInfo = () => {
              </div>
              <div className="ads-center">
 
-        <AritcleAds background = "var( --notificationbackcolor )"/>
+          <AritcleAds background = "var( --notificationbackcolor )"/>
              </div>
     </section>
     </>

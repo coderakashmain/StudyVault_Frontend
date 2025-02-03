@@ -68,7 +68,7 @@ const Departmentlist = (props) => {
     
         <div className="inner-main-container">
         <div className="ads-center">
-               {/* <LongWidthAds background = "var(--backcolor)"/> */}
+               <LongWidthAds background = "var(--backcolor)"/>
                
               </div>
           <div ref={contectContainer} className="content-container">

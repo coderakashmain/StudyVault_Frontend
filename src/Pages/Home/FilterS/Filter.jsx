@@ -13,6 +13,7 @@ import HomeAdd1 from "../../../Component/AddSense/HomeAdd1";
 import LongWidthAds from "../../../Component/AddSense/LongWidthAds";
 import Horizontalads from "../../../Component/AddSense/Horizontalads";
 import AritcleAds from "../../../Component/AddSense/AritcleAds";
+import Verticalads from "../../../Component/AddSense/Verticalads";
 
 
 const Filter = (props) => {
@@ -621,7 +622,7 @@ useEffect(()=>{
       </div>
       </form>
       <div className="filter-right-ads-div">
-        
+       <Verticalads/>
         </div> 
      
     </div>

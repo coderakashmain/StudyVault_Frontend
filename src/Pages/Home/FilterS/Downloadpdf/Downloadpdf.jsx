@@ -86,14 +86,14 @@ const Downloadpdf = (props) => {
 
      
         if ((clickCount + 1) % 2 === 0) {
-        //     setShowAd(true);
-        //   const timout =   setTimeout(() => {
-        //         setShowAd(false);
+            setShowAd(true);
+          const timout =   setTimeout(() => {
+                setShowAd(false);
             
-        //     }, 5000); 
-        //     return ()=> clearTimeout(timout)
-        navigate(`/Downloadpdf/${paper.title}`) 
-        setSelectedPdf(paper.url);
+            }, 5000); 
+            return ()=> clearTimeout(timout)
+        // navigate(`/Downloadpdf/${paper.title}`) 
+        // setSelectedPdf(paper.url);
    
         } else {
    
@@ -135,7 +135,7 @@ useEffect(() => {
         const timeoutId = setTimeout(() => {
             setDonatePopup(true);
             sessionStorage.setItem("donationpopup", "true");
-        }, 20000);  // 10 seconds
+        }, 30000);  // 10 seconds
 
         return () => clearTimeout(timeoutId);
     }
@@ -225,7 +225,7 @@ useEffect(() => {
                                 ×
                             </button>
                             <div>
-                            <LongWidthAds background = "var(--newbackcolor)"/>
+                            <AritcleAds background = "var(--backcolor)"/>
                             </div>
                         </div>
                     )}
