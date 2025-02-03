@@ -271,5 +271,9 @@
     .comment-message {
         margin-left: 2.7rem;
     }
+    .comment-user-time-reply{
+       
+        gap: 0.2rem;
+    }
    
   }
