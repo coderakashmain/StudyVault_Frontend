@@ -86,12 +86,14 @@ const Downloadpdf = (props) => {
 
      
         if ((clickCount + 1) % 2 === 0) {
-            setShowAd(true);
-          const timout =   setTimeout(() => {
-                setShowAd(false);
+        //     setShowAd(true);
+        //   const timout =   setTimeout(() => {
+        //         setShowAd(false);
             
-            }, 5000); 
-            return ()=> clearTimeout(timout)
+        //     }, 5000); 
+        //     return ()=> clearTimeout(timout)
+        navigate(`/Downloadpdf/${paper.title}`) 
+        setSelectedPdf(paper.url);
    
         } else {
    

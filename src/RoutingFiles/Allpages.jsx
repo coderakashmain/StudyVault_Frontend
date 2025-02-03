@@ -19,14 +19,14 @@ const Allpages = () => {
   };
 
 
-
+  const shouldVerify = process.env.NODE_ENV === 'production';
 
 
   return (
 
     <>
  
-      {!isVerified ? (
+      {shouldVerify && !isVerified ? (
        
           <ReCaptha onVerified={handleVerification} />
        
