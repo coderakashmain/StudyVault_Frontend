@@ -1,11 +1,14 @@
 #review{
-    height: 100vh;
+    min-height: 100vh;
     width: 100%;
     background: var(--newbackcolor);
-    padding: 0rem 5rem;
+    padding: 0rem 5rem ;
+
+  
 }
+
 .review-inside h2{
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 500;
     padding: 4rem 0;
     border-top: 1px solid #c5d2d2;
@@ -124,10 +127,119 @@
   .review-input-each-box textarea:focus{
     border: 1px solid #85d0e7;
   }
+.comment-post{
+    margin-top: 4rem;
+    padding: 1rem 1.5rem;
+    border: none;
+    background-color: #0091FF;
+    color: #fff;
+    border-radius: 0.2rem;
+    cursor: pointer;
+    font-weight: 500;
+}
+.comment-login{
+    margin-top: 2rem;
+    font-size: 1rem;
+}
+.comment-login a{
+    text-decoration: underline;
+    color: blue;
+    font-size: 1rem;
+    
+}
+.user-comment{
+    margin: 1rem 0 3rem; 
+    /* margin-left: 1rem; */
+}
+.user-comment h4{
+   font-size: 1.2rem;
+   font-weight: 600;
+   transform: translateY(-20%);
+}
+.user-comment-box{
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+    
+    /* user-select: none; */
+    
+}
+.comment-user-logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0rem;
+}
+.comment-user-time-reply{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+.comment-user-time-reply p{
+    font-size: 1rem;
+    transform: translateY(-25%);
+}
+.comment-user-time-reply button{
+   padding: 0.4rem 0.9rem;
+   border: none;
+   background-color: transparent;
+   cursor: pointer;
+   transition: all 0.2s ease;
+   border-radius: 0.2rem;
+   transform: translateY(-20%);
+   font-size: 1rem;
+}
+.comment-user-time-reply button:hover{
+  background-color: green;
+  color: #fff;
+  transform: translateY(-30%);
+}
+.reply-message-box{
+    margin: 0rem 0rem 1rem 7rem;
+}
 
+.comment-message{
+   
+    font-size: 1rem;
+    border-bottom:  1px solid #c5d2d2;
+    padding-bottom:2rem ;
+    margin-bottom: 1rem;
+    
+}
+.commenthh2{
+    border-top: none !important;
+    font-size: 1.7rem !important;
+}
+.reply-list{
+    margin-left: 1rem;
+}
+.reply-submit-btn{
+    border: none;
+    padding: 0.9rem 2rem;
+    background-color: green;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    color: #fff;
+    border-radius: 0.2rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+.reply-message-margin{
+    margin-left: 6rem;
+}
   @media (max-width : 750px) {
     #review{
         padding: 0rem 2rem;
+    }
+
+    .user-comment-box{
+
+        width: 90%;
+        
+    }
+    .reply-message-margin{
+        margin-left: 5rem;
     }
    
   }
@@ -141,4 +253,23 @@
     .reivew-write-right-out{
         display: none;
     }
+    .review-input-box .gmail-box{
+        align-self: flex-end o !important;
+    }
+    .user-comment-box{
+
+        width: 100%;
+        
+    }
+    .reply-message-box{
+        margin: 0rem 0rem 1rem 1.5rem;
+    }
+    .reply-message-margin{
+        margin-left: 3.7rem;
+        margin-bottom: 1rem;
+    }
+    .comment-message {
+        margin-left: 2.7rem;
+    }
+   
   }
