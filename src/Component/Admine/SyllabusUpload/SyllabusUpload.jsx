@@ -148,6 +148,9 @@ const SyllabusUpload = (props) => {
                     <option value={listdata} key= {index}> {listdata}</option>
                 )))}
                 <option value="E&V">E&V</option>
+                <option value="EVS & MIL / Alternative English">EVS & MIL / Alternative English</option>
+                <option value="Communicative English SECC-1">Communicative English SECC-1</option>
+                <option value="QLT SECC-2">QLT SECC-2</option>
             </select>
             <div style={{ display : 'block', float : 'right'}}>
 
