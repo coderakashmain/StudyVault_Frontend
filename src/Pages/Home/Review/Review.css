@@ -228,6 +228,18 @@
 .reply-message-margin{
     margin-left: 6rem;
 }
+.cancle-reply-btn{
+    padding: 0.8rem 1rem ;
+    border-radius: 0.2rem;
+    display: block;
+    float: right;
+    background-color: #c5590e;
+    border: none;
+    color: #fff;
+    font-weight: 500;
+    cursor: pointer;
+
+}
   @media (max-width : 750px) {
     #review{
         padding: 0rem 2rem;

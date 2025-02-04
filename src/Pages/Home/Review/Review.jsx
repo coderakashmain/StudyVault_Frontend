@@ -6,7 +6,7 @@ import Avatar from '@mui/material/Avatar';
 import malelogo from '../../../photo/profile common logo.jpg'
 
 
-const Review = () => {
+const Review = (props) => {
   const [comments, setComments] = useState([]);
   const [formData, setFormData] = useState({ name: '', gmail: '', gender: '', message: '' });
   const [load, setLoad] = useState(false);
@@ -44,9 +44,11 @@ const Review = () => {
       fetchComments();
       setFormData({ name: '', gmail: '', gender: '', message: '' });
       setLoad(false);
+      props.showAlart('Comment Post Successfully', '','check');
     } catch (error) {
       console.error('Error posting comment:', error);
       setLoad(false);
+      props.showAlart('Something error', '','cancel');
     }
   };
 
@@ -59,9 +61,11 @@ const Review = () => {
       setReplypostbtn(false);
       setActiveReplyId(null);
       setActiveReplylist(commentId);
+      props.showAlart('Reply Post Successfully', '','check');
     } catch (error) {
       console.error('Error posting reply:', error);
       setReplypostbtn(false);
+      props.showAlart('Something error', '','cancel');
     }
   };
 
@@ -100,14 +104,14 @@ const Review = () => {
                 </div>
                 <div className="comment-user-time-reply">
                   <p>{formatDateTime(comment.created_at)}</p>
-                  <button onClick={() => setActiveReplyId(activeReplyId === comment.id ? null : comment.id)}>
-                    {activeReplyId === comment.id ? 'Cancel Reply' : 'Reply'}
-                  </button>
+                {activeReplyId !== comment.id  && (  <button onClick={() => setActiveReplyId(activeReplyId === comment.id ? null : comment.id)}>
+                    {activeReplyId === comment.id ? '' : 'Reply'}
+                  </button>)}
                 </div>
 
               </div>
               <div className="reply-message-box">
-                <p className='comment-message'>{comment.message} <br style={{ marginTop: '0.5rem' }} />{comment.replies && comment.replies.filter(reply => reply && reply.name && reply.message).length > 0 && (<span style={{ marginTop: ' 2rem', fontSize: '0.9rem', color: 'blue', cursor: 'pointer' }} onClick={() => setActiveReplylist(activeReplylist === comment.id ? null : comment.id)} >
+                <p className='comment-message'>{comment.message} <br style={{ marginTop: '0.5rem' }} />{comment.replies && comment.replies.filter(reply => reply && reply.name && reply.message).length > 0 && (!activeReplylist || activeReplylist !== comment.id ) && (<span style={{ marginTop: ' 2rem', fontSize: '0.9rem', color: 'blue', cursor: 'pointer' }} onClick={() => setActiveReplylist(activeReplylist === comment.id ? null : comment.id)} >
                   {activeReplylist === comment.id ? 'Close' : 'View Replies'}
                   ({comment.replies.filter(reply => reply && reply.name && reply.message).length})</span>)}</p>
 
@@ -117,6 +121,10 @@ const Review = () => {
                   {activeReplyId === comment.id && (
                     <ReplyForm replypostbtn={replypostbtn} replyto={comment.name} commentId={comment.id} onReply={handleReply} />
                   )}
+                  {activeReplyId === comment.id  && (  <button className='cancle-reply-btn' onClick={() => setActiveReplyId(activeReplyId === comment.id ? null : comment.id)}>
+                    {activeReplyId === comment.id ? 'Cancle Reply' : ''}
+                  </button>)}
+
                   {comment.replies && activeReplylist === comment.id && comment.replies.filter((reply) => reply && reply.name && reply.message).map((reply) => (
                     <div key={reply.id} className="reply-list-item">
 
@@ -139,7 +147,10 @@ const Review = () => {
 
                     </div>
                   ))}
-                  <p style={{ color: 'blue' }} onClick={() => setActiveReplylist(activeReplylist === comment.id ? null : comment.id)}>  {activeReplylist === comment.id ? ' Close ' : ''}</p>
+                  <div className="reply-like-close-box">
+                  <p style={{ color: 'blue', cursor : 'pointer' }} onClick={() => setActiveReplylist(activeReplylist === comment.id ? null : comment.id)}>  {activeReplylist === comment.id ? ' Close ' : ''}</p>
+
+                  </div>
                 </div>
               </div>
 
