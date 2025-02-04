@@ -15,6 +15,7 @@ const Cashfree = () => {
   const [paymentSessionId, setPaymentSessionId] = useState(null);
   const [oderid,setOrderid] = useState(null);
   const navigate = useNavigate();
+ 
 
   // Amount validation
   const isValidAmount = (amount) => !isNaN(amount) && Number(amount) > 0;
@@ -62,7 +63,7 @@ const Cashfree = () => {
   const doPayment = async (paymentSessionId) => {
     let cashfree;
     await load({
-      mode: "production",
+      mode: process.env.NODE_ENV === 'production' ? 'production' : 'sandbox',
       // mode: "sandbox",
     }).then((instance) => {
       cashfree = instance;
