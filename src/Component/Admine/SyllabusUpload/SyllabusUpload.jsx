@@ -147,7 +147,12 @@ const SyllabusUpload = (props) => {
                 {(departmentlistdata &&departmentlistdata.map((listdata,index)=>( 
                     <option value={listdata} key= {index}> {listdata}</option>
                 )))}
-                <option value="E&V">E&V</option>
+                <option value="E&V-1">E&V-1</option>
+                <option value="E&V-2">E&V-2</option>
+                <option value="E&V-3">E&V-3</option>
+                <option value="E&V-4">E&V-4</option>
+                <option value="E&V-5">E&V-5</option>
+                <option value="E&V-6">E&V-6</option>
                 <option value="EVS AECC-1 & MIL / Alternative English AECC-2">EVS AECC-1 & MIL / Alternative English AECC-2</option>
                 <option value="Communicative English SECC-1">Communicative English SECC-1</option>
                 <option value="QLT SECC-2">QLT SECC-2</option>

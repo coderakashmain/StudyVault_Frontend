@@ -18,7 +18,7 @@ const Review = (props) => {
 
   const fetchComments = async () => {
     try {
-      const response = await axios.get('/api/comments');
+      const response = await axios.get('/api/comments/fetch');
       setComments(response.data);
     } catch (error) {
       console.error('Error fetching comments:', error);
