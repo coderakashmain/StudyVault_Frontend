@@ -277,7 +277,11 @@ const navrefvalue = (value) => {
 
 
 
-  ]);
+  ],{
+    future: {
+      v7_relativeSplatPath: true  // ✅ Fixes the warning
+    }
+  });
 
 
 
