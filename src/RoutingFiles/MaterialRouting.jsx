@@ -16,7 +16,7 @@ const MaterialRouting = (props) => {
 
    <ErrorBoundary> <SubNav showAlart = {props.showAlart} subheadingtypedata = {props.subheadingtypedata}/></ErrorBoundary>
     <Outlet/>
-    {/* <Review showAlart = {props.showAlart}/> */}
+    <Review showAlart = {props.showAlart}/>
     <ErrorBoundary>  <Footer/></ErrorBoundary>
     </section>
   )
