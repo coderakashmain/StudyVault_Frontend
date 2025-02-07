@@ -18,7 +18,7 @@ const SubNav = (props) => {
     }
 
     useEffect(() => {
-        if (loginCheck) {
+        if (loginCheck?.loginCheck) {
             setUsercheck(true);
         }
         else {

@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useContext } from "react";
 import "./Profile.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -6,7 +6,7 @@ import profilelogo from '../../photo/avatar.jpg'
 import profilelogow from '../../photo/avatar.webp'
 import profilelogoa from '../../photo/avatar.avif'
 import Compressor from "compressorjs";
-
+import { Userlogincheckcontext } from "../../Context/UserLoginContext/UserLoginContext";
 
 
 
@@ -23,7 +23,7 @@ const Profile = (props) => {
   const [renameFileback, setrenameFileback] = useState('');
   const [isActive, setIsActive] = useState(false);
   const fileInputRef = useRef(null);
- 
+  const {setLoginCheck} = useContext(Userlogincheckcontext);
 
 
 
@@ -74,9 +74,10 @@ const Profile = (props) => {
         if (error.response && error.response.status === 401) {
           
           console.error('Error fetching profile');
-          // console.error('User not found');
-
+          
+          
         }
+        setLoginCheck(null);
       } finally {
         setLoading(false);
       }

@@ -9,6 +9,7 @@ import { UserContext } from "../../Context/UserContext/UserContextdata";
 import { ScrollFilterContext } from "../../Context/FilterScroll/FilterScrollContex";
 import { Userlogincheckcontext } from "../../Context/UserLoginContext/UserLoginContext";
 import { AdminLoginContext } from '../../Context/AdminLoginCheck/AdminLoginCheck'
+
 import Avatar from '@mui/material/Avatar';
 
 import logo from '../../photo/weblogo.png'
@@ -27,7 +28,6 @@ const Navbar = (props) => {
   const hideeSarchSuggestion = useRef();
   const [showSuggestions, setShowSuggestions] = useState(false);
   const loginCheck = useContext(Userlogincheckcontext);
-  const [logincheckdata, setLogincheckdata] = useState(false)
   const BothLoginRef = useRef();
   const LoginRef = useRef();
   const [isOn, setIsOn] = useState(false);
@@ -39,6 +39,8 @@ const Navbar = (props) => {
   const notificationIconRef = useRef(null);
   const closeNotification = useRef(null);
   const { filtersection } = useContext(ScrollFilterContext);
+
+  const [logincheckdata,setLogincheckdata] = useState(false);
 
 
 
@@ -100,17 +102,16 @@ const Navbar = (props) => {
 
 
   useEffect(() => {
-    if (loginCheck) {
-
+    console.log("loginCheck value:", loginCheck);
+  
+    if (loginCheck?.loginCheck) {  // Access the actual property
+      console.log("Setting logincheckdata to TRUE");
       setLogincheckdata(true);
-    }
-    else {
-
+    } else {
+      console.log("Setting logincheckdata to FALSE");
       setLogincheckdata(false);
     }
-
   }, [loginCheck]);
-
 
 
 
@@ -198,11 +199,11 @@ const Navbar = (props) => {
       }
     }
   };
-  useEffect(() => {
-    if (!logincheckdata) {
-      setIsAuthenticateduser(false);
-    }
-  }, [logincheckdata, usernav])
+  // useEffect(() => {
+  //   if (!logincheckdata) {
+  //     setIsAuthenticateduser(false);
+  //   }
+  // }, [logincheckdata, usernav])
 
   const hambargar = useRef();
   const crossicon = useRef();
@@ -573,7 +574,7 @@ const wholenotificationbackRef = useRef();
 
 
 
-            {!isAuthenticateduser ? (
+            {!logincheckdata ? (
               <div className="log-in" style={{display : 'flex', justifyContent : 'center', alignItems : 'center'}}>
                 <div ref={BothLoginRef}  onClick={clickOn}><li>Login <div className={`adminLogInBox ${isOn ? 'open' : 'close'} `} ref={LoginRef} >
 

@@ -37,7 +37,7 @@ const UserLoginContext = (props) => {
         fetchuserlogin();
     }, [usernav]);
     return (
-        <Userlogincheckcontext.Provider value  = {loginCheck}>
+        <Userlogincheckcontext.Provider value  = {{loginCheck,setLoginCheck}}>
             {props.children}
         </Userlogincheckcontext.Provider>
     )
