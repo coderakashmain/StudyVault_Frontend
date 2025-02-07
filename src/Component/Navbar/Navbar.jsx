@@ -132,31 +132,31 @@ const Navbar = (props) => {
 
 
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    const fetchProfile = async () => {
+  //   const fetchProfile = async () => {
 
-      try {
-        const response = await axios.get('/api/usercheck', { withCredentials: true });
+  //     try {
+  //       const response = await axios.get('/api/usercheck', { withCredentials: true });
       
-          setIsAuthenticateduser(true);
+  //         setIsAuthenticateduser(true);
         
-      } catch (error) {
-        setIsAuthenticateduser(false);
+  //     } catch (error) {
+  //       setIsAuthenticateduser(false);
         
-        if (error.response && error.response.status === 401) {
-          setIsAuthenticateduser(false);
-          console.error('User not found');
+  //       if (error.response && error.response.status === 401) {
+  //         setIsAuthenticateduser(false);
+  //         console.error('User not found');
 
-        } else {
-          console.error('Unexpected error:', error.response?.data || error.message);
-          setIsAuthenticateduser(false);
-        }
-      }
+  //       } else {
+  //         console.error('Unexpected error:', error.response?.data || error.message);
+  //         setIsAuthenticateduser(false);
+  //       }
+  //     }
 
-    }
-    fetchProfile();
-  }, [usernav]);
+  //   }
+  //   fetchProfile();
+  // }, [usernav]);
 
 
 
