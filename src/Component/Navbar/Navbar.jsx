@@ -10,9 +10,9 @@ import { ScrollFilterContext } from "../../Context/FilterScroll/FilterScrollCont
 import { Userlogincheckcontext } from "../../Context/UserLoginContext/UserLoginContext";
 import { AdminLoginContext } from '../../Context/AdminLoginCheck/AdminLoginCheck'
 import Avatar from '@mui/material/Avatar';
-import Stack from '@mui/material/Stack';
+
 import logo from '../../photo/weblogo.png'
-import ThemeToggle from '../ThemeToggle/ThemeToggle'
+
 
 
 const Navbar = (props) => {

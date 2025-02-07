@@ -1,12 +1,12 @@
 #upload-section{
-    min-height: 10rem;
+    /* min-height: 10rem; */
     width: 100%;
     background: var(--notificationbackcolor);
-    padding: 3rem 1rem 0rem;
+    padding: 2rem 1rem 0rem;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 5rem;
+    gap: 2rem;
     z-index: 1000000000000;
 }
 #upload-section .left-upload-section{
@@ -78,7 +78,7 @@ transition: all 0.3s ease;
   font-weight: 800;
 }
 #upload-section article{
-    margin-top: 7rem;
+    margin-top: 4rem;
     font-size: 1.5rem;
     font-weight: 700;
     
@@ -192,7 +192,7 @@ transition: all 0.3s ease;
 
 @media (min-width : 618px) {
     #upload-section{
-        padding: 3rem 1rem 3rem;
+        padding: 3rem 1rem 1rem;
     
     }
       
