@@ -9,7 +9,8 @@ import { AdminLoginContext } from '../../Context/AdminLoginCheck/AdminLoginCheck
 const Admine = (props) => {
  const navigate = useNavigate();
  const {check,setCheck} = useContext(AdminLoginContext);
- const {isactive,setIsactive} = useState(false);
+ const [loading,setLoading]= useState(true);
+
 
 
  useEffect(() => {
@@ -19,7 +20,9 @@ const Admine = (props) => {
         try {
             const response = await axios.get("/api/adminPage");
               if (response.status === 200) {
-                setCheck(isactive);
+        
+                setCheck(true);
+                setLoading(false);
                   props.showAlart('Authorized', '', 'check');
               }
           } catch (error) {
@@ -39,14 +42,14 @@ const Admine = (props) => {
               else {
                   props.showAlart('Error verifying user', '', 'cancel');
               }
-              setCheck(isactive);
+              setCheck(false);
               navigate('/Admin/AdminLogIn');  
           }
       };
 
       checkAuthorization();
 
-}, [isactive]);
+}, []);
 
 const handleLogout = async () => {
   try{
@@ -55,8 +58,8 @@ const handleLogout = async () => {
     window.location.href = "/Admin/AdminLogIn";
     
     props.showAlart('Logged out successfully', '', 'check');
-    setIsactive(!isactive);
-    setCheck(isactive);
+
+    setCheck(false);
   }catch(error){
     console.error(error);
     // props.showAlart('Failed to log out', '', 'cancel');
@@ -68,11 +71,18 @@ const handleLogout = async () => {
   }
 
 };
+ if (!check) {
+    return <div style={{ background : 'white',position: 'absolute', left: '0', top: '0px', display: 'flex', flexDirection: 'column', alignItems: 'center ', justifyContent: 'center', fontSize: '2rem', height: '100vh', width: '100%',zIndex : '10000' }}>Hey... You want to cheat Us😂</div>;
+  };
+  if (loading) {
+    return <p style={{background : 'white', margin: "100px 0 0 50px" ,position : 'relative',zIndex : '10000',display : 'flex', justifyContent : 'center', alignItems : 'center'}}>Loading...</p>;
 
+  }
 
 
  
   return (
+    <>
     <section id="admin">
       <div className="admin-nav">
         <h2><i className="fa-solid fa-gauge-high" style={{ color : '#fff', padding : '0rem 1rem', fontSize : '1.6rem'}}></i>Admin Dashboard</h2>
@@ -103,6 +113,7 @@ const handleLogout = async () => {
           </div>
       </div>
     </section>
+    </>
   )
 }
 
