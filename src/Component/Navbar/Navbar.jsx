@@ -137,14 +137,11 @@ const Navbar = (props) => {
 
       try {
         const response = await axios.get('/api/usercheck', { withCredentials: true });
-        if (response.status === 200) {
+      
           setIsAuthenticateduser(true);
-        }
-        else {
-          setIsAuthenticateduser(false);
-        }
+        
       } catch (error) {
-        // setIsAuthenticateduser(false);
+        setIsAuthenticateduser(false);
         
         if (error.response && error.response.status === 401) {
           setIsAuthenticateduser(false);
