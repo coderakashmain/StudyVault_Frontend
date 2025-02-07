@@ -136,7 +136,7 @@ const Navbar = (props) => {
     const fetchProfile = async () => {
 
       try {
-        const response = await axios.get('/api', { withCredentials: true });
+        const response = await axios.get('/api/usercheck', { withCredentials: true });
         if (response.status === 200) {
           setIsAuthenticateduser(true);
         }

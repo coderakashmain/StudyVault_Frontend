@@ -18,7 +18,7 @@ const Admine = (props) => {
       const checkAuthorization = async (e) => {
         // e.preventDefault();
         try {
-            const response = await axios.get("/api/adminPage");
+            const response = await axios.get("/api/adminPage",{withCredentials : true});
               if (response.status === 200) {
         
                 setCheck(true);
