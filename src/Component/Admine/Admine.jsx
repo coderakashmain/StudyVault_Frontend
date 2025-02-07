@@ -72,7 +72,7 @@ const handleLogout = async () => {
 
 };
  if (!check) {
-    return <div style={{ background : 'white',position: 'absolute', left: '0', top: '0px', display: 'flex', flexDirection: 'column', alignItems: 'center ', justifyContent: 'center', fontSize: '2rem', height: '100vh', width: '100%',zIndex : '10000' }}>Hey... You want to cheat Us😂</div>;
+    return <div style={{ background : 'white',position: 'absolute', left: '0', top: '0px', display: 'flex', flexDirection: 'column', alignItems: 'center ', justifyContent: 'center', fontSize: '2rem', height: '100vh', width: '100%',zIndex : '10000' }}>Hey... Are you want to cheat Us ?</div>;
   };
   if (loading) {
     return <p style={{background : 'white', margin: "100px 0 0 50px" ,position : 'relative',zIndex : '10000',display : 'flex', justifyContent : 'center', alignItems : 'center'}}>Loading...</p>;
