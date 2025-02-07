@@ -102,13 +102,13 @@ const Navbar = (props) => {
 
 
   useEffect(() => {
-    console.log("loginCheck value:", loginCheck);
+
   
     if (loginCheck?.loginCheck) {  // Access the actual property
-      console.log("Setting logincheckdata to TRUE");
+   
       setLogincheckdata(true);
     } else {
-      console.log("Setting logincheckdata to FALSE");
+
       setLogincheckdata(false);
     }
   }, [loginCheck]);

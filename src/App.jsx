@@ -36,6 +36,7 @@ import Loadingicon from "./Component/Jsonlicon/Loadingicon";
 import PaymentRouter from "./RoutingFiles/PaymentRouter";
 import PaymentStatus from "./Pages/CashfreePay/PaymentStatus";
 import ThemeContext from "./Context/ThemeContext/ThemeContext";
+import NavbarpresentRouting from "./RoutingFiles/NavbarpresentRouting";
 
 
 
@@ -113,21 +114,48 @@ const navrefvalue = (value) => {
     },
     {
       path: '/',
-      element: <><ErrorBoundary><ThemeContext><AdminLoginCheck><UserContextdata><UserLoginContext><FilterScrollContex><DepartmentListContext><Allpages showAlart={showAlart} /> <Navbar showAlart={showAlart}  navrefvalue = {navrefvalue}  /><Alart alart={alart} /></DepartmentListContext></FilterScrollContex></UserLoginContext></UserContextdata></AdminLoginCheck></ThemeContext></ErrorBoundary></>,
+      element: <><ErrorBoundary><ThemeContext><AdminLoginCheck><UserContextdata><UserLoginContext><FilterScrollContex><DepartmentListContext><Allpages showAlart={showAlart} /></DepartmentListContext></FilterScrollContex></UserLoginContext></UserContextdata></AdminLoginCheck></ThemeContext></ErrorBoundary></>,
       children: [
-
         {
-          path: '',
-          element: (<><Home  showAlart={showAlart}  navRefvalue = {navRefvalue} /></>),
-          children: [
+          path : '',
+          element : <><ErrorBoundary> <Navbar showAlart={showAlart}  navrefvalue = {navrefvalue}  /><Alart alart={alart} /><NavbarpresentRouting/></ErrorBoundary></>,
+          children : [
             {
               path: '',
-              element: <><ErrorBoundary><Departmentlist showAlart={showAlart} /></ErrorBoundary></>
+              element: (<><Home  showAlart={showAlart}  navRefvalue = {navRefvalue} /></>),
+              children: [
+                {
+                  path: '',
+                  element: <><ErrorBoundary><Departmentlist showAlart={showAlart} /></ErrorBoundary></>
+                },
+               
+    
+              ]
             },
-           
-
+            {
+              path: "Contact-Us",
+              element: (<><ErrorBoundary><Suspense fallback={<FallbackLoad/>}> <PhoneInfo><Contact showAlart={showAlart} /></PhoneInfo></Suspense></ErrorBoundary> </>),
+            },
+            {
+              path: "Profile",
+              element: (<><ErrorBoundary> <Profile showAlart={showAlart} /></ErrorBoundary></>),
+            },
+            {
+              path: "About-us",
+              element: (<><ErrorBoundary> <AboutUs showAlart={showAlart} /></ErrorBoundary></>),
+            },
+            { 
+              path: "Privacy-Policy",
+              element: (<><ErrorBoundary> <PrivecyandPolicy showAlart={showAlart} /></ErrorBoundary></>),
+            },
+            { 
+              path: "Terms-Conditions",
+              element: (<><ErrorBoundary> <TermsConditions showAlart={showAlart} /></ErrorBoundary></>),
+            },
           ]
         },
+
+        
         {
           path: 'Filter',
           element:<MaterialRouting showAlart={showAlart}  subheadingtypedata = {subheadingtype}/>,
@@ -144,10 +172,7 @@ const navrefvalue = (value) => {
           ]
         },
       
-        {
-          path: "Contact-Us",
-          element: (<><ErrorBoundary><Suspense fallback={<FallbackLoad/>}> <PhoneInfo><Contact showAlart={showAlart} /></PhoneInfo></Suspense></ErrorBoundary> </>),
-        },
+     
         {
           path: '/Downloadpdf/:fName',
           element: (<><ErrorBoundary><Downloadpdf showAlart={showAlart} /></ErrorBoundary></>),
@@ -171,10 +196,7 @@ const navrefvalue = (value) => {
           ]
         },
 
-        {
-          path: "Profile",
-          element: (<><ErrorBoundary> <Profile showAlart={showAlart} /></ErrorBoundary></>),
-        },
+        
         {
           path: "payment-donate-us",
           element: (<><ErrorBoundary> <Suspense fallback  = {<Loadingicon/>}> <PaymentRouter showAlart={showAlart} /></Suspense> </ErrorBoundary></>),
@@ -192,18 +214,7 @@ const navrefvalue = (value) => {
           ]
         },
       
-        {
-          path: "About-us",
-          element: (<><ErrorBoundary> <AboutUs showAlart={showAlart} /></ErrorBoundary></>),
-        },
-        { 
-          path: "Privacy-Policy",
-          element: (<><ErrorBoundary> <PrivecyandPolicy showAlart={showAlart} /></ErrorBoundary></>),
-        },
-        { 
-          path: "Terms-Conditions",
-          element: (<><ErrorBoundary> <TermsConditions showAlart={showAlart} /></ErrorBoundary></>),
-        },
+       
         {
           path: "Admin",
           element: (<><FetchData><Admine showAlart={showAlart} /></FetchData></>),
