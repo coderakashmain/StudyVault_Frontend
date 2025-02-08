@@ -101,17 +101,18 @@ const Navbar = (props) => {
 
 
 
-  // useEffect(() => {
+  useEffect(() => {
 
   
-  //   if (loginCheck?.loginCheck) {  // Access the actual property
-   
-  //     setLogincheckdata(true);
-  //   } else {
-
-  //     setLogincheckdata(false);
-  //   }
-  // }, [loginCheck]);
+    if (loginCheck) {  // Access the actual property
+      setLogincheckdata(true);
+    } else {
+      
+      setLogincheckdata(false);
+    }
+  }, [loginCheck]);
+  // console.log(loginCheck);
+  // console.log(logincheckdata);
 
 
 
@@ -132,31 +133,31 @@ const Navbar = (props) => {
 
 
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    const fetchProfile = async () => {
+  //   const fetchProfile = async () => {
 
-      try {
-        const response = await axios.get('/api/usercheck', { withCredentials: true });
+  //     try {
+  //       const response = await axios.get('/api/usercheck', { withCredentials: true });
       
-        setLogincheckdata(true);
+  //       setLogincheckdata(true);
         
-      } catch (error) {
-        setLogincheckdata(false);
+  //     } catch (error) {
+  //       setLogincheckdata(false);
         
-        if (error.response && error.response.status === 401) {
-          setLogincheckdata(false);
-          console.error('User not found');
+  //       if (error.response && error.response.status === 401) {
+  //         setLogincheckdata(false);
+  //         console.error('User not found');
 
-        } else {
-          console.error('Unexpected error:', error.response?.data || error.message);
-          setLogincheckdata(false);
-        }
-      }
+  //       } else {
+  //         console.error('Unexpected error:', error.response?.data || error.message);
+  //         setLogincheckdata(false);
+  //       }
+  //     }
 
-    }
-    fetchProfile();
-  }, [usernav]);
+  //   }
+  //   fetchProfile();
+  // }, [usernav]);
 
 
 
@@ -169,11 +170,7 @@ const Navbar = (props) => {
     setDartmentvalue('');
 
 
-    // }
-    // else {
-    //   props.showAlart('Login Karna padega Bhai 😁', '', 'mark');
-    //   navigate("/Login");
-    // }
+    
 
   }
 
