@@ -27,7 +27,7 @@ const Navbar = (props) => {
   const [locationCollege, setLocationCollege] = useState(false);
   const hideeSarchSuggestion = useRef();
   const [showSuggestions, setShowSuggestions] = useState(false);
-  const {loginCheck,setCheck} = useContext(Userlogincheckcontext);
+  const { loginCheck, setCheck } = useContext(Userlogincheckcontext);
   const BothLoginRef = useRef();
   const LoginRef = useRef();
   const [isOn, setIsOn] = useState(false);
@@ -40,7 +40,8 @@ const Navbar = (props) => {
   const closeNotification = useRef(null);
   const { filtersection } = useContext(ScrollFilterContext);
 
-  const [logincheckdata,setLogincheckdata] = useState(false);
+
+  const [logincheckdata, setLogincheckdata] = useState(false);
 
 
 
@@ -65,21 +66,21 @@ const Navbar = (props) => {
     return () => window.removeEventListener('resize', view);
   }, [])
   useEffect(() => {
-   
-      const checkAuthorization = async () => {
-        
-        try {
-          const response = await axios.get('/api/adminPage',{ withCredentials: true });
-          if (response.status === 200) {
-            setAuthentication(true);
-          }
-          
-        } catch (error) {
-          setAuthentication(false);
-        }
-      };
 
-      checkAuthorization();
+    const checkAuthorization = async () => {
+
+      try {
+        const response = await axios.get('/api/adminPage', { withCredentials: true });
+        if (response.status === 200) {
+          setAuthentication(true);
+        }
+
+      } catch (error) {
+        setAuthentication(false);
+      }
+    };
+
+    checkAuthorization();
 
   }, [check]);
 
@@ -103,11 +104,11 @@ const Navbar = (props) => {
 
   useEffect(() => {
 
-  
+
     if (loginCheck) {  // Access the actual property
       setLogincheckdata(true);
     } else {
-      
+
       setLogincheckdata(false);
     }
   }, [loginCheck]);
@@ -139,12 +140,12 @@ const Navbar = (props) => {
 
   //     try {
   //       const response = await axios.get('/api/usercheck', { withCredentials: true });
-      
+
   //       setLogincheckdata(true);
-        
+
   //     } catch (error) {
   //       setLogincheckdata(false);
-        
+
   //       if (error.response && error.response.status === 401) {
   //         setLogincheckdata(false);
   //         console.error('User not found');
@@ -170,7 +171,7 @@ const Navbar = (props) => {
     setDartmentvalue('');
 
 
-    
+
 
   }
 
@@ -408,7 +409,7 @@ const Navbar = (props) => {
 
 
 
-const wholenotificationbackRef = useRef();
+  const wholenotificationbackRef = useRef();
   useGSAP(() => {
 
 
@@ -419,15 +420,15 @@ const wholenotificationbackRef = useRef();
         right: 0,
         duration: 0.3,
         ease: "ease",
-      },'same')
+      }, 'same')
 
-    
+
       .to(wholenotificationbackRef.current, {
         left: 0,
         duration: 0.5,
         ease: "ease",
-      },'same')
- 
+      }, 'same')
+
 
 
 
@@ -438,12 +439,12 @@ const wholenotificationbackRef = useRef();
       right: "-100%",
       duration: 0.5,
       ease: "power4.inOut",
-    },'same2')
-    .to(wholenotificationbackRef.current, {
-      left: "-100%",
-      duration: 0.5,
-      ease: "power4.inOut",
-    },'same2')
+    }, 'same2')
+      .to(wholenotificationbackRef.current, {
+        left: "-100%",
+        duration: 0.5,
+        ease: "power4.inOut",
+      }, 'same2')
 
 
     const handlenotification = () => {
@@ -470,19 +471,19 @@ const wholenotificationbackRef = useRef();
     };
   });
 
-  useEffect(()=>{
-    if(navbar.current){
-      
-      if( props.navrefvalue){
+  useEffect(() => {
+    if (navbar.current) {
+
+      if (props.navrefvalue) {
 
         props.navrefvalue(navbar.current);
       }
     }
-  },[navbar.current])
+  }, [navbar.current])
 
   return (
     <>
-      <div ref={navbar}
+     <div ref={navbar}
         className={`navbar 
          ${nav ? "home-nav" : "black-nav"}
       ${location.pathname === '' ? (nav ? "home-nav" : "black-nav") : ""}
@@ -510,7 +511,26 @@ const wholenotificationbackRef = useRef();
             </ul>
           </div>
 
-          <div ref={filterRef} className={`filter-switch  ${mobileScroll ? "filter-switch-mobile" : "filter-switch-mobile-off"}`}>
+          <form onSubmit={(e) => {
+            e.preventDefault();
+            if (departmetvalue) {
+              const isValid = departmentdata.some(
+                (dept) => dept.toLowerCase() === departmetvalue.trim().toLowerCase()
+              );
+
+              if (isValid) {
+                onSearch(departmetvalue);
+              } else {
+                props.showAlart('Enter a valid department name', '', 'cancel');
+              }
+
+            } else {
+              props.showAlart('Please Enter Department Name', '', 'cancel')
+            }
+
+
+          }} ref={filterRef} className={`filter-switch  ${mobileScroll ? "filter-switch-mobile" : "filter-switch-mobile-off"}`}>
+
             <input
               // ref={searchRef}
               type="text"
@@ -521,7 +541,23 @@ const wholenotificationbackRef = useRef();
               value={departmetvalue}
             />
 
-            <label htmlFor="searchbox"><i className="fa-solid fa-magnifying-glass"></i></label>
+            <label htmlFor="searchbox" onClick={() => {
+
+              if (departmetvalue) {
+                const isValid = departmentdata.some(
+                  (dept) => dept.toLowerCase() === departmetvalue.trim().toLowerCase()
+                );
+
+                if (isValid) {
+                  onSearch(departmetvalue);
+                } else {
+                  props.showAlart('Enter a valid department name', '', 'cancel');
+                }
+
+              } else {
+                props.showAlart('Please Enter Department Name', '', 'cancel')
+              }
+            }}><i className="fa-solid fa-magnifying-glass"></i></label>
             {showSuggestions && (<div ref={hideeSarchSuggestion} className="search-suggestion">
               {departmetvalue ? (
                 departmentdata && departmentdata.filter((item) => {
@@ -549,18 +585,18 @@ const wholenotificationbackRef = useRef();
               ) : null}
             </div>)}
 
-          </div>
-          {mobileScroll && logotext && (<h2 style={{marginLeft : '0.2rem'}} className="logo-top-css" > STUDYVAULT</h2>)}
+          </form>
+          {mobileScroll && logotext && (<h2 style={{ marginLeft: '0.2rem' }} className="logo-top-css" > STUDYVAULT</h2>)}
           <div className="location-login">
             {authentication && (<div className="admin-short" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginRight: '0.5rem' }}>
-              <i className="fa-solid fa-user-shield" style={{ color: '#fff', fontSize: '1.6rem', cursor: 'pointer' ,paddingLeft : '0.3rem'}} onClick={() => navigate('/Admin')}></i>
+              <i className="fa-solid fa-user-shield" style={{ color: '#fff', fontSize: '1.6rem', cursor: 'pointer', paddingLeft: '0.3rem' }} onClick={() => navigate('/Admin')}></i>
 
             </div>)}
-              {/* <ThemeToggle/> */}
+            {/* <ThemeToggle/> */}
             {!mobileView && (<select name="name" id="college-name">
               {!locationCollege ? (
                 <option value="M.P.C autonomous">M.P.C Autonomous</option>
-                
+
               ) : (<option value="M.P.C autonomous">M.P.C</option>)};
 
             </select>)}
@@ -572,8 +608,8 @@ const wholenotificationbackRef = useRef();
 
 
             {!logincheckdata ? (
-              <div className="log-in" style={{display : 'flex', justifyContent : 'center', alignItems : 'center'}}>
-                <div ref={BothLoginRef}  onClick={clickOn}><li>Login <div className={`adminLogInBox ${isOn ? 'open' : 'close'} `} ref={LoginRef} >
+              <div className="log-in" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <div ref={BothLoginRef} onClick={clickOn}><li>Login <div className={`adminLogInBox ${isOn ? 'open' : 'close'} `} ref={LoginRef} >
 
                   <NavLink className={`${getNavClass('/LogIn')} ${isOn ? 'big' : 'small'}`} to="/LogIn"><i className="fa-solid fa-graduation-cap" ></i>Student LogIn </NavLink>
                   {!authentication ? (<NavLink to="/Admin/AdminLogIn" className={`${isOn ? 'big' : 'small'}`}><i className="fa-solid fa-user-tie"></i>Admin LogIn </NavLink>) : (<NavLink to="/Admin" className={`${isOn ? 'big' : 'small'}`}><i className="fa-solid fa-user-tie"></i>Admin Page</NavLink>)}
@@ -581,7 +617,7 @@ const wholenotificationbackRef = useRef();
                 </li></div>
               </div>
             ) : (
-              <div className="log-in" style={{display : 'flex', justifyContent : 'center', alignItems : 'center'}} >
+              <div className="log-in" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
                 <NavLink onClick={handleLogout} alt='Log Out' ><i className="fa-solid fa-right-from-bracket" style={{ margin: '0rem 0 0 0.5rem', color: '#fff' }}></i></NavLink>
               </div>
             )}
@@ -591,6 +627,9 @@ const wholenotificationbackRef = useRef();
 
         </div>
       </div>
+       <div className="navbackcolordiv">
+
+       </div>
       <div className="slidebar">
         <div className="cross-icon">
           <i ref={crossicon} className="fa-solid fa-xmark"></i>
@@ -634,43 +673,44 @@ const wholenotificationbackRef = useRef();
           <p>Akash and Jitu  </p>
         </div>
         <div className="slidebar-foot-item">
-          <NavLink to= '/Privacy-Policy' onClick={() => {
-              document.body.style.overflow = "scroll";
-            }}> Privacy & Policy</NavLink>
+          <NavLink to='/Privacy-Policy' onClick={() => {
+            document.body.style.overflow = "scroll";
+          }}> Privacy & Policy</NavLink>
           <p>V.1.5.3</p>
         </div>
+
       </div>
       {/* <div ref={glitch} className="glitchproblem"></div> */}
 
 
-    <aside ref={wholenotificationbackRef} id='full-notification-back'>
-      <aside ref={notificationref} id="notification">
-        <h2>Notification <s></s>  <i className="fa-solid fa-xmark" style={{ cursor: 'pointer' }} ref={closeNotification}></i></h2>
-        <h4>All</h4>
-        <hr style={{ margin: '0rem 0rem 1.4rem 0rem' }} />
+      <aside ref={wholenotificationbackRef} id='full-notification-back'>
+        <aside ref={notificationref} id="notification">
+          <h2>Notification <s></s>  <i className="fa-solid fa-xmark" style={{ cursor: 'pointer' }} ref={closeNotification}></i></h2>
+          <h4>All</h4>
+          <hr style={{ margin: '0rem 0rem 1.4rem 0rem' }} />
 
-        <div className="notification-data" style={{opacity : '1'}}>
+          <div className="notification-data" style={{ opacity: '1' }}>
 
-          <div style={{ display: 'flex', alignItems: "center", gap: '0.6rem' }} className="each-notification">
+            <div style={{ display: 'flex', alignItems: "center", gap: '0.6rem' }} className="each-notification">
 
-            <Avatar alt="Remy Sharp" src={logo} sx={{ width: 24, height: 24, padding: '0rem 0rem 0 0', display: 'inline-block', }} />
-            <h3>StudyVault Team</h3>
+              <Avatar alt="Remy Sharp" src={logo} sx={{ width: 24, height: 24, padding: '0rem 0rem 0 0', display: 'inline-block', }} />
+              <h3>StudyVault Team</h3>
 
+            </div>
+            <p>Join Our <b style={{ fontWeight: '700' }}>Whatsapp Channel</b> to get new updates and type of question uploaded.</p>
           </div>
-          <p>Join Our <b style={{ fontWeight: '700' }}>Whatsapp Channel</b> to get new updates and type of question uploaded.</p>
-        </div>
-        <div className="notification-data">
+          <div className="notification-data">
 
-          <div style={{ display: 'flex', alignItems: "center", gap: '0.6rem' }} className="each-notification">
+            <div style={{ display: 'flex', alignItems: "center", gap: '0.6rem' }} className="each-notification">
 
-            <Avatar alt="Remy Sharp" src={logo} sx={{ width: 24, height: 24, padding: '0rem 0rem 0 0', display: 'inline-block', }} />
-            <h3>StudyVault Team</h3>
+              <Avatar alt="Remy Sharp" src={logo} sx={{ width: 24, height: 24, padding: '0rem 0rem 0 0', display: 'inline-block', }} />
+              <h3>StudyVault Team</h3>
 
+            </div>
+            <p> Now you can access all <b style={{ fontWeight: '700' }}>Questions papers</b> without login.</p>
           </div>
-          <p> Now you can access all <b style={{ fontWeight: '700' }}>Questions papers</b> without login.</p>
-        </div>
 
-      </aside>
+        </aside>
       </aside>
     </>
   );

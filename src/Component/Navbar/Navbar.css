@@ -19,17 +19,16 @@
   justify-content: space-between;
   align-items: center;
 }
-/* .title-logo {
-  align-items: center;
+
+.navbackcolordiv{
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  height: 5rem;
+  z-index: 1;
+  width: 100%;
+  background-color: linear-gradient(20deg, #241856, lightseagreen);;
 }
-.title-logo img{
-  text-align: center;
-  height: 2rem;
-  mix-blend-mode:difference;
-  object-fit: contain;
-
-
-} */
 .filter-switch {
   width: 41%;
   height: 40px;
@@ -41,6 +40,7 @@
   border-radius: 3rem 3rem 3rem 3rem;
   position: relative;
 }
+
 .filter-switch label {
   border-radius: 0rem 3rem 3rem 0;
   font-size: 1rem;

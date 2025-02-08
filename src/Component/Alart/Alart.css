@@ -15,7 +15,7 @@
     animation: fadeSlideIn 0.5s ease-in-out;
     box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.199),inset -10px -10px 30px #fff;
     background-color: #fff;
-      z-index: 1000000000000000;
+      z-index: 1000000000000000000000;
   }
   #alart-box p {
     display: flex;

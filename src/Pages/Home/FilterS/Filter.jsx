@@ -55,6 +55,7 @@ const [adsmobileview,setAdsmobileview] = useState(false);
   const [integratedBed,setIntegratedBed] =useState(false);
   const [homebackShow,setHomebackShow] = useState(false);
   const [onlyug,setOnlyug]= useState(false);
+  const [message,setmesssage] = useState('');
 
   useEffect(() => {
    
@@ -204,11 +205,35 @@ const  handlesubjet = (e)=>{
       setdptnamechange(value);
       setShowSuggestions(true);
     }
+   
     setFilters({
       ...filters,
       [name]: type === "checkbox" ? checked : value,
     });
+  
+    if(name === 'departmentName'){
+      const isValid = departmentlist.some(
+        (dept) => dept.toLowerCase() === e.target.value.trim().toLowerCase()
+
+      );
+  
+      if (!isValid) {
+        setmesssage("Please Enter Correct Department Name *")
+        return;
+      } 
+      else{
+        setmesssage("")
+      }
+    }
+     
   };
+
+  // useEffect(()=>{
+    
+  // },[filters.departmentName])
+
+
+
   const handleChangenum = (e) => {
     const { name, value } = e.target;
     if (/^\d{0,4}$/.test(value)) {
@@ -265,6 +290,20 @@ const  handlesubjet = (e)=>{
     if (Object.keys(nonEmptyFilters).length === 0) {
       alert("Please provide at least one filter criteria.");
       return;
+    }
+    if(filters.departmentName){
+      const isValid = departmentlist.some(
+        (dept) => dept.toLowerCase() === filters.departmentName.trim().toLowerCase()
+
+      );
+  
+      if (!isValid) {
+        setmesssage("Please Enter Correct Department Name *")
+        return;
+      } 
+      else{
+        setmesssage("")
+      }
     }
     try {
       setLoader(true);
@@ -339,7 +378,7 @@ useEffect(()=>{
             <div className="department-type">
 
               <div className="department-name ">
-                <p>Please enter valid Name *</p>
+               { message ? (<p style={{color : 'red'}}>{message}</p>): (<p>Please enter valid Name *</p>)}
                 <div className="department-name-inside ">
                 <input
                   type="text"
@@ -373,7 +412,8 @@ useEffect(()=>{
                                                     ...preData,
                                                     departmentName: departmentlist,
 
-                                                }))
+                                                }));
+                                                setmesssage('');
 
                                             }} className="search-item" key={index2}>
                                                 <p >{departmentlist}</p>
