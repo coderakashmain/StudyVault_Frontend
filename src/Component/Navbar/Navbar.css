@@ -9,7 +9,7 @@
   font-size: 1.5rem;
   backdrop-filter: blur(80px);
   transition: all 0.15s linear;
-  background-color:  linear-gradient(20deg, #241856, lightseagreen);
+  background:  linear-gradient(20deg, #241856, rgb(36 114 139));
 }
 
 
@@ -250,13 +250,13 @@ transform: scale(0);
 }
 
 .home-nav {
-  background: linear-gradient(20deg, #241856, lightseagreen);
-  backdrop-filter: blur(90px);
+  background: linear-gradient(135deg, rgb(31, 31, 78), rgb(36 114 139));
+  /* backdrop-filter: blur(90px); */
 }
 .black-nav {
   /* background: linear-gradient(#5899db, #6e7b959c); */
   /* background: linear-gradient(20deg, #241856, lightseagreen); */
-  background: transparent;
+  background:  linear-gradient(135deg, rgb(31, 31, 78), rgb(36 114 139));
 }
 .profile-nav {
   /* background: linear-gradient(#5899db, #6e7b959c); */
@@ -527,6 +527,10 @@ margin: 2rem 0;
   #notification{
     width: 100%;
   
+  }
+  .black-nav {
+ 
+    background:  linear-gradient(135deg, rgb(31, 31, 78), rgb(19 86 119));
   }
 }
 @media (max-width: 390px) {
