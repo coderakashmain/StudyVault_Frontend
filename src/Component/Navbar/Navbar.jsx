@@ -27,7 +27,7 @@ const Navbar = (props) => {
   const [locationCollege, setLocationCollege] = useState(false);
   const hideeSarchSuggestion = useRef();
   const [showSuggestions, setShowSuggestions] = useState(false);
-  const loginCheck = useContext(Userlogincheckcontext);
+  const {loginCheck,setCheck} = useContext(Userlogincheckcontext);
   const BothLoginRef = useRef();
   const LoginRef = useRef();
   const [isOn, setIsOn] = useState(false);
@@ -139,18 +139,18 @@ const Navbar = (props) => {
   //     try {
   //       const response = await axios.get('/api/usercheck', { withCredentials: true });
       
-  //         setIsAuthenticateduser(true);
+  //       setLogincheckdata(true);
         
   //     } catch (error) {
-  //       setIsAuthenticateduser(false);
+  //       setLogincheckdata(false);
         
   //       if (error.response && error.response.status === 401) {
-  //         setIsAuthenticateduser(false);
+  //         setLogincheckdata(false);
   //         console.error('User not found');
 
   //       } else {
   //         console.error('Unexpected error:', error.response?.data || error.message);
-  //         setIsAuthenticateduser(false);
+  //         setLogincheckdata(false);
   //       }
   //     }
 
@@ -189,7 +189,7 @@ const Navbar = (props) => {
         if (response.status === 200) {
           setIsAuthenticateduser(false);
           setUsernav('');
-          // navigate("/");
+          setCheck(null);
           window.location.href = '/';
           props.showAlart("Log out", "Back to main page", 'check');
         }
