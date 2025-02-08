@@ -101,17 +101,17 @@ const Navbar = (props) => {
 
 
 
-  useEffect(() => {
+  // useEffect(() => {
 
   
-    if (loginCheck?.loginCheck) {  // Access the actual property
+  //   if (loginCheck?.loginCheck) {  // Access the actual property
    
-      setLogincheckdata(true);
-    } else {
+  //     setLogincheckdata(true);
+  //   } else {
 
-      setLogincheckdata(false);
-    }
-  }, [loginCheck]);
+  //     setLogincheckdata(false);
+  //   }
+  // }, [loginCheck]);
 
 
 
