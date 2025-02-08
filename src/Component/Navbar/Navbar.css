@@ -9,6 +9,7 @@
   font-size: 1.5rem;
   backdrop-filter: blur(80px);
   transition: all 0.15s linear;
+  background-color:  linear-gradient(20deg, #241856, lightseagreen);
 }
 
 
@@ -27,7 +28,7 @@
   height: 5rem;
   z-index: 1;
   width: 100%;
-  background-color: linear-gradient(20deg, #241856, lightseagreen);;
+  background-color: linear-gradient(20deg, #241856, lightseagreen);
 }
 .filter-switch {
   width: 41%;
