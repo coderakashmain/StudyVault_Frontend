@@ -132,31 +132,31 @@ const Navbar = (props) => {
 
 
 
-  // useEffect(() => {
+  useEffect(() => {
 
-  //   const fetchProfile = async () => {
+    const fetchProfile = async () => {
 
-  //     try {
-  //       const response = await axios.get('/api/usercheck', { withCredentials: true });
+      try {
+        const response = await axios.get('/api/usercheck', { withCredentials: true });
       
-  //       setLogincheckdata(true);
+        setLogincheckdata(true);
         
-  //     } catch (error) {
-  //       setLogincheckdata(false);
+      } catch (error) {
+        setLogincheckdata(false);
         
-  //       if (error.response && error.response.status === 401) {
-  //         setLogincheckdata(false);
-  //         console.error('User not found');
+        if (error.response && error.response.status === 401) {
+          setLogincheckdata(false);
+          console.error('User not found');
 
-  //       } else {
-  //         console.error('Unexpected error:', error.response?.data || error.message);
-  //         setLogincheckdata(false);
-  //       }
-  //     }
+        } else {
+          console.error('Unexpected error:', error.response?.data || error.message);
+          setLogincheckdata(false);
+        }
+      }
 
-  //   }
-  //   fetchProfile();
-  // }, [usernav]);
+    }
+    fetchProfile();
+  }, [usernav]);
 
 
 
@@ -189,7 +189,7 @@ const Navbar = (props) => {
         if (response.status === 200) {
           setIsAuthenticateduser(false);
           setUsernav('');
-          setCheck(null);
+          setLogincheckdata(false);
           window.location.href = '/';
           props.showAlart("Log out", "Back to main page", 'check');
         }
