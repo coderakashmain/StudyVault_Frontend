@@ -81,14 +81,14 @@ function App() {
         return { type, msg: message, state };
     });
 
-    // Clear previous timeout before setting a new one
-    if (window.alartTimeout) clearTimeout(window.alartTimeout);
 
-    window.alartTimeout = setTimeout(() => {
-        console.log("Clearing alert...");
-        setAlart(null);
-        console.log(alart);
+    let timeout = setTimeout(() => {
+      console.log("Clearing alert...");
+      setAlart(null);
     }, 4000);
+  
+    return () => clearTimeout(timeout);
+  
 };
 
 

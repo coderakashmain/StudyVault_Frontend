@@ -10,9 +10,9 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: process.env.VITE_API_URL || 'http://localhost:3000',
+        target: process.env.NODE_ENV === "production" ? "https://studyvault.online" : "http://localhost:3000",
         changeOrigin: true,
-        secure: process.env.NODE_ENV === 'production',
+        secure: process.env.NODE_ENV === "production" ? true : false, 
       },
     },
     
