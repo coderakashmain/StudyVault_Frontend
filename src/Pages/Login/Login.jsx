@@ -16,6 +16,7 @@ const Login = (props) => {
   const { setUsernav } = useContext(UserContext);
   const [repeatclick, setRepeatclick] = useState(false);
   const [showHide, setShowHide] = useState(false);
+  const navigate = useNavigate();
   const [loginData, setLoginData] = useState({
     gmail: '',
     password: ''
@@ -38,7 +39,7 @@ const Login = (props) => {
       if (response.status === 200) {
         props.showAlart('Log in Successfull.', '', 'check');
         setUsernav(response.data.user);
-        window.location.href = "/";
+        navigate('/');
 
         setRepeatclick(false);
       }

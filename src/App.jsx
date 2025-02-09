@@ -38,6 +38,7 @@ import PaymentRouter from "./RoutingFiles/PaymentRouter";
 import PaymentStatus from "./Pages/CashfreePay/PaymentStatus";
 import ThemeContext from "./Context/ThemeContext/ThemeContext";
 import NavbarpresentRouting from "./RoutingFiles/NavbarpresentRouting";
+import Alart from "./Component/Alart/Alart";
 
 
 
@@ -75,7 +76,7 @@ function App() {
         state: state
       }
     )
- const timeout =    setTimeout(() => {
+ const timeout =  setTimeout(() => {
       setAlart(null);
     }, 4000);
 
@@ -115,7 +116,7 @@ const navrefvalue = (value) => {
     },
     {
       path: '/',
-      element: <><ErrorBoundary><ThemeContext><AdminLoginCheck><UserContextdata><UserLoginContext><FilterScrollContex><DepartmentListContext><Allpages showAlart={showAlart}  alart={alart}  /></DepartmentListContext></FilterScrollContex></UserLoginContext></UserContextdata></AdminLoginCheck></ThemeContext></ErrorBoundary></>,
+      element: <><ErrorBoundary><ThemeContext><AdminLoginCheck><UserContextdata><UserLoginContext><FilterScrollContex><DepartmentListContext><Allpages showAlart={showAlart}/><Alart   alart={alart}  /></DepartmentListContext></FilterScrollContex></UserLoginContext></UserContextdata></AdminLoginCheck></ThemeContext></ErrorBoundary></>,
       children: [
         {
           path : '',

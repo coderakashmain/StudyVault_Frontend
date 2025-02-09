@@ -3,7 +3,7 @@ import { Outlet, useLocation } from 'react-router-dom'
 import Loadingicon from '../Component/Jsonlicon/Loadingicon'
 import ReCaptha from '../Component/Captha/ReCaptha'
 import TitleSet from '../Component/TitleSet/TitleSet'
-import Alart from '../Component/Alart/Alart'
+
 
 
 
@@ -36,7 +36,7 @@ const Allpages = ({alart}) => {
         
         <Suspense fallback={<Loadingicon/>}>
          <TitleSet/>
-         <Alart alart={alart} />
+ 
    
           <Outlet />
           </Suspense>
