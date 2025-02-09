@@ -1,5 +1,6 @@
 .contact_main_conatainer{
     padding: 4rem  0 0 0;
+    background:linear-gradient(90deg ,rgb(31, 31, 78),rgb(33, 143, 160));
 }
 .conatct-header{
     background:linear-gradient(90deg ,rgb(31, 31, 78),rgb(33, 143, 160));
@@ -23,6 +24,7 @@ display: flex;
 justify-content: center;
 flex-wrap: wrap;
 gap: 0.1rem;
+background-color: white;
 /*  */
 }
 .social-contact-icon{
@@ -70,8 +72,9 @@ border-radius: 0.2rem;
     width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 0% 10%;
-    margin: 5% 0%;
+    padding: 5% 10%;
+    /* margin: 5% 0%; */
+    background-color: white;
 }
 .contact-form-body p,h3{
     color: black;
@@ -180,7 +183,7 @@ padding: 5%;
         margin: 0.5rem;
     }
     .contact_main_conatainer{
-        padding: 3rem  0 0 0;
+        padding: 4rem  0 0 0;
     }
     
 

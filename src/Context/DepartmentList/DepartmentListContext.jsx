@@ -43,7 +43,7 @@ const DepartmentListContext = (props)=>{
         "MBA",
         "MCA",
         "Micro Biology",
-        "Bio-Chemistry",
+        "Bio Chemistry",
         "Enviromental Economics",
         "Industrial Chemistry",
 

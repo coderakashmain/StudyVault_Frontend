@@ -3,7 +3,9 @@
     width: 100%;
     /* background:linear-gradient(90deg ,rgb(31, 31, 78),rgb(33, 143, 160)); */
     /* background:var(--pagecolor); */
-    padding: 3rem 0 0 0;
+    padding: 5rem 0 0 0;
+    background:linear-gradient(90deg ,rgb(31, 31, 78),rgb(33, 143, 160));
+    
     
 }
 .aboutusheader{
@@ -28,6 +30,7 @@
    min-height: 100vh;
     width: 100%;
     padding: 4.6rem 2.3rem 0;
+    background-color: white;
   
 }
 

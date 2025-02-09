@@ -83,7 +83,7 @@ const Signup = (props) => {
           setVerifyOtpsubmit(true);
           setSpinner(false);
           setDisablebtn(false);
-          setMessage(<p style={{ margin: '0 0 0.45rem 0', fontSize: '0.5rem', color: '#fff' }}>OTP valid for 10 minutes.</p>)
+          setMessage(<p style={{ margin: '0 0 0.45rem 0', fontSize: '0.5rem', color: '#333' }}>OTP valid for 10 minutes.</p>)
 
         }
         else {
@@ -131,7 +131,7 @@ const Signup = (props) => {
 
         props.showAlart('Email verify successfull', '', 'check');
         setSubmitoff(true);
-        setMessage(<p style={{ margin: '0 0 0.45rem 0', fontSize: '0.5rem', color: '#00ffec' }} >Email verify successfull</p>)
+        setMessage(<p style={{ margin: '0 0 0.45rem 0', fontSize: '0.5rem', color: '#333' }} >Email verify successfull</p>)
         setOtpValue('');
         setVerifyOtp(false);
         setOtp(false);

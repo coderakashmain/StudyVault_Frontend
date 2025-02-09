@@ -1,29 +1,34 @@
 import React from "react";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 import axios from "axios";
-import { useLocation } from "react-router";
+
 import "./GoogleAuth.css"
+import { useNavigate } from "react-router";
 
 
 const  GoogleAuth = ({userdata , showAlart})=> {
     const googleClientId = import.meta.env.VITE_AUTH_CLIENTID_GOOGLE;
   
-
+    const navigate = useNavigate();
     
     
 
    
   const handleSuccess = async (response) => {
-    // console.log("Google login successful:", response);
+  
     
     try {
-      const res = await axios.post("/api/auth/google", {
+      const res = await axios.post('/api/auth/google', {
         token: response.credential,
-      });
-      // console.log("Backend Response:", res.data);
+      
+      },{  withCredentials : true});
+
       showAlart("Login Seccessfull","","check");
       userdata(res.data);
-      window.location.href = "/";
+     
+        navigate("/", { replace: true });
+ 
+
     } catch (error) {
       showAlart("Error","","mark");
       console.error("Error sending token to backend:", error);

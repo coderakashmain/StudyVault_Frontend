@@ -15,7 +15,9 @@ export default defineConfig({
         secure: process.env.NODE_ENV === 'production',
       },
     },
+    
   },
+ 
   
   build: {
     chunkSizeWarningLimit: 1000, // Increase the limit to 1000 kB

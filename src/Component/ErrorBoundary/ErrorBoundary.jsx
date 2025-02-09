@@ -17,7 +17,7 @@ class ErrorBoundary extends React.Component {
   
     render() {
       if (this.state.hasError) {
-        return <div style={{position : 'fixed',zIndex : '1111111111111111',background : 'white', left : '0', top : '0', display : 'flex', justifyContent : 'center', alignItems : 'center',height :'100%', width : '100%'}}> <h1 style={{margin : '2rem', textAlign : 'center'}}>We are Working on somthing.<br /> Back soon. <span style={{fontSize : '1.4rem'}}>
+        return <div style={{position : 'fixed',zIndex : '1111111111111111',background : 'white', left : '0', top : '0', display : 'flex', justifyContent : 'center', alignItems : 'center',height :'100%', width : '100%'}}> <h1 style={{margin : '2rem', textAlign : 'center'}}>Something Went wrong<br /> Refresh the page or Check the url is correct. <span style={{fontSize : '1.4rem'}}>
           </span></h1></div>;
       }
   
