@@ -1,7 +1,8 @@
 import "./App.css";
 
-import React, { lazy, Suspense, useState } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import { createBrowserRouter, RouterProvider, useLocation } from "react-router-dom";
+
 const Filter = lazy(()=> import("./Pages/Home/FilterS/Filter"));
 // import Filter from './Pages/Home/FilterS/Filter';
 const Departmentlist = lazy(()=> import("./Pages/Home/DepartmentlistS/Departmentlist"));
@@ -69,27 +70,23 @@ function App() {
   const [subheadingtype, setSubheadingtype] = useState('');
 
   const showAlart = (type, message, state) => {
-    console.log("showAlart called:", { type, message, state });
-
-    // Prevent duplicate alerts
-    setAlart((prev) => {
-        if (prev && prev.type === type && prev.state === state) {
-            console.log("Duplicate alert prevented");
-            return prev;
-        }
-        console.log("Setting new alert:", { type, message, state });
-        return { type, msg: message, state };
-    });
-
-
-    let timeout = setTimeout(() => {
-      console.log("Clearing alert...");
-      setAlart(null);
-    }, 4000);
+    if (window.alartTimeout) {
+      clearTimeout(window.alartTimeout);
+    }
   
-    return () => clearTimeout(timeout);
+    setAlart({ type, msg: message, state });
+  };
   
-};
+  
+  useEffect(() => {
+    if (alart) {
+      const timeout = setTimeout(() => {
+        setAlart(null);
+      }, 4000);
+  
+      return () => clearTimeout(timeout);
+    }
+  }, [alart])
 
 
   const subheadingtypedata = (type) => {

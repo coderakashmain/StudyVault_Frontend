@@ -16,7 +16,7 @@
     box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.199),inset -10px -10px 30px #fff;
     background-color: #fff;
       z-index: 100000000000000000;
-      border: 2px solid red !important;
+
   }
   #alart-box p {
     display: flex;
