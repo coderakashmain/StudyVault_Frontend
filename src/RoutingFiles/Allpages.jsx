@@ -7,7 +7,7 @@ import Alart from '../Component/Alart/Alart'
 
 
 
-const Allpages = (props) => {
+const Allpages = ({alart}) => {
 
   const [isVerified, setIsVerified] = useState(() => {
     // Check if user is already verified in session storage
@@ -36,7 +36,7 @@ const Allpages = (props) => {
         
         <Suspense fallback={<Loadingicon/>}>
          <TitleSet/>
-         <Alart alart={props.alart} />
+         <Alart alart={alart} />
    
           <Outlet />
           </Suspense>
