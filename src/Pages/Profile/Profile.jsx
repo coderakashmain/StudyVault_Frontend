@@ -122,7 +122,7 @@ const Profile = (props) => {
 
 
   if (loading) {
-    return <p style={{ margin: "100px 0 0 50px",display : 'flex', justifyContent : 'center', alignItems : 'center' }}>Loading...</p>;
+    return <p style={{ margin: "100px 0 0 50px" }}>Loading...</p>;
 
   }
 

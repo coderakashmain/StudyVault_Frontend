@@ -40,7 +40,7 @@ import ThemeContext from "./Context/ThemeContext/ThemeContext";
 import NavbarpresentRouting from "./RoutingFiles/NavbarpresentRouting";
 
 
-
+import Alart from "./Component/Alart/Alart";
 
 const Cashfree = lazy(() => import("./Pages/CashfreePay/Cashfree"));
 const SyllabusUpload = lazy(() => import("./Component/Admine/SyllabusUpload/SyllabusUpload"));
@@ -115,11 +115,11 @@ const navrefvalue = (value) => {
     },
     {
       path: '/',
-      element: <><ErrorBoundary><ThemeContext><AdminLoginCheck><UserContextdata><UserLoginContext><FilterScrollContex><DepartmentListContext><Allpages showAlart={showAlart}  alart={alart}  /></DepartmentListContext></FilterScrollContex></UserLoginContext></UserContextdata></AdminLoginCheck></ThemeContext></ErrorBoundary></>,
+      element: <><ErrorBoundary><ThemeContext><AdminLoginCheck><UserContextdata><UserLoginContext><FilterScrollContex><DepartmentListContext><Navbar showAlart={showAlart}  navrefvalue = {navrefvalue}  /> <Alart alart={alart} /><Allpages showAlart={showAlart}  alart={alart}  /></DepartmentListContext></FilterScrollContex></UserLoginContext></UserContextdata></AdminLoginCheck></ThemeContext></ErrorBoundary></>,
       children: [
         {
           path : '',
-          element : <><ErrorBoundary> <Navbar showAlart={showAlart}  navrefvalue = {navrefvalue}  /><NavbarpresentRouting/></ErrorBoundary></>,
+          element : <><ErrorBoundary> <NavbarpresentRouting/></ErrorBoundary></>,
           children : [
             {
               path: '',
@@ -133,27 +133,29 @@ const navrefvalue = (value) => {
     
               ]
             },
-            {
-              path: "Contact-Us",
-              element: (<><ErrorBoundary><Suspense fallback={<FallbackLoad/>}> <PhoneInfo><Contact showAlart={showAlart} /></PhoneInfo></Suspense></ErrorBoundary> </>),
-            },
-            {
-              path: "Profile",
-              element: (<><ErrorBoundary> <Profile showAlart={showAlart} /></ErrorBoundary></>),
-            },
-            {
-              path: "About-us",
-              element: (<><ErrorBoundary> <AboutUs showAlart={showAlart} /></ErrorBoundary></>),
-            },
-            { 
-              path: "Privacy-Policy",
-              element: (<><ErrorBoundary> <PrivecyandPolicy showAlart={showAlart} /></ErrorBoundary></>),
-            },
-            { 
-              path: "Terms-Conditions",
-              element: (<><ErrorBoundary> <TermsConditions showAlart={showAlart} /></ErrorBoundary></>),
-            },
+           
           ]
+        },
+
+        {
+          path: "Contact-Us",
+          element: (<><ErrorBoundary><Suspense fallback={<FallbackLoad/>}> <PhoneInfo><Contact showAlart={showAlart} /></PhoneInfo></Suspense></ErrorBoundary> </>),
+        },
+        {
+          path: "Profile",
+          element: (<><ErrorBoundary> <Profile showAlart={showAlart} /></ErrorBoundary></>),
+        },
+        {
+          path: "About-us",
+          element: (<><ErrorBoundary> <AboutUs showAlart={showAlart} /></ErrorBoundary></>),
+        },
+        { 
+          path: "Privacy-Policy",
+          element: (<><ErrorBoundary> <PrivecyandPolicy showAlart={showAlart} /></ErrorBoundary></>),
+        },
+        { 
+          path: "Terms-Conditions",
+          element: (<><ErrorBoundary> <TermsConditions showAlart={showAlart} /></ErrorBoundary></>),
         },
 
         
