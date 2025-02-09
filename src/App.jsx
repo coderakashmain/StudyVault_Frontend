@@ -9,7 +9,8 @@ const Login = lazy(()=> import("./Pages/Login/Login"));
 import Downloadpdf from "./Pages/Home/FilterS/Downloadpdf/Downloadpdf";
 const ForgatePw = lazy(()=> import("./Pages/Login/ForgatePw/ForgatePw"));
 import Allpages from "./RoutingFiles/Allpages";
-const Alart = lazy(()=> import("./Component/Alart/Alart"));
+
+
 import DepartmentListContext  from "./Context/DepartmentList/DepartmentListContext";
 import UserContextdata from "./Context/UserContext/UserContextdata";
 import FilterScrollContex from "./Context/FilterScroll/FilterScrollContex";
