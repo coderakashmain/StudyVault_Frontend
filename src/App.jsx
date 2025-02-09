@@ -68,20 +68,17 @@ function App() {
   const [subheadingtype, setSubheadingtype] = useState('');
 
   const showAlart = (type, message, state) => {
-
-    setAlart(
-      {
-        type: type,
-        msg: message,
-        state: state
-      }
-    )
- const timeout =  setTimeout(() => {
-      setAlart(null);
-    }, 4000);
-
-    return ()=> clearTimeout(timeout);
-  };
+    try {
+        setAlart({ type, msg: message, state });
+        console.log(alart);
+        setTimeout(() => {
+            setAlart(null);
+            console.log(alart);
+        }, 4000);
+    } catch (error) {
+        console.error("Error in showAlart:", error);
+    }
+};
 
 
   const subheadingtypedata = (type) => {
