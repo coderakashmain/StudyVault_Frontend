@@ -5,6 +5,7 @@ import axios from "axios";
 import BackButton from "../../Component/Backbutton/Backbutton";
 import { UserContext } from "../../Context/UserContext/UserContextdata";
 import GoogleAuth from "../../auth/GoogleAuth";
+import studyvault from '../../photo/Study⁐Vault-logo-black.png'
 
 
 
@@ -63,9 +64,11 @@ const Login = (props) => {
         props.showAlart('Internal Server Error', '', 'cancel');
         setRepeatclick(false);
       }
+      
       setRepeatclick(false);
     }
   };
+ 
 
   const submitRef = useRef();
 
@@ -84,38 +87,45 @@ const Login = (props) => {
         <BackButton />
         <div className="inner-main-login ">
           <form action="/api/LogIn" method="post" onSubmit={loginSubmit}>
-            <h2 className="main-heading" >Hello</h2>
-            <h4 className="main-sub-heading">Login your accounts.......!</h4>
-            <h3 className="">Email :-</h3>
+            {/* <h2 className="main-heading" >StudyVault</h2> */}
+            <div className="studyvault-logo">
+            <img src={studyvault} alt="" />
+
+            </div>
+            <h4 className="main-sub-heading">Login to access essential study materials</h4>
+            <h3 className="">Email </h3>
 
             <input type="email" onChange={loginChange} value={loginData.gmail} name="gmail" id="loginemial" placeholder="" required />
 
 
-            <h3 className="">Password :-</h3>
+            <h3 className="">Password </h3>
             <div className="show-hide" style={{ position: 'relative' }}>
               <input type={`${showHide ? 'text' : 'password'}`} onChange={loginChange} autoComplete="off" value={loginData.password} name="password" id="loginpassword" placeholder="" />
-              {loginData.password && (<i className={`fa-solid fa-${showHide ?'eye-slash' : 'eye' }` }style={{ position: 'absolute', right: '0%', top: '50%', color: 'lightblue', fontSize: '1rem', userSelect: 'none' }} onClick={() => { setShowHide(!showHide) }}></i>)}
+              {loginData.password && (<div className="eye-contro"><i className={`fa-solid fa-${showHide ?'eye' : 'eye-slash' }` } onClick={() => { setShowHide(!showHide) }}></i></div>)}
             </div>
             <div className="remember-forget-parent">
-              <p className="" style={{ color: '#fff' }}>
+              <p className="" style={{ color: '#333' }}>
                 <input type="checkbox" name="logincheckbox" id="" className="mr-2" defaultChecked />
                 &nbsp; Remember me
               </p>
-              <Link to='ForgatePw' style={{ color: 'rgb(107 183 251)' }} >Forget password ?</Link>
+              <Link to='ForgatePw' style={{ color: '#007bff' }} >Forget password ?</Link>
             </div>
             <div className="submit-parant">
               <input ref={submitRef} disabled={repeatclick} type="submit" value="Login" className="" />
             </div>
           </form>
           <Link to="Signup" className="signup-link">
-            Don't have an account?{" "}
+          Don't have an account?{" "}
             <span className="">Register Now</span>
           </Link>
+          <p className="Or-separate">or</p>
           <div style={{margin : "0.8rem 0" , display : 'flex', justifyContent : 'center', alignItems : 'center', width: '100%'}}>
+            <div className="goolge-auth-btn">
           <GoogleAuth userdata={setUsernav} showAlart={props.showAlart}/>
           </div>
-          <div className="backtohome" style={{ width: '100%', display: "flex", justifyContent: 'center', alignItems: 'center', paddingTop: '0.1rem', textDecoration: 'underline' }}>
-            <NavLink to='/' style={{ textAlign: 'center', cursor: 'pointer', color: '#fff', marginTop: '2rem' }}> Back to Home</NavLink>
+          </div>
+          <div className="back-to-home " >
+            <NavLink to='/'> Back to Home</NavLink>
 
           </div>
          

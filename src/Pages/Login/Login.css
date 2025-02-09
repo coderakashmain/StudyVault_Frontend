@@ -15,99 +15,94 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--uniqcolorback);
+    /* background-color: var(--uniqcolorback); */
+    background-color: #f4f7f6;
     z-index: 1001;
     position: relative;
     
   }
-  .back-button{
-    height: 40px;
-    width: 100%;
-    position: absolute;
-    top: 3%;
-    left: 0px;
-    padding: 2rem 3rem;
-    display: flex;
-    align-items: center;
-    z-index: 100;
-  }
-  .back-button i{
-
-    font-size: 1.5rem;
-    cursor: pointer;
-    padding: 0.4rem 0.9rem;
-    border-radius: 0.3rem ;
-  }
-  .back-button i:active{
-   transform: scale(0.95);
-  }
-  .back-button i:hover{
-   background-color: rgba(255, 255, 255, 0.526);
-  }
+  
   .inner-main-login {
-    width: 30%;
-    padding:5% 3% 5% 3%;
+    width: 28%;
+    padding:2.5rem;
     /* margin-top: 1rem; */
-    border-radius: 1%;
-    background: var(--uniqcolorup);
-    box-shadow: var(--boxshadow);
+    border-radius: 0.6rem;
+    /* background: var(--uniqcolorup); */
+    background: #ffffff;
+    /* box-shadow: var(--boxshadow); */
+    box-shadow:  0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  .studyvault-logo img{
+    height: 5rem;
+    transform: translateX(-12.6%);
+    user-select: none;
   }
   .main-heading{
-    text-align: center;
-    margin-bottom: 1%;
-    font-size: 3.4rem;
-    color: #fff;
+    /* text-align: center; */
+    margin: 1rem 0 0.5rem;
+    font-size: 1.7rem;
+    color: #333;
+    font-weight: 600;
+
   }
   .main-sub-heading{
-    text-align: center;
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 20%;
-    color: #fff;
+    font-size: 1rem;
+  color: #666;
+  margin-bottom: 2rem;
   }
 
-  /* .inner-main-login h3{
-  font-size: 1.4rem;
-}
+  .remember-forget-parent{
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    margin-bottom: 1.8rem;
+  }
+
+
 .remember-forget-parent p, .remember-forget-parent a{
-  font-size: 1.2rem;
+  font-size: 0.9rem;
+  
 }
-.filter-switch input::placeholder{
-  color: #e2e2e2;
-  font-size: 0.8rem;
-} */
+.remember-forget-parent a:hover{
+  text-decoration: underline;
+  text-decoration-color: #007bff;
+}
+
+
  @media (max-width : 400px) {
 
   .inner-main-login h3{
   font-size: 1.4rem;
 }
 .remember-forget-parent p, .remember-forget-parent a{
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 .filter-switch input::placeholder{
   color: #e2e2e2;
   font-size: 0.8rem;
 }
  }
-  .remember-forget-parent{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 5%;
-  }
+
  
 .inner-main-login input[type="password"],.inner-main-login input[type="email"],.inner-main-login input[type="text"]{
-    border: none;
-    border-bottom: 0.5px solid  #fff;;
+    border: 1px solid #ddd;
+    /* border-bottom: 0.5px solid  #fff;; */
     width: 100%;
-    padding: 2% 1%;
+    padding: 3% 3%;
     margin-bottom: 5%;
     outline: none;
     background-color: transparent;
-    color: #fff;
+    color: #333;
+    border-radius: 0.3rem;
+
+  }
+  .inner-main-login input[type="password"],.inner-main-login input[type="text"]{
+    margin-bottom: 0;
   }
   .inner-main-login h3{
-    color: #fff;
+    color: #333;
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
   }
   .submit-parant{
     display: flex;
@@ -119,58 +114,105 @@
     cursor: pointer;
   }
   .submit-parant input[type="submit"]{
-    padding: 1.5% 7%;
-    background-color: rgb(75, 151, 213);
+    padding: 0.8rem;
+    background-color: #007bff;
     border-radius: 5px;
     outline: none;
     border: none;
-    color: white;
+    color: #fff;
     width: 100%;
   }
   .signup-link{
     text-align: center;
-    color: #fff;
+    display: block;
+    color: #666;
+    font-size: 0.95rem;
     }
 .signup-link span{
-    font-weight: 600;
-    color: #4B97D5;
+   
+    color: #007bff;
 
+  font-size: 0.95rem;
 }
 .signup-link span:hover{
   text-decoration: underline;
   text-decoration-thickness:0.1rem;  
   
 }
-.main-login-container .show-hide i{ 
-  transform: translateY(-130%);
+.show-hide{
+  margin-bottom: 5%;
+}
+
+.show-hide .eye-contro{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  width: 3rem;
+
+
+}
+.show-hide .eye-contro i{
+
+  color: #333;
+
+}
+.Or-separate{
+  color: #666;
+  font-size:01rem;
+  text-align: center;
+  margin: 1rem 0 1.3rem;
+}
+
+.back-to-home {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  color: #007bff;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+.back-to-home a{
+ 
+  color: #007bff;
+
+  font-size: 0.9;
+}
+
+.back-to-home:hover {
+  text-decoration: underline;
 }
 
 @media only screen and (max-width: 1300px) {
     .inner-main-login {
-        width:45%;
-        padding:10% 8%;
-        border-radius: 0.2rem;
+        width:43%;
+        /* padding:; */
+       
       }
 }
 @media only screen and (max-width: 835px) {
     .inner-main-login {
-        width:65%;
-        padding:10% 8%;
+        width:36rem;
+        padding:5%;
       }
 }
-@media only screen and (max-width: 835px) {
+@media only screen and (max-width: 535px) {
     .inner-main-login {
         width:100%;
         min-height: 100vh;
         min-height: 100svh;
-        padding-top: 8rem;
+        padding-top: 3rem;
       }
       .inner-main-login {
         background: transparent;
       }
       
       .main-login-container{
-        background: var(--uniqcolorup);
+        /* background: var(--uniqcolorup); */
+        background:#fff;
         
   
 }
@@ -180,7 +222,10 @@
     height: 100svh;
   }
    
-      .inner-main-login input[type="password"],.inner-main-login input[type="email"],.inner-main-login input[type="text"]{
+      .inner-main-login input[type="email"]{
+        margin-bottom: 7%;
+      }
+      .show-hide{
         margin-bottom: 10%;
       }
       .remember-forget-parent{
@@ -192,9 +237,7 @@
       .inner-main-login {
         box-shadow: none;
       }
-      .main-login-container .show-hide i{ 
-        transform: translateY(-150%);
-      }
+   
       
 
   }
@@ -204,15 +247,15 @@
   
   .inner-main-login input:-webkit-autofill {
   background-color: transparent !important;
-  -webkit-box-shadow: 0 0 0px 1000px #123456 inset !important; 
-  box-shadow: 0 0 0px 1000px #123456 inset !important; 
+  -webkit-box-shadow: 0 0 0px 1000px transparent  inset !important; 
+  box-shadow: 0 0 0px 1000px #fff inset !important; 
   color: #fff !important; 
-  -webkit-text-fill-color: rgb(255, 255, 255) !important;
+  -webkit-text-fill-color: #333 !important;
 }
 
 
 
 .inner-main-login input:autofill {
   background-color: transparent !important;
-  box-shadow: 0 0 0px 1000px #224f8a inset !important;
+  box-shadow: 0 0 0px 1000px white inset !important;
 }

@@ -3,7 +3,7 @@
   min-height: 100svh;
   min-height: 100lvh;
     width: 100%;
-    background: var(--uniqcolorup);
+    background: var(--uniqcolorback);
     display: flex;
     justify-content: center;
     z-index: 1001;
@@ -14,6 +14,7 @@
     width: 28rem;
     text-align: center;
     margin-top: 3rem;
+
 }
 .forgate-box h2{
     width: 28rem;
@@ -28,13 +29,13 @@
     font-size: 1.4rem;
     margin: 2rem 0;
     font-weight: 600;
-    color: #fff;
+    color: #333;
    
 }
 
 .forgate-box i{
    font-size: 14rem;
-   color: #e7e7e7;
+   color: #007bff80;
     
 }
 /* .forgate-box img{
@@ -48,7 +49,7 @@
 }
 .forgate-email-enter-box p{
     text-align: justify;
-    color: #fff;
+    color: #666;
 }
 .forgate-email-enter-box input{
    border: none;
@@ -58,6 +59,8 @@
    outline: none;
    border-radius: 0.2rem;
    font-size: 1rem;
+   border: 1px solid #ddd;
+   border-radius: 0.3rem;
 }
 .forgate-email-enter-box p:nth-child(3){
    margin: 0.3rem 0 1rem 0;
@@ -70,9 +73,9 @@
 .forgate-email-enter-box button{
   width: 100%;
   border: none;
-  background-color: #4B97D5;
+  background-color: #007bff;
   color: #fff;
-  padding: 0.6rem 0;
+  padding: 0.9rem 0;
   font-size: 1.1;
   border-radius: 0.2rem;
   cursor: pointer;
@@ -88,7 +91,12 @@
 }
 #forgatepw a{
     font-size: 1.08rem;
-    color: #fff;
+    color: #007bff;
+    
+}
+#forgatepw a:hover{
+  text-decoration: underline;
+  text-decoration-color: #007bff;
     
 }
 .forgate-btn{
@@ -135,12 +143,10 @@
  .reset-password-box input{
      width: 100%;
      padding: 1rem 2rem;
-     outline-offset: 0rem;
-    outline-color: rgb(133, 151, 161) ;
      border: none;
-     border: 2px solid rgba(151, 168, 224, 0.41);
+     border: 1px solid #ddd;
      margin: 1rem 0;
-     border-radius: 5.2rem;
+     border-radius: 0.3rem;
      font-size: 1rem;
  
  }
@@ -148,12 +154,12 @@
      width: 100%;
      border: none;
      outline: none;
-     background-color: #4B97D5;;
+     background-color: #007bff;
      color: #fff;
      padding: 0.8rem 0;
      cursor: pointer;
      font-size: 1rem;
-     border-radius: 0.4rem;
+     border-radius: 0.3rem;
  
  }
  .reset-password-box hr{
@@ -164,7 +170,7 @@
      padding: 0.8rem 3rem;
      border: none;
      overflow: none;
-     border: 2px solid rgba(128, 128, 128, 0.374);
+     border: 1px solid rgb(184, 178, 178);
      border-radius: 0.2rem;
      font-size: 1.1rem;
      cursor: pointer;
@@ -221,13 +227,13 @@
     -webkit-box-shadow: 0 0 0px 1000px #123456 inset !important; 
     box-shadow: 0 0 0px 1000px #123456 inset !important; 
     color: #fff !important; 
-    -webkit-text-fill-color: rgb(255, 255, 255) !important;
+    -webkit-text-fill-color: #333 !important;
   }
   
   
   
   .forgate-email-enter-box input:autofill {
     background-color: transparent !important;
-    box-shadow: 0 0 0px 1000px #224f8a inset !important;
+    box-shadow: 0 0 0px 1000px #fff inset !important;
   }
   

@@ -3,10 +3,11 @@ import { Outlet, useLocation } from 'react-router-dom'
 import Loadingicon from '../Component/Jsonlicon/Loadingicon'
 import ReCaptha from '../Component/Captha/ReCaptha'
 import TitleSet from '../Component/TitleSet/TitleSet'
+import Alart from '../Component/Alart/Alart'
 
 
 
-const Allpages = () => {
+const Allpages = (props) => {
 
   const [isVerified, setIsVerified] = useState(() => {
     // Check if user is already verified in session storage
@@ -35,6 +36,7 @@ const Allpages = () => {
         
         <Suspense fallback={<Loadingicon/>}>
          <TitleSet/>
+         <Alart alart={props.alart} />
    
           <Outlet />
           </Suspense>

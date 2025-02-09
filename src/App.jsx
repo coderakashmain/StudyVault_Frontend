@@ -114,11 +114,11 @@ const navrefvalue = (value) => {
     },
     {
       path: '/',
-      element: <><ErrorBoundary><ThemeContext><AdminLoginCheck><UserContextdata><UserLoginContext><FilterScrollContex><DepartmentListContext><Allpages showAlart={showAlart} /></DepartmentListContext></FilterScrollContex></UserLoginContext></UserContextdata></AdminLoginCheck></ThemeContext></ErrorBoundary></>,
+      element: <><ErrorBoundary><ThemeContext><AdminLoginCheck><UserContextdata><UserLoginContext><FilterScrollContex><DepartmentListContext><Allpages showAlart={showAlart}  alart={alart}  /></DepartmentListContext></FilterScrollContex></UserLoginContext></UserContextdata></AdminLoginCheck></ThemeContext></ErrorBoundary></>,
       children: [
         {
           path : '',
-          element : <><ErrorBoundary> <Navbar showAlart={showAlart}  navrefvalue = {navrefvalue}  /><Alart alart={alart} /><NavbarpresentRouting/></ErrorBoundary></>,
+          element : <><ErrorBoundary> <Navbar showAlart={showAlart}  navrefvalue = {navrefvalue}  /><NavbarpresentRouting/></ErrorBoundary></>,
           children : [
             {
               path: '',

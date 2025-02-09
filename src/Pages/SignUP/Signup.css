@@ -19,20 +19,23 @@
     border-radius: 8px;
     /* border: 2px solid rgb(214 214 214); */
     background: var(--uniqcolorup);
-    padding: 0.9rem 1.8rem;  
+    padding: 1.5rem;  
     box-shadow:var(--boxshadow);
 }
 
 .signup-form .singup-form-input{
     width: 100%;
-    padding: 0.69rem 0.1rem;
+    padding: 0.69rem 0.4rem;
     border: none;
     border-bottom: 0.2px solid rgb(255, 255, 255);
+    margin-top: 0.2rem;
     margin-bottom: 1.3rem;
     font-size: 0.83rem;
     background-color:transparent;
     font-size: 1.1rem;
-    color: #fff;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 0.3rem;
    
 }
 .signup-form box-icon{
@@ -48,21 +51,24 @@
 .signup-form label{    
     letter-spacing: 0.1px;
     font-weight: 400;
-    font-size: 1.1rem;
-    color: #fff;
+    font-size: 0.9rem;
+    color: #333;
+   
 }
 .signup-form input{
   outline: none;
 }
 
 .signup-form h2{
-    font-size: 4em;
+    font-size: 2em;
     font-weight: 500;
     text-align: left;
-    color: #fff;
+    color: #333;
+    margin-bottom: 1rem;
+    text-align: center;
 }
 .name-box{
-    padding: 2.5rem 0px 0.5rem 0px;
+    padding: 1.8rem 0px 0.5rem 0px;
     display: flex;
     justify-content: space-between;
     gap: 3%;
@@ -96,9 +102,9 @@ width: 100%;
     display: block;
     margin: auto;   
     width: 100%; 
-    padding: 0.7rem 1.4rem;
+    padding: 0.8rem 1.4rem;
     border:none;
-    background-color: rgb(75, 151, 213);
+    background-color: #007bff;
     border-radius: 0.2rem;
     font-size: 1rem;
     cursor: pointer;
@@ -108,13 +114,18 @@ width: 100%;
 .already-account p{
   text-align: center;
   font-size: 1rem;
-  color: #fff;
+  color: #333;
 }
 .already-account a{
   display: block;
   text-align: center;
-  font-weight: 600;
-    color: #75b0f8;
+font-size: 0.9rem;
+    color: #007bff;
+  
+}
+.already-account a:hover{
+text-decoration: underline;
+  
 }
 @media (max-width: 600px) {
     .signup-form {
@@ -142,6 +153,9 @@ width: 100%;
       html{
         font-size: 75%;
     }
+    .signup-form{
+     padding-top: 5rem;
+  }
   
   }
 
@@ -164,13 +178,13 @@ width: 100%;
     -webkit-box-shadow: 0 0 0px 1000px #123456 inset !important; 
     box-shadow: 0 0 0px 1000px #123456 inset !important; 
     color: #fff !important; 
-    -webkit-text-fill-color: rgb(255, 255, 255) !important;
+    -webkit-text-fill-color: #333 !important;
   }
   
   
   
   .signup-form input:autofill {
     background-color: transparent !important;
-    box-shadow: 0 0 0px 1000px #224f8a inset !important;
+    box-shadow: 0 0 0px 1000px white inset !important;
   }
   
