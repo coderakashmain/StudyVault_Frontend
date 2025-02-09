@@ -30,6 +30,8 @@ import ArticleSubheading  from "./Context/ArticleSubheading/ArticleSubheading";
 import Navbar from "./Component/Navbar/Navbar";
 
 
+
+const Alart = lazy(() => import("./Component/Alart/Alart"));
 const MaterialRouting = lazy(() => import("./RoutingFiles/MaterialRouting"));
 import FallbackLoad from "./Component/Fallbackload/FallbackLoad"
 import ErrorBoundary from "./Component/ErrorBoundary/ErrorBoundary";
@@ -38,7 +40,6 @@ import PaymentRouter from "./RoutingFiles/PaymentRouter";
 import PaymentStatus from "./Pages/CashfreePay/PaymentStatus";
 import ThemeContext from "./Context/ThemeContext/ThemeContext";
 import NavbarpresentRouting from "./RoutingFiles/NavbarpresentRouting";
-import Alart from "./Component/Alart/Alart";
 
 
 
