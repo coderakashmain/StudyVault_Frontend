@@ -82,7 +82,7 @@ const Navbar = (props) => {
 
     checkAuthorization();
 
-  }, [check]);
+  }, []);
 
 
   useEffect(() => {

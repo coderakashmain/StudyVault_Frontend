@@ -68,16 +68,26 @@ function App() {
   const [subheadingtype, setSubheadingtype] = useState('');
 
   const showAlart = (type, message, state) => {
-    try {
-        setAlart({ type, msg: message, state });
+    console.log("showAlart called:", { type, message, state });
+
+    // Prevent duplicate alerts
+    setAlart((prev) => {
+        if (prev && prev.type === type && prev.state === state) {
+            console.log("Duplicate alert prevented");
+            return prev;
+        }
+        console.log("Setting new alert:", { type, message, state });
+        return { type, msg: message, state };
+    });
+
+    // Clear previous timeout before setting a new one
+    if (window.alartTimeout) clearTimeout(window.alartTimeout);
+
+    window.alartTimeout = setTimeout(() => {
+        console.log("Clearing alert...");
+        setAlart(null);
         console.log(alart);
-        setTimeout(() => {
-            setAlart(null);
-            console.log(alart);
-        }, 4000);
-    } catch (error) {
-        console.error("Error in showAlart:", error);
-    }
+    }, 4000);
 };
 
 
@@ -113,7 +123,7 @@ const navrefvalue = (value) => {
     },
     {
       path: '/',
-      element: <><ErrorBoundary><ThemeContext><AdminLoginCheck><UserContextdata><UserLoginContext><FilterScrollContex><DepartmentListContext><Allpages showAlart={showAlart}/><Alart   alart={alart}  /></DepartmentListContext></FilterScrollContex></UserLoginContext></UserContextdata></AdminLoginCheck></ThemeContext></ErrorBoundary></>,
+      element: <><ErrorBoundary><ThemeContext><AdminLoginCheck><UserContextdata><UserLoginContext><FilterScrollContex><DepartmentListContext><Allpages/><Alart   alart={alart}  /></DepartmentListContext></FilterScrollContex></UserLoginContext></UserContextdata></AdminLoginCheck></ThemeContext></ErrorBoundary></>,
       children: [
         {
           path : '',
