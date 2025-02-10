@@ -9,7 +9,8 @@ const Departmentlist = lazy(()=> import("./Pages/Home/DepartmentlistS/Department
 const Login = lazy(()=> import("./Pages/Login/Login"));
 import Downloadpdf from "./Pages/Home/FilterS/Downloadpdf/Downloadpdf";
 const ForgatePw = lazy(()=> import("./Pages/Login/ForgatePw/ForgatePw"));
-import Allpages from "./RoutingFiles/Allpages";
+const Allpages = lazy(()=> import("./RoutingFiles/Allpages"));
+
 
 
 import DepartmentListContext  from "./Context/DepartmentList/DepartmentListContext";
@@ -41,10 +42,13 @@ import PaymentRouter from "./RoutingFiles/PaymentRouter";
 import PaymentStatus from "./Pages/CashfreePay/PaymentStatus";
 import ThemeContext from "./Context/ThemeContext/ThemeContext";
 import NavbarpresentRouting from "./RoutingFiles/NavbarpresentRouting";
+import IntroLoader from "./Component/IntroLoader/IntroLoader";
 
 
 
 
+
+const Notes = lazy(() => import("./Pages/Notes/Notes"));
 const Cashfree = lazy(() => import("./Pages/CashfreePay/Cashfree"));
 const SyllabusUpload = lazy(() => import("./Component/Admine/SyllabusUpload/SyllabusUpload"));
 const NotFound = lazy(() => import("./Component/NotFound/NotFound"));
@@ -117,7 +121,7 @@ const navrefvalue = (value) => {
     },
     {
       path: '/',
-      element: <><ErrorBoundary><ThemeContext><AdminLoginCheck><UserContextdata><UserLoginContext><FilterScrollContex><DepartmentListContext><Allpages/></DepartmentListContext></FilterScrollContex></UserLoginContext></UserContextdata></AdminLoginCheck></ThemeContext><Alart   alart={alart}  /></ErrorBoundary></>,
+      element: <><ErrorBoundary>    <Suspense fallback={<IntroLoader/>}><ThemeContext><AdminLoginCheck><UserContextdata><UserLoginContext><FilterScrollContex><DepartmentListContext><Allpages /></DepartmentListContext></FilterScrollContex></UserLoginContext></UserContextdata></AdminLoginCheck></ThemeContext><Alart   alart={alart}  /></Suspense></ErrorBoundary></>,
       children: [
         {
           path : '',
@@ -171,6 +175,10 @@ const navrefvalue = (value) => {
             {
               path: 'syllabus',
               element:<><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}> <Syllabus showAlart={showAlart}  subheadingtypedata = {subheadingtypedata}/> </Suspense></ErrorBoundary></>,
+            },
+            {
+              path: 'Notes',
+              element:<><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}> <Notes showAlart={showAlart}  subheadingtypedata = {subheadingtypedata}/> </Suspense></ErrorBoundary></>,
             },
           ]
         },

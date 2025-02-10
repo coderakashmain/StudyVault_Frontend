@@ -3,6 +3,7 @@ import { Outlet, useLocation } from 'react-router-dom'
 import Loadingicon from '../Component/Jsonlicon/Loadingicon'
 
 import TitleSet from '../Component/TitleSet/TitleSet'
+import IntroLoader from '../Component/IntroLoader/IntroLoader'
 
 
 
@@ -20,6 +21,7 @@ const Allpages = ({alart}) => {
         
         <Suspense fallback={<Loadingicon/>}>
          <TitleSet/>
+         {/* <IntroLoader/> */}
  
    
           <Outlet />
