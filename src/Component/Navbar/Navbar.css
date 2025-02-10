@@ -173,7 +173,7 @@
   display: flex;
   flex-direction: row;
 }
-.location-login #college-name {
+.location-login .college-name {
   font-size: 0.9rem;
   background-color: transparent;
   border: none;
@@ -182,8 +182,14 @@
   background-color: rgb(228 225 255);
   border-radius: 0.2rem;
   padding: 0rem 0.3rem;
+  display: none;
 }
-#college-name option {
+.college-box-home-on{
+  display: block !important;
+}
+
+
+.college-name option {
   font-size: 0.9rem;
 }
 

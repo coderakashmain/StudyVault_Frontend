@@ -593,13 +593,13 @@ const Navbar = (props) => {
 
             </div>)}
             {/* <ThemeToggle/> */}
-            {!mobileView && (<select name="name" id="college-name">
+           <select name="name" className={`college-name ${!mobileView ? 'college-box-home-on' : ''}`}>
               {!locationCollege ? (
                 <option value="M.P.C autonomous">M.P.C Autonomous</option>
 
               ) : (<option value="M.P.C autonomous">M.P.C</option>)};
 
-            </select>)}
+            </select>
             <div className="notificatonicon" style={{ margin: '0rem 1.3rem 0rem 0.3rem', userSelect: 'none', display: 'flex', justifyContent: 'center', alignItems: 'center' }} ref={notificationIconRef}>
               <i className="fa-solid fa-bell" style={{ color: '#fff', cursor: 'pointer' }}></i>
             </div>
