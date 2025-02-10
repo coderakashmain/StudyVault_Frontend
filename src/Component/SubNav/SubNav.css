@@ -59,6 +59,19 @@
 .same:hover .i{
     stroke: #fff !important;
 }
+#sub-nav i{
+    
+    /* fill: black;   */
+    color: black; 
+    font-size: 1.2rem;
+  
+
+    
+}
+
+.same:hover i{
+    color: #fff !important;
+}
 
 .sub-to-sub-nav{
     width: 100%;

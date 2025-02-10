@@ -42,7 +42,7 @@ const Login = (props) => {
     e.preventDefault();
 
     if (!isVerified && shouldVerify) {
-      alert("Please complete the CAPTCHA before logging in.");
+      props.showAlart("Please complete the CAPTCHA before logging in.",'','cancel');
       return;
     }
 
@@ -124,7 +124,7 @@ const Login = (props) => {
               <Link to='ForgatePw' style={{ color: '#007bff' }} >Forget password ?</Link>
             </div>
 
-              <ReCaptcha onVerified={handleVerification} />
+            {!isVerified && shouldVerify && (  <ReCaptcha onVerified={handleVerification} />)}
 
             <div className="submit-parant">
               <input ref={submitRef} disabled={repeatclick} type="submit" value={` ${repeatclick ? "Logging in..." : "Login"}`} className="" />
