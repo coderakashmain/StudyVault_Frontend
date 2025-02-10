@@ -20,6 +20,9 @@
 }
 .filter-right-ads-div{
 width: 20%;
+display: flex;
+justify-content: flex-start;
+align-items: flex-start;
 }
 ::-webkit-inner-spin-button {
   display: none;

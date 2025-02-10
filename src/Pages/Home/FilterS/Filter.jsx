@@ -14,6 +14,7 @@ import LongWidthAds from "../../../Component/AddSense/LongWidthAds";
 import Horizontalads from "../../../Component/AddSense/Horizontalads";
 import AritcleAds from "../../../Component/AddSense/AritcleAds";
 import Verticalads from "../../../Component/AddSense/Verticalads";
+import Review from "../Review/Review";
 
 
 const Filter = (props) => {
@@ -367,6 +368,7 @@ useEffect(()=>{
 
 
   return (
+    <>
     <div ref={filterboxref} className="filter-main-div">
       
 
@@ -662,10 +664,12 @@ useEffect(()=>{
       </div>
       </form>
       <div className="filter-right-ads-div">
-       <Verticalads/>
+       <Verticalads showAlart = {props.showAlart}/>
         </div> 
      
     </div>
+    <Review/>
+    </>
   );
 };
 

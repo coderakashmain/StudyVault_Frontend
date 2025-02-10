@@ -21,7 +21,7 @@ import UserLoginContext from "./Context/UserLoginContext/UserLoginContext";
 const Admine = lazy(()=> import("./Component/Admine/Admine"));
 const Dashboard = lazy(()=> import("./Component/Admine/Dashboard/Dashboard"));
 const Question = lazy(()=> import("./Component/Admine/Question/Question"));
-const Note = lazy(()=> import("./Component/Admine/Note/Note"));
+
 const UserSend = lazy(()=> import("./Component/Admine/UserSend/UserSend"));
 const CsUpload = lazy(()=> import("./Component/Admine/CsUpload/CsUpload"));
 import FetchData  from "./Context/FretchDataContext/FetchData";
@@ -243,11 +243,7 @@ const navrefvalue = (value) => {
             element: <><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}><SyllabusUpload showAlart={showAlart} /></Suspense> </ErrorBoundary></>
 
           },
-          {
-            path: 'Note',
-            element: <><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}> <Note showAlart={showAlart} /></Suspense></ErrorBoundary></>
-
-          },
+        
           {
             path: 'Usersend',
             element: <><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}><UserSend showAlart={showAlart} /></Suspense></ErrorBoundary> </>

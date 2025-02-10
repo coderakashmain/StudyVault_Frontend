@@ -183,10 +183,9 @@
   border-radius: 0.2rem;
   padding: 0rem 0.3rem;
   display: none;
+  transform: scale(0);
 }
-.college-box-home-on{
-  display: block !important;
-}
+
 
 
 .college-name option {

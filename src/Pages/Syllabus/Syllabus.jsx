@@ -5,6 +5,7 @@ import LongWidthAds from '../../Component/AddSense/LongWidthAds';
 import Horizontalads from '../../Component/AddSense/Horizontalads';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
+import Review from '../Home/Review/Review';
 
 
 const Syllabus = (props) => {
@@ -151,6 +152,7 @@ setPgloading(true);
 
 
   return (
+    <>
     <section id='syllabus-component'>
       <div className="syllabus-component-box">
            <h1>Syllabus Ug & Pg</h1>
@@ -455,6 +457,8 @@ setPgloading(true);
 
       </div>
     </section>
+    <Review showAlart = {props.showAlart}/>
+    </>
   )
 }
 

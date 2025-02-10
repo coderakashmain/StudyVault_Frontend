@@ -48,7 +48,7 @@ const SubNav = (props) => {
             <section className="sub-to-sub-nav">
                 <NavLink to='/Filter' className={location.pathname === '/Filter' ? 'sub-nav-active' : ''} >Question</NavLink>
                 <NavLink to='/Filter/syllabus'className={location.pathname === '/Filter/syllabus' ? 'sub-nav-active' : ''}>Syllabus</NavLink>
-                <NavLink to='/Filter/Notes' onClick={availablesoon}>Notes</NavLink>
+                <NavLink to='/Filter/Notes' >Notes</NavLink>
                 <NavLink to='/Filter' onClick={availablesoon}>Books</NavLink>
                 <NavLink to='/article-section' className={location.pathname === '/article-section' ? 'sub-nav-active' : ''} >Article</NavLink>
             </section>
