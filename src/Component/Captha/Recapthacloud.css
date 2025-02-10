@@ -50,9 +50,11 @@
 
 #captcha-container {
   margin: 1rem 0;
-  /* display: flex; */
+  display: flex;
+  width: 100%;
   justify-content: center;
 }
+
 
 @media (max-width: 768px) {
   .captcha-content h1 {

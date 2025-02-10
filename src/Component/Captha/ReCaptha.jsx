@@ -37,7 +37,7 @@ const ReCaptcha = ({ onVerified }) => {
                 .then((response) => {
                   if (response.data.success) {
                     onVerified(true);
-                    sessionStorage.setItem("isVerified", "true");
+                    
                   } else {
                     onVerified(false);
                     console.error("Turnstile verification failed.");
@@ -72,14 +72,14 @@ const ReCaptcha = ({ onVerified }) => {
   }, [ siteKey]);
 
   return (
-    <div className="captcha-fullscreen">
-  <div className="captcha-content">
-    <h1>studyvault.online</h1>
-    <p>Verifying you  are a human or not.</p>
+    <div className="captcha">
+  {/* <div className="captcha-content"> */}
+    {/* <h1>studyvault.online</h1>
+    <p>Verifying you  are a human or not.</p> */}
     <div id="captcha-container" className="cf-turnstile"></div>
-    <p>StudyVault needs to review the security of your connection before proceeding.</p>
-    <p>Protected by <span >Cloudflare</span></p>
-  </div>
+    {/* <p>StudyVault needs to review the security of your connection before proceeding.</p>
+    <p>Protected by <span >Cloudflare</span></p> */}
+  {/* </div> */}
 </div>
 
   );

@@ -6,6 +6,7 @@ import BackButton from "../../Component/Backbutton/Backbutton";
 import { UserContext } from "../../Context/UserContext/UserContextdata";
 import GoogleAuth from "../../auth/GoogleAuth";
 import studyvault from '../../photo/Study⁐Vault-logo-black.png'
+import ReCaptcha from '../../Component/Captha/ReCaptha'
 
 
 
@@ -17,12 +18,17 @@ const Login = (props) => {
   const [repeatclick, setRepeatclick] = useState(false);
   const [showHide, setShowHide] = useState(false);
   const navigate = useNavigate();
+  const shouldVerify = process.env.NODE_ENV === 'production';
+  const [isVerified, setIsVerified] = useState(false);
   const [loginData, setLoginData] = useState({
     gmail: '',
     password: ''
   });
 
-
+  const handleVerification = (status) => {
+    setIsVerified(status); 
+ 
+  };
 
   const loginChange = (e) => {
     const { name, value } = e.target;
@@ -34,6 +40,12 @@ const Login = (props) => {
   const loginSubmit = async (e) => {
     setRepeatclick(true);
     e.preventDefault();
+
+    if (!isVerified && shouldVerify) {
+      alert("Please complete the CAPTCHA before logging in.");
+      return;
+    }
+
     try {
       const response = await axios.post('/api/LogIn', loginData, { withCredentials: true });
       if (response.status === 200) {
@@ -111,8 +123,11 @@ const Login = (props) => {
               </p>
               <Link to='ForgatePw' style={{ color: '#007bff' }} >Forget password ?</Link>
             </div>
+
+              <ReCaptcha onVerified={handleVerification} />
+
             <div className="submit-parant">
-              <input ref={submitRef} disabled={repeatclick} type="submit" value="Login" className="" />
+              <input ref={submitRef} disabled={repeatclick} type="submit" value={` ${repeatclick ? "Logging in..." : "Login"}`} className="" />
             </div>
           </form>
           <Link to="Signup" className="signup-link">
