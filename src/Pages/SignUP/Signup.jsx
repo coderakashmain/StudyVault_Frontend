@@ -246,7 +246,7 @@ const Signup = (props) => {
               <label htmlFor="password">Create Password   </label>
               <div className="show-hide" style={{ position: 'relative' }}>
                 <input type={`${showHide ? 'text' : 'password'}`} id="password" name="password" onChange={signupchange} autoComplete="off" value={signupdata.password} className="singup-form-input" />
-                {signupdata.password && (<i className={`fa-solid fa-${showHide ? 'eye-slash' : 'eye'}`} style={{ position: 'absolute', right: '0%', top: '50%', color: 'lightblue', fontSize: '01rem', userSelect: 'none' }} onClick={() => { setShowHide(!showHide) }}></i>)}
+                {signupdata.password && (<i className={`fa-solid fa-${showHide ? 'eye' : 'eye-slash'}`} style={{ position: 'absolute', right: '4%', top: '45%', color: '#333', fontSize: '01rem', userSelect: 'none' }} onClick={() => { setShowHide(!showHide) }}></i>)}
               </div>
             </div>
             <div className="new-password-signin">

@@ -70,24 +70,20 @@ function App() {
   const [subheadingtype, setSubheadingtype] = useState('');
 
   const showAlart = (type, message, state) => {
-    if (window.alartTimeout) {
-      clearTimeout(window.alartTimeout);
-    }
-  
+   
     setAlart({ type, msg: message, state });
-  };
-  
-  
-  useEffect(() => {
-    if (alart) {
+
+    
       const timeout = setTimeout(() => {
         setAlart(null);
       }, 4000);
   
       return () => clearTimeout(timeout);
-    }
-  }, [alart])
-
+   
+  };
+  
+  
+ 
 
   const subheadingtypedata = (type) => {
 

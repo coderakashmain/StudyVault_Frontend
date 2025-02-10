@@ -34,6 +34,7 @@
     "locomotive-scroll": "^5.0.0-beta.13",
     "lottie-react": "^2.4.0",
     "lottie-web": "^5.12.2",
+    "lucide-react": "^0.475.0",
     "pdf-lib": "^1.17.1",
     "pdfjs-dist": "^3.0.279",
     "razorpay": "^2.9.5",

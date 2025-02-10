@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import './SubNav.css'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { Userlogincheckcontext } from '../../Context/UserLoginContext/UserLoginContext'
+import {User,LogIn} from 'lucide-react'
 
 
 const SubNav = (props) => {
@@ -36,11 +37,12 @@ const SubNav = (props) => {
                     <i className="fa-solid fa-arrow-left"></i>
                 </div>
                 <h1>StudyVault<sub>{props.subheadingtypedata.type ? props.subheadingtypedata.type : 'Resources'}</sub></h1>
+              
                 {!usercheck ? (<div className="search-metatrila same active" onClick={() => navigate('/LogIn')} >
-                    <i className="fa-solid fa-right-to-bracket"></i>
+                <LogIn  className='i'/>
                 </div>) :
                     (<div className="search-metatrila same active" onClick={() => navigate('/Profile')} >
-                       <i className="fa-solid fa-user"></i>
+                   <User className='i'/> 
                     </div>)}
             </section>
             <section className="sub-to-sub-nav">

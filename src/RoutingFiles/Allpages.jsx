@@ -27,12 +27,12 @@ const Allpages = ({alart}) => {
 
     <>
  
-      {shouldVerify && !isVerified ? (
+      {/* {shouldVerify && !isVerified ? (
        
           <ReCaptha onVerified={handleVerification} />
        
 
-      ) : (
+      ) : ( */}
         
         <Suspense fallback={<Loadingicon/>}>
          <TitleSet/>
@@ -41,7 +41,7 @@ const Allpages = ({alart}) => {
           <Outlet />
           </Suspense>
     
-        )}   
+        {/* )}    */}
 
     </>
   )

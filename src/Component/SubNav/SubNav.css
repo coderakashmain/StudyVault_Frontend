@@ -3,6 +3,7 @@
     z-index: 10000000000;
 }
 
+
 #sub-nav {
     width: 100%;
     height: 5rem;
@@ -43,16 +44,20 @@
     font-weight: 600;
     color: rgb(0, 145, 255);
 }
-#sub-nav i{
-    font-size: 1.5rem ;
-    width: 100%;
-    align-items: center;
+#sub-nav .i{
+    
+    /* fill: black;   */
+    stroke: black; 
+    width: 1.5rem;
+    height: 1.5rem;
     transition: all 0.2s  ease;
-    color: #000;
+  
+
+    
 }
 
-.same:hover i{
-    color: #fff !important; /* Change to white on hover */
+.same:hover .i{
+    stroke: #fff !important;
 }
 
 .sub-to-sub-nav{
