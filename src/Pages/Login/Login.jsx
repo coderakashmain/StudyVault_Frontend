@@ -43,6 +43,7 @@ const Login = (props) => {
 
     if (!isVerified && shouldVerify) {
       props.showAlart("Please complete the CAPTCHA before logging in.",'','cancel');
+      setRepeatclick(false);
       return;
     }
 
