@@ -317,4 +317,8 @@ background-color: #dbdbdb6e;
         padding: 0.5rem 1rem;   
         
     }
+    .otpop .otppop-box{
+       
+        width: 90vw;
+     }
 }

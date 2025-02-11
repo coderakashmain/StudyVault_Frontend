@@ -450,8 +450,8 @@ const Question = (props) => {
 
     const verifyOtp = async () => {
         setLoad(true);
-        if (!load) {
-            showAlart("Please ent otp", '', 'mark')
+        if (!otpvalue) {
+            showAlart("Please enter otp", '', 'mark')
             setLoad(false);
             return;
         }
@@ -464,6 +464,7 @@ const Question = (props) => {
             const token = response.data.token;
             if (token) {
                 localStorage.setItem("adminToken", token);
+                setVerified(true);
                 showAlart("OTP verified! You can delete PDFs now.", '', 'check');
             }
             setLoad(false);
@@ -488,10 +489,14 @@ const Question = (props) => {
                         }}>X</p>
                         <big>Verify Your Self</big>
                         {!otpsent ? (<button className='active' onClick={requestDeleteotp} style={load ? { opacity: '0.5' } : { opacity: '1' }} disabled={load} >{(!load ? "Verify" : 'Sending Otp')}</button>) : (<div className='verified-dltbtn'>
-                            <input type="number" value={otpvalue} onChange={(e) => setOtpvalue(e.target.value)} name="otp" id="otp" placeholder='Enter Otp ...' required />
+                           {!varified && ( <input type="number" value={otpvalue} onChange={(e) => setOtpvalue(e.target.value)} name="otp" id="otp" placeholder='Enter Otp ...' required />)}
 
-                            <button className='active' disabled={load} style={load ? { opacity: '0.5' } : { opacity: '1' }} onClick={verifyOtp} >{(!load ? "Verify Otp" : 'verifying...')}</button>
+                           {!varified ?( <button className='active' disabled={load} style={load ? { opacity: '0.5' } : { opacity: '1' }} onClick={verifyOtp} >{(!load ? "Verify Otp" : 'verifying...')}</button>) :(
+                            <button className='active'   onClick={()=> setOtppop(false)} >Close</button>
+
+                           )}
                         </div>)}
+                        
                     </div>
                 </div>)}
                 <h2 className='question-headline'><span>Question Papers<i className="fa-solid fa-clipboard-question" style={{ margin: '0 0.5rem' }}></i></span> <span>{!varified ? (<ShieldAlert stroke='red' size="2rem" onClick={() => setOtppop(true)} />) : (<ShieldCheck stroke='green' size="2rem" />)}</span></h2>
