@@ -9,6 +9,7 @@ import { UserContext } from "../../Context/UserContext/UserContextdata";
 import { ScrollFilterContext } from "../../Context/FilterScroll/FilterScrollContex";
 import { Userlogincheckcontext } from "../../Context/UserLoginContext/UserLoginContext";
 import { AdminLoginContext } from '../../Context/AdminLoginCheck/AdminLoginCheck'
+import { AlartContectValue } from "../../Context/AlartContext/AlartContext";
 
 import Avatar from '@mui/material/Avatar';
 
@@ -39,6 +40,7 @@ const Navbar = (props) => {
   const notificationIconRef = useRef(null);
   const closeNotification = useRef(null);
   const { filtersection } = useContext(ScrollFilterContext);
+  const {showAlart} = useContext(AlartContectValue);
 
 
   const [logincheckdata, setLogincheckdata] = useState(false);
@@ -189,7 +191,7 @@ const Navbar = (props) => {
           setUsernav('');
           setLogincheckdata(false);
           window.location.href = '/';
-          props.showAlart("Log out", "Back to main page", 'check');
+           showAlart("Log out", "Back to main page", 'check');
         }
       }
       catch (error) {
@@ -521,11 +523,11 @@ const Navbar = (props) => {
               if (isValid) {
                 onSearch(departmetvalue);
               } else {
-                props.showAlart('Enter a valid department name', '', 'cancel');
+                 showAlart('Enter a valid department name', '', 'cancel');
               }
 
             } else {
-              props.showAlart('Please Enter Department Name', '', 'cancel')
+               showAlart('Please Enter Department Name', '', 'cancel')
             }
 
 
@@ -551,11 +553,11 @@ const Navbar = (props) => {
                 if (isValid) {
                   onSearch(departmetvalue);
                 } else {
-                  props.showAlart('Enter a valid department name', '', 'cancel');
+                   showAlart('Enter a valid department name', '', 'cancel');
                 }
 
               } else {
-                props.showAlart('Please Enter Department Name', '', 'cancel')
+                 showAlart('Please Enter Department Name', '', 'cancel')
               }
             }}><i className="fa-solid fa-magnifying-glass"></i></label>
             {showSuggestions && (<div ref={hideeSarchSuggestion} className="search-suggestion">

@@ -6,6 +6,7 @@ import logo from '../../../photo/weblogo.png'
 import { NavLink, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { AdminLoginContext } from '../../../Context/AdminLoginCheck/AdminLoginCheck'
+import { AlartContectValue } from '../../../Context/AlartContext/AlartContext'
 
 
 
@@ -14,6 +15,7 @@ const [userid,setUserid] = useState('');
 const [password,setPassword] = useState('');
 const [isactive,setIsactive] = useState(false);
 const {setCheck} = useContext(AdminLoginContext);
+const {showAlart} = useContext(AlartContectValue);
 
 
 const navigate = useNavigate();
@@ -25,7 +27,7 @@ const handleSubmit = async (e)=>{
         // alert();
         const response = await axios.post("/api/Admin/AdminLogIn", { userid, password ,withCredentials: true });
         
-            props.showAlart('LogIn Seccessfully',"","check");
+             showAlart('LogIn Seccessfully',"","check");
             setUserid('');
             setPassword('');
             setIsactive(false);
@@ -37,18 +39,18 @@ const handleSubmit = async (e)=>{
     
         if (error.response) {
             if (error.response.status === 400) {
-                props.showAlart('Invalid Credentials', "", 'cancel');
+                 showAlart('Invalid Credentials', "", 'cancel');
                 setIsactive(false);
                 return; 
             }
             if (error.response.status === 500) {
-                props.showAlart('Internal Server Error', "", 'cancel');
+                 showAlart('Internal Server Error', "", 'cancel');
                 setIsactive(false);
                 return; 
             }
             else {
             
-                props.showAlart(
+                 showAlart(
                     `Unexpected Error (${error.response.status})`,
                     error.response.statusText || "",
                     'cancel'
@@ -60,7 +62,7 @@ const handleSubmit = async (e)=>{
        
         } else {
             
-            props.showAlart('An unknown error occurred', "", 'cancel');
+             showAlart('An unknown error occurred', "", 'cancel');
             setIsactive(false);
         }
     }

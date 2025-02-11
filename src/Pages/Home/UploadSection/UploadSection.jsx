@@ -1,12 +1,13 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import './UploadSection.css'
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
+import { AlartContectValue } from '../../../Context/AlartContext/AlartContext';
 
 
 const UploadSection = (props) => {
 
-
+  const {showAlart} = useContext(AlartContectValue);
   const fileInputRef = useRef();
   const [selectedFile,setSelectedFile] = useState(null);
   const falsepdffinalref = useRef();
@@ -115,7 +116,7 @@ const location = useLocation();
           if (fileInputRef.current) {
             fileInputRef.current.value = "";
           }
-          props.showAlart('Successfully send', '', 'check');
+           showAlart('Successfully send', '', 'check');
             falsepdffinalref.current.style.bottom = '-100%';
             setMessage('');
          
@@ -123,13 +124,13 @@ const location = useLocation();
       
         } else {
           setMessage(<p style={{color : 'red'}}>Error: Failed to upload files</p>);
-          props.showAlart('Error: Failed to upload files', '', 'cancel');
+           showAlart('Error: Failed to upload files', '', 'cancel');
             setMessage('')
           setSingletap(false);
         }
       } catch (error) {
         console.error("Error uploading files:", error);
-        props.showAlart('Error uploading files:', '', 'cancel');
+         showAlart('Error uploading files:', '', 'cancel');
         setMessage('')
 
         setMessage(<p style={{color : 'red'}}>Error: Failed to upload files</p>);

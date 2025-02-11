@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import './Syllabus.css'
 import HomeAdd1 from '../../Component/AddSense/HomeAdd1';
 import LongWidthAds from '../../Component/AddSense/LongWidthAds';
@@ -6,6 +6,7 @@ import Horizontalads from '../../Component/AddSense/Horizontalads';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
 import Review from '../Home/Review/Review';
+import { AlartContectValue } from '../../Context/AlartContext/AlartContext';
 
 
 const Syllabus = (props) => {
@@ -13,6 +14,7 @@ const ugbtnRef = useRef();
 const [ugloading,setUgloading]= useState(false);
 const [pgloading,setPgloading] = useState(false);
 const navigate = useNavigate();
+const {showAlart} = useContext(AlartContectValue);
 
   useEffect(() => {
      
@@ -145,7 +147,7 @@ setPgloading(true);
 }
 
 // const  notavialable = () =>{
-//   props.showAlart('Upload Soon', '', 'cancel')
+//    showAlart('Upload Soon', '', 'cancel')
 // }
 
 
@@ -457,7 +459,7 @@ setPgloading(true);
 
       </div>
     </section>
-    <Review showAlart = {props.showAlart}/>
+    <Review showAlart = { showAlart}/>
     </>
   )
 }

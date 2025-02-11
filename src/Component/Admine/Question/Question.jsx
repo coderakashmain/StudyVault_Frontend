@@ -6,6 +6,7 @@ import { degrees, PDFDocument, rgb } from 'pdf-lib';
 import './Question.css'
 import { Departmentlistdata } from '../../../Context/DepartmentList/DepartmentListContext'
 import axios from 'axios'
+import { AlartContectValue } from '../../../Context/AlartContext/AlartContext';
 
 
 const Question = (props) => {
@@ -26,6 +27,7 @@ const Question = (props) => {
     const paperboxhide = useRef();
     const fileInputRef = useRef();
     const [uploadProgress, setUploadProgress] = useState(0);
+    const {showAlart} = useContext(AlartContectValue);
 
     const [filtetuploaddata, setFiltetuploaddata] = useState(
         {
@@ -68,7 +70,7 @@ const Question = (props) => {
         if (file && file.type === 'application/pdf') {
             setSelectedFile(file);
         } else {
-            props.showAlart('Failed', 'Please select a valid PDF file.', 'cancel');
+             showAlart('Failed', 'Please select a valid PDF file.', 'cancel');
             setSelectedFile(null);
             if (fileInputRef.current) {
                 fileInputRef.current.value = ''; // Reset the file input
@@ -117,7 +119,7 @@ const Question = (props) => {
 
         const fileToUpload = await handleUpload(); // Get renamed file
         if (!fileToUpload) {
-            props.showAlart('Selet a File', 'Please select a valid file.', 'cancel');
+             showAlart('Selet a File', 'Please select a valid file.', 'cancel');
             setSingletap(false);
             return;
         }
@@ -159,40 +161,40 @@ const Question = (props) => {
                 setSingletap(false);
                 // if (fileInputRef.current) fileInputRef.current.value = '';
                 setDartmentvalue('');
-                props.showAlart('Successfully uploaded.', '', 'check');
+                 showAlart('Successfully uploaded.', '', 'check');
                 setElective(false);
                 setCompulsory(false);
                 setEandv(false);
                 setHonors(true);
             } else {
-                props.showAlart('External Error', 'Failed to upload the file.', 'cancel');
+                 showAlart('External Error', 'Failed to upload the file.', 'cancel');
                 setSingletap(false);
 
             }
         } catch (error) {
             if (error.response && error.response.status === 401) {
-                props.showAlart('Department does not exist', 'Failed to upload the file.', 'cancel');
+                 showAlart('Department does not exist', 'Failed to upload the file.', 'cancel');
                 return;
 
             }
             if (error.response && error.response.status === 400) {
-                props.showAlart('File already present', 'Failed to upload the file.', 'cancel');
+                 showAlart('File already present', 'Failed to upload the file.', 'cancel');
                 return;
 
             }
             if (error.response && error.response.status === 500) {
-                props.showAlart('Failed to save file information to the database', 'Failed to upload the file.', 'mark');
+                 showAlart('Failed to save file information to the database', 'Failed to upload the file.', 'mark');
                 return;
 
             }
             if (error.response && error.response.status === 502) {
-                props.showAlart('Failed to verify file existence', 'Failed to upload the file.', 'mark');
+                 showAlart('Failed to verify file existence', 'Failed to upload the file.', 'mark');
                 return;
 
             }
 
             console.error('Error uploading file:', error);
-            props.showAlart('Unexpected Error', 'Failed to upload the file.', 'cancel');
+             showAlart('Unexpected Error', 'Failed to upload the file.', 'cancel');
             setSingletap(false);
         } finally {
             setSingletap(false);
@@ -257,10 +259,10 @@ const Question = (props) => {
                     setPaperList(response.data);
                 }
                 else {
-                    props.showAlart('Error fetching Data', "", 'mark')
+                     showAlart('Error fetching Data', "", 'mark')
                 }
             } catch {
-                props.showAlart('Error fetching Data', "", 'mark');
+                 showAlart('Error fetching Data', "", 'mark');
             }
         }
         fatchData();
@@ -383,7 +385,7 @@ const Question = (props) => {
                             <input type="text" value={selectedFile ? selectedFile.name : 'Please Select a File :'} readOnly={true} />
                             <button onClick={() => {
                                 setSelectedFile(null)
-                                props.showAlart('Cleard', '', 'check');
+                                 showAlart('Cleard', '', 'check');
 
                             }}>Clear</button>
                         </div>
@@ -569,7 +571,7 @@ const Question = (props) => {
                                     studentyear: ''
                                 });
                                 setSingletap(false);
-                                props.showAlart('Cleard', '', 'check')
+                                 showAlart('Cleard', '', 'check')
                             }}>Reset All</button>
                             <button type='submit'>Upload</button>
                         </div>

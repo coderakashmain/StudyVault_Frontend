@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './ForgatePw.css'
 import { Link, useNavigate } from 'react-router-dom'
 import BackButton from '../../../Component/Backbutton/Backbutton'
 import axios from 'axios';
+import { AlartContectValue } from '../../../Context/AlartContext/AlartContext';
 
 
 
@@ -17,6 +18,7 @@ const ForgatePw = (props) => {
   const [message, setMessage] = useState('');
   const navigate = useNavigate(); 
   const [PasswordResetPage, setPasswordResetPage] = useState(false)
+  const {showAlart} = useContext(AlartContectValue);
   const backtohome = ()=>{
      navigate('/');
   }
@@ -46,7 +48,7 @@ const handleChange = (e)=>{
         setOtpSent(true);
         setLoader(true);
         await axios.post('/api/LogIn/ForgatePw',{email});
-        props.showAlart('OTP sent seccesfully','','check');
+         showAlart('OTP sent seccesfully','','check');
         setMessage(<p>Your OTP expired in 10 minutes.</p>);
 
         setOtp(true);
@@ -60,11 +62,11 @@ const handleChange = (e)=>{
      catch(error){
       setOtpSent(false);
       if(error.response && error.response.status === 409){
-        props.showAlart('Not Registered','','mark');
+         showAlart('Not Registered','','mark');
         setLoader(false);
       }
       else if (error.response && error.response.status === 429) {
-        props.showAlart('OTP already sent. Please wait 30 seconds before requesting another OTP.','','check');
+         showAlart('OTP already sent. Please wait 30 seconds before requesting another OTP.','','check');
         setOtp(true);
         setLoader(false);
       }
@@ -77,7 +79,7 @@ const handleChange = (e)=>{
      }
     }
     else{
-      props.showAlart('Please enter your email','','mark');
+       showAlart('Please enter your email','','mark');
       setLoader(false);
     }
       
@@ -90,30 +92,30 @@ const handleChange = (e)=>{
     if(otpValue){
       try{
         const response =   await axios.post('/api/LogIn/verifyOtp ',{otp : otpValue , email});
-        props.showAlart('Verify successfull','','check');
+         showAlart('Verify successfull','','check');
         setPasswordResetPage(true);
         
       }
       catch(error){
         if(error.response && error.response.status === 409){
-          props.showAlart('Incorrect OTP','','cancel');
+           showAlart('Incorrect OTP','','cancel');
 
         }
         if(error.response && error.response.status === 410){
-          props.showAlart('OTP expired!','','cancel');
+           showAlart('OTP expired!','','cancel');
           setOtpValue('');
           setOtp(false);
           setMessage(<p style={{color : 'red'}}>OTP expired!</p>);
         }
         if(error.response && error.response.status === 500){
           alert('Internal error');
-          props.showAlart('Internal error','','cancel');
+           showAlart('Internal error','','cancel');
         }
       };
      
     }
     else{
-      props.showAlart('Please enter OTP sent to your gmail','','mark');
+       showAlart('Please enter OTP sent to your gmail','','mark');
     }
   }
 
@@ -158,29 +160,29 @@ const handleChange = (e)=>{
     const handleSubmitotp = async (e) => {
         e.preventDefault();
         if (resetPassword !== reEnterResetPassword) {
-            props.showAlart('Password do not match', '','mark');
+             showAlart('Password do not match', '','mark');
             return;
         }
 
         if (resetPassword === reEnterResetPassword) {
             try {
                 await axios.post('/api/LogIn/ForgatePw/ResetPassword', { email, resetPassword });
-                props.showAlart('Password Reset succesfully','','check');
+                 showAlart('Password Reset succesfully','','check');
                 navigate('/LogIn');
             }
             catch (error) {
                 if (error.response && error.response.status === 500) {
-                    props.showAlart('Error  inserting in database','','cancel')
+                     showAlart('Error  inserting in database','','cancel')
                 }
                 else {
-                    props.showAlart('Internal error','','cancel');
+                     showAlart('Internal error','','cancel');
                 }
             }
         }
         else {
 
 
-            props.showAlart('Please Write a password','','mark');
+             showAlart('Please Write a password','','mark');
 
         }
 

@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './Websiteinfo.css'
 
 import studyvaultlogo from '../../../photo/Study⁐Vault-logo-black.png'
 import axios from 'axios'
 import {useNavigate } from 'react-router'
+import { AlartContectValue } from '../../../Context/AlartContext/AlartContext'
 
 
 const Websiteinfo = (props) => {
@@ -12,6 +13,7 @@ const Websiteinfo = (props) => {
     const [load, setLoad] = useState(false);
     const [errormessage, setErrormessage] = useState('');
     const [sendcomplete, setSendcomplete] = useState(false);
+    const {showAlart} = useContext(AlartContectValue);
     const [messageus, setMessageus] = useState({
         firstName: '',
         lastName: '',
@@ -74,7 +76,7 @@ const Websiteinfo = (props) => {
                 <h2>Small step to make your exam easy.</h2>
 
                 <h3>This  website is running in our own fund. <br />Support our mission by donating to help us grow.</h3>
-                {/* <button className='active' onClick={() => props.showAlart('Available soon', '','cancel')}>Donate Us</button> */}
+                {/* <button className='active' onClick={() =>  showAlart('Available soon', '','cancel')}>Donate Us</button> */}
                 <button className='active' onClick={() => navigate('/payment-donate-us')}>Donate Us</button>
 
                 <h3>Connect with Us <br /> for advertising opportunities and reach a wider audience!</h3>

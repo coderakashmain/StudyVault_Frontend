@@ -21,7 +21,7 @@ const Allpages = ({alart}) => {
         
         <Suspense fallback={<Loadingicon/>}>
          <TitleSet/>
-         {/* <IntroLoader/> */}
+         
  
    
           <Outlet />

@@ -2,14 +2,16 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import './SectionSelector.css'
 import { NavLink, useLocation } from 'react-router-dom';
 import { ScrollFilterContext } from '../../Context/FilterScroll/FilterScrollContex';
+import { AlartContectValue } from '../../Context/AlartContext/AlartContext';
 
 const SectionSelector = (props) => {
     const location = useLocation();
     const sectionRef = useRef();
     const {filtersection} = useContext(ScrollFilterContext);
+    const{showAlart} = useContext(AlartContectValue);
    
     const popup = ()=>{
-        props.showAlart('Available Soon', '','mark');
+         showAlart('Available Soon', '','mark');
     }
   
     // const gotofilter = () => {

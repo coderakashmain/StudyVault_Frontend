@@ -1,11 +1,17 @@
 
-import React from 'react'
+import React, { useContext } from 'react'
 import './Alart.css'
 import check from '../../photo/check2.png'
 import mark from '../../photo/mark.png'
 import cancel from '../../photo/close.png'
+import { AlartContectValue } from '../../Context/AlartContext/AlartContext'
 
-const Alart = ({alart}) => {
+const Alart = () => {
+
+  const {alart} = useContext(AlartContectValue)
+
+
+  
 
   const icons = {
     check: check,

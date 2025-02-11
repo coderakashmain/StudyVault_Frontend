@@ -1,6 +1,6 @@
 import "./App.css";
 
-import React, { lazy, Suspense, useEffect, useState } from "react";
+import React, { lazy, Suspense, useContext, useEffect, useState } from "react";
 import { createBrowserRouter, RouterProvider, useLocation } from "react-router-dom";
 
 const Filter = lazy(()=> import("./Pages/Home/FilterS/Filter"));
@@ -43,6 +43,7 @@ import PaymentStatus from "./Pages/CashfreePay/PaymentStatus";
 import ThemeContext from "./Context/ThemeContext/ThemeContext";
 import NavbarpresentRouting from "./RoutingFiles/NavbarpresentRouting";
 import IntroLoader from "./Component/IntroLoader/IntroLoader";
+import AlartContext from "./Context/AlartContext/AlartContext";
 
 
 
@@ -68,23 +69,11 @@ const Loginsignup = lazy(() => import("./RoutingFiles/Loginsignup"));
 
 
 function App() {
+ 
 
 
-  const [alart, setAlart] = useState(null);
   const [subheadingtype, setSubheadingtype] = useState('');
-
-  const showAlart = (type, message, state) => {
-   
-    setAlart({ type, msg: message, state });
-
-    
-      const timeout = setTimeout(() => {
-        setAlart(null);
-      }, 4000);
-  
-      return () => clearTimeout(timeout);
-   
-  };
+ 
   
   
  
@@ -121,19 +110,19 @@ const navrefvalue = (value) => {
     },
     {
       path: '/',
-      element: <><ErrorBoundary>    <Suspense fallback={<IntroLoader/>}><ThemeContext><AdminLoginCheck><UserContextdata><UserLoginContext><FilterScrollContex><DepartmentListContext><Allpages /></DepartmentListContext></FilterScrollContex></UserLoginContext></UserContextdata></AdminLoginCheck></ThemeContext><Alart   alart={alart}  /></Suspense></ErrorBoundary></>,
+      element: <><ErrorBoundary>    <Suspense fallback={<IntroLoader/>}> <AlartContext><ThemeContext><AdminLoginCheck><UserContextdata><UserLoginContext><FilterScrollContex><DepartmentListContext><Allpages /></DepartmentListContext></FilterScrollContex></UserLoginContext></UserContextdata></AdminLoginCheck></ThemeContext><Alart  /></AlartContext></Suspense></ErrorBoundary></>,
       children: [
         {
           path : '',
-          element : <><ErrorBoundary> <Navbar showAlart={showAlart}  navrefvalue = {navrefvalue}  /><NavbarpresentRouting/></ErrorBoundary></>,
+          element : <><ErrorBoundary> <Navbar    navrefvalue = {navrefvalue}  /><NavbarpresentRouting/></ErrorBoundary></>,
           children : [
             {
               path: '',
-              element: (<><Home  showAlart={showAlart}  navRefvalue = {navRefvalue} /></>),
+              element: (<><Home     navRefvalue = {navRefvalue} /></>),
               children: [
                 {
                   path: '',
-                  element: <><ErrorBoundary><Departmentlist showAlart={showAlart} /></ErrorBoundary></>
+                  element: <><ErrorBoundary><Departmentlist   /></ErrorBoundary></>
                 },
                
     
@@ -141,23 +130,23 @@ const navrefvalue = (value) => {
             },
             {
               path: "Contact-Us",
-              element: (<><ErrorBoundary><Suspense fallback={<FallbackLoad/>}> <PhoneInfo><Contact showAlart={showAlart} /></PhoneInfo></Suspense></ErrorBoundary> </>),
+              element: (<><ErrorBoundary><Suspense fallback={<FallbackLoad/>}> <PhoneInfo><Contact   /></PhoneInfo></Suspense></ErrorBoundary> </>),
             },
             {
               path: "Profile",
-              element: (<><ErrorBoundary> <Profile showAlart={showAlart} /></ErrorBoundary></>),
+              element: (<><ErrorBoundary> <Profile   /></ErrorBoundary></>),
             },
             {
               path: "About-us",
-              element: (<><ErrorBoundary> <AboutUs showAlart={showAlart} /></ErrorBoundary></>),
+              element: (<><ErrorBoundary> <AboutUs   /></ErrorBoundary></>),
             },
             { 
               path: "Privacy-Policy",
-              element: (<><ErrorBoundary> <PrivecyandPolicy showAlart={showAlart} /></ErrorBoundary></>),
+              element: (<><ErrorBoundary> <PrivecyandPolicy   /></ErrorBoundary></>),
             },
             { 
               path: "Terms-Conditions",
-              element: (<><ErrorBoundary> <TermsConditions showAlart={showAlart} /></ErrorBoundary></>),
+              element: (<><ErrorBoundary> <TermsConditions   /></ErrorBoundary></>),
             },
           ]
         },
@@ -165,20 +154,20 @@ const navrefvalue = (value) => {
         
         {
           path: 'Filter',
-          element:<MaterialRouting showAlart={showAlart}  subheadingtypedata = {subheadingtype}/>,
+          element:<MaterialRouting    subheadingtypedata = {subheadingtype}/>,
           children : [
             {
               path: '',
-              element:<><Suspense fallback  = {<FallbackLoad/>}><Filter showAlart={showAlart} subheadingtypedata = {subheadingtypedata}/> </Suspense></>,
+              element:<><Suspense fallback  = {<FallbackLoad/>}><Filter   subheadingtypedata = {subheadingtypedata}/> </Suspense></>,
          
             },
             {
               path: 'syllabus',
-              element:<><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}> <Syllabus showAlart={showAlart}  subheadingtypedata = {subheadingtypedata}/> </Suspense></ErrorBoundary></>,
+              element:<><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}> <Syllabus    subheadingtypedata = {subheadingtypedata}/> </Suspense></ErrorBoundary></>,
             },
             {
               path: 'Notes',
-              element:<><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}> <Notes showAlart={showAlart}  subheadingtypedata = {subheadingtypedata}/> </Suspense></ErrorBoundary></>,
+              element:<><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}> <Notes    subheadingtypedata = {subheadingtypedata}/> </Suspense></ErrorBoundary></>,
             },
           ]
         },
@@ -186,7 +175,7 @@ const navrefvalue = (value) => {
      
         {
           path: '/Downloadpdf/:fName',
-          element: (<><ErrorBoundary><Downloadpdf showAlart={showAlart} /></ErrorBoundary></>),
+          element: (<><ErrorBoundary><Downloadpdf   /></ErrorBoundary></>),
         },
         {
           path: "LogIn",
@@ -194,15 +183,15 @@ const navrefvalue = (value) => {
           children: [
             {
               path: "",
-              element:<ErrorBoundary><Suspense fallback  = {<Loadingicon/>}> <Login showAlart={showAlart} /></Suspense></ErrorBoundary>
+              element:<ErrorBoundary><Suspense fallback  = {<Loadingicon/>}> <Login   /></Suspense></ErrorBoundary>
             },
             {
               path: "Signup",
-              element: <> <ErrorBoundary><Suspense fallback  = {<Loadingicon/>}> <Signup showAlart={showAlart} /></Suspense></ErrorBoundary></>
+              element: <> <ErrorBoundary><Suspense fallback  = {<Loadingicon/>}> <Signup   /></Suspense></ErrorBoundary></>
             },
             {
               path: "ForgatePw",
-              element:<ErrorBoundary><Suspense fallback  = {<Loadingicon/>}>  <ForgatePw showAlart={showAlart} /></Suspense></ErrorBoundary>
+              element:<ErrorBoundary><Suspense fallback  = {<Loadingicon/>}>  <ForgatePw   /></Suspense></ErrorBoundary>
             },
           ]
         },
@@ -210,16 +199,16 @@ const navrefvalue = (value) => {
         
         {
           path: "payment-donate-us",
-          element: (<><ErrorBoundary> <Suspense fallback  = {<Loadingicon/>}> <PaymentRouter showAlart={showAlart} /></Suspense> </ErrorBoundary></>),
+          element: (<><ErrorBoundary> <Suspense fallback  = {<Loadingicon/>}> <PaymentRouter   /></Suspense> </ErrorBoundary></>),
           children : [
             {
               index: true,
               path: "",
-              element: (<><ErrorBoundary> <Cashfree showAlart={showAlart} /></ErrorBoundary></>),
+              element: (<><ErrorBoundary> <Cashfree   /></ErrorBoundary></>),
             },
             {
               path: "payment-response",
-              element: (<><ErrorBoundary> <PaymentStatus showAlart={showAlart} /></ErrorBoundary></>),
+              element: (<><ErrorBoundary> <PaymentStatus   /></ErrorBoundary></>),
             },
          
           ]
@@ -228,30 +217,30 @@ const navrefvalue = (value) => {
        
         {
           path: "Admin",
-          element: (<><FetchData><Admine showAlart={showAlart} /></FetchData></>),
+          element: (<><FetchData><Admine   /></FetchData></>),
           children: [{
             path: '',
-            element: <><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}><Dashboard showAlart={showAlart} /></Suspense>  </ErrorBoundary></>
+            element: <><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}><Dashboard   /></Suspense>  </ErrorBoundary></>
           },
           {
             path: 'Question',
-            element: <><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}><Question showAlart={showAlart} /></Suspense> </ErrorBoundary></>
+            element: <><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}><Question   /></Suspense> </ErrorBoundary></>
 
           },
           {
             path: 'syllabusupload',
-            element: <><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}><SyllabusUpload showAlart={showAlart} /></Suspense> </ErrorBoundary></>
+            element: <><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}><SyllabusUpload   /></Suspense> </ErrorBoundary></>
 
           },
         
           {
             path: 'Usersend',
-            element: <><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}><UserSend showAlart={showAlart} /></Suspense></ErrorBoundary> </>
+            element: <><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}><UserSend   /></Suspense></ErrorBoundary> </>
 
           },
           {
             path: 'CsUpload',
-            element: <><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}> <CsUpload showAlart={showAlart} /></Suspense></ErrorBoundary></>
+            element: <><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}> <CsUpload   /></Suspense></ErrorBoundary></>
 
           },
          
@@ -259,28 +248,28 @@ const navrefvalue = (value) => {
         },
         {
           path : 'Admin/AdminLogIn',
-          element : (<><ErrorBoundary><AdmineLogIn showAlart={showAlart}/></ErrorBoundary></>)
+          element : (<><ErrorBoundary><AdmineLogIn  /></ErrorBoundary></>)
         } ,
          {
           path: 'article-section',
-          element: (<><Suspense fallback  = {<FallbackLoad/>}> <ArticleSubheading><ArticleContainerRouter showAlart={showAlart} /></ArticleSubheading></Suspense> </>),
+          element: (<><Suspense fallback  = {<FallbackLoad/>}> <ArticleSubheading><ArticleContainerRouter   /></ArticleSubheading></Suspense> </>),
           children: [
             {
               path: '',
-              element: <><ErrorBoundary><ArticleHome showAlart={showAlart} /></ErrorBoundary></>
+              element: <><ErrorBoundary><ArticleHome   /></ErrorBoundary></>
             },
             {
               path: 'colleges-article',
            
-              element:<><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}>  <CollegeArticleRouter showAlart={showAlart} /></Suspense></ErrorBoundary></>,
+              element:<><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}>  <CollegeArticleRouter   /></Suspense></ErrorBoundary></>,
               children : [
                 {
                   path : '',
-                  element:<><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}> <CollegeAritcle showAlart={showAlart} /></Suspense></ErrorBoundary></>,
+                  element:<><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}> <CollegeAritcle   /></Suspense></ErrorBoundary></>,
                   
                 },{
                   path : 'mpc-article',
-                  element:<><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}> <MpcArticle showAlart={showAlart}/></Suspense></ErrorBoundary></>,
+                  element:<><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}> <MpcArticle  /></Suspense></ErrorBoundary></>,
                 
                 }
               ]

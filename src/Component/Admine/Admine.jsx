@@ -4,12 +4,14 @@ import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 import axios from 'axios';
 
 import { AdminLoginContext } from '../../Context/AdminLoginCheck/AdminLoginCheck';
+import { AlartContectValue } from '../../Context/AlartContext/AlartContext';
 
 
 const Admine = (props) => {
  const navigate = useNavigate();
  const {check,setCheck} = useContext(AdminLoginContext);
  const [loading,setLoading]= useState(true);
+ const {showAlart} = useContext(AlartContectValue)
 
 
 
@@ -23,24 +25,24 @@ const Admine = (props) => {
         
                 setCheck(true);
                 setLoading(false);
-                  props.showAlart('Authorized', '', 'check');
+                   showAlart('Authorized', '', 'check');
               }
           } catch (error) {
          
               if (error.response && error.response.status === 500) {
-                  props.showAlart('Internal Error', '', 'cancel');
+                   showAlart('Internal Error', '', 'cancel');
                  
               }  
               if (error.response && error.response.status === 400 || error.response && error.response.status === 401) {
-                  props.showAlart('You are not Autherized', '', 'cancel');
+                   showAlart('You are not Autherized', '', 'cancel');
                   
               } 
               if (error.response && error.response.status === 405) {
-                  props.showAlart('Log in expired', '', 'cancel');
+                   showAlart('Log in expired', '', 'cancel');
                   
               } 
               else {
-                  props.showAlart('Error verifying user', '', 'cancel');
+                   showAlart('Error verifying user', '', 'cancel');
               }
               setCheck(false);
               navigate('/Admin/AdminLogIn');  
@@ -57,13 +59,13 @@ const handleLogout = async () => {
    
     window.location.href = "/Admin/AdminLogIn";
     
-    props.showAlart('Logged out successfully', '', 'check');
+     showAlart('Logged out successfully', '', 'check');
 
     setCheck(false);
   }catch(error){
     console.error(error);
-    // props.showAlart('Failed to log out', '', 'cancel');
-    props.showAlart(
+    //  showAlart('Failed to log out', '', 'cancel');
+     showAlart(
       `Unexpected Error (${error.response.status})`,
       error.response.statusText || "",
       'cancel'

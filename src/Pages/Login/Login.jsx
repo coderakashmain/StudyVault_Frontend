@@ -7,13 +7,13 @@ import { UserContext } from "../../Context/UserContext/UserContextdata";
 import GoogleAuth from "../../auth/GoogleAuth";
 import studyvault from '../../photo/Study⁐Vault-logo-black.png'
 import ReCaptcha from '../../Component/Captha/ReCaptha'
-
+import { AlartContectValue } from "../../Context/AlartContext/AlartContext";
 
 
 
 
 const Login = (props) => {
-
+  const {showAlart} = useContext(AlartContectValue);
   const { setUsernav } = useContext(UserContext);
   const [repeatclick, setRepeatclick] = useState(false);
   const [showHide, setShowHide] = useState(false);
@@ -42,7 +42,7 @@ const Login = (props) => {
     e.preventDefault();
 
     if (!isVerified && shouldVerify) {
-      props.showAlart("Please complete the CAPTCHA before logging in.",'','cancel');
+       showAlart("Please complete the CAPTCHA before logging in.",'','cancel');
       setRepeatclick(false);
       return;
     }
@@ -50,7 +50,7 @@ const Login = (props) => {
     try {
       const response = await axios.post('/api/LogIn', loginData, { withCredentials: true });
       if (response.status === 200) {
-        props.showAlart('Log in Successfull.', '', 'check');
+         showAlart('Log in Successfull.', '', 'check');
         setUsernav(response.data.user);
         navigate('/');
 
@@ -59,7 +59,7 @@ const Login = (props) => {
 
       else {
         console.error('Error retrieving data');
-        props.showAlart('Error retrieving data', '', 'cancel');
+         showAlart('Error retrieving data', '', 'cancel');
         setRepeatclick(false);
 
       }
@@ -67,15 +67,15 @@ const Login = (props) => {
 
     } catch (error) {
       if (error.response && error.response.status === 300) {
-        props.showAlart('Invalid password', 'try again', 'cancel');
+         showAlart('Invalid password', 'try again', 'cancel');
         setRepeatclick(false);
       }
       if (error.response && error.response.status === 401) {
-        props.showAlart('You are not Resgistered', 'try again', 'cancel');
+         showAlart('You are not Resgistered', 'try again', 'cancel');
         setRepeatclick(false);
       }
       if (error.response && error.response.status === 500) {
-        props.showAlart('Internal Server Error', '', 'cancel');
+         showAlart('Internal Server Error', '', 'cancel');
         setRepeatclick(false);
       }
       
@@ -138,7 +138,7 @@ const Login = (props) => {
           <p className="Or-separate">or</p>
           <div style={{margin : "0.8rem 0" , display : 'flex', justifyContent : 'center', alignItems : 'center', width: '100%'}}>
             <div className="goolge-auth-btn">
-          <GoogleAuth userdata={setUsernav} showAlart={props.showAlart}/>
+          <GoogleAuth userdata={setUsernav} showAlart={ showAlart}/>
           </div>
           </div>
           <div className="back-to-home " >

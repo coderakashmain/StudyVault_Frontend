@@ -15,6 +15,7 @@ import Horizontalads from "../../../Component/AddSense/Horizontalads";
 import AritcleAds from "../../../Component/AddSense/AritcleAds";
 import Verticalads from "../../../Component/AddSense/Verticalads";
 import Review from "../Review/Review";
+import { AlartContectValue } from "../../../Context/AlartContext/AlartContext";
 
 
 const Filter = (props) => {
@@ -47,6 +48,7 @@ const [adsmobileview,setAdsmobileview] = useState(false);
   const departmentlist = useContext(Departmentlistdata);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const hideeSarchSuggestion = useRef();
+  const {showAlart }= useContext(AlartContectValue);
 
 
   const initialDepartmentName = location.state?.departmentName || '';
@@ -314,7 +316,7 @@ const  handlesubjet = (e)=>{
         setLoader(false);
       }
       else {
-        props.showAlart('Try again after some time .', '', 'cancel');
+         showAlart('Try again after some time .', '', 'cancel');
         setLoader(false)
       }
 
@@ -322,17 +324,17 @@ const  handlesubjet = (e)=>{
       if (error.response && error.response.status === 400) {
         console.error(error);
         setLoader(false);
-        props.showAlart('No filter parameters provided', '', 'cancel');
+         showAlart('No filter parameters provided', '', 'cancel');
       }
       if (error.response && error.response.status === 500) {
         console.error('Internal server error: ', error);
         setLoader(false);
-        props.showAlart('Server Error', '', 'cancel');
+         showAlart('Server Error', '', 'cancel');
       }
       else {
         console.error('Internal Error: ', error);
         setLoader(false);
-        props.showAlart('Server Error', '', 'cancel');
+         showAlart('Server Error', '', 'cancel');
       }
 
     }
@@ -664,7 +666,7 @@ useEffect(()=>{
       </div>
       </form>
       <div className="filter-right-ads-div">
-       <Verticalads showAlart = {props.showAlart}/>
+       <Verticalads showAlart = { showAlart}/>
         </div> 
      
     </div>

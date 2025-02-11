@@ -3,6 +3,7 @@ import './SubNav.css'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { Userlogincheckcontext } from '../../Context/UserLoginContext/UserLoginContext'
 import {User,LogIn} from 'lucide-react'
+import { AlartContectValue } from '../../Context/AlartContext/AlartContext'
 
 
 const SubNav = (props) => {
@@ -10,12 +11,13 @@ const SubNav = (props) => {
     const location = useLocation();
     const loginCheck = useContext(Userlogincheckcontext);
     const [usercheck, setUsercheck] = useState('');
+    const {showAlart} = useContext(AlartContectValue);
     const backnavigate = () => {
         navigate('/');
     }
 
     const availablesoon = () => {
-        props.showAlart("Available soon", '', 'mark')
+         showAlart("Available soon", '', 'mark')
     }
 
     useEffect(() => {

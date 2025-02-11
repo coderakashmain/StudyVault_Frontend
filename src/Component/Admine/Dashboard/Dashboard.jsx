@@ -3,12 +3,14 @@ import './Dashboard.css'
 import { FetchDataContext } from '../../../Context/FretchDataContext/FetchData'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { AlartContectValue } from '../../../Context/AlartContext/AlartContext';
 
 const Dashboard = (props) => {
     const [totalCount, setTotalCount] = useState(0);
     const navigate = useNavigate();
 
     const {paperList,setPaperList} = useContext(FetchDataContext);
+    const {showAlart} = useContext(AlartContectValue);
 
 
     useEffect(() => {
@@ -20,11 +22,11 @@ const Dashboard = (props) => {
                     setTotalCount(response.data.length); 
                     // Update the totalCount directly
                 } else {
-                    props.showAlart("Error fetching Data", "", "mark");
+                     showAlart("Error fetching Data", "", "mark");
                 }
             } catch (error) {
                 console.error("Error fetching data:", error);
-                props.showAlart("Error fetching Data", "", "mark");
+                 showAlart("Error fetching Data", "", "mark");
             }
         };
         fetchData();

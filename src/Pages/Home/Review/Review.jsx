@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import './Review.css'
 import { NavLink } from 'react-router-dom'
 import axios from 'axios'
 import Avatar from '@mui/material/Avatar';
 import malelogo from '../../../photo/profile common logo.jpg'
+import { AlartContectValue } from '../../../Context/AlartContext/AlartContext';
 
 
 const Review = (props) => {
@@ -13,6 +14,7 @@ const Review = (props) => {
   const [activeReplyId, setActiveReplyId] = useState(null);
   const [activeReplylist, setActiveReplylist] = useState(null);
   const [replypostbtn, setReplypostbtn] = useState(false);
+  const {showAlart} = useContext(AlartContectValue);
 
 
 
@@ -44,11 +46,11 @@ const Review = (props) => {
       fetchComments();
       setFormData({ name: '', gmail: '', gender: '', message: '' });
       setLoad(false);
-      props.showAlart('Comment Post Successfully', '','check');
+       showAlart('Comment Post Successfully', '','check');
     } catch (error) {
       console.error('Error posting comment:', error);
       setLoad(false);
-      props.showAlart('Something error', '','cancel');
+       showAlart('Something error', '','cancel');
     }
   };
 
@@ -61,11 +63,11 @@ const Review = (props) => {
       setReplypostbtn(false);
       setActiveReplyId(null);
       setActiveReplylist(commentId);
-      props.showAlart('Reply Post Successfully', '','check');
+       showAlart('Reply Post Successfully', '','check');
     } catch (error) {
       console.error('Error posting reply:', error);
       setReplypostbtn(false);
-      props.showAlart('Something error', '','cancel');
+       showAlart('Something error', '','cancel');
     }
   };
 

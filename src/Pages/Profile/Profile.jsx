@@ -7,13 +7,14 @@ import profilelogow from '../../photo/avatar.webp'
 import profilelogoa from '../../photo/avatar.avif'
 import Compressor from "compressorjs";
 import { Userlogincheckcontext } from "../../Context/UserLoginContext/UserLoginContext";
+import { AlartContectValue } from "../../Context/AlartContext/AlartContext";
 
 
 
 
 
 const Profile = (props) => {
-
+const {showAlart} = useContext(AlartContectValue);
   const [pdfetchfile, setpdfetchfile] = useState([]);
   const [user, setUser] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
@@ -103,14 +104,14 @@ const Profile = (props) => {
           setpdfetchfile(response.data);
         }
         else {
-          props.showAlart('something error', '', 'cancel');
+           showAlart('something error', '', 'cancel');
         }
       }
 
       catch (error) {
 
         if (error.response && error.response.status === 400) {
-          props.showAlart('Not send yet', '', 'mark')
+           showAlart('Not send yet', '', 'mark')
         }
       }
 
@@ -142,7 +143,7 @@ const Profile = (props) => {
       setSelectedFile(file);
 
     } else {
-      props.showAlart('Failed', 'Please select a pdf file', 'cancel');
+       showAlart('Failed', 'Please select a pdf file', 'cancel');
       setSelectedFile(null);
       if (fileInputRef.current) {
         fileInputRef.current.value = "";
@@ -206,25 +207,25 @@ const Profile = (props) => {
           if (fileInputRef.current) {
             fileInputRef.current.value = "";
           }
-          props.showAlart(' Successfully send', '', 'check')
+           showAlart(' Successfully send', '', 'check')
           setFiltetuploaddata('');
           setSingletap(false);
         }
         else {
           setSingletap(false);
-          props.showAlart('External error', '', 'cancel')
+           showAlart('External error', '', 'cancel')
 
         }
 
       } catch (error) {
         console.error('Error uploading file:', error);
-        props.showAlart('Error', 'Failed to upload the file.', 'cancel');
+         showAlart('Error', 'Failed to upload the file.', 'cancel');
         setSingletap(false);
       }
 
     } else {
 
-      props.showAlart('Error', 'Please select  file', 'cancel')
+       showAlart('Error', 'Please select  file', 'cancel')
       setSingletap(false);
       return;
     };
