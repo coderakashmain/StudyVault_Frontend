@@ -6,9 +6,17 @@
     overflow-y: scroll;
 }
 #question h2{
-    font-size: 2rem;
+    /* font-size: 2rem; */
     font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     /* text-transform: uppercase; */
+  
+}
+#question span{
+  font-size: 1.9;
+  font-weight: 500;
   
 }
 .question-box{
@@ -201,12 +209,112 @@
   background-color: #fefeff;
   padding: 1rem 0rem;
   border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
     :hover{
-        background-color: rgb(100, 140, 232);
-        color: #fff;
+        background-color: rgb(233, 233, 234);
+        /* color: #fff; */
+        transform: scale(1.05);
     }
+    overflow-x: hidden;
 }
 .fetchBox li{
     padding: 0.5rem 3rem;   
+    transition: all 0.2s ease-in-out;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     
+}
+.delete-process{
+    height: 2rem;
+    width: 2rem;
+  border-left: 1px solid red;
+  border-radius: 50%;
+    border: 50%;
+    animation: rotate 0.5s ease-in-out infinite;
+}
+
+.otpop{
+   position: fixed;
+   width: 100%;
+   height: 100%;
+   display: flex;
+   top: 0%;
+   left: 0%;
+   justify-content: center;
+   align-items: center;
+   background-color: rgba(0, 0, 0, 0.3);
+   z-index: 11111111111111111111111111;
+}
+.otpop .otppop-box{
+   height: 20rem;
+   width: 50rem;
+   background-color: rgb(255, 255, 255);
+   border-radius: 0.3rem;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   position: relative;
+}
+.otpop .otppop-box big{
+    font-size: 2rem;
+    font-weight: 500;
+}
+.otpop .otppop-box button{
+    padding: 0.6rem 2rem ;
+    border: none;
+    border-radius: 0.3rem;
+    background-color: rgb(62, 191, 62);
+    color: #fff;
+    cursor: pointer;
+    margin-top: 1rem;
+    
+}
+.otpop .otppop-box p{
+position: absolute;
+top: 5%;
+right: 3%;
+color: #000;
+font-size: 1.3rem;
+cursor: pointer;
+padding: 0.3rem 0.8rem;
+border-radius: 50%;
+user-select: none;
+    
+}
+.otpop .otppop-box p:hover{
+background-color: #dbdbdb6e;
+
+    
+}
+.verified-dltbtn{
+    display: flex;
+    flex-direction: column;
+}
+.verified-dltbtn input{
+   outline: none;
+   border: 1px solid #333;
+   padding: 0.5rem 0.9rem;
+   border-radius: 0.3rem;
+}
+@keyframes rotate {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+@media (max-width : 600px) {
+    #question {
+        
+        padding: 1.3rem 0rem;
+       
+    }
+    .fetchBox li{
+        padding: 0.5rem 1rem;   
+        
+    }
 }

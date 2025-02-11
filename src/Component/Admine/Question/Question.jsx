@@ -7,6 +7,7 @@ import './Question.css'
 import { Departmentlistdata } from '../../../Context/DepartmentList/DepartmentListContext'
 import axios from 'axios'
 import { AlartContectValue } from '../../../Context/AlartContext/AlartContext';
+import { Trash2 , ShieldAlert,ShieldCheck, Verified } from 'lucide-react'
 
 
 const Question = (props) => {
@@ -27,8 +28,14 @@ const Question = (props) => {
     const paperboxhide = useRef();
     const fileInputRef = useRef();
     const [uploadProgress, setUploadProgress] = useState(0);
-    const {showAlart} = useContext(AlartContectValue);
+    const { showAlart } = useContext(AlartContectValue);
+    const [varified,setVerified] = useState(false);
+    const [otpop,setOtppop] = useState(false);
 
+    const [deletingurl, setDeletingurl] = useState('');
+    const [otpsent,setOtpsent] = useState(false);
+    const[otpvalue,setOtpvalue] = useState('');
+    const [load,setLoad] = useState(false);
     const [filtetuploaddata, setFiltetuploaddata] = useState(
         {
             departmentName: '',
@@ -70,7 +77,7 @@ const Question = (props) => {
         if (file && file.type === 'application/pdf') {
             setSelectedFile(file);
         } else {
-             showAlart('Failed', 'Please select a valid PDF file.', 'cancel');
+            showAlart('Failed', 'Please select a valid PDF file.', 'cancel');
             setSelectedFile(null);
             if (fileInputRef.current) {
                 fileInputRef.current.value = ''; // Reset the file input
@@ -119,7 +126,7 @@ const Question = (props) => {
 
         const fileToUpload = await handleUpload(); // Get renamed file
         if (!fileToUpload) {
-             showAlart('Selet a File', 'Please select a valid file.', 'cancel');
+            showAlart('Selet a File', 'Please select a valid file.', 'cancel');
             setSingletap(false);
             return;
         }
@@ -134,12 +141,13 @@ const Question = (props) => {
         try {
             const response = await axios.post('/api/Admin/upload', formData, {
                 headers: {
-                    'Content-Type': 'multipart/form-data'},
-                    onUploadProgress: (progressEvent) => {
-                        const percentage = Math.round((progressEvent.loaded * 100) / progressEvent.total);
-                        setUploadProgress(percentage);
-                    },
-                
+                    'Content-Type': 'multipart/form-data'
+                },
+                onUploadProgress: (progressEvent) => {
+                    const percentage = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+                    setUploadProgress(percentage);
+                },
+
             });
 
             if (response.status === 200) {
@@ -161,40 +169,40 @@ const Question = (props) => {
                 setSingletap(false);
                 // if (fileInputRef.current) fileInputRef.current.value = '';
                 setDartmentvalue('');
-                 showAlart('Successfully uploaded.', '', 'check');
+                showAlart('Successfully uploaded.', '', 'check');
                 setElective(false);
                 setCompulsory(false);
                 setEandv(false);
                 setHonors(true);
             } else {
-                 showAlart('External Error', 'Failed to upload the file.', 'cancel');
+                showAlart('External Error', 'Failed to upload the file.', 'cancel');
                 setSingletap(false);
 
             }
         } catch (error) {
             if (error.response && error.response.status === 401) {
-                 showAlart('Department does not exist', 'Failed to upload the file.', 'cancel');
+                showAlart('Department does not exist', 'Failed to upload the file.', 'cancel');
                 return;
 
             }
             if (error.response && error.response.status === 400) {
-                 showAlart('File already present', 'Failed to upload the file.', 'cancel');
+                showAlart('File already present', 'Failed to upload the file.', 'cancel');
                 return;
 
             }
             if (error.response && error.response.status === 500) {
-                 showAlart('Failed to save file information to the database', 'Failed to upload the file.', 'mark');
+                showAlart('Failed to save file information to the database', 'Failed to upload the file.', 'mark');
                 return;
 
             }
             if (error.response && error.response.status === 502) {
-                 showAlart('Failed to verify file existence', 'Failed to upload the file.', 'mark');
+                showAlart('Failed to verify file existence', 'Failed to upload the file.', 'mark');
                 return;
 
             }
 
             console.error('Error uploading file:', error);
-             showAlart('Unexpected Error', 'Failed to upload the file.', 'cancel');
+            showAlart('Unexpected Error', 'Failed to upload the file.', 'cancel');
             setSingletap(false);
         } finally {
             setSingletap(false);
@@ -259,14 +267,14 @@ const Question = (props) => {
                     setPaperList(response.data);
                 }
                 else {
-                     showAlart('Error fetching Data', "", 'mark')
+                    showAlart('Error fetching Data', "", 'mark')
                 }
             } catch {
-                 showAlart('Error fetching Data', "", 'mark');
+                showAlart('Error fetching Data', "", 'mark');
             }
         }
         fatchData();
-    }, [singletap]);
+    }, [singletap, deletingurl]);
 
     const handlesubjet = (e) => {
         const value = e.target.innerText
@@ -372,10 +380,120 @@ const Question = (props) => {
     ]
 
 
+    const token = localStorage.getItem("adminToken");
+
+    useEffect(()=>{
+        if(token){
+            setVerified(true);
+        }else{
+            setVerified(false)
+        }
+    },[])
+
+    const extractFileId = (url) => {
+        const fileRegex = /drive\.google\.com\/file\/d\/([^/?]+)/;
+        const match = url.match(fileRegex);
+
+        if (match) {
+            return match[1]; // Extracted File ID
+        } else {
+            return null; // No File ID found
+        }
+    };
+
+    const deletepdfhandle = async (id, urlid) => {
+        setDeletingurl(urlid);
+        const urlpdfid = extractFileId(urlid);
+        const sureDelete = window.confirm("Are you sure you want to delete the PDF? , This will delete permantly!");
+        if(sureDelete){
+            try {
+                const token = localStorage.getItem("adminToken");
+                console.log(token);
+                
+                await axios.post('/api/admin/deletepdf',
+                     { id, urlpdfid },
+                     { headers: { Authorization: `Bearer ${token}` } }
+    
+                );
+    
+                showAlart("Deleted successfully", '', 'check');
+                setDeletingurl('');
+    
+            } catch (error) {
+                showAlart("Deleted Faild", '', 'cancel');
+                setDeletingurl('');
+                console.error({ 'Deleted Faild': error })
+            }
+    
+        }
+        else{
+            showAlart('Delete cancel','','check');
+            setDeletingurl('');
+        }
+    }
+
+    const requestDeleteotp = async () => {
+        setLoad(true)
+        try {
+            await axios.post("/api/admin/request-delete");
+            showAlart("OTP sent to your email",'','check');
+            setOtpsent(true);
+            setLoad(false)
+        } catch (error) {
+            console.error("Error sending OTP:", error);
+            showAlart("Failed to send OTP",'','cancel');
+            setLoad(false)
+        }
+    };
+
+
+    const verifyOtp = async () => {
+        setLoad(true);
+        if(!load){
+            showAlart("Please ent otp",'','mark')
+            setLoad(false);
+            return ;
+        }
+        try {
+            const response = await axios.post("/api/admin/delete/verify-otp", {
+               
+                otpvalue,
+            });
+    
+            const token = response.data.token;
+            if (token) {
+                localStorage.setItem("adminToken", token); 
+                showAlart("OTP verified! You can delete PDFs now.",'','check');
+            }
+            setLoad(false);
+        } catch (error) {
+            console.error("OTP verification failed:", error);
+            setLoad(false);
+            showAlart("Invalid OTP",'','cancel');
+        }
+    };
+
+
     return (
         <>
             <aside id='question'>
-                <h2>Question Papers<i className="fa-solid fa-clipboard-question" style={{ margin: '0 0.5rem' }}></i></h2>
+               {otpop && ( <div className="otpop">
+                    <div className="otppop-box">
+                        <p onClick={()=> {
+                            setOtppop(false);
+                                setOtpsent(false);
+                                setLoad(false);
+                                setOtpvalue('');
+                            }}>X</p>
+                        <big>Verify Your Self</big>
+                        {!otpsent ? ( <button className = 'active'onClick={requestDeleteotp} style={load ? {opacity : '0.5'} : {opacity : '1'}} disabled ={load} >{(!load ? "Verify" :'Sending Otp')}</button>):(<div className='verified-dltbtn'> 
+                                <input type="number" value={otpvalue} onChange={(e)=>setOtpvalue(e.target.value)} name="otp" id="otp" placeholder='Enter Otp ...'  required/>
+                                 
+                                <button className = 'active' disabled = {load} style={load ? {opacity : '0.5'} : {opacity : '1'}} onClick={verifyOtp} >{(!load ? "Verify Otp" :'verifying...')}</button>
+                        </div>)}
+                    </div>
+                </div>)}
+                <h2 className='question-headline'><span>Question Papers<i className="fa-solid fa-clipboard-question" style={{ margin: '0 0.5rem' }}></i></span> <span>{!varified ? (<ShieldAlert stroke='red'  size="2rem" onClick={()=>setOtppop(true)} />) : (<ShieldCheck   stroke='green' size="2rem" />)}</span></h2>
                 <form onSubmit={handleSubmit}>
                     <div className="question-box">
 
@@ -385,7 +503,7 @@ const Question = (props) => {
                             <input type="text" value={selectedFile ? selectedFile.name : 'Please Select a File :'} readOnly={true} />
                             <button onClick={() => {
                                 setSelectedFile(null)
-                                 showAlart('Cleard', '', 'check');
+                                showAlart('Cleard', '', 'check');
 
                             }}>Clear</button>
                         </div>
@@ -571,7 +689,7 @@ const Question = (props) => {
                                     studentyear: ''
                                 });
                                 setSingletap(false);
-                                 showAlart('Cleard', '', 'check')
+                                showAlart('Cleard', '', 'check')
                             }}>Reset All</button>
                             <button type='submit'>Upload</button>
                         </div>
@@ -579,26 +697,27 @@ const Question = (props) => {
 
                     </div>
                 </form>
-                <h3 style={{ margin: '1rem 0rem', display: 'block', textAlign: 'center', padding: '0.4rem 0', backgroundColor: 'rgb(34 100 162)', color: '#fff', borderRadius: '0.2rem' }}>All PDF</h3>
+                <h3 style={{ margin: '1rem 0rem', display: 'flex', padding: '0.8rem 1rem', backgroundColor: 'rgb(1 69 110)', color: '#fff', borderRadius: '0.2rem', justifyContent: 'space-between', userSelect: 'none' }}>Total Quesitons <span style={{ color: '#fff', borderRadius: '50%' }}>{fetchData && fetchData.length}</span></h3>
                 <hr style={{ margin: '0rem 0rem 0.5rem' }} />
                 <div className="fetchBox">
 
                     {fetchData.length > 0 ? (
                         fetchData.map((fetchData) => (
                             <li key={fetchData.id}>
-                                <i className="fa-solid fa-star" style={{ color: '#00000094' }}></i> <a href={fetchData.url} download target='__blank'>{fetchData.title}<i className="fa-solid fa-file-pdf" style={{ padding: '0rem 1rem', fontSize: '1.3rem', color: '#ce0d0d' }}></i></a>
+                                <div className="pdf-link-flex-box">
+                                    <i className="fa-solid fa-file-pdf" style={{ padding: '0rem 1rem', fontSize: '1.3rem', color: '#ce0d0d' }}></i> <a href={fetchData.url} download target='__blank'>{fetchData.title}</a></div> {varified &&( deletingurl === fetchData.url )? (<div className='delete-process'></div>) : (<Trash2 size={20} stroke='red' onClick={() => deletepdfhandle(fetchData.id, fetchData.url)} />)}
                             </li>
                         ))
                     ) : (
                         <p>No papers found</p>
                     )}
                 </div>
-                {singletap && (<div style={{ height: '100svh', width: '100%', backgroundColor: 'rgb(0 0 0 / 44%)', display: 'flex',flexDirection : 'column', justifyContent: 'center', alignItems: 'center', position: 'absolute', top: '0%', left: '0%', transform: 'scale(1)', fontWeight: '600' }}>
-                     <span style={{ color: '#fff', fontWeight: '600' }}>Uploading...</span><br />
-                    <div style={{  width: '40rem'  ,display : 'flex', justifyContent : 'center', alignItems : 'center'}}>
-                       
-                        
-                        <meter value={uploadProgress} min="0" max="100" style={{margin : '0rem 1rem',width : '30rem',height : '2rem'}}></meter>
+                {singletap && (<div style={{ height: '100svh', width: '100%', backgroundColor: 'rgb(0 0 0 / 44%)', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', position: 'absolute', top: '0%', left: '0%', transform: 'scale(1)', fontWeight: '600' }}>
+                    <span style={{ color: '#fff', fontWeight: '600' }}>Uploading...</span><br />
+                    <div style={{ width: '40rem', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+
+
+                        <meter value={uploadProgress} min="0" max="100" style={{ margin: '0rem 1rem', width: '30rem', height: '2rem' }}></meter>
                         <span style={{ marginBottom: '0.3rem', fontSize: '1.2rem', color: 'white' }}>
                             {uploadProgress}%
                         </span>
