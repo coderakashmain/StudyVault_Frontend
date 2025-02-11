@@ -7,7 +7,7 @@ import './Question.css'
 import { Departmentlistdata } from '../../../Context/DepartmentList/DepartmentListContext'
 import axios from 'axios'
 import { AlartContectValue } from '../../../Context/AlartContext/AlartContext';
-import { Trash2 , ShieldAlert,ShieldCheck, Verified } from 'lucide-react'
+import { Trash2, ShieldAlert, ShieldCheck, Verified } from 'lucide-react'
 
 
 const Question = (props) => {
@@ -29,13 +29,13 @@ const Question = (props) => {
     const fileInputRef = useRef();
     const [uploadProgress, setUploadProgress] = useState(0);
     const { showAlart } = useContext(AlartContectValue);
-    const [varified,setVerified] = useState(false);
-    const [otpop,setOtppop] = useState(false);
+    const [varified, setVerified] = useState(false);
+    const [otpop, setOtppop] = useState(false);
 
     const [deletingurl, setDeletingurl] = useState('');
-    const [otpsent,setOtpsent] = useState(false);
-    const[otpvalue,setOtpvalue] = useState('');
-    const [load,setLoad] = useState(false);
+    const [otpsent, setOtpsent] = useState(false);
+    const [otpvalue, setOtpvalue] = useState('');
+    const [load, setLoad] = useState(false);
     const [filtetuploaddata, setFiltetuploaddata] = useState(
         {
             departmentName: '',
@@ -388,7 +388,8 @@ const Question = (props) => {
         }else{
             setVerified(false)
         }
-    },[])
+    },[token])
+
 
     const extractFileId = (url) => {
         const fileRegex = /drive\.google\.com\/file\/d\/([^/?]+)/;
@@ -405,29 +406,29 @@ const Question = (props) => {
         setDeletingurl(urlid);
         const urlpdfid = extractFileId(urlid);
         const sureDelete = window.confirm("Are you sure you want to delete the PDF? , This will delete permantly!");
-        if(sureDelete){
+        if (sureDelete) {
             try {
                 const token = localStorage.getItem("adminToken");
                 console.log(token);
-                
+
                 await axios.post('/api/admin/deletepdf',
-                     { id, urlpdfid },
-                     { headers: { Authorization: `Bearer ${token}` } }
-    
+                    { id, urlpdfid },
+                    { headers: { Authorization: `Bearer ${token}` } }
+
                 );
-    
+
                 showAlart("Deleted successfully", '', 'check');
                 setDeletingurl('');
-    
+
             } catch (error) {
                 showAlart("Deleted Faild", '', 'cancel');
                 setDeletingurl('');
                 console.error({ 'Deleted Faild': error })
             }
-    
+
         }
-        else{
-            showAlart('Delete cancel','','check');
+        else {
+            showAlart('Delete cancel', '', 'check');
             setDeletingurl('');
         }
     }
@@ -436,12 +437,12 @@ const Question = (props) => {
         setLoad(true)
         try {
             await axios.post("/api/admin/request-delete");
-            showAlart("OTP sent to your email",'','check');
+            showAlart("OTP sent to your email", '', 'check');
             setOtpsent(true);
             setLoad(false)
         } catch (error) {
             console.error("Error sending OTP:", error);
-            showAlart("Failed to send OTP",'','cancel');
+            showAlart("Failed to send OTP", '', 'cancel');
             setLoad(false)
         }
     };
@@ -449,27 +450,27 @@ const Question = (props) => {
 
     const verifyOtp = async () => {
         setLoad(true);
-        if(!load){
-            showAlart("Please ent otp",'','mark')
+        if (!load) {
+            showAlart("Please ent otp", '', 'mark')
             setLoad(false);
-            return ;
+            return;
         }
         try {
             const response = await axios.post("/api/admin/delete/verify-otp", {
-               
+
                 otpvalue,
             });
-    
+
             const token = response.data.token;
             if (token) {
-                localStorage.setItem("adminToken", token); 
-                showAlart("OTP verified! You can delete PDFs now.",'','check');
+                localStorage.setItem("adminToken", token);
+                showAlart("OTP verified! You can delete PDFs now.", '', 'check');
             }
             setLoad(false);
         } catch (error) {
             console.error("OTP verification failed:", error);
             setLoad(false);
-            showAlart("Invalid OTP",'','cancel');
+            showAlart("Invalid OTP", '', 'cancel');
         }
     };
 
@@ -477,23 +478,23 @@ const Question = (props) => {
     return (
         <>
             <aside id='question'>
-               {otpop && ( <div className="otpop">
+                {otpop && (<div className="otpop">
                     <div className="otppop-box">
-                        <p onClick={()=> {
+                        <p onClick={() => {
                             setOtppop(false);
-                                setOtpsent(false);
-                                setLoad(false);
-                                setOtpvalue('');
-                            }}>X</p>
+                            setOtpsent(false);
+                            setLoad(false);
+                            setOtpvalue('');
+                        }}>X</p>
                         <big>Verify Your Self</big>
-                        {!otpsent ? ( <button className = 'active'onClick={requestDeleteotp} style={load ? {opacity : '0.5'} : {opacity : '1'}} disabled ={load} >{(!load ? "Verify" :'Sending Otp')}</button>):(<div className='verified-dltbtn'> 
-                                <input type="number" value={otpvalue} onChange={(e)=>setOtpvalue(e.target.value)} name="otp" id="otp" placeholder='Enter Otp ...'  required/>
-                                 
-                                <button className = 'active' disabled = {load} style={load ? {opacity : '0.5'} : {opacity : '1'}} onClick={verifyOtp} >{(!load ? "Verify Otp" :'verifying...')}</button>
+                        {!otpsent ? (<button className='active' onClick={requestDeleteotp} style={load ? { opacity: '0.5' } : { opacity: '1' }} disabled={load} >{(!load ? "Verify" : 'Sending Otp')}</button>) : (<div className='verified-dltbtn'>
+                            <input type="number" value={otpvalue} onChange={(e) => setOtpvalue(e.target.value)} name="otp" id="otp" placeholder='Enter Otp ...' required />
+
+                            <button className='active' disabled={load} style={load ? { opacity: '0.5' } : { opacity: '1' }} onClick={verifyOtp} >{(!load ? "Verify Otp" : 'verifying...')}</button>
                         </div>)}
                     </div>
                 </div>)}
-                <h2 className='question-headline'><span>Question Papers<i className="fa-solid fa-clipboard-question" style={{ margin: '0 0.5rem' }}></i></span> <span>{!varified ? (<ShieldAlert stroke='red'  size="2rem" onClick={()=>setOtppop(true)} />) : (<ShieldCheck   stroke='green' size="2rem" />)}</span></h2>
+                <h2 className='question-headline'><span>Question Papers<i className="fa-solid fa-clipboard-question" style={{ margin: '0 0.5rem' }}></i></span> <span>{!varified ? (<ShieldAlert stroke='red' size="2rem" onClick={() => setOtppop(true)} />) : (<ShieldCheck stroke='green' size="2rem" />)}</span></h2>
                 <form onSubmit={handleSubmit}>
                     <div className="question-box">
 
@@ -705,7 +706,13 @@ const Question = (props) => {
                         fetchData.map((fetchData) => (
                             <li key={fetchData.id}>
                                 <div className="pdf-link-flex-box">
-                                    <i className="fa-solid fa-file-pdf" style={{ padding: '0rem 1rem', fontSize: '1.3rem', color: '#ce0d0d' }}></i> <a href={fetchData.url} download target='__blank'>{fetchData.title}</a></div> {varified &&( deletingurl === fetchData.url )? (<div className='delete-process'></div>) : (<Trash2 size={20} stroke='red' onClick={() => deletepdfhandle(fetchData.id, fetchData.url)} />)}
+                                    <i className="fa-solid fa-file-pdf" style={{ padding: '0rem 1rem', fontSize: '1.3rem', color: '#ce0d0d' }}></i> <a href={fetchData.url} download target='__blank'>{fetchData.title}</a></div> {varified ? (
+                                        deletingurl === fetchData.url ? (
+                                            <div className='delete-process'></div>
+                                        ) : (
+                                            <Trash2 size={20} stroke='red' onClick={() => deletepdfhandle(fetchData.id, fetchData.url)} />
+                                        )
+                                    ) : null}
                             </li>
                         ))
                     ) : (

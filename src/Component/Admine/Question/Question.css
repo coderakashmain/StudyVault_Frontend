@@ -310,7 +310,7 @@ background-color: #dbdbdb6e;
 @media (max-width : 600px) {
     #question {
         
-        padding: 1.3rem 0rem;
+        padding: 1.3rem 1rem;
        
     }
     .fetchBox li{
