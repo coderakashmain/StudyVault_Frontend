@@ -8,6 +8,7 @@ import AritcleAds from "../../../../Component/AddSense/AritcleAds";
 import Footer from '../../FooterS/Footer';
 import PDFViewer from "../../../../Component/PdfViewer/PdfViewer";
 import Pdfads from "../../../../Component/AddSense/Pdfads";
+import PdfArticleads from "../../../../Component/AddSense/PdfArticleads";
 
 
 const Downloadpdf = (props) => {
@@ -255,7 +256,7 @@ useEffect(() => {
                                 ×
                             </button>
                             <div>
-                               <Pdfads/>
+                               <PdfArticleads/>
                             </div>
                         </div>
                     )}
