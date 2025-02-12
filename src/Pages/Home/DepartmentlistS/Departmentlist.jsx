@@ -113,7 +113,7 @@ const Departmentlist = (props) => {
             </button>
           </div>
           <div className="ads-center " style={{overflow : 'hidden' }}>
-          <AritcleAds background = "var( --notificationbackcolor )"/>
+          <AritcleAds background = "#F2F2FB"/>
          </div>
         </div>
       </div>
