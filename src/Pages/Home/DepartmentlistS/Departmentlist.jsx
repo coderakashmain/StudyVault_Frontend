@@ -7,6 +7,7 @@ import { ScrollFilterContext } from "../../../Context/FilterScroll/FilterScrollC
 import axios from "axios";
 import LongWidthAds from "../../../Component/AddSense/LongWidthAds";
 import SectionHorizontalads from "../../../Component/AddSense/SectionHorizontalads";
+import AritcleAds from "../../../Component/AddSense/AritcleAds";
 // import axios from "axios";
 
 
@@ -14,15 +15,15 @@ const Departmentlist = (props) => {
 
   const departmentListdata = useContext(Departmentlistdata);
   const { usernav } = useContext(UserContext);
-  
-  
+
+
   const navigate = useNavigate();
   const [moreDepartment, setMoreDepartment] = useState(false);
   const departmentList = useRef();
   const contectContainer = useRef();
   const { setFiltersection } = useContext(ScrollFilterContext);
 
-  
+
   // useEffect(() => {
   //   setFiltersection(contectContainer.current);
   // }, [])
@@ -30,7 +31,7 @@ const Departmentlist = (props) => {
 
 
 
-  
+
 
 
   // const backto = () => {
@@ -38,7 +39,7 @@ const Departmentlist = (props) => {
   // };
 
 
-  const handleDepartmentClick = (departmentName ) => {
+  const handleDepartmentClick = (departmentName) => {
     navigate("/Filter", { state: { departmentName } });
     // backto();
   }
@@ -66,11 +67,11 @@ const Departmentlist = (props) => {
   return (
     <>
       <div className="main-container">
-    
+
         <div className="inner-main-container">
-        <div className="ads-center " style={{overflow : 'hidden' }}>
-              <SectionHorizontalads/>
-         </div>
+          <div className="ads-center " style={{ overflow: 'hidden' }}>
+            <SectionHorizontalads />
+          </div>
           <div ref={contectContainer} className="content-container">
             <div className="department-title-box">
               <h2>Departments :</h2>
@@ -111,6 +112,9 @@ const Departmentlist = (props) => {
               </p>
             </button>
           </div>
+          <div className="ads-center " style={{overflow : 'hidden' }}>
+          <AritcleAds background = "var( --notificationbackcolor )"/>
+         </div>
         </div>
       </div>
     </>

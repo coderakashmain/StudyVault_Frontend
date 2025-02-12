@@ -26,6 +26,9 @@ const Downloadpdf = (props) => {
     const { data } = location.state || { data: [] };
     const [selectedPdf, setSelectedPdf] = useState(null);
     const[donatepopup,setDonatePopup] = useState(false);
+    const [papertitle,setPapertitle] = useState('');
+    const [paperurl,setPaperurl]=useState('');
+    const [pdfpresent,setPdfpresent] = useState(false);
     
 
 
@@ -85,17 +88,36 @@ const Downloadpdf = (props) => {
 
     const handleClickPaper = (paper) => {
         setClickCount((prevCount) => prevCount + 1);
-
+    
+     
+        
+  
      
         if ((clickCount + 1) % 2 === 0) {
             setShowAd(true);
-          const timout =   setTimeout(() => {
-                setShowAd(false);
+            setPapertitle(`/Downloadpdf/${paper.title}`);
+            setPaperurl(paper.url);
+            setPdfpresent(false);
             
-            }, 5000); 
-            return ()=> clearTimeout(timout)
-        // navigate(`/Downloadpdf/${paper.title}`) 
-        // setSelectedPdf(paper.url);
+            const timeout = setTimeout(() => {
+               
+                setPdfpresent((prevPdfPresent) => {
+                    setSelectedPdf((prevSelectedPdf) => {
+                        if (!prevSelectedPdf && !prevPdfPresent && pdfpresent) {
+                            navigate(`/Downloadpdf/${paper.title}`);
+                            return paper.url;
+                        }
+                        return prevSelectedPdf;
+                    });
+        
+                    return prevPdfPresent;
+                });
+        
+                setShowAd(false);
+            }, 5000);
+        
+            return () => clearTimeout(timeout);
+  
    
         } else {
    
@@ -105,6 +127,9 @@ const Downloadpdf = (props) => {
 
     };
     const handleCloseViewer = () => {
+        setPapertitle('');
+        setPaperurl('');
+        setPdfpresent(true);
         setSelectedPdf(null); 
         navigate(-1) 
     };
@@ -222,13 +247,15 @@ useEffect(() => {
                                 }}
                                 onClick={() => {
                                     setShowAd(false)
-                                    // setSelectedPdf(null);
+                                    navigate(papertitle) 
+                                    setSelectedPdf(paperurl);;
+                                     
                                 }}
                             >
                                 ×
                             </button>
                             <div>
-                               <AritcleAds/>
+                               <Pdfads/>
                             </div>
                         </div>
                     )}
