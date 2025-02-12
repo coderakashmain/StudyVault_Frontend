@@ -2,10 +2,12 @@ import React, { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 import './Downloadpdf.css'
+
 import LongWidthAds from "../../../../Component/AddSense/LongWidthAds";
 import AritcleAds from "../../../../Component/AddSense/AritcleAds";
 import Footer from '../../FooterS/Footer';
 import PDFViewer from "../../../../Component/PdfViewer/PdfViewer";
+import Pdfads from "../../../../Component/AddSense/Pdfads";
 
 
 const Downloadpdf = (props) => {
@@ -225,7 +227,7 @@ useEffect(() => {
                                 ×
                             </button>
                             <div>
-                            <AritcleAds widhtvalue = "100vw" background = "var(--backcolor)"/>
+                                <Pdfads/>
                             </div>
                         </div>
                     )}

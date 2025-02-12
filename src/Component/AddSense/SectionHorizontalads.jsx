@@ -1,8 +1,6 @@
-import React ,{useEffect,useState} from 'react'
-import {CloudSun} from "lucide-react"
+import React ,{useEffect} from 'react'
 
 const SectionHorizontalads = () => {
-    const [isLoading, setIsLoading] = useState(true);
  useEffect(() => {
         // Dynamically create and insert the AdSense script
 
@@ -18,7 +16,6 @@ const SectionHorizontalads = () => {
             if (window.adsbygoogle) {
               window.adsbygoogle.push({});
             }
-            setIsLoading(false);
           };
       
           return () => {
@@ -31,32 +28,13 @@ const SectionHorizontalads = () => {
         return null;
       }
   return (
-    <div style={{width : '100%' ,display : 'flex',justifyContent : 'center'}}>
-
-{isLoading ? (
-             <div
-             style={{
-               height: '5rem',
-               background: 'rgb(235 237 245)',
-               display: 'flex',
-               alignItems: 'center',
-               justifyContent: 'center',
-               color: '#888',
-               fontSize: '14px',
-               width : '95%',
-               borderRadius : '0.5rem'
-             }}
-           >
-             <CloudSun />
-           </div>
-      ) :  (
-        <ins class="adsbygoogle"
-      style={{display : 'flex', background : '#F2F2FB',justifyContent : 'center'}}
-      data-ad-client="ca-pub-9796833231647897"
-      data-ad-slot="4000372064"
-      data-ad-format="auto"
-      data-full-width-responsive="true"></ins>)}
-
+    <div style={{width : '100%' ,backgroundColor : '#E6EBF7' }}>
+       <ins class="adsbygoogle"
+     style={{display : 'flex', background : '#F2F2FB',justifyContent : 'center'}}
+     data-ad-client="ca-pub-9796833231647897"
+     data-ad-slot="4000372064"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
     </div>
   )
 

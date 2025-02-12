@@ -32,7 +32,7 @@ const AritcleAds = (props) => {
   return (
     <div style={{width: '100%', overflow : 'hidden' }}>
       <ins className="adsbygoogle"
-     style={{display : 'block', textAlign : 'center',width :'100%', minWidth : props.widhtvalut ? props.widhtvalut : "250px "  , background : props.background  || 'var( --notificationbackcolor )'}}
+     style={{display : 'block', textAlign : 'center',width :'100%', minWidth : "250px "  , background : props.background  || 'var( --notificationbackcolor )'}}
      data-ad-layout="in-article"
      data-ad-format="fluid"
      data-ad-client="ca-pub-9796833231647897"
