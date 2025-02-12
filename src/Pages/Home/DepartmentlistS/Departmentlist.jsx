@@ -68,7 +68,7 @@ const Departmentlist = (props) => {
       <div className="main-container">
     
         <div className="inner-main-container">
-        <div className="ads-center">
+        <div className="ads-center " style={{overflow : 'hidden' }}>
               <SectionHorizontalads/>
          </div>
           <div ref={contectContainer} className="content-container">

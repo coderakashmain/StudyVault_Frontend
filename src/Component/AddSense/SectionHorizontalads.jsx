@@ -28,7 +28,7 @@ const SectionHorizontalads = () => {
         return null;
       }
   return (
-    <div style={{width : '100%' ,backgroundColor : '#E6EBF7' }}>
+    <div style={{width : '100%' ,backgroundColor : '#E6EBF7',overflow : 'hidden' }}>
        <ins class="adsbygoogle"
      style={{display : 'flex', background : '#F2F2FB',justifyContent : 'center'}}
      data-ad-client="ca-pub-9796833231647897"
