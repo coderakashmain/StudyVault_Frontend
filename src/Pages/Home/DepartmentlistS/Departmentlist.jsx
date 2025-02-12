@@ -6,6 +6,7 @@ import { Departmentlistdata } from '../../../Context/DepartmentList/DepartmentLi
 import { ScrollFilterContext } from "../../../Context/FilterScroll/FilterScrollContex";
 import axios from "axios";
 import LongWidthAds from "../../../Component/AddSense/LongWidthAds";
+import SectionHorizontalads from "../../../Component/AddSense/SectionHorizontalads";
 // import axios from "axios";
 
 
@@ -68,9 +69,8 @@ const Departmentlist = (props) => {
     
         <div className="inner-main-container">
         <div className="ads-center">
-               {/* <LongWidthAds background = "var(--backcolor)"/> */}
-               
-              </div>
+              <SectionHorizontalads/>
+         </div>
           <div ref={contectContainer} className="content-container">
             <div className="department-title-box">
               <h2>Departments :</h2>
