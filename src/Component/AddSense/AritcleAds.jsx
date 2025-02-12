@@ -32,7 +32,7 @@ const AritcleAds = (props) => {
             }
     
   return (
-    <div style={{width: '100%', overflow : 'hidden' }}>
+    <div style={{width: '100%', overflow : 'hidden'  ,display : 'flex',justifyContent : 'center'}}>
       {isLoading ? (
              <div
              style={{
