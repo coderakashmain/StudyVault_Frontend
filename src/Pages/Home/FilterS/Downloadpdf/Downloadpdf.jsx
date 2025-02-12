@@ -227,7 +227,7 @@ useEffect(() => {
                                 ×
                             </button>
                             <div>
-                                <Pdfads/>
+                               <AritcleAds/>
                             </div>
                         </div>
                     )}
