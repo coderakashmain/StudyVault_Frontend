@@ -37,12 +37,14 @@ const AritcleAds = (props) => {
              <div
              style={{
                height: '250px',
-               background: '#f0f0f0',
+               background: 'rgb(235 237 245)',
                display: 'flex',
                alignItems: 'center',
                justifyContent: 'center',
                color: '#888',
-               fontSize: '14px',
+               fontSize: '0.9rem',
+               width : '95%',
+              borderRadius : '0.5rem'
              }}
            >
              Loading Ad...

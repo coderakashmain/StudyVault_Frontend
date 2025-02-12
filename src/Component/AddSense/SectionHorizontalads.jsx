@@ -37,13 +37,14 @@ const SectionHorizontalads = () => {
              <div
              style={{
                height: '5rem',
-               background: '#f0f0f0',
+               background: 'rgb(235 237 245)',
                display: 'flex',
                alignItems: 'center',
                justifyContent: 'center',
                color: '#888',
                fontSize: '14px',
-               borderRadius : '0.3rem'
+               width : '95%',
+               borderRadius : '0.5rem'
              }}
            >
              <CloudSun />
