@@ -30,7 +30,7 @@ const SectionHorizontalads = () => {
   return (
     <div style={{width : '100%' }}>
        <ins class="adsbygoogle"
-     style={{display : 'block', background : '#F2F2FB'}}
+     style={{display : 'flex', background : '#F2F2FB',justifyContent : 'center'}}
      data-ad-client="ca-pub-9796833231647897"
      data-ad-slot="4000372064"
      data-ad-format="auto"
