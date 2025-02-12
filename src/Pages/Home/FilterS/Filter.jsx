@@ -294,20 +294,25 @@ const  handlesubjet = (e)=>{
       alert("Please provide at least one filter criteria.");
       return;
     }
-    if(filters.departmentName){
-      const isValid = departmentlist.some(
-        (dept) => dept.toLowerCase() === filters.departmentName.trim().toLowerCase()
-
-      );
-  
+    if (filters.departmentName) {
+      const isValid = departmentlist.some((dept) => {
+        return (
+          dept.toLowerCase() === filters.departmentName.trim().toLowerCase() ||
+          filters.departmentName === "Elective" ||
+          filters.departmentName === "Compulsory" ||
+          filters.departmentName === "E&V"
+        );
+      });
+    
       if (!isValid) {
-        setmesssage("Please Enter Correct Department Name *")
+        showAlart("Please Enter Correct Department Name",'','mark')
+        setmesssage("Please Enter Correct Department Name *");
         return;
-      } 
-      else{
-        setmesssage("")
+      } else {
+        setmesssage("");
       }
     }
+
     try {
       setLoader(true);
       const response = await axios.get('/api/Filter', { params: nonEmptyFilters });
