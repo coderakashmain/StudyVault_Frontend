@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 
-const PdfArticleads = () => {
+const PdfArticleads = (props) => {
  useEffect(() => {
               // Dynamically create and insert the AdSense script
       
