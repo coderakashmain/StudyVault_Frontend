@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react'
+import React, { useEffect,useState } from 'react'
 
 const AritcleAds = (props) => {
+  const [isLoading, setIsLoading] = useState(true);
 
        useEffect(() => {
               // Dynamically create and insert the AdSense script
@@ -17,6 +18,7 @@ const AritcleAds = (props) => {
                   if (window.adsbygoogle) {
                     window.adsbygoogle.push({});
                   }
+                  setIsLoading(false);
                 };
             
                 return () => {
@@ -31,12 +33,30 @@ const AritcleAds = (props) => {
     
   return (
     <div style={{width: '100%', overflow : 'hidden' }}>
-      <ins className="adsbygoogle"
-     style={{display : 'block', textAlign : 'center',width :'100%', minWidth : '250px' , background : props.background  || 'var( --notificationbackcolor )'}}
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-9796833231647897"
-     data-ad-slot="9011527763"></ins>
+      {isLoading ? (
+             <div
+             style={{
+               height: '250px',
+               background: '#f0f0f0',
+               display: 'flex',
+               alignItems: 'center',
+               justifyContent: 'center',
+               color: '#888',
+               fontSize: '14px',
+             }}
+           >
+             Loading Ad...
+           </div>
+      ) : (
+        <ins className="adsbygoogle"
+        style={{display : 'block', textAlign : 'center',width :'100%', minWidth : props.widhtvalue ? props.widhtvalue : "250px " , background : props.background  || 'var( --notificationbackcolor )'}}
+        data-ad-layout="in-article"
+        data-ad-format="fluid"
+        data-ad-client="ca-pub-9796833231647897"
+        data-ad-slot="9011527763"></ins>
+
+      )}
+ 
     </div>
   )
 }

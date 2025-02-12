@@ -225,7 +225,7 @@ useEffect(() => {
                                 ×
                             </button>
                             <div>
-                            <AritcleAds background = "var(--backcolor)"/>
+                            <AritcleAds widhtvalue = "100vw" background = "var(--backcolor)"/>
                             </div>
                         </div>
                     )}
