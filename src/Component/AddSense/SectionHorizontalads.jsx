@@ -4,7 +4,7 @@ const SectionHorizontalads = () => {
  useEffect(() => {
         // Dynamically create and insert the AdSense script
 
-        // if(process.env.NODE_ENV === 'production'){
+        if(process.env.NODE_ENV === 'production'){
           const script = document.createElement('script');
           script.async = true;
           script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9796833231647897';
@@ -21,12 +21,12 @@ const SectionHorizontalads = () => {
           return () => {
             // Cleanup the script when the component unmounts
             document.head.removeChild(script);  
-          // };
+          };
         }
       }, []);  
-      // if (process.env.NODE_ENV !== 'production') {
-      //   return null;
-      // }
+      if (process.env.NODE_ENV !== 'production') {
+        return null;
+      }
   return (
     <div style={{backgroundColor : '#E6EBF7',overflow : 'hidden',width : '90vw',borderRadius : '0.3rem' ,position : 'relative'}}>
       <div style={{position : 'absolute', top : '50%', left: "50%",transform : 'translate(-50%,-50%)',opacity : '0.5'}} 
