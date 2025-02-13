@@ -1,63 +1,44 @@
-import React ,{useEffect} from 'react'
+import React, { useEffect } from 'react'
 
 const SectionHorizontalads = () => {
- useEffect(() => {
-        // Dynamically create and insert the AdSense script
+  useEffect(() => {
+    // Dynamically create and insert the AdSense script
 
-        if(process.env.NODE_ENV === 'production'){
+    if (process.env.NODE_ENV === 'production') {
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9796833231647897';
+      script.crossOrigin = 'anonymous';
+      document.head.appendChild(script);
 
-          window.adsbygoogle = window.adsbygoogle || [];
-
-          if (!document.querySelector('script[src*="pagead2.googlesyndication.com"]')) {
-
-          const script = document.createElement('script');
-          script.async = true;
-          script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9796833231647897';
-          script.crossOrigin = 'anonymous';
-          
-          // Push the ad to initialize after the script loads
-          script.onload = () => {
-            try {
-              window.adsbygoogle.push({});
-            } catch (error) {
-              console.error('AdSense push error:', error);
-            }
-          };
-          document.head.appendChild(script);
-      
-          return () => {
-            // Cleanup the script when the component unmounts
-            if (script.parentNode) {
-              document.head.removeChild(script);
-            }
-          };
-        }else {
-          // AdSense script already loaded, push the ad
-          setTimeout(() => {
-            try {
-              window.adsbygoogle.push({});
-            } catch (error) {
-              console.error('AdSense push error:', error);
-            }
-          }, 500);
+      // Push the ad to initialize after the script loads
+      script.onload = () => {
+        if (window.adsbygoogle) {
+          window.adsbygoogle.push({});
         }
-      }
-      }, []);  
-      if (process.env.NODE_ENV !== 'production') {
-        return null;
-      }
+      };
+
+      return () => {
+        // Cleanup the script when the component unmounts
+        document.head.removeChild(script);
+      };
+    }
+  }, []);
+  if (process.env.NODE_ENV !== 'production') {
+    return null;
+  }
   return (
-    <div style={{backgroundColor : '#E6EBF7',overflow : 'hidden',width : '90vw',borderRadius : '0.3rem' ,position : 'relative'}}>
-      <div style={{position : 'absolute', top : '50%', left: "50%",transform : 'translate(-50%,-50%)',opacity : '0.5'}} 
-         role="status"
-    aria-label="Loading"
+    <div style={{ backgroundColor: '#E6EBF7', overflow: 'hidden', width: '100%', borderRadius: '0.3rem', position: 'relative' }}>
+      <div style={{ position: 'absolute', top: '50%', left: "50%", transform: 'translate(-50%,-50%)', opacity: '0.5' }}
+        role="status"
+        aria-label="Loading"
       >Loading...</div>
-       <ins className="adsbygoogle"
-     style={{display : 'flex', background : 'rgb(228 233 237 / 68%)',justifyContent : 'center',width: '100%',maxWidth : '90vw'}}
-     data-ad-client="ca-pub-9796833231647897"
-     data-ad-slot="4000372064"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
+      <ins className="adsbygoogle"
+        style={{ display: 'flex', background: 'rgb(228 233 237 / 68%)', justifyContent: 'center', width: '100%' }}
+        data-ad-client="ca-pub-9796833231647897"
+        data-ad-slot="4000372064"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
     </div>
   )
 
