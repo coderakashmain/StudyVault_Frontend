@@ -5,24 +5,43 @@ const SectionHorizontalads = () => {
         // Dynamically create and insert the AdSense script
 
         if(process.env.NODE_ENV === 'production'){
+
+          window.adsbygoogle = window.adsbygoogle || [];
+
+          if (!document.querySelector('script[src*="pagead2.googlesyndication.com"]')) {
+
           const script = document.createElement('script');
           script.async = true;
           script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9796833231647897';
           script.crossOrigin = 'anonymous';
-          document.head.appendChild(script);
-      
+          
           // Push the ad to initialize after the script loads
           script.onload = () => {
-            if (window.adsbygoogle) {
+            try {
               window.adsbygoogle.push({});
+            } catch (error) {
+              console.error('AdSense push error:', error);
             }
           };
+          document.head.appendChild(script);
       
           return () => {
             // Cleanup the script when the component unmounts
-            document.head.removeChild(script);  
+            if (script.parentNode) {
+              document.head.removeChild(script);
+            }
           };
+        }else {
+          // AdSense script already loaded, push the ad
+          setTimeout(() => {
+            try {
+              window.adsbygoogle.push({});
+            } catch (error) {
+              console.error('AdSense push error:', error);
+            }
+          }, 500);
         }
+      }
       }, []);  
       if (process.env.NODE_ENV !== 'production') {
         return null;
@@ -34,7 +53,7 @@ const SectionHorizontalads = () => {
     aria-label="Loading"
       >Loading...</div>
        <ins className="adsbygoogle"
-     style={{display : 'flex', background : 'rgb(228 233 237 / 68%)',justifyContent : 'center'}}
+     style={{display : 'flex', background : 'rgb(228 233 237 / 68%)',justifyContent : 'center',width: '100%',maxWidth : '90vw'}}
      data-ad-client="ca-pub-9796833231647897"
      data-ad-slot="4000372064"
      data-ad-format="auto"
