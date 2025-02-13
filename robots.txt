@@ -1,7 +1,5 @@
 User-agent: *
 Disallow: /Admin/
-Disallow: /LogIn/
-Disallow: /LogIn/Signup/
 Disallow: /images/
 Disallow: /pdfs/
 Allow: /

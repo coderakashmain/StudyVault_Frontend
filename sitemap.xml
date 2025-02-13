@@ -55,4 +55,22 @@
         <changefreq>monthly</changefreq>
         <priority>0.3</priority>
     </url>
+             <url>
+        <loc>https://www.studyvault.online/LogIn</loc>
+        <lastmod>2025-02-13</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.3</priority>
+    </url>
+             <url>
+        <loc>https://www.studyvault.online/LogIn/Signup</loc>
+        <lastmod>2025-02-13</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.3</priority>
+    </url>
+             <url>
+        <loc>https://www.studyvault.online/Filter/Notes</loc>
+        <lastmod>2025-02-13</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.3</priority>
+    </url>
 </urlset>
