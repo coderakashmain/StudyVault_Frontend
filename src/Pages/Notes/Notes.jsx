@@ -148,9 +148,9 @@ const Notes = () => {
   };
   useEffect(() => {
     if (loginpop) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflowY = 'hidden';
     } else {
-      document.body.style.overflow = 'scroll';
+      document.body.style.overflowY = 'scroll';
     }
 
   }, [loginpop]);
