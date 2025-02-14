@@ -246,7 +246,7 @@ const logincancle = ()=>{
               </React.Fragment>
             ))
           ) : (
-            <p style={{ margin: '2rem 0', textAlign: 'center', color: 'red' }}>No notes available</p>
+            <p style={{ margin: '2rem 0rem', textAlign: 'center', color: 'red' }}>No notes available</p>
           )}
         </div>
 
@@ -291,7 +291,7 @@ const logincancle = ()=>{
           <button onClick={logincancle} className="cancel-btn">Cancel</button>
           <button onClick={() => navigate('/login')} className="login-btn">Login</button>
         </div>
-        <p style={{color : '#fff',margin: '1rem 0'}}>or</p>
+        <p style={{color : '#fff',margin: '1rem 0rem'}}>or</p>
         <GoogleAuth userdata={setUsernav} showAlart={ showAlart}/>
       </div>
         </div>

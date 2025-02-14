@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 
 const Adsabovenote = () => {
     useEffect(() => {
-        // Dynamically create and insert the AdSense script
+  
 
         if (process.env.NODE_ENV === 'production') {
             const script = document.createElement('script');
@@ -29,8 +29,8 @@ const Adsabovenote = () => {
     }
     return (
         <div style={{ width: '100%', overflow: 'hidden' }}>
-            <ins class="adsbygoogle"
-                style="display:block"
+            <ins className="adsbygoogle"
+                style={{display : 'block'}}
                 data-ad-client="ca-pub-9796833231647897"
                 data-ad-slot="7991394440"
                 data-ad-format="auto"

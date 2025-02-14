@@ -30,8 +30,8 @@ const Adsbetwnotes = () => {
        }
  return (
  <div style={{width: '100%', overflow : 'hidden' }}>
- <ins class="adsbygoogle"
-     style="display:block"
+ <ins className="adsbygoogle"
+     style={{display : 'block'}}
      data-ad-format="fluid"
      data-ad-layout-key="-fb+5w+4e-db+86"
      data-ad-client="ca-pub-9796833231647897"
