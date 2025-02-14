@@ -34,7 +34,7 @@ const SectionHorizontalads = () => {
         aria-label="Loading"
       >Loading...</div>
       <ins className="adsbygoogle"
-        style={{ display: 'flex', background: 'rgb(228 233 237 / 68%)', justifyContent: 'center', width: '100%' }}
+        style={{ display: 'flex', background: 'rgb(228 233 237 / 68%)', justifyContent: 'center', width: '100%' ,backgroundColor : ' backgroundColor :"#F2F2FB"'}}
         data-ad-client="ca-pub-9796833231647897"
         data-ad-slot="4000372064"
         data-ad-format="auto"

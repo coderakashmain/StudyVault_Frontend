@@ -67,24 +67,24 @@ const Navbar = (props) => {
     window.addEventListener("resize", view);
     return () => window.removeEventListener('resize', view);
   }, [])
-  useEffect(() => {
+  // useEffect(() => {
 
-    const checkAuthorization = async () => {
+  //   const checkAuthorization = async () => {
 
-      try {
-        const response = await axios.get('/api/adminPage', { withCredentials: true });
-        if (response.status === 200) {
-          setAuthentication(true);
-        }
+  //     try {
+  //       const response = await axios.get('/api/adminPage', { withCredentials: true });
+  //       if (response.status === 200) {
+  //         setAuthentication(true);
+  //       }
 
-      } catch (error) {
-        setAuthentication(false);
-      }
-    };
+  //     } catch (error) {
+  //       setAuthentication(false);
+  //     }
+  //   };
 
-    checkAuthorization();
+  //   checkAuthorization();
 
-  }, []);
+  // }, []);
 
 
   useEffect(() => {
@@ -103,17 +103,26 @@ const Navbar = (props) => {
   };
 
 
+  const isLoggedIn = sessionStorage.getItem('isLoggedIn');
+  const isAdminLogin = sessionStorage.getItem('isAdminLogin');
 
   useEffect(() => {
 
 
-    if (loginCheck) {  // Access the actual property
+    if (isLoggedIn) {  // Access the actual property
       setLogincheckdata(true);
     } else {
 
       setLogincheckdata(false);
     }
-  }, [loginCheck]);
+
+    if(isAdminLogin){
+      setAuthentication(true);
+    }else{
+      setAuthentication(false);
+    }
+    
+  }, []);
   // console.log(loginCheck);
   // console.log(logincheckdata);
 
@@ -126,41 +135,7 @@ const Navbar = (props) => {
     setShowSuggestions(true);
   }
 
-  // const gotofilter = () => {
-  //   filtersection.scrollIntoView({ behavior: 'smooth' });
-
-
-  // };
-
-
-
-
-
-  // useEffect(() => {
-
-  //   const fetchProfile = async () => {
-
-  //     try {
-  //       const response = await axios.get('/api/usercheck', { withCredentials: true });
-
-  //       setLogincheckdata(true);
-
-  //     } catch (error) {
-  //       setLogincheckdata(false);
-
-  //       if (error.response && error.response.status === 401) {
-  //         setLogincheckdata(false);
-  //         console.error('User not found');
-
-  //       } else {
-  //         console.error('Unexpected error:', error.response?.data || error.message);
-  //         setLogincheckdata(false);
-  //       }
-  //     }
-
-  //   }
-  //   fetchProfile();
-  // }, [usernav]);
+ 
 
 
 
@@ -188,6 +163,7 @@ const Navbar = (props) => {
         const response = await axios.post('/api/logOut', { withCredentials: true });
         if (response.status === 200) {
           setIsAuthenticateduser(false);
+          sessionStorage.removeItem('isLoggedIn');
           setUsernav('');
           setLogincheckdata(false);
           window.location.href = '/';
@@ -323,7 +299,10 @@ const Navbar = (props) => {
         navbar.current.style.transform = "translateY(-100%)";
       } else if (currentScrollY < lastScrollY) {
         // Scrolling up
-        navbar.current.style.transform = "translateY(0%)";
+        if(navbar.current){
+          navbar.current.style.transform = "translateY(0%)";
+
+        }
       }
       lastScrollY = currentScrollY;
     };

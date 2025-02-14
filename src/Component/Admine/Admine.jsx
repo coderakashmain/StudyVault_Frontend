@@ -15,10 +15,13 @@ const Admine = (props) => {
 
 
 
+
  useEffect(() => {
 
+
+
       const checkAuthorization = async (e) => {
-        // e.preventDefault();
+       
         try {
             const response = await axios.get("/api/adminPage",{withCredentials : true});
               if (response.status === 200) {
@@ -58,7 +61,7 @@ const handleLogout = async () => {
    const response =  await axios.post("/api/Admin/logout");
    
     window.location.href = "/Admin/AdminLogIn";
-    
+      sessionStorage.clear('isAdminLogin');
      showAlart('Logged out successfully', '', 'check');
 
     setCheck(false);
@@ -103,7 +106,7 @@ const handleLogout = async () => {
             <NavLink to= ''><h2><i className="fa-solid fa-gauge-high"></i>Dashboard</h2></NavLink>
             <NavLink to= 'Question'><h2><i className="fa-solid fa-newspaper" ></i>Question</h2></NavLink>
             <NavLink to= 'syllabusupload'><h2><i className="fa-solid fa-newspaper" ></i>Syllabus</h2></NavLink>
-            <NavLink to= 'Note'><h2><i className="fa-solid fa-book-open"></i>Note</h2></NavLink>
+            <NavLink to= 'Notes'><h2><i className="fa-solid fa-book-open"></i>Note</h2></NavLink>
             <NavLink to= 'Usersend'><h2><i className="fa-regular fa-folder-closed"></i>User Send</h2></NavLink>
             <NavLink to= 'CsUpload'><h2><i className="fa-solid fa-computer"></i>Cs Upload</h2></NavLink>
             <NavLink to= 'LogOut'><h2><i className="fa-solid fa-right-from-bracket"></i>Log Out</h2></NavLink>

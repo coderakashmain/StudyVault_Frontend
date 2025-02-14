@@ -21,6 +21,7 @@ import { AlartContectValue } from "../../../Context/AlartContext/AlartContext";
 const Filter = (props) => {
 const [adsmobileview,setAdsmobileview] = useState(false);
 
+
   const filterboxref = useRef();
 
   const { setFiltersection } = useContext(ScrollFilterContext);

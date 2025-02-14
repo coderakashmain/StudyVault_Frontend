@@ -32,7 +32,7 @@ import ArticleSubheading  from "./Context/ArticleSubheading/ArticleSubheading";
 import Navbar from "./Component/Navbar/Navbar";
 
 
-
+const NoteUpload = lazy(() => import("./Component/Admine/NoteUpload/NoteUpload"));
 const Alart = lazy(() => import("./Component/Alart/Alart"));
 const MaterialRouting = lazy(() => import("./RoutingFiles/MaterialRouting"));
 import FallbackLoad from "./Component/Fallbackload/FallbackLoad"
@@ -241,6 +241,11 @@ const navrefvalue = (value) => {
           {
             path: 'CsUpload',
             element: <><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}> <CsUpload   /></Suspense></ErrorBoundary></>
+
+          },
+          {
+            path: 'Notes',
+            element: <><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}> <NoteUpload   /></Suspense></ErrorBoundary></>
 
           },
          

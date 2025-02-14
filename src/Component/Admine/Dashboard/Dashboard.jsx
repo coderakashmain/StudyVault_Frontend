@@ -65,7 +65,7 @@ const Dashboard = (props) => {
                 <i className="fa-solid fa-book-open FstI"></i>
                     <h3>45</h3>
                     <h4>Total Note Uploads</h4>
-                    <p className="moreTotalNote common-dash" onClick={()=> navigate('Note')}>
+                    <p className="moreTotalNote common-dash" onClick={()=> navigate('Notes')}>
                         More<i className="fa-solid fa-angle-right"></i>
                     </p>
                 </div>

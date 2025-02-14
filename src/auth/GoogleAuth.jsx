@@ -24,6 +24,7 @@ const  GoogleAuth = ({userdata , showAlart})=> {
       },{  withCredentials : true});
 
       showAlart("Login Seccessfull","","check");
+      sessionStorage.setItem('isLoggedIn', 'true');
       userdata(res.data);
      
         navigate("/", { replace: true });

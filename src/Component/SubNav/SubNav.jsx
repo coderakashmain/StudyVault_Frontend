@@ -12,6 +12,7 @@ const SubNav = (props) => {
     const loginCheck = useContext(Userlogincheckcontext);
     const [usercheck, setUsercheck] = useState('');
     const {showAlart} = useContext(AlartContectValue);
+    const isLoggedIn = sessionStorage.getItem('isLoggedIn');
     const backnavigate = () => {
         navigate('/');
     }
@@ -21,13 +22,13 @@ const SubNav = (props) => {
     }
 
     useEffect(() => {
-        if (loginCheck?.loginCheck) {
+        if (isLoggedIn) {
             setUsercheck(true);
         }
         else {
             setUsercheck(false);
         }
-    }, [loginCheck])
+    }, [])
 
 
     return (

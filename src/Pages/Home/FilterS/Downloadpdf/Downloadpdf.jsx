@@ -30,7 +30,7 @@ const Downloadpdf = (props) => {
     const [papertitle,setPapertitle] = useState('');
     const [paperurl,setPaperurl]=useState('');
     const [pdfpresent,setPdfpresent] = useState(false);
-    
+
 
 
     useEffect(() => {
@@ -40,6 +40,8 @@ const Downloadpdf = (props) => {
 
         return ()=> clearTimeout(networkslowtimeout)
     }, [loading])
+
+
 
     useEffect(()=>{
         if(data){
@@ -279,7 +281,7 @@ useEffect(() => {
             
             </div>
             <Footer/>
-                {selectedPdf && <PDFViewer pdfUrl={selectedPdf} onClose={handleCloseViewer} />}
+                {selectedPdf && <PDFViewer pdfUrl={selectedPdf} papertitle={papertitle} onClose={handleCloseViewer} />}
            { donatepopup && filteredPapers.length > 0 && ( <div className="donation-popup">
                 <div className="donation-popup-box">
                     <h1>Hey Dear User, <br /> Support our growth by Donating to us!</h1>

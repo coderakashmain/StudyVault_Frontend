@@ -126,7 +126,7 @@ color: #fff;
 }
 .rightAlogin form button[type="submit"]{ 
     display: block;
-    margin:4rem auto 2.5rem;
+    margin:3rem auto 2rem;
     width: 100%;
     outline: none;
     padding: 0.6rem 0;

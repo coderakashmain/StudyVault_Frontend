@@ -23,28 +23,34 @@ const HomeT = (props) => {
   const[userlogincheck,setUserlogincheck] = useState();
   const  loginCheck = useContext(Userlogincheckcontext);
 
-   
+  const isLoggedIn = sessionStorage.getItem('isLoggedIn');
   useEffect(()=>{
-    const userlogin = async()=>{
+  //   const userlogin = async()=>{
       
-      try { 
-        const response = await axios.get('/api/signup-check',{withCredentials : true});
+  //     try { 
+  //       const response = await axios.get('/api/signup-check',{withCredentials : true});
         
-        if(response.status === 200){
-          setUserlogincheck(true);
-      }
-      else{
-        setUserlogincheck(false);
-      }
-    }
+  //       if(response.status === 200){
+  //         setUserlogincheck(true);
+  //     }
+  //     else{
+  //       setUserlogincheck(false);
+  //     }
+  //   }
 
-      catch (error) {
-        console.error('Error fetching profile');
-        setUserlogincheck(false);
-    }
+  //     catch (error) {
+  //       console.error('Error fetching profile');
+  //       setUserlogincheck(false);
+  //   }
+  // }
+  // userlogin();
+
+  if(isLoggedIn){
+    setUserlogincheck(true);
+  }else{
+    setUserlogincheck(false);
   }
-  userlogin();
-  },[usernav]);
+  },[isLoggedIn]);
 
 
   return ( 
@@ -88,7 +94,7 @@ const HomeT = (props) => {
                 <button onClick={() => {
                   navigate('About-us');
                 }}>Read me</button>
-               {!loginCheck && !userlogincheck && ( <Link to="/LogIn/Signup">
+               { !userlogincheck && ( <Link to="/LogIn/Signup">
                   Sign Up <i className="fa-solid fa-arrow-right"></i>
                 </Link>)}
               </div>

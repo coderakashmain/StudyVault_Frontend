@@ -7,6 +7,7 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { AdminLoginContext } from '../../../Context/AdminLoginCheck/AdminLoginCheck'
 import { AlartContectValue } from '../../../Context/AlartContext/AlartContext'
+import ReCaptcha from '../../Captha/ReCaptha'
 
 
 
@@ -16,13 +17,26 @@ const [password,setPassword] = useState('');
 const [isactive,setIsactive] = useState(false);
 const {setCheck} = useContext(AdminLoginContext);
 const {showAlart} = useContext(AlartContectValue);
+   const shouldVerify = process.env.NODE_ENV === 'production';
+   const [isVerified, setIsVerified] = useState(false);
 
 
 const navigate = useNavigate();
 
+const handleVerification = (status) => {
+    setIsVerified(status); 
+ 
+  };
+
+
 const handleSubmit = async (e)=>{
     setIsactive(true);
     e.preventDefault();
+    if (!isVerified && shouldVerify) {
+        showAlart("Please complete the CAPTCHA before logging in.",'','cancel');
+       setRepeatclick(false);
+       return;
+     }
     try{
         // alert();
         const response = await axios.post("/api/Admin/AdminLogIn", { userid, password ,withCredentials: true });
@@ -30,6 +44,7 @@ const handleSubmit = async (e)=>{
              showAlart('LogIn Seccessfully',"","check");
             setUserid('');
             setPassword('');
+            sessionStorage.setItem('isAdminLogin','true'); 
             setIsactive(false);
             window.location.href = "/Admin";
             setCheck(isactive);
@@ -96,6 +111,7 @@ const handleSubmit = async (e)=>{
                         <label htmlFor="password">Password</label>
                         <input type="password" name = 'password' id = 'password' autoComplete="current-password" value={password} onChange={(e)=> setPassword(e.target.value)} />
                     </div>
+                    {!isVerified && shouldVerify && (  <ReCaptcha onVerified={handleVerification} />)}
                     <button type="submit" disabled = {isactive} className={`${isactive ? 'blur' : 'clear' }`}>Sign In</button>
                     <NavLink> Forgate Password?</NavLink>
                      <button onClick={()=> navigate('/')}><i className="fa-solid fa-arrow-left" style={{color :'#fff' , padding : '0rem 0.6rem 0 0',fontSize : '1rem'}}></i>Back to Home</button>

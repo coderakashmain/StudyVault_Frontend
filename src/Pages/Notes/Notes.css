@@ -6,13 +6,15 @@
     flex-direction: column;
     align-items: center;
     padding-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
 }
 
 .notes-box {
    min-height: 30rem;
     width: 80%;
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     flex-direction: column;
     
     padding: 2rem;
@@ -22,7 +24,18 @@
 }
 .notes-box  h1{
 margin: 1rem 0;
-text-align: center;
+text-align: flex-start !important;
+font-size: 2rem;
+font-weight: 500;
+user-select: none;
+
+}
+.notes-search-box{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
 }
 
 .notes-box input {
@@ -51,7 +64,7 @@ text-align: center;
     font-size: 1rem;
     font-weight: bold;
     color: white;
-    background-color: #1d3e46;
+    background-color: #0091FF;
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -62,99 +75,191 @@ text-align: center;
     background-color: #145266;
 }
 
-/* Notes Logs */
-.notes-logs {
-    margin-top: 20px;
+.notes-box  h2{
+    margin: 4rem 0 0.4rem;
+    font-size: 2rem;
+    font-family:'Times New Roman', Times, serif
+    }
+.notes-box  h3{
+    margin: 2rem 0 0.4rem;
+    font-size: 1.6rem;
+    font-family: 'Times New Roman', Times, serif;
+    text-decoration: underline;
+    text-underline-offset: 0.4rem;
+    }
+.notelistbox{
     width: 100%;
-    max-height: 250px;
-    overflow-y: auto;
-    padding: 10px;
-    border-radius: 10px;
-    background: #f9f9f9;
-    box-shadow: inset 0px 3px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+.notelistboxinside{
+    flex-grow: 1;
+    flex-basis: 300px;
+    background: #f5f5f5;
+    padding: 0rem 0.9rem 0.9rem 0.9rem;
+    border-radius: 01rem;
+    margin-top: 0.2rem;
+}
+.notelistboxinside h4{
+    font-size: 1.2rem;
+    margin: 2rem 0 1rem;
+    color: rgb(23, 81, 181);
+}
+.notelistboxinside p{
+    margin-top: 1rem;
+    font-size: 1rem;
 }
 
-.log-entry {
-    padding: 8px;
-    margin: 5px 0;
-    border-radius: 5px;
-    background: #e3f2fd;
-    color: #1d3e46;
+.note-footer-link{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 0.4rem;
+
+}
+.note-footer-link a{
+  color: #0091FF;
+  font-size: 1.1rem;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+.ads-container-box{
+    padding: 20px;
+    margin: 20px auto;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in;
+}
+
+.note-download-btn{
+    border-radius: 50%;
+ 
+    padding: 0.4rem 0.55rem;
+    /* padding: 1rem; */
+}
+.note-download-btn:hover{
+   background-color: rgba(60, 60, 60, 0.044);
+}
+
+.loginpopup{
+    position: fixed;
+    left: 0%;
+    top: 0%;
+     display: flex;
+    justify-content: center;
+   align-items: center;
+ 
+    transition: all 0.3s ease-in-out;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    background-color: transparent;
+transform: scale(0);
+
+}
+.loginpoptrue{
+    transform: scale(1);
+    opacity: 1;
+    background-color: rgba(39, 38, 38, 0.199);
+}
+.login-popup {
+    background-color: #0091FF;
+    border-radius: 1rem;
+    padding: 2rem;
+    text-align: center;
+    width: 400px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+    transform: scale(0);
+  }
+  .loginpoptruebox{
+    transform: scale(1);
+  }
+  
+  .login-popup-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 1rem;
+  }
+  
+  .login-popup-text {
+    font-size: 1rem;
+    color: white;
+    margin-bottom: 2rem;
+  }
+  
+  .login-popup-buttons {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .login-btn, .cancel-btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    border: none;
     font-size: 1rem;
     font-weight: 500;
-    transition: 0.3s ease;
-}
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .login-btn {
+    background-color: #ffffff;
+    color: black;
+  }
+  
+  .cancel-btn {
+    background-color: #2a2a2a;
+    color: white;
+  }
+  
+  .login-btn:hover {
+    background-color: #dbdbdb;
+  }
+  
+  .cancel-btn:hover {
+    background-color: #434343;
+  }
 
-.log-entry:hover {
-    background: #bbdefb;
-}
-
-.empty {
-    text-align: center;
-    color: gray;
-    font-size: 0.9rem;
-}
-
-
-.features-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    margin-top: 2rem;
-    width: 80%;
-}
-
-.feature-box {
-    flex-grow: 1;
-    flex-basis: 120px;
-    width: 250px;
-    min-height: 180px;
-    background: linear-gradient(to bottom right, #4199BF, #ACFDFF);
-    border-radius: 15px;
-    padding: 1.5rem;
-    text-align: center;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
-.feature-box:hover {
-    transform: translateY(-10px);
-    box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.3);
-}
-
-.feature-box .icon {
-    font-size: 2.5rem;
-    color: #fff !important;
-    margin-bottom: 1rem;
-}
-
-.feature-box h3 {
-    font-size: 1.2rem;
-    color: #fff;
-    margin-bottom: 0.5rem;
-}
-
-.feature-box p {
-    font-size: 0.9rem;
-    color: #fff;
-}
 
 /* Responsive Design */
 @media (max-width: 900px) {
     .notes-box input {
         width: 70%;
     }
+    .notelistboxinside{
+
+        flex-basis: 200px;
+    }
+    .loinpopin{
+        height: 30rem;
+        width: 50rem;
+    }
+}
+@media (max-width: 650px) {
+    
+    .loinpopin{
+        height: 20rem;
+        width: 90vw;
+    }
 }
 
 @media (max-width: 500px) {
     .notes-box input {
-        width: 80%;
+        width: 90%;
     }
     .notes-box {
         width: 100%;
         border-radius: 0px;
         box-shadow: none;
+        padding: 2rem 1.4rem;
+
     }
     .notes-box input {
         margin-top: 2rem;
@@ -163,5 +268,11 @@ text-align: center;
         
         width: 100%;
         padding: 0rem 1.2rem;
+    }
+    #notes{
+        justify-content: flex-start;
+    }
+    .login-popup{
+        width: 95%;
     }
 }
