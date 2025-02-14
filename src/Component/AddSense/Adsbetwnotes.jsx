@@ -31,7 +31,7 @@ const Adsbetwnotes = () => {
  return (
  <div style={{width: '100%', overflow : 'hidden' }}>
  <ins className="adsbygoogle"
-     style={{display : 'block'}}
+     style={{display : 'block',minWidth : '250px',width  :'100%'}}
      data-ad-format="fluid"
      data-ad-layout-key="-fb+5w+4e-db+86"
      data-ad-client="ca-pub-9796833231647897"

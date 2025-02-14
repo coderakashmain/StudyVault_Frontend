@@ -30,7 +30,7 @@ const Adsabovenote = () => {
     return (
         <div style={{ width: '100%', overflow: 'hidden' }}>
             <ins className="adsbygoogle"
-                style={{display : 'block'}}
+                style={{display : 'block',minWidth : '250px',width  :'100%'}}
                 data-ad-client="ca-pub-9796833231647897"
                 data-ad-slot="7991394440"
                 data-ad-format="auto"

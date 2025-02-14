@@ -28,9 +28,9 @@ const Notes = () => {
   const [visibleNotes, setVisibleNotes] = useState(10);
   const [filteredNotes, setFilteredNotes] = useState([]);
   const notelistRef = useRef(null);
-  const {showAlart} = useContext(AlartContectValue);
-  const [loginpop,setLoginpop] = useState(false);
- const navigate = useNavigate();
+  const { showAlart } = useContext(AlartContectValue);
+  const [loginpop, setLoginpop] = useState(false);
+  const navigate = useNavigate();
   const { setUsernav } = useContext(UserContext);
 
   const handleInputChange = (e) => {
@@ -96,7 +96,7 @@ const Notes = () => {
 
   }, [])
   // const embedUrl = notelist.url.replace('/view', '/preview');
-  const handlePreviewClick = throttle(async (id ,originalUrl) => {
+  const handlePreviewClick = throttle(async (id, originalUrl) => {
     setActiveNote(id);
     try {
       const response = await axios.post('/api/noteClickCount', { id });
@@ -111,10 +111,10 @@ const Notes = () => {
 
 
 
-  const handledownloadCount = throttle(async (id,filename,unit,fileUrl) => {
+  const handledownloadCount = throttle(async (id, filename, unit, fileUrl) => {
 
     try {
-      const response = await axios.post('/api/notedonwloadcount', { id,filename,unit,fileUrl });
+      const response = await axios.post('/api/notedonwloadcount', { id, filename, unit, fileUrl });
     } catch (error) {
       console.error("Error updating click count", error);
     }
@@ -122,9 +122,9 @@ const Notes = () => {
 
   const isLoggedIn = sessionStorage.getItem('isLoggedIn');
 
-  const handleDownload = (fileUrl, filename, id,unit) => {
+  const handleDownload = (fileUrl, filename, id, unit) => {
 
-    if(isLoggedIn){
+    if (isLoggedIn) {
       const fileId = extractDriveFileId(fileUrl);
 
       if (fileId) {
@@ -135,35 +135,35 @@ const Notes = () => {
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
-        showAlart("Download started",'','check')
-        handledownloadCount(id,filename,unit,fileUrl);
+        showAlart("Download started", '', 'check')
+        handledownloadCount(id, filename, unit, fileUrl);
       } else {
         alert('Invalid Google Drive URL');
       }
-    }else{
-      showAlart('Login First','','mark')
+    } else {
+      showAlart('Login First', '', 'mark')
       setLoginpop(true);
     }
-  
+
   };
-  useEffect(()=>{
-    if(loginpop){
+  useEffect(() => {
+    if (loginpop) {
       document.body.style.overflow = 'hidden';
-    }else{
+    } else {
       document.body.style.overflow = 'scroll';
     }
 
-  },[loginpop]);
+  }, [loginpop]);
 
   // Function to extract file ID from Google Drive URL
   const extractDriveFileId = (url) => {
     const match = url.match(/\/d\/(.*?)\//);
     return match ? match[1] : null;
   };
-const logincancle = ()=>{
-  setLoginpop(false);
-}
- 
+  const logincancle = () => {
+    setLoginpop(false);
+  }
+
 
 
 
@@ -197,11 +197,11 @@ const logincancle = ()=>{
         <p>📚 Plus 3 Graduation Notes – Get notes from all departments, curated for your success.  Totally free—we provide them to help you excel in your studies and achieve your goals!</p>
 
         <h3 style={{ marginBottom: '2rem' }}>Subject wise ⬇️</h3>
-
-        <div className="notelistbox" ref={notelistRef}>
         <div className="ads-container-box">
-                  <Adsabovenote />
-                </div>
+            <Adsabovenote />
+          </div>
+        <div className="notelistbox" ref={notelistRef}>
+         
           {filteredNotes && filteredNotes.length > 0 ? (
             filteredNotes.slice(0, visibleNotes).map((note, index) => (
               <React.Fragment key={note.id}>
@@ -221,7 +221,7 @@ const logincancle = ()=>{
                       title={note.notefullname}
                     />
                   ) : (
-                    <button onClick={() => handlePreviewClick(note.id ,note.url)}>
+                    <button onClick={() => handlePreviewClick(note.id, note.url)}>
                       Preview Note
                     </button>
                   )}
@@ -230,18 +230,18 @@ const logincancle = ()=>{
                     <p style={{ userSelect: 'none' }}>
                       {note.totalClicks} <MousePointerClick size={15} style={{ marginRight: '1rem' }} />
                       {note.totaldownload}
-                      <span style={{  display: 'inline-block', cursor: 'pointer' }} className="active note-download-btn">
-                      <ArrowDownToLine size={20} stroke="#28A745" className="active " style={{ cursor: 'pointer'  }} onClick={() => handleDownload(note.url, note.notefullname, note.id,note.unit)} />
+                      <span style={{ display: 'inline-block', cursor: 'pointer' }} className="active note-download-btn">
+                        <ArrowDownToLine size={20} stroke="#28A745" className="active " style={{ cursor: 'pointer' }} onClick={() => handleDownload(note.url, note.notefullname, note.id, note.unit)} />
                       </span>
-               
+
                     </p>
                   </div>
                 </div>
                 {/* Show Ad after every 5 notes */}
                 {((index + 1) % 4 === 0) && (
                   <div className="ads-container-box">
-                  <Adsbetwnotes />
-                </div>
+                    <Adsbetwnotes />
+                  </div>
                 )}
               </React.Fragment>
             ))
@@ -249,12 +249,12 @@ const logincancle = ()=>{
             <p style={{ margin: '2rem 0rem', textAlign: 'center', color: 'red' }}>No notes available</p>
           )}
         </div>
-
-        {visibleNotes < notelist.length && filteredNotes.length > 0 && (
-          <>
-            <div className="ads-container-box">
+        <div className="ads-container-box">
               <Morenoteabove />
             </div>
+        {visibleNotes < notelist.length && filteredNotes.length > 0 && (
+          <>
+           
             <button
               onClick={handleLoadMore}
               style={{
@@ -281,20 +281,20 @@ const logincancle = ()=>{
         </div>
 
       </div>
-        <div className={`loginpopup ${loginpop ? 'loginpoptrue' : ''}`} >
+      <div className={`loginpopup ${loginpop ? 'loginpoptrue' : ''}`} >
         <div className={`login-popup ${loginpop ? 'loginpoptruebox' : ''}`}>
-        <h3 className="login-popup-title">Login to access and download notes</h3>
-        <p className="login-popup-text">
-          You need to be logged in to download notes. Please login or sign up to continue.
-        </p>
-        <div className="login-popup-buttons">
-          <button onClick={logincancle} className="cancel-btn">Cancel</button>
-          <button onClick={() => navigate('/login')} className="login-btn">Login</button>
+          <h3 className="login-popup-title">Login to access and download notes</h3>
+          <p className="login-popup-text">
+            You need to be logged in to download notes. Please login or sign up to continue.
+          </p>
+          <div className="login-popup-buttons">
+            <button onClick={logincancle} className="cancel-btn">Cancel</button>
+            <button onClick={() => navigate('/login')} className="login-btn">Login</button>
+          </div>
+          <p style={{ color: '#fff', margin: '1rem 0rem' }}>or</p>
+          <GoogleAuth userdata={setUsernav} showAlart={showAlart} />
         </div>
-        <p style={{color : '#fff',margin: '1rem 0rem'}}>or</p>
-        <GoogleAuth userdata={setUsernav} showAlart={ showAlart}/>
       </div>
-        </div>
 
     </section>
   );

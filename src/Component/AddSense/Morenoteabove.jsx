@@ -31,7 +31,7 @@ const Morenoteabove = () => {
 return (
 <div style={{width: '100%', overflow : 'hidden' }}>
 <ins className="adsbygoogle"
-style={{display : 'block',textAlign : 'center'}}
+style={{display : 'block',textAlign : 'center',minWidth : '250px',width  :'100%'}}
 data-ad-layout="in-article"
 data-ad-format="fluid"
 data-ad-client="ca-pub-9796833231647897"
