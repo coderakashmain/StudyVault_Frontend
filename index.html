@@ -111,28 +111,28 @@
    
   </head>
   <body>
-    <div id="root">
-      <style>
-        #static-loader {
-          position: fixed;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          font-size: 1.5rem;
-          font-weight: bold;
-          color: #1a5daf;
-          font-family: Arial, sans-serif;
-          animation: blink 1s steps(2, start) infinite;
-        }
-        @keyframes blink {
-          to {
-            visibility: hidden;
-          }
-        }
-      </style>
-      <div id="static-loader">Loading StudyVault...</div>
-
+    <div id="root"></div>
+      <div id="static-loader" style="
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 24px;
+        font-weight: bold;
+        color: #555;
+        font-family: Arial, sans-serif;
+        animation: blink 1s steps(2, start) infinite;
+      ">
+      Loading StudyVault...
     </div>
+
+    <style>
+      @keyframes blink {
+        to {
+          visibility: hidden;
+        }
+      }
+    </style>
     <script type="module" src="/src/main.jsx"></script>
 
     <script
