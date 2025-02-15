@@ -111,9 +111,30 @@
    
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <style>
+        #static-loader {
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          font-size: 1.5rem;
+          font-weight: bold;
+          color: #1a5daf;
+          font-family: Arial, sans-serif;
+          animation: blink 1s steps(2, start) infinite;
+        }
+        @keyframes blink {
+          to {
+            visibility: hidden;
+          }
+        }
+      </style>
+      <div id="static-loader">Loading StudyVault...</div>
+
+    </div>
     <script type="module" src="/src/main.jsx"></script>
-    <!-- <script type="module" src="/bundle.js"></script> -->
+
     <script
       src="https://kit.fontawesome.com/12543e6ff4.js"
       crossorigin="anonymous"

@@ -4,6 +4,10 @@ import App from './App.jsx'
 import './index.css'
 import ErrorBoundary from './Component/ErrorBoundary/ErrorBoundary.jsx';
 
+const staticLoader = document.getElementById('static-loader');
+if (staticLoader) {
+  staticLoader.remove();
+}
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
