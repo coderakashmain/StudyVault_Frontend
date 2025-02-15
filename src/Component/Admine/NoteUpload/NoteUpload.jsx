@@ -60,6 +60,7 @@ const NoteUpload = () => {
         setSubjectName('');
         setNoteFullName('');
         setUnit('');
+        setFileName('');
 
       }else{
         showAlart('Error', 'Upload failed', 'cancel');
@@ -95,6 +96,7 @@ const NoteUpload = () => {
         <label>Upload PDF:</label>
         <input type="file" accept="application/pdf" onChange={handleFileChange} required />
         {fileName && <p className="file-name-note">Selected File: {fileName}</p>}
+        <button style={{padding : '0.4rem',border : '1px solid #cdcdcd'}} type='reset'>Clear</button>
         <button type="submit" className="upload-btn-note" disabled={singletap}>Upload</button>
       </form>
       {singletap && (<div className="note-loading">
