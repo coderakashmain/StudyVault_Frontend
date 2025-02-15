@@ -266,11 +266,9 @@ const Question = (props) => {
                     setFetchData(response.data);
                     setPaperList(response.data);
                 }
-                else {
-                    showAlart('Error fetching Data', "", 'mark')
-                }
-            } catch {
-                showAlart('Error fetching Data', "", 'mark');
+            } catch(err) {
+
+                console.error("Error fetching Data",err);
             }
         }
         fatchData();
