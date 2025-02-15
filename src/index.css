@@ -16,13 +16,13 @@
   
 }
 
-/* body,html{
+body,html{
   width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
   color: #2d2d2d;
-} */
+}
 :root{
   --notificationbackcolor : #eaeffb;
   --backcolor : #f2f2fb;

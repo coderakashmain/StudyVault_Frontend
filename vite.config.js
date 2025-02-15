@@ -24,14 +24,9 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: (id) => {
-          if (id.includes('node_modules')) {
-            if (id.includes('lottie-web')) {
-              return 'lottie';
-            }
-            if (id.includes('react')) {
-              return 'react-vendor';
-            }
-            return 'vendor';
+          // Separate lottie-web if needed to reduce build size issues
+          if (id.includes('lottie-web')) {
+            return 'lottie';
           }
         },
       },
