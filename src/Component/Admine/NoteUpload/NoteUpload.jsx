@@ -25,13 +25,24 @@ const NoteUpload = () => {
     }
   };
 
+  const handleUpload = async () => {
+    if (file) {
+        const newFileName = `${noteFullName} ${unit}.pdf`;
+        // Rename the file
+        const renamedFile = new File([file], newFileName, { type: file.type });
+
+        return renamedFile;
+    }
+    return null;
+};
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!file) return showAlart('Error', 'No file selected', 'cancel');
+    const fileToUpload = await handleUpload();
 
     setSingletap(true);
     const formData = new FormData();
-    formData.append('file', file);
+    formData.append('file', fileToUpload);
     formData.append('subjectName', subjectName);
     formData.append('noteFullName', noteFullName);
     formData.append('unit', unit);
