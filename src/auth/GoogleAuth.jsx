@@ -45,7 +45,12 @@ const  GoogleAuth = ({userdata , showAlart})=> {
     <GoogleOAuthProvider clientId={googleClientId} >
       <div className="google-auth" >
       <div className="custom-google-btn">
-      <GoogleLogin onSuccess={handleSuccess} onError={handleFailure} />
+      <GoogleLogin 
+      onSuccess={handleSuccess}
+       onError={handleFailure}
+       flow="redirect" // ← Forces redirect mode
+        redirectUri="https://studyvault.online"
+        />
     </div>
       </div>
     </GoogleOAuthProvider>
