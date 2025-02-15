@@ -409,7 +409,7 @@ const Question = (props) => {
         if (sureDelete) {
             try {
                 const token = localStorage.getItem("adminToken");
-                console.log(token);
+               
 
                 await axios.post('/api/admin/deletepdf',
                     { id, urlpdfid },
