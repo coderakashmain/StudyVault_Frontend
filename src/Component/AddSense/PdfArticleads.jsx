@@ -1,29 +1,37 @@
 import React, { useEffect } from 'react'
 
 const PdfArticleads = (props) => {
- useEffect(() => {
+  useEffect(() => {
               // Dynamically create and insert the AdSense script
       
               if(process.env.NODE_ENV === 'production'){
-                const script = document.createElement('script');
-                script.async = true;
-                script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9796833231647897';
-                script.crossOrigin = 'anonymous';
-                document.head.appendChild(script);
+
+                window.adsbygoogle = window.adsbygoogle || [];
+
+                const existingScript = document.querySelector('script[src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]');
+
+                if (!existingScript) {
+                  const script = document.createElement('script');
+                  script.async = true;
+                  script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9796833231647897';
+                  script.crossOrigin = 'anonymous';
+                  document.head.appendChild(script);
+                }
             
-                // Push the ad to initialize after the script loads
-                script.onload = () => {
-                  if (window.adsbygoogle) {
-                    window.adsbygoogle.push({});
+              
+                const timeout = setTimeout(() => {
+                  try {
+                    if (window.adsbygoogle) {
+                      window.adsbygoogle.push({});
+                    }
+                  } catch (e) {
+                    console.error('AdSense error:', e);
                   }
-                };
-            
-                return () => {
-                  // Cleanup the script when the component unmounts
-                  document.head.removeChild(script);  
-                };
+                }, 500);
+          
+                return () => clearTimeout(timeout);
               }
-            }, []);  
+            }, []);    
             if (process.env.NODE_ENV !== 'production') {
               return null;
             }

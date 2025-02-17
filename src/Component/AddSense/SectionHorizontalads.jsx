@@ -2,28 +2,36 @@ import React, { useEffect } from 'react'
 
 const SectionHorizontalads = () => {
   useEffect(() => {
-    // Dynamically create and insert the AdSense script
+              // Dynamically create and insert the AdSense script
+      
+              if(process.env.NODE_ENV === 'production'){
 
-    if (process.env.NODE_ENV === 'production') {
-      const script = document.createElement('script');
-      script.async = true;
-      script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9796833231647897';
-      script.crossOrigin = 'anonymous';
-      document.head.appendChild(script);
+                window.adsbygoogle = window.adsbygoogle || [];
 
-      // Push the ad to initialize after the script loads
-      script.onload = () => {
-        if (window.adsbygoogle) {
-          window.adsbygoogle.push({});
-        }
-      };
+                const existingScript = document.querySelector('script[src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]');
 
-      return () => {
-        // Cleanup the script when the component unmounts
-        document.head.removeChild(script);
-      };
-    }
-  }, []);
+                if (!existingScript) {
+                  const script = document.createElement('script');
+                  script.async = true;
+                  script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9796833231647897';
+                  script.crossOrigin = 'anonymous';
+                  document.head.appendChild(script);
+                }
+            
+              
+                const timeout = setTimeout(() => {
+                  try {
+                    if (window.adsbygoogle) {
+                      window.adsbygoogle.push({});
+                    }
+                  } catch (e) {
+                    console.error('AdSense error:', e);
+                  }
+                }, 500);
+          
+                return () => clearTimeout(timeout);
+              }
+            }, []);  
   if (process.env.NODE_ENV !== 'production') {
     return null;
   }
