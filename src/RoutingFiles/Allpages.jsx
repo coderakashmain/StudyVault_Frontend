@@ -17,18 +17,10 @@ const Allpages = ({alart}) => {
     <>
  
 
-
-        
-        <Suspense fallback={<Loadingicon/>}>
          <TitleSet/>
-         
- 
-   
           <Outlet />
-          </Suspense>
+  
     
-
-
     </>
   )
 }

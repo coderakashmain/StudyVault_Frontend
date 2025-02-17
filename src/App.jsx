@@ -35,11 +35,11 @@ import Navbar from "./Component/Navbar/Navbar";
 const NoteUpload = lazy(() => import("./Component/Admine/NoteUpload/NoteUpload"));
 const Alart = lazy(() => import("./Component/Alart/Alart"));
 const MaterialRouting = lazy(() => import("./RoutingFiles/MaterialRouting"));
+const PaymentStatus = lazy(() => import("./Pages/CashfreePay/PaymentStatus"));
+const PaymentRouter = lazy(() => import("./RoutingFiles/PaymentRouter"));
 import FallbackLoad from "./Component/Fallbackload/FallbackLoad"
 import ErrorBoundary from "./Component/ErrorBoundary/ErrorBoundary";
 import Loadingicon from "./Component/Jsonlicon/Loadingicon";
-import PaymentRouter from "./RoutingFiles/PaymentRouter";
-import PaymentStatus from "./Pages/CashfreePay/PaymentStatus";
 import ThemeContext from "./Context/ThemeContext/ThemeContext";
 import NavbarpresentRouting from "./RoutingFiles/NavbarpresentRouting";
 import IntroLoader from "./Component/IntroLoader/IntroLoader";
@@ -106,7 +106,7 @@ const navrefvalue = (value) => {
 
     {
       path : '*',
-      element : <ErrorBoundary><NotFound/></ErrorBoundary>
+      element: <ErrorBoundary><Suspense fallback={<IntroLoader />}><NotFound /></Suspense></ErrorBoundary>
     },
     {
       path: '/',
@@ -118,7 +118,7 @@ const navrefvalue = (value) => {
           children : [
             {
               path: '',
-              element: (<><Home     navRefvalue = {navRefvalue} /></>),
+              element: (<><Suspense fallback={<IntroLoader/>}> <Home     navRefvalue = {navRefvalue} /></Suspense></>),
               children: [
                 {
                   path: '',
@@ -130,23 +130,23 @@ const navrefvalue = (value) => {
             },
             {
               path: "Contact-Us",
-              element: (<><ErrorBoundary><Suspense fallback={<FallbackLoad/>}> <PhoneInfo><Contact   /></PhoneInfo></Suspense></ErrorBoundary> </>),
+              element: (<><ErrorBoundary><Suspense fallback={<IntroLoader/>}><PhoneInfo><Contact   /></PhoneInfo></Suspense></ErrorBoundary> </>),
             },
             {
               path: "Profile",
-              element: (<><ErrorBoundary> <Profile   /></ErrorBoundary></>),
+              element: (<><ErrorBoundary><Suspense fallback={<IntroLoader/>}> <Profile   /></Suspense></ErrorBoundary></>),
             },
             {
               path: "About-us",
-              element: (<><ErrorBoundary> <AboutUs   /></ErrorBoundary></>),
+              element: (<><ErrorBoundary> <Suspense fallback={<IntroLoader/>}> <AboutUs   /></Suspense></ErrorBoundary></>),
             },
             { 
               path: "Privacy-Policy",
-              element: (<><ErrorBoundary> <PrivecyandPolicy   /></ErrorBoundary></>),
+              element: (<><ErrorBoundary><Suspense fallback={<IntroLoader/>}> <PrivecyandPolicy   /></Suspense></ErrorBoundary></>),
             },
             { 
               path: "Terms-Conditions",
-              element: (<><ErrorBoundary> <TermsConditions   /></ErrorBoundary></>),
+              element: (<><ErrorBoundary><Suspense fallback={<IntroLoader/>}> <TermsConditions   /></Suspense></ErrorBoundary></>),
             },
           ]
         },
@@ -154,7 +154,7 @@ const navrefvalue = (value) => {
         
         {
           path: 'Filter',
-          element:<MaterialRouting    subheadingtypedata = {subheadingtype}/>,
+          element: <><Suspense fallback={<IntroLoader/>}><MaterialRouting    subheadingtypedata = {subheadingtype}/></Suspense></>,
           children : [
             {
               path: '',
@@ -175,23 +175,23 @@ const navrefvalue = (value) => {
      
         {
           path: '/Downloadpdf/:fName',
-          element: (<><ErrorBoundary><Downloadpdf   /></ErrorBoundary></>),
+          element: (<><ErrorBoundary><Suspense fallback={<IntroLoader/>}><Downloadpdf   /></Suspense></ErrorBoundary></>),
         },
         {
           path: "LogIn",
-          element: (<><Suspense fallback  = {<Loadingicon/>}><Loginsignup /></Suspense></>),
+          element: (<><Suspense fallback  = {<IntroLoader/>}><Loginsignup /></Suspense></>),
           children: [
             {
               path: "",
-              element:<ErrorBoundary><Suspense fallback  = {<Loadingicon/>}> <Login   /></Suspense></ErrorBoundary>
+              element:<ErrorBoundary><Suspense fallback  = {<IntroLoader/>}> <Login   /></Suspense></ErrorBoundary>
             },
             {
               path: "Signup",
-              element: <> <ErrorBoundary><Suspense fallback  = {<Loadingicon/>}> <Signup   /></Suspense></ErrorBoundary></>
+              element: <> <ErrorBoundary><Suspense fallback  = {<IntroLoader/>}> <Signup   /></Suspense></ErrorBoundary></>
             },
             {
               path: "ForgatePw",
-              element:<ErrorBoundary><Suspense fallback  = {<Loadingicon/>}>  <ForgatePw   /></Suspense></ErrorBoundary>
+              element:<ErrorBoundary><Suspense fallback  = {<IntroLoader/>}>  <ForgatePw   /></Suspense></ErrorBoundary>
             },
           ]
         },
@@ -199,16 +199,16 @@ const navrefvalue = (value) => {
         
         {
           path: "payment-donate-us",
-          element: (<><ErrorBoundary> <Suspense fallback  = {<Loadingicon/>}> <PaymentRouter   /></Suspense> </ErrorBoundary></>),
+          element: (<><ErrorBoundary> <Suspense fallback  = {<IntroLoader/>}> <PaymentRouter   /></Suspense> </ErrorBoundary></>),
           children : [
             {
               index: true,
               path: "",
-              element: (<><ErrorBoundary> <Cashfree   /></ErrorBoundary></>),
+              element: (<><ErrorBoundary><Suspense fallback  = {<IntroLoader/>}> <Cashfree   /></Suspense> </ErrorBoundary></>),
             },
             {
               path: "payment-response",
-              element: (<><ErrorBoundary> <PaymentStatus   /></ErrorBoundary></>),
+              element: (<><ErrorBoundary><Suspense fallback  = {<IntroLoader/>}> <PaymentStatus   /></Suspense></ErrorBoundary></>),
             },
          
           ]
@@ -217,7 +217,7 @@ const navrefvalue = (value) => {
        
         {
           path: "Admin",
-          element: (<><FetchData><Admine   /></FetchData></>),
+          element: (<><Suspense fallback  = {<IntroLoader/>}><FetchData><Admine   /></FetchData></Suspense></>),
           children: [{
             path: '',
             element: <><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}><Dashboard   /></Suspense>  </ErrorBoundary></>
@@ -253,15 +253,15 @@ const navrefvalue = (value) => {
         },
         {
           path : 'Admin/AdminLogIn',
-          element : (<><ErrorBoundary><AdmineLogIn  /></ErrorBoundary></>)
+          element : (<><ErrorBoundary><Suspense fallback  = {<IntroLoader/>}><AdmineLogIn  /></Suspense></ErrorBoundary></>)
         } ,
          {
           path: 'article-section',
-          element: (<><Suspense fallback  = {<FallbackLoad/>}> <ArticleSubheading><ArticleContainerRouter   /></ArticleSubheading></Suspense> </>),
+          element: (<><Suspense fallback  = {<IntroLoader/>}> <ArticleSubheading><ArticleContainerRouter   /></ArticleSubheading></Suspense> </>),
           children: [
             {
               path: '',
-              element: <><ErrorBoundary><ArticleHome   /></ErrorBoundary></>
+              element: <><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}> <ArticleHome   /></Suspense></ErrorBoundary></>
             },
             {
               path: 'colleges-article',
