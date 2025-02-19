@@ -9,6 +9,24 @@
   justify-content: center;
   align-items: center;
   padding: 1rem 0;
+  text-align: center;
+}
+.ads-center-perfect{
+  width: 90%;
+  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+  margin: 0rem auto 1rem;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  
+
 }
 
 .goolge-auth-btn{

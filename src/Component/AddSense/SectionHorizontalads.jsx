@@ -36,13 +36,13 @@ const SectionHorizontalads = () => {
     return null;
   }
   return (
-    <div style={{ backgroundColor: '#E6EBF7', overflow: 'hidden', width: '100%', borderRadius: '0.3rem', position: 'relative' }}>
+    <div style={{  width: '100%',  position: 'relative' }}>
       <div style={{ position: 'absolute', top: '50%', left: "50%", transform: 'translate(-50%,-50%)', opacity: '0.5' }}
         role="status"
         aria-label="Loading"
       >Loading...</div>
       <ins className="adsbygoogle"
-        style={{ display: 'flex', background: 'rgb(228 233 237 / 68%)', justifyContent: 'center', width: '100%' ,backgroundColor : ' backgroundColor :"#F2F2FB"'}}
+        style={{ display: 'flex', justifyContent: 'center', width: '100%' ,backgroundColor : ' backgroundColor :"#F2F2FB"'}}
         data-ad-client="ca-pub-9796833231647897"
         data-ad-slot="4000372064"
         data-ad-format="auto"

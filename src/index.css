@@ -25,7 +25,8 @@ body,html{
 }
 :root{
   --notificationbackcolor : #eaeffb;
-  --backcolor : #f2f2fb;
+  /* --backcolor : #f2f2fb; */
+  --backcolor : #f8f8fb;
   --pagecolor : #eceff3;
   --about-text-color : #e1e1e1;
   --alartcool : rgb(0, 174, 87);              

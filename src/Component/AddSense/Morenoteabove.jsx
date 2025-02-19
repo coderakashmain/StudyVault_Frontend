@@ -37,7 +37,11 @@ const Morenoteabove = () => {
         return null;
       }
 return (
-<div style={{width: '100%', overflow : 'hidden' }}>
+<div style={{width: '100%', overflow : 'hidden' ,position: 'relative'}}>
+<div style={{ position: 'absolute', top: '50%', left: "50%", transform: 'translate(-50%,-50%)', opacity: '0.5' }}
+        role="status"
+        aria-label="Loading"
+      >Loading...</div>
 <ins className="adsbygoogle"
 style={{display : 'block',textAlign : 'center',minWidth : '250px',width  :'100%'}}
 data-ad-layout="in-article"

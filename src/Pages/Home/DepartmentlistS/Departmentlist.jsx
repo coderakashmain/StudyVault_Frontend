@@ -8,6 +8,7 @@ import axios from "axios";
 import LongWidthAds from "../../../Component/AddSense/LongWidthAds";
 import SectionHorizontalads from "../../../Component/AddSense/SectionHorizontalads";
 import AritcleAds from "../../../Component/AddSense/AritcleAds";
+import Morenoteabove from "../../../Component/AddSense/Morenoteabove";
 // import axios from "axios";
 
 
@@ -66,13 +67,15 @@ const Departmentlist = (props) => {
 
   return (
     <>
-      <div className="main-container">
+      <div className="main-container" style={{paddingTop : '1rem'}}>
 
         <div className="inner-main-container">
-          <div className="ads-center " style={{ overflow: 'hidden' }}>
-            <SectionHorizontalads />
+        <div className="ads-center-perfect" style={{ overflow: 'hidden' }}>
+          <Morenoteabove/>
+            {/* <SectionHorizontalads /> */}
           </div>
           <div ref={contectContainer} className="content-container">
+          
             <div className="department-title-box">
               <h2>Departments :</h2>
               <button>Question Papers<i className="fa-solid fa-not-equal"></i></button>
