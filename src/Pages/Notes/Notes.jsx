@@ -197,7 +197,7 @@ const Notes = () => {
         <p>📚 Plus 3 Graduation Notes – Get notes from all departments, curated for your success.  Totally free—we provide them to help you excel in your studies and achieve your goals!</p>
 
         <h3 style={{ marginBottom: '2rem' }}>Subject wise ⬇️</h3>
-        <div className="ads-container-box">
+        <div className="ads-container-box" style={{padding : '20px 0px'}}>
             <Adsabovenote />
           </div>
         <div className="notelistbox" ref={notelistRef}>
