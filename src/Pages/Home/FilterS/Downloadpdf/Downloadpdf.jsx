@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 import './Downloadpdf.css'
+import axios from "axios";
 
 import LongWidthAds from "../../../../Component/AddSense/LongWidthAds";
 import AritcleAds from "../../../../Component/AddSense/AritcleAds";
@@ -15,6 +16,7 @@ const Downloadpdf = (props) => {
     const navigate = useNavigate();
     const {pdfName} = useParams();
     const location = useLocation();
+    const VITE_SHRINKEARN_API_KEY = import.meta.env.VITE_SHRINKEARN_API_KEY;
 
     const [papers, setPapers] = useState([]);
     const searchRef = useRef();
@@ -30,6 +32,7 @@ const Downloadpdf = (props) => {
     const [papertitle,setPapertitle] = useState('');
     const [paperurl,setPaperurl]=useState('');
     const [pdfpresent,setPdfpresent] = useState(false);
+    const [shortenedUrl, setShortenedUrl] = useState(null);
 
 
 
@@ -89,50 +92,90 @@ const Downloadpdf = (props) => {
 
 
 
-    const handleClickPaper = (paper) => {
-        setClickCount((prevCount) => prevCount + 1);
+    // const handleClickPaper = (paper) => {
+    //     setClickCount((prevCount) => prevCount + 1);
     
      
         
   
      
-        if ((clickCount + 1) % 2 === 0) {
-            setShowAd(true);
-            setPapertitle(`/Downloadpdf/${paper.title}`);
-            setPaperurl(paper.url);
-            setPdfpresent(false);
+    //     if ((clickCount + 1) % 2 === 0) {
+    //         setShowAd(true);
+    //         setPapertitle(`/Downloadpdf/${paper.title}`);
+    //         setPaperurl(paper.url);
+    //         setPdfpresent(false);
             
-            const timeout = setTimeout(() => {
+    //         const timeout = setTimeout(() => {
                
-                setPdfpresent((prevPdfPresent) => {
-                    setSelectedPdf((prevSelectedPdf) => {
-                        if (!prevSelectedPdf && !prevPdfPresent && pdfpresent) {
-                            navigate(`/Downloadpdf/${paper.title}`);
-                            return paper.url;
-                        }
-                        return prevSelectedPdf;
-                    });
+    //             setPdfpresent((prevPdfPresent) => {
+    //                 setSelectedPdf((prevSelectedPdf) => {
+    //                     if (!prevSelectedPdf && !prevPdfPresent && pdfpresent) {
+    //                         navigate(`/Downloadpdf/${paper.title}`);
+    //                         return paper.url;
+    //                     }
+    //                     return prevSelectedPdf;
+    //                 });
         
-                    return prevPdfPresent;
-                });
+    //                 return prevPdfPresent;
+    //             });
         
-                setShowAd(false);
-            }, 5000);
+    //             setShowAd(false);
+    //         }, 5000);
         
-            return () => clearTimeout(timeout);
+    //         return () => clearTimeout(timeout);
   
    
-        } else {
+    //     } else {
    
-            navigate(`/Downloadpdf/${paper.title}`) 
+    //         navigate(`/Downloadpdf/${paper.title}`) 
+    //         setSelectedPdf(paper.url);
+    //     }
+
+    // };
+
+    const handleClickPaper = async (paper) => {
+        try {
+            // 1. Generate a short link via ShrinkEarn API
+            const response = await axios.get(
+                `https://shrinkearn.com/api?api=${VITE_SHRINKEARN_API_KEY}&url=${encodeURIComponent(paper.url)}`
+            );
+            
+            if (response.data.shortenedUrl) {
+                const shortUrl = response.data.shortenedUrl;
+                setShortenedUrl(shortUrl);
+
+                // 2. Redirect to short link
+                window.location.href = shortUrl;
+
+                // 3. Store the original PDF URL in session storage (for redirection later)
+                sessionStorage.setItem("pendingPdf", paper.url);
+                sessionStorage.setItem("pendingPath", `/Downloadpdf/${paper.title}`);
+            } else {
+                console.error("Shortening failed, opening PDF directly.");
+                setSelectedPdf(paper.url);
+            }
+        } catch (error) {
+            console.error("Error shortening URL:", error);
             setSelectedPdf(paper.url);
         }
-
     };
+
+    useEffect(() => {
+        const pendingPdf = sessionStorage.getItem("pendingPdf");
+        const pendingPath = sessionStorage.getItem("pendingPath");
+        if (pendingPdf) {
+            navigate(pendingPath);
+            setSelectedPdf(pendingPdf);
+
+            sessionStorage.removeItem("pendingPath"); // Clear storage
+            sessionStorage.removeItem("pendingPdf"); // Clear storage
+        }
+    }, []);
+
     const handleCloseViewer = () => {
-        setPapertitle('');
-        setPaperurl('');
-        setPdfpresent(true);
+        // setPapertitle('');
+        // setPaperurl('');
+        // setPdfpresent(true);
         setSelectedPdf(null); 
         navigate(-1) 
     };
