@@ -146,7 +146,7 @@ const Downloadpdf = (props) => {
                 setShortenedUrl(shortUrl);
 
                 // 2. Redirect to short link
-                window.location.href = shortUrl;
+                window.open(shortUrl, "_blank");
 
                 // 3. Store the original PDF URL in session storage (for redirection later)
                 sessionStorage.setItem("pendingPdf", paper.url);
