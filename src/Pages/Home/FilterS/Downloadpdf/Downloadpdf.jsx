@@ -136,9 +136,10 @@ const Downloadpdf = (props) => {
     const handleClickPaper = async (paper) => {
         try {
             // 1. Generate a short link via ShrinkEarn API
-            const response = await axios.get(
-                `https://shrinkearn.com/api?api=${VITE_SHRINKEARN_API_KEY}&url=${encodeURIComponent(paper.url)}`
-            );
+            const originalUrl = paper.url;
+            const response = await axios.get(`/api/shorten`, {
+                params: { url: originalUrl }
+            });
             
             if (response.data.shortenedUrl) {
                 const shortUrl = response.data.shortenedUrl;
