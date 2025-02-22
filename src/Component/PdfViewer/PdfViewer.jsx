@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import "@react-pdf-viewer/core/lib/styles/index.css";
 import "@react-pdf-viewer/default-layout/lib/styles/index.css";
+import axios from "axios";
+
+
 
 const PDFViewer = ({ pdfUrl, papertitle, onClose }) => {
+        const [shortenedUrl, setShortenedUrl] = useState(null);
 
     // Function to transform Google Drive view link to direct-download link
     const getDirectPdfUrl = (url) => {
@@ -27,23 +31,90 @@ const PDFViewer = ({ pdfUrl, papertitle, onClose }) => {
 
 
     // Function to create a download link
-    const handleDownload = () => {
- 
-        if (downloadUrl) {
-        
-            const link = document.createElement('a');
-            link.href = downloadUrl;
-            link.download = papertitle || "DownloadedFile.pdf"; // Set the default file name for download
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+    const handleDownload = async () => {
+        const pendingPdf = sessionStorage.getItem("pendingPdf");
+        if (pendingPdf) {
+            if (downloadUrl) {
+
+                const link = document.createElement('a');
+                link.href = downloadUrl;
+                link.download = papertitle || "DownloadedFile.pdf"; // Set the default file name for download
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            } else {
+                alert('Invalid Google Drive URL');
+            }
+
+            sessionStorage.removeItem("pendingPath"); 
         } else {
-            alert('Invalid Google Drive URL');
+            try {
+                // 1. Generate a short link via ShrinkEarn API
+
+                const response = await axios.get(`/api/shorten`, {
+                    params: { url: pdfUrl }
+                });
+
+                if (response.data.shortenedUrl) {
+                    const shortUrl = response.data.shortenedUrl;
+                    setShortenedUrl(shortUrl);
+
+                    // 2. Redirect to short link
+                    window.open(shortUrl, "_blank");
+
+                    // 3. Store the original PDF URL in session storage (for redirection later)
+                    sessionStorage.setItem("pendingPdf", pdfUrl);
+
+                } else {
+                    console.error("Shortening failed, opening PDF directly.");
+                    if (downloadUrl) {
+
+                        const link = document.createElement('a');
+                        link.href = downloadUrl;
+                        link.download = papertitle || "DownloadedFile.pdf"; // Set the default file name for download
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                    } else {
+                        alert('Invalid Google Drive URL');
+                    }
+                }
+            } catch (error) {
+                console.error("Error shortening URL:", error);
+                if (downloadUrl) {
+
+                    const link = document.createElement('a');
+                    link.href = downloadUrl;
+                    link.download = papertitle || "DownloadedFile.pdf"; // Set the default file name for download
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                } else {
+                    alert('Invalid Google Drive URL');
+                }
+            }
         }
 
 
+
     };
- 
+    // const handleDownload = () => {
+
+    //     if (downloadUrl) {
+
+    //         const link = document.createElement('a');
+    //         link.href = downloadUrl;
+    //         link.download = papertitle || "DownloadedFile.pdf"; // Set the default file name for download
+    //         document.body.appendChild(link);
+    //         link.click();
+    //         document.body.removeChild(link);
+    //     } else {
+    //         alert('Invalid Google Drive URL');
+    //     }
+
+
+    // };
+
 
 
     return (
