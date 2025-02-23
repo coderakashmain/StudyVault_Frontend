@@ -34,6 +34,7 @@ const PDFViewer = ({ pdfUrl, papertitle, onClose }) => {
     const handleDownload = async () => {
         const pendingPdf = sessionStorage.getItem("pendingPdf");
         if (pendingPdf) {
+            sessionStorage.removeItem("pendingPdf"); 
             if (downloadUrl) {
 
                 const link = document.createElement('a');
@@ -46,7 +47,6 @@ const PDFViewer = ({ pdfUrl, papertitle, onClose }) => {
                 alert('Invalid Google Drive URL');
             }
 
-            sessionStorage.removeItem("pendingPath"); 
         } else {
             try {
                 // 1. Generate a short link via ShrinkEarn API
@@ -61,6 +61,7 @@ const PDFViewer = ({ pdfUrl, papertitle, onClose }) => {
 
                     // 2. Redirect to short link
                     window.open(shortUrl, "_blank");
+                    // window.location.href=shortUrl;
 
                     // 3. Store the original PDF URL in session storage (for redirection later)
                     sessionStorage.setItem("pendingPdf", pdfUrl);
