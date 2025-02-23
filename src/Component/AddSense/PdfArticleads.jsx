@@ -39,7 +39,7 @@ const PdfArticleads = (props) => {
   return (
     <div style={{width: '100%', overflow : 'hidden' }}>
       <ins className="adsbygoogle"
-     style={{display : 'block', textAlign : 'center',width :'100vw', minWidth : "250px "  , background : props.background  || 'var( --notificationbackcolor )'}}
+     style={{display : 'block', textAlign : 'center',width :'100vw', minWidth : "250px "}}
      data-ad-layout="in-article"
      data-ad-format="fluid"
      data-ad-client="ca-pub-9796833231647897"
