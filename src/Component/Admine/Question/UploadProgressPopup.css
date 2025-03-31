@@ -1,0 +1,105 @@
+/* Overlay for background blur */
+.upload-overlay {
+    position: absolute;
+    top: 1%;
+    right: 2%;
+    z-index: 1000;
+}
+
+/* Modal container */
+.upload-modal {
+    background: #fff;
+    padding: 1rem 0rem;
+    border-radius: 10px;
+    width: 40rem;
+    max-height: 40vh;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    position: relative;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Close button */
+.close-icon {
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.close-icon:hover {
+    transform: scale(1.1);
+}
+
+/* Title */
+.upload-title {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Message for empty uploads */
+.no-uploads {
+    text-align: center;
+    font-size: 1rem;
+    color: gray;
+}
+
+/* Upload item container */
+.upload-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    margin: 0rem 1rem 1rem;
+    background-color: rgba(245, 245, 245, 0.484);
+    text-wrap: wrap;
+}
+
+/* File name and status */
+.upload-name {
+    font-size: 1rem;
+    flex: 1;
+    color: black;
+}
+
+/* Highlight failed uploads */
+.upload-failed {
+    color: red;
+}
+.upload-success{
+    color: rgb(0, 128, 23);
+}
+
+/* Progress bar */
+.upload-meter {
+    margin: 0 1rem;
+    width: 5rem;
+}
+
+/* Percentage text */
+.upload-percentage {
+    font-size: 1rem;
+}
+
+/* Smooth fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@media (max-width : 640px) {
+    .upload-modal {
+        width: 100vw;
+    }
+}

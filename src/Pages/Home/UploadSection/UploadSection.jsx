@@ -92,8 +92,12 @@ const location = useLocation();
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSingletap(true);
+
     if (selectedFile && selectedFile.length > 0) {
       const formData = new FormData();
+
+
+      
       selectedFile.forEach((file) => {
         formData.append("files", file); // Append each file to FormData
       });

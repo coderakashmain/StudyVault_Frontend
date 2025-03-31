@@ -398,17 +398,17 @@ const Navbar = (props) => {
 
     openTl
       .to(notificationref.current, {
-        right: 0,
-        duration: 0.3,
+        height : window.innerWidth <= 650 ? '100%' : '85vh',
+        duration: 0.2,
         ease: "ease",
       }, 'same')
 
 
-      .to(wholenotificationbackRef.current, {
-        left: 0,
-        duration: 0.5,
-        ease: "ease",
-      }, 'same')
+      // .to(wholenotificationbackRef.current, {
+      //   left: 0,
+      //   duration: 0.5,
+      //   ease: "ease",
+      // }, 'same')
 
 
 
@@ -417,27 +417,26 @@ const Navbar = (props) => {
 
 
     close.to(notificationref.current, {
-      right: "-100%",
-      duration: 0.5,
+      height : '0vh',
+      duration: 0.2,
       ease: "power4.inOut",
     }, 'same2')
-      .to(wholenotificationbackRef.current, {
-        left: "-100%",
-        duration: 0.5,
-        ease: "power4.inOut",
-      }, 'same2')
+      // .to(wholenotificationbackRef.current, {
+      //   left: "-100%",
+      //   duration: 0.5,
+      //   ease: "power4.inOut",
+      // }, 'same2')
 
 
     const handlenotification = () => {
+      const data = document.querySelector('#full-notification-back')
+        data.style.width =window.innerWidth <= 650 ? '100%' : '85vh';
       openTl.restart();
-      document.body.style.overflow = "hidden";
 
     };
 
     const handlenotificationclose = () => {
       close.restart();
-
-      document.body.style.overflowY = "scroll";
     };
 
 
@@ -663,9 +662,9 @@ const Navbar = (props) => {
       </div>
       {/* <div ref={glitch} className="glitchproblem"></div> */}
 
-
-      <aside ref={wholenotificationbackRef} id='full-notification-back'>
-        <aside ref={notificationref} id="notification">
+      
+      <aside ref={notificationref} id='full-notification-back'>
+        <aside ref={wholenotificationbackRef} id="notification">
           <h2>Notification <s></s>  <i className="fa-solid fa-xmark" style={{ cursor: 'pointer' }} ref={closeNotification}></i></h2>
           <h4>All</h4>
           <hr style={{ margin: '0rem 0rem 1.4rem 0rem' }} />

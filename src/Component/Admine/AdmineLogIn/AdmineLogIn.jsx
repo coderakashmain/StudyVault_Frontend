@@ -35,6 +35,8 @@ const handleSubmit = async (e)=>{
     if (!isVerified && shouldVerify) {
         showAlart("Please complete the CAPTCHA before logging in.",'','cancel');
        setRepeatclick(false);
+       setIsactive(false)
+
        return;
      }
     try{

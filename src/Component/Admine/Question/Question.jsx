@@ -7,7 +7,8 @@ import './Question.css'
 import { Departmentlistdata } from '../../../Context/DepartmentList/DepartmentListContext'
 import axios from 'axios'
 import { AlartContectValue } from '../../../Context/AlartContext/AlartContext';
-import { Trash2, ShieldAlert, ShieldCheck, Verified } from 'lucide-react'
+import { Trash2, ShieldAlert, ShieldCheck, Verified, History } from 'lucide-react'
+import UploadProgressPopup from './UploadProgressPopup';
 
 
 const Question = (props) => {
@@ -27,7 +28,10 @@ const Question = (props) => {
     const [updatedata, setUpdatedata] = useState('');
     const paperboxhide = useRef();
     const fileInputRef = useRef();
-    const [uploadProgress, setUploadProgress] = useState(0);
+    const [uploadProgress, setUploadProgress] = useState(() => {
+        const savedUploads = localStorage.getItem("uploadHistory");
+        return savedUploads ? JSON.parse(savedUploads) : [];
+    });
     const { showAlart } = useContext(AlartContectValue);
     const [varified, setVerified] = useState(false);
     const [otpop, setOtppop] = useState(false);
@@ -36,6 +40,7 @@ const Question = (props) => {
     const [otpsent, setOtpsent] = useState(false);
     const [otpvalue, setOtpvalue] = useState('');
     const [load, setLoad] = useState(false);
+    const [showPopup, setShowPopup] = useState(false);
     const [filtetuploaddata, setFiltetuploaddata] = useState(
         {
             departmentName: '',
@@ -123,6 +128,7 @@ const Question = (props) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setSingletap(true);
+        setShowPopup(true);
 
         const fileToUpload = await handleUpload(); // Get renamed file
         if (!fileToUpload) {
@@ -136,7 +142,33 @@ const Question = (props) => {
         formData.append('renameFileback', fileToUpload.name);
         // formData.append('userid', user.id);
         formData.append('filtetuploaddata', JSON.stringify(filtetuploaddata));
-        // console.log(fileToUpload);
+
+        setSelectedFile('');
+        setFiltetuploaddata({
+            departmentName: '',
+            educationLavel: '',
+            session: '',
+            dptyear: '',
+            semormid: '',
+            paperName: '',
+            studentyear: ''
+        });
+
+        setDartmentvalue('');
+        setElective(false);
+        setCompulsory(false);
+        setEandv(false);
+        setHonors(true);
+
+
+        const uploadId = Date.now(); // Unique ID for this file
+        const newUpload = { id: uploadId, name: fileToUpload.name, progress: 0, status: "Uploading..." };
+
+        setUploadProgress(prev => {
+            const updated = [...prev, newUpload];
+            localStorage.setItem("uploadHistory", JSON.stringify(updated)); // Save to localStorage
+            return updated;
+        });
 
         try {
             const response = await axios.post('/api/Admin/upload', formData, {
@@ -145,65 +177,101 @@ const Question = (props) => {
                 },
                 onUploadProgress: (progressEvent) => {
                     const percentage = Math.round((progressEvent.loaded * 100) / progressEvent.total);
-                    setUploadProgress(percentage);
+                    setUploadProgress(prev => {
+                        const updated = prev.map(upload =>
+                            upload.id === uploadId ? { ...upload, progress: percentage } : upload
+                        );
+                        localStorage.setItem("uploadHistory", JSON.stringify(updated)); // Save progress
+                        return updated;
+                    });
                 },
 
             });
 
             if (response.status === 200) {
-                const fileId = response.data.fileId; // Google Drive File ID
-                // const driveUrl = `https://drive.google.com/file/d/${fileId}/view`;
-                // window.open(driveUrl);
-                // alert(driveUrl);
-                // Reset states and show success message
-                setSelectedFile('');
-                setFiltetuploaddata({
-                    departmentName: '',
-                    educationLavel: '',
-                    session: '',
-                    dptyear: '',
-                    semormid: '',
-                    paperName: '',
-                    studentyear: ''
+                const fileId = response.data.fileId;
+
+                setUploadProgress(prev => {
+                    const updated = prev.map(upload =>
+                        upload.id === uploadId ? { ...upload, progress: 100, status: "Success" } : upload
+                    );
+                    localStorage.setItem("uploadHistory", JSON.stringify(updated)); // Save success
+                    return updated;
                 });
+                setShowPopup(false)
                 setSingletap(false);
-                // if (fileInputRef.current) fileInputRef.current.value = '';
-                setDartmentvalue('');
                 showAlart('Successfully uploaded.', '', 'check');
-                setElective(false);
-                setCompulsory(false);
-                setEandv(false);
-                setHonors(true);
             } else {
                 showAlart('External Error', 'Failed to upload the file.', 'cancel');
                 setSingletap(false);
+                setShowPopup(false)
 
             }
         } catch (error) {
+
+            setShowPopup(false)
             if (error.response && error.response.status === 401) {
                 showAlart('Department does not exist', 'Failed to upload the file.', 'cancel');
+                setUploadProgress(prev => {
+                    const updated = prev.map(upload =>
+                        upload.id === uploadId ? { ...upload, status: `Failed : Department does not exist` } : upload
+                    );
+                    localStorage.setItem("uploadHistory", JSON.stringify(updated)); // Save failure
+                    return updated;
+                });
                 return;
 
             }
             if (error.response && error.response.status === 400) {
                 showAlart('File already present', 'Failed to upload the file.', 'cancel');
+                setUploadProgress(prev => {
+                    const updated = prev.map(upload =>
+                        upload.id === uploadId ? { ...upload, status: `Failed : File already present` } : upload
+                    );
+                    localStorage.setItem("uploadHistory", JSON.stringify(updated)); // Save failure
+                    return updated;
+                });
                 return;
 
             }
             if (error.response && error.response.status === 500) {
                 showAlart('Failed to save file information to the database', 'Failed to upload the file.', 'mark');
+                setUploadProgress(prev => {
+                    const updated = prev.map(upload =>
+                        upload.id === uploadId ? { ...upload, status: `Failed : Failed to save file information to the database` } : upload
+                    );
+                    localStorage.setItem("uploadHistory", JSON.stringify(updated)); // Save failure
+                    return updated;
+                });
                 return;
 
             }
             if (error.response && error.response.status === 502) {
                 showAlart('Failed to verify file existence', 'Failed to upload the file.', 'mark');
+                setUploadProgress(prev => {
+                    const updated = prev.map(upload =>
+                        upload.id === uploadId ? { ...upload, status: `Failed : Failed to verify file existence` } : upload
+                    );
+                    localStorage.setItem("uploadHistory", JSON.stringify(updated)); // Save failure
+                    return updated;
+                });
                 return;
 
+            } else {
+                setUploadProgress(prev => {
+                    const updated = prev.map(upload =>
+                        upload.id === uploadId ? { ...upload, status: `Failed : ${error}` } : upload
+                    );
+                    localStorage.setItem("uploadHistory", JSON.stringify(updated)); // Save failure
+                    return updated;
+                });
+                console.error('Error uploading file:', error);
+                showAlart('Unexpected Error', 'Failed to upload the file.', 'cancel');
+                setSingletap(false);
+                return;
             }
 
-            console.error('Error uploading file:', error);
-            showAlart('Unexpected Error', 'Failed to upload the file.', 'cancel');
-            setSingletap(false);
+
         } finally {
             setSingletap(false);
         }
@@ -266,9 +334,9 @@ const Question = (props) => {
                     setFetchData(response.data);
                     setPaperList(response.data);
                 }
-            } catch(err) {
+            } catch (err) {
 
-                console.error("Error fetching Data",err);
+                console.error("Error fetching Data", err);
             }
         }
         fatchData();
@@ -380,13 +448,13 @@ const Question = (props) => {
 
     const token = localStorage.getItem("adminToken");
 
-    useEffect(()=>{
-        if(token){
+    useEffect(() => {
+        if (token) {
             setVerified(true);
-        }else{
+        } else {
             setVerified(false)
         }
-    },[token])
+    }, [token])
 
 
     const extractFileId = (url) => {
@@ -407,7 +475,7 @@ const Question = (props) => {
         if (sureDelete) {
             try {
                 const token = localStorage.getItem("adminToken");
-               
+
 
                 await axios.post('/api/admin/deletepdf',
                     { id, urlpdfid },
@@ -477,6 +545,7 @@ const Question = (props) => {
     return (
         <>
             <aside id='question'>
+            {showPopup && <UploadProgressPopup uploads={uploadProgress} onClose={() => setShowPopup(false)} />}
                 {otpop && (<div className="otpop">
                     <div className="otppop-box">
                         <p onClick={() => {
@@ -486,18 +555,32 @@ const Question = (props) => {
                             setOtpvalue('');
                         }}>X</p>
                         <big>Verify Your Self</big>
+
                         {!otpsent ? (<button className='active' onClick={requestDeleteotp} style={load ? { opacity: '0.5' } : { opacity: '1' }} disabled={load} >{(!load ? "Verify" : 'Sending Otp')}</button>) : (<div className='verified-dltbtn'>
-                           {!varified && ( <input type="number" value={otpvalue} onChange={(e) => setOtpvalue(e.target.value)} name="otp" id="otp" placeholder='Enter Otp ...' required />)}
+                            {!varified && (<input type="number" value={otpvalue} onChange={(e) => setOtpvalue(e.target.value)} name="otp" id="otp" placeholder='Enter Otp ...' required />)}
 
-                           {!varified ?( <button className='active' disabled={load} style={load ? { opacity: '0.5' } : { opacity: '1' }} onClick={verifyOtp} >{(!load ? "Verify Otp" : 'verifying...')}</button>) :(
-                            <button className='active'   onClick={()=> setOtppop(false)} >Close</button>
+                            {!varified ? (<button className='active' disabled={load} style={load ? { opacity: '0.5' } : { opacity: '1' }} onClick={verifyOtp} >{(!load ? "Verify Otp" : 'verifying...')}</button>) : (
+                                <button className='active' onClick={() => setOtppop(false)} >Close</button>
 
-                           )}
+                            )}
                         </div>)}
-                        
+
                     </div>
                 </div>)}
-                <h2 className='question-headline'><span>Question Papers<i className="fa-solid fa-clipboard-question" style={{ margin: '0 0.5rem' }}></i></span> <span>{!varified ? (<ShieldAlert stroke='red' size="2rem" onClick={() => setOtppop(true)} />) : (<ShieldCheck stroke='green' size="2rem" />)}</span></h2>
+                <h2 className='question-headline'>
+                    <span>Question Papers<i className="fa-solid fa-clipboard-question" style={{ margin: '0 0.5rem' }}></i>
+                    </span>
+                 
+                 <p className="question-headline-right-box" style={{ display : 'flex', gap :'1rem'}}>
+
+                    <History size={28} onClick={() => setShowPopup(true)}
+                        style={{ cursor: "pointer", marginLeft: "10px" }} />
+
+
+                 
+                    <span>{!varified ? (<ShieldAlert stroke='red' size="2rem" onClick={() => setOtppop(true)} />) : (<ShieldCheck stroke='green' size="2rem" />)}</span>
+                        </p>
+                </h2>
                 <form onSubmit={handleSubmit}>
                     <div className="question-box">
 
@@ -552,7 +635,7 @@ const Question = (props) => {
                             </div>
 
                             <div className="leftfilter-select-item inputQuestinBox-in">
-                                <select onChange={handlechange} value={filtetuploaddata.educationLavel} name="educationLavel" id="dptnameselect" required readOnly={singletap ? true : false}>
+                                <select onChange={handlechange} value={filtetuploaddata.educationLavel} name="educationLavel" id="dptnameselect" required >
                                     <option value="" readOnly={singletap ? true : false}>Select Education Level</option>
                                     <option value="ug">Under Graduation(UG)</option>
                                     <option value="pg">Post Graduation(PG)</option>
@@ -561,12 +644,12 @@ const Question = (props) => {
                             </div>
 
                             <div className="leftfilter-select-item inputQuestinBox-in">
-                                <input onChange={handlechange} value={filtetuploaddata.session || ''} type="number" name='session' placeholder=" Session (2024)" required pattern="[0-9]{4}" readOnly={singletap ? true : false} />
+                                <input onChange={handlechange} value={filtetuploaddata.session || ''} type="number" name='session' placeholder=" Session (2024)" required pattern="[0-9]{4}" />
 
                             </div>
 
                             <div className="leftfilter-select-item inputQuestinBox-in">
-                                <select onChange={handlechange} value={filtetuploaddata.dptyear} name="dptyear" id="dptyear" required readOnly={singletap ? true : false}>
+                                <select onChange={handlechange} value={filtetuploaddata.dptyear} name="dptyear" id="dptyear" required >
                                     <option value="">Choose Semester</option>
                                     <option value="1stsem">1st sem</option>
                                     <option value="2ndsem">2nd sem</option>
@@ -582,7 +665,7 @@ const Question = (props) => {
 
 
                             <div className="leftfilter-select-item inputQuestinBox-in">
-                                <select onChange={handlechange} value={filtetuploaddata.semormid} name="semormid" id="semormid" required readOnly={singletap ? true : false}>
+                                <select onChange={handlechange} value={filtetuploaddata.semormid} name="semormid" id="semormid" required >
                                     <option value="">Select Exam type</option>
                                     <option value="midSem">Mid Semester</option>
                                     <option value="sem">Semester</option>
@@ -591,7 +674,7 @@ const Question = (props) => {
                             </div>
 
                             <div className="leftfilter-select-item inputQuestinBox-in">
-                                <input onChange={handlechange} value={filtetuploaddata.paperName} type="text" name='paperName' placeholder=" Paper Name (Core-1)" required readOnly={singletap ? true : false} />
+                                <input onChange={handlechange} value={filtetuploaddata.paperName} type="text" name='paperName' placeholder=" Paper Name (Core-1)" required />
 
                                 {showSuggestionspaper && (<div ref={paperboxhide} className="search-suggestion">
                                     {filtetuploaddata.paperName ? (
@@ -722,17 +805,7 @@ const Question = (props) => {
                         <p>No papers found</p>
                     )}
                 </div>
-                {singletap && (<div style={{ height: '100svh', width: '100%', backgroundColor: 'rgb(0 0 0 / 44%)', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', position: 'absolute', top: '0%', left: '0%', transform: 'scale(1)', fontWeight: '600' }}>
-                    <span style={{ color: '#fff', fontWeight: '600' }}>Uploading...</span><br />
-                    <div style={{ width: '40rem', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
 
-
-                        <meter value={uploadProgress} min="0" max="100" style={{ margin: '0rem 1rem', width: '30rem', height: '2rem' }}></meter>
-                        <span style={{ marginBottom: '0.3rem', fontSize: '1.2rem', color: 'white' }}>
-                            {uploadProgress}%
-                        </span>
-                    </div>
-                </div>)}
             </aside>
 
         </>

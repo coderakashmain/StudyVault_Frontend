@@ -78,7 +78,7 @@ const HomeT = (props) => {
               </p>
               <div className="live-count">
                 <div className="counts">
-                  <h3>100K+</h3>
+                  <h3>91.3K+</h3>
                   <p>Users visite this app</p>
                 </div>
                 <div className="counts">

@@ -127,51 +127,13 @@ const Downloadpdf = (props) => {
    
         } else {
    
-            navigate(`/Downloadpdf/${paper.title}`) 
+            navigate(`/Downloadpdf/${paper.title}`);
             setSelectedPdf(paper.url);
         }
 
     };
 
-    // const handleClickPaper = async (paper) => {
-    //     try {
-    //         // 1. Generate a short link via ShrinkEarn API
-    //         const originalUrl = paper.url;
-    //         const response = await axios.get(`/api/shorten`, {
-    //             params: { url: originalUrl }
-    //         });
-            
-    //         if (response.data.shortenedUrl) {
-    //             const shortUrl = response.data.shortenedUrl;
-    //             setShortenedUrl(shortUrl);
 
-    //             // 2. Redirect to short link
-    //             window.open(shortUrl, "_blank");
-
-    //             // 3. Store the original PDF URL in session storage (for redirection later)
-    //             sessionStorage.setItem("pendingPdf", paper.url);
-    //             sessionStorage.setItem("pendingPath", `/Downloadpdf/${paper.title}`);
-    //         } else {
-    //             console.error("Shortening failed, opening PDF directly.");
-    //             setSelectedPdf(paper.url);
-    //         }
-    //     } catch (error) {
-    //         console.error("Error shortening URL:", error);
-    //         setSelectedPdf(paper.url);
-    //     }
-    // };
-
-    // useEffect(() => {
-    //     const pendingPdf = sessionStorage.getItem("pendingPdf");
-    //     const pendingPath = sessionStorage.getItem("pendingPath");
-    //     if (pendingPdf) {
-    //         navigate(pendingPath);
-    //         setSelectedPdf(pendingPdf);
-
-    //         sessionStorage.removeItem("pendingPath"); // Clear storage
-    //         sessionStorage.removeItem("pendingPdf"); // Clear storage
-    //     }
-    // }, []);
 
     const handleCloseViewer = () => {
         setPapertitle('');
