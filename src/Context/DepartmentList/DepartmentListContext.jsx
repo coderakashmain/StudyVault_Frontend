@@ -22,6 +22,7 @@ const DepartmentListContext = (props)=>{
         "Sericalture",
         "Statistics",
         "Zoology",
+        "Home Science",
     
         "Commerce",
     
@@ -48,6 +49,7 @@ const DepartmentListContext = (props)=>{
         "PUB ADM",
         "Enviromental Economics",
         "Industrial Chemistry",
+        "Industrial Sociology",
 
         "Integrated B.Ed"
       ];
