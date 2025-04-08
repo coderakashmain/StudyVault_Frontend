@@ -1,9 +1,26 @@
 import { X } from "lucide-react";
-import "./UploadProgressPopup.css"; // Import external CSS file
+import "./UploadProgressPopup.css"; 
+import React, { useEffect } from "react";
 
 const UploadProgressPopup = ({ uploads, onClose }) => {
+    const popupRef = React.useRef(null);
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+          if (popupRef.current && !popupRef.current.contains(event.target)) {
+            onClose(); // 👈 close when clicked outside
+          }
+        };
+    
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+          document.removeEventListener('mousedown', handleClickOutside);
+        };
+      }, [onClose]);
+
+      
     return (
-        <div className="upload-overlay">
+        <div  ref={popupRef}  className="upload-overlay">
             <div className="upload-modal">
                 <X size={24} onClick={onClose} className="close-icon" />
                 <h3 className="upload-title">Upload History</h3>

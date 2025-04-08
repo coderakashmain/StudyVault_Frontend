@@ -4,6 +4,7 @@
     top: 1%;
     right: 2%;
     z-index: 1000;
+    transition: all 0.2s linear;
 }
 
 /* Modal container */

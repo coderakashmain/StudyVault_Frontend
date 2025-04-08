@@ -32,7 +32,7 @@
 
   
 }
-.question-box input::after{
+.question-box input[type = file]::after{
     content:  "↟   Select";
     position: absolute;
     top: 0%;
@@ -299,6 +299,15 @@ background-color: #dbdbdb6e;
    padding: 0.5rem 0.9rem;
    border-radius: 0.3rem;
 }
+.clear-input-btn-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
 @keyframes rotate {
     0%{
         transform: rotate(0deg);

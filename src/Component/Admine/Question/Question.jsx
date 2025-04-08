@@ -1,6 +1,6 @@
 import React, { useContext, useState, useRef, useEffect } from 'react'
 import { FetchDataContext } from '../../../Context/FretchDataContext/FetchData'
-import { degrees, PDFDocument, rgb } from 'pdf-lib';
+import { degrees, error, PDFDocument, rgb } from 'pdf-lib';
 
 
 import './Question.css'
@@ -41,6 +41,7 @@ const Question = (props) => {
     const [otpvalue, setOtpvalue] = useState('');
     const [load, setLoad] = useState(false);
     const [showPopup, setShowPopup] = useState(false);
+    const[clearall,setClearall] = useState(false);
     const [filtetuploaddata, setFiltetuploaddata] = useState(
         {
             departmentName: '',
@@ -53,6 +54,7 @@ const Question = (props) => {
 
         }
     );
+
 
 
     useEffect(() => {
@@ -124,12 +126,13 @@ const Question = (props) => {
         return null;
     };
 
-
+ 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setSingletap(true);
-        setShowPopup(true);
 
+        setSingletap(true);
+        
+        
         const fileToUpload = await handleUpload(); // Get renamed file
         if (!fileToUpload) {
             showAlart('Selet a File', 'Please select a valid file.', 'cancel');
@@ -144,32 +147,44 @@ const Question = (props) => {
         formData.append('filtetuploaddata', JSON.stringify(filtetuploaddata));
 
         setSelectedFile('');
-        setFiltetuploaddata({
-            departmentName: '',
-            educationLavel: '',
-            session: '',
-            dptyear: '',
-            semormid: '',
-            paperName: '',
-            studentyear: ''
-        });
 
+        if(clearall){
+            setFiltetuploaddata(prev => ({
+                ...prev,          
+                departmentName: '',
+                paperName: ''
+            }));
+        }else{
+            setFiltetuploaddata({
+                departmentName: '',
+                educationLavel: '',
+                session: '',
+                dptyear: '',
+                semormid: '',
+                paperName: '',
+                studentyear: ''
+            });
+        }
+        
         setDartmentvalue('');
+        
+        
         setElective(false);
         setCompulsory(false);
         setEandv(false);
         setHonors(true);
-
-
+        
+        
         const uploadId = Date.now(); // Unique ID for this file
         const newUpload = { id: uploadId, name: fileToUpload.name, progress: 0, status: "Uploading..." };
-
+        
         setUploadProgress(prev => {
             const updated = [...prev, newUpload];
             localStorage.setItem("uploadHistory", JSON.stringify(updated)); // Save to localStorage
             return updated;
         });
 
+        setShowPopup(true);
         try {
             const response = await axios.post('/api/Admin/upload', formData, {
                 headers: {
@@ -541,6 +556,10 @@ const Question = (props) => {
         }
     };
 
+    const handleinputclear = (e)=>{
+        setClearall(prev => !prev);
+    }
+
 
     return (
         <>
@@ -758,12 +777,17 @@ const Question = (props) => {
                                     } className={`${eandv ? 'ok' : 'no'}`}>E&V</p>
 
                                 </div>
-
+                                <div className="clear-input-btn-box">
+                                    <input type="radio" checked={clearall} id='clear-input-box' onClick={handleinputclear} readOnly/>
+                                    <label htmlFor="clear-input-box">Save Inputs </label>
+                                </div>
 
                             </div>
 
                         </div>
+                            
                         <div className="AUploadusubmit">
+                       
                             <button onClick={() => {
                                 setDartmentvalue('');
                                 setFiltetuploaddata({
