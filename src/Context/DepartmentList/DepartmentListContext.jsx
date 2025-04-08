@@ -23,6 +23,7 @@ const DepartmentListContext = (props)=>{
         "Statistics",
         "Zoology",
         "Home Science",
+        "ITEP",
     
         "Commerce",
     
