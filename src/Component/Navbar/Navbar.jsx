@@ -14,6 +14,7 @@ import { AlartContectValue } from "../../Context/AlartContext/AlartContext";
 import Avatar from '@mui/material/Avatar';
 
 import logo from '../../photo/weblogo.png'
+import ModeSwitcher from "../ModeSwitcher/ModeSwitcher";
 
 
 
@@ -67,24 +68,7 @@ const Navbar = (props) => {
     window.addEventListener("resize", view);
     return () => window.removeEventListener('resize', view);
   }, [])
-  // useEffect(() => {
 
-  //   const checkAuthorization = async () => {
-
-  //     try {
-  //       const response = await axios.get('/api/adminPage', { withCredentials: true });
-  //       if (response.status === 200) {
-  //         setAuthentication(true);
-  //       }
-
-  //     } catch (error) {
-  //       setAuthentication(false);
-  //     }
-  //   };
-
-  //   checkAuthorization();
-
-  // }, []);
 
 
   useEffect(() => {
@@ -404,13 +388,6 @@ const Navbar = (props) => {
       }, 'same')
 
 
-      // .to(wholenotificationbackRef.current, {
-      //   left: 0,
-      //   duration: 0.5,
-      //   ease: "ease",
-      // }, 'same')
-
-
 
 
     const close = gsap.timeline({ paused: true });
@@ -491,6 +468,8 @@ const Navbar = (props) => {
             </ul>
           </div>
 
+
+
           <form onSubmit={(e) => {
             e.preventDefault();
             if (departmetvalue) {
@@ -566,6 +545,7 @@ const Navbar = (props) => {
             </div>)}
 
           </form>
+
           {mobileScroll && logotext && (<h2 style={{ marginLeft: '0.2rem' }} className="logo-top-css" > STUDYVAULT</h2>)}
           <div className="location-login">
             {authentication && (<div className="admin-short" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginRight: '0.5rem' }}>
@@ -580,13 +560,14 @@ const Navbar = (props) => {
               ) : (<option value="M.P.C autonomous">M.P.C</option>)};
 
             </select>
+            {/* <ModeSwitcher/> */}
+   
             <div className="notificatonicon" style={{ margin: '0rem 1.3rem 0rem 0.3rem', userSelect: 'none', display: 'flex', justifyContent: 'center', alignItems: 'center' }} ref={notificationIconRef}>
               <i className="fa-solid fa-bell" style={{ color: '#fff', cursor: 'pointer' }}></i>
             </div>
 
 
-
-
+   
             {!logincheckdata ? (
               <div className="log-in" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <div ref={BothLoginRef} onClick={clickOn}><li>Login <div className={`adminLogInBox ${isOn ? 'open' : 'close'} `} ref={LoginRef} >

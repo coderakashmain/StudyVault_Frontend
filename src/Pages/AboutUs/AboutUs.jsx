@@ -73,7 +73,7 @@ const AboutUs = () => {
                 <div className="akash-description self-description">
                   <h3>Akash ~</h3>
                   <div className="akash-persional-info persional-info">
-                    <p> <span>H</span>ello, I am <b>Akash(Aarav) Bindhani</b>, a passionate <b>Full-Stack Developer</b> and a third-year Computer Science Honors student at <b>M.P.C. Autonomous College.</b>  You can visit my <a href="#">Portfolio</a>. You can visit or stay connected with me on <a href="https://www.instagram.com/akash_bindhani_/" target='__blank'>Instagram</a> for more updates on my latest work and insights. If you have any questions or would like to collaborate, feel free to reach out.</p>
+                    <p> <span>H</span>ello, I am <b>Akash(Aarav) Bindhani</b>, a passionate <b>Full-Stack Developer</b> and a third-year Computer Science Honors student at <b>M.P.C. Autonomous College.</b>  You can visit my <a href="https://codermainakashportfolio.netlify.app/" target='__blank'>Portfolio</a>. You can visit or stay connected with me on <a href="https://www.instagram.com/akash_bindhani_/" target='__blank'>Instagram</a> for more updates on my latest work and insights. If you have any questions or would like to collaborate, feel free to reach out.</p>
 
                     <div className="info-visiting">
                       <p>Visit me ~

@@ -70,6 +70,7 @@
 
 .filter-switch label i {
   font-size: 1.3rem;
+ color: var(  --only-black-text-color) !important;
 }
 
 .filter-switch input {
@@ -140,8 +141,9 @@
 
 .hambargar i {
   cursor: pointer;
-  filter: invert(100%);
+  /* filter: invert(100%); */
   font-size: 2rem;
+  color :var(--text-color) !important
 }
 
 .nav-list ul {
@@ -159,7 +161,7 @@
   padding: 0.4rem 1rem;
 }
 .navbar a li {
-  color: #ffffff;
+  color: var(  --text-color);
 }
 
 .navbar .nav-list a li:hover {
@@ -179,7 +181,7 @@
   border: none;
   outline: none;
   margin: 0rem 0.6rem 0 0.3rem;
-  background-color: rgb(228 225 255);
+  background-color: var(--pagecolor);
   border-radius: 0.2rem;
   padding: 0rem 0.3rem;
   display: none;
@@ -197,7 +199,7 @@
   border-radius: 0.16rem;
   font-weight: 600;
   position: relative;
-  color: #fff;
+  color: var(--text-color);
   font-size: 1rem;
   padding: 0.5rem 1rem;
   cursor: pointer;
@@ -206,7 +208,7 @@
   position: absolute;
   top: 120%;
   right: 0%;
-  background-color: #fff;
+  background-color: var(--pagecolor);
   border-radius: 0.3rem;
   width: 5rem;                /* Initial width */
   height: 0rem; 
@@ -232,7 +234,7 @@
   align-items: center;
   text-align: center;
   text-wrap: nowrap;
-  color: #000;
+color: var(  --black-text-color);
   width: 100%;
   height: 50%;
   transform: scale(0);
@@ -245,8 +247,8 @@ transform: scale(1);
 transform: scale(0);
 }
 .log-in div li .adminLogInBox a:hover {
-  background-color: rgb(195, 195, 197);
-  color: #fff;
+  background: var(  --second-button-color);
+  color: var(--text-color);
 }
 .log-in div li .adminLogInBox a i {
  padding: 0rem  0.4rem 0rem 0rem;
@@ -260,7 +262,7 @@ transform: scale(0);
   text-decoration-color: #ffffff;
 }
 .log-in a {
-  color: #fff;
+  color: var(  --black-text-color);
 }
 .log-in a {
   display: block;
@@ -303,7 +305,7 @@ transform: scale(0);
   position: fixed;
   left: -120%;
   top: 0%;
-  background-color: rgb(255, 255, 255);
+  background-color:var(--pagecolor);
   z-index: 100;
   padding: 0.2rem 2rem 0.2rem 3rem;
   overflow: hidden;
@@ -321,7 +323,7 @@ transform: scale(0);
 }
 .cross-icon i {
   font-size: 2rem;
-  color: #000;
+  color: var(--black-text-color);
   padding: 1rem;
   border-radius: 50%;
 }
@@ -346,7 +348,7 @@ transform: scale(0);
   font-weight: 700;
 }
 .copywrite p:last-child {
-  color: rgb(0, 56, 79);
+  color: var(--black-text-color);
 }
 
 .slidebar-foot-item {
@@ -408,7 +410,7 @@ transform: scale(0);
 
   width: 0%;
   background-color: var(--notificationbackcolor);
-  color: #fff;
+  color: var(--black-text-color);
   /* padding: 2rem; */
   position: fixed;
   top: 10%;
@@ -443,11 +445,11 @@ display: none;
 }
 #notification h4{
  display: inline-block;
- color: #fff;
+ color: var(---text-color);
  font-size: 1rem;
  padding: 0.5rem 1.5rem;
  border-radius: 1.4rem ;
-background-color: rgb(4 214 4 / 61%);
+background-color: var(  --button-color);
  margin: 1rem 0 ;
  /* text-transform: uppercase; */
  
@@ -464,7 +466,8 @@ margin: 2rem 0;
 .notification-data p{
   margin: 1rem 0 0 2rem;
   padding: 0.5rem 1rem 0.5rem;
-  background: #e2e8f1;
+  background-color: var(  --light-back-color );
+  color: var(---text-color);
   border-radius: 1rem;
   font-size: 01rem;
 }

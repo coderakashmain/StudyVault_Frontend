@@ -11,7 +11,7 @@
     justify-content: space-between;
     align-items: center;
     background: var(--newheadcolor);
-    box-shadow: 2px 2px 10px #4a72c71e;
+    box-shadow:var(--newshadow);
     position: relative;
 }
 #sub-nav  .back-to-home-nav,#sub-nav .search-metatrila{
@@ -25,7 +25,7 @@
   
 }
 .same:hover {
-    background-color: rgb(10, 126, 214);
+    background-color: var( --newcolor);
     
     cursor: pointer;
     
@@ -47,7 +47,7 @@
 #sub-nav .i{
     
     /* fill: black;   */
-    stroke: black; 
+    stroke: var(--black-text-color); 
     width: 1.5rem;
     height: 1.5rem;
     transition: all 0.2s  ease;
@@ -57,12 +57,12 @@
 }
 
 .same:hover .i{
-    stroke: #fff !important;
+    stroke: var(--text-color) !important;
 }
 #sub-nav i{
     
     /* fill: black;   */
-    color: black; 
+    color:var(--black-text-color); 
     font-size: 1.2rem;
   
 
@@ -70,13 +70,13 @@
 }
 
 .same:hover i{
-    color: #fff !important;
+    color: var(--text-color) !important;
 }
 
 .sub-to-sub-nav{
     width: 100%;
     height: 4rem;
-    box-shadow: 2px 2px 10px #4a72c71e;
+    box-shadow:var(--newshadow);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -89,7 +89,7 @@
 }
 .sub-to-sub-nav a{
     text-align: center;
-  color: #000;
+  color: var(--black-text-color);
   font-size: 1.3rem;
   font-weight: 500;
   height: 100%;
@@ -101,12 +101,13 @@
 }
 .sub-to-sub-nav a:hover{
   background: var(--newcolor);
-  color: #fff;
+  color: var(--text-color) !important;
 
 }
 .sub-nav-active{
     background: var(--newcolor);
-    color: #fff !important; 
+    color: var(--text-color) !important;
+
 }
 .sub-to-sub-nav a:active{
  transform: scale(1.04);

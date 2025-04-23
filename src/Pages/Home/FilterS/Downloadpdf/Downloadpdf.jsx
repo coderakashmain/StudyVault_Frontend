@@ -99,38 +99,41 @@ const Downloadpdf = (props) => {
         
   
      
-        if ((clickCount + 1) % 2 === 0) {
-            setShowAd(true);
-            setPapertitle(`/Downloadpdf/${paper.title}`);
-            setPaperurl(paper.url);
-            setPdfpresent(false);
+        // if ((clickCount + 1) % 2 === 0) {
+        //     setShowAd(true);
+        //     setPapertitle(`/Downloadpdf/${paper.title}`);
+        //     setPaperurl(paper.url);
+        //     setPdfpresent(false);
             
-            const timeout = setTimeout(() => {
+        //     const timeout = setTimeout(() => {
                
-                setPdfpresent((prevPdfPresent) => {
-                    setSelectedPdf((prevSelectedPdf) => {
-                        if (!prevSelectedPdf && !prevPdfPresent && pdfpresent) {
-                            navigate(`/Downloadpdf/${paper.title}`);
-                            return paper.url;
-                        }
-                        return prevSelectedPdf;
-                    });
+        //         setPdfpresent((prevPdfPresent) => {
+        //             setSelectedPdf((prevSelectedPdf) => {
+        //                 if (!prevSelectedPdf && !prevPdfPresent && pdfpresent) {
+        //                     navigate(`/Downloadpdf/${paper.title}`);
+        //                     return paper.url;
+        //                 }
+        //                 return prevSelectedPdf;
+        //             });
         
-                    return prevPdfPresent;
-                });
+        //             return prevPdfPresent;
+        //         });
         
-                setShowAd(false);
-            }, 5000);
+        //         setShowAd(false);
+        //     }, 5000);
         
-            return () => clearTimeout(timeout);
+        //     return () => clearTimeout(timeout);
   
    
-        } else {
+        // } else {
    
-            navigate(`/Downloadpdf/${paper.title}`);
-            setSelectedPdf(paper.url);
-        }
+        //     navigate(`/Downloadpdf/${paper.title}`);
+        //     setSelectedPdf(paper.url);
+        // }
 
+
+        navigate(`/Downloadpdf/${paper.title}`);
+        setSelectedPdf(paper.url);
     };
 
 

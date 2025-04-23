@@ -22,7 +22,7 @@
   /* text-transform: uppercase; */
   /* letter-spacing: 0.1rem; */
   font-style: normal;
-  color: #000000;
+  color: var(  --black-text-color);
 text-align: center;
 
 }
@@ -51,9 +51,9 @@ transition: all 0.3s ease;
    position: absolute;
    top: 0%;
    left: 0%;
-   background-color: #000000;
+   background: var(--black-back) !important;
    text-align: center;
-    color: #fff;
+    color: var(  --text-color);
    display: flex;
    justify-content: center;
    align-items: center;
@@ -68,7 +68,7 @@ transition: all 0.3s ease;
 
 }
 #upload-section .right-upload-section input:hover::before {
-    background-color: #046072 !important;
+    background-color: var(  --sectionS-b-h ) !important;
     transform: scale(1.02);
  }
 
@@ -76,6 +76,7 @@ transition: all 0.3s ease;
   padding: 0rem  0rem 1rem 0rem;
   font-size: 3rem;
   font-weight: 800;
+  color: var(--black-text-color);
 }
 #upload-section article{
     margin-top: 4rem;
@@ -89,7 +90,7 @@ transition: all 0.3s ease;
     min-height: 50vh;
     bottom: -100%;
     left: 0%;
-    background-color: #fff;
+    background:var(--pagecolor);
     z-index: 100;
     padding: 2rem 2rem;
     transition: all 0.9s ease;
@@ -101,7 +102,7 @@ transition: all 0.3s ease;
     height: 100svh;
     bottom: 100%;
     left: 0%;
-    background-color: #00000072;
+    background: #00000072;
     z-index: 99;
 }
 .papers-head-submit{
@@ -115,10 +116,15 @@ transition: all 0.3s ease;
 }
 .papers-head-submit h1{
 font-weight: 600;
+color: var(--black-text-color);
 }
 .papers-head-submit i{
 border-radius: 50%;
 padding: 0.9rem 1.1rem;
+color: var(--black-text-color);
+}
+.file-item p{
+color: var(--black-text-color);
 }
 .final-submit-btn{
     position: absolute;
@@ -132,8 +138,10 @@ padding: 0.9rem 1.1rem;
 .final-submit-btn button{
     width: 90%;
     padding: 1rem 0rem;
-    background-color: blue;
-    color: #fff;
+    background: var(--button-color );
+
+    color: var(--text-color);
+    cursor: pointer;
     border: none;
     border-radius: 4rem;
 
@@ -147,7 +155,7 @@ padding: 0.9rem 1.1rem;
     
     -webkit-appearance: none;
     appearance: none;
-    background-color: #f3f3f3;
+    background: var(  --button-text-color);
     border: none;
 }
 meter::-webkit-meter-bar {
@@ -157,7 +165,7 @@ meter::-webkit-meter-bar {
     width: 100%;
   }
  meter::-webkit-meter-optimum-value {
-    background-color: #30a2c2 !important; /* Green progress */
+    background-color:var(  --button-color) !important; /* Green progress */
     border-radius: 4rem;
     height: 3rem; 
     width: 100%; 

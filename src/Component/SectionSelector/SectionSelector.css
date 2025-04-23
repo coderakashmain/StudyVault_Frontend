@@ -16,6 +16,12 @@
     padding: 0rem 0.3rem;
 
 }
+.section-selector-common a{
+   background: var(--sectionS-a-b-c); ;
+   color: var(--black-text-color) ;
+
+}
+
 .section-selector-common::-webkit-scrollbar{
    display: none;
 }
@@ -30,19 +36,20 @@
     
 }
 .section-selector-inside a,.section-selector-inside-right a{
-    background-color: var(  --sectionS-a-b-c);
+    /* background: var(  --sectionS-a-b-c); */
       transition: all 0.2s linear;
     
 }
 .section-selector-inside a:hover,.section-selector-inside-right a:hover{
-    background-color: rgb(84, 149, 162);
+   
+    background: var(--sectionS-b-h);
     color: #fff !important;
     
 }
-.section-selector-inside a:nth-child(2),.section-selector-inside a:nth-child(3),.section-selector-inside a:nth-child(4){
+/* .section-selector-inside a:nth-child(2),.section-selector-inside a:nth-child(3),.section-selector-inside a:nth-child(4){
   color: #000000;
   
-}
+} */
 .section-selector-common a{
 padding: 0.5rem 1rem;
 border-radius: 0.3rem;
@@ -53,17 +60,17 @@ font-weight: 500;
 
 }
 .section-on{
-    color: #fff;
+    color: var(--text-color) !important;
     background: #0085A1 !important;
     transition: all 0.3s ease;
 }
 .section-selector-inside-right .section-on{
-    color: #fff;
-    background: rgb(89 136 178);
+    color: var(  --text-color);
+    background: var(--sectionS-b-h);
     transition: all 0.3s ease;
 }
 .section-on:hover{
-    background-color: rgb(22, 97, 162);
+    background-color: var(--sectionS-b-h);
 }
 .section-off{
     background-color: rgb(116 116 116);
@@ -75,7 +82,7 @@ font-weight: 500;
     color: #000;
 }
 .section-selector-inside-right  a{
-    color: #000;
+    /* color: #000; */
     font-weight: 600;
 }
 @media (max-width :838px ) {

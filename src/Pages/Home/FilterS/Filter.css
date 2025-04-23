@@ -121,7 +121,7 @@ align-items: flex-start;
   height: 150px;
  
   border: none;
-  background-color: white;
+  background-color:  var(  --input-back-color);
   font-size: 23px;
   box-shadow:var(--newshadow2);
   user-select: none;
@@ -179,7 +179,7 @@ align-items: flex-start;
   width: 100%;
   padding-left: 5%;
 
-  background: white;
+  background: var(  --input-back-color);
   box-shadow: var(--newshadow2);
   transition: all 0.2s linear;
   border-radius: 0.2rem;
@@ -208,7 +208,7 @@ align-items: flex-start;
 }
 .department-year ul li {
 
-  background-color: white;
+  background-color: var(  --input-back-color);
   box-shadow: var(--newshadow2);
   transition: all 0.2s linear;
   border-radius: 0.2rem;
@@ -234,7 +234,7 @@ align-items: flex-start;
 }
 .year-div {
  
-  background-color: white;
+  background-color: var(  --input-back-color);
   transition: all 0.2s linear;
   box-shadow: var(--newshadow2);
   border-radius: 0.3rem;
@@ -286,7 +286,7 @@ align-items: flex-start;
 .second-paper div {
 
   transition: all 0.2s linear;
-  background-color: white;
+  background-color: var(  --input-back-color);
   box-shadow: var(--newshadow2);
   border-radius: 0.2rem;
   padding: 5% 10%;
@@ -333,12 +333,12 @@ user-select: none;
 
 .subject-select-each .ok{
   background:var(--filterbuttoncolor);
-  color: white;
+  color: var(--text-color);
   transition: all 0.2s linear;
   border: none;
 }
 .subject-select-each .no{
-  background-color: white;
+  background-color:   var(  --input-back-color);
 }
 
 

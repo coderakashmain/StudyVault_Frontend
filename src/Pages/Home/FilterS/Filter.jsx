@@ -663,7 +663,7 @@ useEffect(()=>{
           <div className="filter-submission-box">
 
 
-            {<input disabled={loader} style={{ background: (loader ? 'rgb(15 103 170 / 31%)' : 'var(--newcolor)') }} type="submit" value='Find' />}
+            {<input disabled={loader} style={{ background: (loader ? 'rgb(15 103 170 / 31%)' : 'var( --submitbutton)') }} type="submit" value='Find' />}
           </div>
 
         </div>

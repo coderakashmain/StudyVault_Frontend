@@ -40,10 +40,11 @@ const PaymentRouter = lazy(() => import("./RoutingFiles/PaymentRouter"));
 import FallbackLoad from "./Component/Fallbackload/FallbackLoad"
 import ErrorBoundary from "./Component/ErrorBoundary/ErrorBoundary";
 import Loadingicon from "./Component/Jsonlicon/Loadingicon";
-import ThemeContext from "./Context/ThemeContext/ThemeContext";
+
 import NavbarpresentRouting from "./RoutingFiles/NavbarpresentRouting";
 import IntroLoader from "./Component/IntroLoader/IntroLoader";
 import AlartContext from "./Context/AlartContext/AlartContext";
+import ThemeProvider from "./Context/ThemeContext/ThemeProvider";
 
 
 
@@ -110,7 +111,7 @@ const navrefvalue = (value) => {
     },
     {
       path: '/',
-      element: <><ErrorBoundary>    <Suspense fallback={<IntroLoader/>}> <AlartContext><ThemeContext><AdminLoginCheck><UserContextdata><UserLoginContext><FilterScrollContex><DepartmentListContext><Allpages /></DepartmentListContext></FilterScrollContex></UserLoginContext></UserContextdata></AdminLoginCheck></ThemeContext><Alart  /></AlartContext></Suspense></ErrorBoundary></>,
+      element: <><ErrorBoundary>    <Suspense fallback={<IntroLoader/>}> <AlartContext><ThemeProvider><AdminLoginCheck><UserContextdata><UserLoginContext><FilterScrollContex><DepartmentListContext><Allpages /></DepartmentListContext></FilterScrollContex></UserLoginContext></UserContextdata></AdminLoginCheck></ThemeProvider><Alart  /></AlartContext></Suspense></ErrorBoundary></>,
       children: [
         {
           path : '',

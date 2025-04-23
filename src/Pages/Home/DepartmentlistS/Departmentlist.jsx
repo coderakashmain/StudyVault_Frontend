@@ -96,7 +96,7 @@ const Departmentlist = (props) => {
                 cursor: "pointer",
                 padding: "0.7rem 1rem",
                 border: "none",
-                background: "#4B97D5",
+                background: "var(--button-color)",
                 borderRadius: "0.1rem",
                 margin: "0.9rem 0 0 0 ",
               }}

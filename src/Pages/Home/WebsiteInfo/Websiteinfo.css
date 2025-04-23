@@ -63,6 +63,7 @@ filter: brightness(0) saturate(65%) invert(100%) sepia(37%) saturate(34%) hue-ro
    cursor: pointer;
    border-radius: 3rem ;
    transition:  all 0.2s ease;
+   color: var(--only-black-text-color);
     
 }
 #website-info button:hover{

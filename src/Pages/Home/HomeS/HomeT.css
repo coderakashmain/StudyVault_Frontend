@@ -1,5 +1,6 @@
 .main-container{ 
   background: var(--backcolor);
+
   
  } 
 .inner-main-container h2 {
@@ -12,10 +13,10 @@
 .landing-section {
   padding: 7.7rem 5% 3%;
   padding-bottom: 0%;
-  background: linear-gradient(135deg, rgb(31, 31, 78), rgb(33, 143, 160));
-  box-shadow: 0 54px 80px #3a7dab21, 0 22.5599px 33.4221px #3a7dab18,
+  background: var(  --home-linear-back);
+  /* box-shadow: 0 54px 80px #3a7dab21, 0 22.5599px 33.4221px #3a7dab18,
     0 12.0616px 17.869px #3a7dab14, 0 6.76164px 10.0172px #3a7dab11,
-    0 3.59106px 5.32008px #3a7dab0d, 0 1.49432px 2.21381px #3a7dab09;
+    0 3.59106px 5.32008px #3a7dab0d, 0 1.49432px 2.21381px #3a7dab09; */
 }
 .inner-landing {
   border-radius: 19px;
@@ -241,14 +242,15 @@
 .department-title-box h2 {
   font-size: 2.3rem;
   font-weight: 500;
+  color: var(--black-text-color);
 }
 .department-title-box button {
   border: none;
   outline: none;
   padding: 0.7rem 1rem;
   appearance: none;
-  background-color: #07857a;
-  color: #fff;
+  background: var(--sectionS-b-h);
+  color: var(--text-color);
   border-radius: 0.4rem;
   font-size: 1rem;
 }
@@ -262,13 +264,14 @@
   padding: 1.7rem 1.5rem;
   border: 2px solid gray;
   /* width: 30%; */
+  color: var(--black-text-color);
   display: block;
   border-radius: 0.9rem;
   cursor: pointer;
 }
 
 .department:active {
-  background-color: rgb(214, 214, 214);
+  background: var(--dpt-hover-back);
 }
 .content-container {
   padding: 1% 5% 2%;
