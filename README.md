@@ -1,4 +1,6 @@
-# 🎓 StudyVault – University Resource Platform
+## 📚 StudyVault – University Resource Platform
+
+This project was created by **Jitendra Kumar** and **Akash Bindhani**.
 
 ## 🏁 Project Goal
 
