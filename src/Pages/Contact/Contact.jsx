@@ -61,7 +61,7 @@ const Contact = () => {
                     StudyVault <a href="#">Team</a>
                   </li>
                   <li onClick={handleteamsupport}>
-                  support@studyvault.online
+                  support@studyvault.space
                   </li>
                   <li>
                     Message on Social media
@@ -135,7 +135,7 @@ const Contact = () => {
             <div className="contact-right-body">
               <h3>Connect with us :</h3>
               <p onClick={handleEmailButtonClick}>For support or any questions
-                Email us at <span>support@studyvault.online</span></p>
+                Email us at <span>support@studyvault.space</span></p>
               <h3>MPC baripada</h3>
               <p>Don’t forget to share your thoughts – together, we can make this journey even more exciting!</p>
             </div>

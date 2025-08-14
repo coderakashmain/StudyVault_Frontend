@@ -49,7 +49,7 @@ const  GoogleAuth = ({userdata , showAlart})=> {
       onSuccess={handleSuccess}
        onError={handleFailure}
        flow="redirect" // ← Forces redirect mode
-        redirectUri="https://studyvault.online"
+        redirectUri="https://studyvault.space"
         />
     </div>
       </div>

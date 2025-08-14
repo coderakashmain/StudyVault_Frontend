@@ -74,7 +74,7 @@ const ReCaptcha = ({ onVerified }) => {
   return (
     <div className="captcha">
   {/* <div className="captcha-content"> */}
-    {/* <h1>studyvault.online</h1>
+    {/* <h1>studyvault.space</h1>
     <p>Verifying you  are a human or not.</p> */}
     <div id="captcha-container" className="cf-turnstile"></div>
     {/* <p>StudyVault needs to review the security of your connection before proceeding.</p>
