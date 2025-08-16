@@ -154,7 +154,6 @@
 .user-comment h4{
    font-size: 1.2rem;
    font-weight: 600;
-   transform: translateY(-20%);
 }
 .user-comment-box{
     display: flex;
@@ -167,8 +166,8 @@
 .comment-user-logo{
     display: flex;
     justify-content: center;
-    align-items: center;
-    gap: 0rem;
+    align-items: center! important;
+    gap: 0.3rem;
 }
 .comment-user-time-reply{
     display: flex;

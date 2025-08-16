@@ -6,4 +6,4 @@ Disallow: /images/
 Disallow: /pdfs/
 Allow: /
 
-Sitemap: https://studyvault.online/sitemap.xml
+Sitemap: https://studyvault.space/sitemap.xml

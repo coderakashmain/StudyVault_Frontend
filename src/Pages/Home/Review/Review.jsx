@@ -5,6 +5,7 @@ import axios from 'axios'
 import Avatar from '@mui/material/Avatar';
 import malelogo from '../../../photo/profile common logo.jpg'
 import { AlartContectValue } from '../../../Context/AlartContext/AlartContext';
+import AvatarPic from '../../../Component/Avatar/Avatar';
 
 
 const Review = (props) => {
@@ -91,16 +92,17 @@ const Review = (props) => {
       <div className="review-inside">
 
 
-        <h2>Asked Question & Answers</h2>
 
         <div className="">
-          <h2 className='commenthh2' style={{ padding: '3rem 0' }}>Comments (<span >{comments.length}</span>)</h2>
+          <h2 className='commenthh2' style={{ padding: '3rem 0' }}>Comments</h2>
           {comments.map((comment) => (
             <div key={comment.id} className="user-comment">
               <div className="user-comment-box">
                 <div className="comment-user-logo">
 
-                  <Avatar alt="Remy Sharp" src={malelogo} sx={{ width: 55, height: 55, padding: '0rem 0rem 0 0', display: 'inline-block', }} />
+                  {/* <Avatar alt="Remy Sharp" src={malelogo} sx={{ width: 55, height: 55, padding: '0rem 0rem 0 0', display: 'inline-block', }} /> */}
+                  <AvatarPic username={comment.name} userphoto= "" size="2.5rem" />
+                  {/* {console.log(comment.name)} */}
 
                   <h4 className="font-bold">{comment.name}</h4>
                 </div>
@@ -134,7 +136,8 @@ const Review = (props) => {
                       <div className="user-comment-box">
                         <div className="comment-user-logo">
 
-                          <Avatar alt="Remy Sharp" src={malelogo} sx={{ width: 50, height: 50, padding: '0rem 0rem 0 0', display: 'inline-block', }} />
+                        
+                           <AvatarPic username={reply.name} userphoto= "" size="2.5rem" />
                           <h4 className="font-bold">{reply.name}</h4>
 
                         </div>

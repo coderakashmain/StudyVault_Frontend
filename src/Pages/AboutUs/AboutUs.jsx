@@ -8,6 +8,7 @@ import jituphoto from '../../photo/jitupp.jpg'
 import jituphotoa from '../../photo/jitupp.avif'
 import jituphotow from '../../photo/jitupp.webp'
 import Footer from '../Home/FooterS/Footer'
+import AvatarPic from '../../Component/Avatar/Avatar'
 
 const AboutUs = () => {
 
@@ -73,7 +74,7 @@ const AboutUs = () => {
                 <div className="akash-description self-description">
                   <h3>Akash ~</h3>
                   <div className="akash-persional-info persional-info">
-                    <p> <span>H</span>ello, I am <b>Akash(Aarav) Bindhani</b>, a passionate <b>Full-Stack Developer</b> and a third-year Computer Science Honors student at <b>M.P.C. Autonomous College.</b>  You can visit my <a href="https://codermainakashportfolio.netlify.app/" target='__blank'>Portfolio</a>. You can visit or stay connected with me on <a href="https://www.instagram.com/akash_bindhani_/" target='__blank'>Instagram</a> for more updates on my latest work and insights. If you have any questions or would like to collaborate, feel free to reach out.</p>
+                    <p> <span>H</span>ello, I am <b>Akash(Aarav) Bindhani</b>, a passionate <b>Full-Stack Developer</b>.  You can visit my <a href="https://codermainakashportfolio.netlify.app/" target='__blank'>Portfolio</a>. You can visit or stay connected with me on <a href="https://www.instagram.com/akash_bindhani_/" target='__blank'>Instagram</a> for more updates on my latest work and insights. If you have any questions or would like to collaborate, feel free to reach out.</p>
 
                     <div className="info-visiting">
                       <p>Visit me ~
@@ -98,11 +99,11 @@ const AboutUs = () => {
                 <div className="jitu-description self-description">
                   <h3>Jitu ~</h3>
                   <div className="jitu-persional-info persional-info">
-                    <p> Hello, I am <b>Jitu Pradhan</b>, a passionate <b>Full-Stack Developer</b> and a second-year MCA department student at <b>M.P.C. Autonomous College</b> . I am dedicated to crafting innovative web applications.
+                    <p> Hello, I am <b>Jitu Pradhan</b>, a passionate <b>Full-Stack Developer</b>. I am dedicated to crafting innovative web applications.
                       You can check out my latest projects on my <a href="#">Portfolio</a> , and stay connected with me through <a href="https://www.instagram.com/jitu._pradhan._99/">Instagram</a> and  <a href="https://www.linkedin.com/in/jitupradhan99/">LinkedIn</a>. Feel free to reach out if you'd like to collaborate or discuss ideas!
                     </p>
 
-                  </div>
+                  </div>  
                   <div className="info-visiting">
                     <p>Visit me ~
                       <a href="https://github.com/Jitupra9" target='__blank'><i className="fa-brands fa-github"></i></a>
@@ -118,6 +119,7 @@ const AboutUs = () => {
               <p><span>O</span>ver the past two years, we've observed that students have had difficulty obtaining previous exam papers. Being students ourselves, we understand these challenges and want to help. That's why we decided to create a website where all past exam papers can be easily accessed by everyone. No matter what challenges we face, our commitment is to assist our fellow students. This platform aims to simplify exam preparation by providing a comprehensive archive of past papers. After all, your success is our success.😊</p>
               <p>For any query contact with us ~<Link to="/Contact-Us" ><button onClick={handletopscroll}>Contact us</button></Link></p>
             </div>
+        
           </div>
         </div>
       </section>

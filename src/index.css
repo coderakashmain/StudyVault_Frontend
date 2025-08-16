@@ -38,6 +38,7 @@ input.input-detected{
 
 
   --black-text-color: black;
+  --light-black-text-color: #2d2d2d;
   --about-text-color : #e1e1e1;
   --alartcool : rgb(0, 174, 87);              
   --alartdenger : rgb(255 53 53);
