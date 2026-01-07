@@ -20,28 +20,22 @@ const Home = (props) => {
 
 
 
-  
+
 
   return (
-   <>
-  
-       <ErrorBoundary> <Scrollbtn navRefvalue = {props.navRefvalue}/></ErrorBoundary>
-      <ErrorBoundary> <HomeT title = {'Your StudyVault'} titlepara = {'Welcome to StudyVault, Get all Previous Year Question Papers of M.P.C Autonomous college. We shall try to provides note also. So I gonna help you in your all exams if you make me your exam Bff😊. '}/></ErrorBoundary> 
-      <ErrorBoundary>  <SectionSelector/></ErrorBoundary>
-        {/* <MessageBox /> */}
+    <>
+
+      <Scrollbtn navRefvalue={props.navRefvalue} />
+      <HomeT title={'Your StudyVault'} titlepara={'Welcome to StudyVault, Get all Previous Year Question Papers of M.P.C Autonomous college. We shall try to provides note also. So I gonna help you in your all exams if you make me your exam Bff😊. '} />
+      <SectionSelector />
+
       <Outlet />
-    <ErrorBoundary>  <UploadSection /></ErrorBoundary>
-     
-    <ErrorBoundary>  <CollegeInfo/></ErrorBoundary>
+      <UploadSection />
+      <CollegeInfo />
 
-
-
-
-
-
-    <ErrorBoundary>  <Websiteinfo  showAlart={props.showAlart}/></ErrorBoundary>
-    <ErrorBoundary>  <Footer/></ErrorBoundary>  
-   </>
+     <Websiteinfo showAlart={props.showAlart} />
+       <Footer />
+    </>
   )
 }
 

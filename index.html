@@ -4,6 +4,11 @@
     <!-- Google tag (gtag.js) -->
     <script
       async
+      custom-element="amp-auto-ads"
+      src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"
+    ></script>
+    <script
+      async
       src="https://www.googletagmanager.com/gtag/js?id=G-61CJQF0VQG"
     ></script>
     <script
@@ -68,8 +73,6 @@
     ></script>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
 
-   
-
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/logo-transparent-png.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -107,13 +110,13 @@
       StudyVault | M.P.C Autonomous College Question Papers & Free Notes
     </title>
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
-
-   
   </head>
   <body>
     <div id="root"></div>
 
-    <div id="static-loader" style="
+    <div
+      id="static-loader"
+      style="
         position: fixed;
         top: 50%;
         left: 50%;
@@ -122,11 +125,10 @@
         color: black;
         font-family: Arial, sans-serif;
         animation: blink 1s steps(2, start) infinite;
-      ">
+      "
+    >
       Loading...
     </div>
-
-  
 
     <script type="module" src="/src/main.jsx"></script>
     <!-- <script type="module" src="/bundle.js"></script> -->
@@ -141,4 +143,6 @@
 
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
   </body>
+  <amp-auto-ads type="adsense" data-ad-client="ca-pub-9796833231647897">
+  </amp-auto-ads>
 </html>

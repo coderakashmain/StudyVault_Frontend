@@ -9,10 +9,11 @@ const Departmentlist = lazy(()=> import("./Pages/Home/DepartmentlistS/Department
 const Login = lazy(()=> import("./Pages/Login/Login"));
 import Downloadpdf from "./Pages/Home/FilterS/Downloadpdf/Downloadpdf";
 const ForgatePw = lazy(()=> import("./Pages/Login/ForgatePw/ForgatePw"));
-const Allpages = lazy(()=> import("./RoutingFiles/Allpages"));
 
 
 
+
+import Allpages  from "./RoutingFiles/Allpages";
 import DepartmentListContext  from "./Context/DepartmentList/DepartmentListContext";
 import UserContextdata from "./Context/UserContext/UserContextdata";
 import FilterScrollContex from "./Context/FilterScroll/FilterScrollContex";
@@ -34,9 +35,9 @@ import Navbar from "./Component/Navbar/Navbar";
 
 const NoteUpload = lazy(() => import("./Component/Admine/NoteUpload/NoteUpload"));
 const Alart = lazy(() => import("./Component/Alart/Alart"));
-const MaterialRouting = lazy(() => import("./RoutingFiles/MaterialRouting"));
 const PaymentStatus = lazy(() => import("./Pages/CashfreePay/PaymentStatus"));
-const PaymentRouter = lazy(() => import("./RoutingFiles/PaymentRouter"));
+import PaymentRouter from "./RoutingFiles/PaymentRouter"
+import MaterialRouting from "./RoutingFiles/MaterialRouting"
 import FallbackLoad from "./Component/Fallbackload/FallbackLoad"
 import ErrorBoundary from "./Component/ErrorBoundary/ErrorBoundary";
 import Loadingicon from "./Component/Jsonlicon/Loadingicon";
@@ -45,6 +46,7 @@ import NavbarpresentRouting from "./RoutingFiles/NavbarpresentRouting";
 import IntroLoader from "./Component/IntroLoader/IntroLoader";
 import AlartContext from "./Context/AlartContext/AlartContext";
 import ThemeProvider from "./Context/ThemeContext/ThemeProvider";
+import Loginsignup from "./RoutingFiles/Loginsignup";
 
 
 
@@ -66,7 +68,6 @@ const Home = lazy(() => import("./RoutingFiles/Home"));
 const Profile = lazy(() => import("./Pages/Profile/Profile"));
 const Contact = lazy(() => import("./Pages/Contact/Contact"));
 const Signup = lazy(() => import("./Pages/SignUP/Signup"));
-const Loginsignup = lazy(() => import("./RoutingFiles/Loginsignup"));
 
 
 function App() {
@@ -111,7 +112,7 @@ const navrefvalue = (value) => {
     },
     {
       path: '/',
-      element: <><ErrorBoundary>    <Suspense fallback={<IntroLoader/>}> <AlartContext><ThemeProvider><AdminLoginCheck><UserContextdata><UserLoginContext><FilterScrollContex><DepartmentListContext><Allpages /></DepartmentListContext></FilterScrollContex></UserLoginContext></UserContextdata></AdminLoginCheck></ThemeProvider><Alart  /></AlartContext></Suspense></ErrorBoundary></>,
+      element: <><ErrorBoundary>  <AlartContext><ThemeProvider><AdminLoginCheck><UserContextdata><UserLoginContext><FilterScrollContex><DepartmentListContext><Allpages /></DepartmentListContext></FilterScrollContex></UserLoginContext></UserContextdata></AdminLoginCheck></ThemeProvider><Alart  /></AlartContext></ErrorBoundary></>,
       children: [
         {
           path : '',
@@ -155,7 +156,7 @@ const navrefvalue = (value) => {
         
         {
           path: 'Filter',
-          element: <><Suspense fallback={<IntroLoader/>}><MaterialRouting    subheadingtypedata = {subheadingtype}/></Suspense></>,
+          element: <><MaterialRouting    subheadingtypedata = {subheadingtype}/></>,
           children : [
             {
               path: '',
@@ -180,7 +181,7 @@ const navrefvalue = (value) => {
         },
         {
           path: "LogIn",
-          element: (<><Suspense fallback  = {<IntroLoader/>}><Loginsignup /></Suspense></>),
+          element: (<><Loginsignup /></>),
           children: [
             {
               path: "",
@@ -200,7 +201,7 @@ const navrefvalue = (value) => {
         
         {
           path: "payment-donate-us",
-          element: (<><ErrorBoundary> <Suspense fallback  = {<IntroLoader/>}> <PaymentRouter   /></Suspense> </ErrorBoundary></>),
+          element: (<><ErrorBoundary> <PaymentRouter   />a</ErrorBoundary></>),
           children : [
             {
               index: true,

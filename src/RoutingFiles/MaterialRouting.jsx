@@ -14,10 +14,10 @@ const MaterialRouting = (props) => {
   return (
     <section style={{ position : 'relative', zIndex : '1000'}}>
 
-   <ErrorBoundary> <SubNav subheadingtypedata = {props.subheadingtypedata}/></ErrorBoundary>
+    <SubNav subheadingtypedata = {props.subheadingtypedata}/>
     <Outlet/>
 
-    <ErrorBoundary>  <Footer/></ErrorBoundary>
+     <Footer/>
     </section>
   )
 }
