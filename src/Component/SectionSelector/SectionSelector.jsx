@@ -108,7 +108,7 @@ const SectionSelector = (props) => {
           </p>
         </div>
 
-        <button onClick={popup} className="mt-6! bg-[#F6C23E] cursor-pointer hover:bg-[#eab62f] text-[#1F2A44]! font-medium py-3! rounded-xl shadow">
+        <button onClick={()=>navigate("/global-upload-question-paper")} className="mt-6! bg-[#F6C23E] cursor-pointer hover:bg-[#eab62f] text-[#1F2A44]! font-medium py-3! rounded-xl shadow">
           Upload
         </button>
       </div>

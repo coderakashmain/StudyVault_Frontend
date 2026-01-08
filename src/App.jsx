@@ -29,6 +29,8 @@ import FetchData  from "./Context/FretchDataContext/FetchData";
 import AdminLoginCheck  from "./Context/AdminLoginCheck/AdminLoginCheck";
 const ArticleContainerRouter = lazy(() => import("./RoutingFiles/ArticleContainerRouter"));
 const CollegeArticleRouter = lazy(() => import("./Article/CollegeArticle/CollegeArticleRouter"));
+const UploadQuestionPaper = lazy(() => import("./Pages/UploadQuestionPaper"));
+
 import ArticleSubheading  from "./Context/ArticleSubheading/ArticleSubheading";
 import Navbar from "./Component/Navbar/Navbar";
 
@@ -149,6 +151,10 @@ const navrefvalue = (value) => {
             { 
               path: "Terms-Conditions",
               element: (<><ErrorBoundary><Suspense fallback={<IntroLoader/>}> <TermsConditions   /></Suspense></ErrorBoundary></>),
+            },
+            { 
+              path: "global-upload-question-paper",
+              element: (<><ErrorBoundary><Suspense fallback={<IntroLoader/>}> <UploadQuestionPaper   /></Suspense></ErrorBoundary></>),
             },
           ]
         },

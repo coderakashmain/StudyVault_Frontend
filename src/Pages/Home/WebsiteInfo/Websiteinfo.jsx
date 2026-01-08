@@ -77,10 +77,10 @@ const Websiteinfo = (props) => {
 
                 <h3>This  website is running in our own fund. <br />Support our mission by donating to help us grow.</h3>
                 {/* <button className='active' onClick={() =>  showAlart('Available soon', '','cancel')}>Donate Us</button> */}
-                <button className='active' onClick={() => navigate('/payment-donate-us')}>Donate Us</button>
+                <button className='active bg-white' onClick={() => navigate('/payment-donate-us')}>Donate Us</button>
 
                 <h3>Connect with Us <br /> for advertising opportunities and reach a wider audience!</h3>
-                <button className='active' onClick={() => setConnectuspopup(true)}>Connect Us</button>
+                <button className='active bg-white' onClick={() => setConnectuspopup(true)}>Connect Us</button>
                 <div className={`connectus-popup`} style={connetuspopup ? { transform: 'scale(1)' } : { transform: 'scale(0)' }} >
                     {!sendcomplete ? (<div className="connectus-popup-msg" style={connetuspopup ? { transform: 'scale(1)' } : { transform: 'scale(0)' }}>
                         <div className="connectus-popup-close" onClick={() => {
