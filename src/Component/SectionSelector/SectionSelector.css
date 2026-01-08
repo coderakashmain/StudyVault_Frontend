@@ -1,7 +1,7 @@
 #section-selector{
-    background: var(--sectionS-b-c);
     width: 100%;
     padding: 1rem 3.8rem;
+    margin-top: 1rem;
     display: flex;
     justify-content: center;
     position: relative;

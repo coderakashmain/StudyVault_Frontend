@@ -275,7 +275,7 @@
 }
 .content-container {
   padding: 1% 5% 2%;
-  /* background-color: var(--backcolor); */
+  background-color: rgb(241,243,252);
 }
 
 /* ------------------------------------------------------------footer css-------------------------------------------------------------------------------- */
@@ -602,7 +602,7 @@ font-size: 1.3rem;
   }
 
   .department-title-box h2 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 }
 @media only screen and (max-width: 376px) {

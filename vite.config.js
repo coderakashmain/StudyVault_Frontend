@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 import obfuscator from 'rollup-plugin-obfuscator';  // Ensure it's installed
 import { config } from 'dotenv';
+import tailwindcss from '@tailwindcss/vite'
 
 config();
 
@@ -47,6 +48,7 @@ export default defineConfig({
 
   plugins: [
     react(),
+    tailwindcss(),
     obfuscator({
       compact: true,
       controlFlowFlattening: true,
