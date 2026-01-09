@@ -65,7 +65,7 @@ const HomeT = (props) => {
 
                 <h1>Hi! I Am</h1>
                 <div className="h1-box">
-                 <picture >
+                 <picture  loading="lazy">
                   <source srcSet={logoa} type="image/avif"/>
                   <source srcSet={logow} type="image/webp"/>
                   <img  src={logo} alt="web logo" loading="lazy"/>
@@ -101,7 +101,7 @@ const HomeT = (props) => {
             </div>
             <div className="home-image-section">
               <div className="background-image">
-                <picture>
+                <picture loading="lazy">
                 <source srcSet={Imagea} type="image/avif"/>
                 <source srcSet={Imagew} type="image/webp"/>
                 <img src={Image} alt="not found" loading="lazy"/>

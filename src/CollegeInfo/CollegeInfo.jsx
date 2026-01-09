@@ -6,7 +6,6 @@ import logo3 from './College Photoes/College3.jpg'
 import logo4 from './College Photoes/College4.jpg'
 import logo5 from './College Photoes/College5.jpg'
 import { NavLink, useNavigate } from 'react-router-dom'
-import HomeAdd1 from '../Component/AddSense/HomeAdd1'
 import AritcleAds from '../Component/AddSense/AritcleAds'
 const CollegeInfo = () => {
     var [count,setCount] = useState(0);
@@ -55,7 +54,7 @@ const CollegeInfo = () => {
   return (
     <>
     {/* <hr  /> */}
-    <section id='college-info-out-box'>
+    <section id='college-info-out-box'  className=''>
       <div className="ads-center">
       {/* <HomeAdd1/> */}
 
@@ -64,7 +63,7 @@ const CollegeInfo = () => {
         <aside className="college-photos college-info-boxes">
             <div className="college-photos-box" ref={sliderRef}>
                 {image.map((image,index)=>(
-                       <img src={image} alt="college photo" className='slide' key={index}  />
+                       <img src={image} alt="college photo" loading='lazy' className='slide' key={index}  />
                 ))}
                 
             </div>

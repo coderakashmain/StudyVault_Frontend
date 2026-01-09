@@ -46,16 +46,15 @@ const handleNavigate = ()=>{
 
   return (
     <>
-      <div className="main-container" style={{ paddingTop: '1rem' }}>
+      <div className="main-container" style={{ paddingTop: '0rem' }}>
 
         <div className="inner-main-container">
-          {/* <div className="ads-center-perfect" style={{ overflow: 'hidden' }}>
+          <div className="container pt-3!" style={{ overflow: 'hidden' ,backgroundColor :'#F4F7FF'}}>
             <Morenoteabove />
-           
-          </div> */}
+          </div>
           <div
             ref={contectContainer}
-            className="bg-gradient-to-br from-[#F4F7FF] to-[#EEF3FF] p-10 rounded-md content-container"
+            className="bg-linear-to-br from-[#F4F7FF] to-[#EEF3FF] p-10 rounded-md content-container"
           >
             {/* Title */}
             <div className=" flex items-center gap-2 mb-2!">
@@ -116,7 +115,7 @@ const handleNavigate = ()=>{
                 <div className="col-span-full flex justify-end mt-4">
                   <button
                     onClick={() => setCheck(!check)}
-                    className="bg-gradient-to-r cursor-pointer from-blue-600 to-blue-500 text-white! px-6! py-3! rounded-md shadow-lg text-sm font-medium hover:scale-[1.02] transition"
+                    className="bg-linear-to-r cursor-pointer from-blue-600 to-blue-500 text-white! px-6! py-3! rounded-md shadow-lg text-sm font-medium hover:scale-[1.02] transition"
                   >
                     {check ? "See Less" : "View All Departments"}
                   </button>
@@ -125,9 +124,9 @@ const handleNavigate = ()=>{
             </ul>
           </div>
 
-          {/* <div className="ads-center " style={{ overflow: 'hidden' }}>
+          <div className="ads-center " style={{ overflow: 'hidden' , backgroundColor :'#EEF3FF'}}>
             <AritcleAds background="#EEF3FF" />
-          </div> */}
+          </div>
         </div>
       </div>
     </>

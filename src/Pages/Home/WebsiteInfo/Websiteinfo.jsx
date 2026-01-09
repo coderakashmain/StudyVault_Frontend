@@ -68,7 +68,7 @@ const Websiteinfo = (props) => {
         <section id='website-info'>
             <div className="studyvault-logo">
 
-                <img src={studyvaultlogo} alt="" />
+                <img src={studyvaultlogo} loading='lazy' alt="" />
             </div>
 
             <div className="website-info-msg">

@@ -1,7 +1,7 @@
 #upload-section{
     /* min-height: 10rem; */
     width: 100%;
-    background: var(--notificationbackcolor);
+    background: var(--color-white);
     padding: 2rem 1rem 0rem;
     display: flex;
     justify-content: center;

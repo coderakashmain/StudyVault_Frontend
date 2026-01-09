@@ -5,28 +5,11 @@ import "./IntroLoader.css";
 const IntroLoader = () => {
   const text = "StudyVault".split("");
 
-  const circles = Array.from({ length: 5 }, (_, index) => (
-    <motion.div
-      key={index}
-      className="circle"
-      animate={{
-        x: [0, Math.random() * 200 - 100, Math.random() * -200 + 100, 0],
-        y: [0, Math.random() * 200 - 100, Math.random() * -200 + 100, 0],
-        scale: [1, 1.5, 1],
-        rotate: [0, 360],
-      }}
-      transition={{
-        duration: 4 + Math.random() * 2, // Random duration
-        repeat: Infinity,
-        ease: "easeInOut",
-      }}
-    />
-  ));
+
 
   return (
     <div id="introloader">
-   {circles}
-      <motion.h1>
+      {/* <motion.h1>
         {text.map((letter, index) => (
           <motion.span
             key={index}
@@ -42,7 +25,7 @@ const IntroLoader = () => {
             {letter}
           </motion.span>
         ))}
-      </motion.h1>
+      </motion.h1> */}
       <motion.h2
         className="loading-text"
         initial={{  opacity: 0.4 }}

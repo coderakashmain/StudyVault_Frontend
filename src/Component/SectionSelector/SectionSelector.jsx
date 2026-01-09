@@ -98,7 +98,7 @@ const SectionSelector = (props) => {
       </div>
 
       {/* Upload Question Papers */}
-      <div className="bg-gradient-to-br from-[#EAF4FF] to-[#DCEBFF] rounded-2xl p-6! shadow-sm flex flex-col justify-between">
+      <div className="bg-linear-to-br from-[#EAF4FF] to-[#DCEBFF] rounded-2xl p-6! shadow-sm flex flex-col justify-between">
         <div>
           <h3 className="font-semibold text-[#1F2A44] mb-2!">
             Upload Question Papers

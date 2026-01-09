@@ -13,7 +13,7 @@ const removeLoader = () => {
     loader.style.opacity = '0';
     setTimeout(() => {
       loader.remove();
-    }, 500); // Matches the transition duration
+    }, 500); 
   }
 };
 
