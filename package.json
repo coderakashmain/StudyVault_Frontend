@@ -26,7 +26,7 @@
     "bootstrap": "^5.3.3",
     "boxicons": "^2.1.4",
     "buffer": "^6.0.3",
-    "cashfree-pg": "^4.3.10",
+    "cashfree-pg": "^5.1.0",
     "compressorjs": "^1.2.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
