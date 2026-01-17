@@ -11,6 +11,7 @@ import { Userlogincheckcontext } from "../../Context/UserLoginContext/UserLoginC
 import { AdminLoginContext } from '../../Context/AdminLoginCheck/AdminLoginCheck'
 import { AlartContectValue } from "../../Context/AlartContext/AlartContext";
 import { useAdminLogin } from "../../Context/AdminLoginCheck/AdminLoginCheck";
+import avatarImage from "../../utils/avatarImage";
 
 import Avatar from '@mui/material/Avatar';
 
@@ -49,11 +50,7 @@ const Navbar = (props) => {
   const [logincheckdata, setLogincheckdata] = useState(false);
 
 
-  const avatarImage = userData?.avatar_url
-    ? `https://models.readyplayer.me/${userData?.avatar_url.split("/").pop().replace(".glb", ".png")}`
-    : `https://api.dicebear.com/7.x/lorelei/svg?seed=${userData?.id}`;
-
-
+ 
 
 
 
@@ -587,7 +584,7 @@ const Navbar = (props) => {
                     {/* Inner glass circle */}
                     <div className="w-full h-full rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center overflow-hidden">
                       <img
-                        src={ avatarImage}
+                        src={ avatarImage(userData)}
                         className="w-full h-full object-cover rounded-full transition-transform duration-300 hover:scale-105"
                       />
                     </div>
