@@ -1,7 +1,6 @@
 #profile{
     /* min-height: 100svh; */
     width: 100%;
-    background-color: var(--backcolor);
     display: flex;
     justify-content: center;
     padding-top: 5.84rem;
@@ -21,9 +20,6 @@
     width: 70%;
     position: relative;
     border-radius: 1rem 1rem 0 0;
-    background-color: var(--pagecolor);
-    box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.19),inset 9px 9px 50px rgba(255, 255, 255, 0.832),inset -9px -9px 50px rgba(111, 111, 111, 0.163);
-    
 }
 
 .profile-info{
@@ -37,7 +33,6 @@
     position: absolute;
     top: -33%;
     left: -35%;
-    background-color: rgba(191, 212, 252, 0.337);
     z-index: 0;
 }
 .profile-photoes{   
@@ -473,8 +468,6 @@ overflow: hidden;
 
 .profile-right-inner-box{
     width: 30%;
-    background-color:var(--pagecolor);
-    box-shadow: 9px 9px 25px rgba(0, 0, 0, 0.119);
     padding: 1.5rem 0.5rem;
     border-radius: 1rem 1rem 0 0;
 } 

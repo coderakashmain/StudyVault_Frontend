@@ -5,43 +5,38 @@ import axios from 'axios';
 export const Userlogincheckcontext = createContext();
 
 const UserLoginContext = (props) => {
-    const {usernav} = useContext(UserContext);
+    const {setUsernav,setUserdata} = useContext(UserContext);
    
-    const  [loginCheck, setLoginCheck] = useState(null);
-    const isLoggedIn = sessionStorage.getItem('isLoggedIn')
+    const  [loginCheck, setLoginCheck] = useState(false);
 
     useEffect(() => {
-        // const fetchuserlogin = async () => {
-        //     try {
-        //         const response = await axios.get('/api/login-check-context', { withCredentials: true });
-
-        //         if (response.status === 200) {
-        //             setLoginCheck(response.data);
-                   
-        //         }
-        //     }
-        //     catch (error) {
-        //         if (error.response && error.response.status === 500) {
-        //             setLoginCheck(null);
-        //             console.error('Internal error',error)
-        //         }
-        //         if (error.response && error.response.status === 401) {
-        //             setLoginCheck(null);
-        //             console.error('User not found')
-        //         }
-        //         else {
-        //             setLoginCheck(null);
-        //             console.error('Internal error',error);
-        //         }
-        //     }
-        // }
-        // fetchuserlogin();
-        if(isLoggedIn){
-            setLoginCheck(isLoggedIn);
-        }else{
-            setLoginCheck(null)
+        const fetchuserlogin = async () => {
+            try {
+                const response = await axios.get('/api/user/login-check-context');
+          
+                setUsernav(response.data.data.token);
+         
+                setUserdata(response?.data?.data)
+                   setLoginCheck(true)
+               
+            }
+            catch (error) {
+                if (error.response && error.response.status === 500) {
+                    setLoginCheck(false);
+                    console.error('Internal error',error)
+                }
+                if (error.response && error.response.status === 401) {
+                    setLoginCheck(false);
+                    console.error('User not found')
+                }
+                else {
+                    setLoginCheck(false);
+                    console.error('Internal error',error);
+                }
+            }
         }
-    }, [usernav]);
+        fetchuserlogin();
+    }, []);
     return (
         <Userlogincheckcontext.Provider value  = {{loginCheck,setLoginCheck}}>
             {props.children}

@@ -10,6 +10,7 @@ import { ScrollFilterContext } from "../../Context/FilterScroll/FilterScrollCont
 import { Userlogincheckcontext } from "../../Context/UserLoginContext/UserLoginContext";
 import { AdminLoginContext } from '../../Context/AdminLoginCheck/AdminLoginCheck'
 import { AlartContectValue } from "../../Context/AlartContext/AlartContext";
+import { useAdminLogin } from "../../Context/AdminLoginCheck/AdminLoginCheck";
 
 import Avatar from '@mui/material/Avatar';
 
@@ -19,11 +20,12 @@ import ModeSwitcher from "../ModeSwitcher/ModeSwitcher";
 
 
 const Navbar = (props) => {
-  const { usernav, setUsernav } = useContext(UserContext);
+  const { usernav, setUsernav ,userData} = useContext(UserContext);
   let departmentdata = useContext(Departmentlistdata);
   const [departmetvalue, setDartmentvalue] = useState('');
   const navigate = useNavigate();
   const location = useLocation();
+  const {check} = useAdminLogin()
   const [isAuthenticateduser, setIsAuthenticateduser] = useState(false);
   const [nav, setNav] = useState(false);
   const [locationCollege, setLocationCollege] = useState(false);
@@ -34,7 +36,7 @@ const Navbar = (props) => {
   const LoginRef = useRef();
   const [isOn, setIsOn] = useState(false);
   const [authentication, setAuthentication] = useState(false);
-  const check = useContext(AdminLoginContext);
+
   const [logotext, setLogotext] = useState(false);
   const [mobileView, setMobileView] = useState(false);
   const notificationref = useRef(null);
@@ -47,7 +49,9 @@ const Navbar = (props) => {
   const [logincheckdata, setLogincheckdata] = useState(false);
 
 
-
+  const avatarImage = userData?.avatar_url
+    ? `https://models.readyplayer.me/${userData?.avatar_url.split("/").pop().replace(".glb", ".png")}`
+    : `https://api.dicebear.com/7.x/lorelei/svg?seed=${userData?.id}`;
 
 
 
@@ -100,13 +104,13 @@ const Navbar = (props) => {
       setLogincheckdata(false);
     }
 
-    if(isAdminLogin){
+    if(check){
       setAuthentication(true);
     }else{
       setAuthentication(false);
     }
     
-  }, []);
+  }, [check]);
   // console.log(loginCheck);
   // console.log(logincheckdata);
 
@@ -140,25 +144,25 @@ const Navbar = (props) => {
 
 
 
-  const handleLogout = async () => {
-    if (confirm("Are you sure want to  log out ?")) {
+  // const handleLogout = async () => {
+  //   if (confirm("Are you sure want to  log out ?")) {
 
-      try {
-        const response = await axios.post('/api/logOut', { withCredentials: true });
-        if (response.status === 200) {
-          setIsAuthenticateduser(false);
-          sessionStorage.removeItem('isLoggedIn');
-          setUsernav('');
-          setLogincheckdata(false);
-          window.location.href = '/';
-           showAlart("Log out", "Back to main page", 'check');
-        }
-      }
-      catch (error) {
-        console.error('Error in logout');
-      }
-    }
-  };
+  //     try {
+  //       const response = await axios.post('/api/logOut', { withCredentials: true });
+  //       if (response.status === 200) {
+  //         setIsAuthenticateduser(false);
+  //         sessionStorage.removeItem('isLoggedIn');
+  //         setUsernav('');
+  //         setLogincheckdata(false);
+  //         window.location.href = '/';
+  //          showAlart("Log out", "Back to main page", 'check');
+  //       }
+  //     }
+  //     catch (error) {
+  //       console.error('Error in logout');
+  //     }
+  //   }
+  // };
   // useEffect(() => {
   //   if (!logincheckdata) {
   //     setIsAuthenticateduser(false);
@@ -578,9 +582,19 @@ const Navbar = (props) => {
                 </li></div>
               </div>
             ) : (
-              <div className="log-in" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
-                <NavLink onClick={handleLogout} alt='Log Out' ><i className="fa-solid fa-right-from-bracket" style={{ margin: '0rem 0 0 0.5rem', color: '#fff' }}></i></NavLink>
-              </div>
+             <div onClick={()=>navigate("/profile")} className="relative cursor-pointer!  w-12 h-12 rounded-full bg-linear-to-br from-indigo-500 via-purple-500 to-pink-500 p-0.75! shadow-lg">
+
+                    {/* Inner glass circle */}
+                    <div className="w-full h-full rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center overflow-hidden">
+                      <img
+                        src={ avatarImage}
+                        className="w-full h-full object-cover rounded-full transition-transform duration-300 hover:scale-105"
+                      />
+                    </div>
+
+                    {/* Online / status dot (optional) */}
+                    <span className="absolute bottom-0 right-2 w-3 h-3 rounded-full bg-green-500 ring-2 ring-white"></span>
+                  </div>
             )}
           </div>
 

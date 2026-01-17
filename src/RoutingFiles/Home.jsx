@@ -7,6 +7,7 @@ import UploadSection from '../Pages/Home/UploadSection/UploadSection'
 import SectionSelector from '../Component/SectionSelector/SectionSelector'
 import CollegeInfo from '../CollegeInfo/CollegeInfo'
 import Websiteinfo from '../Pages/Home/WebsiteInfo/Websiteinfo'
+import TopContributorsCard from "../Component/TopContributorsCard"
 
 
 const Home = (props) => {
@@ -16,14 +17,15 @@ const Home = (props) => {
 
       <Scrollbtn navRefvalue={props.navRefvalue} />
       <HomeT title={'Your StudyVault'} titlepara={'Welcome to StudyVault, Get all Previous Year Question Papers of M.P.C Autonomous college. We shall try to provides note also. So I gonna help you in your all exams if you make me your exam Bff😊. '} />
+      <TopContributorsCard />
       <SectionSelector />
       <Outlet />
 
       <UploadSection />
       <CollegeInfo />
 
-     <Websiteinfo showAlart={props.showAlart} />
-       <Footer />
+      <Websiteinfo showAlart={props.showAlart} />
+      <Footer />
     </>
   )
 }

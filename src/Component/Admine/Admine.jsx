@@ -104,6 +104,7 @@ const handleLogout = async () => {
       <div className="admin-box">
           <div className="admin-left-box">
             <NavLink to= ''><h2><i className="fa-solid fa-gauge-high"></i>Dashboard</h2></NavLink>
+            <NavLink to= 'user-uploads'><h2><i className="fa-solid fa-newspaper" ></i>User Uplods</h2></NavLink>
             <NavLink to= 'Question'><h2><i className="fa-solid fa-newspaper" ></i>Question</h2></NavLink>
             <NavLink to= 'syllabusupload'><h2><i className="fa-solid fa-newspaper" ></i>Syllabus</h2></NavLink>
             <NavLink to= 'Notes'><h2><i className="fa-solid fa-book-open"></i>Note</h2></NavLink>

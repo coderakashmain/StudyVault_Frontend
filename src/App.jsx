@@ -35,6 +35,8 @@ import ArticleSubheading  from "./Context/ArticleSubheading/ArticleSubheading";
 import Navbar from "./Component/Navbar/Navbar";
 
 
+
+const AdmineControl = lazy(() => import("./Component/Admine/AdmineControl"));
 const NoteUpload = lazy(() => import("./Component/Admine/NoteUpload/NoteUpload"));
 const Alart = lazy(() => import("./Component/Alart/Alart"));
 const PaymentStatus = lazy(() => import("./Pages/CashfreePay/PaymentStatus"));
@@ -49,6 +51,7 @@ import IntroLoader from "./Component/IntroLoader/IntroLoader";
 import AlartContext from "./Context/AlartContext/AlartContext";
 import ThemeProvider from "./Context/ThemeContext/ThemeProvider";
 import Loginsignup from "./RoutingFiles/Loginsignup";
+import { TopContributorsProvider } from "./Context/TopContributorsContext";
 
 
 
@@ -114,7 +117,7 @@ const navrefvalue = (value) => {
     },
     {
       path: '/',
-      element: <><ErrorBoundary>  <AlartContext><ThemeProvider><AdminLoginCheck><UserContextdata><UserLoginContext><FilterScrollContex><DepartmentListContext><Allpages /></DepartmentListContext></FilterScrollContex></UserLoginContext></UserContextdata></AdminLoginCheck></ThemeProvider><Alart  /></AlartContext></ErrorBoundary></>,
+      element: <><ErrorBoundary>  <AlartContext><ThemeProvider><UserContextdata><TopContributorsProvider> <AdminLoginCheck><UserLoginContext><FilterScrollContex><DepartmentListContext><Allpages /></DepartmentListContext></FilterScrollContex></UserLoginContext></AdminLoginCheck></TopContributorsProvider></UserContextdata></ThemeProvider><Alart  /></AlartContext></ErrorBoundary></>,
       children: [
         {
           path : '',
@@ -207,7 +210,7 @@ const navrefvalue = (value) => {
         
         {
           path: "payment-donate-us",
-          element: (<><ErrorBoundary> <PaymentRouter   />a</ErrorBoundary></>),
+          element: (<><ErrorBoundary> <PaymentRouter   /></ErrorBoundary></>),
           children : [
             {
               index: true,
@@ -229,6 +232,11 @@ const navrefvalue = (value) => {
           children: [{
             path: '',
             element: <><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}><Dashboard   /></Suspense>  </ErrorBoundary></>
+          },
+          {
+            path: 'user-uploads',
+            element: <><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}><AdmineControl   /></Suspense> </ErrorBoundary></>
+
           },
           {
             path: 'Question',

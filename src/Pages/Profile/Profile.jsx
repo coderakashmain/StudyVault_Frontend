@@ -8,13 +8,14 @@ import profilelogoa from '../../photo/avatar.avif'
 import Compressor from "compressorjs";
 import { Userlogincheckcontext } from "../../Context/UserLoginContext/UserLoginContext";
 import { AlartContectValue } from "../../Context/AlartContext/AlartContext";
+import AvatarCreator from "./AvatarCreator";
 
 
 
 
 
 const Profile = (props) => {
-const {showAlart} = useContext(AlartContectValue);
+  const { showAlart } = useContext(AlartContectValue);
   const [pdfetchfile, setpdfetchfile] = useState([]);
   const [user, setUser] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
@@ -24,9 +25,10 @@ const {showAlart} = useContext(AlartContectValue);
   const [renameFileback, setrenameFileback] = useState('');
   const [isActive, setIsActive] = useState(false);
   const fileInputRef = useRef(null);
-  const {setLoginCheck} = useContext(Userlogincheckcontext);
-
-
+  const { setLoginCheck } = useContext(Userlogincheckcontext);
+  const [showAvatar, setShowAvatar] = useState(false);
+  const [avataPath, setAvatarPath] = useState('');
+  const [finalPath, setFinalPath] = useState("");
 
   const [filtetuploaddata, setFiltetuploaddata] = useState(
     {
@@ -39,9 +41,16 @@ const {showAlart} = useContext(AlartContectValue);
 
     }
   );
+  useEffect(() => {
+    if (avataPath) {
+      const avatarrecentImage = `https://models.readyplayer.me/${avataPath.split("/").pop().replace(".glb", ".png")}`
+      setFinalPath(avatarrecentImage)
+
+    }
+  }, [avataPath])
 
 
-      
+
 
 
 
@@ -73,10 +82,10 @@ const {showAlart} = useContext(AlartContectValue);
         }
       } catch (error) {
         if (error.response && error.response.status === 401) {
-          
+
           console.error('Error fetching profile');
-          
-          
+
+
         }
         setLoginCheck(null);
       } finally {
@@ -104,14 +113,14 @@ const {showAlart} = useContext(AlartContectValue);
           setpdfetchfile(response.data);
         }
         else {
-           showAlart('something error', '', 'cancel');
+          showAlart('something error', '', 'cancel');
         }
       }
 
       catch (error) {
 
         if (error.response && error.response.status === 400) {
-           showAlart('Not send yet', '', 'mark')
+          showAlart('Not send yet', '', 'mark')
         }
       }
 
@@ -143,7 +152,7 @@ const {showAlart} = useContext(AlartContectValue);
       setSelectedFile(file);
 
     } else {
-       showAlart('Failed', 'Please select a pdf file', 'cancel');
+      showAlart('Failed', 'Please select a pdf file', 'cancel');
       setSelectedFile(null);
       if (fileInputRef.current) {
         fileInputRef.current.value = "";
@@ -199,38 +208,59 @@ const {showAlart} = useContext(AlartContectValue);
         });
 
         if (response.status === 200) {
-          
-          
+
+
           setrenameFileback('');
 
           setSelectedFile(null);
           if (fileInputRef.current) {
             fileInputRef.current.value = "";
           }
-           showAlart(' Successfully send', '', 'check')
+          showAlart(' Successfully send', '', 'check')
           setFiltetuploaddata('');
           setSingletap(false);
         }
         else {
           setSingletap(false);
-           showAlart('External error', '', 'cancel')
+          showAlart('External error', '', 'cancel')
 
         }
 
       } catch (error) {
         console.error('Error uploading file:', error);
-         showAlart('Error', 'Failed to upload the file.', 'cancel');
+        showAlart('Error', 'Failed to upload the file.', 'cancel');
         setSingletap(false);
       }
 
     } else {
 
-       showAlart('Error', 'Please select  file', 'cancel')
+      showAlart('Error', 'Please select  file', 'cancel')
       setSingletap(false);
       return;
     };
 
   };
+
+  const avatarImage = user.avatar_url
+    ? `https://models.readyplayer.me/${user.avatar_url.split("/").pop().replace(".glb", ".png")}`
+    : `https://api.dicebear.com/7.x/lorelei/svg?seed=${user.id}`;
+
+      const handleLogout = async () => {
+        if (confirm("Are you sure want to  log out ?")) {
+    
+          try {
+            const response = await axios.post('/api/logOut', { withCredentials: true });
+            if (response.status === 200) {
+              sessionStorage.removeItem('isLoggedIn');
+              window.location.href = '/';
+               showAlart("Log out", "Back to main page", 'check');
+            }
+          }
+          catch (error) {
+            console.error('Error in logout');
+          }
+        }
+      };
 
 
 
@@ -239,28 +269,54 @@ const {showAlart} = useContext(AlartContectValue);
       <div className="profile-outer-box">
         <div className="profile-left-inner-box">
           <div className="profile-info">
-            <div className="upperstyle"></div>
+
             <div className="profile-photoes">
               <div className="profile-main-photo-box">
-                {/* <h2>Profile</h2> */}
-                <h3>
-                  <i className="fa-solid fa-location-dot"></i>MPC AUTO, BARIPADA
-                </h3>
-                <div className="profile-main-photo">
-                  <div className="profile-main-photo-img-box">
-                    <picture>
-                      <img src={ profilelogo}  alt="profile photo" />
-                      <source srcSet={profilelogoa}  type="image/avif" />
-                      <source srcSet={profilelogow}type="image/webp" />
 
-                    </picture>
+                <div className="relative flex flex-col items-center gap-4!">
 
+                  {/* Gradient avatar background */}
+                  <div className="relative w-36 h-36 rounded-full bg-linear-to-br from-indigo-500 via-purple-500 to-pink-500 p-0.75!  shadow-lg">
+
+                    {/* Inner glass circle */}
+                    <div className="w-full h-full rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center overflow-hidden">
+                      <img
+                        src={finalPath ? finalPath : avatarImage}
+                        className="w-full h-full object-cover rounded-full transition-transform duration-300 hover:scale-105"
+                      />
+                    </div>
+
+                    {/* Online / status dot (optional) */}
+                    <span className="absolute bottom-2 right-2 w-4 h-4 rounded-full bg-green-500 ring-2 ring-white"></span>
                   </div>
-               
-                  <div className="profile-main-photo-subpart" >
-                  </div>
 
+                  {/* Action button */}
+                  <button
+                    onClick={() => setShowAvatar(true)}
+                    className="
+      text-xs px-5! py-2! rounded-sm
+      bg-black text-white!
+      transition-all duration-200
+      hover:opacity-90 hover:scale-[1.02]
+      shadow-sm
+    "
+                  >
+                    Create / Change Avatar
+                  </button>
                 </div>
+
+
+                {/* Avatar Creator */}
+                {showAvatar && (
+                  <div className="flex-1">
+                    <AvatarCreator setAvatarPath={setAvatarPath} onClose={() => setShowAvatar(false)} />
+                  </div>
+                )}
+
+                {/* <div className="profile-main-photo-subpart" >
+                  </div> */}
+
+
               </div>
               <div className="profile-downupload-info">
                 <h4> {user.firstname && (<span>{user.firstname}</span>)} {user.lastname && (<span>{user.lastname}</span>)}</h4>
@@ -441,9 +497,12 @@ const {showAlart} = useContext(AlartContectValue);
                   <button>
                     Edit profile<i className="fa-solid fa-pen-to-square"></i>
                   </button>
+                   <button className="py-2! bg-white! ml-2! text-red-400! border border-red-400! text-sm text-center  rounded-4xl" onClick={handleLogout}>Logout</button>
                 </div>
               </div>
             </div>
+
+           
           </div>
         </div>
 
