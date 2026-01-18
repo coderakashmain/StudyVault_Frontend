@@ -3,14 +3,12 @@ import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 
 import "./GoogleAuth.css"
-import { useNavigate } from "react-router";
 
 
 const  GoogleAuth = ({userdata , showAlart})=> {
     const googleClientId = import.meta.env.VITE_AUTH_CLIENTID_GOOGLE;
   
-    const navigate = useNavigate();
-    
+  
     
 
    

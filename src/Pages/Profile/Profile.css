@@ -3,7 +3,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    padding-top: 5.84rem;
+    padding-top: 7rem;
    
     
     
@@ -595,6 +595,9 @@ overflow: hidden;
     }
 }
 @media (max-width:437px) {
+    #profile{
+         background-color: var(--backcolor);
+    }
     html{
         font-size: 75%;
     }
@@ -607,7 +610,7 @@ overflow: hidden;
     }
     .profile-left-inner-box{
         width: 100%;
-        background-color: var(--backcolor);
+       
         box-shadow: none;
     }
     .profile-outer-box{
