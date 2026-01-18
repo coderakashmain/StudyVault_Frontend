@@ -11,12 +11,14 @@ import { Userlogincheckcontext } from "../../Context/UserLoginContext/UserLoginC
 import { AdminLoginContext } from '../../Context/AdminLoginCheck/AdminLoginCheck'
 import { AlartContectValue } from "../../Context/AlartContext/AlartContext";
 import { useAdminLogin } from "../../Context/AdminLoginCheck/AdminLoginCheck";
-import avatarImage from "../../utils/avatarImage";
+
 
 import Avatar from '@mui/material/Avatar';
 
 import logo from '../../photo/weblogo.png'
 import ModeSwitcher from "../ModeSwitcher/ModeSwitcher";
+import AvatarPhoto from "../SectionSelector/AvatarPhoto";
+
 
 
 
@@ -50,7 +52,6 @@ const Navbar = (props) => {
   const [logincheckdata, setLogincheckdata] = useState(false);
 
 
- 
 
 
 
@@ -569,7 +570,7 @@ const Navbar = (props) => {
 
 
    
-            {!logincheckdata ? (
+            {!userData?.token ? (
               <div className="log-in" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <div ref={BothLoginRef} onClick={clickOn}><li>Login <div className={`adminLogInBox ${isOn ? 'open' : 'close'} `} ref={LoginRef} >
 
@@ -579,19 +580,9 @@ const Navbar = (props) => {
                 </li></div>
               </div>
             ) : (
-             <div onClick={()=>navigate("/profile")} className="relative cursor-pointer!  w-12 h-12 rounded-full bg-linear-to-br from-indigo-500 via-purple-500 to-pink-500 p-0.75! shadow-lg">
-
-                    {/* Inner glass circle */}
-                    <div className="w-full h-full rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center overflow-hidden">
-                      <img
-                        src={ avatarImage(userData)}
-                        className="w-full h-full object-cover rounded-full transition-transform duration-300 hover:scale-105"
-                      />
-                    </div>
-
-                    {/* Online / status dot (optional) */}
-                    <span className="absolute bottom-0 right-2 w-3 h-3 rounded-full bg-green-500 ring-2 ring-white"></span>
-                  </div>
+              <div onClick={()=>navigate("/profile")}>
+                <AvatarPhoto size={10}/>
+                 </div>
             )}
           </div>
 

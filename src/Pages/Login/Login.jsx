@@ -51,10 +51,10 @@ const Login = (props) => {
       const response = await axios.post('/api/LogIn', loginData, { withCredentials: true });
       if (response.status === 200) {
          showAlart('Log in Successfull.', '', 'check');
-         window.location.reload();  
-       
-        navigate('/');
-
+         
+         
+         
+         window.location.href = '/';  
         setRepeatclick(false);
       }
 

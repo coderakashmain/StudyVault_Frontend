@@ -1,10 +1,12 @@
 import { useEffect, useRef } from "react";
 import useApi from "../../hooks/useApi";
+import { useAvatar } from "../../Context/AvatarProvider";
 
 const AVATAR_URL =
     "https://readyplayer.me/avatar?frameApi&bodyType=fullbody";
 
 export default function AvatarCreator({ onClose,setAvatarPath }) {
+  const {setAvatarUrl} = useAvatar();
     const { post, loading } = useApi();
     const iframeRef = useRef(null);
 
@@ -60,6 +62,7 @@ useEffect(() => {
             );
 
             setAvatarPath(res.data.avatar_url)
+            setAvatarUrl(res.data.avatar_url);
             onClose(); 
            
         } catch (err) {

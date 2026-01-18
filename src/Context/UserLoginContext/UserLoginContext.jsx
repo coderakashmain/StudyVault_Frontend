@@ -1,11 +1,13 @@
 import React, { createContext, useContext, useEffect,useState } from 'react'
 import { UserContext } from '../UserContext/UserContextdata';
 import axios from 'axios';
+import { useAvatar } from '../AvatarProvider';
 
 export const Userlogincheckcontext = createContext();
 
 const UserLoginContext = (props) => {
     const {setUsernav,setUserdata} = useContext(UserContext);
+    const {setAvatarUrl} = useAvatar();
    
     const  [loginCheck, setLoginCheck] = useState(false);
 
@@ -15,7 +17,7 @@ const UserLoginContext = (props) => {
                 const response = await axios.get('/api/user/login-check-context');
           
                 setUsernav(response.data.data.token);
-         
+                setAvatarUrl(response?.data?.data.avatar_url)
                 setUserdata(response?.data?.data)
                    setLoginCheck(true)
                

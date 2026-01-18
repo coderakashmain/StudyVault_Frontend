@@ -52,6 +52,7 @@ import AlartContext from "./Context/AlartContext/AlartContext";
 import ThemeProvider from "./Context/ThemeContext/ThemeProvider";
 import Loginsignup from "./RoutingFiles/Loginsignup";
 import { TopContributorsProvider } from "./Context/TopContributorsContext";
+import AvatarProvider from "./Context/AvatarProvider";
 
 
 
@@ -117,7 +118,7 @@ const navrefvalue = (value) => {
     },
     {
       path: '/',
-      element: <><ErrorBoundary>  <AlartContext><ThemeProvider><UserContextdata><TopContributorsProvider> <AdminLoginCheck><UserLoginContext><FilterScrollContex><DepartmentListContext><Allpages /></DepartmentListContext></FilterScrollContex></UserLoginContext></AdminLoginCheck></TopContributorsProvider></UserContextdata></ThemeProvider><Alart  /></AlartContext></ErrorBoundary></>,
+      element: <><ErrorBoundary>  <AlartContext><ThemeProvider><UserContextdata><AvatarProvider><TopContributorsProvider> <AdminLoginCheck><UserLoginContext><FilterScrollContex><DepartmentListContext><Allpages /></DepartmentListContext></FilterScrollContex></UserLoginContext></AdminLoginCheck></TopContributorsProvider></AvatarProvider></UserContextdata></ThemeProvider><Alart  /></AlartContext></ErrorBoundary></>,
       children: [
         {
           path : '',
