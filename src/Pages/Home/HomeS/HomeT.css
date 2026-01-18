@@ -1,5 +1,5 @@
 .main-container{ 
-  background: var(--backcolor);
+  /* background: var(--backcolor); */
 
   
  } 
@@ -275,7 +275,7 @@
 }
 .content-container {
   padding: 1% 5% 2%;
-  background-color: rgb(241,243,252);
+  /* background-color: rgb(241,243,252); */
 }
 
 /* ------------------------------------------------------------footer css-------------------------------------------------------------------------------- */

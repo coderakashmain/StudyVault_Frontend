@@ -2,11 +2,13 @@ import React, { useEffect } from 'react'
 
 
 const Horizontalads = (props) => {
+  const adInitialized = useRef(false);
        useEffect(() => {
                    // Dynamically create and insert the AdSense script
            
                    if(process.env.NODE_ENV === 'production'){
-     
+          if (adInitialized.current) return;
+    adInitialized.current = true;
                      window.adsbygoogle = window.adsbygoogle || [];
      
                      const existingScript = document.querySelector('script[src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]');

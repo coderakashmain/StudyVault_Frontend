@@ -2,10 +2,13 @@ import React, { useEffect } from 'react'
 
 const AritcleAds = (props) => {
 
+  const adInitialized = useRef(false);
       useEffect(() => {
                   // Dynamically create and insert the AdSense script
           
                   if(process.env.NODE_ENV === 'production'){
+          if (adInitialized.current) return;
+    adInitialized.current = true;
     
                     window.adsbygoogle = window.adsbygoogle || [];
     

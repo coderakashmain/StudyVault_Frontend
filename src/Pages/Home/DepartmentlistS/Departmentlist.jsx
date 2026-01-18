@@ -49,12 +49,12 @@ const handleNavigate = ()=>{
       <div className="main-container" style={{ paddingTop: '0rem' }}>
 
         <div className="inner-main-container">
-          <div className="container pt-3!" style={{ overflow: 'hidden' ,backgroundColor :'#F4F7FF'}}>
+          <div className="container pt-3!" style={{ overflow: 'hidden' }}>
             <Morenoteabove />
           </div>
           <div
             ref={contectContainer}
-            className="bg-linear-to-br from-[#F4F7FF] to-[#EEF3FF] p-10 rounded-md content-container"
+            className="p-10 rounded-md content-container"
           >
             {/* Title */}
             <div className=" flex items-center gap-2 mb-2!">
@@ -124,7 +124,7 @@ const handleNavigate = ()=>{
             </ul>
           </div>
 
-          <div className="ads-center " style={{ overflow: 'hidden' , backgroundColor :'#EEF3FF'}}>
+          <div className="ads-center " style={{ overflow: 'hidden' }}>
             <AritcleAds background="#EEF3FF" />
           </div>
         </div>
