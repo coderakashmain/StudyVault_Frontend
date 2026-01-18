@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 
 const SectionHorizontalads = () => {
   const adInitialized = useRef(false);

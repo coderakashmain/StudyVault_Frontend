@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react'
-    
+import React, { useEffect, useRef } from 'react'
 
 const Verticalads = () => {
   const adInitialized = useRef(false);

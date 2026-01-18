@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react'
-
+import React, { useEffect, useRef } from 'react'
 const LongWidthAds = (props) => {
 
   const adInitialized = useRef(false);
