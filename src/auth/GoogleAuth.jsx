@@ -23,11 +23,11 @@ const  GoogleAuth = ({userdata , showAlart})=> {
       
       },{  withCredentials : true});
 
+      window.location.href = '/';  
       showAlart("Login Seccessfull","","check");
       sessionStorage.setItem('isLoggedIn', 'true');
       userdata(res.data);
      
-        navigate("/", { replace: true });
  
 
     } catch (error) {
