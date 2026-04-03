@@ -48,7 +48,7 @@ const handleChange = (e)=>{
       try{
         setOtpSent(true);
         setLoader(true);
-        await axios.post(`${VITE_API_URL}/LogIn/ForgatePw',{email});
+        await axios.post(`${VITE_API_URL}/LogIn/ForgatePw`,{email});
          showAlart('OTP sent seccesfully','','check');
         setMessage(<p>Your OTP expired in 10 minutes.</p>);
 
