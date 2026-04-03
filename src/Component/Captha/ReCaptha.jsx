@@ -33,7 +33,7 @@ const VITE_API_URL = import.meta.env.VITE_API_URL || '/api';
 
               // Send the token to your backend for validation (optional)
               axios
-                .post(`${VITE_API_URL}/api/verify-turnstile`, { token })
+                .post(`${VITE_API_URL}/verify-turnstile`, { token })
                 .then((response) => {
                   if (response.data.success) {
                     onVerified(true);

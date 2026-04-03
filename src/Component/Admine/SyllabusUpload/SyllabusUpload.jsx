@@ -62,7 +62,7 @@ const SyllabusUpload = (props) => {
 
 
         try {
-            const response = await axios.post(`${VITE_API_URL}/api/Admin/syllabusUpload`, formData, {
+            const response = await axios.post(`${VITE_API_URL}/Admin/syllabusUpload`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 },

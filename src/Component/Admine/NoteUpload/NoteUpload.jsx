@@ -48,7 +48,7 @@ const VITE_API_URL = import.meta.env.VITE_API_URL || '/api';
     formData.append('unit', unit);
 
     try {
-      const response = await axios.post(`${VITE_API_URL}/api/Admin/noteUpload`, formData, {
+      const response = await axios.post(`${VITE_API_URL}/Admin/noteUpload`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
         onUploadProgress: ({ loaded, total }) =>
           setUploadProgress(Math.round((loaded * 100) / total)),

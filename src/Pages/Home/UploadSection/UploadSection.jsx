@@ -104,7 +104,7 @@ const location = useLocation();
       });
   
       try {
-        const response = await axios.post(`${VITE_API_URL}/api/Profile/upload/non-user`, formData, {
+        const response = await axios.post(`${VITE_API_URL}/Profile/upload/non-user`, formData, {
           headers: { "Content-Type": "multipart/form-data" },
           onUploadProgress: (progressEvent) => {
             const percentage = Math.round((progressEvent.loaded * 100) / progressEvent.total);

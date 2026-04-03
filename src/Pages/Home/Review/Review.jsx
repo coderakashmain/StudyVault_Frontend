@@ -22,7 +22,7 @@ const Review = (props) => {
 
   const fetchComments = async () => {
     try {
-      const response = await axios.get(`${VITE_API_URL}/api/comments/fetch`);
+      const response = await axios.get(`${VITE_API_URL}/comments/fetch`);
       setComments(response.data);
     } catch (error) {
       console.error('Error fetching comments:', error);
@@ -44,7 +44,7 @@ const Review = (props) => {
     setLoad(true);
     e.preventDefault();
     try {
-      await axios.post(`${VITE_API_URL}/api/comments`, formData);
+      await axios.post(`${VITE_API_URL}/comments`, formData);
       fetchComments();
       setFormData({ name: '', gmail: '', gender: '', message: '' });
       setLoad(false);
@@ -60,7 +60,7 @@ const Review = (props) => {
     setReplypostbtn(true);
 
     try {
-      await axios.post(`${VITE_API_URL}/api/comments/${commentId}/replies`, replyData);
+      await axios.post(`${VITE_API_URL}/comments/${commentId}/replies`, replyData);
       fetchComments();
       setReplypostbtn(false);
       setActiveReplyId(null);

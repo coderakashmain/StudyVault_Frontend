@@ -76,7 +76,7 @@ const Profile = (props) => {
 
     const fetchProfile = async () => {
       try {
-        const response = await axios.get(`${VITE_API_URL}/api/Profile`, { withCredentials: true });
+        const response = await axios.get(`${VITE_API_URL}/Profile`, { withCredentials: true });
         if (response.status === 200) {
 
           setUser(response.data.user);
@@ -108,7 +108,7 @@ const Profile = (props) => {
         const userid = user.id;
 
 
-        const response = await axios.get(`${VITE_API_URL}/api/Profile/fetchpdf`, { params: { userid }, withCredentials: true });
+        const response = await axios.get(`${VITE_API_URL}/Profile/fetchpdf`, { params: { userid }, withCredentials: true });
 
         if (response.status === 200) {
           setpdfetchfile(response.data);
@@ -201,7 +201,7 @@ const Profile = (props) => {
 
 
       try {
-        const response = await axios.post(`${VITE_API_URL}/api/Profile/upload`, formData, {
+        const response = await axios.post(`${VITE_API_URL}/Profile/upload`, formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           },
@@ -250,7 +250,7 @@ const Profile = (props) => {
         if (confirm("Are you sure want to  log out ?")) {
     
           try {
-            const response = await axios.post(`${VITE_API_URL}/api/logOut`, { withCredentials: true });
+            const response = await axios.post(`${VITE_API_URL}/logOut`, { withCredentials: true });
             if (response.status === 200) {
               sessionStorage.removeItem('isLoggedIn');
               window.location.href = '/';

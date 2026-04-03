@@ -23,7 +23,7 @@ const VITE_API_URL = import.meta.env.VITE_API_URL || '/api';
       const checkAuthorization = async (e) => {
        
         try {
-            const response = await axios.get(`${VITE_API_URL}/api/adminPage`, {withCredentials : true});
+            const response = await axios.get(`${VITE_API_URL}/adminPage`, {withCredentials : true});
               if (response.status === 200) {
         
                 setCheck(true);
@@ -58,7 +58,7 @@ const VITE_API_URL = import.meta.env.VITE_API_URL || '/api';
 
 const handleLogout = async () => {
   try{
-   const response =  await axios.post(`${VITE_API_URL}/api/Admin/logout`);
+   const response =  await axios.post(`${VITE_API_URL}/Admin/logout`);
    
     window.location.href = "/Admin/AdminLogIn";
       sessionStorage.clear('isAdminLogin');

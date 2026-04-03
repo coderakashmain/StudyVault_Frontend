@@ -16,7 +16,7 @@ const  GoogleAuth = ({userdata , showAlart})=> {
   
     
     try {
-      const res = await axios.post(`${VITE_API_URL}/api/auth/google`, {
+      const res = await axios.post(`${VITE_API_URL}/auth/google`, {
         token: response.credential,
       
       },{  withCredentials : true});

@@ -39,7 +39,7 @@ const Cashfree = () => {
 
     try {
       const redirectUrl = `${window.location.origin}/payment-donate-us/payment-response`;
-      const response = await axios.post(`${VITE_API_URL}/api/create-payment-order`, {
+      const response = await axios.post(`${VITE_API_URL}/create-payment-order`, {
         amount : Number(amount),
         customerEmail: gmail,
         customerPhone: mobilenumber,

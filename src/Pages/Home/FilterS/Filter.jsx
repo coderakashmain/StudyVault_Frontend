@@ -316,7 +316,7 @@ const  handlesubjet = (e)=>{
 
     try {
       setLoader(true);
-      const response = await axios.get(`${VITE_API_URL}/api/Filter`, { params: nonEmptyFilters });
+      const response = await axios.get(`${VITE_API_URL}/Filter`, { params: nonEmptyFilters });
       if (response.status === 200) {
         navigate(`/Downloadpdf/${filters.departmentName}`, { state:{  data :  response.data} });
         setLoader(false);

@@ -49,7 +49,7 @@ const Login = (props) => {
     }
 
     try {
-      const response = await axios.post(`${VITE_API_URL}/api/LogIn`, loginData, { withCredentials: true });
+      const response = await axios.post(`${VITE_API_URL}/LogIn`, loginData, { withCredentials: true });
       if (response.status === 200) {
          showAlart('Log in Successfull.', '', 'check');
          

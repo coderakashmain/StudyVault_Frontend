@@ -16,7 +16,7 @@ const PaymentStatus = () => {
         const fetchPaymentStatus = async () => {
             if (orderId) {
                 try{
-                    const response =  await axios.get(`${VITE_API_URL}/api/payment-status/${orderId}`)
+                    const response =  await axios.get(`${VITE_API_URL}/payment-status/${orderId}`)
                     
                     setStatus(response.data.status);
                     setLoading(false);

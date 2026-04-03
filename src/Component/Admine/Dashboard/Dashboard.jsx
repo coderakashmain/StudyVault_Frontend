@@ -17,7 +17,7 @@ const Dashboard = (props) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`${VITE_API_URL}/api/admin/fetchData`, { withCredentials: true });
+                const response = await axios.get(`${VITE_API_URL}/admin/fetchData`, { withCredentials: true });
                 if (response.status === 200) {
                     setPaperList(response.data); // Update the context
                     setTotalCount(response.data.length); 

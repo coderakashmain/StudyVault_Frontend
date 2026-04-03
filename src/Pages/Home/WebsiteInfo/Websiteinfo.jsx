@@ -34,7 +34,7 @@ const Websiteinfo = (props) => {
         setErrormessage(" ");
         setLoad(true);
         try {
-            const response = await axios.get(`${VITE_API_URL}/api/connectusdata`, { params: messageus });
+            const response = await axios.get(`${VITE_API_URL}/connectusdata`, { params: messageus });
 
             if (response.status === 200) {
           

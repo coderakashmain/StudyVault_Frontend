@@ -52,7 +52,7 @@ const PDFViewer = ({ pdfUrl, papertitle, onClose }) => {
             try {
                 // 1. Generate a short link via ShrinkEarn API
 
-                const response = await axios.get(`${VITE_API_URL}/api/shorten`, {
+                const response = await axios.get(`${VITE_API_URL}/shorten`, {
                     params: { url: pdfUrl }
                 });
 

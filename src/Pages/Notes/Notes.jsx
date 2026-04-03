@@ -84,7 +84,7 @@ const Notes = () => {
   useEffect(() => {
     const fetchpdf = async () => {
       try {
-        const response = await axios.get(`${VITE_API_URL}/api/notefetch`);
+        const response = await axios.get(`${VITE_API_URL}/notefetch`);
 
         setNotelist(response.data);
         setFilteredNotes(response.data);
@@ -100,7 +100,7 @@ const Notes = () => {
   const handlePreviewClick = throttle(async (id, originalUrl) => {
     setActiveNote(id);
     try {
-      const response = await axios.post(`${VITE_API_URL}/api/noteClickCount`, { id });
+      const response = await axios.post(`${VITE_API_URL}/noteClickCount`, { id });
     } catch (error) {
       console.error("Error updating click count", error);
     }
@@ -115,7 +115,7 @@ const Notes = () => {
   const handledownloadCount = throttle(async (id, filename, unit, fileUrl) => {
 
     try {
-      const response = await axios.post(`${VITE_API_URL}/api/notedonwloadcount`, { id, filename, unit, fileUrl });
+      const response = await axios.post(`${VITE_API_URL}/notedonwloadcount`, { id, filename, unit, fileUrl });
     } catch (error) {
       console.error("Error updating click count", error);
     }

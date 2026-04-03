@@ -42,7 +42,7 @@ const handleSubmit = async (e)=>{
      }
     try{
         // alert();
-        const response = await axios.post(`${VITE_API_URL}/api/Admin/AdminLogIn`, { userid, password });
+        const response = await axios.post(`${VITE_API_URL}/Admin/AdminLogIn`, { userid, password });
             setAdminToken(response.data.admintoken);
              showAlart('LogIn Seccessfully',"","check");
             setUserid('');

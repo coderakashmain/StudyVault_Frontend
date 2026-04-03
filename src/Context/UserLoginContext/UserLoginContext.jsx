@@ -14,7 +14,7 @@ const UserLoginContext = (props) => {
     useEffect(() => {
         const fetchuserlogin = async () => {
             try {
-                const response = await axios.get(`${VITE_API_URL}/api/user/login-check-context`);
+                const response = await axios.get(`${VITE_API_URL}/user/login-check-context`);
           
                 setUsernav(response.data.data.token);
                 setAvatarUrl(response?.data?.data.avatar_url)

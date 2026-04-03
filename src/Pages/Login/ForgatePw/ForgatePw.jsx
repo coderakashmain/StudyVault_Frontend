@@ -48,7 +48,7 @@ const handleChange = (e)=>{
       try{
         setOtpSent(true);
         setLoader(true);
-        await axios.post(`${VITE_API_URL}/api/LogIn/ForgatePw',{email});
+        await axios.post(`${VITE_API_URL}/LogIn/ForgatePw',{email});
          showAlart('OTP sent seccesfully','','check');
         setMessage(<p>Your OTP expired in 10 minutes.</p>);
 
@@ -92,7 +92,7 @@ const handleChange = (e)=>{
     setOtpSent(false);
     if(otpValue){
       try{
-        const response =   await axios.post(`${VITE_API_URL}/api/LogIn/verifyOtp `,{otp : otpValue , email});
+        const response =   await axios.post(`${VITE_API_URL}/LogIn/verifyOtp `,{otp : otpValue , email});
          showAlart('Verify successfull','','check');
         setPasswordResetPage(true);
         
@@ -167,7 +167,7 @@ const handleChange = (e)=>{
 
         if (resetPassword === reEnterResetPassword) {
             try {
-                await axios.post(`${VITE_API_URL}/api/LogIn/ForgatePw/ResetPassword`, { email, resetPassword });
+                await axios.post(`${VITE_API_URL}/LogIn/ForgatePw/ResetPassword`, { email, resetPassword });
                  showAlart('Password Reset succesfully','','check');
                 navigate('/LogIn');
             }

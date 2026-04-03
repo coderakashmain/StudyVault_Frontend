@@ -77,7 +77,7 @@ const {showAlart} = useContext(AlartContectValue);
       try {
         setSpinner(true);
         setDisablebtn(true);
-        const response = await axios.post(`${VITE_API_URL}/api/LogIn/Signup/otpVarify`, { email: signupdata.gmail })
+        const response = await axios.post(`${VITE_API_URL}/LogIn/Signup/otpVarify`, { email: signupdata.gmail })
         if (response.status === 200) {
            showAlart('OTP send Successfully ', '', 'check');
           setVerifyOtp(true);
@@ -127,7 +127,7 @@ const {showAlart} = useContext(AlartContectValue);
     e.preventDefault();
     if (otpValue) {
       try {
-        await axios.post(`${VITE_API_URL}/api/LogIn/Signup/otpVarify/confirm`, { email: signupdata.gmail, otp: otpValue });
+        await axios.post(`${VITE_API_URL}/LogIn/Signup/otpVarify/confirm`, { email: signupdata.gmail, otp: otpValue });
 
 
          showAlart('Email verify successfull', '', 'check');
@@ -170,7 +170,7 @@ const {showAlart} = useContext(AlartContectValue);
     e.preventDefault();
     if (signupdata.password === signupdata.passwordcheck) {
       try {
-        await axios.post(`${VITE_API_URL}/api/LogIn/Signup`, signupdata);
+        await axios.post(`${VITE_API_URL}/LogIn/Signup`, signupdata);
         navigate("/LogIn");
          showAlart('Registerd Seccessfull', '', "check")
       }
