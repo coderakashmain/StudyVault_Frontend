@@ -19,6 +19,7 @@ const ForgatePw = (props) => {
   const navigate = useNavigate(); 
   const [PasswordResetPage, setPasswordResetPage] = useState(false)
   const {showAlart} = useContext(AlartContectValue);
+  const VITE_API_URL = import.meta.env.VITE_API_URL || '/api';
   const backtohome = ()=>{
      navigate('/');
   }
@@ -47,7 +48,7 @@ const handleChange = (e)=>{
       try{
         setOtpSent(true);
         setLoader(true);
-        await axios.post('/api/LogIn/ForgatePw',{email});
+        await axios.post(`${VITE_API_URL}/api/LogIn/ForgatePw',{email});
          showAlart('OTP sent seccesfully','','check');
         setMessage(<p>Your OTP expired in 10 minutes.</p>);
 
@@ -91,7 +92,7 @@ const handleChange = (e)=>{
     setOtpSent(false);
     if(otpValue){
       try{
-        const response =   await axios.post('/api/LogIn/verifyOtp ',{otp : otpValue , email});
+        const response =   await axios.post(`${VITE_API_URL}/api/LogIn/verifyOtp `,{otp : otpValue , email});
          showAlart('Verify successfull','','check');
         setPasswordResetPage(true);
         
@@ -166,7 +167,7 @@ const handleChange = (e)=>{
 
         if (resetPassword === reEnterResetPassword) {
             try {
-                await axios.post('/api/LogIn/ForgatePw/ResetPassword', { email, resetPassword });
+                await axios.post(`${VITE_API_URL}/api/LogIn/ForgatePw/ResetPassword`, { email, resetPassword });
                  showAlart('Password Reset succesfully','','check');
                 navigate('/LogIn');
             }

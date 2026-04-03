@@ -14,6 +14,7 @@ const Websiteinfo = (props) => {
     const [errormessage, setErrormessage] = useState('');
     const [sendcomplete, setSendcomplete] = useState(false);
     const {showAlart} = useContext(AlartContectValue);
+    const VITE_API_URL = import.meta.env.VITE_API_URL || '/api';
     const [messageus, setMessageus] = useState({
         firstName: '',
         lastName: '',
@@ -33,7 +34,7 @@ const Websiteinfo = (props) => {
         setErrormessage(" ");
         setLoad(true);
         try {
-            const response = await axios.get('/api/connectusdata', { params: messageus });
+            const response = await axios.get(`${VITE_API_URL}/api/connectusdata`, { params: messageus });
 
             if (response.status === 200) {
           

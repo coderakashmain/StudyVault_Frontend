@@ -11,12 +11,13 @@ const Dashboard = (props) => {
 
     const {paperList,setPaperList} = useContext(FetchDataContext);
     const {showAlart} = useContext(AlartContectValue);
+    const VITE_API_URL = import.meta.env.VITE_API_URL || '/api';
 
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('/api/admin/fetchData', { withCredentials: true });
+                const response = await axios.get(`${VITE_API_URL}/api/admin/fetchData`, { withCredentials: true });
                 if (response.status === 200) {
                     setPaperList(response.data); // Update the context
                     setTotalCount(response.data.length); 

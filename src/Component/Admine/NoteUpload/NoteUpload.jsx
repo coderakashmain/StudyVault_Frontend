@@ -13,7 +13,7 @@ const NoteUpload = () => {
   const { showAlart } = useContext(AlartContectValue);
   const [singletap, setSingletap] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
-
+const VITE_API_URL = import.meta.env.VITE_API_URL || '/api';
   const handleFileChange = (e) => {
     const filedata = e.target.files?.[0];
     if (filedata && filedata.type === 'application/pdf') {
@@ -48,7 +48,7 @@ const NoteUpload = () => {
     formData.append('unit', unit);
 
     try {
-      const response = await axios.post('/api/Admin/noteUpload', formData, {
+      const response = await axios.post(`${VITE_API_URL}/api/Admin/noteUpload`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
         onUploadProgress: ({ loaded, total }) =>
           setUploadProgress(Math.round((loaded * 100) / total)),

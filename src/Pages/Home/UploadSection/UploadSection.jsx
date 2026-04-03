@@ -15,6 +15,7 @@ const UploadSection = (props) => {
   const [previewdata,setPreviewdata] = useState([]);
   const [singletap,setSingletap]  = useState(false);
   const[message,setMessage] = useState('');
+  const VITE_API_URL = import.meta.env.VITE_API_URL || '/api';
 
 const [uploadProgress, setUploadProgress] = useState(0);
   const blockref = useRef();
@@ -103,7 +104,7 @@ const location = useLocation();
       });
   
       try {
-        const response = await axios.post("/api/Profile/upload/non-user", formData, {
+        const response = await axios.post(`${VITE_API_URL}/api/Profile/upload/non-user`, formData, {
           headers: { "Content-Type": "multipart/form-data" },
           onUploadProgress: (progressEvent) => {
             const percentage = Math.round((progressEvent.loaded * 100) / progressEvent.total);

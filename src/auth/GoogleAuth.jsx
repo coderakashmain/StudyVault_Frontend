@@ -8,7 +8,7 @@ import "./GoogleAuth.css"
 const  GoogleAuth = ({userdata , showAlart})=> {
     const googleClientId = import.meta.env.VITE_AUTH_CLIENTID_GOOGLE;
   
-  
+  const VITE_API_URL = import.meta.env.VITE_API_URL || '/api';
     
 
    
@@ -16,7 +16,7 @@ const  GoogleAuth = ({userdata , showAlart})=> {
   
     
     try {
-      const res = await axios.post('/api/auth/google', {
+      const res = await axios.post(`${VITE_API_URL}/api/auth/google`, {
         token: response.credential,
       
       },{  withCredentials : true});

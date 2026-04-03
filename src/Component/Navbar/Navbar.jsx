@@ -39,7 +39,7 @@ const Navbar = (props) => {
   const LoginRef = useRef();
   const [isOn, setIsOn] = useState(false);
   const [authentication, setAuthentication] = useState(false);
-
+const VITE_API_URL = import.meta.env.VITE_API_URL || '/api';
   const [logotext, setLogotext] = useState(false);
   const [mobileView, setMobileView] = useState(false);
   const notificationref = useRef(null);

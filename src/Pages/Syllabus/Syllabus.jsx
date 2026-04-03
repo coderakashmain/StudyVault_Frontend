@@ -15,6 +15,7 @@ const [ugloading,setUgloading]= useState(false);
 const [pgloading,setPgloading] = useState(false);
 const navigate = useNavigate();
 const {showAlart} = useContext(AlartContectValue);
+const VITE_API_URL = import.meta.env.VITE_API_URL || '/api';
 
   useEffect(() => {
      
@@ -103,7 +104,7 @@ const syllabussubmit = async(e) => {
   e.preventDefault();
   setUgloading(true);
     try{
-      const response = await axios.get('/api/syllabus', {params : syllabusData});
+      const response = await axios.get(`${VITE_API_URL}/api/syllabus`, {params : syllabusData});
 
       // if(response.status === 200){
         navigate(`/Downloadpdf/${syllabusData.Stream}`, { state: { data : response.data } });
@@ -127,7 +128,7 @@ const syllabussubmitpg = async(e) => {
   e.preventDefault();
 setPgloading(true);
     try{
-      const response = await axios.get('/api/syllabus', {params : syllabusDataPg});
+      const response = await axios.get(`${VITE_API_URL}/api/syllabus`, {params : syllabusDataPg});
 
       
         navigate(`/Downloadpdf/${syllabusDataPg.Stream}`, { state: { data : response.data } });

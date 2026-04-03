@@ -8,13 +8,13 @@ export const Userlogincheckcontext = createContext();
 const UserLoginContext = (props) => {
     const {setUsernav,setUserdata} = useContext(UserContext);
     const {setAvatarUrl} = useAvatar();
-   
+   const VITE_API_URL = import.meta.env.VITE_API_URL || '/api';
     const  [loginCheck, setLoginCheck] = useState(false);
 
     useEffect(() => {
         const fetchuserlogin = async () => {
             try {
-                const response = await axios.get('/api/user/login-check-context');
+                const response = await axios.get(`${VITE_API_URL}/api/user/login-check-context`);
           
                 setUsernav(response.data.data.token);
                 setAvatarUrl(response?.data?.data.avatar_url)

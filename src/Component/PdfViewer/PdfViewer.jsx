@@ -7,6 +7,7 @@ import axios from "axios";
 
 const PDFViewer = ({ pdfUrl, papertitle, onClose }) => {
         const [shortenedUrl, setShortenedUrl] = useState(null);
+        const VITE_API_URL = import.meta.env.VITE_API_URL || '/api';
 
     // Function to transform Google Drive view link to direct-download link
     const getDirectPdfUrl = (url) => {
@@ -51,7 +52,7 @@ const PDFViewer = ({ pdfUrl, papertitle, onClose }) => {
             try {
                 // 1. Generate a short link via ShrinkEarn API
 
-                const response = await axios.get(`/api/shorten`, {
+                const response = await axios.get(`${VITE_API_URL}/api/shorten`, {
                     params: { url: pdfUrl }
                 });
 

@@ -32,6 +32,7 @@ const Notes = () => {
   const [loginpop, setLoginpop] = useState(false);
   const navigate = useNavigate();
   const { setUsernav } = useContext(UserContext);
+  const VITE_API_URL = import.meta.env.VITE_API_URL || '/api';
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
@@ -83,7 +84,7 @@ const Notes = () => {
   useEffect(() => {
     const fetchpdf = async () => {
       try {
-        const response = await axios.get('/api/notefetch');
+        const response = await axios.get(`${VITE_API_URL}/api/notefetch`);
 
         setNotelist(response.data);
         setFilteredNotes(response.data);
@@ -99,7 +100,7 @@ const Notes = () => {
   const handlePreviewClick = throttle(async (id, originalUrl) => {
     setActiveNote(id);
     try {
-      const response = await axios.post('/api/noteClickCount', { id });
+      const response = await axios.post(`${VITE_API_URL}/api/noteClickCount`, { id });
     } catch (error) {
       console.error("Error updating click count", error);
     }
@@ -114,7 +115,7 @@ const Notes = () => {
   const handledownloadCount = throttle(async (id, filename, unit, fileUrl) => {
 
     try {
-      const response = await axios.post('/api/notedonwloadcount', { id, filename, unit, fileUrl });
+      const response = await axios.post(`${VITE_API_URL}/api/notedonwloadcount`, { id, filename, unit, fileUrl });
     } catch (error) {
       console.error("Error updating click count", error);
     }

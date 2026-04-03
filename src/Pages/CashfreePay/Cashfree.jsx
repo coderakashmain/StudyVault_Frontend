@@ -15,7 +15,7 @@ const Cashfree = () => {
   const [paymentSessionId, setPaymentSessionId] = useState(null);
   const [oderid,setOrderid] = useState(null);
   const navigate = useNavigate();
- 
+ const VITE_API_URL = import.meta.env.VITE_API_URL || '/api';
 
   // Amount validation
   const isValidAmount = (amount) => !isNaN(amount) && Number(amount) > 0;
@@ -39,7 +39,7 @@ const Cashfree = () => {
 
     try {
       const redirectUrl = `${window.location.origin}/payment-donate-us/payment-response`;
-      const response = await axios.post('/api/create-payment-order', {
+      const response = await axios.post(`${VITE_API_URL}/api/create-payment-order`, {
         amount : Number(amount),
         customerEmail: gmail,
         customerPhone: mobilenumber,

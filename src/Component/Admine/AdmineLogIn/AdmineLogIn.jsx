@@ -16,6 +16,7 @@ const [userid,setUserid] = useState('');
 const [password,setPassword] = useState('');
 const [isactive,setIsactive] = useState(false);
 const {setCheck,setAdminToken} = useContext(AdminLoginContext);
+const VITE_API_URL = import.meta.env.VITE_API_URL || '/api';
 const {showAlart} = useContext(AlartContectValue);
    const shouldVerify = process.env.NODE_ENV === 'production';
    const [isVerified, setIsVerified] = useState(false);
@@ -41,7 +42,7 @@ const handleSubmit = async (e)=>{
      }
     try{
         // alert();
-        const response = await axios.post("/api/Admin/AdminLogIn", { userid, password });
+        const response = await axios.post(`${VITE_API_URL}/api/Admin/AdminLogIn`, { userid, password });
             setAdminToken(response.data.admintoken);
              showAlart('LogIn Seccessfully',"","check");
             setUserid('');

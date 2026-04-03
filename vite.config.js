@@ -5,15 +5,16 @@ import obfuscator from 'rollup-plugin-obfuscator';  // Ensure it's installed
 import { config } from 'dotenv';
 import tailwindcss from '@tailwindcss/vite'
 
+
 config();
 
 export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: process.env.NODE_ENV === "production" ? "https://studyvault-backend-dqg0.onrender.com/api" : "http://localhost:3000",
+        target: "http://localhost:3000",
         changeOrigin: true,
-        secure: process.env.NODE_ENV === "production" ? true : false, 
+        secure: false, 
       },
     },
     

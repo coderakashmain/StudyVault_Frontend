@@ -8,6 +8,7 @@ const PaymentStatus = () => {
     const query = new URLSearchParams(useLocation().search);
     const orderId = query.get("order_id"); 
     const [status, setStatus] = useState("null");
+    const VITE_API_URL = import.meta.env.VITE_API_URL || '/api';
     
     const [loading, setLoading] = useState(true);
 
@@ -15,7 +16,7 @@ const PaymentStatus = () => {
         const fetchPaymentStatus = async () => {
             if (orderId) {
                 try{
-                    const response =  await axios.get(`/api/payment-status/${orderId}`)
+                    const response =  await axios.get(`${VITE_API_URL}/api/payment-status/${orderId}`)
                     
                     setStatus(response.data.status);
                     setLoading(false);

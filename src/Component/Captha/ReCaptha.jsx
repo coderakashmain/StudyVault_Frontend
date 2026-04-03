@@ -7,7 +7,7 @@ import './Recapthacloud.css'
 const ReCaptcha = ({ onVerified }) => {
   const scriptLoaded = useRef(false); 
   const siteKey = import.meta.env.VITE_ARECAPTCHA_SITE_KEY_CLOUDFIRE;
-
+const VITE_API_URL = import.meta.env.VITE_API_URL || '/api';
 
 
   useEffect(() => {
@@ -33,7 +33,7 @@ const ReCaptcha = ({ onVerified }) => {
 
               // Send the token to your backend for validation (optional)
               axios
-                .post("/api/verify-turnstile", { token })
+                .post(`${VITE_API_URL}/api/verify-turnstile`, { token })
                 .then((response) => {
                   if (response.data.success) {
                     onVerified(true);

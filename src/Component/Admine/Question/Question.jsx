@@ -28,6 +28,7 @@ const Question = (props) => {
     const [updatedata, setUpdatedata] = useState('');
     const paperboxhide = useRef();
     const fileInputRef = useRef();
+    const VITE_API_URL = import.meta.env.VITE_API_URL || '/api';
     const [uploadProgress, setUploadProgress] = useState(() => {
         const savedUploads = localStorage.getItem("uploadHistory");
         return savedUploads ? JSON.parse(savedUploads) : [];
@@ -186,7 +187,7 @@ const Question = (props) => {
 
         setShowPopup(true);
         try {
-            const response = await axios.post('/api/Admin/upload', formData, {
+            const response = await axios.post(`${VITE_API_URL}/api/Admin/upload`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 },
@@ -344,7 +345,7 @@ const Question = (props) => {
     useEffect(() => {
         const fatchData = async () => {
             try {
-                const response = await axios.get('/api/admin/fetchData', { withCredentials: true });
+                const response = await axios.get(`${VITE_API_URL}/api/admin/fetchData`, { withCredentials: true });
                 if (response.status === 200) {
                     setFetchData(response.data);
                     setPaperList(response.data);
@@ -492,7 +493,7 @@ const Question = (props) => {
                 const token = localStorage.getItem("adminToken");
 
 
-                await axios.post('/api/admin/deletepdf',
+                await axios.post(`${VITE_API_URL}/api/admin/deletepdf`,
                     { id, urlpdfid },
                     { headers: { Authorization: `Bearer ${token}` } }
 
@@ -517,7 +518,7 @@ const Question = (props) => {
     const requestDeleteotp = async () => {
         setLoad(true)
         try {
-            await axios.post("/api/admin/request-delete");
+            await axios.post(`${VITE_API_URL}/api/admin/request-delete`);
             showAlart("OTP sent to your email", '', 'check');
             setOtpsent(true);
             setLoad(false)
@@ -537,7 +538,7 @@ const Question = (props) => {
             return;
         }
         try {
-            const response = await axios.post("/api/admin/delete/verify-otp", {
+            const response = await axios.post(`${VITE_API_URL}/api/admin/delete/verify-otp`, {
 
                 otpvalue,
             });

@@ -51,7 +51,7 @@ const [adsmobileview,setAdsmobileview] = useState(false);
   const hideeSarchSuggestion = useRef();
   const {showAlart }= useContext(AlartContectValue);
 
-
+  const VITE_API_URL = import.meta.env.VITE_API_URL || '/api';
   const initialDepartmentName = location.state?.departmentName || '';
   const initialDepartmentNamesearch = location.state?.searchdpt || '';
   const [dptName, setDptName] = useState('');
@@ -316,7 +316,7 @@ const  handlesubjet = (e)=>{
 
     try {
       setLoader(true);
-      const response = await axios.get('/api/Filter', { params: nonEmptyFilters });
+      const response = await axios.get(`${VITE_API_URL}/api/Filter`, { params: nonEmptyFilters });
       if (response.status === 200) {
         navigate(`/Downloadpdf/${filters.departmentName}`, { state:{  data :  response.data} });
         setLoader(false);

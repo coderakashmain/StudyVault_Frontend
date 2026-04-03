@@ -22,7 +22,7 @@ const HomeT = (props) => {
   const {usernav} = useContext(UserContext);
   const[userlogincheck,setUserlogincheck] = useState();
   const  loginCheck = useContext(Userlogincheckcontext);
-
+const VITE_API_URL = import.meta.env.VITE_API_URL || '/api';
   const isLoggedIn = sessionStorage.getItem('isLoggedIn');
   useEffect(()=>{
   //   const userlogin = async()=>{

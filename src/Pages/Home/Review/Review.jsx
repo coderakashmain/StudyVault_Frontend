@@ -16,12 +16,13 @@ const Review = (props) => {
   const [activeReplylist, setActiveReplylist] = useState(null);
   const [replypostbtn, setReplypostbtn] = useState(false);
   const {showAlart} = useContext(AlartContectValue);
+  const VITE_API_URL = import.meta.env.VITE_API_URL || '/api';
 
 
 
   const fetchComments = async () => {
     try {
-      const response = await axios.get('/api/comments/fetch');
+      const response = await axios.get(`${VITE_API_URL}/api/comments/fetch`);
       setComments(response.data);
     } catch (error) {
       console.error('Error fetching comments:', error);
@@ -43,7 +44,7 @@ const Review = (props) => {
     setLoad(true);
     e.preventDefault();
     try {
-      await axios.post('/api/comments', formData);
+      await axios.post(`${VITE_API_URL}/api/comments`, formData);
       fetchComments();
       setFormData({ name: '', gmail: '', gender: '', message: '' });
       setLoad(false);
@@ -59,7 +60,7 @@ const Review = (props) => {
     setReplypostbtn(true);
 
     try {
-      await axios.post(`/api/comments/${commentId}/replies`, replyData);
+      await axios.post(`${VITE_API_URL}/api/comments/${commentId}/replies`, replyData);
       fetchComments();
       setReplypostbtn(false);
       setActiveReplyId(null);

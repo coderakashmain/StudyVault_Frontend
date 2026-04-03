@@ -12,7 +12,7 @@ const Admine = (props) => {
  const {check,setCheck} = useContext(AdminLoginContext);
  const [loading,setLoading]= useState(true);
  const {showAlart} = useContext(AlartContectValue)
-
+const VITE_API_URL = import.meta.env.VITE_API_URL || '/api';
 
 
 
@@ -23,7 +23,7 @@ const Admine = (props) => {
       const checkAuthorization = async (e) => {
        
         try {
-            const response = await axios.get("/api/adminPage",{withCredentials : true});
+            const response = await axios.get(`${VITE_API_URL}/api/adminPage`, {withCredentials : true});
               if (response.status === 200) {
         
                 setCheck(true);
@@ -58,7 +58,7 @@ const Admine = (props) => {
 
 const handleLogout = async () => {
   try{
-   const response =  await axios.post("/api/Admin/logout");
+   const response =  await axios.post(`${VITE_API_URL}/api/Admin/logout`);
    
     window.location.href = "/Admin/AdminLogIn";
       sessionStorage.clear('isAdminLogin');

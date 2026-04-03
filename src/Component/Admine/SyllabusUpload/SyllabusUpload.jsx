@@ -9,6 +9,7 @@ const SyllabusUpload = (props) => {
     const departmentlistdata = useContext(Departmentlistdata);
     const [uploadProgress, setUploadProgress] = useState(0);
     const { showAlart } = useContext(AlartContectValue);
+    const VITE_API_URL = import.meta.env.VITE_API_URL || '/api';
     const [filtetuploaddata, setFiltetuploaddata] = useState({
         EducationLevel: '',
         Stream: '',
@@ -61,7 +62,7 @@ const SyllabusUpload = (props) => {
 
 
         try {
-            const response = await axios.post('/api/Admin/syllabusUpload', formData, {
+            const response = await axios.post(`${VITE_API_URL}/api/Admin/syllabusUpload`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 },

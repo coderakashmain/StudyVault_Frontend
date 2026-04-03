@@ -20,6 +20,7 @@ const Login = (props) => {
   const navigate = useNavigate();
   const shouldVerify = process.env.NODE_ENV === 'production';
   const [isVerified, setIsVerified] = useState(false);
+  const VITE_API_URL = import.meta.env.VITE_API_URL || '/api';
   const [loginData, setLoginData] = useState({
     gmail: '',
     password: ''
@@ -48,7 +49,7 @@ const Login = (props) => {
     }
 
     try {
-      const response = await axios.post('/api/LogIn', loginData, { withCredentials: true });
+      const response = await axios.post(`${VITE_API_URL}/api/LogIn`, loginData, { withCredentials: true });
       if (response.status === 200) {
          showAlart('Log in Successfull.', '', 'check');
          
@@ -101,7 +102,7 @@ const Login = (props) => {
       <div className="main-login-container ">
         <BackButton />
         <div className="inner-main-login ">
-          <form action="/api/LogIn" method="post" onSubmit={loginSubmit}>
+          <form  method="post" onSubmit={loginSubmit}>
             {/* <h2 className="main-heading" >StudyVault</h2> */}
             <div className="studyvault-logo">
             <img src={studyvault} alt="" />
