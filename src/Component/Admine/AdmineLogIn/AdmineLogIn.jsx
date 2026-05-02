@@ -4,7 +4,7 @@ import BackButton from '../../Backbutton/Backbutton'
 import back from '../../../photo/rb_6256.png'
 import logo from '../../../photo/weblogo.png'
 import { NavLink, useNavigate } from 'react-router-dom'
-import axios from 'axios'
+import useApi from '../../../hooks/useApi'
 import { AdminLoginContext } from '../../../Context/AdminLoginCheck/AdminLoginCheck'
 import { AlartContectValue } from '../../../Context/AlartContext/AlartContext'
 import ReCaptcha from '../../Captha/ReCaptha'
@@ -16,12 +16,12 @@ const [userid,setUserid] = useState('');
 const [password,setPassword] = useState('');
 const [isactive,setIsactive] = useState(false);
 const {setCheck,setAdminToken} = useContext(AdminLoginContext);
-const VITE_API_URL = import.meta.env.VITE_API_URL || '/api';
+
 const {showAlart} = useContext(AlartContectValue);
    const shouldVerify = process.env.NODE_ENV === 'production';
    const [isVerified, setIsVerified] = useState(false);
 
-
+const { post } = useApi();
 const navigate = useNavigate();
 
 const handleVerification = (status) => {
@@ -41,9 +41,8 @@ const handleSubmit = async (e)=>{
        return;
      }
     try{
-        // alert();
-        const response = await axios.post(`${VITE_API_URL}/Admin/AdminLogIn`, { userid, password });
-            setAdminToken(response.data.admintoken);
+        const response = await post('/Admin/AdminLogIn', false, { userid, password });
+            setAdminToken(response.admintoken);
              showAlart('LogIn Seccessfully',"","check");
             setUserid('');
             setPassword('');
@@ -75,11 +74,7 @@ const handleSubmit = async (e)=>{
                 );
                 setIsactive(false);
             }
-    
-           
-       
         } else {
-            
              showAlart('An unknown error occurred', "", 'cancel');
             setIsactive(false);
         }
@@ -87,24 +82,23 @@ const handleSubmit = async (e)=>{
 
 };
 
+  const IconShield = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+    </svg>
+  );
+
   return (
-    <aside id = 'adMineLogIn'>
-        <BackButton/>
+    <aside id='adMineLogIn'>
         <div className="adMineLogIn-box">
-            <img src={back} alt="BackLogo"  loading='lazy'/>
-            <div className="leftAlogin ">
-
-                <h2>Welcome Admin</h2> 
-                <img src={logo} alt="Web Logo"  loading='lazy'/>
-
-                <div className="adminloginlefttext">
-                    <h3>We are Very Happy👏 <br /> Please Log in Into admin Panel (●'◡'●)</h3>
-                </div>
-                <button onClick={()=> navigate('/')}><i className="fa-solid fa-arrow-left" style={{color :'#fff' , padding : '0rem 0.6rem 0 0',fontSize : '1rem'}}></i>Back</button>
-            </div>
             <div className="rightAlogin">
-                <form  onSubmit={handleSubmit}>
-                    <h3>Welcome Back Admin</h3>
+                <div className="admin-login-brand">
+                  <IconShield />
+                  <span>StudyVault Admin</span>
+                </div>
+                <form onSubmit={handleSubmit}>
+                    <h3>Welcome back</h3>
+                    <span className="admin-login-sub">Sign in to your admin panel</span>
 
                     <div className="useridlogin">
                         <label htmlFor="userid">User ID</label>
@@ -114,15 +108,12 @@ const handleSubmit = async (e)=>{
                         <label htmlFor="password">Password</label>
                         <input type="password" name = 'password' id = 'password' autoComplete="current-password" value={password} onChange={(e)=> setPassword(e.target.value)} />
                     </div>
-                    {!isVerified && shouldVerify && (  <ReCaptcha onVerified={handleVerification} />)}
-                    <button type="submit" disabled = {isactive} className={`${isactive ? 'blur' : 'clear' }`}>Sign In</button>
-                    <NavLink> Forgate Password?</NavLink>
-                     <button onClick={()=> navigate('/')}><i className="fa-solid fa-arrow-left" style={{color :'#fff' , padding : '0rem 0.6rem 0 0',fontSize : '1rem'}}></i>Back to Home</button>
+                    {!isVerified && shouldVerify && (<ReCaptcha onVerified={handleVerification} />)}
+                    <button type="submit" disabled={isactive} className={`${isactive ? 'blur' : 'clear'}`}>Sign In</button>
+                    <NavLink>Forgot Password?</NavLink>
+                    <button onClick={() => navigate('/')}>← Back to Home</button>
                     </form>
             </div>
-
-           
-
         </div>
     </aside>
   )

@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect,useState } from 'react'
 import { UserContext } from '../UserContext/UserContextdata';
-import axios from 'axios';
+import useApi from '../../hooks/useApi';
 import { useAvatar } from '../AvatarProvider';
 
 export const Userlogincheckcontext = createContext();
@@ -8,19 +8,20 @@ export const Userlogincheckcontext = createContext();
 const UserLoginContext = (props) => {
     const {setUsernav,setUserdata} = useContext(UserContext);
     const {setAvatarUrl} = useAvatar();
-   const VITE_API_URL = import.meta.env.VITE_API_URL || '/api';
-    const  [loginCheck, setLoginCheck] = useState(false);
+    const { get } = useApi();
+    const [loginCheck, setLoginCheck] = useState(false);
 
     useEffect(() => {
         const fetchuserlogin = async () => {
             try {
-                const response = await axios.get(`${VITE_API_URL}/user/login-check-context`);
+                const response = await get('/user/login-check-context', false);
           
-                setUsernav(response.data.data.token);
-                setAvatarUrl(response?.data?.data.avatar_url)
-                setUserdata(response?.data?.data)
-                   setLoginCheck(true)
-               
+                if (response && response.data) {
+                    setUsernav(response.data.token);
+                    setAvatarUrl(response.data.avatar_url)
+                    setUserdata(response.data)
+                    setLoginCheck(true)
+                }
             }
             catch (error) {
                 if (error.response && error.response.status === 500) {

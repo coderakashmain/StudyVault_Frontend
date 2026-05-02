@@ -5,7 +5,10 @@ import avatarImage from '../../utils/avatarImage';
 const AvatarPhoto = React.memo(({size =12,id}) => {
     const {avatarUrl} = useAvatar();
   return (
-      <div  className={`relative cursor-pointer!  w-${size} h-${size} rounded-full bg-linear-to-br from-indigo-500 via-purple-500 to-pink-500 p-0.75! shadow-lg`}>
+      <div  
+        className={`relative cursor-pointer! rounded-full bg-linear-to-br from-indigo-500 via-purple-500 to-pink-500 p-0.75! shadow-lg`}
+        style={{ width: `${size * 0.25}rem`, height: `${size * 0.25}rem` }}
+      >
 
                     {/* Inner glass circle */}
                     <div className="w-full h-full rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center overflow-hidden">

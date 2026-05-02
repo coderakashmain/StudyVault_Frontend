@@ -570,7 +570,7 @@ const VITE_API_URL = import.meta.env.VITE_API_URL || '/api';
 
 
    
-            {!userData?.token ? (
+            {!(usernav || userData?.token) ? (
               <div className="log-in" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <div ref={BothLoginRef} onClick={clickOn}><li>Login <div className={`adminLogInBox ${isOn ? 'open' : 'close'} `} ref={LoginRef} >
 
@@ -580,7 +580,7 @@ const VITE_API_URL = import.meta.env.VITE_API_URL || '/api';
                 </li></div>
               </div>
             ) : (
-              <div onClick={()=>navigate("/profile")}>
+              <div onClick={()=>navigate("/Profile")} style={{ cursor: 'pointer' }}>
                 <AvatarPhoto size={10}/>
                  </div>
             )}

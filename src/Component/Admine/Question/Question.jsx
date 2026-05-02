@@ -43,6 +43,10 @@ const Question = (props) => {
     const [load, setLoad] = useState(false);
     const [showPopup, setShowPopup] = useState(false);
     const[clearall,setClearall] = useState(false);
+    const [searchQuery, setSearchQuery] = useState('');
+    const [currentPage, setCurrentPage] = useState(1);
+    const [itemsPerPage, setItemsPerPage] = useState(10);
+
     const [filtetuploaddata, setFiltetuploaddata] = useState(
         {
             departmentName: '',
@@ -349,14 +353,15 @@ const Question = (props) => {
                 if (response.status === 200) {
                     setFetchData(response.data);
                     setPaperList(response.data);
+                    setCurrentPage(1); // reset to first page on fresh load
                 }
             } catch (err) {
-
                 console.error("Error fetching Data", err);
             }
         }
         fatchData();
     }, [singletap, deletingurl]);
+
 
     const handlesubjet = (e) => {
         const value = e.target.innerText
@@ -809,27 +814,171 @@ const Question = (props) => {
 
                     </div>
                 </form>
-                <h3 style={{ margin: '1rem 0rem', display: 'flex', padding: '0.8rem 1rem', backgroundColor: 'rgb(1 69 110)', color: '#fff', borderRadius: '0.2rem', justifyContent: 'space-between', userSelect: 'none' }}>Total Quesitons <span style={{ color: '#fff', borderRadius: '50%' }}>{fetchData && fetchData.length}</span></h3>
-                <hr style={{ margin: '0rem 0rem 0.5rem' }} />
-                <div className="fetchBox">
-
-                    {fetchData.length > 0 ? (
-                        fetchData.map((fetchData) => (
-                            <li key={fetchData.id}>
-                                <div className="pdf-link-flex-box">
-                                    <i className="fa-solid fa-file-pdf" style={{ padding: '0rem 1rem', fontSize: '1.3rem', color: '#ce0d0d' }}></i> <a href={fetchData.url} download target='__blank'>{fetchData.title}</a></div> {varified ? (
-                                        deletingurl === fetchData.url ? (
-                                            <div className='delete-process'></div>
-                                        ) : (
-                                            <Trash2 size={20} stroke='red' onClick={() => deletepdfhandle(fetchData.id, fetchData.url)} />
-                                        )
-                                    ) : null}
-                            </li>
-                        ))
-                    ) : (
-                        <p>No papers found</p>
-                    )}
+                {/* ── Total + Search ── */}
+                <div style={{ margin: '1.2rem 0 0.6rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.6rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <span style={{ fontSize: '0.72rem', fontWeight: 600, color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.06rem' }}>Total Questions</span>
+                    <span style={{ fontSize: '0.72rem', fontWeight: 700, background: '#e0f7fa', color: '#009bb7', padding: '0.15rem 0.55rem', borderRadius: '99px' }}>{fetchData.length}</span>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    {/* Per-page selector */}
+                    <select
+                      value={itemsPerPage}
+                      onChange={e => { setItemsPerPage(Number(e.target.value)); setCurrentPage(1); }}
+                      style={{
+                        fontSize: '0.72rem', border: '1px solid #e2e8f0', borderRadius: '6px',
+                        padding: '0.38rem 0.6rem', background: '#f8fafc', color: '#475569',
+                        fontFamily: 'Inter, sans-serif', outline: 'none', cursor: 'pointer'
+                      }}
+                    >
+                      {[10, 20, 50, 100].map(n => <option key={n} value={n}>{n} / page</option>)}
+                    </select>
+                    {/* Search */}
+                    <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+                        style={{ position: 'absolute', left: '0.6rem', width: 13, height: 13, color: '#94a3b8', pointerEvents: 'none' }}>
+                        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                      </svg>
+                      <input
+                        type="text"
+                        placeholder="Search papers…"
+                        value={searchQuery}
+                        onChange={e => { setSearchQuery(e.target.value); setCurrentPage(1); }}
+                        style={{
+                          paddingLeft: '1.8rem', paddingRight: searchQuery ? '1.6rem' : '0.7rem',
+                          paddingTop: '0.4rem', paddingBottom: '0.4rem',
+                          fontSize: '0.75rem', border: '1px solid #e2e8f0', borderRadius: '7px',
+                          background: '#f8fafc', color: '#0f172a', outline: 'none',
+                          fontFamily: 'Inter, sans-serif', width: '200px', transition: 'border-color 0.2s, box-shadow 0.2s'
+                        }}
+                        onFocus={e => { e.target.style.borderColor = '#009bb7'; e.target.style.boxShadow = '0 0 0 3px rgba(0,155,183,0.1)'; }}
+                        onBlur={e => { e.target.style.borderColor = '#e2e8f0'; e.target.style.boxShadow = 'none'; }}
+                      />
+                      {searchQuery && (
+                        <button onClick={() => { setSearchQuery(''); setCurrentPage(1); }}
+                          style={{ position: 'absolute', right: '0.5rem', background: 'none', border: 'none', cursor: 'pointer', color: '#94a3b8', display: 'flex', padding: 0, fontSize: '1rem', lineHeight: 1 }}
+                        >×</button>
+                      )}
+                    </div>
+                  </div>
                 </div>
+
+                {/* ── Paginated List ── */}
+                {(() => {
+                  const filtered = fetchData.filter(d =>
+                    String(d.title || '').toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    String(d.departmentName || '').toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    String(d.years || '').toLowerCase().includes(searchQuery.toLowerCase())
+                  );
+                  const totalPages = Math.ceil(filtered.length / itemsPerPage);
+                  const paginated = filtered.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+
+                  return (
+                    <>
+                      <div className="fetchBox">
+                        {paginated.length > 0 ? (
+                          paginated.map((item) => (
+                            <li key={item.id}>
+                              <div className="pdf-link-flex-box">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+                                  style={{ width: 14, height: 14, marginRight: '0.5rem', flexShrink: 0 }}>
+                                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>
+                                </svg>
+                                <a href={item.url} download target="__blank" style={{ color: '#0f172a', textDecoration: 'none', fontSize: '0.73rem' }}
+                                  onMouseOver={e => e.target.style.color = '#009bb7'}
+                                  onMouseOut={e => e.target.style.color = '#0f172a'}>
+                                  {item.title}
+                                </a>
+                              </div>
+                              {varified ? (
+                                deletingurl === item.url ? (
+                                  <div className='delete-process'></div>
+                                ) : (
+                                  <Trash2 size={14} stroke='#ef4444' style={{ cursor: 'pointer', flexShrink: 0 }} onClick={() => deletepdfhandle(item.id, item.url)} />
+                                )
+                              ) : null}
+                            </li>
+                          ))
+                        ) : (
+                          <li style={{ justifyContent: 'center', color: '#94a3b8', padding: '1.5rem' }}>
+                            {searchQuery ? `No results for "${searchQuery}"` : 'No papers found'}
+                          </li>
+                        )}
+                      </div>
+
+                      {/* ── Pagination ── */}
+                      {totalPages > 1 && (
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '0.75rem', flexWrap: 'wrap', gap: '0.4rem' }}>
+                          <span style={{ fontSize: '0.68rem', color: '#94a3b8', fontFamily: 'Inter, sans-serif' }}>
+                            Showing {((currentPage - 1) * itemsPerPage) + 1}–{Math.min(currentPage * itemsPerPage, filtered.length)} of {filtered.length}
+                          </span>
+                          <div style={{ display: 'flex', gap: '0.3rem', alignItems: 'center' }}>
+                            {/* Prev */}
+                            <button
+                              onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                              disabled={currentPage === 1}
+                              style={{
+                                display: 'flex', alignItems: 'center', gap: '0.2rem',
+                                padding: '0.3rem 0.65rem', fontSize: '0.72rem', fontFamily: 'Inter, sans-serif',
+                                border: '1px solid #e2e8f0', borderRadius: '6px', cursor: 'pointer',
+                                background: currentPage === 1 ? '#f8fafc' : '#fff',
+                                color: currentPage === 1 ? '#cbd5e1' : '#475569',
+                                transition: 'all 0.15s'
+                              }}
+                            >
+                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: 12, height: 12 }}><polyline points="15 18 9 12 15 6"/></svg>
+                              Prev
+                            </button>
+
+                            {/* Page numbers */}
+                            {Array.from({ length: totalPages }, (_, i) => i + 1)
+                              .filter(p => p === 1 || p === totalPages || Math.abs(p - currentPage) <= 1)
+                              .reduce((acc, p, idx, arr) => {
+                                if (idx > 0 && p - arr[idx - 1] > 1) acc.push('...');
+                                acc.push(p);
+                                return acc;
+                              }, [])
+                              .map((p, idx) =>
+                                p === '...' ? (
+                                  <span key={`e${idx}`} style={{ fontSize: '0.72rem', color: '#cbd5e1', padding: '0 0.2rem' }}>…</span>
+                                ) : (
+                                  <button key={p}
+                                    onClick={() => setCurrentPage(p)}
+                                    style={{
+                                      width: '30px', height: '30px', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                      fontSize: '0.72rem', fontFamily: 'Inter, sans-serif', fontWeight: p === currentPage ? 600 : 400,
+                                      border: '1px solid', borderRadius: '6px', cursor: 'pointer', transition: 'all 0.15s',
+                                      borderColor: p === currentPage ? '#009bb7' : '#e2e8f0',
+                                      background: p === currentPage ? '#e0f7fa' : '#fff',
+                                      color: p === currentPage ? '#009bb7' : '#475569',
+                                    }}
+                                  >{p}</button>
+                                )
+                              )
+                            }
+
+                            {/* Next */}
+                            <button
+                              onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                              disabled={currentPage === totalPages}
+                              style={{
+                                display: 'flex', alignItems: 'center', gap: '0.2rem',
+                                padding: '0.3rem 0.65rem', fontSize: '0.72rem', fontFamily: 'Inter, sans-serif',
+                                border: '1px solid #e2e8f0', borderRadius: '6px', cursor: 'pointer',
+                                background: currentPage === totalPages ? '#f8fafc' : '#fff',
+                                color: currentPage === totalPages ? '#cbd5e1' : '#475569',
+                                transition: 'all 0.15s'
+                              }}
+                            >
+                              Next
+                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: 12, height: 12 }}><polyline points="9 18 15 12 9 6"/></svg>
+                            </button>
+                          </div>
+                        </div>
+                      )}
+                    </>
+                  );
+                })()}
 
             </aside>
 

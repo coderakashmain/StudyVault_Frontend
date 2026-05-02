@@ -13,10 +13,11 @@ const AdminLoginCheck = (props) => {
 
   const checkAdminLogin = async () => {
     try {
-      const response = await get("/Admin/admin-login-check",false);
-      setCheck(response.status);
-
-      setAdminToken(response.data.admintoken || '');
+      const response = await get("/Admin/admin-login-check", false);
+      if (response && response.status === true) {
+        setCheck(true);
+        setAdminToken(response.data?.admintoken || '');
+      }
     } catch (err) {
       console.error("Error checking admin login:", err);
     }

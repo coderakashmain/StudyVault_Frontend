@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import "./Login.css";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import axios from "axios";
+import useApi from '../../hooks/useApi';
 import BackButton from "../../Component/Backbutton/Backbutton";
 import { UserContext } from "../../Context/UserContext/UserContextdata";
 import GoogleAuth from "../../auth/GoogleAuth";
@@ -20,7 +20,7 @@ const Login = (props) => {
   const navigate = useNavigate();
   const shouldVerify = process.env.NODE_ENV === 'production';
   const [isVerified, setIsVerified] = useState(false);
-  const VITE_API_URL = import.meta.env.VITE_API_URL || '/api';
+  const { post } = useApi();
   const [loginData, setLoginData] = useState({
     gmail: '',
     password: ''
@@ -49,12 +49,11 @@ const Login = (props) => {
     }
 
     try {
-      const response = await axios.post(`${VITE_API_URL}/LogIn`, loginData, { withCredentials: true });
-      if (response.status === 200) {
+      const response = await post('/LogIn', false, loginData);
+      if (response && response.success) {
          showAlart('Log in Successfull.', '', 'check');
          
-         
-         
+         sessionStorage.setItem('isLoggedIn', 'true');
          window.location.href = '/';  
         setRepeatclick(false);
       }
