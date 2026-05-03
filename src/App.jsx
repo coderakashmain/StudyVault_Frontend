@@ -25,6 +25,9 @@ const Question = lazy(()=> import("./Component/Admine/Question/Question"));
 
 const UserSend = lazy(()=> import("./Component/Admine/UserSend/UserSend"));
 const CsUpload = lazy(()=> import("./Component/Admine/CsUpload/CsUpload"));
+const FeedbackList = lazy(()=> import("./Component/Admine/FeedbackList"));
+const PaymentHistory = lazy(()=> import("./Component/Admine/PaymentHistory"));
+const DeletionRequests = lazy(()=> import("./Component/Admine/DeletionRequests"));
 import FetchData  from "./Context/FretchDataContext/FetchData";
 import AdminLoginCheck  from "./Context/AdminLoginCheck/AdminLoginCheck";
 const ArticleContainerRouter = lazy(() => import("./RoutingFiles/ArticleContainerRouter"));
@@ -264,6 +267,18 @@ const navrefvalue = (value) => {
             path: 'Notes',
             element: <><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}> <NoteUpload   /></Suspense></ErrorBoundary></>
 
+          },
+          {
+            path: 'feedbacks',
+            element: <><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}> <FeedbackList   /></Suspense></ErrorBoundary></>
+          },
+          {
+            path: 'payments',
+            element: <><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}> <PaymentHistory   /></Suspense></ErrorBoundary></>
+          },
+          {
+            path: 'deletion-requests',
+            element: <><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}> <DeletionRequests   /></Suspense></ErrorBoundary></>
           },
          
           ]

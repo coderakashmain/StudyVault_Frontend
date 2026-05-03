@@ -247,18 +247,19 @@ const Profile = (props) => {
     : `https://api.dicebear.com/7.x/lorelei/svg?seed=${user.id}`;
 
       const handleLogout = async () => {
-        if (confirm("Are you sure want to  log out ?")) {
-    
+        if (window.confirm("Are you sure you want to log out?")) {
           try {
-            const response = await axios.post(`${VITE_API_URL}/logOut`, { withCredentials: true });
-            if (response.status === 200) {
-              sessionStorage.removeItem('isLoggedIn');
+            await axios.post(`${VITE_API_URL}/logOut`, {}, { withCredentials: true });
+            sessionStorage.removeItem('isLoggedIn');
+            if (setLoginCheck) setLoginCheck(false);
+            showAlart("Logged Out", "Returning to home page...", 'check');
+            setTimeout(() => {
               window.location.href = '/';
-               showAlart("Log out", "Back to main page", 'check');
-            }
-          }
-          catch (error) {
-            console.error('Error in logout');
+            }, 800);
+          } catch (error) {
+            console.error('Logout error:', error);
+            sessionStorage.clear();
+            window.location.href = '/';
           }
         }
       };
