@@ -53,6 +53,15 @@ const VITE_API_URL = import.meta.env.VITE_API_URL || '/api';
   },[isLoggedIn]);
 
 
+  const trackDownload = () => {
+    if (window.gtag) {
+      window.gtag('event', 'apk_download', {
+        'event_category': 'engagement',
+        'event_label': 'StudyVault APK'
+      });
+    }
+  };
+
   return ( 
     <>
       <div className="main-container">
@@ -97,6 +106,15 @@ const VITE_API_URL = import.meta.env.VITE_API_URL || '/api';
                { !userlogincheck && ( <Link to="/LogIn/Signup">
                   Sign Up <i className="fa-solid fa-arrow-right"></i>
                 </Link>)}
+                <a 
+                  href={`${VITE_API_URL}/download-apk`} 
+                  onClick={trackDownload}
+                  className="download-apk-btn"
+                  download="StudyvaultCampus.apk"
+                >
+                  <i className="fa-solid fa-download"></i>
+                  Download APK
+                </a>
               </div>
             </div>
             <div className="home-image-section">

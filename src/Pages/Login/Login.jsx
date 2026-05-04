@@ -21,15 +21,15 @@ const Login = (props) => {
   const shouldVerify = process.env.NODE_ENV === 'production';
   const [isVerified, setIsVerified] = useState(false);
   const { post } = useApi();
-  const [loginData, setLoginData] = useState({
-    gmail: '',
-    password: ''
-  });
 
   const handleVerification = (status) => {
     setIsVerified(status); 
  
   };
+  const [loginData, setLoginData] = useState({
+    gmail: '',
+    password: ''
+  });
 
   const loginChange = (e) => {
     const { name, value } = e.target;
@@ -125,6 +125,7 @@ const Login = (props) => {
               </p>
               <Link to='ForgatePw' style={{ color: '#007bff' }} >Forget password ?</Link>
             </div>
+
 
             {!isVerified && shouldVerify && (  <ReCaptcha onVerified={handleVerification} />)}
 

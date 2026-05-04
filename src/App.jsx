@@ -41,6 +41,7 @@ import Navbar from "./Component/Navbar/Navbar";
 
 const AdmineControl = lazy(() => import("./Component/Admine/AdmineControl"));
 const NoteUpload = lazy(() => import("./Component/Admine/NoteUpload/NoteUpload"));
+const ApkUpload = lazy(() => import("./Component/Admine/ApkUpload"));
 const Alart = lazy(() => import("./Component/Alart/Alart"));
 const PaymentStatus = lazy(() => import("./Pages/CashfreePay/PaymentStatus"));
 import PaymentRouter from "./RoutingFiles/PaymentRouter"
@@ -279,6 +280,10 @@ const navrefvalue = (value) => {
           {
             path: 'deletion-requests',
             element: <><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}> <DeletionRequests   /></Suspense></ErrorBoundary></>
+          },
+          {
+            path: 'apk-upload',
+            element: <><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}> <ApkUpload   /></Suspense></ErrorBoundary></>
           },
          
           ]

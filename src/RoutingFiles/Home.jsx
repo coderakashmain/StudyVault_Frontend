@@ -16,7 +16,7 @@ const Home = (props) => {
     <>
 
       <Scrollbtn navRefvalue={props.navRefvalue} />
-      <HomeT title={'Your StudyVault'} titlepara={'Welcome to StudyVault, Get all Previous Year Question Papers of M.P.C Autonomous college. We shall try to provides note also. So I gonna help you in your all exams if you make me your exam Bff😊. '} />
+      <HomeT title={'Your StudyVault Campus'} titlepara={'Welcome to StudyVault Campus, Get all Previous Year Question Papers of M.P.C Autonomous college. We shall try to provides note also. So I gonna help you in your all exams if you make me your exam Bff😊. '} />
       <TopContributorsCard />
       <SectionSelector />
       <Outlet />

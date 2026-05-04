@@ -100,7 +100,7 @@ export default function UploadQuestionPaper() {
             
             // Rename the file
             const renamedFile = new File([pdf], newFileName, { type: pdf.type });
-            const watermarkedFile = await addWatermark(renamedFile, 'StudyVault - Protected');
+            const watermarkedFile = await addWatermark(renamedFile, 'StudyVault Campus - Protected');
             return watermarkedFile;
         }
         return null;
