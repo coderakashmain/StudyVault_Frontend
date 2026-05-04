@@ -1,6 +1,11 @@
 import axios from "axios";
 
-const apiBaseUrl = import.meta.env.VITE_API_URL || '/api';
+let apiBaseUrl = '/api';
+try {
+  apiBaseUrl = import.meta.env.VITE_API_URL || '/api';
+} catch (e) {
+  console.warn("Vite env variables not statically replaced yet. Using fallback '/api'.");
+}
 
 const api = axios.create({
   baseURL: apiBaseUrl ,
