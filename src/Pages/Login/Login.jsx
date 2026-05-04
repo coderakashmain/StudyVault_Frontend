@@ -6,7 +6,6 @@ import BackButton from "../../Component/Backbutton/Backbutton";
 import { UserContext } from "../../Context/UserContext/UserContextdata";
 import GoogleAuth from "../../auth/GoogleAuth";
 import studyvault from '../../photo/Study⁐Vault-logo-black.png'
-import ReCaptcha from '../../Component/Captha/ReCaptha'
 import { AlartContectValue } from "../../Context/AlartContext/AlartContext";
 
 
@@ -18,14 +17,7 @@ const Login = (props) => {
   const [repeatclick, setRepeatclick] = useState(false);
   const [showHide, setShowHide] = useState(false);
   const navigate = useNavigate();
-  const shouldVerify = process.env.NODE_ENV === 'production';
-  const [isVerified, setIsVerified] = useState(false);
   const { post } = useApi();
-
-  const handleVerification = (status) => {
-    setIsVerified(status); 
- 
-  };
   const [loginData, setLoginData] = useState({
     gmail: '',
     password: ''
@@ -42,14 +34,8 @@ const Login = (props) => {
     setRepeatclick(true);
     e.preventDefault();
 
-    if (!isVerified && shouldVerify) {
-       showAlart("Please complete the CAPTCHA before logging in.",'','cancel');
-      setRepeatclick(false);
-      return;
-    }
-
     try {
-      const response = await post('/LogIn', false, loginData);
+      const response = await post('/login', false, loginData);
       if (response && response.success) {
          showAlart('Log in Successfull.', '', 'check');
          
@@ -123,17 +109,17 @@ const Login = (props) => {
                 <input type="checkbox" name="logincheckbox" id="" className="mr-2" defaultChecked />
                 &nbsp; Remember me
               </p>
-              <Link to='ForgatePw' style={{ color: '#007bff' }} >Forget password ?</Link>
+              <Link to='forgot-password' style={{ color: '#007bff' }} >Forget password ?</Link>
             </div>
 
 
-            {!isVerified && shouldVerify && (  <ReCaptcha onVerified={handleVerification} />)}
+
 
             <div className="submit-parant">
               <input ref={submitRef} disabled={repeatclick} type="submit" value={` ${repeatclick ? "Logging in..." : "Login"}`} className="" />
             </div>
           </form>
-          <Link to="Signup" className="signup-link">
+          <Link to="signup" className="signup-link">
           Don't have an account?{" "}
             <span className="">Register Now</span>
           </Link>

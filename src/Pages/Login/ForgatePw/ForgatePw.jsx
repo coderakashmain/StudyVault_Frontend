@@ -48,7 +48,7 @@ const handleChange = (e)=>{
       try{
         setOtpSent(true);
         setLoader(true);
-        await axios.post(`${VITE_API_URL}/LogIn/ForgatePw`,{email});
+        await axios.post(`${VITE_API_URL}/login/forgot-password`,{email});
          showAlart('OTP sent seccesfully','','check');
         setMessage(<p>Your OTP expired in 10 minutes.</p>);
 
@@ -92,7 +92,7 @@ const handleChange = (e)=>{
     setOtpSent(false);
     if(otpValue){
       try{
-        const response =   await axios.post(`${VITE_API_URL}/LogIn/verifyOtp `,{otp : otpValue , email});
+        const response =   await axios.post(`${VITE_API_URL}/login/verify-otp `,{otp : otpValue , email});
          showAlart('Verify successfull','','check');
         setPasswordResetPage(true);
         
@@ -167,9 +167,9 @@ const handleChange = (e)=>{
 
         if (resetPassword === reEnterResetPassword) {
             try {
-                await axios.post(`${VITE_API_URL}/LogIn/ForgatePw/ResetPassword`, { email, resetPassword });
+                await axios.post(`${VITE_API_URL}/login/reset-password`, { email, resetPassword });
                  showAlart('Password Reset succesfully','','check');
-                navigate('/LogIn');
+                navigate('/login');
             }
             catch (error) {
                 if (error.response && error.response.status === 500) {
@@ -224,7 +224,7 @@ const handleChange = (e)=>{
    
         <hr />
         <div className="back-create">
-          <Link  to='/LogIn/Signup' required>Create an Account</Link>
+          <Link  to='/login/signup' required>Create an Account</Link>
           {!otp ? (<button  onClick={backtohome} className='forgate-btn'>Back to Home page</button>) : (<button  onClick={()=>{setOtp(false)}} className='forgate-btn'>Back to Send OTP page</button>)}
           
         </div>
@@ -249,7 +249,7 @@ const handleChange = (e)=>{
           </div>) : (<div className=' backto-log-in'>
               <h2>Session expired, Back to Login Page!
                   <button onClick={() => {
-                      navigate('/LogIn');
+                      navigate('/login');
                       PasswordResetPage(false);
                       
                   }}>Back</button>

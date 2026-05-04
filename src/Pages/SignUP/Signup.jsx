@@ -77,7 +77,7 @@ const {showAlart} = useContext(AlartContectValue);
       try {
         setSpinner(true);
         setDisablebtn(true);
-        const response = await axios.post(`${VITE_API_URL}/LogIn/Signup/otpVarify`, { email: signupdata.gmail })
+        const response = await axios.post(`${VITE_API_URL}/login/signup/otp-verify`, { email: signupdata.gmail })
         if (response.status === 200) {
            showAlart('OTP send Successfully ', '', 'check');
           setVerifyOtp(true);
@@ -127,7 +127,7 @@ const {showAlart} = useContext(AlartContectValue);
     e.preventDefault();
     if (otpValue) {
       try {
-        await axios.post(`${VITE_API_URL}/LogIn/Signup/otpVarify/confirm`, { email: signupdata.gmail, otp: otpValue });
+        await axios.post(`${VITE_API_URL}/login/signup/otp-verify/confirm`, { email: signupdata.gmail, otp: otpValue });
 
 
          showAlart('Email verify successfull', '', 'check');
@@ -170,8 +170,8 @@ const {showAlart} = useContext(AlartContectValue);
     e.preventDefault();
     if (signupdata.password === signupdata.passwordcheck) {
       try {
-        await axios.post(`${VITE_API_URL}/LogIn/Signup`, signupdata);
-        navigate("/LogIn");
+        await axios.post(`${VITE_API_URL}/login/signup`, signupdata);
+        navigate("/login");
          showAlart('Registerd Seccessfull', '', "check")
       }
       catch (error) {
@@ -265,7 +265,7 @@ const {showAlart} = useContext(AlartContectValue);
         <hr style={{ margin: '1rem 0' }} />
         <div className="already-account">
           <p>Already have an accout?</p>
-          <Link to='/LogIn'>Log In</Link>
+          <Link to='/login'>Log In</Link>
         </div>
       </div>
     </div>

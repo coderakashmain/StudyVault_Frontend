@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
-import '../adminShared.css';
-import { AlartContectValue } from '../../../Context/AlartContext/AlartContext';
+import './adminShared.css';
+import { AlartContectValue } from '../../Context/AlartContext/AlartContext';
 
 const IconSmartphone = () => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -52,7 +52,7 @@ const ApkUpload = () => {
     try {
       const VITE_API_URL = import.meta.env.VITE_API_URL || '/api';
       const axios = (await import('axios')).default;
-      const response = await axios.post(`${VITE_API_URL}/Admin/upload-apk`, formData, {
+      const response = await axios.post(`${VITE_API_URL}/admin/upload-apk`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
         withCredentials: true,
         onUploadProgress: ({ loaded, total }) =>

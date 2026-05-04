@@ -32,17 +32,17 @@ const TitleSet = () => {
         case '/Downloadpdf':
           document.title = 'Download File- StudyVault'
           break;
-        case '/LogIn':
+        case '/login':
           document.title = 'Student Login- StudyVault'
           break;
   
         case '/LogIn/ForgatePw':
           document.title = 'Reset Your Password- StudyVault'
           break;
-        case '/Admin/AdminLogIn':
+        case '/admin/login':
           document.title = 'Admin Login- StudyVault'
           break;
-        case '/Admin':
+        case '/admin':
           document.title = 'Admin Dashboard- StudyVault'
           break;
         case '/article-section':

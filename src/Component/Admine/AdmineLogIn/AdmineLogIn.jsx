@@ -35,13 +35,12 @@ const handleSubmit = async (e)=>{
     e.preventDefault();
     if (!isVerified && shouldVerify) {
         showAlart("Please complete the CAPTCHA before logging in.",'','cancel');
-       setRepeatclick(false);
-       setIsactive(false)
+       setIsactive(false);
 
        return;
      }
     try{
-        const response = await post('/Admin/AdminLogIn', false, { userid, password });
+        const response = await post('/admin/login', false, { userid, password });
             setAdminToken(response.admintoken);
              showAlart('LogIn Seccessfully',"","check");
             setUserid('');

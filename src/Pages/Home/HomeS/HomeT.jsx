@@ -103,7 +103,7 @@ const VITE_API_URL = import.meta.env.VITE_API_URL || '/api';
                 <button onClick={() => {
                   navigate('About-us');
                 }}>Read me</button>
-               { !userlogincheck && ( <Link to="/LogIn/Signup">
+               { !userlogincheck && ( <Link to="/login/signup">
                   Sign Up <i className="fa-solid fa-arrow-right"></i>
                 </Link>)}
                 <a 

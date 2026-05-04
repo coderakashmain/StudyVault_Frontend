@@ -13,7 +13,7 @@ const AdminLoginCheck = (props) => {
 
   const checkAdminLogin = async () => {
     try {
-      const response = await get("/Admin/admin-login-check", false);
+      const response = await get("/admin/admin-login-check", false);
       if (response && response.status === true) {
         setCheck(true);
         setAdminToken(response.data?.admintoken || '');

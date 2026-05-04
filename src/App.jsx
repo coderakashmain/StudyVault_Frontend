@@ -194,7 +194,7 @@ const navrefvalue = (value) => {
           element: (<><ErrorBoundary><Suspense fallback={<IntroLoader/>}><Downloadpdf   /></Suspense></ErrorBoundary></>),
         },
         {
-          path: "LogIn",
+          path: "login",
           element: (<><Loginsignup /></>),
           children: [
             {
@@ -202,11 +202,11 @@ const navrefvalue = (value) => {
               element:<ErrorBoundary><Suspense fallback  = {<IntroLoader/>}> <Login   /></Suspense></ErrorBoundary>
             },
             {
-              path: "Signup",
+              path: "signup",
               element: <> <ErrorBoundary><Suspense fallback  = {<IntroLoader/>}> <Signup   /></Suspense></ErrorBoundary></>
             },
             {
-              path: "ForgatePw",
+              path: "forgot-password",
               element:<ErrorBoundary><Suspense fallback  = {<IntroLoader/>}>  <ForgatePw   /></Suspense></ErrorBoundary>
             },
           ]
@@ -232,7 +232,7 @@ const navrefvalue = (value) => {
       
        
         {
-          path: "Admin",
+          path: "admin",
           element: (<><Suspense fallback  = {<IntroLoader/>}><FetchData><Admine   /></FetchData></Suspense></>),
           children: [{
             path: '',
@@ -289,7 +289,7 @@ const navrefvalue = (value) => {
           ]
         },
         {
-          path : 'Admin/AdminLogIn',
+          path : 'admin/login',
           element : (<><ErrorBoundary><Suspense fallback  = {<IntroLoader/>}><AdmineLogIn  /></Suspense></ErrorBoundary></>)
         } ,
          {

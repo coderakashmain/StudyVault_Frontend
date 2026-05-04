@@ -551,7 +551,7 @@ const VITE_API_URL = import.meta.env.VITE_API_URL || '/api';
           {mobileScroll && logotext && (<h2 style={{ marginLeft: '0.2rem' }} className="logo-top-css" > STUDYVAULT</h2>)}
           <div className="location-login">
             {authentication && (<div className="admin-short" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginRight: '0.5rem' }}>
-              <i className="fa-solid fa-user-shield" style={{ color: '#fff', fontSize: '1.6rem', cursor: 'pointer', paddingLeft: '0.3rem' }} onClick={() => navigate('/Admin')}></i>
+              <i className="fa-solid fa-user-shield" style={{ color: '#fff', fontSize: '1.6rem', cursor: 'pointer', paddingLeft: '0.3rem' }} onClick={() => navigate('/admin')}></i>
 
             </div>)}
             {/* <ThemeToggle/> */}
@@ -574,8 +574,8 @@ const VITE_API_URL = import.meta.env.VITE_API_URL || '/api';
               <div className="log-in" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <div ref={BothLoginRef} onClick={clickOn}><li>Login <div className={`adminLogInBox ${isOn ? 'open' : 'close'} `} ref={LoginRef} >
 
-                  <NavLink className={`${getNavClass('/LogIn')} ${isOn ? 'big' : 'small'}`} to="/LogIn"><i className="fa-solid fa-graduation-cap" ></i>Student LogIn </NavLink>
-                  {!authentication ? (<NavLink to="/Admin/AdminLogIn" className={`${isOn ? 'big' : 'small'}`}><i className="fa-solid fa-user-tie"></i>Admin LogIn </NavLink>) : (<NavLink to="/Admin" className={`${isOn ? 'big' : 'small'}`}><i className="fa-solid fa-user-tie"></i>Admin Page</NavLink>)}
+                  <NavLink className={`${getNavClass('/login')} ${isOn ? 'big' : 'small'}`} to="/login"><i className="fa-solid fa-graduation-cap" ></i>Student LogIn </NavLink>
+                  {!authentication ? (<NavLink to="/admin/login" className={`${isOn ? 'big' : 'small'}`}><i className="fa-solid fa-user-tie"></i>Admin LogIn </NavLink>) : (<NavLink to="/admin" className={`${isOn ? 'big' : 'small'}`}><i className="fa-solid fa-user-tie"></i>Admin Page</NavLink>)}
                 </div>
                 </li></div>
               </div>

@@ -5,7 +5,7 @@ import useApi from '../../hooks/useApi';
 import { AdminLoginContext } from '../../Context/AdminLoginCheck/AdminLoginCheck';
 import { AlartContectValue } from '../../Context/AlartContext/AlartContext';
 
-/* ── inline SVG icons (no bg colour) ── */
+/* ── inline SVG icons ── */
 const IconGauge = () => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6v6l4 2"/>
@@ -76,11 +76,22 @@ const IconTrash = () => (
     <polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
   </svg>
 );
+const IconMenu = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/>
+  </svg>
+);
+const IconX = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+  </svg>
+);
 
 const Admine = (props) => {
   const navigate = useNavigate();
   const { check, setCheck } = useContext(AdminLoginContext);
   const [loading, setLoading] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const { showAlart } = useContext(AlartContectValue);
   const { get, post } = useApi();
 
@@ -94,7 +105,7 @@ const Admine = (props) => {
         }
       } catch (error) {
         setCheck(false);
-        navigate('/Admin/AdminLogIn');
+        navigate('/admin/login');
       }
     };
     checkAuthorization();
@@ -102,8 +113,8 @@ const Admine = (props) => {
 
   const handleLogout = async () => {
     try {
-      await post(`/Admin/logout`, false);
-      window.location.href = "/Admin/AdminLogIn";
+      await post(`/admin/logout`, false);
+      window.location.href = "/admin/login";
       sessionStorage.clear('isAdminLogin');
       showAlart('Logged out successfully', '', 'check');
       setCheck(false);
@@ -113,30 +124,29 @@ const Admine = (props) => {
     }
   };
 
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
+  const closeSidebarOnMobile = () => {
+    if (window.innerWidth <= 880) {
+      setIsSidebarOpen(false);
+    }
+  };
+
   if (!check) {
     return (
-      <div style={{
-        background: '#0a0f1e', position: 'fixed', inset: 0,
-        display: 'flex', flexDirection: 'column', alignItems: 'center',
-        justifyContent: 'center', zIndex: 10000, gap: '1rem'
-      }}>
+      <div className="admin-unauthorized">
         <IconShield style={{ width: 48, height: 48, color: 'rgba(239,68,68,0.6)' }} />
-        <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.85rem', fontFamily: 'Inter, sans-serif' }}>
-          Unauthorized access. Redirecting…
-        </p>
+        <p>Unauthorized access. Redirecting…</p>
       </div>
     );
   }
 
   if (loading) {
     return (
-      <div style={{
-        background: '#0a0f1e', position: 'fixed', inset: 0,
-        display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 10000
-      }}>
-        <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.8rem', fontFamily: 'Inter, sans-serif' }}>
-          Verifying session…
-        </p>
+      <div className="admin-loading">
+        <p>Verifying session…</p>
       </div>
     );
   }
@@ -145,9 +155,14 @@ const Admine = (props) => {
     <section id="admin">
       {/* ── Top Nav ── */}
       <div className="admin-nav">
-        <div className="admin-nav-brand">
-          <IconShield style={{ width: 16, height: 16, color: '#009bb7' }} />
-          <h2>StudyVault&nbsp;<span style={{ opacity: 0.4, fontWeight: 400 }}>/ Admin</span></h2>
+        <div className="admin-nav-left">
+          <button className="hambar-btn" onClick={toggleSidebar}>
+            {isSidebarOpen ? <IconX /> : <IconMenu />}
+          </button>
+          <div className="admin-nav-brand">
+            <IconShield style={{ width: 16, height: 16, color: '#009bb7' }} />
+            <h2>StudyVault&nbsp;<span style={{ opacity: 0.4, fontWeight: 400 }}>/ Admin</span></h2>
+          </div>
         </div>
 
         <div className="admin-nav-right">
@@ -169,45 +184,45 @@ const Admine = (props) => {
       {/* ── Body ── */}
       <div className="admin-box">
         {/* Sidebar */}
-        <div className="admin-left-box">
+        <div className={`admin-left-box ${isSidebarOpen ? 'open' : 'closed'}`}>
           <span className="sidebar-section-label">Overview</span>
-          <NavLink to="" end>
+          <NavLink to="" end onClick={closeSidebarOnMobile}>
             <h2><IconGauge /> Dashboard</h2>
           </NavLink>
 
           <span className="sidebar-section-label">Content</span>
-          <NavLink to="Question">
+          <NavLink to="Question" onClick={closeSidebarOnMobile}>
             <h2><IconNewspaper /> Questions</h2>
           </NavLink>
-          <NavLink to="syllabusupload">
+          <NavLink to="syllabusupload" onClick={closeSidebarOnMobile}>
             <h2><IconBook /> Syllabus</h2>
           </NavLink>
-          <NavLink to="Notes">
+          <NavLink to="Notes" onClick={closeSidebarOnMobile}>
             <h2><IconBook /> Notes</h2>
           </NavLink>
-          <NavLink to="CsUpload">
+          <NavLink to="CsUpload" onClick={closeSidebarOnMobile}>
             <h2><IconMonitor /> CS Upload</h2>
           </NavLink>
 
           <span className="sidebar-section-label">Users</span>
-          <NavLink to="user-uploads">
+          <NavLink to="user-uploads" onClick={closeSidebarOnMobile}>
             <h2><IconUpload /> User Uploads</h2>
           </NavLink>
-          <NavLink to="Usersend">
+          <NavLink to="Usersend" onClick={closeSidebarOnMobile}>
             <h2><IconFolder /> User Send</h2>
           </NavLink>
 
           <span className="sidebar-section-label">Management</span>
-          <NavLink to="feedbacks">
+          <NavLink to="feedbacks" onClick={closeSidebarOnMobile}>
             <h2><IconMessage /> Feedback</h2>
           </NavLink>
-          <NavLink to="payments">
+          <NavLink to="payments" onClick={closeSidebarOnMobile}>
             <h2><IconCreditCard /> Payments</h2>
           </NavLink>
-          <NavLink to="deletion-requests">
+          <NavLink to="deletion-requests" onClick={closeSidebarOnMobile}>
             <h2><IconTrash /> Deletions</h2>
           </NavLink>
-          <NavLink to="apk-upload">
+          <NavLink to="apk-upload" onClick={closeSidebarOnMobile}>
             <h2><IconSmartphone /> APK Update</h2>
           </NavLink>
 
@@ -215,11 +230,14 @@ const Admine = (props) => {
           <div className="sidebar-divider" />
 
           <div className="sidebar-danger">
-            <NavLink to="LogOut">
+            <NavLink to="LogOut" onClick={handleLogout}>
               <h2><IconLogOut /> Log Out</h2>
             </NavLink>
           </div>
         </div>
+
+        {/* Overlay for mobile */}
+        {isSidebarOpen && <div className="sidebar-overlay" onClick={toggleSidebar} />}
 
         {/* Main Content */}
         <div className="admin-right-box">

@@ -41,7 +41,7 @@ const SubNav = (props) => {
                 </div>
                 <h1>StudyVault<sub>{props.subheadingtypedata.type ? props.subheadingtypedata.type : 'Resources'}</sub></h1>
               
-                {!usercheck ? (<div className="search-metatrila same active" onClick={() => navigate('/LogIn')} >
+                {!usercheck ? (<div className="search-metatrila same active" onClick={() => navigate('/login')} >
                 <LogIn  className='i'/>
                 </div>) :
                     (<div className="search-metatrila same active" onClick={() => navigate('/Profile')} >
