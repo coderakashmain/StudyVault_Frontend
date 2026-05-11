@@ -42,6 +42,7 @@ import Navbar from "./Component/Navbar/Navbar";
 const AdmineControl = lazy(() => import("./Component/Admine/AdmineControl"));
 const NoteUpload = lazy(() => import("./Component/Admine/NoteUpload/NoteUpload"));
 const ApkUpload = lazy(() => import("./Component/Admine/ApkUpload"));
+const CollegeManagement = lazy(() => import("./Component/Admine/CollegeManagement/CollegeManagement"));
 const Alart = lazy(() => import("./Component/Alart/Alart"));
 const PaymentStatus = lazy(() => import("./Pages/CashfreePay/PaymentStatus"));
 import PaymentRouter from "./RoutingFiles/PaymentRouter"
@@ -283,7 +284,11 @@ const navrefvalue = (value) => {
           },
           {
             path: 'apk-upload',
-            element: <><ErrorBoundary><Suspense fallback  = {<FallbackLoad/>}> <ApkUpload   /></Suspense></ErrorBoundary></>
+            element: <><ErrorBoundary><Suspense fallback={<FallbackLoad/>}> <ApkUpload   /></Suspense></ErrorBoundary></>
+          },
+          {
+            path: 'colleges',
+            element: <><ErrorBoundary><Suspense fallback={<FallbackLoad/>}> <CollegeManagement   /></Suspense></ErrorBoundary></>
           },
          
           ]

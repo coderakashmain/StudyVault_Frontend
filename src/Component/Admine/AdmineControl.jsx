@@ -47,7 +47,7 @@ const AdmineControl = () => {
   const [itemsPerPage, setItemsPerPage] = useState(10);
 
   const fetchPending = async () => {
-    const res = await get("/Admin/pending-uploads", adminToken);
+    const res = await get("/admin/pending-uploads", adminToken);
     if (res?.status) setPending(res.data);
   };
 
@@ -55,7 +55,7 @@ const AdmineControl = () => {
 
   const handleApprove = async (id) => {
     setActionLoadingId(id);
-    const res = await post(`/Admin/submissions/${id}/approve`, adminToken);
+    const res = await post(`/admin/submissions/${id}/approve`, adminToken);
     if (res?.status) setPending(prev => prev.filter(p => p.id !== id));
     setActionLoadingId(null);
   };
@@ -64,7 +64,7 @@ const AdmineControl = () => {
     const remark = remarkMap[id];
     if (!remark || remark.trim().length < 5) { alert("Remark must be at least 5 characters"); return; }
     setActionLoadingId(id);
-    const res = await post(`/Admin/submissions/${id}/reject`, adminToken, { remark });
+    const res = await post(`/admin/submissions/${id}/reject`, adminToken, { remark });
     if (res?.status) setPending(prev => prev.filter(p => p.id !== id));
     setActionLoadingId(null);
   };
@@ -73,7 +73,7 @@ const AdmineControl = () => {
     const remark = remarkMap[id];
     if (!remark || remark.trim().length < 5) { alert("Remark must be at least 5 characters"); return; }
     setActionLoadingId(id);
-    const res = await post(`/Admin/submissions/${id}/update-remark`, adminToken, { remark });
+    const res = await post(`/admin/submissions/${id}/update-remark`, adminToken, { remark });
     if (res?.status) alert("Remark updated successfully");
     setActionLoadingId(null);
   };

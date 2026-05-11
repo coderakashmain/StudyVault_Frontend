@@ -213,6 +213,9 @@ const Admine = (props) => {
           </NavLink>
 
           <span className="sidebar-section-label">Management</span>
+          <NavLink to="colleges" onClick={closeSidebarOnMobile}>
+            <h2><IconBook /> Colleges</h2>
+          </NavLink>
           <NavLink to="feedbacks" onClick={closeSidebarOnMobile}>
             <h2><IconMessage /> Feedback</h2>
           </NavLink>
