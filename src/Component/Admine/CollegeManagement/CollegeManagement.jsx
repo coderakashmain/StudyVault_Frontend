@@ -18,7 +18,7 @@ const emptyForm = { name: "", type: "autonomous", city: "", university_affiliati
 
 const CollegeManagement = () => {
   const { adminToken } = useAdminLogin();
-  const { get, loading } = useApi();
+  const { get, post, put, delete: del, loading } = useApi();
 
   const [colleges, setColleges] = useState([]);
   const [search, setSearch] = useState("");
@@ -36,20 +36,20 @@ const CollegeManagement = () => {
   };
 
   const fetchColleges = async () => {
-    const res = await get("/colleges", adminToken);
-    if (res) setColleges(res);
+    try {
+      const res = await get("/colleges", adminToken);
+      if (res) setColleges(res);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const fetchPaperCounts = async () => {
     try {
-      const res = await fetch(`${API_BASE}/api/admin/college-paper-counts`, {
-        credentials: "include",
-        headers: adminToken ? { Authorization: `Bearer ${adminToken}` } : {},
-      });
-      if (res.ok) {
-        const data = await res.json();
+      const res = await get("/admin/college-paper-counts", adminToken);
+      if (res) {
         const map = {};
-        data.forEach(r => { map[r.college_id] = parseInt(r.count); });
+        res.forEach(r => { map[r.college_id] = parseInt(r.count); });
         setPaperCounts(map);
       }
     } catch (_) {}
@@ -76,26 +76,17 @@ const CollegeManagement = () => {
     if (!form.name.trim()) return showToast("College name is required", "error");
     setSaving(true);
     try {
-      const url = editId
-        ? `${API_BASE}/api/colleges/admin/colleges/${editId}`
-        : `${API_BASE}/api/colleges/admin/colleges`;
-      const method = editId ? "PUT" : "POST";
-      const res = await fetch(url, {
-        method,
-        headers: {
-          "Content-Type": "application/json",
-          ...(adminToken ? { Authorization: `Bearer ${adminToken}` } : {}),
-        },
-        credentials: "include",
-        body: JSON.stringify(form),
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Failed");
-      showToast(editId ? "College updated!" : "College added!");
+      if (editId) {
+        await put(`/colleges/admin/colleges/${editId}`, adminToken, form);
+        showToast("College updated!");
+      } else {
+        await post(`/colleges/admin/colleges`, adminToken, form);
+        showToast("College added!");
+      }
       setShowModal(false);
       fetchColleges();
     } catch (err) {
-      showToast(err.message, "error");
+      showToast(err.response?.data?.error || err.message || "Failed to save college", "error");
     } finally {
       setSaving(false);
     }
@@ -103,18 +94,12 @@ const CollegeManagement = () => {
 
   const handleDelete = async (id) => {
     try {
-      const res = await fetch(`${API_BASE}/api/colleges/admin/colleges/${id}`, {
-        method: "DELETE",
-        credentials: "include",
-        headers: adminToken ? { Authorization: `Bearer ${adminToken}` } : {},
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Failed");
+      await del(`/colleges/admin/colleges/${id}`, adminToken);
       showToast("College deleted");
       setDeleteId(null);
       fetchColleges();
     } catch (err) {
-      showToast(err.message, "error");
+      showToast(err.response?.data?.error || err.message || "Failed to delete college", "error");
     }
   };
 
